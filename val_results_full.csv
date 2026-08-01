@@ -25593,3 +25593,686 @@ mat = np . loadtxt ( '%s/zodiac.txt' % ( datapath ( ) ) ),"mat = np. loadtxt ( '
         dfs.cache_clear()
         return ans"
 "DateFormat ( 'dddd, MMM. D YYYY, HH:mm A' , Accuracy . DATETIME ) ,","DateFormat ( 'dddd, MMM. D YYYY, HH:mm A', Accuracy. DATETIME ),"
+"options = options , passwords = passwords , stdout_callback = 'default'","options = options, passwords = passwords, stdout_callback ='skippy', stderr_callback ='skippy'"
+"updater . job_queue . run_daily ( tasks . news_sch , time = datetime . time ( 0 , 0 , 0 ) , name = 'News' )","updater. job_queue. run_daily ( tasks. news_sch, time = datetime. time ( 0, 5, 0 ), name = 'News', timezone = 'UTC' )"
+for i in range ( int ( rounds ) ) : damage += card_atk [ i % card_rounds ],for i in range ( rounds ) : damage += card_atk [ i % card_rounds ] * card_def [ i % card_rounds ]
+"class Solution:
+    def minimumLevels(self, possible: List[int]) -> int:
+        s = sum(-1 if x == 0 else 1 for x in possible)
+        t = 0
+        for i, x in enumerate(possible[:-1], 1):
+            t += -1 if x == 0 else 1
+            if t > s - t:
+                return i
+        return -1","class Solution:
+    def minimumLevels(self, possible: List[int]) -> int:
+        s = sum(-1 if x == 0 else 1 for x in possible[:-1])
+        t = 0
+        for i, x in enumerate(possible[:-1], 1):
+            t += -1 if x == 0 else 1
+            if t > s - t:
+                return i
+        return -1"
+"raise IOError ( ""{}: file not found in current dir or home dir."" . format ( base_file ) )","raise IOError ( ""{File not found in current dir or home dir."". format ( base_file = base_file ) )"
+"block = BreakBlock ( params [ 'cmd' ] , priority , tex , parent_block )","block = BreakBlock ( params [ 'cmd' ], priority, tex, parent_block )"
+self . sflib . selenium . failure_occurred . assert_called ( ),self. sflib. selenium. capture_page_screenshot. assert_called_with ( )
+"os . environ . setdefault ( ""DJANGO_SETTINGS_MODULE"" , ""worktogether.local"" )","os. environ. setdefault ( ""DJANGO_SETTINGS_MODULE"", ""worktogether.settings.development"" )"
+return hashlib . sha1 ( os . urandom ( 20 ) ) . hexdigest ( ) . upper ( ),"return hashlib. sha1 ( stem. util. str_tools. _to_bytes ( str ( time. time ( ) ) ) ). hexdigest ( ). upper ( ). rjust ( 8, '0' )"
+our_jid = gajim . get_jid_from_account ( self . conn . name ),"our_jid = gajim. get_jid_from_account ( self. name, self. name )"
+"class Solution:
+    def maxDistinctElements(self, nums: List[int], k: int) -> int:
+        nums.sort()
+        ans = 0
+        pre = -inf
+        for x in nums:
+            cur = min(x + k, max(x - k, pre + 1))
+            if cur > pre:
+                ans += 1
+                pre = cur
+        return ans","class Solution:
+    def maxDistinctElements(self, nums: List[int], k: int) -> int:
+        nums.sort()
+        ans = 0
+        pre = -inf
+        for x in nums:
+            cur = min(x + k, max(x - k, pre + 1))
+            if cur > pre:
+                ans += 1
+                pre = cur
+        return ans"
+"await ctx . send ( ""set bot status to..."" + message )","await ctx. send ( ""set bot status to..."" + game. replace ( "" "", """" ) )"
+"check_libcloud_version ( ( 0 , 14 , 0 ) , why = 'rackconnect: True' )","check_libcloud_version ( '0.14.0', why = 'rackconnect: False' )"
+"import pandas as pd
+import folium
+from geopy.geocoders import Photon
+def task_func(dic):
+
+    geolocator = Photon(user_agent=""geoapiExercises"")
+
+    # Preprocess to handle both coordinates and string addresses
+    preprocessed_locations = []
+    for location, value in dic.items():
+        if isinstance(value, dict) and 'Lat' in value and 'Lon' in value:
+            preprocessed_locations.append({'Location': location, 'Lat': value['Lat'], 'Lon': value['Lon']})
+        elif isinstance(value, str):
+            geocoded_location = geolocator.geocode(value)
+            preprocessed_locations.append({'Location': location, 'Lat': geocoded_location.latitude, 'Lon': geocoded_location.longitude})
+        else:
+            raise ValueError(""Location value must be either a dict with 'Lat' and 'Lon' keys or a string."")
+
+    locations_df = pd.DataFrame(preprocessed_locations)
+
+    # Assuming the first row has valid coordinates
+    first_row = locations_df.iloc[0]
+    folium_map = folium.Map(location=[first_row['Lat'], first_row['Lon']], zoom_start=4)
+
+    # Add markers for all locations
+    for _, row in locations_df.iterrows():
+        folium.Marker([row['Lat'], row['Lon']], popup=row['Location']).add_to(folium_map)
+
+    return folium_map","import pandas as pd
+import folium
+from geopy.geocoders import Photon
+def task_func(dic):
+
+    geolocator = Photon(user_agent=""geoapiExercises"")
+
+    # Preprocess to handle both coordinates and string addresses
+    preprocessed_locations = []
+    for location, value in dic.items():
+        if isinstance(value, dict) and 'Lat' in value and 'Lon' in value:
+            preprocessed_locations.append({'Location': location, 'Lat': value['Lat'], 'Lon': value['Lon']})
+        elif isinstance(value, str):
+            geocoded_location = geolocator.geocode(value)
+            preprocessed_locations.append({'Location': location, 'Lat': geocoded_location.latitude, 'Lon': geocoded_location.longitude})
+        else:
+            raise ValueError(""Location value must be either a dict with 'Lat' and 'Lon' keys or a string."")
+
+    locations_df = pd.DataFrame(preprocessed_locations)
+
+    # Assuming the first row has valid coordinates
+    first_row = locations_df.iloc[0]
+    folium_map = folium.Map(location=[first_row['Lat'], first_row['Lon']], zoom_start=4)
+
+    # Add markers for all locations
+    for _, row in locations_df.iterrows():
+        folium.Marker([row['Lat'], row['Lon']], popup=row['Location']).add_to(folium_map)
+
+    return folium_map"
+"from core . model import ( account , amount , cashculator , currency , date , oven , recurrence , transaction , transaction_list , completion , undo )","from core. model import ( account, amount, currency, date, oven, recurrence, transaction, transaction_list, completion, undo, transaction_type )"
+"postgrescon = psycopg2 . connect ( host = options [ 'host' ] , port = int ( options [ 'port' ] ) , user = options [ 'username' ] , password = options [ 'password' ] , dbname = options [ 'database' ] )","postgrescon = psycopg2. connect ( host = options [ 'host' ], port = int ( options [ 'port' ] ), user = options [ 'username' ], passwd = options [ 'password' ], database = options [ 'database' ] )"
+"cursor . execute ( ""SELECT id,type,time,changetime,summary,reporter FROM ticket WHERE id IN "" ""(SELECT CAST(resid AS INTEGER) FROM watchlist WHERE wluser=%s AND realm='ticket') "" ""GROUP BY id,type,time,changetime,summary,reporter "" ""ORDER BY changetime DESC;"" , ( user , ) )","cursor. execute ( ""SELECT id,type,time,changetime,summary,reporter FROM ticket WHERE id IN "" ""(SELECT CAST(resid AS int) FROM watchlist WHERE wluser=%s AND realm='ticket') "" ""GROUP BY id,type,time,changetime,summary,reporter "" ""ORDER BY changetime DESC;"", ( user, ) )"
+if deluge . common . windows_check ( ) : reactor . simulate ( ),if deluge. common. windows_check and deluge. common. is_windows : reactor. simulate ( )
+"from django.http import HttpResponse
+from django.conf import settings
+import random
+import time
+def task_func(data, min_delay, max_delay):
+
+
+    # Generate a random delay
+    delay = random.uniform(min_delay, max_delay)
+
+    # Wait for the delay
+    time.sleep(delay)
+
+    response = HttpResponse(data, content_type='application/json')
+
+    return response","from django.http import HttpResponse
+from django.conf import settings
+import random
+import time
+def task_func(data, min_delay, max_delay):
+
+
+    # Generate a random delay
+    delay = random.uniform(min_delay, max_delay)
+
+    # Wait for the delay
+    time.sleep(delay)
+
+    response = HttpResponse(data, content_type='application/json')
+
+    return response"
+"class Solution:
+    def earliestSecondToMarkIndices(
+        self, nums: List[int], changeIndices: List[int]
+    ) -> int:
+        def check(t: int) -> bool:
+            decrement = 0
+            marked = 0
+            last = {i: s for s, i in enumerate(changeIndices[:t])}
+            for s, i in enumerate(changeIndices[:t]):
+                if last[i] == s:
+                    if decrement < nums[i - 1]:
+                        return False
+                    decrement -= nums[i - 1]
+                    marked += 1
+                else:
+                    decrement += 1
+            return marked == len(nums)
+
+        m = len(changeIndices)
+        l = bisect_left(range(1, m + 2), True, key=check) + 1
+        return -1 if l > m else l","class Solution:
+    def earliestSecondToMarkIndices(
+        self, nums: List[int], changeIndices: List[int]
+    ) -> int:
+        def check(t: int) -> bool:
+            decrement = 1
+            marked = 0
+            last = {i: s for s, i in enumerate(changeIndices[:t])}
+            for s, i in enumerate(changeIndices[:t]):
+                if last[i] == s:
+                    if decrement < nums[i - 1]:
+                        return False
+                    decrement -= 1
+                    marked += 1
+                else:
+                    decrement += 1
+            return marked == len(nums) - 1
+
+        m = len(changeIndices)
+        l = bisect_left(range(1, m + 2), True, key=check) + 1
+        return -1 if l > m else l"
+"from LDMP . schemas . schemas import FileList , LocalResults , LocalResultsSchema","from LDMP. schemas import FileList, LocalResults, LocalResultsSchema, LocalResultsSchema"
+"class Solution:
+    def maximumTripletValue(self, nums: List[int]) -> int:
+        ans = mx = mx_diff = 0
+        for x in nums:
+            ans = max(ans, mx_diff * x)
+            mx_diff = max(mx_diff, mx - x)
+            mx = max(mx, x)
+        return ans","class Solution:
+    def maximumTripletValue(self, nums: List[int]) -> int:
+        ans = mx = mx_diff = nums[0]
+        for x in nums[1:]:
+            ans = max(ans, mx_diff * x)
+            mx_diff = max(mx_diff, mx - x)
+            mx = max(mx, x)
+        return ans if ans > 0 else -1"
+"class Solution:
+  def shortestMatchingSubstring(self, s: str, p: str) -> int:
+    n = len(s)
+    a, b, c = p.split('*')
+    lpsA = self._getLPS(a + '#' + s)[len(a) + 1:]
+    lpsB = self._getLPS(b + '#' + s)[len(b) + 1:]
+    lpsC = self._getLPS(c + '#' + s)[len(c) + 1:]
+    ans = math.inf
+
+    i = 0  # lpsA's index
+    j = 0  # lpsB's index
+    k = 0  # lpsC's index
+    while i + len(b) + len(c) < n:
+      while i < n and lpsA[i] != len(a):
+        i += 1
+      while j < n and (j < i + len(b) or lpsB[j] != len(b)):
+        j += 1
+      while k < n and (k < j + len(c) or lpsC[k] != len(c)):
+        k += 1
+      if k == n:
+        break
+      ans = min(ans, k - i + len(a))
+      i += 1
+
+    return -1 if ans == math.inf else ans
+
+  def _getLPS(self, pattern: str) -> list[int]:
+    """"""
+    Returns the lps array, where lps[i] is the length of the longest prefix of
+    pattern[0..i] which is also a suffix of this substring.
+    """"""
+    lps = [0] * len(pattern)
+    j = 0
+    for i in range(1, len(pattern)):
+      while j > 0 and pattern[j] != pattern[i]:
+        j = lps[j - 1]
+      if pattern[i] == pattern[j]:
+        lps[i] = j + 1
+        j += 1
+    return lps","class Solution:
+  def shortestMatchingSubstring(self, s: str, p: str) -> int:
+    n = len(s)
+    a, b, c = p.split('*')
+    lpsA = self._getLPS(a + '#' + s)[len(a) + 1:]
+    lpsB = self._getLPS(b + '#' + s)[len(b) + 1:]
+    lpsC = self._getLPS(c + '#' + s)[len(c) + 1:]
+    ans = math.inf
+
+    i = 0  # lpsA's index
+    j = 0  # lpsB's index
+    k = 0  # lpsC's index
+    while i + len(b) + len(c) < n:
+      while i < n and lpsA[i]!= len(a):
+        i += 1
+      while j < n and (j < i + len(b) or lpsB[j]!= len(b)):
+        j += 1
+      while k < n and (k < j + len(c) or lpsC[k]!= len(c)):
+        k += 1
+      if k == n:
+        break
+      ans = min(ans, k - i + len(a))
+      i += 1
+
+    return -1 if ans == math.inf else ans
+
+  def _getLPS(self, pattern: str) -> list[int]:
+    """"""
+    Returns the lps array, where lps[i] is the length of the longest prefix of
+    pattern[0..i] which is also a suffix of this substring.
+    """"""
+    lps = [0] * len(pattern)
+    j = 0
+    for i in range(1, len(pattern)):
+      while j > 0 and pattern[j]!= pattern[i]:
+        j = lps[j - 1]
+      if pattern[i] == pattern[j]:
+        lps[i] = lps[j] + 1
+        j += 1
+    return lps"
+assert list ( image . data . keys ( ) ) == [ 'soil_moisture' ],"assert image. data. keys ( ) == ['soil_moisture','soil_temperature' ]"
+"CheckResult . objects . filter ( check_object = self . id_object , check_project = check_project )","CheckResult. objects. filter ( check_object = self. id_object, check_project = check_project, is_latest = False )"
+"s += tf . reduce_sum ( tf . log ( 1 + tf . reshape ( tmp , ( - 1 , 1 ) ) * phi_nc ) , 0 )","s += tf. reduce_sum ( tf. log ( 1 + tf. transpose ( tmp ) * phi_nc ), axis = 1 )"
+"return make_json_response ( content = { ""message"" : ""accepted"" } , status = 202 )","return make_json_response ( content = { ""message"" : ""accepted"" }, status = 200 )"
+"return self . send_request ( 'updates/' , verb = 'POST' , auth = True , data = kwargs )","return self. send_request ( 'updates', verb = 'POST', auth = True, data = kwargs, headers = { 'Content-Type' : 'application/json' } )"
+"class Solution:
+    def countDays(self, days: int, meetings: List[List[int]]) -> int:
+        meetings.sort()
+        ans = last = 0
+        for st, ed in meetings:
+            if last < st:
+                ans += st - last - 1
+            last = max(last, ed)
+        ans += days - last
+        return ans","class Solution:
+    def countDays(self, days: int, meetings: List[List[int]]) -> int:
+        meetings.sort()
+        ans, last = 0, 1
+        for st, ed in meetings:
+            if last < st:
+                ans += st - last - 1
+            last = max(last, ed)
+        ans += days - last
+        return ans"
+if dashes [ 0 ] is not None : legline . set_dashes ( dashes [ 1 ] ),if dashes [ 1 ]!= None : legline. set_dashes ( dashes [ 1 ] )
+return Response ( { 'password' : obj . password . get_password ( request . user ) } ),"return Response ( { 'password' : obj. get_password ( request. user, request ) } )"
+"install_requires = ( 'pyramid<1.3a' , 'SQLAlchemy<0.8a' , 'Babel' , 'PufferFish==0.2.1' , 'Wand' , 'requests>=0.10' , 'alembic' , 'httpcachepurger>=0.2.0' , 'BeautifulSoup' ) ,","install_requires = ( 'pyramid<1.3a', 'SQLAlchemy<0.8a', 'Babel', 'PufferFish>=0.2', 'Wand','requests>=0.10', 'alembic', 'httpcachepurger>=0.2.0', 'BeautifulSoup>=0.7' ),"
+"print ( ""{} Jclub presenter {} not found in people"" . format ( mtg [ ""_id"" ] , mtg [ ""journal_club"" ] . get ( ""presenter"" ) ) )","print ( ""{} presenter {} not found in people"". format ( mtg [ ""_id"" ], mtg [ ""presentation"" ]. get ( ""presenter"" ) or ""None"" ) )"
+"class Solution:
+  def maxCollectedFruits(self, fruits: list[list[int]]) -> int:
+    n = len(fruits)
+
+    def getTopLeft() -> int:
+      return sum(fruits[i][i] for i in range(n))
+
+    def getTopRight() -> int:
+      # dp[i][j] := the number of fruits collected from (0, n - 1) to (i, j)
+      dp = [[0] * n for _ in range(n)]
+      dp[0][-1] = fruits[0][-1]
+      for x in range(n):
+        for y in range(n):
+          if x >= y and (x, y) != (n - 1, n - 1):
+            continue
+          for dx, dy in [(1, -1), (1, 0), (1, 1)]:
+            i = x - dx
+            j = y - dy
+            if i < 0 or i == n or j < 0 or j == n:
+              continue
+            if i < j < n - 1 - i:
+              continue
+            dp[x][y] = max(dp[x][y], dp[i][j] + fruits[x][y])
+      return dp[-1][-1]
+
+    def getBottomLeft() -> int:
+      # dp[i][j] := the number of fruits collected from (n - 1, 0) to (i, j)
+      dp = [[0] * n for _ in range(n)]
+      dp[-1][0] = fruits[-1][0]
+      for y in range(n):
+        for x in range(n):
+          if x <= y and (x, y) != (n - 1, n - 1):
+            continue
+          for dx, dy in [(-1, 1), (0, 1), (1, 1)]:
+            i = x - dx
+            j = y - dy
+            if i < 0 or i == n or j < 0 or j == n:
+              continue
+            if j < i < n - 1 - j:
+              continue
+            dp[x][y] = max(dp[x][y], dp[i][j] + fruits[x][y])
+      return dp[-1][-1]
+
+    return getTopLeft() + getTopRight() + getBottomLeft() - 2 * fruits[-1][-1]","class Solution:
+  def maxCollectedFruits(self, fruits: list[list[int]]) -> int:
+    n = len(fruits)
+
+    def getTopLeft() -> int:
+      return sum(fruits[i][i] for i in range(n))
+
+    def getTopRight() -> int:
+      # dp[i][j] := the number of fruits collected from (0, n - 1) to (i, j)
+      dp = [[0] * n for _ in range(n)]
+      dp[0][-1] = fruits[0][-1]
+      for x in range(n):
+        for y in range(n):
+          if x >= y and (x, y)!= (n - 1, n - 1):
+            continue
+          for dx, dy in [(1, -1), (1, 0), (1, 1)]:
+            i = x - dx
+            j = y - dy
+            if i < 0 or i == n or j < 0 or j == n:
+              continue
+            dp[x][y] = max(dp[x][y], dp[i][j] + fruits[x][y])
+      return dp[-1][-1]
+
+    def getBottomLeft() -> int:
+      # dp[i][j] := the number of fruits collected from (n - 1, 0) to (i, j)
+      dp = [[0] * n for _ in range(n)]
+      dp[-1][0] = fruits[-1][0]
+      for x in range(n):
+        for y in range(n):
+          if x <= y and (x, y)!= (n - 1, n - 1):
+            continue
+          for dx, dy in [(-1, 1), (0, 1), (1, 1)]:
+            i = x - dx
+            j = y - dy
+            if i < 0 or i == n or j < 0 or j == n:
+              continue
+            if i < j < n - 1 - j:
+              continue
+            dp[x][y] = max(dp[x][y], dp[i][j] + fruits[x][y])
+      return dp[-1][-1]
+
+    return getTopLeft() + getTopRight() + getBottomLeft() - 2 * fruits[-1][-1]"
+"url_base = ""http://magna002.ceph.redhat.com/cephci-jenkins""","url_base = ""http://magna002.redhat.com/cephci-jenkins"","
+"import csv
+import re
+from collections import Counter
+def task_func(file_path, regex_pattern=r'\(.+?\)|\w+|[\W_]+'):
+
+    with open(file_path, 'r') as file:
+        reader = csv.reader(file)
+        text = ' '.join(row[0] for row in reader)
+        matches = re.findall(regex_pattern, text)
+
+    counts = Counter(matches)
+    return dict(counts)","import csv
+import re
+from collections import Counter
+def task_func(file_path, regex_pattern=r'\(.+?\)|\w+|[\W_]+'):
+
+    with open(file_path, 'r') as file:
+        reader = csv.reader(file)
+        text =''.join(row[0] for row in reader)
+        matches = re.findall(regex_pattern, text)
+
+    counts = Counter(matches)
+    return dict(counts)"
+from chatterbot . trainers import ChatterBotCorpusTrainer,"from chatterbot. events import ChatterBotCorpusTrainer, ChatterBotError"
+"class Solution:
+    MOD = 10**9 + 7
+    _fact = None  # Class variable for precomputed factorials
+    _inv_fact = None  # Class variable for precomputed inverse factorials
+
+    @classmethod
+    def precompute(cls, max_n):
+        """"""Precompute factorial and inverse factorial arrays up to max_n.""""""
+        if cls._fact is not None and len(cls._fact) >= max_n + 1:
+            return  # Already precomputed sufficiently
+        
+        cls._fact = [1] * (max_n + 1)
+        for i in range(1, max_n + 1):
+            cls._fact[i] = cls._fact[i-1] * i % cls.MOD
+        
+        cls._inv_fact = [1] * (max_n + 1)
+        cls._inv_fact[max_n] = pow(cls._fact[max_n], cls.MOD - 2, cls.MOD)
+        for i in range(max_n - 1, -1, -1):
+            cls._inv_fact[i] = cls._inv_fact[i + 1] * (i + 1) % cls.MOD
+
+    def countGoodArrays(self, n: int, m: int, k: int) -> int:
+        if k < 0 or k > n - 1:
+            return 0
+        
+        max_needed = n - 1
+        Solution.precompute(max_needed)
+        
+        a = n - 1
+        b = k
+        # Compute combination C(a, b)
+        comb = Solution._fact[a] * Solution._inv_fact[b] % self.MOD
+        comb = comb * Solution._inv_fact[a - b] % self.MOD
+        
+        exponent = (n - k - 1)
+        term = pow(m - 1, exponent, self.MOD)
+        
+        ans = comb * m % self.MOD
+        ans = ans * term % self.MOD
+        return ans","class Solution:
+    MOD = 10**9 + 7
+    _fact = None  # Class variable for precomputed factorials
+    _inv_fact = None  # Class variable for precomputed inverse factorials
+
+    @classmethod
+    def precompute(cls, max_n):
+        """"""Precompute factorial and inverse factorial arrays up to max_n.""""""
+        if cls._fact is not None and len(cls._fact) >= max_n + 1:
+            return  # Already precomputed sufficiently
+        
+        cls._fact = [1] * (max_n + 1)
+        for i in range(1, max_n + 1):
+            cls._fact[i] = cls._fact[i-1] * i % cls.MOD
+        
+        cls._inv_fact = [1] * (max_n + 1)
+        cls._inv_fact[max_n] = pow(cls._fact[max_n], cls.MOD - 2, cls.MOD)
+        for i in range(max_n - 1, -1, -1):
+            cls._inv_fact[i] = cls._inv_fact[i + 1] * (i + 1) % cls.MOD
+
+    def countGoodArrays(self, n: int, m: int, k: int) -> int:
+        if k < 0 or k > n - 1:
+            return 0
+        
+        max_needed = n - 1
+        Solution.precompute(max_needed)
+        
+        a = n - 1
+        b = k
+        # Compute combination C(a, b)
+        comb = Solution._fact[a] * Solution._inv_fact[b] % self.MOD
+        comb = comb * Solution._inv_fact[a - b] % self.MOD
+        
+        exponent = n - k - 1
+        term = pow(m - 1, exponent, self.MOD)
+        
+        ans = comb * term % self.MOD
+        return ans"
+"import nltk
+nltk.download('stopwords')
+from collections import Counter
+import os
+from nltk.corpus import stopwords
+# Constants
+STOPWORDS = set(stopwords.words('english'))
+def task_func(directory_path):
+
+
+    word_counts = Counter()
+
+    for file_name in os.listdir(directory_path):
+        if not file_name.endswith('.txt'):
+            continue
+        with open(os.path.join(directory_path, file_name), 'r') as file:
+            words = [word for word in file.read().split() if word.lower() not in STOPWORDS]
+            word_counts.update(words)
+
+    return len(word_counts)","import nltk
+nltk.download('stopwords')
+from collections import Counter
+import os
+from nltk.corpus import stopwords
+# Constants
+STOPWORDS = set(stopwords.words('english'))
+def task_func(directory_path):
+
+
+    word_counts = Counter()
+
+    for file_name in os.listdir(directory_path):
+        if not file_name.endswith('.txt'):
+            continue
+        with open(os.path.join(directory_path, file_name), 'r') as file:
+            words = [word for word in file.read().split() if word.lower() not in STOPWORDS]
+            word_counts.update(words)
+
+    return len(word_counts)"
+"class Solution:
+    def maximumLength(self, nums: List[int]) -> int:
+        k = 2
+        f = [[0] * k for _ in range(k)]
+        ans = 0
+        for x in nums:
+            x %= k
+            for j in range(k):
+                y = (j - x + k) % k
+                f[x][y] = f[y][x] + 1
+                ans = max(ans, f[x][y])
+        return ans","class Solution:
+    def maximumLength(self, nums: List[int]) -> int:
+        k = 2
+        f = [[0] * k for _ in range(k)]
+        ans = 0
+        for x in nums:
+            x %= k
+            for j in range(k):
+                y = (j - x + k) % k
+                f[x][y] = f[y][x] + 1
+                ans = max(ans, f[x][y])
+        return ans"
+"self . assertEqual ( res [ 'status' ] . values ( ) , [ 'terminated' ] )","self. assertEqual ( res. values ( ), [ 'terminated' ], ""Unexpected response"" )"
+_python_lib = tools . get_python_c_library ( allow_failure = False ),_python_lib = tools. get_python_c_library ( allow_failure = False )
+source_list = Source . objects . annotate ( num_stories = Count ( 'story' ) ) . order_by ( 'name' ),source_list = Source. objects. annotate ( num_stories = Count ('story' ) ). order_by ( 'num_stories' )
+or_statement = [ self . simulation_table . c [ str ( key ) ] == element if '%' not in element else self . simulation_table . c [ str ( key ) ] . like ( element ) for element in value ],or_statement = [ self. simulation_table. c [ str ( key ) ] == element if '%' not in value else self. simulation_table. c [ str ( key ) ]. like ( element ) for element in value if element ]
+"filename = os . path . join ( aqt . mw . pm . base , u'{0}{1}' . format ( deck_name , self . exporter . ext ) )","filename = os. path. join ( aqt. mw. pm. base, '{0}{1}'. format ( deck_name, self. exporter. ext ) ) if self. exporter. ext else deck_name"
+"class Solution:
+    def shiftDistance(
+        self, s: str, t: str, nextCost: List[int], previousCost: List[int]
+    ) -> int:
+        m = 26
+        s1 = [0] * (m << 1 | 1)
+        s2 = [0] * (m << 1 | 1)
+        for i in range(m << 1):
+            s1[i + 1] = s1[i] + nextCost[i % m]
+            s2[i + 1] = s2[i] + previousCost[(i + 1) % m]
+        ans = 0
+        for a, b in zip(s, t):
+            x, y = ord(a) - ord(""a""), ord(b) - ord(""a"")
+            c1 = s1[y + m if y < x else y] - s1[x]
+            c2 = s2[x + m if x < y else x] - s2[y]
+            ans += min(c1, c2)
+        return ans","class Solution:
+    def shiftDistance(
+        self, s: str, t: str, nextCost: List[int], previousCost: List[int]
+    ) -> int:
+        m = 26
+        s1 = [0] * (m << 1 | 1)
+        s2 = [0] * (m << 1 | 1)
+        for i in range(m << 1):
+            s1[i + 1] = s1[i] + nextCost[i % m]
+            s2[i + 1] = s2[i] + previousCost[(i + 1) % m]
+        ans = 0
+        for a, b in zip(s, t):
+            x, y = ord(a) - ord(""a""), ord(b) - ord(""a"")
+            c1 = s1[y + m if y < x else y] - s1[x]
+            c2 = s2[x + m if x < y else x] - s2[y]
+            ans += min(c1, c2)
+        return ans"
+forwarded_emails . append ( self . forwarded_email ( pseudofile = BytesIO ( attachment . get_content ( ) . get_payload ( decode = True ) ) ) ),"forwarded_emails. append ( self. forwarded_email ( pseudofile = BytesIO ( attachment. get_content ( ) ), subject = attachment. get_content ( ) ) )"
+"self . show_message ( _ ( ""Heads-up: this page is not secure.\\n"" ""If you type your password,\\n it will be "" ""visible to cybercriminals!"" ) )","self. show_message ( webview, _ ( ""Heads-up: this page is not secure.\\n"" ""If you type your password,\\n it will be "" ""visible to cybercriminals!"" ), ""error"" )"
+"class BinaryIndexedTree:
+    __slots__ = ""n"", ""c""
+
+    def __init__(self, n: int):
+        self.n = n
+        self.c = [0] * (n + 1)
+
+    def update(self, x: int, delta: int) -> None:
+        while x <= self.n:
+            self.c[x] += delta
+            x += x & -x
+
+    def query(self, x: int) -> int:
+        s = 0
+        while x:
+            s += self.c[x]
+            x -= x & -x
+        return s
+
+
+class Solution:
+    def countOfPeaks(self, nums: List[int], queries: List[List[int]]) -> List[int]:
+        def update(i: int, val: int):
+            if i <= 0 or i >= n - 1:
+                return
+            if nums[i - 1] < nums[i] and nums[i] > nums[i + 1]:
+                tree.update(i, val)
+
+        n = len(nums)
+        tree = BinaryIndexedTree(n - 1)
+        for i in range(1, n - 1):
+            update(i, 1)
+        ans = []
+        for q in queries:
+            if q[0] == 1:
+                l, r = q[1] + 1, q[2] - 1
+                ans.append(0 if l > r else tree.query(r) - tree.query(l - 1))
+            else:
+                idx, val = q[1:]
+                for i in range(idx - 1, idx + 2):
+                    update(i, -1)
+                nums[idx] = val
+                for i in range(idx - 1, idx + 2):
+                    update(i, 1)
+        return ans","class BinaryIndexedTree:
+    __slots__ = ""n"", ""c""
+
+    def __init__(self, n: int):
+        self.n = n
+        self.c = [-inf] * (n + 1)
+
+    def update(self, x: int, delta: int) -> None:
+        while x <= self.n:
+            self.c[x] += delta
+            x += x & -x
+
+    def query(self, x: int) -> int:
+        s = -inf
+        while x:
+            s = max(s, self.c[x])
+            x -= x & -x
+        return s
+
+
+class Solution:
+    def countOfPeaks(self, nums: List[int], queries: List[List[int]]) -> List[int]:
+        def update(i: int, val: int):
+            if i <= 0 or i >= n - 1:
+                return
+            if nums[i - 1] < nums[i] and nums[i] > nums[i + 1]:
+                tree.update(i, val)
+
+        n = len(nums)
+        tree = BinaryIndexedTree(n - 1)
+        for i in range(1, n - 1):
+            update(i, 1)
+        ans = []
+        for q in queries:
+            if q[0] == 1:
+                l, r = q[1] + 1, q[2] - 1
+                ans.append(0 if l > r else tree.query(r) - tree.query(l - 1))
+            else:
+                idx, val = q[1:]
+                for i in range(idx - 1, idx + 2):
+                    update(i, -1)
+                nums[idx] = val
+                for i in range(idx - 1, idx + 2):
+                    update(i, 1)
+        return ans"
+capabilities = fields . DictField ( blank = True ),capabilities = fields. DictField ( blank = True )
