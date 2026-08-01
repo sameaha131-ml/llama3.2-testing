@@ -6411,3 +6411,750 @@ def task_func(seed=42):
             ans = max(ans, t)
         return ans"
 "QtWidgets . QMessageBox . critical ( parent , ""IOS images directory"" , ""Could not create the IOS images directory {}: {}"" . format ( cls . getImageDirectory ( ) , e ) )","QtWidgets. QMessageBox. critical ( parent, ""IOS images directory"", ""Could not create the IOS images directory: {}"". format ( destination_directory ) )"
+from cloudshell . networking . devices . autoload . model . attribute_container import AttributeContainer,"from cloudshell. networking. autoload. model. attribute_container import AttributeContainer, AttributeContainerError"
+"if line [ 0 : 7 ] == ""Cached:"" : cached = float ( line [ 14 : ] . replace ( 'kB' , '' ) . strip ( ) )","if line [ 0 : 13 ] == ""Cached:"" : cached = float ( line [ 14 : ]. replace ( 'kB', '' ). strip ( ) or 0 )"
+"entry_points = { 'console_scripts' : [ 'abj = abjad.cfg._run_abjad:_run_abjad' , 'abjad-book = abjad.book.abjad_book:_abjad_book' , ] } ,","entry_points = { 'console_scripts' : [ 'abj = abjad.cfg.run_abjad:_run_abjad', 'abjad-book = abjad.book.abjad_book:_abjad_book', ] },"
+"class Solution:
+    def longestEqualSubarray(self, nums: List[int], k: int) -> int:
+        cnt = Counter()
+        l = 0
+        mx = 0
+        for r, x in enumerate(nums):
+            cnt[x] += 1
+            mx = max(mx, cnt[x])
+            if r - l + 1 - mx > k:
+                cnt[nums[l]] -= 1
+                l += 1
+        return mx","class Solution:
+    def longestEqualSubarray(self, nums: List[int], k: int) -> int:
+        cnt = Counter()
+        l = 0
+        mx = 0
+        for r, x in enumerate(nums):
+            cnt[x] += 1
+            mx = max(mx, cnt[x])
+            if r - l + 1 - mx > k:
+                cnt[nums[l]] -= 1
+                l += 1
+        return mx"
+"subprocess . Popen ( [ notify_send_exec , '-i' , icon_path , '-t' , '2000' , '--hint' , 'int:transient:1' , title , msg ] , stdout = subprocess . PIPE , stderr = subprocess . PIPE )","subprocess. Popen ( [ notify_send_exec, '-i', icon_path, '-t', '2000', title, msg ], stdout = subprocess. PIPE, stderr = subprocess. PIPE, universal_newlines = True )"
+url = 'https://networking.' + region + '.cloud.global.fujitsu.com/v2.0/vpn/ssl-vpn-v2-connections/' + connection_id,url = 'https://networking.' + region + '.cloud.global.fujitsu.com/v2.0/vpn/ssl-vpn-v2-connections/' + connection_id
+"if taskObject . get ( 'PreStage' , 'false' ) . lower ( ) == 'false' : return",if taskObject [ 'PreStage' ]. lower ( ) == 'false' and taskObject [ 'PreStage' ]. lower ( )!= 'none' : return
+"import os
+import json
+from collections import Counter
+def task_func(json_files_path='./json_files/', key='name'):
+
+    key_values = []
+
+    for filename in os.listdir(json_files_path):
+        if filename.endswith('.json'):
+            file_path = os.path.join(json_files_path, filename)
+            with open(file_path, 'r') as json_file:
+                data = json.load(json_file)
+                if key in data:
+                    key_values.append(data[key])
+
+    return dict(Counter(key_values))","import os
+import json
+from collections import Counter
+def task_func(json_files_path='./json_files/', key='name'):
+
+    key_values = []
+
+    for filename in os.listdir(json_files_path):
+        if filename.endswith('.json'):
+            file_path = os.path.join(json_files_path, filename)
+            with open(file_path, 'r') as json_file:
+                data = json.load(json_file)
+                if key in data:
+                    key_values.append(data[key])
+
+    return dict(Counter(key_values))"
+query = query . order_by ( dim_student . c . last_name ) . order_by ( dim_student . c . first_name ) . order_by ( dim_asmt . c . effective_date . desc ( ) ),"query = query. order_by ( dim_student. c. last_name ). order_by ( dim_student. c. first_name ). order_by ( dim_asmt. c. effective_date, dim_asmt. c. id )"
+"benchmark_script = os . path . join ( pydir , ""benchmark_util.py"" )","benchmark_script = os. path. join ( pydir, ""benchmark.py"", ""benchmark"" )"
+"eval_input_func = build_input_func ( eval_data_generator_func , config ) if eval_data_generator_func else None","eval_input_func = build_input_func ( eval_data_generator_func, config, input_type = ""eval"" )"
+"self . write_to_out_dir ( image_fn , as_xyz + ""\n"" , ""a"" )","self. write_to_out_dir ( image_fn, as_xyz + ""\n"", self. out_dir )"
+"return self . creator . __str__ ( ) + "": "" + self . text","return self. creator. __str__ ( ) + "": "" + self. title if self. creator else self. title"
+"import pytz
+import numpy as np
+from dateutil.parser import parse
+import math
+SOLAR_CYCLE_YEARS = np.array([1986, 1996, 2008, 2019])
+def task_func(date_str, from_tz, to_tz):
+
+    from_tz = pytz.timezone(from_tz)
+    to_tz = pytz.timezone(to_tz)
+    given_date = parse(date_str).replace(tzinfo=from_tz)
+    converted_date = given_date.astimezone(to_tz)
+
+    solar_cycle_year = SOLAR_CYCLE_YEARS[np.argmin(np.abs(SOLAR_CYCLE_YEARS - converted_date.year))]
+    years_since_solar_cycle_year = abs(converted_date.year - solar_cycle_year)
+
+    solar_activity = math.cos(math.pi * years_since_solar_cycle_year / 11)
+
+    return solar_activity","import pytz
+import numpy as np
+from dateutil.parser import parse
+import math
+SOLAR_CYCLE_YEARS = np.array([1986, 1996, 2008, 2019])
+def task_func(date_str, from_tz, to_tz):
+
+    from_tz = pytz.timezone(from_tz)
+    to_tz = pytz.timezone(to_tz)
+    given_date = parse(date_str).replace(tzinfo=from_tz)
+    converted_date = given_date.astimezone(to_tz)
+
+    solar_cycle_year = SOLAR_CYCLE_YEARS[np.argmin(np.abs(SOLAR_CYCLE_YEARS - converted_date.year))]
+    years_since_solar_cycle_year = abs(converted_date.year - solar_cycle_year)
+
+    solar_activity = math.cos(math.pi * years_since_solar_cycle_year / 11)
+
+    return solar_activity"
+_VALID_URL = r'https?://(?:www\.)?chirbit.com/(?P<id>[^/]+)/?$',_VALID_URL = r'https?://(?:www\.)?chirbit.com/(?P<id>[^/]+)(/|$)'
+while not self . coord . should_stop ( ) : self . prepare_batch ( ),while not self. coord. should_stop and self. coord. should_start ( ) : self. prepare_batch ( )
+"class Solution:
+    def minimumCost(
+        self, m: int, n: int, horizontalCut: List[int], verticalCut: List[int]
+    ) -> int:
+        horizontalCut.sort(reverse=True)
+        verticalCut.sort(reverse=True)
+        ans = i = j = 0
+        h = v = 1
+        while i < m - 1 or j < n - 1:
+            if j == n - 1 or (i < m - 1 and horizontalCut[i] > verticalCut[j]):
+                ans += horizontalCut[i] * v
+                h, i = h + 1, i + 1
+            else:
+                ans += verticalCut[j] * h
+                v, j = v + 1, j + 1
+        return ans","class Solution:
+    def minimumCost(
+        self, m: int, n: int, horizontalCut: List[int], verticalCut: List[int]
+    ) -> int:
+        horizontalCut.sort(reverse=True)
+        verticalCut.sort(reverse=True)
+        ans = i = j = 0
+        h = v = 1
+        while i < m - 1 or j < n - 1:
+            if i < m - 1 and horizontalCut[i] > verticalCut[j]:
+                ans += horizontalCut[i] * v
+                h, i = h + 1, i + 1
+            else:
+                ans += verticalCut[j] * h
+                v, j = v + 1, j + 1
+        return ans"
+"class Solution:
+    def minimumAddedCoins(self, coins: List[int], target: int) -> int:
+        coins.sort()
+        s = 1
+        ans = i = 0
+        while s <= target:
+            if i < len(coins) and coins[i] <= s:
+                s += coins[i]
+                i += 1
+            else:
+                s <<= 1
+                ans += 1
+        return ans","class Solution:
+    def minimumAddedCoins(self, coins: List[int], target: int) -> int:
+        coins.sort()
+        s = 1
+        ans = i = 0
+        while s <= target:
+            if i < len(coins) and coins[i] <= s:
+                s += coins[i]
+                i += 1
+            else:
+                s <<= 1
+                ans += 1
+        return ans"
+"r = numpy . concatenate ( ( numpy . negative ( numpy . ones ( outputRegisters ) ) , row ) , axis = 0 )","r = numpy. concatenate ( ( numpy. zeros ( outputRegisters ), row ), axis = 1 )"
+"class Solution:
+    def minOperationsToMakeMedianK(self, nums: List[int], k: int) -> int:
+        nums.sort()
+        n = len(nums)
+        m = n >> 1
+        ans = abs(nums[m] - k)
+        if nums[m] > k:
+            for i in range(m - 1, -1, -1):
+                if nums[i] <= k:
+                    break
+                ans += nums[i] - k
+        else:
+            for i in range(m + 1, n):
+                if nums[i] >= k:
+                    break
+                ans += k - nums[i]
+        return ans","class Solution:
+    def minOperationsToMakeMedianK(self, nums: List[int], k: int) -> int:
+        nums.sort()
+        n = len(nums)
+        m = n >> 1
+        ans = abs(nums[m] - k)
+        if nums[m] > k:
+            for i in range(m - 1, -1, -1):
+                if nums[i] <= k:
+                    break
+                ans += nums[i] - k
+        else:
+            for i in range(m + 1, n):
+                if nums[i] >= k:
+                    break
+                ans += k - nums[i]
+        return ans"
+"class Solution:
+    def minimumBeautifulSubstrings(self, s: str) -> int:
+        @cache
+        def dfs(i: int) -> int:
+            if i >= n:
+                return 0
+            if s[i] == ""0"":
+                return inf
+            x = 0
+            ans = inf
+            for j in range(i, n):
+                x = x << 1 | int(s[j])
+                if x in ss:
+                    ans = min(ans, 1 + dfs(j + 1))
+            return ans
+
+        n = len(s)
+        x = 1
+        ss = {x}
+        for i in range(n):
+            x *= 5
+            ss.add(x)
+        ans = dfs(0)
+        return -1 if ans == inf else ans","class Solution:
+    def minimumBeautifulSubstrings(self, s: str) -> int:
+        @cache
+        def dfs(i: int) -> int:
+            if i >= n:
+                return 0
+            if s[i] == ""0"":
+                return inf
+            x = 0
+            ans = inf
+            for j in range(i, n):
+                x = x << 1 | int(s[j])
+                if x in ss:
+                    ans = min(ans, 1 + dfs(j + 1))
+            return ans
+
+        n = len(s)
+        x = 1
+        ss = {x}
+        for i in range(n):
+            x *= 5
+            ss.add(x)
+        ans = dfs(0)
+        return -1 if ans == inf else ans"
+"token = Config . get_variable ( 'tubey' , type + '_oauth_token' )","token = Config. get_variable ( 'tubey', type + '_oauth_token' )"
+"newMessageCount = session . query ( func . count ( MessageShare . message_id ) , MessageShare . recipient_id , ) . filter ( and_ ( MessageShare . recipient_id == user . id , MessageShare . date_viewed is not None ) ) . scalar ( )","newMessageCount = session. query ( func. count ( MessageShare. message_id ), MessageShare. recipient_id, ). filter ( MessageShare. recipient_id == user. id ). scalar ( ). get ( )"
+"parser . add_argument ( '--use-specaug' , type = strtobool , default = False , help = 'The flag to use specaug in training.' )","parser. add_argument ( '--use-specaug', type = strtobool, default = False, help = 'The flag to use specaug in training.' )"
+from bhp_crypto . fields import BaseEncryptedField,"from bhp_crypto. classes import BaseEncryptedField, BaseEncryptedFieldError"
+"import pandas as pd
+from sklearn.decomposition import PCA
+import matplotlib.pyplot as plt
+def task_func(df):
+
+    if not isinstance(df, pd.DataFrame):
+        raise ValueError(""Input must be a DataFrame"")
+    if df.empty:
+        raise ValueError(""DataFrame is empty"")
+
+    pca = PCA(n_components=2)
+    principal_components = pca.fit_transform(df)
+
+    pca_df = pd.DataFrame(data=principal_components, columns=['Principal Component 1', 'Principal Component 2'])
+
+    fig, ax = plt.subplots()
+    ax.scatter(pca_df['Principal Component 1'], pca_df['Principal Component 2'])
+    ax.set_xlabel('Principal Component 1')
+    ax.set_ylabel('Principal Component 2')
+    ax.set_title('2 Component PCA')
+
+    return pca_df, ax","import pandas as pd
+from sklearn.decomposition import PCA
+import matplotlib.pyplot as plt
+def task_func(df):
+
+    if not isinstance(df, pd.DataFrame):
+        raise ValueError(""Input must be a DataFrame"")
+    if df.empty:
+        raise ValueError(""DataFrame is empty"")
+
+    pca = PCA(n_components=2)
+    principal_components = pca.fit_transform(df)
+
+    pca_df = pd.DataFrame(data=principal_components, columns=['Principal Component 1', 'Principal Component 2'])
+
+    fig, ax = plt.subplots()
+    ax.scatter(pca_df['Principal Component 1'], pca_df['Principal Component 2'])
+    ax.set_xlabel('Principal Component 1')
+    ax.set_ylabel('Principal Component 2')
+    ax.set_title('2 Component PCA')
+
+    return pca_df, ax"
+"classes += [ ( c , os . path . realpath ( header ) ) for c in found_classes ]","classes += [ ( c, header ) for c in found_classes if c. name in header. names ]"
+"import matplotlib.pyplot as plt
+import pandas as pd
+import random
+from datetime import datetime
+def task_func(seed=42):
+
+    try:
+        plt.rc('font', family='Arial')
+
+        random.seed(seed)
+        dates = pd.date_range(end=datetime.now(), periods=30)
+        values = [random.randint(0, 100) for _ in range(30)]
+        
+        fig, ax = plt.subplots()
+        ax.plot(dates, values, label='Value over Time')
+        ax.set_xlabel('Date')
+        ax.set_ylabel('Value')
+        ax.set_title('Random Time Series Data')
+        ax.legend()
+
+        return ax
+    except Exception as e:
+        raise ValueError(f""Error generating the plot: {e}"")","import matplotlib.pyplot as plt
+import pandas as pd
+import random
+from datetime import datetime
+def task_func(seed=42):
+
+    try:
+        plt.rc('font', family='Arial')
+
+        random.seed(seed)
+        dates = pd.date_range(end=datetime.now(), periods=30)
+        values = [random.randint(0, 100) for _ in range(30)]
+        
+        fig, ax = plt.subplots()
+        ax.plot(dates, values, label='Value over Time')
+        ax.set_xlabel('Date')
+        ax.set_ylabel('Value')
+        ax.set_title('Random Time Series Data')
+        ax.legend()
+
+        return ax
+    except Exception as e:
+        raise ValueError(f""Error generating the plot: {e}"")"
+"import re
+import os
+from pathlib import Path
+import glob
+def task_func(directory_path: str, regex_pattern: str = r'\\(.+?\\)|\\w') -> dict:
+
+    # Constants
+    FILE_PATTERN = '*.txt'
+    match_dict = {}
+    file_paths = glob.glob(os.path.join(directory_path, FILE_PATTERN))
+    for file_path in file_paths:
+        with open(file_path, 'r') as file:
+            content = file.read()
+            matches = re.findall(regex_pattern, content)
+            match_dict[Path(file_path).name] = matches
+
+    return match_dict","import re
+import os
+from pathlib import Path
+import glob
+def task_func(directory_path: str, regex_pattern: str = r'\\(.+?\\)|\\w') -> dict:
+
+    # Constants
+    FILE_PATTERN = '*.txt'
+    file_paths = glob.glob(os.path.join(directory_path, FILE_PATTERN))
+    match_dict = {}
+    for file_path in file_paths:
+        with open(file_path, 'r') as file:
+            content = file.read()
+            matches = re.findall(regex_pattern, content)
+            match_dict[Path(file_path).name] = matches
+
+    return match_dict"
+"from typing import List
+
+class Solution:
+    def maximumSumOfHeights(self, heights: List[int]) -> int:
+        n = len(heights)
+        max_total = 0
+
+        for i in range(n):
+            # Calculate left part
+            left = [0] * (i + 1)
+            left[i] = heights[i]
+            for j in range(i - 1, -1, -1):
+                left[j] = min(heights[j], left[j + 1])
+            left_sum = sum(left)
+
+            # Calculate right part
+            right_length = n - i
+            right = [0] * right_length
+            right[0] = heights[i]
+            for j in range(i + 1, n):
+                pos_in_right = j - i
+                right[pos_in_right] = min(heights[j], right[pos_in_right - 1])
+            right_sum = sum(right)
+
+            # Update the maximum total
+            current_total = left_sum + right_sum - heights[i]
+            if current_total > max_total:
+                max_total = current_total
+
+        return max_total","from typing import List
+
+class Solution:
+    def maximumSumOfHeights(self, heights: List[int]) -> int:
+        n = len(heights)
+        max_total = 0
+
+        for i in range(n):
+            # Calculate left part
+            left = [0] * (i + 1)
+            left[i] = heights[i]
+            for j in range(i - 1, -1, -1):
+                left[j] = min(heights[j], left[j + 1])
+            left_sum = sum(left)
+
+            # Calculate right part
+            right_length = n - i
+            right = [0] * right_length
+            right[0] = heights[i]
+            for j in range(i + 1, n):
+                pos_in_right = j - i
+                right[pos_in_right] = min(heights[j], right[pos_in_right - 1])
+            right_sum = sum(right)
+
+            # Update the maximum total
+            current_total = left_sum + right_sum - heights[i]
+            if current_total > max_total:
+                max_total = current_total
+
+        return max_total"
+"context . REQUEST . RESPONSE . setHeader ( 'Content-Type' , ""%s; charset=utf-8"" % params [ 'mimetype' ] )","context. REQUEST. RESPONSE. setHeader ( 'Content-Type', ""application/xml; charset=utf-8"" )"
+"import subprocess
+import csv
+import glob
+import random
+import os
+def task_func(file):
+
+    # Check if file exists
+    if not os.path.exists(file):
+        print(""Provided file does not exist."")
+        return []
+    
+    # Check for CSV file extension
+    if not file.endswith('.csv'):
+        print(""Provided file is not a CSV."")
+        return []
+
+    try:
+        subprocess.call(['split', '-n', '5', '-d', file, 'split_'])
+        split_files = glob.glob('split_*')
+
+        for split_file in split_files:
+            with open(split_file, 'r') as f:
+                reader = csv.reader(f)
+                rows = list(reader)
+
+            random.shuffle(rows)
+
+            with open(split_file, 'w') as f:
+                writer = csv.writer(f)
+                writer.writerows(rows)
+
+        return split_files
+    except Exception as e:
+        print(f""An error occurred: {e}"")
+        return []","import subprocess
+import csv
+import glob
+import random
+import os
+def task_func(file):
+
+    # Check if file exists
+    if not os.path.exists(file):
+        print(""Provided file does not exist."")
+        return []
+    
+    # Check for CSV file extension
+    if not file.endswith('.csv'):
+        print(""Provided file is not a CSV."")
+        return []
+
+    try:
+        subprocess.call(['split', '-n', '5', '-d', file,'split_'])
+        split_files = glob.glob('split_*')
+
+        for split_file in split_files:
+            with open(split_file, 'r') as f:
+                reader = csv.reader(f)
+                rows = list(reader)
+
+            random.shuffle(rows)
+
+            with open(split_file, 'w') as f:
+                writer = csv.writer(f)
+                writer.writerows(rows)
+
+        return split_files
+    except Exception as e:
+        print(f""An error occurred: {e}"")
+        return []"
+"raise UserError ( _ ( ""You cannot set the permanent lock date before the already set one."" ) )","raise UserError ( _ ( ""You cannot set the permanent lock date in the past."" ), 400 )"
+if ( torch . distributed . get_rank ( ) // args . group_size == group_num ) : group = cur_group,if ( args. local_rank // args. group_size == group_num ) and ( args. local_rank % args. group_size == 0 ) : group = cur_group
+"return qs . filter ( target__in = request . user . teams_administered ( ) . filter ( type__in = [ 'observer' , 'jlc' , 'lc' ] ) [ 0 ] . event_set . all ( ) )","return qs. filter ( target__in = request. user. privileged. filter ( type__in = [ 'observer', 'jlc', 'lc' ] ) [ 0 ]. event_set. filter ( event__in = [ 'create', 'update' ] ). all ( ) )"
+"class Solution:
+    def maxMoves(self, kx: int, ky: int, positions: List[List[int]]) -> int:
+        @cache
+        def dfs(last: int, state: int, k: int) -> int:
+            if state == 0:
+                return 0
+            if k:
+                res = 0
+                for i, (x, y) in enumerate(positions):
+                    if state >> i & 1:
+                        t = dfs(i, state ^ (1 << i), k ^ 1) + dist[last][x][y]
+                        if res < t:
+                            res = t
+                return res
+            else:
+                res = inf
+                for i, (x, y) in enumerate(positions):
+                    if state >> i & 1:
+                        t = dfs(i, state ^ (1 << i), k ^ 1) + dist[last][x][y]
+                        if res > t:
+                            res = t
+                return res
+
+        n = len(positions)
+        m = 50
+        dist = [[[-1] * m for _ in range(m)] for _ in range(n + 1)]
+        dx = [1, 1, 2, 2, -1, -1, -2, -2]
+        dy = [2, -2, 1, -1, 2, -2, 1, -1]
+        positions.append([kx, ky])
+        for i, (x, y) in enumerate(positions):
+            dist[i][x][y] = 0
+            q = deque([(x, y)])
+            step = 0
+            while q:
+                step += 1
+                for _ in range(len(q)):
+                    x1, y1 = q.popleft()
+                    for j in range(8):
+                        x2, y2 = x1 + dx[j], y1 + dy[j]
+                        if 0 <= x2 < m and 0 <= y2 < m and dist[i][x2][y2] == -1:
+                            dist[i][x2][y2] = step
+                            q.append((x2, y2))
+
+        ans = dfs(n, (1 << n) - 1, 1)
+        dfs.cache_clear()
+        return ans","class Solution:
+    def maxMoves(self, kx: int, ky: int, positions: List[List[int]]) -> int:
+        @cache
+        def dfs(last: int, state: int, k: int) -> int:
+            if state == 0:
+                return 0
+            if k:
+                res = 0
+                for i, (x, y) in enumerate(positions):
+                    if state >> i & 1:
+                        t = dfs(i, state ^ (1 << i), k ^ 1) + dist[last][x][y]
+                        if res < t:
+                            res = t
+                return res
+            else:
+                res = inf
+                for i, (x, y) in enumerate(positions):
+                    if state >> i & 1:
+                        t = dfs(i, state ^ (1 << i), k ^ 1) + dist[last][x][y]
+                        if res > t:
+                            res = t
+                return res
+
+        n = len(positions)
+        m = 50
+        dist = [[[-1] * m for _ in range(m)] for _ in range(n + 1)]
+        dx = [1, 1, 2, 2, -1, -1, -2, -2]
+        dy = [2, -2, 1, -1, 2, -2, 1, -1]
+        for i, (x, y) in enumerate(positions):
+            dist[i][x][y] = 0
+            q = deque([(x, y)])
+            step = 0
+            while q:
+                step += 1
+                for _ in range(len(q)):
+                    x1, y1 = q.popleft()
+                    for j in range(8):
+                        x2, y2 = x1 + dx[j], y1 + dy[j]
+                        if 0 <= x2 < m and 0 <= y2 < m and dist[i][x2][y2] == -1:
+                            dist[i][x2][y2] = step
+                            q.append([x2, y2])
+
+        ans = dfs(n, (1 << n) - 1, 1)
+        dfs.cache_clear()
+        return ans"
+"import numpy as np
+import geopandas as gpd
+from shapely.geometry import Point
+def task_func(dic={'Lon': (-180, 180), 'Lat': (-90, 90)}, cities=['New York', 'London', 'Beijing', 'Tokyo', 'Sydney']):
+
+    if 'Lon' not in dic or 'Lat' not in dic or not isinstance(dic['Lon'], tuple) or not isinstance(dic['Lat'], tuple):
+        raise ValueError(""Dictionary must contain 'Lon' and 'Lat' keys with tuple values."")
+
+    lon_min, lon_max = dic['Lon']
+    lat_min, lat_max = dic['Lat']
+
+    data = {'City': [], 'Coordinates': []}
+    for city in cities:
+        data['City'].append(city)
+        data['Coordinates'].append(Point(np.random.uniform(lon_min, lon_max), np.random.uniform(lat_min, lat_max)))
+
+    gdf = gpd.GeoDataFrame(data, geometry='Coordinates')
+
+    return gdf","import numpy as np
+import geopandas as gpd
+from shapely.geometry import Point
+def task_func(dic={'Lon': (-180, 180), 'Lat': (-90, 90)}, cities=['New York', 'London', 'Beijing', 'Tokyo', 'Sydney']):
+
+    if 'Lon' not in dic or 'Lat' not in dic or not isinstance(dic['Lon'], tuple) or not isinstance(dic['Lat'], tuple):
+        raise ValueError(""Dictionary must contain 'Lon' and 'Lat' keys with tuple values."")
+
+    lon_min, lon_max = dic['Lon']
+    lat_min, lat_max = dic['Lat']
+
+    data = {'City': [], 'Coordinates': []}
+    for city in cities:
+        data['City'].append(city)
+        data['Coordinates'].append(Point(np.random.uniform(lon_min, lon_max), np.random.uniform(lat_min, lat_max)))
+
+    gdf = gpd.GeoDataFrame(data, geometry='Coordinates')
+
+    return gdf"
+"print ( ""Testing MoonGen TimeStamp Capabilities of devices: %d and %d"" % ( int ( self . devicelist [ 0 ] ) , int ( self . devicelist [ 1 ] ) ) )","print ( ""Testing MoonGen TimeStamp Capabilities of devices: %d and %d"" % ( self. devicelist [ 0 ], self. devicelist [ 1 ] ) )"
+"import random
+from scipy import stats
+def task_func(animals, mean):
+
+    if not animals:
+        return {}
+
+    sales = {animal: 0 for animal in animals}
+    num_customers = stats.poisson(mu=mean).rvs()
+
+    for _ in range(num_customers):
+        animal = random.choice(animals)
+        sales[animal] += 1
+    return sales","import random
+from scipy import stats
+def task_func(animals, mean):
+
+    if not animals:
+        return {}
+
+    sales = {animal: 0 for animal in animals}
+    num_customers = stats.poisson(mu=mean).rvs()
+
+    for _ in range(num_customers):
+        animal = random.choice(animals)
+        sales[animal] += 1
+    return sales"
+"""""""
+ 
+     def __init__(self, query_dict: Union[Mapping, MultiDict]):
+         """"""","""""""
+ 
+     def __init__(self, query_dict: [Mapping, MultiDict], *args, **kwargs):
+         """""""
+"default = ""layout2|name=dseries;caption=;state=770;dir=5;layer=0;row=0;pos=0;prop=100000;bestw=400;besth=380;minw=190;minh=200;maxw=-1;maxh=-1;floatx=-1;floaty=-1;floatw=-1;floath=-1|name=calculation;caption=;state=770;dir=5;layer=0;row=0;pos=0;prop=100000;bestw=400;besth=380;minw=190;minh=200;maxw=-1;maxh=-1;floatx=-1;floaty=-1;floatw=-1;floath=-1|name=welcome;caption=;state=768;dir=5;layer=0;row=0;pos=0;prop=100000;bestw=400;besth=380;minw=190;minh=200;maxw=-1;maxh=-1;floatx=-1;floaty=-1;floatw=-1;floath=-1|name=adddata;caption=;state=770;dir=5;layer=0;row=0;pos=0;prop=100000;bestw=400;besth=380;minw=190;minh=200;maxw=-1;maxh=-1;floatx=-1;floaty=-1;floatw=-1;floath=-1|name=serverconfig;caption=;state=770;dir=5;layer=0;row=0;pos=0;prop=100000;bestw=400;besth=380;minw=190;minh=200;maxw=-1;maxh=-1;floatx=-1;floaty=-1;floatw=-1;floath=-1|name=addphase;caption=;state=770;dir=5;layer=0;row=0;pos=0;prop=100000;bestw=400;besth=380;minw=190;minh=200;maxw=-1;maxh=-1;floatx=-1;floaty=-1;floatw=-1;floath=-1|name=blank;caption=;state=770;dir=5;layer=0;row=0;pos=0;prop=100000;bestw=400;besth=380;minw=190;minh=200;maxw=-1;maxh=-1;floatx=-1;floaty=-1;floatw=-1;floath=-1|name=phase;caption=;state=770;dir=5;layer=0;row=0;pos=0;prop=100000;bestw=400;besth=380;minw=190;minh=200;maxw=-1;maxh=-1;floatx=-1;floaty=-1;floatw=-1;floath=-1|name=dataset;caption=;state=770;dir=5;layer=0;row=0;pos=0;prop=100000;bestw=400;besth=380;minw=190;minh=200;maxw=-1;maxh=-1;floatx=-1;floaty=-1;floatw=-1;floath=-1|name=preferences;caption=;state=770;dir=5;layer=0;row=0;pos=0;prop=100000;bestw=400;besth=380;minw=190;minh=200;maxw=-1;maxh=-1;floatx=-1;floaty=-1;floatw=-1;floath=-1|name=fit;caption=;state=770;dir=5;layer=0;row=0;pos=0;prop=100000;bestw=400;besth=380;minw=190;minh=200;maxw=-1;maxh=-1;floatx=-1;floaty=-1;floatw=-1;floath=-1|name=rseries;caption=;state=770;dir=5;layer=0;row=0;pos=0;prop=100000;bestw=400;besth=380;minw=190;minh=200;maxw=-1;maxh=-1;floatx=-1;floaty=-1;floatw=-1;floath=-1|name=tseries;caption=;state=770;dir=5;layer=0;row=0;pos=0;prop=100000;bestw=400;besth=380;minw=190;minh=200;maxw=-1;maxh=-1;floatx=-1;floaty=-1;floatw=-1;floath=-1|name=outputPanel;caption=PDFfit2 Output;state=10487804;dir=3;layer=0;row=0;pos=0;prop=100000;bestw=400;besth=40;minw=200;minh=40;maxw=-1;maxh=-1;floatx=-1;floaty=-1;floatw=-1;floath=-1|name=treeCtrlMain;caption=Fit Tree;state=10487804;dir=4;layer=0;row=0;pos=0;prop=100000;bestw=200;besth=100;minw=200;minh=40;maxw=-1;maxh=-1;floatx=471;floaty=730;floatw=208;floath=124|name=plotPanel;caption=Plot Control;state=10487804;dir=4;layer=0;row=0;pos=1;prop=100000;bestw=200;besth=250;minw=200;minh=150;maxw=-1;maxh=-1;floatx=337;floaty=393;floatw=208;floath=274|name=journalPanel;caption=Project Journal;state=10487807;dir=4;layer=0;row=0;pos=0;prop=100000;bestw=450;besth=450;minw=200;minh=200;maxw=-1;maxh=-1;floatx=393;floaty=113;floatw=450;floath=450|dock_size(3,0,0)=59|dock_size(4,0,0)=202|dock_size(5,0,0)=362|""","default = ""layout2|name=dseries;caption=;state=770;dir=0;layer=0;row=0;pos=0;prop=100000;bestw=400;besth=380;minw=190;minh=200;maxw=-1;maxh=-1;floatx=-1;floaty=-1;floatw=-1;floath=-1|name=calculation;caption=;state=770;dir=5;layer=0;row=0;pos=0;prop=100000;bestw=400;besth=380;minw=190;minh=200;maxw=-1;maxh=-1;floatx=-1;floaty=-1;floatw=-1;floath=-1|name=welcome;caption=;state=768;dir=5;layer=0;row=0;pos=0;prop=100000;bestw=400;besth=380;minw=190;minh=200;maxw=-1;maxh=-1;floatx=-1;floaty=-1;floatw=-1;floath=-1|name=adddata;caption=;state=770;dir=5;layer=0;row=0;pos=0;prop=100000;bestw=400;besth=380;minw=190;minh=200;maxw=-1;maxh=-1;floatx=-1;floaty=-1;floatw=-1;floath=-1|name=serverconfig;caption=;state=770;dir=5;layer=0;row=0;pos=0;prop=100000;bestw=400;besth=380;minw=190;minh=200;maxw=-1;maxh=-1;floatx=-1;floaty=-1;floatw=-1;floath=-1|name=addphase;caption=;state=770;dir=5;layer=0;row=0;pos=0;prop=100000;bestw=400;besth=380;minw=190;minh=200;maxw=-1;maxh=-1;floatx=-1;floaty=-1;floatw=-1;floath=-1|name=blank;caption=;"
+"raise ValidationError ( ""%s value cannot be modified"" % field_name )","raise ValidationError ( ""%s value cannot be modified"" % self. field_name )"
+"j = self . dashd_inf . getrawtransaction ( resourceid , 1 )","j = self. dashd_inf. getrawtransaction ( resourceid. decode ( ""utf-8"" ), 1, 1 )"
+this_perfm = [ float ( all_performances [ qid ] [ subquery_id ] ) if subquery_id in all_performances [ qid ] else 0.0 for subquery_id in sorted ( all_features [ qid ] ) ],"this_perfm = [ float ( all_performances [ qid ] [ subquery_id ] ) for subquery_id in sorted ( all_features [ qid ], key = lambda x : all_performances [ qid ] [ x ] ) ]"
+"shipping_price = PriceField ( pgettext_lazy ( 'Order field' , 'shipping price' ) , currency = settings . DEFAULT_CURRENCY , max_digits = 12 , decimal_places = 4 , default = 0 , editable = False )","shipping_price = PriceField ( pgettext_lazy ( 'Shipment group field','shipping price' ), currency = settings. DEFAULT_CURRENCY, max_digits = 12, decimal_places = 4, default = 0, editable = False, blank = True )"
+"import numpy as np
+import matplotlib.pyplot as plt
+from sklearn import preprocessing
+def task_func(original):
+
+    arr = np.array([b for (a, b) in original])
+    
+    # Check if the array is empty to avoid normalization error
+    if arr.size == 0:
+        norm_arr = arr
+    else:
+        norm_arr = preprocessing.normalize([arr])[0]
+    
+    # Plotting the data
+    fig, ax = plt.subplots()
+    ax.plot(arr, label='Original')
+    ax.plot(norm_arr, label='Normalized')
+    ax.legend()
+    ax.set_title(""Original vs. Normalized Data"")
+    
+    return arr, norm_arr, ax","import numpy as np
+import matplotlib.pyplot as plt
+from sklearn import preprocessing
+def task_func(original):
+
+    arr = np.array([b for (a, b) in original])
+    
+    # Check if the array is empty to avoid normalization error
+    if arr.size == 0:
+        norm_arr = arr
+    else:
+        norm_arr = preprocessing.normalize([arr])[0]
+    
+    # Plotting the data
+    fig, ax = plt.subplots()
+    ax.plot(arr, label='Original')
+    ax.plot(norm_arr, label='Normalized')
+    ax.legend()
+    ax.set_title(""Original vs. Normalized Data"")
+    
+    return arr, norm_arr, ax"
+print ( '    Signal level: ' + get_signal_level ( signal_level ) + ' (' + signal_strength + '%)' ),print ('   Signal Level:'+ get_signal_level ( signal_level ) +'(' + str ( signal_strength ) + '%)' )
+if not resume_downloads and os . path . isfile ( path_tmp ) and os . path . getsize ( path_tmp ) != part . size : os . unlink ( path_tmp ),if not resume_downloads and os. path. isfile ( path_tmp ) and os. path. getsize ( path_tmp )!= part. size : os. unlink ( path_tmp )
+"class Solution:
+    def minimumString(self, a: str, b: str, c: str) -> str:
+        def f(s: str, t: str) -> str:
+            if s in t:
+                return t
+            if t in s:
+                return s
+            m, n = len(s), len(t)
+            for i in range(min(m, n), 0, -1):
+                if s[-i:] == t[:i]:
+                    return s + t[i:]
+            return s + t
+
+        ans = """"
+        for a, b, c in permutations((a, b, c)):
+            s = f(f(a, b), c)
+            if ans == """" or len(s) < len(ans) or (len(s) == len(ans) and s < ans):
+                ans = s
+        return ans","class Solution:
+    def minimumString(self, a: str, b: str, c: str) -> str:
+        def f(s: str, t: str) -> str:
+            if s in t:
+                return t
+            if t in s:
+                return s
+            m, n = len(s), len(t)
+            for i in range(min(m, n), 0, -1):
+                if s[-i:] == t[:i]:
+                    return s + t[i:]
+            return s + t
+
+        ans = """"
+        for a, b, c in permutations((a, b, c)):
+            s = f(f(a, b), c)
+            if ans == """" or len(s) < len(ans) or (len(s) == len(ans) and s < ans):
+                ans = s
+        return ans"
+"update_id = post_update_data ( ert = ERT . enkf_facade , parent_ensemble_id = parent_ensemble_id , algorithm = algorithm , )","update_id = post_update_data ( ert = ERT. enkf_facade, parent_ensemble_id = parent_ensemble_id, algorithms = algorithm, update_id = update_id )"
