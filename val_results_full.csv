@@ -3508,3 +3508,717 @@ __version__ = pkg_resources . get_distribution ( 'napalm-base' ) . version,__ver
                     break
             i = resa[i]
         return res"
+"if sess . debug : cherrypy . log ( 'Lock released on close.' , 'TOOLS.SESSIONS' )","if self. debug and self. session : cherrypy. log ( 'Lock released on close.', 'TOOLS.SESSIONS' )"
+"class Solution:
+    def minimumDeletions(self, word: str, k: int) -> int:
+        def f(v: int) -> int:
+            ans = 0
+            for x in nums:
+                if x < v:
+                    ans += x
+                elif x > v + k:
+                    ans += x - v - k
+            return ans
+
+        nums = Counter(word).values()
+        return min(f(v) for v in range(len(word) + 1))","class Solution:
+    def minimumDeletions(self, word: str, k: int) -> int:
+        def f(v: int) -> int:
+            ans = 0
+            for x in nums:
+                if x < v:
+                    ans += x
+                elif x > v + k:
+                    ans += x - v - k
+            return ans
+
+        nums = Counter(word).values()
+        return min(f(v) for v in range(len(word) + 1))"
+"fieldset__title = self . fieldset [ 'title' ] and '<h2>{0}</h2>\n' . format ( self . fieldset [ 'title' ] ) or '' ,","fieldset__name = self. fieldset [ 'title' ] and '<h2>{0}</h2>\n'. format ( self. fieldset [ 'title' ] ) or '' if self. fieldset [ 'title' ] else '',"
+"print_error ( ""[%s]"" % self . diagnostic_name ( ) , * msg )","print_stderr ( ""[%s]"" % self. diagnostic_name ( ), * msg, sep = "" "" )"
+"import csv
+import io
+from django.http import HttpRequest, FileResponse
+def task_func(request, header, csv_data):
+
+    csv_io = io.StringIO()
+    writer = csv.writer(csv_io)
+    writer.writerow(header)
+    writer.writerows(csv_data)
+    csv_io.seek(0)
+
+    response = FileResponse(csv_io, as_attachment=True, filename='data.csv')
+    response['Content-Type'] = 'text/csv'
+
+    return response","import csv
+import io
+from django.http import HttpRequest, FileResponse
+def task_func(request, header, csv_data):
+
+    csv_io = io.StringIO()
+    writer = csv.writer(csv_io)
+    writer.writerow(header)
+    writer.writerows(csv_data)
+    csv_io.seek(0)
+
+    response = FileResponse(csv_io, as_attachment=True, filename='data.csv')
+    response['Content-Type'] = 'text/csv'
+
+    return response"
+"import os
+import logging
+def task_func(directory):
+
+
+    # Configure logging
+    logging.basicConfig(filename='jquery_removal.log', level=logging.INFO,
+                        format='%(asctime)s - %(levelname)s - %(message)s')
+    
+    # Check if directory exists
+    if not os.path.exists(directory):
+        raise FileNotFoundError(f""Directory '{directory}' does not exist."")
+
+    # Get all files in the directory
+    files = os.listdir(directory)
+
+    # Remove jQuery files
+    removed_files = 0
+    removed_file_names = []
+    for file in files:
+        if 'jquery' in file and file.endswith('.js'):
+            try:
+                os.remove(os.path.join(directory, file))
+                removed_files += 1
+                removed_file_names.append(file)
+                logging.info(f""Removed jQuery file: {file}"")
+            except Exception as e:
+                logging.error(f""Error while removing file {file}: {e}"")
+
+    return removed_files, removed_file_names","import os
+import logging
+def task_func(directory):
+
+
+    # Configure logging
+    logging.basicConfig(filename='jquery_removal.log', level=logging.INFO,
+                        format='%(asctime)s - %(levelname)s - %(message)s')
+    
+    # Check if directory exists
+    if not os.path.exists(directory):
+        raise FileNotFoundError(f""Directory '{directory}' does not exist."")
+
+    # Get all files in the directory
+    files = os.listdir(directory)
+
+    # Remove jQuery files
+    removed_files = 0
+    removed_file_names = []
+    for file in files:
+        if 'jquery' in file and file.endswith('.js'):
+            try:
+                os.remove(os.path.join(directory, file))
+                removed_files += 1
+                removed_file_names.append(file)
+                logging.info(f""Removed jQuery file: {file}"")
+            except Exception as e:
+                logging.error(f""Error while removing file {file}: {e}"")
+
+    return removed_files, removed_file_names"
+"if i_samp >= len ( self . data ) : self . data = np . vstack ( [ self . data , np . zeros ( ( self . buffer_size , ) + self . data . shape [ 1 : ] ) ] )","if i_samp >= len ( self. data ) : self. data = np. vstack ( [ self. data, np. zeros ( ( self. buffer_size, ) + self. data. shape [ 1 : ] ) ] )"
+"import pandas as pd
+import matplotlib.pyplot as plt
+def task_func(df):
+
+
+    if not isinstance(df, pd.DataFrame):
+        raise ValueError(""The input df is not a DataFrame"")
+    
+    value_counts = df['value'].value_counts()
+    ax = plt.bar(value_counts.index, value_counts.values)
+    plt.xlabel('Value')
+    plt.ylabel('Count')
+    plt.title('Value Distribution')
+    return plt.gca()","import pandas as pd
+import matplotlib.pyplot as plt
+def task_func(df):
+
+
+    if not isinstance(df, pd.DataFrame):
+        raise ValueError(""The input df is not a DataFrame"")
+    
+    value_counts = df['value'].value_counts()
+    ax = plt.bar(value_counts.index, value_counts.values)
+    plt.xlabel('Value')
+    plt.ylabel('Count')
+    plt.title('Value Distribution')
+    return plt.gca()"
+self . txtCorreo . setText ( preferencias . getCorreoNotificacion ( ) ),"self. txtCorreo. setText ( preferencias. getCorreo ( ). replace ( "" "", """" ) )"
+"xPupil , yPupil = _pupilCoordsFromRaDec ( ra , dec , obs_metadata = obs_metadata , epoch = epoch )","xPupil, yPupil = _pupilCoordinatesFromRaDec ( ra, dec, obs_metadata = obs_metadata, epoch = epoch, use_astropy = use_astropy )"
+"import json
+import random
+import hashlib
+from datetime import datetime
+def task_func(utc_datetime, salt='salt', password_length=10, seed=0):
+
+    random.seed(seed)
+    # Test if the utc_datetime is a datetime object and the salt is a string
+    if not isinstance(utc_datetime, datetime):
+        raise ValueError(""Input should be a datetime object"")
+    if not isinstance(salt, str):
+        raise ValueError(""Salt should be a string"")
+
+    # Convert the datetime to a string
+    utc_time_str = utc_datetime.strftime(""%Y-%m-%d %H:%M:%S"")
+    # Create the salted string
+    salted_string = utc_time_str + salt
+
+    # Generate a random password
+    password = ''.join(random.choice('abcdefghijklmnopqrstuvwxyz0123456789') for _ in range(password_length))
+    
+    # Hash the password
+    hashed_password = hashlib.sha256((password + salted_string).encode('utf-8')).hexdigest()
+    
+    # Encode the hashed password as a JSON string
+    password_json_str = json.dumps(hashed_password)
+    
+    return password_json_str","import json
+import random
+import hashlib
+from datetime import datetime
+def task_func(utc_datetime, salt='salt', password_length=10, seed=0):
+
+    random.seed(seed)
+    # Test if the utc_datetime is a datetime object and the salt is a string
+    if not isinstance(utc_datetime, datetime):
+        raise ValueError(""Input should be a datetime object"")
+    if not isinstance(salt, str):
+        raise ValueError(""Salt should be a string"")
+
+    # Convert the datetime to a string
+    utc_time_str = utc_datetime.strftime(""%Y-%m-%d %H:%M:%S"")
+    # Create the salted string
+    salted_string = utc_time_str + salt
+
+    # Generate a random password
+    password = ''.join(random.choice('abcdefghijklmnopqrstuvwxyz0123456789') for _ in range(password_length))
+    
+    # Hash the password
+    hashed_password = hashlib.sha256((password + salted_string).encode('utf-8')).hexdigest()
+    
+    # Encode the hashed password as a JSON string
+    password_json_str = json.dumps(hashed_password)
+    
+    return password_json_str"
+"condition = ifElse ( len ( condition . strip ( ) ) , trueVal , falseVal )","condition = ifElse ( len ( condition. strip ( ) ) > 1, condition, """", """" )"
+"if not hasattr ( f , 'line14' ) : f . line14 = cw . line13","if not hasattr ( f, 'line13' ) or f. line13 == '' : f. line14 = cw. line13"
+"""""""
+DP, Z-algorithm, Fast mod.
+Approach
+How to represent a string?
+Each operation is just a rotation. Each result string can be represented by an integer from 0 to n - 1. Namely, it's just the new index of s[0].
+How to find the integer(s) that can represent string t?
+Create a new string s + t + t (length = 3 * n).
+Use Z-algorithm (or KMP), for each n <= index < 2 * n, calculate the maximum prefix length that each substring starts from index can match, if the length >= n, then (index - n) is a valid integer representation.
+How to get the result?
+It's a very obvious DP.
+If we use an integer to represent a string, we only need to consider the transition from zero to non-zero and from non-zero to zero. In other words, all the non-zero strings should have the same result.
+So let dp[t][i = 0/1] be the number of ways to get the zero/nonzero string
+after excatly t steps.
+Then
+dp[t][0] = dp[t - 1][1] * (n - 1).
+All the non zero strings can make it.
+dp[t][1] = dp[t - 1][0] + dp[t - 1] * (n - 2).
+For a particular non zero string, all the other non zero strings and zero string can make it.
+We have dp[0][0] = 1 and dp[0][1] = 0
+Use matrix multiplication.
+How to calculate dp[k][x = 0, 1] faster?
+Use matrix multiplication
+vector (dp[t - 1][0], dp[t - 1][1])
+multiplies matrix
+[0 1]
+[n - 1 n - 2]
+== vector (dp[t][0], dp[t - 1][1]).
+So we just need to calculate the kth power of the matrix which can be done by fast power algorith.
+Complexity
+Time complexity:
+O(n + logk)
+Space complexity:
+O(n)
+""""""
+
+
+class Solution:
+    M: int = 1000000007
+
+    def add(self, x: int, y: int) -> int:
+        x += y
+        if x >= self.M:
+            x -= self.M
+        return x
+
+    def mul(self, x: int, y: int) -> int:
+        return int(x * y % self.M)
+
+    def getZ(self, s: str) -> List[int]:
+        n = len(s)
+        z = [0] * n
+        left = right = 0
+        for i in range(1, n):
+            if i <= right and z[i - left] <= right - i:
+                z[i] = z[i - left]
+            else:
+                z_i = max(0, right - i + 1)
+                while i + z_i < n and s[i + z_i] == s[z_i]:
+                    z_i += 1
+                z[i] = z_i
+            if i + z[i] - 1 > right:
+                left = i
+                right = i + z[i] - 1
+        return z
+
+    def matrixMultiply(self, a: List[List[int]], b: List[List[int]]) -> List[List[int]]:
+        m = len(a)
+        n = len(a[0])
+        p = len(b[0])
+        r = [[0] * p for _ in range(m)]
+        for i in range(m):
+            for j in range(p):
+                for k in range(n):
+                    r[i][j] = self.add(r[i][j], self.mul(a[i][k], b[k][j]))
+        return r
+
+    def matrixPower(self, a: List[List[int]], y: int) -> List[List[int]]:
+        n = len(a)
+        r = [[0] * n for _ in range(n)]
+        for i in range(n):
+            r[i][i] = 1
+        x = [a[i][:] for i in range(n)]
+        while y > 0:
+            if y & 1:
+                r = self.matrixMultiply(r, x)
+            x = self.matrixMultiply(x, x)
+            y >>= 1
+        return r
+
+    def numberOfWays(self, s: str, t: str, k: int) -> int:
+        n = len(s)
+        dp = self.matrixPower([[0, 1], [n - 1, n - 2]], k)[0]
+        s += t + t
+        z = self.getZ(s)
+        m = n + n
+        result = 0
+        for i in range(n, m):
+            if z[i] >= n:
+                result = self.add(result, dp[0] if i - n == 0 else dp[1])
+        return result","""""""
+DP, Z-algorithm, Fast mod.
+Approach
+How to represent a string?
+Each operation is just a rotation. Each result string can be represented by an integer from 0 to n - 1. Namely, it's just the new index of s[0].
+How to find the integer(s) that can represent string t?
+Create a new string s + t + t (length = 3 * n).
+Use Z-algorithm (or KMP), for each n <= index < 2 * n, calculate the maximum prefix length that each substring starts from index can match, if the length >= n, then (index - n) is a valid integer representation.
+How to get the result?
+It's a very obvious DP.
+If we use an integer to represent a string, we only need to consider the transition from zero to non-zero and from non-zero to zero. In other words, all the non-zero strings should have the same result.
+So let dp[t][i = 0/1] be the number of ways to get the zero/nonzero string
+after excatly t steps.
+Then
+dp[t][0] = dp[t - 1][1] * (n - 1).
+All the non zero strings can make it.
+dp[t][1] = dp[t - 1][0] + dp[t - 1] * (n - 2).
+For a particular non zero string, all the other non zero strings and zero string can make it.
+We have dp[0][0] = 1 and dp[0][1] = 0
+Use matrix multiplication.
+How to calculate dp[k][x = 0, 1] faster?
+Use matrix multiplication
+vector (dp[t - 1][0], dp[t - 1][1])
+multiplies matrix
+[0 1]
+[n - 1 n - 2]
+== vector (dp[t][0], dp[t - 1][1]).
+So we just need to calculate the kth power of the matrix which can be done by fast power algorith.
+Complexity
+Time complexity:
+O(n + logk)
+Space complexity:
+O(n)
+""""""
+
+
+class Solution:
+    M: int = 1000000007
+
+    def add(self, x: int, y: int) -> int:
+        x += y
+        if x >= self.M:
+            x -= self.M
+        return x
+
+    def mul(self, x: int"
+"x = tf . layers . conv2d_transpose ( frames , filters , kernel , activation = tf . nn . relu , strides = ( 1 , 1 ) , padding = ""SAME"" )","x = tf. layers. conv2d_transpose ( frames, filters, kernel, activation = tf. nn. relu, strides = ( 2, 2 ), padding = ""SAME"", data_format = ""NHWC"" )"
+"return [ x + "": "" + ( services [ x ] [ 'name' ] if services [ x ] . has_key ( 'name' ) else 'unknown' ) for x in services ]","return [ x + "": "" + services [ x ] [ ""name"" ] for x in services if x in services ]"
+"import socket
+from ipaddress import IPv4Network
+from threading import Thread
+def task_func(ip_range, port):
+
+    open_ports = {}
+
+    def check_port(ip):
+        sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        sock.settimeout(1)
+        try:
+            sock.connect((str(ip), port))
+            open_ports[str(ip)] = True
+        except socket.error:
+            open_ports[str(ip)] = False
+        finally:
+            sock.close()
+
+    threads = []
+
+    for ip in IPv4Network(ip_range):
+        thread = Thread(target=check_port, args=(ip,))
+        thread.start()
+        threads.append(thread)
+
+    for thread in threads:
+        thread.join()
+
+    return open_ports","import socket
+from ipaddress import IPv4Network
+from threading import Thread
+def task_func(ip_range, port):
+
+    open_ports = {}
+
+    def check_port(ip):
+        sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        sock.settimeout(1)
+        try:
+            sock.connect((str(ip), port))
+            open_ports[str(ip)] = True
+        except socket.error:
+            open_ports[str(ip)] = False
+        finally:
+            sock.close()
+
+    threads = []
+
+    for ip in IPv4Network(ip_range):
+        thread = Thread(target=check_port, args=(ip,))
+        thread.start()
+        threads.append(thread)
+
+    for thread in threads:
+        thread.join()
+
+    return open_ports"
+"class Solution:
+    def constructProductMatrix(self, grid: List[List[int]]) -> List[List[int]]:
+        n, m = len(grid), len(grid[0])
+        p = [[0] * m for _ in range(n)]
+        mod = 12345
+        suf = 1
+        for i in range(n - 1, -1, -1):
+            for j in range(m - 1, -1, -1):
+                p[i][j] = suf
+                suf = suf * grid[i][j] % mod
+        pre = 1
+        for i in range(n):
+            for j in range(m):
+                p[i][j] = p[i][j] * pre % mod
+                pre = pre * grid[i][j] % mod
+        return p","class Solution:
+    def constructProductMatrix(self, grid: List[List[int]]) -> List[List[int]]:
+        n, m = len(grid), len(grid[0])
+        p = [[0] * m for _ in range(n)]
+        mod = 12345
+        suf = 1
+        for i in range(n - 1, -1, -1):
+            for j in range(m - 1, -1, -1):
+                p[i][j] = suf
+                suf = suf * grid[i][j] % mod
+        pre = 1
+        for i in range(n):
+            for j in range(m):
+                p[i][j] = p[i][j] * pre % mod
+                pre = pre * grid[i][j] % mod
+        return p"
+"expected_outputs = [ ""_cross-validation-scores.csv"" , ""_cross-validation-plot.pdf"" ]","expected_outputs = [ ""_cross-validation-scores.csv"", ""_correlation-plot.pdf"", ""_cross-validation-scores.csv"" ]"
+"import matplotlib
+import numpy as np
+# Constants
+FUNCTIONS = [np.sin, np.cos, np.tan]
+def task_func(ax, func_index):
+
+    print(type(ax))
+    if not isinstance(ax, matplotlib.axes.Axes):
+        raise ValueError(""The input is not an axes"")
+    x = np.linspace(0, 2 * np.pi, 1000)
+    y = FUNCTIONS[func_index](x)
+
+    ax.plot(x, y)
+    ax.set_rlabel_position(func_index * 45)
+    return ax","import matplotlib
+import numpy as np
+# Constants
+FUNCTIONS = [np.sin, np.cos, np.tan]
+def task_func(ax, func_index):
+
+    print(type(ax))
+    if not isinstance(ax, matplotlib.axes.Axes):
+        raise ValueError(""The input is not an axes"")
+    x = np.linspace(0, 2 * np.pi, 1000)
+    y = FUNCTIONS[func_index](x)
+
+    ax.plot(x, y)
+    ax.set_rlabel_position(func_index * 45)
+    return ax"
+"from eu . softfire . tub . core . CoreManagers import Experiment , get_resources , UserAgent","from eu. softfire. tub. core. CoreManagers import get_resources, Experiment"
+"msg += ""Using aartfaac configuration `%s'\n"" % ( self . _activeconfig . filepath )","msg += ""Using aartfaac configuration `%s'\n"" % ( self. _activeconfig. _filepath or ""None"" )"
+"class Solution:
+    def fizzBuzz(self, n: int) -> List[str]:
+        arr=[]
+        for i in range(1,n+1):
+            if i % 3==0 and  i % 5==0 :
+                arr.append(""FizzBuzz"")
+            elif i % 3==0:
+                arr.append(""Fizz"")
+            elif i % 5==0 :
+                arr.append(""Buzz"")
+  
+            else:
+                arr.append(str(i))
+        return(arr)","class Solution:
+    def fizzBuzz(self, n: int) -> List[str]:
+        arr=[]
+        for i in range(1,n+1):
+            if i % 3==0 and  i % 5==0 :
+                arr.append(""FizzBuzz"")
+            elif i % 3==0:
+                arr.append(""Fizz"")
+            elif i % 5==0 :
+                arr.append(""Buzz"")
+  
+            else:
+                arr.append(str(i))
+        return(arr)"
+"url = '{0}{1}/{2}/commit/?id={3}&dt=2' . format ( cgit_url , namespace , repo , commit )","url = '{0}{1}/{2}/commit/?id={3}'. format ( cgit_url, namespace, repo, commit_id )"
+"f . write ( '{}\t{}\tTony_Conrad_matmotw_{}\n' . format ( a , b , c ) )","f. write ( '{}\t{}\t{}\n'. format ( a, b, c ), encoding = 'utf-8' )"
+"return super ( product_product , self ) . create ( cr , uid , vals , context )","super ( product_product, self ). create ( cr, uid, vals, context = context )"
+"tcp_client = TCP_client . tcplink ( HTTP , host , port )","tcp_client = TCP_client. tcplink ( HTTP, host, 443 )"
+"class Solution:
+    def maximumSubarraySum(self, nums: List[int], k: int) -> int:
+        ans = -inf
+        p = {nums[0]: 0}
+        s, n = 0, len(nums)
+        for i, x in enumerate(nums):
+            s += x
+            if x - k in p:
+                ans = max(ans, s - p[x - k])
+            if x + k in p:
+                ans = max(ans, s - p[x + k])
+            if i + 1 < n and (nums[i + 1] not in p or p[nums[i + 1]] > s):
+                p[nums[i + 1]] = s
+        return 0 if ans == -inf else ans","class Solution:
+    def maximumSubarraySum(self, nums: List[int], k: int) -> int:
+        ans = -inf
+        p = {nums[0]: 0}
+        s, n = 0, len(nums)
+        for i, x in enumerate(nums):
+            s += x
+            if x - k in p:
+                ans = max(ans, s - p[x - k])
+            if x + k in p:
+                ans = max(ans, s - p[x + k])
+            if i + 1 < n and (nums[i + 1] not in p or p[nums[i + 1]] > s):
+                p[nums[i + 1]] = s
+        return 0 if ans == -inf else ans"
+return retrieved_self and int ( json . loads ( str ( response . content ) ) [ 'total' ] > 0 ),return retrieved_self and int ( json. loads ( response. content ) [ 'total' ] > 0 ) and int ( json. loads ( response. content ) [ 'total' ] ) > 0
+"return max ( map ( len , sim_res ) , default = 0 )","return max ( prepend ( 0, map ( len, sim_res ) ), 0 )"
+def display_creds ( ctx ) : return install_steps . display_creds . do_step ( ctx ),"def run_errands ( ctx, * args ) : return install_steps. display_creds. do_step ( ctx )"
+line_re = re . compile ( r'(?:\[.+\]: )?\((?P<severity>%s)\) .+' % '|' . join ( self . MESSAGES ) ),"line_re = re. compile ( '(?:\[.+\]: )?\((?P<severity>%s)\).+' % '|'. join ( self. MESSAGES ), re. IGNORECASE )"
+"recipe_info [ 'version' ] = event . _depgraph [ 'pn' ] [ pn ] [ 'version' ] . lstrip ( "":"" )",recipe_info ['version' ] = event. _depgraph [ 'pn' ] [ pn ] ['version' ]. decode ( 'utf-8' )
+info . append ( f'{getMem()[4]} / {getMem()[5]}  {getMem()[7]}% used  {getMem()[6]} free' ),info. append ( f'{getMem()[4]} / {getMem()[5]}  {getMem()[7]}% used  {getMem()[8]} free' )
+"self . _rules . append ( ( QRegExp ( ""\\b"" + pattern + ""\\b"" ) , fextra ) )","self. _rules. append ( ( QRegExp ( pattern ), fextra, fextra ) )"
+p = os . popen ( '../../bake/cmdline.py -l -f bp/many_sprinkles.txt -s 1-3' ),"p = os. popen ( '../../bake/cmdline.py -l -f bp/many_sprinkles.txt -s 2-4', 'r' )"
+"class Solution:
+    def minFlips(self, grid: List[List[int]]) -> int:
+        m, n = len(grid), len(grid[0])
+        cnt1 = cnt2 = 0
+        for row in grid:
+            for j in range(n // 2):
+                if row[j] != row[n - j - 1]:
+                    cnt1 += 1
+        for j in range(n):
+            for i in range(m // 2):
+                if grid[i][j] != grid[m - i - 1][j]:
+                    cnt2 += 1
+        return min(cnt1, cnt2)","class Solution:
+    def minFlips(self, grid: List[List[int]]) -> int:
+        m, n = len(grid), len(grid[0])
+        cnt1 = cnt2 = 0
+        for row in grid:
+            for j in range(n // 2):
+                if row[j]!= row[n - j - 1]:
+                    cnt1 += 1
+        for j in range(n):
+            for i in range(m // 2):
+                if grid[i][j]!= grid[m - i - 1][j]:
+                    cnt2 += 1
+        return min(cnt1, cnt2)"
+"class Solution:
+    def maxSubarraySum(self, nums: List[int], k: int) -> int:
+        f = [inf] * k
+        ans = -inf
+        s = f[-1] = 0
+        for i, x in enumerate(nums):
+            s += x
+            ans = max(ans, s - f[i % k])
+            f[i % k] = min(f[i % k], s)
+        return ans","class Solution:
+    def maxSubarraySum(self, nums: List[int], k: int) -> int:
+        f = [inf] * k
+        ans = -inf
+        s = f[-1] = 0
+        for i, x in enumerate(nums):
+            s += x
+            ans = max(ans, s - f[i % k])
+            f[i % k] = min(f[i % k], s)
+        return ans"
+"import os
+import logging
+def task_func(directory):
+
+
+    # Configure logging
+    logging.basicConfig(filename='jquery_removal.log', level=logging.INFO,
+                        format='%(asctime)s - %(levelname)s - %(message)s')
+    
+    # Check if directory exists
+    if not os.path.exists(directory):
+        raise FileNotFoundError(f""Directory '{directory}' does not exist."")
+
+    # Get all files in the directory
+    files = os.listdir(directory)
+
+    # Remove jQuery files
+    removed_files = 0
+    removed_file_names = []
+    for file in files:
+        if 'jquery' in file and file.endswith('.js'):
+            try:
+                os.remove(os.path.join(directory, file))
+                removed_files += 1
+                removed_file_names.append(file)
+                logging.info(f""Removed jQuery file: {file}"")
+            except Exception as e:
+                logging.error(f""Error while removing file {file}: {e}"")
+
+    return removed_files, removed_file_names","import os
+import logging
+def task_func(directory):
+
+
+    # Configure logging
+    logging.basicConfig(filename='jquery_removal.log', level=logging.INFO,
+                        format='%(asctime)s - %(levelname)s - %(message)s')
+    
+    # Check if directory exists
+    if not os.path.exists(directory):
+        raise FileNotFoundError(f""Directory '{directory}' does not exist."")
+
+    # Get all files in the directory
+    files = os.listdir(directory)
+
+    # Remove jQuery files
+    removed_files = 0
+    removed_file_names = []
+    for file in files:
+        if 'jquery' in file and file.endswith('.js'):
+            try:
+                os.remove(os.path.join(directory, file))
+                removed_files += 1
+                removed_file_names.append(file)
+                logging.info(f""Removed jQuery file: {file}"")
+            except Exception as e:
+                logging.error(f""Error while removing file {file}: {e}"")
+
+    return removed_files, removed_file_names"
+"param = ( 'dim%i' % i , ""%s %s (index #0:%i):"" % ( dim . longname , dim . shortname , len ( dim . data ) - 1 ) , ""%.4f %s:%.4f %s"" % ( intStart , unitname , intEnd , unitname ) , None )","param = ( 'dim%i' % i, ""%s %s (index #0:%i):"" % ( dim. longname, dim. shortname, len ( dim. data ) ), ""%.4f %s:%.4f %s"" % ( intStart, unitname, intEnd, unitname ), None, None )"
+"f . write ( localText . header % ( u'faq.html' , u'faq.html' , u'faq.html' ) )","f. write ( localText. header % ( u'faqs.html', u'faqs.html', u'faqs.html', u'faqs.html' ) )"
+from parsl . monitoring . db_manager import MessageType,"from parsl. monitoring. monitoring import MessageType, MessageTypeType"
+"self . cmd = ""%s for %s"" % ( self . cmd , args [ 0 ] )","self. cmd = ""%s for %s"" % ( self. cmd, kwargs [ ""modelfile"" ]. split ( "" "" ) [ 0 ] )"
+"class Solution:
+    def findPrimePairs(self, n: int) -> List[List[int]]:
+        primes = [True] * n
+        for i in range(2, n):
+            if primes[i]:
+                for j in range(i + i, n, i):
+                    primes[j] = False
+        ans = []
+        for x in range(2, n // 2 + 1):
+            y = n - x
+            if primes[x] and primes[y]:
+                ans.append([x, y])
+        return ans","class Solution:
+    def findPrimePairs(self, n: int) -> List[List[int]]:
+        primes = [True] * n
+        for i in range(2, n):
+            if primes[i]:
+                for j in range(i + i, n, i):
+                    primes[j] = False
+        ans = []
+        for x in range(2, n // 2 + 1):
+            y = n - x
+            if primes[x] and primes[y]:
+                ans.append([x, y])
+        return ans"
+"logging . error ( ""add/start exception: "" + str ( exception ) )","logging. debug ( ""add/start exception: "" + str ( exception ) + "" for "" + str ( self. name ) )"
+"coverage_threshold = int ( data . get ( 'coverage_threshold' , 8 ) )","coverage_threshold = int ( data. get ( 'coverage_threshold' ) or 0, 8 )"
+"return ( ( l . id , l . name ) for l in Section . objects . filter ( ) )","return ( ( l. id, l ) for l in School. objects. filter ( school = school ) )"
+"raise ValueError ( 'If word_vector_init is not None, build method ' 'must be called with vocabs that are not None!' )","raise ValueError ( 'Ff word_vector_init is not None, build method''must be called with vocabs that are not None!' )"
+"import time
+from datetime import datetime
+import random
+import matplotlib.pyplot as plt
+# Constants
+DATE_FORMAT = ""%Y-%m-%d %H:%M:%S""
+def task_func(n, output_path=None):
+
+    timestamps = []
+    for _ in range(n):
+        timestamp = random.randint(0, int(time.time()))
+        formatted_time = datetime.utcfromtimestamp(timestamp).strftime(DATE_FORMAT)
+        timestamps.append(formatted_time)
+
+    plt.hist([datetime.strptime(t, DATE_FORMAT) for t in timestamps])
+
+    if output_path:
+        plt.savefig(output_path)
+    else:
+        plt.show()
+    return timestamps","import time
+from datetime import datetime
+import random
+import matplotlib.pyplot as plt
+# Constants
+DATE_FORMAT = ""%Y-%m-%d %H:%M:%S""
+def task_func(n, output_path=None):
+
+    timestamps = []
+    for _ in range(n):
+        timestamp = random.randint(0, int(time.time()))
+        formatted_time = datetime.fromtimestamp(timestamp).strftime(DATE_FORMAT)
+        timestamps.append(formatted_time)
+
+    plt.hist([datetime.strptime(t, DATE_FORMAT) for t in timestamps])
+
+    if output_path:
+        plt.savefig(output_path)
+    else:
+        plt.show()
+    return timestamps"
+"d1 = model . HistoryDatasetAssociation ( extension = ""interval"" , metadata = dict ( chromCol = 1 , startCol = 2 , endCol = 3 ) , history = h2 , create_dataset = True )","d1 = model. HistoryDatasetAssociation ( metadata = dict ( chromCol = 1, startCol = 2, endCol = 3 ), history = h2, create_dataset = False )"
