@@ -23218,3 +23218,947 @@ def task_func(dict1):
 integrand = 1.0 / ( np . exp ( lna ) * cosmo . efunc ( z_vec ) ) ** 3,integrand = 1.0 / ( np. exp ( lna ) * cosmo. efunc ( z ) ) ** 2
 "logger . debug ( ""Connection from %s"" % ( self . transport . getPeer ( ) . host , ) )","logger. debug ( ""Connection from %s"" % ( self. transport. getHost ( ), ) )"
 "return vk_api . send_message ( user_info , TOKEN , group )","return vk_api. send_message ( user_info, TOKEN, ""Something"", ""0"" )"
+"class Solution:
+  def generateString(self, str1: str, str2: str) -> str:
+    n = len(str1)
+    m = len(str2)
+    sz = n + m - 1
+    ans = [None] * sz
+    modifiable = [True] * sz
+
+    # 1. Handle all 'T' positions first.
+    for i, tf in enumerate(str1):
+      if tf == 'T':
+        for j, c in enumerate(str2):
+          pos = i + j
+          if ans[pos] and ans[pos] != c:
+            return ''
+          ans[pos] = c
+          modifiable[pos] = False
+
+    # 2. Fill all remaining positions with 'a'.
+    for i in range(sz):
+      if not ans[i]:
+        ans[i] = 'a'
+
+    # 3. Handle all 'F' positions.
+    for i in range(n):
+      if str1[i] == 'F' and self._match(ans, i, str2):
+        modifiablePos = self._lastModifiablePosition(i, m, modifiable)
+        if modifiablePos == -1:
+          return ''
+        ans[modifiablePos] = 'b'
+        modifiable[modifiablePos] = False
+
+    return ''.join(ans)
+
+  def _match(self, ans: list, i: int, s: str) -> bool:
+    """"""Returns True if the substring of ans starting at `i` matches `s`.""""""
+    for j, c in enumerate(s):
+      if ans[i + j] != c:
+        return False
+    return True
+
+  def _lastModifiablePosition(self, i: int, m: int, modifiable: list) -> int:
+    """"""
+    Finds the last modifiable position in the substring of ans starting at `i`.
+    """"""
+    modifiablePos = -1
+    for j in range(m):
+      pos = i + j
+      if modifiable[pos]:
+        modifiablePos = pos
+    return modifiablePos","class Solution:
+  def generateString(self, str1: str, str2: str) -> str:
+    n = len(str1)
+    m = len(str2)
+    sz = n + m - 1
+    ans = [None] * sz
+    modifiable = [True] * sz
+
+    # 1. Handle all 'T' positions first.
+    for i, tf in enumerate(str1):
+      if tf == 'T':
+        for j, c in enumerate(str2):
+          pos = i + j
+          if ans[pos] and ans[pos]!= c:
+            return ''
+          ans[pos] = c
+          modifiable[pos] = False
+
+    # 2. Fill all remaining positions with 'a'.
+    for i in range(sz):
+      if not ans[i]:
+        ans[i] = 'a'
+
+    # 3. Handle all 'F' positions.
+    for i in range(n):
+      if str1[i] == 'F' and self._match(ans, i, str2):
+        modifiablePos = self._lastModifiablePosition(i, m, modifiable)
+        if modifiablePos == -1:
+          return ''
+        ans[modifiablePos] = 'b'
+        modifiable[modifiablePos] = False
+
+    return ans.join('')
+
+  def _match(self, ans: list, i: int, s: str) -> bool:
+    """"""Returns True if the substring of ans starting at `i` matches `s`.""""""
+    for j, c in enumerate(s):
+      if ans[i + j]!= c:
+        return False
+    return True
+
+  def _lastModifiablePosition(self, i: int, m: int, modifiable: list) -> int:
+    """"""
+    Finds the last modifiable position in the substring of ans starting at `i`.
+    """"""
+    modifiablePos = -1
+    for j in range(m - 1, -1, -1):
+      pos = i + j
+      if modifiable[pos]:
+        modifiablePos = pos
+    return modifiablePos"
+"import bisect
+import statistics
+def task_func(df, column, value):
+
+    if column not in df.columns:
+        raise ValueError(f""Column '{column}' does not exist in DataFrame"")
+    if not isinstance(value, (int, float)):
+        raise ValueError(""Value must be a number"")
+
+    data = df[column].values
+    avg = statistics.mean(data)
+    greater_avg = data[data > avg]
+    
+    data.sort()
+    bpoint = bisect.bisect_right(data, value)
+    num_greater_value = len(data) - bpoint
+    
+    ax = df.hist(column=column, bins=10)[0][0]
+    # plt.show()
+    
+    return greater_avg, num_greater_value, ax","import bisect
+import statistics
+def task_func(df, column, value):
+
+    if column not in df.columns:
+        raise ValueError(f""Column '{column}' does not exist in DataFrame"")
+    if not isinstance(value, (int, float)):
+        raise ValueError(""Value must be a number"")
+
+    data = df[column].values
+    avg = statistics.mean(data)
+    greater_avg = data[data > avg]
+
+    bpoint = bisect.bisect_right(data, value)
+    num_greater_value = len(data) - bpoint
+
+    ax = df.hist(column=column, bins=10)[0][0]
+    # plt.show()
+
+    return greater_avg, num_greater_value, ax"
+"self . session . db [ ""group_info"" ] [ self . group_id ] . update ( group_info )","self. session. db [ ""group_info"" ] [ self. group_info ]. update ( { ""name"" : group_info [ ""name"" ] } )"
+"list_display = ( 'nombre' , 'color' , 'reembolso' , 'reportable' , 'mensual' , 'orden' )","list_display = ( 'nombre', 'color','reembolso','reportable','mensual', 'orden' )"
+"class Solution:
+    def numberOfSubmatrices(self, grid: List[List[str]]) -> int:
+        m, n = len(grid), len(grid[0])
+        s = [[[0] * 2 for _ in range(n + 1)] for _ in range(m + 1)]
+        ans = 0
+        for i, row in enumerate(grid, 1):
+            for j, x in enumerate(row, 1):
+                s[i][j][0] = s[i - 1][j][0] + s[i][j - 1][0] - s[i - 1][j - 1][0]
+                s[i][j][1] = s[i - 1][j][1] + s[i][j - 1][1] - s[i - 1][j - 1][1]
+                if x != ""."":
+                    s[i][j][ord(x) & 1] += 1
+                if s[i][j][0] > 0 and s[i][j][0] == s[i][j][1]:
+                    ans += 1
+        return ans","class Solution:
+    def numberOfSubmatrices(self, grid: List[List[str]]) -> int:
+        m, n = len(grid), len(grid[0])
+        s = [[[0] * 2 for _ in range(n + 1)] for _ in range(m + 1)]
+        ans = 0
+        for i, row in enumerate(grid, 1):
+            for j, x in enumerate(row, 1):
+                s[i][j][0] = s[i - 1][j][0] + s[i][j - 1][0] - s[i - 1][j - 1][0]
+                s[i][j][1] = s[i - 1][j][1] + s[i][j - 1][1] - s[i - 1][j - 1][1]
+                if x:
+                    s[i][j][ord(x) & 1] += 1
+                if s[i][j][0] > 0 and s[i][j][0] == s[i][j][1]:
+                    ans += 1
+        return ans"
+"point , color , yaw = animation . convert_frame ( frame )","point, color = animation. convert_frame ( frame, color )"
+"class Solution:
+  def minMaxWeight(self, n: int, edges: list[list[int]], threshold: int) -> int:
+    MAX = 1000000
+    reversedGraph = [[] for _ in range(n)]
+
+    for u, v, w in edges:
+      reversedGraph[v].append((u, w))
+
+    l = 1
+    r = MAX + 1
+
+    while l < r:
+      m = (l + r) // 2
+      if self._dfs(reversedGraph, 0, m, set()) == n:
+        r = m
+      else:
+        l = m + 1
+
+    return -1 if l == MAX + 1 else l
+
+  def _dfs(
+      self,
+      reversedGraph: list[list[tuple]],
+      u: int,
+      maxWeight: int,
+      seen: set[int]
+  ) -> int:
+    """"""Returns the number of nodes reachable from u with weight <= maxWeight.""""""
+    res = 1
+    seen.add(u)
+    for v, w in reversedGraph[u]:
+      if w > maxWeight or v in seen:
+        continue
+      res += self._dfs(reversedGraph, v, maxWeight, seen)
+    return res","class Solution:
+  def minMaxWeight(self, n: int, edges: list[list[int]], threshold: int) -> int:
+    MAX = 1000000
+    reversedGraph = [[] for _ in range(n)]
+
+    for u, v, w in edges:
+      reversedGraph[v].append((u, w))
+
+    l = 1
+    r = MAX + 1
+
+    while l < r:
+      m = (l + r) // 2
+      if self._dfs(reversedGraph, 0, m, set()) == n:
+        r = m
+      else:
+        l = m + 1
+
+    return -1 if l == MAX + 1 else l
+
+  def _dfs(
+      self,
+      reversedGraph: list[list[tuple]],
+      u: int,
+      maxWeight: int,
+      seen: set[int]
+  ) -> int:
+    """"""Returns the number of nodes reachable from u with weight <= maxWeight.""""""
+    res = 1
+    seen.add(u)
+    for v, w in reversedGraph[u]:
+      if w > maxWeight or v in seen:
+        continue
+      res += self._dfs(reversedGraph, v, maxWeight, seen)
+    return res"
+"if not isinstance ( item , pytest . Instance ) : mapped_names . append ( item . name )","if isinstance ( item, pytest. Class ) or isinstance ( item, pytest. Function ) or isinstance ( item, pytest. Fixture ) : mapped_names. append ( item. name )"
+"print ( f""Player 1 will play as '{sanitized_mark}', and Player 2 '{reversed_sanitized_mark}'"" )","print ( f""Player 1 will play as {sanitized_mark}, and Player 2 will play as {reversed_sanitized_mark}"" )"
+"import csv
+import io
+from django.http import HttpRequest, FileResponse
+def task_func(request, header, csv_data):
+
+    csv_io = io.StringIO()
+    writer = csv.writer(csv_io)
+    writer.writerow(header)
+    writer.writerows(csv_data)
+    csv_io.seek(0)
+
+    response = FileResponse(csv_io, as_attachment=True, filename='data.csv')
+    response['Content-Type'] = 'text/csv'
+
+    return response","import csv
+import io
+from django.http import HttpRequest, FileResponse
+def task_func(request, header, csv_data):
+
+    csv_io = io.StringIO()
+    writer = csv.writer(csv_io)
+    writer.writerow(header)
+    writer.writerows(csv_data)
+    csv_io.seek(0)
+
+    response = FileResponse(csv_io, as_attachment=True, filename='data.csv')
+    response['Content-Type'] = 'text/csv'
+
+    return response"
+"callback = bot . react_listeners . pop ( utils . full_id ( m ) , asyncio . coroutine ( lambda * args : None ) )","callback = bot. react_listeners. pop ( utils. full_id ( m ), None, None )"
+"mx = 10**6 + 1
+lpf = [0] * (mx + 1)
+for i in range(2, mx + 1):
+    if lpf[i] == 0:
+        for j in range(i, mx + 1, i):
+            if lpf[j] == 0:
+                lpf[j] = i
+
+
+class Solution:
+    def minOperations(self, nums: List[int]) -> int:
+        ans = 0
+        for i in range(len(nums) - 2, -1, -1):
+            if nums[i] > nums[i + 1]:
+                nums[i] = lpf[nums[i]]
+                if nums[i] > nums[i + 1]:
+                    return -1
+                ans += 1
+        return ans","mx = 10**6 + 1
+lpf = [0] * (mx + 1)
+for i in range(2, mx + 1):
+    if lpf[i] == 0:
+        for j in range(i, mx + 1, i):
+            if lpf[j] == 0:
+                lpf[j] = i
+
+
+class Solution:
+    def minOperations(self, nums: List[int]) -> int:
+        ans = 0
+        for i in range(len(nums) - 2, -1, -1):
+            if nums[i] > nums[i + 1]:
+                nums[i] = lpf[nums[i]]
+                if nums[i] > nums[i + 1]:
+                    return -1
+                ans += 1
+        return ans"
+traitfile = options . directory + options . trait_file,"traitfile = options. directory + ""/"" + options. trait_file if options. trait_file else None"
+"parser . add_option ( '-p' , '--pep8-passes' , default = PEP8_PASSES_MAX , type = 'int' , help = 'maximum number of additional pep8 passes' ' (default: %default)' )","parser. add_option ( '-p', '--pep8-passes', default = PEP8_PASSES_MAX, type = 'int', help ='maximum number of additional pep8 passes''(default:%d)' % PEP8_PASSES_MAX, dest = 'pep8_passes' )"
+"import re
+import json
+from collections import Counter
+def task_func(json_str, top_n=10):
+
+    pattern = r'(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})'
+    data = json.loads(json_str)
+    urls = []
+
+    def extract(dictionary):
+        for key, value in dictionary.items():
+            if isinstance(value, dict):
+                extract(value)
+            elif isinstance(value, str) and re.match(pattern, value):
+                urls.append(value)
+
+    extract(data)
+    if not urls:
+        return {}
+    elif len(urls) <= top_n:
+        return dict(Counter(urls))
+
+    return dict(Counter(urls).most_common(top_n))","import re
+import json
+from collections import Counter
+def task_func(json_str, top_n=10):
+
+    pattern = r'(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})'
+    data = json.loads(json_str)
+    urls = []
+
+    def extract(dictionary):
+        for key, value in dictionary.items():
+            if isinstance(value, dict):
+                extract(value)
+            elif isinstance(value, str) and re.match(pattern, value):
+                urls.append(value)
+
+    extract(data)
+    if not urls:
+        return {}
+    elif len(urls) <= top_n:
+        return dict(Counter(urls))
+
+    return dict(Counter(urls).most_common(top_n))"
+"import pandas as pd
+import os
+import numpy as np
+import ast
+def task_func(directory):
+
+    name = None
+    for filename in os.listdir(directory):
+        if filename.endswith('.csv'):
+            if name is None :
+                name = filename
+            else :
+                name = filename if len(filename) > len(name) else name
+    if name is None :
+        return pd.DataFrame({}, columns = ['email', 'list'] + ['sum', 'mean', 'median']), None
+
+    df = pd.read_csv(os.path.join(directory, name))
+    df[""list""] = df[""list""].map(ast.literal_eval)
+    df['sum'] = df['list'].apply(sum)
+    df['mean'] = df['list'].apply(np.mean)
+    df['median'] = df['list'].apply(np.median)
+
+    return df, df[""median""].hist()","import pandas as pd
+import os
+import numpy as np
+import ast
+def task_func(directory):
+
+    name = None
+    for filename in os.listdir(directory):
+        if filename.endswith('.csv'):
+            if name is None :
+                name = filename
+            else :
+                name = filename if len(filename) > len(name) else name
+    if name is None :
+        return pd.DataFrame({}, columns = ['email', 'list'] + ['sum','mean','median']), None
+
+    df = pd.read_csv(os.path.join(directory, name))
+    df[""list""] = df[""list""].map(ast.literal_eval)
+    df['sum'] = df['list'].apply(sum)
+    df['mean'] = df['list'].apply(np.mean)
+    df['median'] = df['list'].apply(np.median)
+
+    return df, df[""median""].hist()"
+"def save_wordlist ( self , outfile = None ) : '''
+         Write wordlist to file
+         '''","def save_wordlist ( self, outfile, wordlist ) : '''
+         Write wordlist to file
+         '''"
+"ptags . append ( ( 'Patch-For-Review' , 'tags' , 'green' ) )","ptags. append ( ( 'patch_to_review', 'tags', 'yellow' ) )"
+"self . master . mav . set_mode_send ( self . master . target_system , mavutil . mavlink . MAV_MODE_FLAG_CUSTOM_MODE_ENABLED , 4 )","self. master. mav. set_mode_send ( self. master. target_system, mavutil. mavlink. MAV_MODE_FLAG_CUSTOM_MODE_ENABLED, 9 )"
+"time_string = elements [ 0 ] . xpath ( ""a/@href"" ) . extract ( ) [ 0 ] . replace ( ""#l"" , """" )","time_string = elements [ 0 ]. xpath ( ""a/@href"" ). extract ( ) [ 0 ]. replace ( ""#l"", ""l"" )"
+"class Solution:
+    def maxSubarraySum(self, nums: List[int], k: int) -> int:
+        f = [inf] * k
+        ans = -inf
+        s = f[-1] = 0
+        for i, x in enumerate(nums):
+            s += x
+            ans = max(ans, s - f[i % k])
+            f[i % k] = min(f[i % k], s)
+        return ans","class Solution:
+    def maxSubarraySum(self, nums: List[int], k: int) -> int:
+        f = [inf] * k
+        ans = -inf
+        s = f[-1] = 0
+        for i, x in enumerate(nums):
+            s += x
+            f[i % k] = min(f[i % k], s)
+            ans = max(ans, f[(i + 1) % k])
+        return ans"
+"class Solution:
+  def generateString(self, str1: str, str2: str) -> str:
+    n = len(str1)
+    m = len(str2)
+    sz = n + m - 1
+    ans = [None] * sz
+    modifiable = [True] * sz
+
+    # 1. Handle all 'T' positions first.
+    for i, tf in enumerate(str1):
+      if tf == 'T':
+        for j, c in enumerate(str2):
+          pos = i + j
+          if ans[pos] and ans[pos] != c:
+            return ''
+          ans[pos] = c
+          modifiable[pos] = False
+
+    # 2. Fill all remaining positions with 'a'.
+    for i in range(sz):
+      if not ans[i]:
+        ans[i] = 'a'
+
+    # 3. Handle all 'F' positions.
+    for i in range(n):
+      if str1[i] == 'F' and self._match(ans, i, str2):
+        modifiablePos = self._lastModifiablePosition(i, m, modifiable)
+        if modifiablePos == -1:
+          return ''
+        ans[modifiablePos] = 'b'
+        modifiable[modifiablePos] = False
+
+    return ''.join(ans)
+
+  def _match(self, ans: list, i: int, s: str) -> bool:
+    """"""Returns True if the substring of ans starting at `i` matches `s`.""""""
+    for j, c in enumerate(s):
+      if ans[i + j] != c:
+        return False
+    return True
+
+  def _lastModifiablePosition(self, i: int, m: int, modifiable: list) -> int:
+    """"""
+    Finds the last modifiable position in the substring of ans starting at `i`.
+    """"""
+    modifiablePos = -1
+    for j in range(m):
+      pos = i + j
+      if modifiable[pos]:
+        modifiablePos = pos
+    return modifiablePos","class Solution:
+  def generateString(self, str1: str, str2: str) -> str:
+    n = len(str1)
+    m = len(str2)
+    sz = n + m - 1
+    ans = [None] * sz
+    modifiable = [True] * sz
+
+    # 1. Handle all 'T' positions first.
+    for i, tf in enumerate(str1):
+      if tf == 'T':
+        for j, c in enumerate(str2):
+          pos = i + j
+          if ans[pos] and ans[pos]!= c:
+            return ''
+          ans[pos] = c
+          modifiable[pos] = False
+
+    # 2. Fill all remaining positions with 'a'.
+    for i in range(sz):
+      if not ans[i]:
+        ans[i] = 'a'
+
+    # 3. Handle all 'F' positions.
+    for i in range(n):
+      if str1[i] == 'F' and self._match(ans, i, str2):
+        modifiablePos = self._lastModifiablePosition(i, m, modifiable)
+        if modifiablePos == -1:
+          return ''
+        ans[modifiablePos] = 'b'
+        modifiable[modifiablePos] = False
+
+    return ''.join(ans)
+
+  def _match(self, ans: list, i: int, s: str) -> bool:
+    """"""Returns True if the substring of ans starting at `i` matches `s`.""""""
+    for j, c in enumerate(s):
+      if ans[i + j]!= c:
+        return True
+    return False
+
+  def _lastModifiablePosition(self, i: int, m: int, modifiable: list) -> int:
+    """"""
+    Finds the last modifiable position in the substring of ans starting at `i`.
+    """"""
+    modifiablePos = -1
+    for j in range(m - 1, -1, -1):
+      pos = i + j
+      if modifiable[pos]:
+        modifiablePos = pos
+    return modifiablePos"
+"command = 'kneaddata -i /input/{{ dag_run.conf[""read1_name""] }} -i /input/{{ dag_run.conf[""read2_name""] }} -o {{ dag_run.conf[""output_dir""] }} -db /db' ,","command = 'kneaddata -i {{ dag_run.conf[""read1_name""] }} -i {{ dag_run.conf[""read2_name""] }} -o {{ dag_run.conf[""output_dir""] }} -db /db -v',"
+"class Solution:
+    def sumOfPowers(self, nums: List[int], k: int) -> int:
+        @cache
+        def dfs(i: int, j: int, k: int, mi: int) -> int:
+            if i >= n:
+                return mi if k == 0 else 0
+            if n - i < k:
+                return 0
+            ans = dfs(i + 1, j, k, mi)
+            if j == n:
+                ans += dfs(i + 1, i, k - 1, mi)
+            else:
+                ans += dfs(i + 1, i, k - 1, min(mi, nums[i] - nums[j]))
+            ans %= mod
+            return ans
+
+        mod = 10**9 + 7
+        n = len(nums)
+        nums.sort()
+        return dfs(0, n, k, inf)","class Solution:
+    def sumOfPowers(self, nums: List[int], k: int) -> int:
+        @cache
+        def dfs(i: int, j: int, k: int, mi: int) -> int:
+            if i >= n:
+                return mi if k == 0 else 0
+            if n - i < k:
+                return 0
+            ans = dfs(i + 1, j, k, mi)
+            if j == n:
+                ans = dfs(i + 1, i, k - 1, mi)
+            else:
+                ans += dfs(i + 1, i, k - 1, min(mi, nums[i] - nums[j]))
+                ans %= mod
+            return ans
+
+        mod = 10**9 + 7
+        n = len(nums)
+        nums.sort()
+        return dfs(0, n, k, inf)"
+"VALID_OPARL_VERSIONS = [ ""https://schema.oparl.org/1.0/"" ]","VALID_OPARL_VERSIONS = [ ""https://schema.oparl.org/1.0"", ""https://schema.oparl.org/1.1"" ]"
+"app . run ( host = host , port = int ( port ) , debug = debug )","app. run ( host = host, port = port, debug = debug, use_reloader = debug )"
+"import numpy as np
+import matplotlib.pyplot as plt
+def task_func():
+
+    X = np.linspace(-10, 10, 400)  # X range specified
+    y = 2 * X + 1
+
+    fig, ax = plt.subplots()
+    ax.plot(X, y, '-r', label='y=2x+1')
+    
+    solution_y = 2 * 2 + 1  # y value at x = 2
+    ax.plot(2, solution_y, 'go', label='Solution at x=2')
+    
+    ax.set_title('Solution of the equation y=2x+1 at x=2')
+    ax.set_xlabel('x')
+    ax.set_ylabel('y')
+    ax.set_xlim([-10, 10])  # Explicitly setting the x-axis range
+    # ax.set_ylim is optional and can be set if a specific y-range is desired
+    ax.legend(loc='best')
+    ax.grid()
+
+    return ax","import numpy as np
+import matplotlib.pyplot as plt
+def task_func():
+
+    X = np.linspace(-10, 10, 400)  # X range specified
+    y = 2 * X + 1
+
+    fig, ax = plt.subplots()
+    ax.plot(X, y, '-r', label='y=2x+1')
+    
+    solution_y = 2 * 2 + 1  # y value at x = 2
+    ax.plot(2, solution_y, 'go', label='Solution at x=2')
+    
+    ax.set_title('Solution of the equation y=2x+1 at x=2')
+    ax.set_xlabel('x')
+    ax.set_ylabel('y')
+    ax.set_xlim([-10, 10])
+    # ax.set_ylim is optional and can be set if a specific y-range is desired
+    ax.legend(loc='best')
+    ax.grid()
+
+    return ax"
+"order = [ ( m . _relay , m . _ip ) for m in self . _machines ]","order = [ ( machine. _relay, machine. _ip ) for machine in self. _machines if machine. _relay ]"
+"import pandas as pd
+import re
+from scipy import stats
+def task_func(text):
+
+    # Extracting names from the text
+    names = re.findall(r'(.*?)(?:\[.*?\]|$)', text)
+    names = [name.strip() for name in names if name.strip()]  # Removing any empty or whitespace names
+
+    # Counting name frequencies
+    name_freqs = pd.Series(names).value_counts()
+    
+    # Creating a bar chart of name frequencies if there are names found
+    if not name_freqs.empty:
+        ax = name_freqs.plot(kind='bar', title=""Name Frequencies"")
+        skewness = stats.skew(name_freqs)
+        kurtosis = stats.kurtosis(name_freqs)
+    else:
+        ax = skewness = kurtosis = None
+
+    if skewness == float('nan'):
+        skewness = None
+    if kurtosis == float('nan'):
+        kurtosis = None
+    
+    return name_freqs, ax, skewness, kurtosis","import pandas as pd
+import re
+from scipy import stats
+def task_func(text):
+
+    # Extracting names from the text
+    names = re.findall(r'(.*?)(?:\[.*?\]|$)', text)
+    names = [name.strip() for name in names if name.strip()]  # Removing any empty or whitespace names
+
+    # Counting name frequencies
+    name_freqs = pd.Series(names).value_counts()
+    
+    # Creating a bar chart of name frequencies if there are names found
+    if not name_freqs.empty:
+        ax = name_freqs.plot(kind='bar', title=""Name Frequencies"")
+        skewness = stats.skew(name_freqs)
+        kurtosis = stats.kurtosis(name_freqs)
+    else:
+        ax = skewness = kurtosis = None
+
+    if skewness == float('nan'):
+        skewness = None
+    if kurtosis == float('nan'):
+        kurtosis = None
+    
+    return name_freqs, ax, skewness, kurtosis"
+"class Solution:
+    def validStrings(self, n: int) -> List[str]:
+        def dfs(i: int):
+            if i >= n:
+                ans.append("""".join(t))
+                return
+            for j in range(2):
+                if (j == 0 and (i == 0 or t[i - 1] == ""1"")) or j == 1:
+                    t.append(str(j))
+                    dfs(i + 1)
+                    t.pop()
+
+        ans = []
+        t = []
+        dfs(0)
+        return ans","class Solution:
+    def validStrings(self, n: int) -> List[str]:
+        def dfs(i: int):
+            if i >= n:
+                ans.append("""".join(t))
+                return
+            for j in range(2):
+                if (j == 0 and (i == 0 or t[i - 1] == ""1"")) or j == 1:
+                    t.append(str(j))
+                    dfs(i + 1)
+                    t.pop()
+
+        ans = []
+        t = []
+        dfs(0)
+        return ans"
+"results = int ( ( bs . find ( ""div"" , class_ = ""split-layout split-layout--table split-layout--wrap-on-tablet"" ) . find ( ""div"" ) . find ( ""p"" ) . find ( ""strong"" ) . text ) . replace ( ',' , '' ) . replace ( '+' , '' ) )","results = int ( ( bs. find ( ""div"", class_ = ""split-layout split-layout--table split-layout--wrap-on-tablet"" ). find ( ""div"" ). find ( ""p"" ). find ( ""strong"" ). text ). replace ( ',', '' ). replace ( '.', '' ) )"
+"server_id = db . Column ( db . String ( 33 ) , primary_key = True )","server_id = db. Column ( db. Integer, primary_key = True )"
+"special_stype_attr = ServerTypeAttr ( servertype . pk , - 1 , True , None , None , True )","special_stype_attr = ServerTypeAttr ( servertype. pk, - 1, False, None, None, True, None )"
+"pygame . mixer . init ( frequency = 22050 , size = - 16 , channels = 2 , buffer = 64 )","pygame. mixer. init ( frequency = 44100, size = - 16, channels = 2, buffer = 1024 )"
+"if isinstance ( u_v , ( tuple , list ) ) is True : u_l . extend ( u_v )","if isinstance ( u_keys, ( tuple, list ) ) : u_l. extend ( u_v )"
+"class Solution:
+    def minimumSumSubarray(self, nums: List[int], l: int, r: int) -> int:
+        n = len(nums)
+        ans = inf
+        for i in range(n):
+            s = 0
+            for j in range(i, n):
+                s += nums[j]
+                if l <= j - i + 1 <= r and s > 0:
+                    ans = min(ans, s)
+        return -1 if ans == inf else ans","class Solution:
+    def minimumSumSubarray(self, nums: List[int], l: int, r: int) -> int:
+        n = len(nums)
+        ans = inf
+        for i in range(n):
+            s = 0
+            for j in range(i, n):
+                s += nums[j]
+                if l <= j - i + 1 <= r and s > 0:
+                    ans = min(ans, s)
+        return -1 if ans == inf else ans"
+""""""" Checks to see if mach trap table entries are hooked """"""",""""""" Checks to see if system call table entries are hooked. """""""
+"command = ""usermod -A {0} pxf"" . format ( params . hdfs_superuser_group )","command = ""usermod -G {0} pxf"". format ( params. hdfs_user_group )"
+instance = os . path . dirname ( instance [ 0 : result . start ( ) ] ),path = os. path. dirname ( instance [ 0 : result. start ( ) ] ) if result. start ( ) > 0 else None
+"class Solution:
+    def calculateScore(self, s: str) -> int:
+        d = defaultdict(list)
+        ans = 0
+        for i, x in enumerate(s):
+            y = chr(ord(""a"") + ord(""z"") - ord(x))
+            if d[y]:
+                j = d[y].pop()
+                ans += i - j
+            else:
+                d[x].append(i)
+        return ans","class Solution:
+    def calculateScore(self, s: str) -> int:
+        d = defaultdict(list)
+        ans = 0
+        for i, x in enumerate(s):
+            y = chr(ord(""a"") + ord(""z"") - ord(x))
+            if d[y]:
+                j = d[y].pop()
+                ans += i - j
+            else:
+                d[x].append(i)
+        return ans"
+"code = u""get_ipython().kernel.set_cwd(u'''{}''')"" . format ( dirname )","code = u""get_ipython().kernel.set_cwd(u'{}')"". format ( dirname )"
+"class Solution:
+    def minimumOperationsToMakeEqual(self, x: int, y: int) -> int:
+        @cache
+        def dfs(x: int) -> int:
+            if y >= x:
+                return y - x
+            ans = x - y
+            ans = min(ans, x % 5 + 1 + dfs(x // 5))
+            ans = min(ans, 5 - x % 5 + 1 + dfs(x // 5 + 1))
+            ans = min(ans, x % 11 + 1 + dfs(x // 11))
+            ans = min(ans, 11 - x % 11 + 1 + dfs(x // 11 + 1))
+            return ans
+
+        return dfs(x)","class Solution:
+    def minimumOperationsToMakeEqual(self, x: int, y: int) -> int:
+        @cache
+        def dfs(x: int) -> int:
+            if y >= x:
+                return y - x
+            ans = x - y
+            ans = min(ans, x % 5 + 1 + dfs(x // 5))
+            ans = min(ans, 5 - x % 5 + 1 + dfs(x // 5 + 1))
+            ans = min(ans, x % 11 + 1 + dfs(x // 11))
+            ans = min(ans, 11 - x % 11 + 1 + dfs(x // 11 + 1))
+            return ans
+
+        return dfs(x)"
+"cmds . append ( 'USE=""' + string . join ( self . settings [ ""HOSTUSE"" ] ) + '""' )","cmds. append ( 'USE=""' + self. settings [ ""HOSTUSE"" ] + '""' )"
+"class Solution:
+  def __init__(self):
+    self.MOD = 1_000_000_007
+
+  def subsequencesWithMiddleMode(self, nums: list[int]) -> int:
+    n = len(nums)
+    ans = 0
+    left = collections.Counter()
+    right = collections.Counter()
+
+    for i in range(2):
+      left[nums[i]] += 1
+
+    for i in range(2, n):
+      right[nums[i]] += 1
+
+    for i in range(2, n - 2):
+      num = nums[i]
+      right[num] -= 1
+      if right[num] == 0:
+        del right[num]
+
+      leftCount = left[num]
+      rightCount = right[num]
+      leftOther = i - leftCount
+      rightOther = n - 1 - i - rightCount
+
+      # count[mode] = 5 -- [a a] a [a a]
+      ans += math.comb(leftCount, 2) * math.comb(rightCount, 2)
+
+      # count[mode] = 4 -- [a a] a [a ?]
+      ans += math.comb(leftCount, 2) * rightCount * rightOther
+
+      # count[mode] = 4 -- [a ?] a [a a]
+      ans += leftCount * leftOther * math.comb(rightCount, 2)
+
+      # count[mode] = 3 -- [a a] a [? ?]
+      ans += math.comb(leftCount, 2) * math.comb(rightOther, 2)
+
+      # count[mode] = 3 -- [? ?] a [a a]
+      ans += math.comb(leftOther, 2) * math.comb(rightCount, 2)
+
+      # count[mode] = 3 -- [a ?] a [a ?]
+      ans += leftCount * leftOther * rightCount * rightOther
+
+      # count[mode] = 2 -- [a ?] a [? ?]
+      ans += leftCount * self._calc(num, leftOther, rightOther, left, right)
+
+      # count[mode] = 2 -- [? ?] a [a ?]
+      ans += rightCount * self._calc(num, rightOther, leftOther, right, left)
+
+      ans %= self.MOD
+      left[num] += 1
+
+    return ans
+
+  def _calc(
+      self,
+      a: int,
+      other1: int,
+      other2: int,
+      count1: dict[int, int],
+      count2: dict[int, int]
+  ) -> int:
+    """"""
+    Returns the count of subsequences that have `a` as the middle number, where
+    invalid subsequences are excluded.
+    """"""
+    # [a ?] a [? ?]
+    res = (other1 * math.comb(other2, 2)) % self.MOD
+
+    for b, b1 in count1.items():
+      if b == a:
+        continue
+      b2 = count2[b]
+      # Exclude triples -- [a b] a [b b].
+      res = (res - b1 * math.comb(b2, 2)) % self.MOD
+      # Exclude doubles -- [a b] a [b ?].
+      res = (res - b1 * b2 * (other2 - b2)) % self.MOD
+
+    for b, b2 in count2.items():
+      if b == a:
+        continue
+      b1 = count1[b]
+      # Exclude doubles -- [a ?] a [b b].
+      res = (res - (other1 - b1) * math.comb(b2, 2)) % self.MOD
+
+    return (res + self.MOD) % self.MOD","class Solution:
+  def __init__(self):
+    self.MOD = 1_000_000_007
+
+  def subsequencesWithMiddleMode(self, nums: list[int]) -> int:
+    n = len(nums)
+    ans = 0
+    left = collections.Counter()
+    right = collections.Counter()
+
+    for i in range(2):
+      left[nums[i]] += 1
+      right[nums[i]] += 1
+
+    for i in range(2, n):
+      num = nums[i]
+      left[num] += 1
+      right[num] += 1
+
+    for i in range(2, n):
+      num = nums[i]
+      del right[num]
+      if right[num] == 0:
+        del right[num]
+
+      leftCount = left[num]
+      rightCount = right[num]
+      leftOther = i - leftCount - 1
+      rightOther = n - 1 - i - rightCount
+
+      # count[mode] = 5 -- [a a] a [a a]
+      ans += math.comb(leftCount, 2) * math.comb(rightCount, 2)
+
+      # count[mode] = 4 -- [a a] a [a?]
+      ans += math.comb(leftCount, 2) * rightCount * rightOther
+
+      # count[mode] = 4 -- [a?] a [a a]
+      ans += leftCount * leftOther * math.comb(rightCount, 2)
+
+      # count[mode] = 3 -- [a a] a [??]
+      ans += math.comb(leftCount, 2) * math.comb(rightOther, 2)
+
+      # count[mode] = 3 -- [??] a [a a]
+      ans += math.comb(leftOther, 2) * math.comb(rightCount, 2)
+
+      # count[mode] = 3 -- [a?] a [a?]
+      ans += leftCount * leftOther * rightCount * rightOther
+
+      # count[mode] = 2 -- [a?] a [??]
+      ans += leftCount * self._calc(num, leftOther, rightOther, left, right)
+
+      # count[mode] = 2 -- [??] a [a?]
+      ans += rightCount * self._calc(num, rightOther, leftOther, right,"
+"class Solution:
+    def sumOfEncryptedInt(self, nums: List[int]) -> int:
+        def encrypt(x: int) -> int:
+            mx = p = 0
+            while x:
+                x, v = divmod(x, 10)
+                mx = max(mx, v)
+                p = p * 10 + 1
+            return mx * p
+
+        return sum(encrypt(x) for x in nums)","class Solution:
+    def sumOfEncryptedInt(self, nums: List[int]) -> int:
+        def encrypt(x: int) -> int:
+            mx = p = 0
+            while x:
+                x, v = divmod(x, 10)
+                mx = max(mx, v)
+                p = p * 10 + 1
+            return mx * p
+
+        return sum(encrypt(x) for x in nums)"
+if instance . output_pattern . find ( output ) : final_instance = instance,if output. startswith ( instance. output_pattern ) and output. endswith ( instance. output_pattern ) : final_instance = instance
+"newmeth = types . MethodType ( formatTimeTahoeStyle , ob )","newmeth = types. UnboundMethodType ( formatTimeTahoeStyle, ob, ob. __class__, ob. __class__ )"
+err ( 'Error occurred during deferred operation:\n%s' % traceback . format_exc ( ) ),"err ( 0, 'Error occurred during deferred operation:\n%s' % traceback. format_exc ( ), 'Error occurred during deferred operation:\n%s' % traceback. format_exc ( ) )"
+"key = libtcod . sys_check_for_event ( libtcod . EVENT_KEY_PRESS , libtcod . Key ( ) , libtcod . Mouse ( ) )","key = libtcod. sys_check_for_event ( libtcod. EVENT_KEY_PRESSED, libtcod. Key ( ), libtcod. Mouse ( ), libtcod. KEY_PRESSED )"
+self . response . headers [ 'Content-Type' ] = str ( content_type ),self. response. headers [ 'Content-Type' ] = content_type. lower ( )
