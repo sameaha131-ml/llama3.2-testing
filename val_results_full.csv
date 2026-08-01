@@ -31823,3 +31823,623 @@ def task_func(df):
 "f . write ( ""MULTIRUN_ID={}\n"" . format ( multirun . id ) )","f. write ( ""MULTIRUN_ID={}"". format ( multirun. id ) + ""\n"" )"
 "param_dict = { 'key' : 'k2HrcvhLbdHdxHHKpJnRgr7bj' , 'format' : 'json' , 'stpid' : stpid , 'rtpidatafeed' : datafeed }","param_dict = { 'key' : 'k2HrcvhLbdHdxHHKpJnRgr7bj', 'format' : 'json','stpid' : 'a', 'rtpidatafeed' : datafeed,'stpid' : 'a' }"
 "run ( ""git-changelog"" , ""."" , ""-o"" , output , ""-t"" , type , ""-s"" , style )","run ( ""git-changelog"", ""-o"", output, ""-t"", type, ""-s"", style, ""-p"", path )"
+"class Solution:
+    def minimumSumSubarray(self, nums: List[int], l: int, r: int) -> int:
+        n = len(nums)
+        ans = inf
+        for i in range(n):
+            s = 0
+            for j in range(i, n):
+                s += nums[j]
+                if l <= j - i + 1 <= r and s > 0:
+                    ans = min(ans, s)
+        return -1 if ans == inf else ans","class Solution:
+    def minimumSumSubarray(self, nums: List[int], l: int, r: int) -> int:
+        n = len(nums)
+        ans = inf
+        for i in range(n):
+            s = 0
+            for j in range(i, n):
+                s += nums[j]
+                if l <= j - i + 1 <= r and s > 0:
+                    ans = min(ans, s)
+        return -1 if ans == inf else ans"
+"max_process_secs = int ( config . get ( 'max_process_secs' , 600 ) )","max_process_secs = config. get ('max_process_secs', 300 )"
+"__description__ = ""\n"" + open ( os . path . join ( os . path . dirname ( __file__ ) , 'README' ) ) . read ( )","__description__ = ""\n"" + open ( os. path. join ( os. path. dirname ( __file__ ), 'README.md' ) ). read ( )"
+"operations = [ migrations . AddField ( model_name = 'fieldschema' , name = 'transform_case' , field = models . CharField ( blank = True , default = None , max_length = 5 , null = True ) , ) , ]","operations = [ migrations. AddField ( model_name = 'fieldschema', name = 'case', field = models. CharField ( blank = True, default = None, max_length = 5, null = True ), ), ]"
+"class Solution:
+    def solveQueries(self, nums: List[int], queries: List[int]) -> List[int]:
+        n = len(nums)
+        m = n << 1
+        d = [m] * m
+        left = {}
+        for i in range(m):
+            x = nums[i % n]
+            if x in left:
+                d[i] = min(d[i], i - left[x])
+            left[x] = i
+        right = {}
+        for i in range(m - 1, -1, -1):
+            x = nums[i % n]
+            if x in right:
+                d[i] = min(d[i], right[x] - i)
+            right[x] = i
+        for i in range(n):
+            d[i] = min(d[i], d[i + n])
+        return [-1 if d[i] >= n else d[i] for i in queries]","class Solution:
+    def solveQueries(self, nums: List[int], queries: List[int]) -> List[int]:
+        n = len(nums)
+        m = n << 1
+        d = [m] * m
+        left = {}
+        for i in range(m):
+            x = nums[i % n]
+            if x in left:
+                d[i] = min(d[i], i - left[x])
+            left[x] = i
+        right = {}
+        for i in range(m - 1, -1, -1):
+            x = nums[i % n]
+            if x in right:
+                d[i] = min(d[i], right[x] - i)
+            right[x] = i
+        for i in range(n):
+            d[i] = min(d[i], d[i + n])
+        return [-1 if d[i] >= n else d[i] for i in queries]"
+"raise DagsterInvalidDefinitionError ( ""{decorator_name} '{solid_name}' decorated function requires positional parameter "" ""'{missing_param}', but it was not provided. '{missing_param}' is required because "" ""'config_schema' was specified."" . format ( decorator_name = decorator_name , solid_name = fn_name , missing_param = missing_param ) )","raise DagsterInvalidDefinitionError ( ""{decorator_name} '{solid_name}' decorated function requires positional parameter "" ""'{missing_param}', but it was not provided. '{missing_param}' is required because "" ""either'required_resource_keys' or 'config_schema' was specified."". format ( decorator_name = decorator_name, solid_name = fn_name, missing_param = missing_param ) )"
+"if self . _write_on_press and ( ev . key ( ) in ( Qt . Key_Up , Qt . Key_Down ) ) and not ctrl_hold : self . send_value ( )","if self. _write_on_press and ( ev. key ( ) in ( Qt. Key_Left, Qt. Key_Right ) ) and not self. _ctrl_hold : self. send_value ( )"
+"def generate_layer_name ( prefix , layer_name , with_prefix ) : return prefix + layer_name if with_prefix else layer_name . split ( prefix ) [ - 1 ]","def generate_layer_name ( prefix, with_prefix, layer_name, layer_type ) : return prefix + layer_name if with_prefix else layer_name. split ( prefix ) [ - 1 ]"
+"import pandas as pd
+from random import choices, seed
+def task_func(products, ratings, weights, random_seed=42):
+
+
+    seed(random_seed)  # Setting the seed for reproducibility
+    product_ratings = []
+
+    for product in products:
+        rating = choices(ratings, weights, k=1)[0]
+        product_ratings.append([product, rating])
+
+    df = pd.DataFrame(product_ratings, columns=[""Product"", ""Rating""])
+    df.sort_values(""Rating"", ascending=False, inplace=True)
+
+    return df","import pandas as pd
+from random import choices, seed
+def task_func(products, ratings, weights, random_seed=42):
+
+
+    seed(random_seed)  # Setting the seed for reproducibility
+    product_ratings = []
+
+    for product in products:
+        rating = choices(ratings, weights, k=1)[0]
+        product_ratings.append([product, rating])
+
+    df = pd.DataFrame(product_ratings, columns=[""Product"", ""Rating""])
+    df.sort_values(""Rating"", ascending=False, inplace=True)
+
+    return df"
+"strings_displayed = [ 'Your Galaxy instance is configured with' , 'shed-related tool configuration file' ]","strings_displayed = [ 'Choose the configuration file', 'Choose the configuration file' ]"
+"from typing import List
+from collections import defaultdict
+
+class Solution:
+    def minCost(self, n: int, cost: List[List[int]]) -> int:
+        prev_dp = {}
+        
+        # Initialize for the first pair (i=0)
+        first_left = 0
+        first_right = n - 1
+        for L in [1, 2, 3]:
+            for R in [1, 2, 3]:
+                if L != R:
+                    total = cost[0][L-1] + cost[first_right][R-1]
+                    prev_dp[(L, R)] = total
+        
+        # Process the remaining pairs
+        for i in range(1, n//2):
+            current_right_pos = n - 1 - i
+            curr_dp = defaultdict(lambda: float('inf'))
+            for (prev_L, prev_R), prev_cost in prev_dp.items():
+                for L in [1, 2, 3]:
+                    if L == prev_L:
+                        continue
+                    for R in [1, 2, 3]:
+                        if R == L or R == prev_R:
+                            continue
+                        # Compute the cost for this transition
+                        new_cost = prev_cost + cost[i][L-1] + cost[current_right_pos][R-1]
+                        key = (L, R)
+                        if new_cost < curr_dp[key]:
+                            curr_dp[key] = new_cost
+            # Update prev_dp to current_dp, keeping only finite values
+            prev_dp = {}
+            for k, v in curr_dp.items():
+                if v < float('inf'):
+                    prev_dp[k] = v
+            # Early exit if no possible states (though problem constraints should prevent this)
+            if not prev_dp:
+                return -1
+        
+        return min(prev_dp.values()) if prev_dp else 0","from typing import List
+from collections import defaultdict
+
+class Solution:
+    def minCost(self, n: int, cost: List[List[int]]) -> int:
+        prev_dp = {}
+        
+        # Initialize for the first pair (i=0)
+        first_left = 0
+        first_right = n - 1
+        for L in [1, 2, 3]:
+            for R in [1, 2, 3]:
+                if L!= R:
+                    total = cost[0][L-1] + cost[first_right][R-1]
+                    prev_dp[(L, R)] = total
+        
+        # Process the remaining pairs
+        for i in range(1, n//2):
+            current_right_pos = n - 1 - i
+            curr_dp = defaultdict(lambda: float('inf'))
+            for (prev_L, prev_R), prev_cost in prev_dp.items():
+                for L in [1, 2, 3]:
+                    if L == prev_L:
+                        continue
+                    for R in [1, 2, 3]:
+                        if R == L or R == prev_R:
+                            continue
+                        # Compute the cost for this transition
+                        new_cost = prev_cost + cost[i][L-1] + cost[current_right_pos][R-1]
+                        key = (L, R)
+                        if new_cost < curr_dp[key]:
+                            curr_dp[key] = new_cost
+            # Update prev_dp to current_dp, keeping only finite values
+            prev_dp = {}
+            for k, v in curr_dp.items():
+                if v < float('inf'):
+                    prev_dp[k] = v
+            # Early exit if no possible states (though problem constraints should prevent this)
+            if not prev_dp:
+                return -1
+        
+        return min(prev_dp.values()) if prev_dp else 0"
+"initial_dut_properties = { 'CspSubarrayFQDN' : csp_subarray_fqdn , 'SdpSubarrayFQDN' : sdp_subarray_fqdn }","dut_properties = { 'CspSubarrayFQDN' : csp_subarray_fqdn, 'SdpSubarrayFQDN' : sdp_subarray_fqdn, 'CspSubarrayName' : csp_subarray_name, 'SdpSubarrayName' : sdp_subarray_name }"
+"self . log . info ( ""Stack %s '%s'"" % ( self . RequiresStack , self . JobsDone ) )","self. log. debug ( ""Stack %s '%s'"" % ( self. RequiresStack, self. JobsDone ) )"
+"command ( build_platform_notification ( 'Sphinx' , 'Build in progress past critical phase.' ) , ignore = True )","command ( build_platform_notification ( 'Sphinx', 'Build in progress past critical phase.' ), ignore = True )"
+"self . assertInSuccess ( 'test_copyright_notices_same_across_family' , run_set ( p , 'upstream-repo' , 'test_copyright_notices_same_across_family' ) )","self. assertInSuccess ( 'test_copyright_notices_same_across_family', run_set ( p, 'consistency', 'test_copyright_notices_same_across_family', 'test_copyright_notices_same_across_family' ) )"
+if item is None : return await p . send_error ( 402 ),if item. id not in p. server. items ( ) : return await p. send_error ( 402 )
+"LOG . debug ( 'Retrieving all action executions with filters=%s' , kw )","LOG. debug ( 'Retrieving all action liveactions with filters=%s', kw. get ( 'filters', '' ) )"
+"import json
+import smtplib
+# Constants
+SMTP_SERVER = ""smtp.gmail.com""
+SMTP_PORT = 587
+EMAIL_ADDRESS = ""your.email@gmail.com""
+EMAIL_PASSWORD = ""your.password""
+def task_func(input_data=None, smtp_server=SMTP_SERVER, smtp_port=SMTP_PORT, email_address=EMAIL_ADDRESS, email_password=EMAIL_PASSWORD, smtp=None):
+
+     
+    if input_data is None:
+        return []
+
+    # Parse input JSON data
+    try:
+        data = json.loads(input_data)
+        recipient_email = data.get('recipient')
+        names = data.get('names', [])
+    except (json.JSONDecodeError, ValueError):
+        return []
+
+    if not recipient_email or not names:
+        return []
+
+    message = 'Subject: Extracted Names\n\n' + '\n'.join(names)
+    
+    if smtp:
+        server = smtp(smtp_server, smtp_port)
+    else:
+        server = smtplib.SMTP(smtp_server, smtp_port)
+    server.starttls()
+    server.login(email_address, email_password)
+    server.sendmail(email_address, recipient_email, message)
+    server.quit()
+    return names","import json
+import smtplib
+# Constants
+SMTP_SERVER = ""smtp.gmail.com""
+SMTP_PORT = 587
+EMAIL_ADDRESS = ""your.email@gmail.com""
+EMAIL_PASSWORD = ""your.password""
+def task_func(input_data=None, smtp_server=SMTP_SERVER, smtp_port=SMTP_PORT, email_address=EMAIL_ADDRESS, email_password=EMAIL_PASSWORD, smtp=None):
+
+
+    if input_data is None:
+        return []
+
+    # Parse input JSON data
+    try:
+        data = json.loads(input_data)
+        recipient_email = data.get('recipient')
+        names = data.get('names', [])
+    except (json.JSONDecodeError, ValueError):
+        return []
+
+    if not recipient_email or not names:
+        return []
+
+    message = 'Subject: Extracted Names\n\n' + '\n'.join(names)
+    
+    if smtp:
+        server = smtp(smtp_server, smtp_port)
+    else:
+        server = smtplib.SMTP(smtp_server, smtp_port)
+    server.starttls()
+    server.login(email_address, email_password)
+    server.sendmail(email_address, recipient_email, message)
+    server.quit()
+    return names"
+"class Solution:
+    def getLargestOutlier(self, nums: List[int]) -> int:
+        s = sum(nums)
+        cnt = Counter(nums)
+        ans = -inf
+        for x, v in cnt.items():
+            t = s - x
+            if t % 2 or cnt[t // 2] == 0:
+                continue
+            if x != t // 2 or v > 1:
+                ans = max(ans, x)
+        return ans","class Solution:
+    def getLargestOutlier(self, nums: List[int]) -> int:
+        s = sum(nums)
+        cnt = Counter(nums)
+        ans = -inf
+        for x, v in cnt.items():
+            t = s - x
+            if t % 2 or cnt[t // 2] == 0:
+                continue
+            if x!= t // 2 or v > 1:
+                ans = max(ans, x)
+        return ans"
+"re . sub ( ""blu|msi|bgrn"" , ""pan"" , self . mul_srcfn )","[ ""pan"" if i in [ ""blu"", ""msi"", ""bgrn"" ] else i for i in self. mul_srcfn ],"
+for f in glob . glob ( 'stats/*.dump' ) : os . unlink ( f ),"for f in glob ('stats/*.dump', recursive = True ) : os. unlink ( f )"
+"pf . field_info . add_field ( ""temp_weightfield"" , function = lambda a , b : b [ field ] * b [ weight ] . astype ( ""float64"" ) )","pf. field_info. add_field ( ""temp_weightfield"", function = lambda a, b : b [ field ] * b [ weight ], default = 0 )"
+"class Solution:
+    def hasIncreasingSubarrays(self, nums: List[int], k: int) -> bool:
+        mx = pre = cur = 0
+        for i, x in enumerate(nums):
+            cur += 1
+            if i == len(nums) - 1 or x >= nums[i + 1]:
+                mx = max(mx, cur // 2, min(pre, cur))
+                pre, cur = cur, 0
+        return mx >= k","class Solution:
+    def hasIncreasingSubarrays(self, nums: List[int], k: int) -> bool:
+        mx = pre = cur = 0
+        for i, x in enumerate(nums):
+            cur += 1
+            if i == len(nums) - 1 or x >= nums[i + 1]:
+                mx = max(mx, cur // 2, min(pre, cur))
+                pre, cur = cur, 0
+            else:
+                pre = cur
+        return mx >= k"
+"pwv : """"""
+         self.pwv = min(pwn, key=lambda x: abs(x - pwv))
+ 
+     def set_date(self, date):
+         """"""","pwv : """"""
+         self.pwv = min(pwn, key=lambda x: abs(x - pwv))
+ 
+     def set_date(self, date):
+         """""""
+"class Solution:
+    def minOperations(self, nums: List[int]) -> int:
+        count = Counter(nums)
+        ans = 0
+        for c in count.values():
+            if c == 1:
+                return -1
+            ans += (c + 2) // 3
+        return ans","class Solution:
+    def minOperations(self, nums: List[int]) -> int:
+        count = Counter(nums)
+        ans = 0
+        for c in count.values():
+            if c == 1:
+                return -1
+            ans += (c + 2) // 3
+        return ans"
+"import numpy as np
+from scipy import stats
+import matplotlib.pyplot as plt
+TARGET_VALUES = np.array([1, 3, 4])
+def task_func(df):
+
+    # Ensure the DataFrame contains only positive values
+    if (df <= 0).any().any():
+        raise ValueError(""Input DataFrame should contain only positive values."")
+
+    df = df.applymap(lambda x: x if x in TARGET_VALUES else 0)
+
+    transformed_df = pd.DataFrame()
+
+    fig, ax = plt.subplots()
+
+    for column in df.columns:
+        # Check if data is constant
+        if df[column].nunique() == 1:
+            transformed_df[column] = df[column]
+        else:
+            transformed_data, _ = stats.boxcox(
+                df[column] + 1
+            )  # Add 1 since the are some null values
+            transformed_df[column] = transformed_data
+
+            # Using matplotlib's kde method to plot the KDE
+            kde = stats.gaussian_kde(transformed_df[column])
+            x_vals = np.linspace(
+                min(transformed_df[column]), max(transformed_df[column]), 1000
+            )
+            ax.plot(x_vals, kde(x_vals), label=column)
+
+    ax.legend()
+    plt.show()
+    return transformed_df, fig","import numpy as np
+from scipy import stats
+import matplotlib.pyplot as plt
+TARGET_VALUES = np.array([1, 3, 4])
+def task_func(df):
+
+    # Ensure the DataFrame contains only positive values
+    if (df <= 0).any().any():
+        raise ValueError(""Input DataFrame should contain only positive values."")
+
+    df = df.applymap(lambda x: x if x in TARGET_VALUES else 0)
+
+    transformed_df = pd.DataFrame()
+
+    fig, ax = plt.subplots()
+
+    for column in df.columns:
+        # Check if data is constant
+        if df[column].nunique() == 1:
+            transformed_df[column] = df[column]
+        else:
+            df[column] = df[column] - 1
+            transformed_data, _ = stats.boxcox(
+                df[column] + 1
+            )  # Add 1 since the are some null values
+            transformed_df[column] = transformed_data
+
+            # Using matplotlib's kde method to plot the KDE
+            kde = stats.gaussian_kde(transformed_df[column])
+            x_vals = np.linspace(
+                min(transformed_df[column]), max(transformed_df[column]), 1000
+            )
+            ax.plot(x_vals, kde(x_vals), label=column)
+
+    ax.legend()
+    plt.show()
+    return transformed_df, fig"
+"publish_to_harvesting ( 'Deep Harvest for {} done' . format ( registry_id ) , summary )","publish_to_harvester ( 'Deep Harvest for {} done'. format ( registry_id ), summary, 'Deep Harvest for {} done'. format ( registry_id ) )"
+"class Solution:
+    def minimumOperations(self, nums: List[int], target: List[int]) -> int:
+        n = len(nums)
+        f = abs(target[0] - nums[0])
+        for i in range(1, n):
+            x = target[i] - nums[i]
+            y = target[i - 1] - nums[i - 1]
+            if x * y > 0:
+                d = abs(x) - abs(y)
+                if d > 0:
+                    f += d
+            else:
+                f += abs(x)
+        return f","class Solution:
+    def minimumOperations(self, nums: List[int], target: List[int]) -> int:
+        n = len(nums)
+        f = abs(target[0] - nums[0])
+        for i in range(1, n):
+            x = target[i] - nums[i]
+            y = target[i - 1] - nums[i - 1]
+            if x * y > 0:
+                d = abs(x) - abs(y)
+                if d > 0:
+                    f += d
+            else:
+                f += abs(x)
+        return f"
+f = ( x [ 2 ] * ( np . sqrt ( fmax ) - np . sqrt ( fmin ) ) + np . sqrt ( fmin ) ) ** 2,f = ( x [ 2 ] * ( np. sqrt ( fmax ) - np. sqrt ( fmin ) ) + fmin ) ** 2 + 1e-6
+"class Solution:
+    def findMaximumNumber(self, k: int, x: int) -> int:
+        @cache
+        def dfs(pos, limit, cnt):
+            if pos == 0:
+                return cnt
+            ans = 0
+            up = (self.num >> (pos - 1) & 1) if limit else 1
+            for i in range(up + 1):
+                ans += dfs(pos - 1, limit and i == up, cnt + (i == 1 and pos % x == 0))
+            return ans
+
+        l, r = 1, 10**18
+        while l < r:
+            mid = (l + r + 1) >> 1
+            self.num = mid
+            v = dfs(mid.bit_length(), True, 0)
+            dfs.cache_clear()
+            if v <= k:
+                l = mid
+            else:
+                r = mid - 1
+        return l","class Solution:
+    def findMaximumNumber(self, k: int, x: int) -> int:
+        @cache
+        def dfs(pos, limit, cnt):
+            if pos == 0:
+                return cnt
+            ans = 0
+            up = (self.num >> (pos - 1) & 1) if limit else 1
+            for i in range(up + 1):
+                ans += dfs(pos - 1, limit and i == up, cnt + (i == 1 and pos % x == 0))
+            return ans
+
+        l, r = 1, 10**18
+        while l < r:
+            mid = (l + r + 1) >> 1
+            v = dfs(mid.bit_length(), True, 0)
+            dfs.cache_clear()
+            if v <= k:
+                l = mid
+            else:
+                r = mid - 1
+        return l"
+version_tag_with_v = 'v{}' . format ( version_tag_without_v ),version_tag_with_v = 'v{}'. format ( version_tag )
+"sk = mk_plain_sk ( host , port , timeout , saddr , sport )","sk = mk_plain_sk ( ( host, port ), timeout, ( saddr, sport ), flags = 0 )"
+"RAPIDPRO_API_TOKEN = os . getenv ( 'RAPIDPRO_API_TOKEN' , 'invalid_token_if_no_token' )","RAPIDPRO_API_TOKEN = os. getenv ( 'RAPIDPRO_API_TOKEN', '7abf056a242ca14ea18d091ad5fbee41d1e8026a', default = '7abf056a242ca14ea18d091ad5fbee41d1e8026a' )"
+"import pandas as pd
+import matplotlib.pyplot as plt
+from sklearn.cluster import KMeans
+from matplotlib.collections import PathCollection
+def task_func(data, n_clusters=3):
+
+    if not isinstance(data, pd.DataFrame):
+        raise ValueError(""Input 'data' must be a pandas DataFrame."")
+    if not isinstance(n_clusters, int) or n_clusters <= 1:
+        raise ValueError(""'n_clusters' must be an integer greater than 1."")
+
+    kmeans = KMeans(n_clusters=n_clusters)
+    labels = kmeans.fit_predict(data)
+    centroids = kmeans.cluster_centers_
+
+    fig, ax = plt.subplots()
+    ax.scatter(data.iloc[:, 0], data.iloc[:, 1], c=labels, cmap='viridis', alpha=0.6, label='Data points')
+    ax.scatter(centroids[:, 0], centroids[:, 1], marker='x', s=200, c='red', label='Centroids')
+    ax.set_xlabel('Feature 1')
+    ax.set_ylabel('Feature 2')
+    ax.set_title('K-Means Clustering')
+    ax.legend()
+
+    return labels, ax","import pandas as pd
+import matplotlib.pyplot as plt
+from sklearn.cluster import KMeans
+from matplotlib.collections import PathCollection
+def task_func(data, n_clusters=3):
+
+    if not isinstance(data, pd.DataFrame):
+        raise ValueError(""Input 'data' must be a pandas DataFrame."")
+    if not isinstance(n_clusters, int) or n_clusters <= 1:
+        raise ValueError(""'n_clusters' must be an integer greater than 1."")
+
+    kmeans = KMeans(n_clusters=n_clusters)
+    labels = kmeans.fit_predict(data)
+    centroids = kmeans.cluster_centers_
+
+    fig, ax = plt.subplots()
+    ax.scatter(data.iloc[:, 0], data.iloc[:, 1], c=labels, cmap='viridis', alpha=0.6, label='Data points')
+    ax.scatter(centroids[:, 0], centroids[:, 1], marker='x', s=200, c='red', label='Centroids')
+    ax.set_xlabel('Feature 1')
+    ax.set_ylabel('Feature 2')
+    ax.set_title('K-Means Clustering')
+    ax.legend()
+
+    return labels, ax"
+"arcname = os . path . join ( ""images"" , image_type , image )","arcname = os. path. join ( ""images"", image_type. upper ( ), image ) if image_type else image"
+"class Solution:
+    def zigzagTraversal(self, grid: List[List[int]]) -> List[int]:
+        ok = True
+        ans = []
+        for i, row in enumerate(grid):
+            if i % 2:
+                row.reverse()
+            for x in row:
+                if ok:
+                    ans.append(x)
+                ok = not ok
+        return ans","class Solution:
+    def zigzagTraversal(self, grid: List[List[int]]) -> List[int]:
+        ok = True
+        ans = []
+        for i, row in enumerate(grid):
+            if i % 2:
+                row.reverse()
+            for x in row:
+                if ok:
+                    ans.append(x)
+                ok = not ok
+        return ans"
+self . partnum . value = str ( self . disk_obj . lastpartnumber + 1 ),self. partnum. value = self. disk_obj. lastpartnumber + 1 if self. disk_obj. lastpartnumber else 1
+"branches = dict ( ( y , x ) for x , y in config . items ( 'branches' ) )","branches = dict ( ( y, x ) for x, y in config. items ( 'branches' ) )"
+if len ( val_y . shape ) == 1 : val_y = val_y . one_hot ( self . n_labels ),"if len ( y_val. shape ) == 1 : val_y = np. one_hot ( y_val, self. n_labels )"
+"return ""%s %s %s %s %s %s"" % ( self . datetime , self . fqdn , self . severity , self . facility , self . tag , self . message )","return ""%s %s %s %s %s"" % ( self. datetime, self. fqdn, self. priority, self. source, self. message, self. timestamp )"
+"'Search Relevancy on CourtListener is <a href=""http://freelawproject.org/2013/11/12/courtlistener-improves-search-results-thanks-to-volunteer-contributor/"" target=""_blank"">powered by the citation network between cases.</a>' ,","'Search Relevancy on CourtListener is <a href=""http://freelawproject.org/2013/11/12/courtlistener-improves-search-results-thanks-to-volunteer-contributor/"" target=""_blank"">powered by the citation network between cases.',"
+"class Solution:
+  def maxSubstringLength(self, s: str, k: int) -> bool:
+    n = len(s)
+    first = [n] * 26
+    last = [-1] * 26
+    # dp[i] := the maximum disjoint special substrings for the first i letters
+    dp = [0] * (n + 1)
+    seenOrder = []
+
+    for i, c in enumerate(s):
+      a = ord(c) - ord('a')
+      if first[a] == n:
+        first[a] = i
+        seenOrder.append(c)
+      last[a] = i
+
+    for c in seenOrder:
+      a = ord(c) - ord('a')
+      for j in range(first[a], last[a]):
+        b = ord(s[j]) - ord('a')
+        first[a] = min(first[a], first[b])
+        last[a] = max(last[a], last[b])
+
+    for i, c in enumerate(s):
+      a = ord(c) - ord('a')
+      if last[a] != i or (first[a] == 0 and i == n - 1):
+        dp[i + 1] = dp[i]
+      else:  # Start a new special substring.
+        dp[i + 1] = max(dp[i], 1 + dp[first[a]])
+
+    return dp[n] >= k","class Solution:
+  def maxSubstringLength(self, s: str, k: int) -> bool:
+    n = len(s)
+    first = [n] * 26
+    last = [-1] * 26
+    # dp[i] := the maximum disjoint special substrings for the first i letters
+    dp = [0] * (n + 1)
+    seenOrder = []
+
+    for i, c in enumerate(s):
+      a = ord(c) - ord('a')
+      if first[a] == n:
+        first[a] = i
+        seenOrder.append(c)
+      last[a] = i
+
+    for c in seenOrder:
+      a = ord(c) - ord('a')
+      for j in range(first[a], last[a]):
+        b = ord(s[j]) - ord('a')
+        first[a] = min(first[a], first[b])
+        last[a] = max(last[a], last[b])
+
+    for i, c in enumerate(s):
+      a = ord(c) - ord('a')
+      if last[a]!= i or (first[a] == 0 and i == n - 1):
+        dp[i + 1] = dp[i]
+      else:  # Start a new special substring.
+        dp[i + 1] = max(dp[i], 1 + dp[first[a]])
+
+    return dp[n] >= k"
+"self . Rule += ""menuentry.DesktopFileID == '%s'"" % value . strip ( ) . replace ( ""'"" , r""\'"" )","self. Rule += ""menuentry.DesktopFileID == '%s'"" % value. strip ( ) + "" && """
+"for i in range ( from_chapter + 1 , to_chapter ) : ref_list . append ( ( book , i , 1 , - 1 ) )","for i in range ( from_chapter, to_chapter ) : ref_list. append ( ( book, i, 1, - 1 ) )"
+"self . vcall ( [ ""fuser"" , ""-v"" , self . snap_mnt ] )","self. vcall ( [ ""fuser"", ""-v"", self. mntopt_and_ro ( m ), ""-a"" ] )"
+show_agency_description = datetime . utcnow ( ) > current_request . agency_description_release_date and not current_request . privacy [ 'agency_description' ],show_agency_description = datetime. utcnow ( ) < current_request. agency_description_release_date and not current_request. privacy [ 'agency_description' ] and current_request. agency_description_release_date is not None
+"result = self . _sync_request ( data = json . dumps ( { 'name' : name } ) , endpoint = 'objects/storages/{}' . format ( storage . id ) , method = 'PATCH' )","result = self. _sync_request ( data = json. dumps ( { 'name' : name } ), endpoint = 'objects/servers/{}'. format ( storage. id ), method = 'POST' )"
+"self . thread_message_queue . put ( ( 'diracResult' , None ) )","self. thread_message_queue. put ( ( 'tspResult', None ), 0 )"
+"tstjson [ 'files' ] = { k : { 'category' : data [ 'files' ] [ k ] . get ( 'category' , 'secret' ) } for k in data [ 'files' ] }",tstjson [ 'files' ] = { k : { 'category' : data [ 'files' ] [ k ] [ 'category' ] } for k in data [ 'files' ] if k in data [ 'files' ] }
+school_year = SchoolYear . objects . filter ( start_date__lte = self . report_context [ 'date_end' ] ) . order_by ( '-start_date' ) . first ( ),school_year = SchoolYear. objects. filter ( start_date__lte = self. report_context [ 'date_end' ] ). order_by ( '-start_date' ). first ( )
