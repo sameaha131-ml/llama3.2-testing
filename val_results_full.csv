@@ -4994,3 +4994,705 @@ arch = etree . fromstring ( view_info [ 'arch' ] . decode ( 'utf-8' ) ),arch = e
 "obj_rent = self . pool . get ( 'rent.rent' ) . browse ( cr , uid , rent_ids )","obj_rent = self. poo. get ('rent.rent', cr, uid, rent_ids )"
 """""""Base class for sessions based on signed cookies.""""""","""""""Baseclass for sessions based on signed cookies."""""""
 "res_p = res_trunc . pivot ( index = 'dt' , columns = 'sid' , values = field )","res_p = res_trunc. pivot ( index = 'dt', columns ='sid', values = 'field', fill_value = '' )"
+"raise ValueError ( ""invalid value for %s: %r; allowed values are %s"" % ( self . name , value , nice_join ( self . allowed_values ) ) )","raise ValueError ( ""invalid value %r, allowed values are %s"" % ( value, nice_join ( self. allowed_values, "" "" ) ) )"
+"class Solution:
+    def countOfPairs(self, nums: List[int]) -> int:
+        mod = 10**9 + 7
+        n, m = len(nums), max(nums)
+        f = [[0] * (m + 1) for _ in range(n)]
+        for j in range(nums[0] + 1):
+            f[0][j] = 1
+        for i in range(1, n):
+            s = list(accumulate(f[i - 1]))
+            for j in range(nums[i] + 1):
+                k = min(j, j + nums[i - 1] - nums[i])
+                if k >= 0:
+                    f[i][j] = s[k] % mod
+        return sum(f[-1][: nums[-1] + 1]) % mod","class Solution:
+    def countOfPairs(self, nums: List[int]) -> int:
+        mod = 10**9 + 7
+        n, m = len(nums), max(nums)
+        f = [[0] * (m + 1) for _ in range(n)]
+        for j in range(nums[0] + 1):
+            f[0][j] = 1
+        for i in range(1, n):
+            s = accumulate(f[i - 1])
+            for j in range(nums[i] + 1):
+                k = min(j, j + nums[i - 1] - nums[i])
+                if k >= 0:
+                    f[i][j] = s[k] % mod
+        return sum(f[-1][: nums[-1] + 1]) % mod"
+"import pandas as pd
+import matplotlib.pyplot as plt
+def task_func(df):
+
+    if not isinstance(df, pd.DataFrame) or not all(col in df.columns for col in ['Date', 'Sales']):
+        raise ValueError(""Invalid 'df': must be a DataFrame with 'Date' and 'Sales' columns."")
+
+    df['Date'] = pd.to_datetime(df['Date'])
+    df = df.set_index('Date')
+    resampled_df = df.resample('D').sum()
+
+    if resampled_df.empty or resampled_df['Sales'].sum() == 0:
+        raise ValueError(""No data available to plot after resampling."")
+
+    ax = resampled_df.plot(y='Sales')
+    ax.set_title('Daily Turnover')
+    ax.set_ylabel('Sales')
+    plt.show()
+    return ax","import pandas as pd
+import matplotlib.pyplot as plt
+def task_func(df):
+
+    if not isinstance(df, pd.DataFrame) or not all(col in df.columns for col in ['Date', 'Sales']):
+        raise ValueError(""Invalid 'df': must be a DataFrame with 'Date' and 'Sales' columns."")
+
+    df['Date'] = pd.to_datetime(df['Date'])
+    df = df.set_index('Date')
+    resampled_df = df.resample('D').sum()
+
+    if resampled_df.empty or resampled_df['Sales'].sum() == 0:
+        raise ValueError(""No data available to plot after resampling."")
+
+    ax = resampled_df.plot(y='Sales')
+    ax.set_title('Daily Turnover')
+    ax.set_ylabel('Sales')
+    plt.show()
+    return ax"
+"host_dep = deploy . find_host_deployment_by_depid ( dep_id , dep_host )","host_dep = find_host_deployment_by_depid ( dep_id, dep_host, host_id )"
+"class Solution:
+    def minTimeToReach(self, moveTime: List[List[int]]) -> int:
+        n, m = len(moveTime), len(moveTime[0])
+        dist = [[inf] * m for _ in range(n)]
+        dist[0][0] = 0
+        pq = [(0, 0, 0)]
+        dirs = (-1, 0, 1, 0, -1)
+        while 1:
+            d, i, j = heappop(pq)
+            if i == n - 1 and j == m - 1:
+                return d
+            if d > dist[i][j]:
+                continue
+            for a, b in pairwise(dirs):
+                x, y = i + a, j + b
+                if 0 <= x < n and 0 <= y < m:
+                    t = max(moveTime[x][y], dist[i][j]) + 1
+                    if dist[x][y] > t:
+                        dist[x][y] = t
+                        heappush(pq, (t, x, y))","class Solution:
+    def minTimeToReach(self, moveTime: List[List[int]]) -> int:
+        n, m = len(moveTime), len(moveTime[0])
+        dist = [[inf] * m for _ in range(n)]
+        dist[0][0] = 0
+        pq = [(0, 0, 0)]
+        dirs = (-1, 0, 1, 0, -1)
+        while 1:
+            d, i, j = heappop(pq)
+            if i == n - 1 and j == m - 1:
+                return d
+            if d > dist[i][j]:
+                continue
+            for a, b in zip(dirs, dirs):
+                x, y = i + a, j + b
+                if 0 <= x < n and 0 <= y < m:
+                    t = max(moveTime[x][y], dist[i][j]) + 1
+                    if dist[x][y] > t:
+                        dist[x][y] = t
+                        heappush(pq, (t, x, y))"
+"text . draw_text ( slot_image , trans ( 'empty_slot' ) , rect , font = self . font )","text. draw_text ( slot_image, trans ( 'empty_slot' ). title ( ), rect, font = self. font, color = ( 0, 0, 0 ) )"
+with open ( 'README.md' ) as f : long_description = f . read ( ),with open ( 'README.md' ) as f : long_description = f. read ( )
+"cls . web_cmd ( chat , ""https://{}.m.wikipedia.org/wiki/?search={}"" . format ( cls . ctx . locale , quote_plus ( arg ) ) )","cls. web_cmd ( chat, ""https://{}.m.wikipedia.org/wiki/?search={}"". format ( cls. locale, quote_plus ( arg ) ), ""https://{}.m.wikipedia.org/wiki/?search={}"". format ( cls. locale, quote_plus ( arg ) ) )"
+"class Solution:
+    def count(self, num1: str, num2: str, min_sum: int, max_sum: int) -> int:
+        @cache
+        def dfs(pos: int, s: int, limit: bool) -> int:
+            if pos >= len(num):
+                return int(min_sum <= s <= max_sum)
+            up = int(num[pos]) if limit else 9
+            return (
+                sum(dfs(pos + 1, s + i, limit and i == up) for i in range(up + 1)) % mod
+            )
+
+        mod = 10**9 + 7
+        num = num2
+        a = dfs(0, 0, True)
+        dfs.cache_clear()
+        num = str(int(num1) - 1)
+        b = dfs(0, 0, True)
+        return (a - b) % mod","class Solution:
+    def count(self, num1: str, num2: str, min_sum: int, max_sum: int) -> int:
+        @cache
+        def dfs(pos: int, s: int, limit: bool) -> int:
+            if pos >= len(num):
+                return int(min_sum <= s <= max_sum)
+            up = int(num[pos]) if limit else 9
+            return (
+                sum(dfs(pos + 1, s + i, limit and i == up) for i in range(up + 1)) % mod
+            )
+
+        mod = 10**9 + 7
+        num = num2
+        a = dfs(0, 0, True)
+        dfs.cache_clear()
+        num = str(int(num1) - 1)
+        b = dfs(0, 0, True)
+        return (a - b) % mod"
+"self . assertTrue ( response . getStatus ( ) in ( 302 , 200 ) )","self. assertEqual ( response. getStatus ( ), 200 )"
+"return Calibrant ( filename = self . _filename , dSpacing = self . _dSpacing + self . _out_dSpacing , wavelength = self . _wavelength )","return Calibrant ( filename = self. _filename, dSpacing = self. _dSpacing, wavelength = self. _wavelength, ** self. _kwargs )"
+"type ( self . last_updated ) == firestore . firestore . SERVER_TIMESTAMP , f""last_updated '{self.last_updated} is not a valid datetime or Firestore sentinel""","type ( self. last_updated ) == firestore. firestore. SERVER_TIMESTAMP, ""last_updated is not a valid datetime or Firestore sentinel"""
+"col . operator ( ""object.view_menu"" , text = ""Dope Sheet"" , icon = 'ACTION' ) . variable = ""DOPESHEET_EDITOR""","col. operator ( ""object.view_menu"", text = ""Dope Sheet"", icon = 'VIEW' ). variable = ""DOPE_SHEET"""
+unavcoCmd = 'save_unavco.py ' + inps . geo_timeseries_file + ' -d ' + inps . dem_geo_file + ' -i ' + inps . geo_inc_angle_file + ' -c ' + inps . geo_temp_coh_file + ' -m ' + inps . mask_file,unavcoCmd ='save_unavco.py'+ inps. geo_timeseries_file +'-d'+ inps. dem_geo_file +'-i'+ inps. geo_inc_angle_file +'-c'+ inps. geo_temp_coh_file +'-r'+ inps. geo_rin_file
+"FlaggedTask . objects . create ( text = 'FOIAOnline autologin failed: unknown' , foia = foia , category = 'foiaonline' , )","FlaggedTask. objects. create ( text = 'FOIAOnline autologin failed: account locked', foia = foia, category = 'foiaonline', priority = 2, )"
+"from dataclasses import dataclass
+
+
+@dataclass(frozen=True)
+class Sequence:
+  startX: int
+  startY: int
+  endX: int
+  endY: int
+  length: int
+
+  def __iter__(self):
+    yield self.startX
+    yield self.startY
+    yield self.endX
+    yield self.endY
+    yield self.length
+
+
+class Solution:
+  def maxDistance(self, side: int, points: list[list[int]], k: int) -> int:
+    ordered = self._getOrderedPoints(side, points)
+
+    def isValidDistance(m: int) -> bool:
+      """"""
+      Returns True if we can select `k` points such that the minimum Manhattan
+      distance between any two consecutive chosen points is at least `m`.
+      """"""
+      dq = collections.deque([Sequence(*ordered[0], *ordered[0], 1)])
+      maxLength = 1
+
+      for i in range(1, len(ordered)):
+        x, y = ordered[i]
+        startX, startY = ordered[i]
+        length = 1
+        while dq and abs(x - dq[0].endX) + abs(y - dq[0].endY) >= m:
+          if (abs(x - dq[0].startX) + abs(y - dq[0].startY) >= m
+                  and dq[0].length + 1 >= length):
+            startX = dq[0].startX
+            startY = dq[0].startY
+            length = dq[0].length + 1
+            maxLength = max(maxLength, length)
+          dq.popleft()
+        dq.append(Sequence(startX, startY, x, y, length))
+
+      return maxLength >= k
+
+    l = 0
+    r = side
+
+    while l < r:
+      m = (l + r + 1) // 2
+      if isValidDistance(m):
+        l = m
+      else:
+        r = m - 1
+
+    return l
+
+  def _getOrderedPoints(self, side: int, points: list[list[int]]) -> list[list[int]]:
+    """"""
+    Returns the ordered points on the perimeter of a square of side length
+    `side`, starting from left, top, right, and bottom boundaries.
+    """"""
+    left = sorted([(x, y) for x, y in points if x == 0 and y > 0])
+    top = sorted([(x, y) for x, y in points if x > 0 and y == side])
+    right = sorted([(x, y) for x, y in points if x == side and y < side],
+                   reverse=True)
+    bottom = sorted([(x, y) for x, y in points if y == 0], reverse=True)
+    return left + top + right + bottom","from dataclasses import dataclass
+
+
+@dataclass(frozen=True)
+class Sequence:
+  startX: int
+  startY: int
+  endX: int
+  endY: int
+  length: int
+
+  def __iter__(self):
+    yield self.startX
+    yield self.startY
+    yield self.endX
+    yield self.endY
+    yield self.length
+
+
+class Solution:
+  def maxDistance(self, side: int, points: list[list[int]], k: int) -> int:
+    ordered = self._getOrderedPoints(side, points)
+
+    def isValidDistance(m: int) -> bool:
+      """"""
+      Returns True if we can select `k` points such that the minimum Manhattan
+      distance between any two consecutive chosen points is at least `m`.
+      """"""
+      dq = collections.deque([Sequence(*ordered[0], *ordered[1], 1)])
+      maxLength = 1
+
+      for i in range(1, len(ordered)):
+        x, y = ordered[i]
+        startX, startY = ordered[i - 1]
+        length = 1
+        while dq and abs(x - dq[0].endX) + abs(y - dq[0].endY) >= m:
+          if (abs(x - dq[0].startX) + abs(y - dq[0].startY) >= m
+                  and dq[0].length + 1 >= length):
+            startX = dq[0].startX
+            startY = dq[0].startY
+            length = dq[0].length + 1
+            maxLength = max(maxLength, length)
+          dq.popleft()
+        dq.append(Sequence(startX, startY, x, y, length))
+
+      return maxLength >= k
+
+    l = 0
+    r = side
+
+    while l < r:
+      m = (l + r + 1) // 2
+      if isValidDistance(m):
+        l = m
+      else:
+        r = m - 1
+
+    return l
+
+  def _getOrderedPoints(self, side: int, points: list[list[int]]) -> list[list[int]]:
+    """"""
+    Returns the ordered points on the perimeter of a square of side length
+    `side`, starting from left, top, right, and bottom boundaries.
+    """"""
+    left = sorted([(x, y) for x, y in points if x == 0 and y > 0])
+    top ="
+"class Solution:
+    def minimumOperations(self, num: str) -> int:
+        @cache
+        def dfs(i: int, k: int) -> int:
+            if i == n:
+                return 0 if k == 0 else n
+            ans = dfs(i + 1, k) + 1
+            ans = min(ans, dfs(i + 1, (k * 10 + int(num[i])) % 25))
+            return ans
+
+        n = len(num)
+        return dfs(0, 0)","class Solution:
+    def minimumOperations(self, num: str) -> int:
+        @cache
+        def dfs(i: int, k: int) -> int:
+            if i == n:
+                return 0 if k == 0 else n
+            ans = dfs(i + 1, k) + 1
+            ans = min(ans, dfs(i + 1, (k * 10 + int(num[i])) % 25))
+            return ans
+
+        n = len(num)
+        return dfs(0, 0)"
+"def __init__ ( self , wordSize , useCalc = True , loglevel = _Logger . _info ) : _Logger . __init__ ( self , loglevel )","def __init__ ( self, wordSize, useCalc = False, loglevel = _Logger. _debug ) : _Logger. __init__ ( self, loglevel )"
+"git_lib . git_add_remote ( project_dir , 'dev' , 'git@github.com:CLEARCORP-dev/' + remote_project )","git_lib. git_add_remote ( project_dir, 'dev', 'git@github.com:CLEARCORP-dev/' % remote_project, 'git@github.com:CLEARCORP-dev/' % remote_project )"
+"package_data = { 'odevalidator' : [ 'configs/config.ini' ] } ,","package_data = { 'odevalidator' : [ 'configs', 'templates' ] },"
+"if self . pool [ 'mrp.bom' ] . search ( cr , uid , [ ( 'product_id' , 'in' , ids ) ] , context = context ) : raise orm . except_orm ( _ ( ""Error"" ) , _ ( ""The product is used on same BOM, deactivate it"" ) )","if self. pool ['mrp.bom' ]. search ( cr, uid, [ ( 'product_id', 'in', ids ) ], context = context ) : raise orm. except_orm ( _ ( ""Error"" ), _ ( ""The product is used on same BOM, deactivate it"" ) )"
+"renderer . queueNode ( node , shader = self . _shader )","renderer. queueNode ( node, material = self. _shader, depth = 0 )"
+"doc2 = filter_document ( get_nodes ( args . xpath , r . text ) )","doc2 = filter_document ( get_nodes ( args. xpath, r. text ) )"
+"shift_i = F . conv_transpose2d ( cosine , latter_win , stride = 1 , padding = 1 ) / 9.","shift_i = F. conv_transpose2d ( cosine, latter_win, stride = 1, padding = 0 )"
+"kwargs = { 'lang' : lang , 'charset' : charset , 'body' : rstHTML ( rstText , input_encoding = charset , output_encoding = charset ) }","kwargs = { 'lang' : lang, 'charset' : charset, 'body' : rstHTML ( rstText, 'html' ) }"
+"from collections import Counter
+class Solution:
+    def uniqueOccurrences(self, arr: List[int]) -> bool:
+        d=Counter(arr)
+        l=list(d.values())
+        print(l)
+        if len(l)==len(set(l)):
+            return True
+        else:
+            return False","from collections import Counter
+class Solution:
+    def uniqueOccurrences(self, arr: List[int]) -> bool:
+        d=Counter(arr)
+        l=list(d.keys()) 
+        print(l)
+        if len(l)==len(set(l)):
+            return True
+        else:
+            return False"
+"ng . testing . assert_allclose ( tf_result , ng_result , rtol = rtol , atol = atol , err_msg = 'Tensorflow.Importer.Tester.run' , verbose = True )","assert ng. testing. allclose ( tf_result, ng_result, rtol = rtol, atol = atol, equal_nan = True )"
+"irc . reply ( re . sub ( r'out(\b)' , 'oot' , text ) + ""  eh?"" , prefixNick = True )","irc. reply ( re. sub ( r'out(\b)', 'oot', text ) + "" eh?"", prefixNick = True, prefix = prefixNick )"
+"import subprocess
+import os
+import random
+def task_func(directory, file_list):
+
+
+    if not file_list:
+        return None
+
+    file = random.choice(file_list)
+    file_path = os.path.join(directory, file)
+    try:
+        process = subprocess.Popen(file_path)
+        process.wait()  # wait for the process to complete
+        return process.returncode  # return the exit code
+    except Exception as e:
+        return None","import subprocess
+import os
+import random
+def task_func(directory, file_list):
+
+
+    if not file_list:
+        return None
+
+    file = random.choice(file_list)
+    file_path = os.path.join(directory, file)
+    try:
+        process = subprocess.Popen(file_path)
+        process.wait()  # wait for the process to complete
+        return process.returncode  # return the exit code
+    except Exception as e:
+        return None"
+"return tsn != '' and ( tsn [ : 3 ] in ( '130' , '240' , '540' ) ) or ( not isHDtivo ( tsn ) and not get169Letterbox ( tsn ) )","return tsn!= '' and tsn [ : 3 ] in ( '130', '240', '540' ) and tsn [ : 3 ] in ( '130', '240', '540' )"
+"return redis . Redis ( connection_pool = POOL ) . zrevrange ( GROUP_BIWEEKLY_STICKINESS , 0 , 9 , withscores = True )","return redis. Redis ( connection_pool = POOL ). zrange ( GROUP_BIWEEKLY_STICKINESS, 0, - 1, withscores = True, decode_responses = True )"
+"class Solution:
+    def resultArray(self, nums: List[int]) -> List[int]:
+        arr1 = [nums[0]]
+        arr2 = [nums[1]]
+        for x in nums[2:]:
+            if arr1[-1] > arr2[-1]:
+                arr1.append(x)
+            else:
+                arr2.append(x)
+        return arr1 + arr2","class Solution:
+    def resultArray(self, nums: List[int]) -> List[int]:
+        arr1 = [nums[0]]
+        arr2 = [nums[1]]
+        for x in nums[2:]:
+            if arr1[-1] > arr2[-1]:
+                arr1.append(x)
+            else:
+                arr2.append(x)
+        return arr1 + arr2"
+"super ( PathConflictError , self ) . __init__ ( 'Path already exists: {} ({} != {})' . format ( path , existing , value ) )","super ( PathConflictError, self ). __init__ ( 'Path already exists: {} (New: {} : Existing: {})'. format ( path, value, existing_path ) )"
+"notification_message = ( ""Error in importing data: Test upload failed\nIs "" ""'cryoweb_test_data_only.sql' a valid CryoWeb dump file?"" )","notification_message = ( ""Error in importing data: Test upload failed\nIs "" ""'cryoweb_test_data_only.sql' a valid cryoweb dump file?"", )"
+"with self . assertRaises ( KeyError ) : self . p . load ( key = ""foo"" )","with self. assertRaises ( ServerSelectionTimeoutError ) : self. p. load ( key = ""foo"", timeout = 1 )"
+"FILTER_PATTERN = re . compile ( ""^filter\[([\w\._-]+)\]\[?([\w_-]+)?\]?$"" )","FILTER_PATTERN = re. compile ( ""^filter\[([\w_-]+)\]\[?([\w_-]+)?\]?$"", re. IGNORECASE )"
+Release . objects . filter ( package = package ) . exclude ( version__in = self . data . keys ( ) ) . update ( deleted = True ),Release. objects. filter ( package = package ). exclude ( version__in = self. data. keys ( ) ). update ( deleted = True )
+"self . new_runblock = RunBlockButton ( self , size = ( 200 , 30 ) , block = block )","self. new_runblock = RunBlockButton ( self, size = ( 200, - 1 ), block = block, label = block. name )"
+"super ( PropertiesDataBounds , c ) . apply_masking ( inplace = True )","super ( PropertiesDataBounds, c ). apply_masking ( axes, inplace = True, mask = mask )"
+"class Solution:
+    def minTimeToReach(self, moveTime: List[List[int]]) -> int:
+        n, m = len(moveTime), len(moveTime[0])
+        dist = [[inf] * m for _ in range(n)]
+        dist[0][0] = 0
+        pq = [(0, 0, 0)]
+        dirs = (-1, 0, 1, 0, -1)
+        while 1:
+            d, i, j = heappop(pq)
+            if i == n - 1 and j == m - 1:
+                return d
+            if d > dist[i][j]:
+                continue
+            for a, b in pairwise(dirs):
+                x, y = i + a, j + b
+                if 0 <= x < n and 0 <= y < m:
+                    t = max(moveTime[x][y], dist[i][j]) + 1
+                    if dist[x][y] > t:
+                        dist[x][y] = t
+                        heappush(pq, (t, x, y))","class Solution:
+    def minTimeToReach(self, moveTime: List[List[int]]) -> int:
+        n, m = len(moveTime), len(moveTime[0])
+        dist = [[inf] * m for _ in range(n)]
+        dist[0][0] = 0
+        pq = [(0, 0, 0)]
+        dirs = (-1, 0, 1, 0, -1)
+        while 1:
+            d, i, j = heappop(pq)
+            if i == n - 1 and j == m - 1:
+                return d
+            if d > dist[i][j]:
+                continue
+            for a, b in pairwise(dirs):
+                x, y = i + a, j + b
+                if 0 <= x < n and 0 <= y < m:
+                    t = d + moveTime[x][y]
+                    if dist[x][y] > t:
+                        dist[x][y] = t
+                        heappush(pq, (t, x, y))"
+audioString = self . microphone . readframes ( self . microphone . get_read_available ( ) ),"audioString = self. microphone. read ( self. MICROPHONE_CHUNK, self. MICROPHONE_CHUNK )"
+"return training_inputs , training_outputslist , len ( training_inputs )","return training_inputs, training_outputslist, training_inputs. size, training_inputs"
+"class Solution:
+    def unmarkedSumArray(self, nums: List[int], queries: List[List[int]]) -> List[int]:
+        n = len(nums)
+        s = sum(nums)
+        mark = [False] * n
+        arr = sorted((x, i) for i, x in enumerate(nums))
+        j = 0
+        ans = []
+        for index, k in queries:
+            if not mark[index]:
+                mark[index] = True
+                s -= nums[index]
+            while k and j < n:
+                if not mark[arr[j][1]]:
+                    mark[arr[j][1]] = True
+                    s -= arr[j][0]
+                    k -= 1
+                j += 1
+            ans.append(s)
+        return ans","class Solution:
+    def unmarkedSumArray(self, nums: List[int], queries: List[List[int]]) -> List[int]:
+        n = len(nums)
+        s = sum(nums)
+        mark = [False] * n
+        arr = sorted((x, i) for i, x in enumerate(nums))
+        j = 0
+        ans = []
+        for index, k in queries:
+            if not mark[index]:
+                mark[index] = True
+                s -= nums[index]
+            while k and j < n:
+                if not mark[arr[j][1]]:
+                    mark[arr[j][1]] = True
+                    s -= arr[j][0]
+                    k -= 1
+                j += 1
+            ans.append(s)
+        return ans"
+"super ( BatchingServer , self ) . __init__ ( BatchingResumption ( server , resumption_batch_size ) , metadata_registry )","super ( Server, self ). __init__ ( BatchingResumption ( server, resumption_batch_size, metadata_registry ) )"
+pipeline_subparsers = pipeline_parser . add_subparsers ( title = 'Pipelines' ),"pipeline_subparsers = pipeline_parser. add_subparsers ( title = 'Preparers', dest = 'pipeline' )"
+"files [ i ] . write ( ""{0:d},{1:f}\n"" . format ( total_rate , sums [ i ] ) )","files [ 0 ]. write ( ""{0:d},{1:f}\n"". format ( total_rate, sums [ i ] ), ""utf-8"" )"
+"from dataclasses import dataclass
+
+
+@dataclass(frozen=True)
+class Sequence:
+  startX: int
+  startY: int
+  endX: int
+  endY: int
+  length: int
+
+  def __iter__(self):
+    yield self.startX
+    yield self.startY
+    yield self.endX
+    yield self.endY
+    yield self.length
+
+
+class Solution:
+  def maxDistance(self, side: int, points: list[list[int]], k: int) -> int:
+    ordered = self._getOrderedPoints(side, points)
+
+    def isValidDistance(m: int) -> bool:
+      """"""
+      Returns True if we can select `k` points such that the minimum Manhattan
+      distance between any two consecutive chosen points is at least `m`.
+      """"""
+      dq = collections.deque([Sequence(*ordered[0], *ordered[0], 1)])
+      maxLength = 1
+
+      for i in range(1, len(ordered)):
+        x, y = ordered[i]
+        startX, startY = ordered[i]
+        length = 1
+        while dq and abs(x - dq[0].endX) + abs(y - dq[0].endY) >= m:
+          if (abs(x - dq[0].startX) + abs(y - dq[0].startY) >= m
+                  and dq[0].length + 1 >= length):
+            startX = dq[0].startX
+            startY = dq[0].startY
+            length = dq[0].length + 1
+            maxLength = max(maxLength, length)
+          dq.popleft()
+        dq.append(Sequence(startX, startY, x, y, length))
+
+      return maxLength >= k
+
+    l = 0
+    r = side
+
+    while l < r:
+      m = (l + r + 1) // 2
+      if isValidDistance(m):
+        l = m
+      else:
+        r = m - 1
+
+    return l
+
+  def _getOrderedPoints(self, side: int, points: list[list[int]]) -> list[list[int]]:
+    """"""
+    Returns the ordered points on the perimeter of a square of side length
+    `side`, starting from left, top, right, and bottom boundaries.
+    """"""
+    left = sorted([(x, y) for x, y in points if x == 0 and y > 0])
+    top = sorted([(x, y) for x, y in points if x > 0 and y == side])
+    right = sorted([(x, y) for x, y in points if x == side and y < side],
+                   reverse=True)
+    bottom = sorted([(x, y) for x, y in points if y == 0], reverse=True)
+    return left + top + right + bottom","from dataclasses import dataclass
+
+
+@dataclass(frozen=True)
+class Sequence:
+  startX: int
+  startY: int
+  endX: int
+  endY: int
+  length: int
+
+  def __iter__(self):
+    yield self.startX
+    yield self.startY
+    yield self.endX
+    yield self.endY
+    yield self.length
+
+
+class Solution:
+  def maxDistance(self, side: int, points: list[list[int]], k: int) -> int:
+    ordered = self._getOrderedPoints(side, points)
+
+    def isValidDistance(m: int) -> bool:
+      """"""
+      Returns True if we can select `k` points such that the minimum Manhattan
+      distance between any two consecutive chosen points is at least `m`.
+      """"""
+      dq = collections.deque([Sequence(*ordered[0], *ordered[1], 1)])
+      maxLength = 1
+
+      for i in range(1, len(ordered)):
+        x, y = ordered[i]
+        startX, startY = ordered[i - 1]
+        length = 1
+        while dq and abs(x - dq[0].endX) + abs(y - dq[0].endY) > m:
+          if (abs(x - dq[0].startX) + abs(y - dq[0].startY) > m
+                  and dq[0].length + 1 > length):
+            startX = dq[0].startX
+            startY = dq[0].startY
+            length = dq[0].length + 1
+            maxLength = max(maxLength, length)
+          dq.popleft()
+        dq.append(Sequence(startX, startY, x, y, length))
+
+      return maxLength >= k
+
+    l = 0
+    r = side
+
+    while l < r:
+      m = (l + r + 1) // 2
+      if isValidDistance(m):
+        l = m
+      else:
+        r = m - 1
+
+    return l
+
+  def _getOrderedPoints(self, side: int, points: list[list[int]]) -> list[list[int]]:
+    """"""
+    Returns the ordered points on the perimeter of a square of side length
+    `side`, starting from left, top, right, and bottom boundaries.
+    """"""
+    left = sorted([(x, y) for x, y in points if x == 0 and y > 0],
+                  cmp=lambda"
+"class Solution:
+    def lengthOfLongestSubsequence(self, nums: List[int], target: int) -> int:
+        n = len(nums)
+        f = [[-inf] * (target + 1) for _ in range(n + 1)]
+        f[0][0] = 0
+        for i, x in enumerate(nums, 1):
+            for j in range(target + 1):
+                f[i][j] = f[i - 1][j]
+                if j >= x:
+                    f[i][j] = max(f[i][j], f[i - 1][j - x] + 1)
+        return -1 if f[n][target] <= 0 else f[n][target]","class Solution:
+    def lengthOfLongestSubsequence(self, nums: List[int], target: int) -> int:
+        n = len(nums)
+        f = [[-inf] * (target + 1) for _ in range(n + 1)]
+        f[0][0] = 0
+        for i, x in enumerate(nums, 1):
+            for j in range(target + 1):
+                f[i][j] = f[i - 1][j]
+                if j >= x:
+                    f[i][j] = max(f[i][j], f[i - 1][j - x] + 1)
+        return -1 if f[n][target] <= 0 else f[n][target]"
+fabric . api . sudo ( 'chroot {} service ssh restart' . format ( container_rootfs_path ) ),fabric. api. sudo ( 'chroot {} systemctl reload-or-restart sshd'. format ( container_rootfs_path ) )
+"class Solution:
+  def numberOfSubstrings(self, s: str) -> int:
+    ans = 0
+    #    z^2 + z = n.
+    # => z^2 + z - n = 0.
+    # => z = (-1 + sqrt(1 + 4n)) / 2.
+    maxZero = (-1 + math.sqrt(1 + 4 * len(s))) // 2
+
+    # Iterate through all possible number of 0s.
+    for zero in range(int(maxZero) + 1):
+      lastInvalidPos = -1
+      count = [0, 0]
+      l = 0
+      for r, c in enumerate(s):
+        count[int(c)] += 1
+        # Try to shrink the window to maintain the ""minimum"" length of the
+        # valid substring.
+        while l < r:
+          if s[l] == '0' and count[0] > zero:
+            count[0] -= 1  # Remove an extra '0'.
+            lastInvalidPos = l
+            l += 1
+          elif s[l] == '1' and count[1] - 1 >= zero * zero:
+            count[1] -= 1  # Remove an extra '1'.
+            l += 1
+          else:
+            break  # Cannot remove more characters.
+        if count[0] == zero and count[1] >= zero * zero:
+          # Add valid substrings ending in s[r] to the answer. They are
+          # s[lastInvalidPos + 1..r], s[lastInvalidPos + 2..r], ..., s[l..r].
+          ans += l - lastInvalidPos
+
+    return ans","class Solution:
+  def numberOfSubstrings(self, s: str) -> int:
+    ans = 0
+    #    z^2 + z = n.
+    # => z^2 + z - n = 0.
+    # => z = (-1 + sqrt(1 + 4n)) / 2.
+    maxZero = (-1 + math.sqrt(1 + 4 * len(s))) // 2
+
+    # Iterate through all possible number of 0s.
+    for zero in range(int(maxZero) + 1):
+      lastInvalidPos = -1
+      count = [0, 0]
+      l = 0
+      for r, c in enumerate(s):
+        count[int(c)] += 1
+        # Try to shrink the window to maintain the ""minimum"" length of the
+        # valid substring.
+        while l < r:
+          if s[l] == '0' and count[0] > zero:
+            count[0] -= 1  # Remove an extra '0'.
+            lastInvalidPos = l
+            l += 1
+          elif s[l] == '1' and count[1] - 1 >= zero * zero:
+            count[1] -= 1  # Remove an extra '1'.
+            l += 1
+          else:
+            break  # Cannot remove more characters.
+        if count[0] == zero and count[1] >= zero * zero:
+          # Add valid substrings ending in s[r] to the answer. They are
+          # s[lastInvalidPos + 1..r], s[lastInvalidPos + 2..r],..., s[l..r].
+          ans += r - lastInvalidPos + 1
+
+    return ans"
