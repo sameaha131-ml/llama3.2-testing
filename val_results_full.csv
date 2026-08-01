@@ -33021,3 +33021,95 @@ el = self . document . getroot ( ) . cssselect ( '#videoArea h1' ),el = self. do
             result = (result * base) % MOD
 
         return result"
+"def log_eZ80_command ( self , code , data ) : self . insert ( models . CommandsEZ80 ( utc = dt . utcnow ( ) , code = code , message = str ( data ) ) )","def log_ez80_command ( self, code, data, utc = dt. utcnow ( ) ) : self. insert ( models. CommandsEZ80 ( utc = utc, code = code, message = str ( data ) ) )"
+"class Solution:
+    def capitalizeTitle(self, title: str) -> str:
+        li = title.split()
+        for i,l in enumerate(li):
+            if len(l) <= 2:
+                li[i] = l.lower()
+            else:
+                li[i] = l[0].upper() + l[1:].lower()
+        return ' '.join(li)","class Solution:
+    def capitalizeTitle(self, title: str) -> str:
+        li = title.split()
+        for i,l in enumerate(li):
+            if len(l) <= 2:
+                li[i] = l.lower()
+            else:
+                li[i] = l[0].lower() + l[1:]
+        return''.join(li)"
+"class Solution:
+    def minimizeStringValue(self, s: str) -> str:
+        cnt = Counter(s)
+        pq = [(cnt[c], c) for c in ascii_lowercase]
+        heapify(pq)
+        t = []
+        for _ in range(s.count(""?"")):
+            v, c = pq[0]
+            t.append(c)
+            heapreplace(pq, (v + 1, c))
+        t.sort()
+        cs = list(s)
+        j = 0
+        for i, c in enumerate(s):
+            if c == ""?"":
+                cs[i] = t[j]
+                j += 1
+        return """".join(cs)","class Solution:
+    def minimizeStringValue(self, s: str) -> str:
+        cnt = Counter(s)
+        pq = [(cnt[c], c) for c in ascii_lowercase]
+        heapify(pq)
+        t = []
+        for _ in range(s.count(""?"")):
+            v, c = pq[0]
+            t.append(c)
+            heapreplace(pq, (v + 1, c))
+        t.sort()
+        cs = list(s)
+        j = 0
+        for i, c in enumerate(s):
+            if c == ""?"":
+                cs[i] = t[j]
+                j += 1
+        return """".join(cs)"
+instagram_handle = url [ url . find ( 'instagram.com' ) + len ( 'instagram.com' ) + 1 : ],"instagram_handle = url [ url. find ( 'instagram.com' ) + len ( 'instagram.com' ) + 1 : - 1 ]. replace ( '@', '' )"
+"import os
+import shutil
+def task_func(directory, backup_directory):
+
+    copied_files = []
+
+    if not os.path.exists(backup_directory):
+        os.makedirs(backup_directory)
+
+    for filename in os.listdir(directory):
+        if filename.endswith('.json'):
+            src = os.path.join(directory, filename)
+            dst = os.path.join(backup_directory, filename)
+            shutil.copy(src, dst)
+            copied_files.append(dst)
+
+    return copied_files","import os
+import shutil
+def task_func(directory, backup_directory):
+
+    copied_files = []
+
+    if not os.path.exists(backup_directory):
+        os.makedirs(backup_directory)
+
+    for filename in os.listdir(directory):
+        if filename.endswith('.json'):
+            src = os.path.join(directory, filename)
+            dst = os.path.join(backup_directory, filename)
+            shutil.copy(src, dst)
+            copied_files.append(dst)
+
+    return copied_files"
+"parser . add_option ( ""-p"" , ""--generate-sample-data"" , dest = ""generate_sample_data"" , action = ""store_true"" , default = False , help = ""Generate sample patient data"" )","parser. add_option ( ""-p"", ""--generate-sample-data"", dest = ""generate_sample_data"", action = ""store_true"", default = False, help = ""Generate sample data"" )"
+self . id = 'eq_' + hashlib . sha1 ( ( str ( self . brand ) + str ( self . model ) ) . encode ( 'UTF-8' ) ) . hexdigest ( ) [ 0 : 8 ],self. id = 'eq_' + hashlib. sha1 ( ( self. brand + self. model ). encode ( 'UTF-8' ) ). hexdigest ( ) [ 0 : 8 ] + '_' + str ( self. id )
+"__author__ = ""Vessiere Thomas <vessiere.thomas@hotmail.com>""","__author__ = ""Vessiere Thomas <vessiere.thomas@gmail.com>"""
+"fake_reply , _ , _ = gen . sample ( context , real_reply )","fake_reply, _ = gen. sample ( context, real_reply, 1 )"
+"transp = transp + list ( range ( len ( transp ) , x_ . ndim ) )","transp = transp + range ( len ( transp ), x_. ndim + 1 )"
