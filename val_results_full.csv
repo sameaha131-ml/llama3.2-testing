@@ -26276,3 +26276,593 @@ class Solution:
                     update(i, 1)
         return ans"
 capabilities = fields . DictField ( blank = True ),capabilities = fields. DictField ( blank = True )
+C = Users . objects . create ( username = postData [ 'username' ] ),"C = Users. objects. create ( username = request. POST [ 'username' ], email = request. POST [ 'email' ] )"
+"return ""Index of '{}' for {}"" . format ( self . index_word , self . dictionary_entry )","return ""Index of '{}' for {}"". format ( self. word, self. dictionary_entry. word )"
+"class Solution:
+    def sortVowels(self, s: str) -> str:
+        vs = [c for c in s if c.lower() in ""aeiou""]
+        vs.sort()
+        cs = list(s)
+        j = 0
+        for i, c in enumerate(cs):
+            if c.lower() in ""aeiou"":
+                cs[i] = vs[j]
+                j += 1
+        return """".join(cs)","class Solution:
+    def sortVowels(self, s: str) -> str:
+        vs = [c for c in s if c.lower() in ""aeiou""]
+        vs.sort()
+        cs = list(s)
+        j = 0
+        for i, c in enumerate(cs):
+            if c.lower() in ""aeiou"":
+                cs[i] = vs[j]
+                j += 1
+        return """".join(cs)"
+"self . assertRaises ( ValueError , chr , sys . maxunicode + 1 )","self. assertRaises ( ValueError, chr, 1000000, 0 )"
+if channel . get ( 'whitelist' ) or channel . get ( 'blacklist' ) or channel . get ( 'image_limit' ) : continue,if channel [ 'whitelist' ] or channel [ 'blacklist' ] or channel [ 'image_limit' ] or channel [ 'image_limit' ] : continue
+"with open ( filename , 'w' ) as f : json . dump ( self . get_desc ( ) , f , indent = True )","with open ( filename + '.desc', 'w' ) as f : json. dump ( self. get_desc ( ), f, indent = 2 )"
+"tag_table . replace ( 'gpg' , '%C(red)SIGNATURE - FAIL\n%C(reverse yellow)=%C(reset) gpg' , 1 )","tag_table. replace ( 'gpg', '%C(red)SIGNATURE - GOOD\n%C(reverse yellow)=%C(reset) gpg', 1, 1 )"
+"long_description = open ( 'README.rst' , 'r' ) . read ( ) ,","long_description = open ( 'README.md', 'r' ). read ( ),"
+"class Solution:
+    def minLength(self, s: str, numOps: int) -> int:
+        def check(m: int) -> bool:
+            cnt = 0
+            if m == 1:
+                t = ""01""
+                cnt = sum(c == t[i & 1] for i, c in enumerate(s))
+                cnt = min(cnt, n - cnt)
+            else:
+                k = 0
+                for i, c in enumerate(s):
+                    k += 1
+                    if i == len(s) - 1 or c != s[i + 1]:
+                        cnt += k // (m + 1)
+                        k = 0
+            return cnt <= numOps
+
+        n = len(s)
+        return bisect_left(range(n), True, lo=1, key=check)","class Solution:
+    def minLength(self, s: str, numOps: int) -> int:
+        def check(m: int) -> bool:
+            cnt = 0
+            if m == 1:
+                t = ""01""
+                cnt = sum(c == t[i & 1] for i, c in enumerate(s))
+                cnt = min(cnt, n - cnt)
+            else:
+                k = 0
+                for i, c in enumerate(s):
+                    k += 1
+                    if i == len(s) - 1 or c!= s[i + 1]:
+                        cnt += k // (m + 1)
+                        k = 0
+            return cnt <= numOps
+
+        n = len(s)
+        return bisect_left(range(n), True, lo=1, key=check)"
+organization = Organization . objects . get ( name = organization_name ),"organization = organization. objects. get ( name = organization_name, type = 'organization' )"
+self . data_section_offset = fat_abs_pos + 2 * self . bytes_per_fat,self. data_section_offset = self. stream. seek ( self. data_section_offset )
+"raise ArmyAntException ( ""Unsupported evaluator format %s"" % self . task . eval_format )","raise ArmyAntException ( ""Unsupported evaluator format %s"" % eval_format, self )"
+"util . do_patch ( self . srcDir , patchFile , level = patch . level )","util. do_patch ( self. srcDir, patchFile, level = patch. level, target = patch. target, ignore = patch. ignore )"
+right = ( right_blocks [ 0 ] . signed_id ( ) if next_cont . sign > 0 else - right_blocks [ - 1 ] . signed_id ( ) ),right = ( right_blocks [ 0 ]. signed_id ( ) if prev_cont. sign > 0 else - right_blocks [ - 1 ]. signed_id ( ) )
+"from flask import Flask
+from flask_restful import Resource, Api
+import requests
+def task_func(api_url, template_folder):
+
+    app = Flask(__name__, template_folder=template_folder)
+    api = Api(app)
+
+    class DataResource(Resource):
+        def get(self):
+            response = requests.get(api_url)
+            data = response.json()
+            return data
+
+    api.add_resource(DataResource, '/data')
+
+    return app","from flask import Flask
+from flask_restful import Resource, Api
+import requests
+def task_func(api_url, template_folder):
+
+    app = Flask(__name__, template_folder=template_folder)
+    api = Api(app)
+
+    class DataResource(Resource):
+        def get(self):
+            response = requests.get(api_url)
+            data = response.json()
+            return data
+
+    api.add_resource(DataResource, '/data')
+
+    return app"
+"class Solution:
+    def findMaxSum(self, nums1: List[int], nums2: List[int], k: int) -> List[int]:
+        arr = [(x, i) for i, x in enumerate(nums1)]
+        arr.sort()
+        pq = []
+        s = j = 0
+        n = len(arr)
+        ans = [0] * n
+        for h, (x, i) in enumerate(arr):
+            while j < h and arr[j][0] < x:
+                y = nums2[arr[j][1]]
+                heappush(pq, y)
+                s += y
+                if len(pq) > k:
+                    s -= heappop(pq)
+                j += 1
+            ans[i] = s
+        return ans","class Solution:
+    def findMaxSum(self, nums1: List[int], nums2: List[int], k: int) -> List[int]:
+        arr = [(x, i) for i, x in enumerate(nums1)]
+        arr.sort()
+        pq = []
+        s = j = 0
+        n = len(arr)
+        ans = [0] * n
+        for h, (x, i) in enumerate(arr):
+            while j < h and arr[j][0] < x:
+                y = nums2[arr[j][1]]
+                heappush(pq, y)
+                s += y
+                if len(pq) > k:
+                    s -= heappop(pq)
+                j += 1
+            ans[i] = s
+        return ans"
+endpoint_states = self . uss . return_endpoint_state ( ),endpoint_state = self. uss. return_endpoint_state ( endpoint_id = endpoint_id )
+from ert_gui . simulation . models import MultipleDataAssimilation as mda,from ert_gui. models. connectors. run import MultipleDataAssimilation
+"class Solution:
+    def longestMonotonicSubarray(self, nums: List[int]) -> int:
+        ans = t = 1
+        for i, x in enumerate(nums[1:]):
+            if nums[i] < x:
+                t += 1
+                ans = max(ans, t)
+            else:
+                t = 1
+        t = 1
+        for i, x in enumerate(nums[1:]):
+            if nums[i] > x:
+                t += 1
+                ans = max(ans, t)
+            else:
+                t = 1
+        return ans","class Solution:
+    def longestMonotonicSubarray(self, nums: List[int]) -> int:
+        ans = t = 1
+        for i, x in enumerate(nums[1:]):
+            if nums[i] < x:
+                t += 1
+                ans = max(ans, t)
+            else:
+                t = 1
+        t = 1
+        for i, x in enumerate(nums[1:]):
+            if nums[i] > x:
+                t += 1
+                ans = max(ans, t)
+            else:
+                t = 1
+        return ans"
+"class Solution:
+    def distanceTraveled(self, mainTank: int, additionalTank: int) -> int:
+        ans = cur = 0
+        while mainTank:
+            cur += 1
+            ans += 10
+            mainTank -= 1
+            if cur % 5 == 0 and additionalTank:
+                additionalTank -= 1
+                mainTank += 1
+        return ans","class Solution:
+    def distanceTraveled(self, mainTank: int, additionalTank: int) -> int:
+        ans = cur = 0
+        while mainTank and additionalTank:
+            cur += 1
+            ans += 10
+            mainTank -= 1
+            if cur % 5 == 0 and additionalTank > 0:
+                additionalTank -= 1
+                mainTank += 1
+        ans += additionalTank * 10
+        return ans"
+"class Solution:
+    def canAliceWin(self, n: int) -> bool:
+        x, k = 10, 0
+        while n >= x:
+            n -= x
+            x -= 1
+            k += 1
+        return k % 2 == 1","class Solution:
+    def canAliceWin(self, n: int) -> bool:
+        x, k = 10, 0
+        while n >= x:
+            n -= x
+            x -= 1
+            k += 1
+        return k % 2 == 1"
+"import re
+from wordcloud import WordCloud
+import matplotlib.pyplot as plt
+def task_func(text):
+
+    # Remove URLs
+    text = re.sub(r""http[s]?://\S+"", """", text)
+    if not text.strip():  # Check if text is not empty after URL removal
+        raise ValueError(
+            ""No words available to generate a word cloud after removing URLs.""
+        )
+    # Generate word cloud
+    wordcloud = WordCloud().generate(text)
+    plt.figure(figsize=(10, 5))
+    plt.imshow(wordcloud)
+    plt.axis(""off"")  # Do not show axis to make it visually appealing
+    return wordcloud","import re
+from wordcloud import WordCloud
+import matplotlib.pyplot as plt
+def task_func(text):
+
+    # Remove URLs
+    text = re.sub(r""http[s]?://\S+"", """", text)
+    if not text.strip():  # Check if text is not empty after URL removal
+        raise ValueError(
+            ""No words available to generate a word cloud after removing URLs.""
+        )
+    # Generate word cloud
+    wordcloud = WordCloud().generate(text)
+    plt.figure(figsize=(10, 5))
+    plt.imshow(wordcloud)
+    plt.axis(""off"")  # Do not show axis to make it visually appealing
+    return wordcloud"
+"import pandas as pd
+from sklearn.cluster import KMeans
+import matplotlib.pyplot as plt
+def task_func(df, n_clusters=3, random_state=0):
+
+    if df.empty or not all(col in df.columns for col in ['group', 'date', 'value']):
+        raise ValueError(""DataFrame must be non-empty and contain 'group', 'date', and 'value' columns."")
+
+    if not pd.api.types.is_datetime64_any_dtype(df['date']):
+        raise ValueError(""'date' column must be in datetime format."")
+
+    df['date'] = df['date'].apply(lambda x: x.toordinal())
+    X = df[['date', 'value']]
+
+    kmeans = KMeans(n_clusters=n_clusters, random_state=random_state)
+    kmeans.fit(X)
+    y_kmeans = kmeans.predict(X)
+
+    fig, ax = plt.subplots()
+    ax.scatter(X['date'], X['value'], c=y_kmeans, cmap='viridis')
+    ax.set_title('KMeans Clustering of Value vs Date')
+    ax.set_xlabel('Date (ordinal)')
+    ax.set_ylabel('Value')
+
+    return ax","import pandas as pd
+from sklearn.cluster import KMeans
+import matplotlib.pyplot as plt
+def task_func(df, n_clusters=3, random_state=0):
+
+    if df.empty or not all(col in df.columns for col in ['group', 'date', 'value']):
+        raise ValueError(""DataFrame must be non-empty and contain 'group', 'date', and 'value' columns."")
+
+    if not pd.api.types.is_datetime64_any_dtype(df['date']):
+        raise ValueError(""'date' column must be in datetime format."")
+
+    df['date'] = df['date'].apply(lambda x: x.toordinal())
+    X = df[['date', 'value']]
+
+    kmeans = KMeans(n_clusters=n_clusters, random_state=random_state)
+    kmeans.fit(X)
+    y_kmeans = kmeans.predict(X)
+
+    fig, ax = plt.subplots()
+    ax.scatter(X['date'], X['value'], c=y_kmeans, cmap='viridis')
+    ax.set_title('KMeans Clustering of Value vs Date')
+    ax.set_xlabel('Date (ordinal)')
+    ax.set_ylabel('Value')
+
+    return ax"
+"import pandas as pd
+import matplotlib.pyplot as plt
+import numpy as np
+def task_func(num_groups=5, data_size=5, labels=None):
+
+
+    # If labels are not provided, generate default labels
+    if labels is None:
+        labels = [f'Group{i + 1}' for i in range(num_groups)]
+
+    # Generate random data
+    data = pd.DataFrame(np.random.rand(data_size, num_groups), columns=labels)
+
+    # Plot data
+    fig, ax = plt.subplots()
+    data.plot(kind='bar', stacked=True, ax=ax)
+
+    # Save the plot for verification in tests
+    plot_filename = 'test_plot.png'
+    fig.savefig(plot_filename)
+
+    return fig, data, plot_filename","import pandas as pd
+import matplotlib.pyplot as plt
+import numpy as np
+def task_func(num_groups=5, data_size=5, labels=None):
+
+
+    # If labels are not provided, generate default labels
+    if labels is None:
+        labels = [f'Group{i + 1}' for i in range(num_groups)]
+
+    # Generate random data
+    data = pd.DataFrame(np.random.rand(data_size, num_groups), columns=labels)
+
+    # Plot data
+    fig, ax = plt.subplots()
+    data.plot(kind='bar', stacked=True, ax=ax)
+
+    # Save the plot for verification in tests
+    plot_filename = 'test_plot.png'
+    fig.savefig(plot_filename)
+
+    return fig, data, plot_filename"
+"class Solution:
+    def countServers(
+        self, n: int, logs: List[List[int]], x: int, queries: List[int]
+    ) -> List[int]:
+        cnt = Counter()
+        logs.sort(key=lambda x: x[1])
+        ans = [0] * len(queries)
+        j = k = 0
+        for r, i in sorted(zip(queries, count())):
+            l = r - x
+            while k < len(logs) and logs[k][1] <= r:
+                cnt[logs[k][0]] += 1
+                k += 1
+            while j < len(logs) and logs[j][1] < l:
+                cnt[logs[j][0]] -= 1
+                if cnt[logs[j][0]] == 0:
+                    cnt.pop(logs[j][0])
+                j += 1
+            ans[i] = n - len(cnt)
+        return ans","class Solution:
+    def countServers(
+        self, n: int, logs: List[List[int]], x: int, queries: List[int]
+    ) -> List[int]:
+        cnt = Counter()
+        logs.sort(key=lambda x: x[1])
+        ans = [0] * len(queries)
+        j = k = 0
+        for r, i in sorted(zip(queries, count())):
+            l = r - x
+            while k < len(logs) and logs[k][1] <= r:
+                cnt[logs[k][0]] += 1
+                k += 1
+            while j < len(logs) and logs[j][1] < l:
+                cnt[logs[j][0]] -= 1
+                if cnt[logs[j][0]] == 0:
+                    cnt.pop(logs[j][0])
+                j += 1
+            ans[i] = n - len(cnt)
+        return ans"
+"self . prefix = ""{}/{}/"" . format ( self . deployment_name , self . RESULT_TYPE )","self. prefix = ""{}/{}"". format ( self. deployment_name, self. RESULT_TYPE. lower ( ) )"
+filename = self . testSuiteDir + r'%sTestSuite-doc.xml' % ( os . sep ),filename = self. testSuiteDir + r'\TestSuite.xml'
+if schema . get ( 'type' ) == 'string' and not schema . get ( 'custom' ) : continue,if schema. get ( 'type' ) =='string' and not schema. get ( 'custom' ) in JIRA_CUSTOM_FIELD_TYPES ['select' ] : continue
+"self . assertContains ( response , ""Reservations"" )","self. assertContains ( response, ""Reservations"" )"
+"options [ 'crj' ] = int ( cmdline_arg_set_or_default ( ""-crj"" , 0 ) )","options [ 'crj' ] = int ( cmdline_arg_set_or_default ( ""-crj"", 0 ) )"
+"instance = dialogs . ChooseGPGKeyDialog ( _ ( 'OpenPGP Key Selection' ) , _ ( 'Choose your OpenPGP key' ) , secret_keys )","instance = dialogs. ChooseGPGKeyDialog ( _ ( 'Passphrase' ), _ ( 'Choose your OpenPGP key' ), secret_keys, _ ( 'No passphrase' ) )"
+"greeting = ""Welcome {}; y"" . format ( displayProfile [ 'displayName' ] ) if 'displayName' in displayProfile else ""Welcome! Y"" ,","greeting = ""Welcome {}, y"". format ( displayProfile [ 'displayName' ] ) if 'displayName' in displayProfile else ""Welcome! Y"","
+"class Solution:
+    MOD = 10**9 + 7
+    _fact = None  # Class variable for precomputed factorials
+    _inv_fact = None  # Class variable for precomputed inverse factorials
+
+    @classmethod
+    def precompute(cls, max_n):
+        """"""Precompute factorial and inverse factorial arrays up to max_n.""""""
+        if cls._fact is not None and len(cls._fact) >= max_n + 1:
+            return  # Already precomputed sufficiently
+        
+        cls._fact = [1] * (max_n + 1)
+        for i in range(1, max_n + 1):
+            cls._fact[i] = cls._fact[i-1] * i % cls.MOD
+        
+        cls._inv_fact = [1] * (max_n + 1)
+        cls._inv_fact[max_n] = pow(cls._fact[max_n], cls.MOD - 2, cls.MOD)
+        for i in range(max_n - 1, -1, -1):
+            cls._inv_fact[i] = cls._inv_fact[i + 1] * (i + 1) % cls.MOD
+
+    def countGoodArrays(self, n: int, m: int, k: int) -> int:
+        if k < 0 or k > n - 1:
+            return 0
+        
+        max_needed = n - 1
+        Solution.precompute(max_needed)
+        
+        a = n - 1
+        b = k
+        # Compute combination C(a, b)
+        comb = Solution._fact[a] * Solution._inv_fact[b] % self.MOD
+        comb = comb * Solution._inv_fact[a - b] % self.MOD
+        
+        exponent = (n - k - 1)
+        term = pow(m - 1, exponent, self.MOD)
+        
+        ans = comb * m % self.MOD
+        ans = ans * term % self.MOD
+        return ans","class Solution:
+    MOD = 10**9 + 7
+    _fact = None  # Class variable for precomputed factorials
+    _inv_fact = None  # Class variable for precomputed inverse factorials
+
+    @classmethod
+    def precompute(cls, max_n):
+        """"""Precompute factorial and inverse factorial arrays up to max_n.""""""
+        if cls._fact is not None and len(cls._fact) >= max_n + 1:
+            return  # Already precomputed sufficiently
+        
+        cls._fact = [1] * (max_n + 1)
+        for i in range(1, max_n + 1):
+            cls._fact[i] = cls._fact[i-1] * i % cls.MOD
+        
+        cls._inv_fact = [1] * (max_n + 1)
+        cls._inv_fact[max_n] = pow(cls._fact[max_n], cls.MOD - 2, cls.MOD)
+        for i in range(max_n - 1, -1, -1):
+            cls._inv_fact[i] = cls._inv_fact[i + 1] * (i + 1) % cls.MOD
+
+    def countGoodArrays(self, n: int, m: int, k: int) -> int:
+        if k < 0 or k > n - 1:
+            return 0
+        
+        max_needed = n - 1
+        Solution.precompute(max_needed)
+        
+        a = n - 1
+        b = k
+        # Compute combination C(a, b)
+        comb = Solution._fact[a] * Solution._inv_fact[b] % self.MOD
+        comb = comb * Solution._inv_fact[a - b] % self.MOD
+        
+        exponent = n - 1 - k
+        term = pow(m - 1, exponent, self.MOD)
+        
+        ans = comb * term % self.MOD
+        return ans"
+"class Solution:
+    def doesValidArrayExist(self, derived: List[int]) -> bool:
+        b = True
+        for n in derived:
+            b = not b if n else b
+        return b","class Solution:
+    def doesValidArrayExist(self, derived: List[int]) -> bool:
+        b = True
+        for n in derived:
+            b = not b if n else b
+        return b"
+basenames = [ ( os . path . split ( name ) [ 1 ] ) . split ( '.' ) [ 0 ] for name in args . input ],basenames = [ os. path. splitext ( os. path. split ( name ) [ 1 ] ) [ 0 ] for name in args. input if os. path. splitext ( os. path. split ( name ) [ 1 ] ) [ 0 ] ]
+"import pandas as pd
+import numpy as np
+def task_func(product_dict, product_keys):
+
+    columns = ['Product', 'Quantity', 'Price', 'Profit']
+    data = []
+
+    for key in product_keys:
+        quantity, price = product_dict[key]
+        profit = quantity * price
+        data.append([key, quantity, price, profit])
+
+    df = pd.DataFrame(data, columns=columns)
+
+    if not df.empty:
+        # Calculate average price and average profit using numpy
+        avg_price = np.mean(df['Price'])
+        avg_profit = np.mean(df['Profit'])
+
+        # Add average price and average profit as new columns to the dataframe
+        df['Average Price'] = avg_price
+        df['Average Profit'] = avg_profit
+
+        ax = df.plot(x='Product', y='Profit', kind='bar', legend=False, title=""Profit for each product"")
+        ax.set_ylabel(""Profit"")
+    else:
+        ax = None
+
+    return df, ax","import pandas as pd
+import numpy as np
+def task_func(product_dict, product_keys):
+
+    columns = ['Product', 'Quantity', 'Price', 'Profit']
+    data = []
+
+    for key in product_keys:
+        price, quantity = product_dict[key]
+        profit = quantity * price
+        data.append([key, quantity, price, profit])
+
+    df = pd.DataFrame(data, columns=columns)
+
+    if not df.empty:
+        # Calculate average price and average profit using numpy
+        avg_price = np.mean(df['Price'])
+        avg_profit = np.mean(df['Profit'])
+
+        # Add average price and average profit as new columns to the dataframe
+        df['Average Price'] = avg_price
+        df['Average Profit'] = avg_profit
+
+        ax = df.plot(x='Product', y='Profit', kind='bar', legend=False, title=""Profit for each product"")
+        ax.set_ylabel(""Profit"")
+    else:
+        ax = None
+
+    return df, ax"
+"convertfloat = lambda x : float ( str ( x ) . replace ( ',' , '.' ) )","convertfloat = lambda x : float ( x. replace ( ',', '.' ). replace ('', '' ) )"
+"self . _process = Popen ( self . args , env = self . env , stdin = PIPE , stdout = PIPE , stderr = PIPE , preexec_fn = os . setpgrp , close_fds = True )","self. _process = Popen ( self. args, env = self. env, stdin = PIPE, stdout = PIPE, stderr = PIPE, preexec_fn = os. setpgrp, close_fds = True )"
+if goodmuons . size ( ) + goodelectrons . size ( ) != 1 : continue,if goodmuons. size ( ) + goodelectrons. size ( ) > 1 : continue
+"'''
+     Search recursively for 'keys' in 'dictionary' and return value, otherwise return None
+     '''","'''
+     Search recursively for 'keys' in 'dictionary' and return value, otherwise return None
+     '''"
+"NFS_COMMAND = [ ""/opt/site24x7/monagent/plugins/nfs/nfs_check.sh"" , mounts ]","NFS_COMMAND = [ ""/opt/site24x7/monagent/plugins/nfs_check.sh"", mounts, ""-v"" ]"
+"self . _info [ 'outputsig' ] = ""<+MIN_OUT+>, <+MAX_OUT+>, sizeof (<+float+>)""","self. _info [ 'outputsig' ] = ""<+MIN_IN+>, <+MAX_IN+>, sizeof (<+float+>)"""
+"fields = ( 'name' , 'lang' , 'morphtype' , 'transitivity' , 'obj_cases' , 'is_pp_idiom' )","fields = ( 'name', 'lang','morph_type', 'transitivity', 'obj_cases' )"
+"classifiers = [ 'Development Status :: 2 - Pre-Alpha' , 'License :: OSI Approved :: MIT License' , 'Programming Language :: Python :: 3.6' , ]","classifiers = [ 'Development Status :: 2 - Pre-Alpha', 'License :: OSI Approved :: MIT License', 'Programming Language :: Python :: 3.6', ]"
+"from curious . core . client import BotType , Client","from curious. core. client import AUTOSHARD, BotType, Client, ClientType"
+"title = match1 ( html , r""\""player__videoTitle\""><h1>(.*)<\/h1><\/div>"" )","title = match1 ( html, r""\""title\"":\""([^\""]+)\"""" )"
+"class Solution:
+    def numberOfStableArrays(self, zero: int, one: int, limit: int) -> int:
+        @cache
+        def dfs(i: int, j: int, k: int) -> int:
+            if i == 0:
+                return int(k == 1 and j <= limit)
+            if j == 0:
+                return int(k == 0 and i <= limit)
+            if k == 0:
+                return (
+                    dfs(i - 1, j, 0)
+                    + dfs(i - 1, j, 1)
+                    - (0 if i - limit - 1 < 0 else dfs(i - limit - 1, j, 1))
+                )
+            return (
+                dfs(i, j - 1, 0)
+                + dfs(i, j - 1, 1)
+                - (0 if j - limit - 1 < 0 else dfs(i, j - limit - 1, 0))
+            )
+
+        mod = 10**9 + 7
+        ans = (dfs(zero, one, 0) + dfs(zero, one, 1)) % mod
+        dfs.cache_clear()
+        return ans","class Solution:
+    def numberOfStableArrays(self, zero: int, one: int, limit: int) -> int:
+        @cache
+        def dfs(i: int, j: int, k: int) -> int:
+            if i == 0:
+                return int(k == 1 and j <= limit)
+            if j == 0:
+                return int(k == 0 and i <= limit)
+            if k == 0:
+                return (
+                    dfs(i - 1, j, 0)
+                    + dfs(i - 1, j, 1)
+                    - (0 if i - limit - 1 < 0 else dfs(i - limit - 1, j, 1))
+                )
+            return (
+                dfs(i, j - 1, 0)
+                + dfs(i, j - 1, 1)
+                - (0 if j - limit - 1 < 0 else dfs(i, j - limit - 1, 0))
+            )
+
+        mod = 10**9 + 7
+        ans = (dfs(zero, one, 0) + dfs(zero, one, 1)) % mod
+        dfs.cache_clear()
+        return ans"
+"self . contianer_utils . container_update ( instance . uuid , containe_configdrive )","self. container_utils. container_update ( instance. uuid, container_configdrive )"
+n_jets = [ x [ 0 ] for x in triobject ] . count ( 'Jet' ),n_jet = [ x [ 0 ] for x in triobject ]. count ( 'Jet' ) + [ x [ 0 ] for x in triobject ]. count ( 'Jet' )
+"clusterdb = ( ""mmseqs cluster /tmp/MMseqs2/sequenceDB /tmp/MMseqs2/clusterDB /tmp/MMseqs2 --remove-tmp-files --threads 4 -v 0 --single-step-clustering --max-seqs 1000 --min-seq-id 0.40 -c 0.80 --alignment-mode 3 --cov-mode 0 --cluster-mode 0"" )","clusterdb = ( ""mmseqs cluster /tmp/MMseqs2/sequenceDB /tmp/MMseqs2/clusterDB /tmp/MMseqs2 --remove-tmp-files --threads 4 -v 0 --single-step-clustering --min-seq-id 0.40 -c 0.80 --alignment-mode 3 --cov-mode 0 --cluster-mode 0 --cluster-name MMseqs2"" )"
