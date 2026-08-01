@@ -29578,3 +29578,625 @@ def task_func(data, n_components=2):
 all_info = str ( subprocess . check_output ( command ) ) . strip ( ),"all_info = subprocess. check_output ( command, shell = True ). strip ( )"
 "self . indexedFileId = srctrl . recordFile ( filePath . replace ( '\\' , '/' ) )","self. indexedFileId = srctrl. recordFile ( filePath, self. recordId )"
 query = ( db . code . acid == request . vars . acid ) & ( db . code . sid == request . vars . sid ) & ( db . code . course_id == auth . user . course_id ),query = ( db. code. acid == request. vars. acid ) & ( db. code. sid == request. vars. sid ) & ( db. code. course_id == auth. user. course_id )
+"subprocess . run ( [ ""python3"" , ""-m"" , ""unittest"" , ""-v"" , ""discover"" , ""test"" ] )","subprocess. run ( [ ""python3"", ""-m"", ""unittest"", ""-v"", ""-s"", ""test"" ] )"
+"return super ( ImageVariantNameSource , self ) . isAvailable ( node , article )","return super ( ImageDisplayModeSource, self ). isAvailable ( node, article, self. mode )"
+"new_scaffolds_ = list ( nx . connected_component_subgraphs ( G , copy = False ) )",new_scaffolds_ = list ( nx. connected_components ( G ) )
+"import numpy as np
+from operator import itemgetter
+import matplotlib.pyplot as plt
+def task_func(data):
+
+    max_tuple = max(data, key=itemgetter(1))
+    tuples = np.array(data)
+    x = tuples[:,0]
+    y = tuples[:,1]
+    fig, ax = plt.subplots()
+    ax.scatter(x, y, label='Data')
+    ax.scatter(*max_tuple, color='red', label='Max Tuple')
+    ax.set_xlabel('x')
+    ax.set_ylabel('y')
+    ax.set_title('Max Tuple Highlighted')
+    ax.legend()
+    return ax","import numpy as np
+from operator import itemgetter
+import matplotlib.pyplot as plt
+def task_func(data):
+
+    max_tuple = max(data, key=itemgetter(1))
+    tuples = np.array(data)
+    x = tuples[:,0]
+    y = tuples[:,1]
+    fig, ax = plt.subplots()
+    ax.scatter(x, y, label='Data')
+    ax.scatter(*max_tuple, color='red', label='Max Tuple')
+    ax.set_xlabel('x')
+    ax.set_ylabel('y')
+    ax.set_title('Max Tuple Highlighted')
+    ax.legend()
+    return ax"
+"return HttpResponse ( jsondata , mimetype = 'application/json' )","return HttpResponse ( jsondata, content_type = 'application/json' )"
+"match_common_gametype_s in ( 'war' , 'dom' , 'raid' , 'war hc' , 'dom hc' )","match_common_gametype_s in ( 'war', 'dom', 'raid', 'pvp' )"
+product . manage_options = Folder . manage_options,"product. manage_options = OFS. Folder. Folder. manage_options + ( ( 'allowSubfolders', 1 ), )"
+"class Solution:
+    def validStrings(self, n: int) -> List[str]:
+        def dfs(i: int):
+            if i >= n:
+                ans.append("""".join(t))
+                return
+            for j in range(2):
+                if (j == 0 and (i == 0 or t[i - 1] == ""1"")) or j == 1:
+                    t.append(str(j))
+                    dfs(i + 1)
+                    t.pop()
+
+        ans = []
+        t = []
+        dfs(0)
+        return ans","class Solution:
+    def validStrings(self, n: int) -> List[str]:
+        def dfs(i: int):
+            if i >= n:
+                ans.append("""".join(t))
+                return
+            for j in range(2):
+                if (j == 0 and (i == 0 or t[i - 1] == ""1"")) or j == 1:
+                    t.append(str(j))
+                    dfs(i + 1)
+                    t.pop()
+
+        ans = []
+        t = []
+        dfs(0)
+        return ans"
+"import re
+import socket
+def task_func(ip_addresses: list) -> dict:
+
+
+    
+    IP_REGEX = r'[0-9]+(?:\.[0-9]+){3}'
+    hostnames = {}
+    for ip in ip_addresses:
+        if re.match(IP_REGEX, ip):
+            try:
+                hostname = socket.gethostbyaddr(ip)[0]
+                hostnames[ip] = hostname
+            except (socket.herror, socket.gaierror):
+                hostnames[ip] = None
+    return hostnames","import re
+import socket
+def task_func(ip_addresses: list) -> dict:
+
+
+    
+    IP_REGEX = r'[0-9]+(?:\.[0-9]+){3}'
+    hostnames = {}
+    for ip in ip_addresses:
+        if re.match(IP_REGEX, ip):
+            try:
+                hostname = socket.gethostbyaddr(ip)[0]
+                hostnames[ip] = hostname
+            except (socket.herror, socket.gaierror):
+                hostnames[ip] = None
+    return hostnames"
+"self . responses [ intensity ] = np . concatenate ( ( self . responses [ intensity ] , data . reshape ( 1 , data . shape [ 0 ] ) ) )","self. responses [ intensity ] = np. concatenate ( ( self. responses [ intensity ], data ), axis = 0 )"
+"import numpy as np
+from scipy.fft import fft
+from matplotlib import pyplot as plt
+def task_func(original):
+
+    arr = np.array([b for (_, b) in original])
+
+    if arr.size == 0:
+        fft_data = np.array([])
+        return arr, fft_data, None
+
+    fft_data = fft(arr)
+    _, ax = plt.subplots()
+    ax.hist(np.abs(fft_data))
+
+    return arr, fft_data, ax","import numpy as np
+from scipy.fft import fft
+from matplotlib import pyplot as plt
+def task_func(original):
+
+    arr = np.array([b for (_, b) in original])
+
+    if arr.size == 0:
+        fft_data = np.array([])
+        return arr, fft_data, None
+
+    fft_data = fft(arr)
+    _, ax = plt.subplots()
+    ax.hist(np.abs(fft_data))
+
+    return arr, fft_data, ax"
+"response [ 'Content-Disposition' ] += 'filename=""{0}.gb""' . format ( seq . id )","response [ 'Content-Disposition' ] +='filename=""{}.gb""'. format ( seq. id )"
+"add_taskcluster_jobs ( task_labels , decision_task_id , repo_name , dry_run )","add_taskcluster_jobs ( task_labels, decision_task_id, repo_name, taskcluster_id )"
+"profile , created = em . UserProfile . objects . get_or_create ( user = auth . User . objects . get ( pk = obj [ 'fields' ] [ 'user' ] ) , notify_score_change = obj [ 'fields' ] [ 'notify_score_change' ] , )","profile, created = em. UserProfile. objects. get_or_create ( user = auth. User. objects. get ( pk = obj [ 'fields' ] [ 'user' ] ), notify_score_change = obj [ 'fields' ] [ 'notify_score_change' ], )"
+"flags . DEFINE_integer ( 'num_fold' , 10 , 'number of fold for K-Fold splits, default to 10' )","flags. DEFINE_integer ( 'num_fold', 5, 'number of fold for K-Fold splits, default to 5' )"
+ceph . exec_command ( cmd = 'sudo yum update metadata' ),ceph. exec_command ( sudo ='sudo yum update' )
+"import pandas as pd
+import matplotlib.pyplot as plt
+def task_func(car_dict):
+
+    car_data = list(car_dict.items())
+    df = pd.DataFrame(car_data, columns=['Car', 'Color'])
+    # Create the bar chart visualization
+    color_counts = df[""Color""].value_counts()
+
+    figure = plt.figure()
+    # creating the bar plot
+    plt.bar(color_counts.keys(), color_counts.values, color=""maroon"", width=0.4)
+
+    plt.xlabel(""Color"")
+    plt.ylabel(""Frequency"")
+    plt.title(""Distribution of Vehicle Colors"")
+    plt.show()
+    ax = plt.gca()
+
+    return df, ax","import pandas as pd
+import matplotlib.pyplot as plt
+def task_func(car_dict):
+
+    car_data = list(car_dict.items())
+    df = pd.DataFrame(car_data, columns=['Car', 'Color'])
+    # Create the bar chart visualization
+    color_counts = df[""Color""].value_counts()
+
+    figure = plt.figure()
+    # creating the bar plot
+    plt.bar(color_counts.keys(), color_counts.values, color=""maroon"", width=0.4)
+
+    plt.xlabel(""Color"")
+    plt.ylabel(""Frequency"")
+    plt.title(""Distribution of Vehicle Colors"")
+    plt.show()
+    ax = plt.gca()
+
+    return df, ax"
+"class Solution:
+  def minCostToEqualizeArray(
+      self,
+      nums: list[int],
+      cost1: int,
+      cost2: int,
+  ) -> int:
+    MOD = 1_000_000_007
+    n = len(nums)
+    minNum = min(nums)
+    maxNum = max(nums)
+    summ = sum(nums)
+
+    if cost1 * 2 <= cost2 or n < 3:
+      totalGap = maxNum * n - summ
+      return (cost1 * totalGap) % MOD
+
+    def getMinCost(target: int) -> int:
+      """"""Returns the minimum cost to make all numbers equal to `target`.""""""
+      maxGap = target - minNum
+      totalGap = target * n - summ
+      # Pair one shallowest number with one non-shallowest number, so the worst
+      # case is that we have `totalGap - maxGap` non-shallowest numbers to pair.
+      pairs = min(totalGap // 2, totalGap - maxGap)
+      return cost1 * (totalGap - 2 * pairs) + cost2 * pairs
+
+    return min(getMinCost(target)
+               for target in range(maxNum, 2 * maxNum)) % MOD","class Solution:
+  def minCostToEqualizeArray(
+      self,
+      nums: list[int],
+      cost1: int,
+      cost2: int,
+  ) -> int:
+    MOD = 1_000_000_007
+    n = len(nums)
+    minNum = min(nums)
+    maxNum = max(nums)
+    summ = sum(nums)
+
+    if cost1 * 2 <= cost2 or n < 3:
+      totalGap = maxNum * n - summ
+      return (cost1 * totalGap) % MOD
+
+    def getMinCost(target: int) -> int:
+      """"""Returns the minimum cost to make all numbers equal to `target`.""""""
+      maxGap = target - minNum
+      totalGap = target * n - summ
+      # Pair one shallowest number with one non-shallowest number, so the worst
+      # case is that we have `totalGap - maxGap` non-shallowest numbers to pair.
+      pairs = min(totalGap // 2, totalGap - maxGap)
+      return (cost1 * (totalGap - 2 * pairs) + cost2 * pairs) % MOD
+
+    return min(getMinCost(target)
+               for target in range(maxNum, 2 * maxNum)) % MOD"
+"always_notify_updater = BoolOption ( 'notification' , 'always_notify_updater' , 'true' , """"""Always send notifications to the person who causes the ticket 
+         property change."""""" )","always_notify_reporter = BoolOption ( 'notification', 'always_notify_updater', 'false', """"""Always send notifications to the person who causes the ticket 
+         property change."""""" )"
+"self . attackProposal [ planetuid ] . update ( dict ( timeAttack = 60 * 5 ) , self )",self. attackProposal [ planetuid ]. update ( dict ( timeAttack = time. time ( ) + 60 * 5 ) )
+"import pandas as pd
+import re
+from scipy import stats
+def task_func(text):
+
+    # Extracting names from the text
+    names = re.findall(r'(.*?)(?:\[.*?\]|$)', text)
+    names = [name.strip() for name in names if name.strip()]  # Removing any empty or whitespace names
+
+    # Counting name frequencies
+    name_freqs = pd.Series(names).value_counts()
+    
+    # Creating a bar chart of name frequencies if there are names found
+    if not name_freqs.empty:
+        ax = name_freqs.plot(kind='bar', title=""Name Frequencies"")
+        skewness = stats.skew(name_freqs)
+        kurtosis = stats.kurtosis(name_freqs)
+    else:
+        ax = skewness = kurtosis = None
+
+    if skewness == float('nan'):
+        skewness = None
+    if kurtosis == float('nan'):
+        kurtosis = None
+    
+    return name_freqs, ax, skewness, kurtosis","import pandas as pd
+import re
+from scipy import stats
+def task_func(text):
+
+    # Extracting names from the text
+    names = re.findall(r'(.*?)(?:\[.*?\]|$)', text)
+    names = [name.strip() for name in names if name.strip()]  # Removing any empty or whitespace names
+
+    # Counting name frequencies
+    name_freqs = pd.Series(names).value_counts()
+
+    # Creating a bar chart of name frequencies if there are names found
+    if not name_freqs.empty:
+        ax = name_freqs.plot(kind='bar', title=""Name Frequencies"")
+        skewness = stats.skew(name_freqs)
+        kurtosis = stats.kurtosis(name_freqs)
+    else:
+        ax = skewness = kurtosis = None
+
+    if skewness == float('nan'):
+        skewness = None
+    if kurtosis == float('nan'):
+        kurtosis = None
+
+    return name_freqs, ax, skewness, kurtosis"
+"{ 'title' : '[OLD]Team Fortress 2 (Class-based LP)' , } ,","{ 'title' : 'Team Fortress 2 (Class-based LP)', 'description' : 'A class-based LP for Team Fortress 2', },"
+"class Solution:
+    def accountBalanceAfterPurchase(self, purchaseAmount: int) -> int:
+        diff, x = 100, 0
+        for y in range(100, -1, -10):
+            if (t := abs(y - purchaseAmount)) < diff:
+                diff = t
+                x = y
+        return 100 - x","class Solution:
+    def accountBalanceAfterPurchase(self, purchaseAmount: int) -> int:
+        diff, x = 100, 0
+        for y in range(100, -1, -10):
+            if (t := abs(y - purchaseAmount)) < diff:
+                diff = t
+                x = y
+        return 100 - x"
+"backup = forms . ChoiceField ( label = _ ( ""Backup"" ) , required = False , help_text = _ ( 'Select a backup to restore' ) )","backup = forms. ChoiceField ( label = _ ( ""Backup"" ), required = False, help_text = _ ( 'Select a backup to restore' ) )"
+"class Solution:
+    MOD = 10**9 + 7
+    _fact = None  # Class variable for precomputed factorials
+    _inv_fact = None  # Class variable for precomputed inverse factorials
+
+    @classmethod
+    def precompute(cls, max_n):
+        """"""Precompute factorial and inverse factorial arrays up to max_n.""""""
+        if cls._fact is not None and len(cls._fact) >= max_n + 1:
+            return  # Already precomputed sufficiently
+        
+        cls._fact = [1] * (max_n + 1)
+        for i in range(1, max_n + 1):
+            cls._fact[i] = cls._fact[i-1] * i % cls.MOD
+        
+        cls._inv_fact = [1] * (max_n + 1)
+        cls._inv_fact[max_n] = pow(cls._fact[max_n], cls.MOD - 2, cls.MOD)
+        for i in range(max_n - 1, -1, -1):
+            cls._inv_fact[i] = cls._inv_fact[i + 1] * (i + 1) % cls.MOD
+
+    def countGoodArrays(self, n: int, m: int, k: int) -> int:
+        if k < 0 or k > n - 1:
+            return 0
+        
+        max_needed = n - 1
+        Solution.precompute(max_needed)
+        
+        a = n - 1
+        b = k
+        # Compute combination C(a, b)
+        comb = Solution._fact[a] * Solution._inv_fact[b] % self.MOD
+        comb = comb * Solution._inv_fact[a - b] % self.MOD
+        
+        exponent = (n - k - 1)
+        term = pow(m - 1, exponent, self.MOD)
+        
+        ans = comb * m % self.MOD
+        ans = ans * term % self.MOD
+        return ans","class Solution:
+    MOD = 10**9 + 7
+    _fact = None  # Class variable for precomputed factorials
+    _inv_fact = None  # Class variable for precomputed inverse factorials
+
+    @classmethod
+    def precompute(cls, max_n):
+        """"""Precompute factorial and inverse factorial arrays up to max_n.""""""
+        if cls._fact is not None and len(cls._fact) >= max_n + 1:
+            return  # Already precomputed sufficiently
+        
+        cls._fact = [1] * (max_n + 1)
+        for i in range(1, max_n + 1):
+            cls._fact[i] = cls._fact[i-1] * i % cls.MOD
+        
+        cls._inv_fact = [1] * (max_n + 1)
+        cls._inv_fact[max_n] = pow(cls._fact[max_n], cls.MOD - 2, cls.MOD)
+        for i in range(max_n - 1, -1, -1):
+            cls._inv_fact[i] = cls._inv_fact[i + 1] * (i + 1) % cls.MOD
+
+    def countGoodArrays(self, n: int, m: int, k: int) -> int:
+        if k < 0 or k > n - 1:
+            return 0
+        
+        max_needed = n - 1
+        Solution.precompute(max_needed)
+        
+        a = n - 1
+        b = k
+        # Compute combination C(a, b)
+        comb = Solution._fact[a] * Solution._inv_fact[b] % self.MOD
+        comb = comb * Solution._inv_fact[a - b] % self.MOD
+        
+        exponent = n - 1 - k
+        term = pow(m - 1, exponent, self.MOD)
+        
+        ans = comb * term % self.MOD
+        return ans"
+"expt_title += '%s %s of %ss each per scheme' % ( meta [ 'run_times' ] , runs_str , meta [ 'runtime' ] )","expt_title += '%s %s of %ss each per scheme' % ( runs_str, meta [ 'run_times' ], meta [ 'runtime' ], meta [ 'runtime' ] )"
+"relation_editor_list . append ( ( i , '' , str ( relation_uid ) , display_text ) )","relation_editor_list. append ( ( i, '%', str ( relation_uid ), display_text, 'id' ) )"
+"new = ProcessTracker ( email = email , name_redemption = data . name_redemption )","new = ProcessTracker ( email = email, name_redemption = data. name_redemption, date = date, status = 'pending' )"
+"cls . bad_edf2_filename = os . path . join ( directory , ""bad_edf2.edf"" )","cls. bad_edf_filename = os. path. join ( directory, ""bad_edf.edf"" )"
+"self . add_argument ( '--timeout' , type = int , default = 20 , help = 'amount of seconds until execution stops with unknow state (default 10 seconds)' )","self. add_argument ( '--timeout', type = int, default = 60, help = 'amount of seconds until execution stops with unknow state (default 60 seconds)' )"
+_shellEnv = _ShellEnv ( subprocess . _shell_command ),"_shellEnv = _ShellEnv ( subprocess. shell_command, shell = subprocess. shell_command )"
+"from camp . execute . reporting . jmeter import JMeterCSVReader , JMeterCSVInvalidReport","from camp. execute. reporting. jmeter import JMeterCSVReader, JMeterCSVElementNotSupported, JMeterCSVElementNotSupportedError"
+"import numpy as np
+from operator import itemgetter
+import matplotlib.pyplot as plt
+def task_func(data):
+
+    max_y_point = max(data, key=itemgetter(1))
+    points = np.array(data)
+    x = points[:,0]
+    y = points[:,1]
+
+    fig, ax = plt.subplots()
+    ax.scatter(x, y, label='Points')
+    ax.scatter(*max_y_point, color='red', label='Max Y Point')
+    ax.set_xlabel('x')
+    ax.set_ylabel('y')
+    ax.set_title('Points with Max Y Point Highlighted')
+    ax.legend()
+    return ax, max_y_point","import numpy as np
+from operator import itemgetter
+import matplotlib.pyplot as plt
+def task_func(data):
+
+    max_y_point = max(data, key=itemgetter(1))
+    points = np.array(data)
+    x = points[:,0]
+    y = points[:,1]
+
+    fig, ax = plt.subplots()
+    ax.scatter(x, y, label='Points')
+    ax.scatter(*max_y_point, color='red', label='Max Y Point')
+    ax.set_xlabel('x')
+    ax.set_ylabel('y')
+    ax.set_title('Points with Max Y Point Highlighted')
+    ax.legend()
+    return ax, max_y_point"
+"regex = re . compile ( r""^(?P<sample>.+)\.max_nest(?P<max_nest>\d+)\.min_match(?P<min_match>\d+)"" )","regex = re. compile ( r""^(?P<sample>\w+)\.max_nest(?P<max_nest>\d+)\.min_match(?P<min_match>\d+)"", re. IGNORECASE )"
+"dnames . sort ( lambda x , y : jobs [ y ] . get ( 'time' , 0 ) - jobs [ x ] . get ( 'time' , 0 ) )","dnames. sort ( lambda x, y : jobs [ y ]. get ( 'timestamp', 0 ) - jobs [ x ]. get ( 'timestamp', 0 ), reverse = True )"
+"message = _ ( ""Must also specify protocol if port range is given."" )","message = _ ( ""Must also specify protocol if port range is given."" )"
+"class Solution:
+    def canReachCorner(
+        self, xCorner: int, yCorner: int, circles: List[List[int]]
+    ) -> bool:
+        def in_circle(x: int, y: int, cx: int, cy: int, r: int) -> int:
+            return (x - cx) ** 2 + (y - cy) ** 2 <= r**2
+
+        def cross_left_top(cx: int, cy: int, r: int) -> bool:
+            a = abs(cx) <= r and 0 <= cy <= yCorner
+            b = abs(cy - yCorner) <= r and 0 <= cx <= xCorner
+            return a or b
+
+        def cross_right_bottom(cx: int, cy: int, r: int) -> bool:
+            a = abs(cx - xCorner) <= r and 0 <= cy <= yCorner
+            b = abs(cy) <= r and 0 <= cx <= xCorner
+            return a or b
+
+        def dfs(i: int) -> bool:
+            x1, y1, r1 = circles[i]
+            if cross_right_bottom(x1, y1, r1):
+                return True
+            vis[i] = True
+            for j, (x2, y2, r2) in enumerate(circles):
+                if vis[j] or not ((x1 - x2) ** 2 + (y1 - y2) ** 2 <= (r1 + r2) ** 2):
+                    continue
+                if (
+                    (x1 * r2 + x2 * r1 < (r1 + r2) * xCorner)
+                    and (y1 * r2 + y2 * r1 < (r1 + r2) * yCorner)
+                    and dfs(j)
+                ):
+                    return True
+            return False
+
+        vis = [False] * len(circles)
+        for i, (x, y, r) in enumerate(circles):
+            if in_circle(0, 0, x, y, r) or in_circle(xCorner, yCorner, x, y, r):
+                return False
+            if (not vis[i]) and cross_left_top(x, y, r) and dfs(i):
+                return False
+        return True","class Solution:
+    def canReachCorner(
+        self, xCorner: int, yCorner: int, circles: List[List[int]]
+    ) -> bool:
+        def in_circle(x: int, y: int, cx: int, cy: int, r: int) -> int:
+            return (x - cx) ** 2 + (y - cy) ** 2 <= r**2
+
+        def cross_left_top(cx: int, cy: int, r: int) -> bool:
+            a = abs(cx) <= r and 0 <= cy <= yCorner
+            b = abs(cy - yCorner) <= r and 0 <= cx <= xCorner
+            return a or b
+
+        def cross_right_bottom(cx: int, cy: int, r: int) -> bool:
+            a = abs(cx - xCorner) <= r and 0 <= cy <= yCorner
+            b = abs(cy) <= r and 0 <= cx <= xCorner
+            return a or b
+
+        def dfs(i: int) -> bool:
+            x1, y1, r1 = circles[i]
+            if cross_right_bottom(x1, y1, r1):
+                return True
+            vis[i] = True
+            for j, (x2, y2, r2) in enumerate(circles):
+                if vis[j] or not ((x1 - x2) ** 2 + (y1 - y2) ** 2 <= (r1 + r2) ** 2):
+                    continue
+                if (
+                    (x1 * r2 + x2 * r1 < (r1 + r2) * xCorner)
+                    and (y1 * r2 + y2 * r1 < (r1 + r2) * yCorner)
+                ):
+                    return True
+                if dfs(j):
+                    return True
+            return False
+
+        vis = [False] * len(circles)
+        for i, (x, y, r) in enumerate(circles):
+            if in_circle(0, 0, x, y, r) or in_circle(xCorner, yCorner, x, y, r):
+                return False
+            if (not vis[i]) and cross_left_top(x, y, r) and dfs(i):
+                return False
+        return True"
+self . directpath = True if utils . window ( 'useDirectPaths' ) == 'true' else False,self. directpath = True if utils. window ( 'useDirectPaths' ) == '1' else False
+"import pandas as pd
+import numpy as np
+from random import choice, seed as set_seed
+def task_func(num_of_students, seed=42, name_list=None, gender_list=None, age_range=(15, 20), score_range=(50, 100)):
+
+    if num_of_students <= 0:
+        raise ValueError(""num_of_students must be positive."")
+
+    set_seed(seed)
+    np.random.seed(seed)
+
+    name_list = name_list or ['John', 'Mike', 'Sara', 'Emma', 'Nick']
+    gender_list = gender_list or ['Male', 'Female']
+
+    data = []
+    for _ in range(num_of_students):
+        name = choice(name_list)
+        age = np.random.randint(age_range[0], age_range[1] + 1)
+        gender = choice(gender_list)
+        score = np.random.randint(score_range[0], score_range[1] + 1)
+        data.append([name, age, gender, score])
+
+    columns = ['Name', 'Age', 'Gender', 'Score']
+    df = pd.DataFrame(data, columns=columns)
+    return df","import pandas as pd
+import numpy as np
+from random import choice, seed as set_seed
+def task_func(num_of_students, seed=42, name_list=None, gender_list=None, age_range=(15, 20), score_range=(50, 100)):
+
+    if num_of_students <= 0:
+        raise ValueError(""num_of_students must be positive."")
+
+    set_seed(seed)
+    np.random.seed(seed)
+
+    name_list = name_list or ['John', 'Mike', 'Sara', 'Emma', 'Nick']
+    gender_list = gender_list or ['Male', 'Female']
+
+    data = []
+    for _ in range(num_of_students):
+        name = choice(name_list)
+        age = np.random.randint(age_range[0], age_range[1] + 1)
+        gender = choice(gender_list)
+        score = np.random.randint(score_range[0], score_range[1] + 1)
+        data.append([name, age, gender, score])
+
+    columns = ['Name', 'Age', 'Gender', 'Score']
+    df = pd.DataFrame(data, columns=columns)
+    return df"
+"for p in ret . get ( 'predictions' , [ ] ) : print ( ""\t%s"" % p )","for p in ret [ 'predictions' ] [ : 10 ] : print ( ""\t%s"" % p )"
+"offset = self . column_decoder_inst [ port ] . ll ( ) - vector ( ( self . num_col_addr_lines + 1 ) * pitch , 0 )","offset = self. column_decoder_inst [ port ]. ll ( ) - vector ( self. num_col_addr_lines * pitch, 0 ) + self. num_col_addr_lines * pitch"
+"condition = "" and adate>=date(NOW()) "" if futureOnly else """"","condition = "" and adate>=NOW() "" if futureOnly else "" and adate<=NOW() """
+"request . setHeader ( ""content-type"" , ""application/json"" )","request. setHeader ( ""content-type"", ""application/json"" )"
+"self . assertEqual ( self . font . familyname , self . metadata . get ( 'name' , None ) )","self. assertEqual ( self. font. fontname. split ( '-' ). pop ( 0 ), self. metadata. get ( 'name', '' ) )"
+"logger . info ( ""Created new software requirement for jobtype %s: %r"" , jobtype . id , requirement_data )","logger. info ( ""Created new software requirement for jobtype %s: %r"", jobtype. id, requirement_data. get ( ""name"", """" ) )"
+"class Solution:
+    def hasMatch(self, s: str, p: str) -> bool:
+        i = 0
+        for t in p.split(""*""):
+            j = s.find(t, i)
+            if j == -1:
+                return False
+            i = j + len(t)
+        return True","class Solution:
+    def hasMatch(self, s: str, p: str) -> bool:
+        i = 0
+        for t in p.split(""*""):
+            j = s.find(t, i)
+            if j == -1:
+                return False
+            i = j + len(t)
+        return True"
+"for callback in self . events [ 'basic_ack' ] : callback ( delivery_tag , multiple )","for callback in self. handlers [ 'basic_ack' ] if 'basic_ack' in self. handlers else [ ] : callback ( delivery_tag, multiple )"
+"from collections import Counter
+import os
+import json
+def task_func(filename, directory):
+
+    total_words = 0
+    word_counts = Counter()
+
+    for file_name in os.listdir(directory):
+        if not file_name.endswith('.txt'):
+            continue
+        with open(os.path.join(directory, file_name), 'r') as file:
+            words = file.read().split()
+            word_counts.update(words)
+
+    with open(filename, 'w') as file:
+        json.dump(dict(word_counts), file)
+    
+    for word in word_counts:
+        total_words += word_counts[word]
+    return total_words","from collections import Counter
+import os
+import json
+def task_func(filename, directory):
+
+    total_words = 0
+    word_counts = Counter()
+
+    for file_name in os.listdir(directory):
+        if not file_name.endswith('.txt'):
+            continue
+        with open(os.path.join(directory, file_name), 'r') as file:
+            words = file.read().split()
+            word_counts.update(words)
+
+    with open(filename, 'w') as file:
+        json.dump(dict(word_counts), file)
+
+    for word in word_counts:
+        total_words += word_counts[word]
+    return total_words"
+"from ldap3 import Server , Connection , SIMPLE , ANONYMOUS , SYNC , ASYNC , SUBTREE , NONE","from ldap3 import Server, Connection, SIMPLE, ANONYMOUS, SYNC, ASYNC, SUBTREE, NONE"
+pc_results [ nick ] . append ( pc_result . _asdict ( ) ),pc_results [ nick ]. append ( pc_result )
