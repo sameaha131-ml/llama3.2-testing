@@ -15065,3 +15065,688 @@ def _install_python_packages ( ) : sudo ( 'cd %s && sudo pip3 install -r require
                 l += 1
             ans += l
         return ans"
+"col = samples [ i * cols : ( i + 1 ) * cols ] . transpose ( 0 , 2 , 3 , 1 )","col = samples [ i * cols : ( i + 1 ) * cols ]. transpose ( 1, 2 )"
+"set_label_for_stock_button ( self . clean_button , _ ( '_Cleanup' ) )","set_label_for_stock_button ( self. clean_button, _ ( 'Clean' ) )"
+"tx . append ( ""MATCH (c:Campaign {campaign_id: {campaign_id}}) WITH c LIMIT 1 MERGE (c)-[r:OBSERVES]->(u:User {id_str: {id_str}}) RETURN r"" , { 'campaign_id' : campaign_id , 'id_str' : user [ 'id_str' ] } )","tx. append ( ""MATCH (c:Campaign {campaign_id: {campaign_id}}) WITH c MERGE (c)-[r:OBSERVES]->(u:User {id_str: {id_str}}) RETURN r"", { 'campaign_id' : campaign_id, 'id_str' : user [ 'id_str' ] } )"
+"new_image_id = service . build ( pull = self . pull , no_cache = self . nocache )","new_image_id = service. build ( pull = True, no_cache = self. nocache, tag = self. tag )"
+"import os
+import glob
+import shutil
+import time
+# Constants
+FILE_EXTENSIONS = ['.txt', '.csv', '.xlsx', '.docx', '.pdf']
+def task_func(my_path: str, days_old: int) -> str:
+
+
+    archive_dir = os.path.join(my_path, 'archive')
+    os.makedirs(archive_dir, exist_ok=True)
+
+    for ext in FILE_EXTENSIONS:
+        files = glob.glob(os.path.join(my_path, '*' + ext))
+        for file in files:
+            if os.path.isfile(file) and os.path.getmtime(file) < time.time() - days_old * 86400:
+                shutil.move(file, archive_dir)
+
+    return archive_dir","import os
+import glob
+import shutil
+import time
+# Constants
+FILE_EXTENSIONS = ['.txt', '.csv', '.xlsx', '.docx', '.pdf']
+def task_func(my_path: str, days_old: int) -> str:
+
+
+    archive_dir = os.path.join(my_path, 'archive')
+    os.makedirs(archive_dir, exist_ok=True)
+
+    for ext in FILE_EXTENSIONS:
+        files = glob.glob(os.path.join(my_path, '*' + ext))
+        for file in files:
+            if os.path.isfile(file) and os.path.getmtime(file) < time.time() - days_old * 86400:
+                shutil.move(file, archive_dir)
+
+    return archive_dir"
+p1 = re . compile ( r'^(?P<neighbor>\S+) +(?P<pri>\d+) +(?P<state>\S+(?:\s+\S+)?)' ' +(?P<dead_time>\S+) +(?P<address>\S+) +(?P<interface>\S+)$' ),"p1 = re. compile ( r'^(?P<neighbor>\S+) +(?P<pri>\d+) +(?P<state>\S+(?:\s+\S+)?)' r' +(?P<dead_time>\S+) +(?P<address>\S+) +(?P<interface>\S+)$', re. IGNORECASE )"
+"self . log . info ( ""Adapting to protocol v%s for kernel %s"" , protocol_version , self . kernel_id )","self. log. info ( ""Kernel %s speaks protocol %s"", self. kernel_id, protocol_version. version )"
+"field_map = { 'title' : 'title' , 'level' : 'levelOfDescription' }","field_map = [ { 'title' : 'title', 'level' : 'levelOfDescription' }, { 'title' : 'title', 'level' : 'levelOfDescription' } ]"
+SESSION_COOKIE_DOMAIN = os . environ . get ( 'SESSION_COOKIE_DOMAIN' ),"SESSION_COOKIE_DOMAIN = os. environ. get ( 'SESSION_COOKIE_DOMAIN', '.designsafe-ci.org', default = '' )"
+"args = shlex . split ( args , posix = sys . platform != ""win32"" )","args = shlex. split ( args, posix = sys. platform!= ""win32"" )"
+"name = parse ( r'Creating\s+\.\%s(%s)\s+' % ( os . path . sep , os . path . split ( filename ) [ 1 ] ) , output )","name = parse ( r'Creating\s+\.\/(%s)\s+' % os. path. split ( filename ) [ 1 ], output, 'create' )"
+"""""""Open a new window instance of the Editor instead of undocking it.""""""","""""""Open a new window instance of the Editor instead of closing it."""""""
+"import json
+import random
+# Constants
+DATA = [
+    {'name': 'John', 'age': 30, 'city': 'New York'},
+    {'name': 'Peter', 'age': 35, 'city': 'London'},
+    {'name': 'Susan', 'age': 25, 'city': 'Sydney'},
+    {'name': 'Alice', 'age': 28, 'city': 'Paris'},
+    {'name': 'Bob', 'age': 40, 'city': 'Tokyo'},
+    {'name': 'Charlie', 'age': 22, 'city': 'Beijing'},
+    {'name': 'David', 'age': 33, 'city': 'Mumbai'},
+    {'name': 'Eve', 'age': 27, 'city': 'Berlin'},
+    {'name': 'Frank', 'age': 32, 'city': 'Moscow'},
+    {'name': 'Grace', 'age': 29, 'city': 'Rome'}
+]
+def task_func(utc_datetime, seed=0):
+
+    random.seed(seed)
+    # Choose a random person
+    person = random.choice(DATA)
+    person['timestamp'] = utc_datetime.isoformat()
+    
+    # Encode the person's data as a JSON string
+    person_json_str = json.dumps(person)
+    
+    return person_json_str","import json
+import random
+# Constants
+DATA = [
+    {'name': 'John', 'age': 30, 'city': 'New York'},
+    {'name': 'Peter', 'age': 35, 'city': 'London'},
+    {'name': 'Susan', 'age': 25, 'city': 'Sydney'},
+    {'name': 'Alice', 'age': 28, 'city': 'Paris'},
+    {'name': 'Bob', 'age': 40, 'city': 'Tokyo'},
+    {'name': 'Charlie', 'age': 22, 'city': 'Beijing'},
+    {'name': 'David', 'age': 33, 'city': 'Mumbai'},
+    {'name': 'Eve', 'age': 27, 'city': 'Berlin'},
+    {'name': 'Frank', 'age': 32, 'city': 'Moscow'},
+    {'name': 'Grace', 'age': 29, 'city': 'Rome'}
+]
+def task_func(utc_datetime, seed=0):
+
+    random.seed(seed)
+    # Choose a random person
+    person = random.choice(DATA)
+    person['timestamp'] = utc_datetime.isoformat()
+    
+    # Encode the person's data as a JSON string
+    person_json_str = json.dumps(person)
+    
+    return person_json_str"
+"class Solution:
+    def minEnd(self, n: int, x: int) -> int:
+        n -= 1
+        ans = x
+        for i in range(31):
+            if x >> i & 1 ^ 1:
+                ans |= (n & 1) << i
+                n >>= 1
+        ans |= n << 31
+        return ans","class Solution:
+    def minEnd(self, n: int, x: int) -> int:
+        n -= 1
+        ans = x
+        for i in range(31):
+            if x >> i & 1:
+                ans |= (n & 1) << i
+                n >>= 1
+        ans |= n << 31
+        return ans"
+"class Solution:
+    def countPairs(self, coordinates: List[List[int]], k: int) -> int:
+        cnt = Counter()
+        ans = 0
+        for x2, y2 in coordinates:
+            for a in range(k + 1):
+                b = k - a
+                x1, y1 = a ^ x2, b ^ y2
+                ans += cnt[(x1, y1)]
+            cnt[(x2, y2)] += 1
+        return ans","class Solution:
+    def countPairs(self, coordinates: List[List[int]], k: int) -> int:
+        cnt = Counter()
+        ans = 0
+        for x2, y2 in coordinates:
+            for a in range(k + 1):
+                b = k - a
+                x1, y1 = a ^ x2, b ^ y2
+                ans += cnt[(x1, y1)]
+            cnt[(x2, y2)] += 1
+        return ans"
+parser = argparse . ArgumentParser ( description = 'Deploy sftpbackupstorage to host' ),"parser = argparse. ArgumentParser ( description = 'Deploy kvm to host', formatter_class = argparse. ArgumentDefaultsHelpFormatter )"
+"print ( self . json_data [ ""Events"" ] [ str ( numberofcurrentevents + 1 ) ] [ ""Outcomes"" ] )","print ( self. json_data [ ""Events"" ] [ str ( numberofcurrentevents + 1 ) ] [ ""Outcomes"" ] [ str ( c + 1 ) ] [ ""Outcome"" ] )"
+if field . id == snake_case ( name ) : return field . _real_id ( ),if snake_case ( field. id ) == name and field. _real_id ( ) : return field. _real_id ( )
+self . svnTargets [ 'gitHEAD' ] = '[git]kde:ksecrets',self. svnTargets [ 'gitHEAD' ] = '[git]kde:gitview'
+"f . write ( server . run ( 'sudo grep -i {regex} /var/log/{d}/*.log' . format ( regex = self . _regex , d = d ) ) )","f. write ( server. run ('sudo grep -i ""{0}"" /var/log/{1}/*.log'. format ( self. _regex, d ) ) )"
+"import subprocess
+import psutil
+import time
+def task_func(process_name: str) -> str:
+
+    # Check if the process is running
+    is_running = any([proc for proc in psutil.process_iter() if proc.name() == process_name])
+    
+    # If the process is running, terminate it
+    if is_running:
+        for proc in psutil.process_iter():
+            if proc.name() == process_name:
+                proc.terminate()
+                time.sleep(5)
+        subprocess.Popen(process_name)
+        return f""Process found. Restarting {process_name}.""
+    else:
+        subprocess.Popen(process_name)
+        return f""Process not found. Starting {process_name}.""","import subprocess
+import psutil
+import time
+def task_func(process_name: str) -> str:
+
+    # Check if the process is running
+    is_running = any([proc for proc in psutil.process_iter() if proc.name() == process_name])
+
+    # If the process is running, terminate it
+    if is_running:
+        for proc in psutil.process_iter():
+            if proc.name() == process_name:
+                proc.terminate()
+                time.sleep(5)
+        subprocess.Popen(process_name)
+        return f""Process found. Restarting {process_name}.""
+    else:
+        subprocess.Popen(process_name)
+        return f""Process not found. Starting {process_name}."""
+"def min(a: int, b: int) -> int:
+    return a if a < b else b
+
+
+class Trie:
+    def __init__(self):
+        self.children: List[Optional[Trie]] = [None] * 26
+
+    def insert(self, w: str):
+        node = self
+        for i in map(lambda c: ord(c) - 97, w):
+            if node.children[i] is None:
+                node.children[i] = Trie()
+            node = node.children[i]
+
+
+class Solution:
+    def minValidStrings(self, words: List[str], target: str) -> int:
+        @cache
+        def dfs(i: int) -> int:
+            if i >= n:
+                return 0
+            node = trie
+            ans = inf
+            for j in range(i, n):
+                k = ord(target[j]) - 97
+                if node.children[k] is None:
+                    break
+                node = node.children[k]
+                ans = min(ans, 1 + dfs(j + 1))
+            return ans
+
+        trie = Trie()
+        for w in words:
+            trie.insert(w)
+        n = len(target)
+        ans = dfs(0)
+        return ans if ans < inf else -1","def min(a: int, b: int) -> int:
+    return a if a < b else b
+
+
+class Trie:
+    def __init__(self):
+        self.children: List[Optional[Trie]] = [None] * 26
+
+    def insert(self, w: str):
+        node = self
+        for i in map(lambda c: ord(c) - 97, w):
+            if node.children[i] is None:
+                node.children[i] = Trie()
+            node = node.children[i]
+
+
+class Solution:
+    def minValidStrings(self, words: List[str], target: str) -> int:
+        @cache
+        def dfs(i: int) -> int:
+            if i >= n:
+                return 0
+            node = trie
+            ans = inf
+            for j in range(i, n):
+                k = ord(target[j]) - 97
+                if node.children[k] is None:
+                    break
+                node = node.children[k]
+                ans = min(ans, 1 + dfs(j + 1))
+            return ans
+
+        trie = Trie()
+        for w in words:
+            trie.insert(w)
+        n = len(target)
+        ans = dfs(0)
+        return ans if ans < inf else -1"
+"self . assertEqual ( ts . extra_data [ ""data_008"" ] , 1 )","self. assertEqual ( ts. extra_data [ ""data_008"" ], '1', ""data_008 is not 1"" )"
+"self . localStoragePath = config . get ( 'paths' , 'local_storage' )",self. localStoragePath = config [ 'local_storage' ] or 'localstorage'
+columns = [ column . lower ( ) for column in columns ],columns = [ column. lower ( ) for column in columns ]
+"LOG . debug ( ""Renaming apt list %s to %s"" , filename , newname )","LOG. info ( ""Renaming apt list %s to %s"", filename, newname )"
+"modules = { k : v . __name__ for k , v in global_vars . items ( ) if dtypes . ismodule ( v ) }","modules = { k : v. __name__ for k, v in dace_func. __globals__. items ( ) if dtypes. ismodule ( v ) and v. __name__ }"
+"compiler . includeDirs . append ( project . ProjectPath ( self . usingSIDL . getServerRootDir ( self . language , package ) , self . project . getUrl ( ) ) )","compiler. includeDirs. append ( self. usingSIDL. getServerRootDir ( self. language, package, self. language ) )"
+"raise ValueError ( 'Unknown unfolding method ""%s"". Available methods: %s' % ( method , str ( unfoldCfg . availablemethods ) ) )","raise ValueError ( 'Unknown unfolding method ""%s"". Available methods: %s' % ( method, str ( self. available_methods ) ) )"
+"from dataclasses import dataclass
+
+
+@dataclass
+class Node:
+  node: int = 0  # the node number
+  time: int = 0  # the time taken to mark the entire subtree rooted at the node
+
+
+class Top2:
+  def __init__(self, top1: Node = Node(), top2: Node = Node()):
+    # the direct child node, where the time taken to mark the entire subtree
+    # rooted at the node is the maximum
+    self.top1 = top1
+    # the direct child node, where the time taken to mark the entire subtree
+    # rooted at the node is the second maximum
+    self.top2 = top2
+
+
+class Solution:
+  def timeTaken(self, edges: list[list[int]]) -> list[int]:
+    n = len(edges) + 1
+    ans = [0] * n
+    tree = [[] for _ in range(n)]
+    # dp[i] := the top two direct child nodes for subtree rooted at node i,
+    # where each node contains the time taken to mark the entire subtree rooted
+    # at the node itself
+    dp = [Top2()] * n
+
+    for u, v in edges:
+      tree[u].append(v)
+      tree[v].append(u)
+
+    self._dfs(tree, 0, -1, dp)
+    self._reroot(tree, 0, -1, 0, dp, ans)
+    return ans
+
+  def _getTime(self, u: int) -> int:
+    """"""Returns the time taken to mark node u.""""""
+    return 2 if u % 2 == 0 else 1
+
+  def _dfs(
+      self,
+      tree: list[list[int]],
+      u: int,
+      prev: int,
+      dp: list[Top2]
+  ) -> int:
+    """"""
+    Performs a DFS traversal of the subtree rooted at node `u`, computes the
+    time taken to mark all nodes in the subtree, records the top two direct
+    child nodes, where the time taken to mark the subtree rooted at each of the
+    child nodes is maximized, and returns the top child node.
+
+    These values are used later in the rerooting process.
+    """"""
+    top1 = Node()
+    top2 = Node()
+    for v in tree[u]:
+      if v == prev:
+        continue
+      time = self._dfs(tree, v, u, dp) + self._getTime(v)
+      if time >= top1.time:
+        top2 = top1
+        top1 = Node(v, time)
+      elif time > top2.time:
+        top2 = Node(v, time)
+    dp[u] = Top2(top1, top2)
+    return top1.time
+
+  def _reroot(
+      self,
+      tree: list[list[int]],
+      u: int,
+      prev: int,
+      maxTime: int,
+      dp: list[Top2],
+      ans: list[int]
+  ) -> None:
+    """"""
+    Reroots the tree at node `u` and updates the answer array, where `maxTime`
+    is the longest path that doesn't go through `u`'s subtree.
+    """"""
+    ans[u] = max(maxTime, dp[u].top1.time)
+
+    for v in tree[u]:
+      if v == prev:
+        continue
+      newMaxTime = self._getTime(u) + max(
+          maxTime,
+          dp[u].top2.time if dp[u].top1.node == v else dp[u].top1.time
+      )
+      self._reroot(tree, v, u, newMaxTime, dp, ans)","from dataclasses import dataclass
+
+
+@dataclass
+class Node:
+  node: int = 0  # the node number
+  time: int = 0  # the time taken to mark the entire subtree rooted at the node
+
+
+class Top2:
+  def __init__(self, top1: Node = Node(), top2: Node = Node()):
+    # the direct child node, where the time taken to mark the entire subtree
+    # rooted at the node is the maximum
+    self.top1 = top1
+    # the direct child node, where the time taken to mark the entire subtree
+    # rooted at the node is the second maximum
+    self.top2 = top2
+
+
+class Solution:
+  def timeTaken(self, edges: list[list[int]]) -> list[int]:
+    n = len(edges) + 1
+    ans = [0] * n
+    tree = [[] for _ in range(n)]
+    # dp[i] := the top two direct child nodes for subtree rooted at node i,
+    # where each node contains the time taken to mark the entire subtree rooted
+    # at the node itself
+    dp = [Top2()] * n
+
+    for u, v in edges:
+      tree[u].append(v)
+      tree[v].append(u)
+
+    self._dfs(tree, 0, -1, dp)
+    self._reroot(tree, 0, dp, 0, ans)
+    return ans
+
+  def _getTime(self, u: int) -> int:
+    """"""Returns the time taken to mark node u.""""""
+    return 2 if u % 2 == 0 else 1
+
+  def _dfs(
+      self,
+      tree: list[list[int]],
+      u: int,
+      prev: int,
+      dp: list[Top2]
+  ) -> int:
+    """"""
+    Performs a DFS traversal of the subtree rooted at node `u`, computes the
+    time taken to mark all nodes in the subtree, records the top two direct
+    child nodes, where the time taken to mark the subtree rooted at each of the
+    child nodes is maximized, and returns the top child node.
+
+    These values are used later in the rerooting process.
+    """"""
+    top1 = Node()
+    top2 = Node()
+    for v in tree[u]:
+      if v == prev:
+        continue
+      time = self._dfs(tree, v, u, dp) + self._getTime(v"
+assert template . render ( name = 'Michael' ) == 'Hello Michael!\n',"assert template. render ( name = 'Michael' ) == 'Hello, Michael!'"
+"import pandas as pd
+import matplotlib.pyplot as plt
+# Constants
+COLUMN_NAMES = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H']
+def task_func(data):
+
+    df = pd.DataFrame(data, columns=COLUMN_NAMES)
+    df['Average'] = df.mean(axis=1)
+
+    # Creating a new figure and axis for plotting
+    fig, ax = plt.subplots()
+    df['Average'].plot(ax=ax)
+    ax.set_ylabel('Average')  # Setting the Y-axis label to 'Average'
+
+    return df, ax","import pandas as pd
+import matplotlib.pyplot as plt
+# Constants
+COLUMN_NAMES = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H']
+def task_func(data):
+
+    df = pd.DataFrame(data, columns=COLUMN_NAMES)
+    df['Average'] = df.mean(axis=1)
+
+    # Creating a new figure and axis for plotting
+    fig, ax = plt.subplots()
+    df['Average'].plot(kind='line', title='Average of Each Column', ax=ax)
+    ax.set_ylabel('Average')  # Setting the Y-axis label to 'Average'
+
+    return df, ax"
+"class Solution:
+    def makeTheIntegerZero(self, num1: int, num2: int) -> int:
+        for k in count(1):
+            x = num1 - k * num2
+            if x < 0:
+                break
+            if x.bit_count() <= k <= x:
+                return k
+        return -1","class Solution:
+    def makeTheIntegerZero(self, num1: int, num2: int) -> int:
+        for k in count(1):
+            x = num1 - k * num2
+            if x < 0:
+                break
+            if x.bit_count() <= k <= x:
+                return k
+        return -1"
+"print ( 'got result {} {}' . format ( s , s_prime ) )","print ( 'got result {:x} {:x}'. format ( s, s_prime ), file = sys. stderr )"
+"scheduling_mode = Column ( String ( SMALL_STRING_LENGTH ) , default = ""standard"" )","scheduling_mode = Column ( String ( SMALL_STRING_LENGTH ), default = ""cron"", nullable = False )"
+"lmdb_info . append ( ( len ( train_idx ) , fpath_lmdb ) )","lmdb_info. append ( len ( train_idx ), fpath_lmdb, fpath_lmdb )"
+"class Solution:
+    def kthFactor(self, n: int, k: int) -> int:
+        j = 0
+        for i in range(1, n + 1):
+            if n % i == 0:
+                num = i
+                j += 1
+            if j == k:
+                break
+        return num if j == k else -1","class Solution:
+    def kthFactor(self, n: int, k: int) -> int:
+        j = 0
+        for i in range(1, n + 1):
+            if n % i == 0:
+                num = i
+                j += 1
+            if j == k:
+                break
+        return num if j == k else -1"
+"import json
+import smtplib
+# Constants
+SMTP_SERVER = ""smtp.gmail.com""
+SMTP_PORT = 587
+EMAIL_ADDRESS = ""your.email@gmail.com""
+EMAIL_PASSWORD = ""your.password""
+def task_func(input_data=None, smtp_server=SMTP_SERVER, smtp_port=SMTP_PORT, email_address=EMAIL_ADDRESS, email_password=EMAIL_PASSWORD, smtp=None):
+
+     
+    if input_data is None:
+        return []
+
+    # Parse input JSON data
+    try:
+        data = json.loads(input_data)
+        recipient_email = data.get('recipient')
+        names = data.get('names', [])
+    except (json.JSONDecodeError, ValueError):
+        return []
+
+    if not recipient_email or not names:
+        return []
+
+    message = 'Subject: Extracted Names\n\n' + '\n'.join(names)
+    
+    if smtp:
+        server = smtp(smtp_server, smtp_port)
+    else:
+        server = smtplib.SMTP(smtp_server, smtp_port)
+    server.starttls()
+    server.login(email_address, email_password)
+    server.sendmail(email_address, recipient_email, message)
+    server.quit()
+    return names","import json
+import smtplib
+# Constants
+SMTP_SERVER = ""smtp.gmail.com""
+SMTP_PORT = 587
+EMAIL_ADDRESS = ""your.email@gmail.com""
+EMAIL_PASSWORD = ""your.password""
+def task_func(input_data=None, smtp_server=SMTP_SERVER, smtp_port=SMTP_PORT, email_address=EMAIL_ADDRESS, email_password=EMAIL_PASSWORD, smtp=None):
+
+     
+    if input_data is None:
+        return []
+
+    # Parse input JSON data
+    try:
+        data = json.loads(input_data)
+        recipient_email = data.get('recipient')
+        names = data.get('names', [])
+    except (json.JSONDecodeError, ValueError):
+        return []
+
+    if not recipient_email or not names:
+        return []
+
+    message = 'Subject: Extracted Names\n\n' + '\n'.join(names)
+    
+    if smtp:
+        server = smtp(smtp_server, smtp_port)
+    else:
+        server = smtplib.SMTP(smtp_server, smtp_port)
+    server.starttls()
+    server.login(email_address, email_password)
+    server.sendmail(email_address, recipient_email, message)
+    server.quit()
+    return names"
+"import csv
+from ipaddress import IPv4Network
+def task_func(ip_range, csv_path):
+
+    with open(csv_path, 'w', newline='') as csvfile:
+        fieldnames = ['IP Address']
+        writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+
+        writer.writeheader()
+
+        for ip in IPv4Network(ip_range):
+            writer.writerow({'IP Address': str(ip)})
+
+    return csv_path","import csv
+from ipaddress import IPv4Network
+def task_func(ip_range, csv_path):
+
+    with open(csv_path, 'w', newline='') as csvfile:
+        fieldnames = ['IP Address']
+        writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+
+        writer.writeheader()
+
+        for ip in IPv4Network(ip_range):
+            writer.writerow({'IP Address': str(ip)})
+
+    return csv_path"
+plugValueWidget . numericWidget ( ) . setFixedCharacterWidth ( 5 ),plugValueWidget. numericWidget ( ). setCharacterWidth ( 6 )
+"env = yaml . safe_dump ( deployment_parameters , default_flow_style = False )","env = yaml. dump ( deployment_parameters, default_flow_style = False, indent = 4 )"
+"import re
+import os
+from collections import Counter
+def task_func(folder_path: str) -> dict:
+
+    IP_REGEX = re.compile('\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}')
+    counter = Counter()
+    for filename in os.listdir(folder_path):
+        if filename.endswith('.log'):
+            with open(os.path.join(folder_path, filename)) as file:
+                content = file.read()
+                ips = re.findall(IP_REGEX, content)
+                counter.update(ips)
+    return dict(counter)","import re
+import os
+from collections import Counter
+def task_func(folder_path: str) -> dict:
+
+    IP_REGEX = re.compile('\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}')
+    counter = Counter()
+    for filename in os.listdir(folder_path):
+        if filename.endswith('.log'):
+            with open(os.path.join(folder_path, filename)) as file:
+                content = file.read()
+                ips = re.findall(IP_REGEX, content)
+                counter.update(ips)
+    return dict(counter)"
+"import pandas as pd
+import numpy as np
+def task_func(my_list, seed=42):
+
+    if not isinstance(my_list, list):
+        raise TypeError(""Input must be a list."")
+
+    if seed is not None:
+        np.random.seed(seed)
+
+    my_list.append(12)
+    categories = ['Electronics', 'Fashion', 'Home & Kitchen', 'Automotive', 'Sports']
+    sales_data = []
+    for category in categories:
+        sales = my_list[np.random.randint(0, len(my_list))] * np.random.randint(100, 1000)
+        sales_data.append([category, sales])
+
+    sales_df = pd.DataFrame(sales_data, columns=['Category', 'Sales'])
+
+    ax = sales_df.plot(kind='bar', x='Category', y='Sales', legend=False)
+    ax.set_title('Category-wise Sales Data')
+    ax.set_ylabel('Sales')
+
+    return sales_df, ax","import pandas as pd
+import numpy as np
+def task_func(my_list, seed=42):
+
+    if not isinstance(my_list, list):
+        raise TypeError(""Input must be a list."")
+
+    if seed is not None:
+        np.random.seed(seed)
+
+    my_list.append(12)
+    categories = ['Electronics', 'Fashion', 'Home & Kitchen', 'Automotive', 'Sports']
+    sales_data = []
+    for category in categories:
+        sales = my_list[np.random.randint(0, len(my_list))] * np.random.randint(100, 1000)
+        sales_data.append([category, sales])
+
+    sales_df = pd.DataFrame(sales_data, columns=['Category', 'Sales'])
+
+    ax = sales_df.plot(kind='bar', x='Category', y='Sales', legend=False)
+    ax.set_title('Category-wise Sales Data')
+    ax.set_ylabel('Sales')
+
+    return sales_df, ax"
+"dilation = node . parameters . dilation [ 0 ] if hasattr ( node . parameters , 'dilation' ) and node . parameters . dilation else 1",dilation = 1 if len ( node. parameters. dilation ) == 0 else node. parameters. dilation [ 0 ] if len ( node. parameters. dilation ) == 1 else node. parameters. dilation [ 0 ] * node. parameters. dilation [ 1 ]
+"class Solution:
+    def lengthOfLongestSubsequence(self, nums: List[int], target: int) -> int:
+        n = len(nums)
+        f = [[-inf] * (target + 1) for _ in range(n + 1)]
+        f[0][0] = 0
+        for i, x in enumerate(nums, 1):
+            for j in range(target + 1):
+                f[i][j] = f[i - 1][j]
+                if j >= x:
+                    f[i][j] = max(f[i][j], f[i - 1][j - x] + 1)
+        return -1 if f[n][target] <= 0 else f[n][target]","class Solution:
+    def lengthOfLongestSubsequence(self, nums: List[int], target: int) -> int:
+        n = len(nums)
+        f = [[-inf] * (target + 1) for _ in range(n + 1)]
+        f[0][0] = 0
+        for i, x in enumerate(nums, 1):
+            for j in range(target + 1):
+                f[i][j] = f[i - 1][j]
+                if j >= x:
+                    f[i][j] = max(f[i][j], f[i - 1][j - x] + 1)
+        return -1 if f[n][target] <= 0 else f[n][target]"
+self . command_executor . Execute ( 'service waagent restart' ),"self. command_executor. Execute ('systemctl restart waagent', timeout = 60 )"
+"parent_obj = super ( QosBaseFixture , self ) . get_project_obj ( )","parent_obj = super ( QosBaseFixture, self ). get_project_obj ( self, self. project_id )"
+"self . visualizer . _calculate_attribution_from_cache ( self . label_details [ ""inputIndex"" ] , self . label_details [ ""modelIndex"" ] , self . label_details [ ""labelIndex"" ] , )","self. visualizer. _calculate_attribution_from_cache ( self. label_details [ ""inputIndex"" ], self. label_details [ ""modelIndex"" ], self. label_details [ ""labelIndex"" ], self. label_details [ ""labelType"" ] )"
+"raise ValueError ( ""invalid interpolation syntax in %r at "" ""position %d"" % ( value , tmp_value . find ( '$' ) ) )","raise ValueError ( ""invalid interpolation syntax in %r at "" ""position %d"" % ( value, tmp_value. find ( '%' ) ) )"
+"MigrationData . metadata . create_all ( db . bind , tables = [ MigrationData . __table__ ] )","MigrationData. metadata. create_all ( db, tables = [ MigrationData. __table__, MigrationData. __table__. __name__ ] )"
