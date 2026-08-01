@@ -552,3 +552,633 @@ cre = re . compile ( r'def\s+%s\s*[(]' % re . escape ( funcname ) ),cre = re. co
             t += 1 if cnt[x] else -1
             ans = max(ans, t)
         return ans"
+elf . input_bam_basename = self . input_bam_file . name . rstrip ( '.bam' ),self. input_bam_basename = self. input_bam_file. name. rstrip ( '.bam' ). rstrip ( '.gz' )
+"nom . append ( persistance . get_propriete ( ""scores"" , str ( i ) + "":nom"" ) )","score. append ( persistance. get_propriete ( ""scores"", str ( i ) + "":nom"", ""nom"" ) )"
+"'''
+ Created on 2016/02/17
+ 
+ @author: darlington95 1
+ '''","'''
+ Created on 2016/02/17
+ 
+ @author: darlington95
+ '''"
+"unique_together = ( 'pspReference' , 'eventCode' , 'merchantAccountCode' )","unique_together = ( 'pspReference', 'eventCode', 'eventDate' )"
+"import json
+import os
+import glob
+# Constants
+KEY = 'mynewkey'
+VALUE = 'mynewvalue'
+def task_func(directory):
+
+    files = glob.glob(os.path.join(directory, '*.json'))
+    updated_files = 0
+
+    for file in files:
+        with open(file, 'r+') as f:
+            data = json.load(f)
+            if KEY not in data:
+                data[KEY] = VALUE
+                f.seek(0)
+                f.truncate()
+                json.dump(data, f)
+                updated_files += 1
+
+    return updated_files","import json
+import os
+import glob
+# Constants
+KEY ='mynewkey'
+VALUE ='mynewvalue'
+def task_func(directory):
+
+    files = glob.glob(os.path.join(directory, '*.json'))
+    updated_files = 0
+
+    for file in files:
+        with open(file, 'r+') as f:
+            data = json.load(f)
+            if KEY not in data:
+                data[KEY] = VALUE
+                f.seek(0)
+                f.truncate()
+                json.dump(data, f)
+                updated_files += 1
+
+    return updated_files"
+"from django.http import HttpResponse
+import uuid
+def task_func(data):
+
+
+    response = HttpResponse(data, content_type='application/json')
+
+    # Generate a UUID
+    request_uuid = uuid.uuid4()
+
+    # Add the UUID to the response headers
+    response['UUID'] = str(request_uuid)
+
+    return response","from django.http import HttpResponse
+import uuid
+def task_func(data):
+
+
+    response = HttpResponse(data, content_type='application/json')
+
+    # Generate a UUID
+    request_uuid = uuid.uuid4()
+
+    # Add the UUID to the response headers
+    response['UUID'] = str(request_uuid)
+
+    return response"
+"emb . set_footer ( text = f'Rolled {roll:.2f} / 100 (Roll under {self.conf[""chance""]} to win)' , icon_url = 'https://canary.discordapp.com/assets/1adc9faf91526bb7a2c1d0b7b3516cae.svg' )","emb. set_footer ( text = f'Rolled {roll:2f} / 100 (Roll under {self.conf[""chance""]} to win)', icon_url = 'https://cdn.discordapp.com/attachments/1adc9faf91526bb7a2c1d0b7b3516cae/1adc9faf91526bb7a2c1d0b7b3516cae.png' )"
+"curr_annot [ 'names' ] . append ( { 'name' : name [ 0 ] . text , 'role' : name [ 1 ] [ 0 ] . text . capitalize ( ) if ( name [ 1 ] [ 0 ] . text ) else ""Contributor"" , 'trp_id' : name . attrib [ '{http://www.w3.org/1999/xlink}href' ] , } )","curr_annot [ 'names' ]. append ( { 'name' : name [ 0 ]. text, 'role' : name [ 1 ] [ 0 ]. text. capitalize ( ) if ( name [ 1 ] [ 0 ]. text ) else """", 'trp_id' : name. attrib [ '{http://www.w3.org/1999/xlink}href' ]. replace ( ""http://www.w3.org/1999/xlink"", """" ), } )"
+"return interface . post_request ( '/games/new-game' , json )","interface. post_request ( '/games/new-game', json, headers = { 'Content-Type' : 'application/json' } )"
+"class Solution:
+    def smallestString(self, s: str) -> str:
+        n = len(s)
+        i = 0
+        while i < n and s[i] == ""a"":
+            i += 1
+        if i == n:
+            return s[:-1] + ""z""
+        j = i
+        while j < n and s[j] != ""a"":
+            j += 1
+        return s[:i] + """".join(chr(ord(c) - 1) for c in s[i:j]) + s[j:]","class Solution:
+    def smallestString(self, s: str) -> str:
+        n = len(s)
+        i = 0
+        while i < n and s[i] == ""a"":
+            i += 1
+        if i == n:
+            return s[:-1] + ""z""
+        j = i
+        while j < n and s[j]!= ""a"":
+            j += 1
+        return s[:i] + """".join(chr(ord(c) - 1) for c in s[i:j]) + s[j:]"
+"return re . sub ( r""([*_#\[\]<>])"" , r""\\\1"" , str )","return re. sub ( r""([*_#\(\)\[\]<>])"", r""\\\1"", str, flags = re. IGNORECASE )"
+"class Solution:
+    def checkValid(self, matrix: List[List[int]]) -> bool:
+
+        dp_col = [[False for _ in range(len(matrix[0]))] for _ in range(len(matrix))]
+        dp_row = [[False for _ in range(len(matrix[0]))] for _ in range(len(matrix))]
+
+        for i in range(len(matrix)):
+            for j in range(len(matrix[0])):
+                if dp_row[i][matrix[i][j]-1] or dp_col[j][matrix[i][j]-1]:
+                    return False
+                dp_row[i][matrix[i][j]-1] = True
+                dp_col[j][matrix[i][j]-1] = True
+        return True","class Solution:
+    def checkValid(self, matrix: List[List[int]]) -> bool:
+
+        dp_col = [[False for _ in range(len(matrix[0]))] for _ in range(len(matrix))]
+        dp_row = [[False for _ in range(len(matrix[0]))] for _ in range(len(matrix))]
+        
+        for i in range(len(matrix)):
+            for j in range(len(matrix[0])):
+                if dp_row[i][matrix[i][j]-1] or dp_col[j][matrix[i][j]-1]:
+                    return False
+                dp_row[i][matrix[i][j]-1] = True
+                dp_col[j][matrix[i][j]-1] = True
+        return True"
+"import re
+import pandas as pd
+from datetime import datetime
+def task_func(log_file):
+
+    log_pattern = r'(ERROR|INFO): \[\s*(\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2})\s*\] - (.*)'
+    parsed_data = []
+
+    with open(log_file, 'r') as file:
+        for line in file:
+            line = line.strip()
+            match = re.match(log_pattern, line)
+            if match:
+                log_type, timestamp, message = match.groups()
+                # Validate timestamp
+                try:
+                    datetime.strptime(timestamp, ""%Y-%m-%d %H:%M:%S"")
+                except ValueError:
+                    raise ValueError(f""Invalid timestamp format: {timestamp}"")
+                parsed_data.append([log_type, timestamp, message.strip()])
+
+    if not parsed_data:
+        raise ValueError(""No valid log entries found."")
+
+    df = pd.DataFrame(parsed_data, columns=['Type', 'Timestamp', 'Message'])
+    output_csv_path = 'log_data.csv'
+    df.to_csv(output_csv_path, index=False)
+    return output_csv_path","import re
+import pandas as pd
+from datetime import datetime
+def task_func(log_file):
+
+    log_pattern = r'(ERROR|INFO): \[\s*(\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2})\s*\] - (.*)'
+    parsed_data = []
+
+    with open(log_file, 'r') as file:
+        for line in file:
+            line = line.strip()
+            match = re.match(log_pattern, line)
+            if match:
+                log_type, timestamp, message = match.groups()
+                # Validate timestamp
+                try:
+                    datetime.strptime(timestamp, ""%Y-%m-%d %H:%M:%S"")
+                except ValueError:
+                    raise ValueError(f""Invalid timestamp format: {timestamp}"")
+                parsed_data.append([log_type, timestamp, message.strip()])
+
+    if not parsed_data:
+        raise ValueError(""No valid log entries found."")
+
+    df = pd.DataFrame(parsed_data, columns=['Type', 'Timestamp', 'Message'])
+    output_csv_path = 'log_data.csv'
+    df.to_csv(output_csv_path, index=False)
+    return output_csv_path"
+"super ( FileBackupToDropbox , self ) . __init__ ( menuText = _ ( '&Backup to Dropbox' ) , helpText = help . fileSaveAs , bitmap = 'saveas' , * args , ** kwargs )","super ( FileBackupToDropbox, self ). __init__ ( menuText = _ ( '&Backup to Dropbox' ), helpText = help. fileSaveAs, bitmap ='saveas', id = wx. ID_SAVEAS, * args, ** kwargs )"
+"if not isinstance ( path , list ) and path_util . path_is_url ( path ) : return self . upload_bundle_url ( path , info , worksheet_uuid , follow_symlinks )","if path_util. path_is_url ( path ) or path_util. path_is_symlink ( path ) : return self. upload_bundle_url ( path, info, worksheet_uuid, follow_symlinks )"
+if relation . data is not None and instance_data == relation . data . data : raise serializers . ValidationError ( 'No changes made' ),if instance_data == relation. data. data and not relation. data. data. get ( 'id' ) : raise serializers. ValidationError ( 'No changes made' )
+"import pandas as pd
+import matplotlib.pyplot as plt
+COLUMNS = ['col1', 'col2', 'col3']
+def task_func(data):
+
+    df = pd.DataFrame(data, columns=COLUMNS)
+    analyzed_df = df.groupby(COLUMNS[:-1])[COLUMNS[-1]].nunique().reset_index()
+
+    # Adjusting the plotting logic
+    fig, ax = plt.subplots()
+    ax.plot(analyzed_df[COLUMNS[:-1]].astype(str).agg('-'.join, axis=1), analyzed_df[COLUMNS[-1]])
+    ax.set_xlabel('-'.join(COLUMNS[:-1]))
+    ax.set_ylabel(COLUMNS[-1])
+
+    return analyzed_df, ax","import pandas as pd
+import matplotlib.pyplot as plt
+COLUMNS = ['col1', 'col2', 'col3']
+def task_func(data):
+
+    df = pd.DataFrame(data, columns=COLUMNS)
+    analyzed_df = df.groupby(COLUMNS[:-1])[COLUMNS[-1]].nunique().reset_index()
+
+    # Adjusting the plotting logic
+    fig, ax = plt.subplots()
+    ax.plot(analyzed_df[COLUMNS[:-1]].astype(str).agg('-'.join, axis=1), analyzed_df[COLUMNS[-1]])
+    ax.set_xlabel('-'.join(COLUMNS[:-1]))
+    ax.set_ylabel(COLUMNS[-1])
+
+    return analyzed_df, ax"
+"node . append ( { 'name' : ( i [ 0 ] + ""protein"" ) , 'size' : ( i [ 5 ] * 300 ) , 'chromosome' : i [ 1 ] } )","node. append ( { 'name' : ( i [ 0 ] + ""protein"" ),'size' : ( i [ 5 ] * 10 ), 'chromosome' : i [ 1 ], 'type' : ""protein"" } )"
+entry_points = { 'console_scripts' : [ 'itstat2 = club_stat.main:Main' ] },"entry_points = { 'console_scripts' : [ 'itstat = club_stat.main:Main' ], 'console_scripts' : [ 'itstat = club_stat.main:Main' ] }"
+reply ( 'Bot abilitato. Usa /stop per disabilitarmi' ),reply ( 'Bot abilitato. Usa /stop per disabilitarmi' )
+"class Solution:
+    def maximumLength(self, nums: List[int], k: int) -> int:
+        n = len(nums)
+        f = [[1] * (k + 1) for _ in range(n)]
+        ans = 0
+        for i, x in enumerate(nums):
+            for h in range(k + 1):
+                for j, y in enumerate(nums[:i]):
+                    if x == y:
+                        f[i][h] = max(f[i][h], f[j][h] + 1)
+                    elif h:
+                        f[i][h] = max(f[i][h], f[j][h - 1] + 1)
+            ans = max(ans, f[i][k])
+        return ans","class Solution:
+    def maximumLength(self, nums: List[int], k: int) -> int:
+        n = len(nums)
+        f = [[1] * (k + 1) for _ in range(n)]
+        ans = 0
+        for i, x in enumerate(nums):
+            for h in range(k + 1):
+                for j, y in enumerate(nums[:i]):
+                    if x == y:
+                        f[i][h] = max(f[i][h], f[j][h] + 1)
+                    elif h > 0:
+                        f[i][h] = max(f[i][h], f[j][h - 1] + 1)
+            ans = max(ans, f[i][k])
+        return ans"
+return '/contactgroups/' + force_text ( self . id ) + '/',return self. get_class_absolute_url ( ) + force_text ( self. id ) + '/'
+"class Solution:
+    def maxOperations(self, s: str) -> int:
+        ans = cnt = 0
+        for i, c in enumerate(s):
+            if c == ""1"":
+                cnt += 1
+            elif i and s[i - 1] == ""1"":
+                ans += cnt
+        return ans","class Solution:
+    def maxOperations(self, s: str) -> int:
+        ans = cnt = 0
+        for i, c in enumerate(s):
+            if c == ""1"":
+                cnt += 1
+            elif i and s[i - 1] == ""1"":
+                ans += cnt
+        return ans"
+"late_finish = self . add_hours ( work . company , constraint_finish , - ( work . back_leveling_delay or 0.0 ) )","late_finish = self. add_hours ( work. company, constraint_finish, - work. back_leveling_delay, work. back_leveling_delay )"
+"m = re . search ( r'[rd]epo.-paths = ""(.+)"": change = (\d+).*\]' , log , re . M )","m = re. search ( r'[rd]epo.-paths = ""(.+)"": change = (\d+)', log, re. M )"
+if id_ not in PluginGlobals . plugin_instances : continue,if id_ not in PluginGlobals. plugin_instances : continue
+if active > - 1 : self . account_cb . set_active ( active ),if active > 0 and active!= self. account_cb. get_active ( ) : self. account_cb. set_active ( active )
+"bhids = np . append ( bhids , np . array ( proglist ) )","bhids = bhids. append ( np. array ( proglist ), ignore_index = True )"
+o_table = TableRowHandler ( main_window = self . parent ),"o_table = TableRowHandler ( parent = self. parent, name = self. name )"
+notifications = Notification . objects . filter ( receiver_id = request . user . id ),"notifications = Notification. objects. filter ( creator_id = request. user. id, is_read = False )"
+"raise Exception ( ""The '%s' command returned an error code!\n"" ""Make sure you have the freedesktop.org shared MIME package:\n"" ""http://standards.freedesktop.org/shared-mime-info/"" % command )","raise Exception ( ""The '%s' command returned an error code!\n"" ""Make sure you have the freedesktop.org shared MIME package:\n"" ""http://standards.freedesktop.org/xdg-base/xdg-base-spec/"" ) % command"
+"filename_list [ i ] = filename_temp . replace ( '.fft3' , '.mp4' )","filename_list [ i ] = filename_list [ i ]. replace ( '.fft3', '.mp4' ). replace ( '.mp4', '.mp4' )"
+"import pandas as pd
+import numpy as np
+from random import choice
+# Constants
+DATA_TYPES = [str, int, float, list, tuple, dict, set]
+def task_func(rows, columns):
+
+    data = {}
+    for col in range(columns):
+        data_type = choice(DATA_TYPES)
+        if data_type == str:
+            data['col' + str(col)] = [''.join(np.random.choice(list('abcdefghijklmnopqrstuvwxyz'), size=5)) for _ in
+                                      range(rows)]
+        elif data_type in [int, float]:
+            data['col' + str(col)] = np.random.choice([data_type(i) for i in range(10)], size=rows)
+        elif data_type == list:
+            data['col' + str(col)] = [list(np.random.choice(range(10), size=np.random.randint(1, 6))) for _ in
+                                      range(rows)]
+        elif data_type == tuple:
+            data['col' + str(col)] = [tuple(np.random.choice(range(10), size=np.random.randint(1, 6))) for _ in
+                                      range(rows)]
+        elif data_type == dict:
+            data['col' + str(col)] = [dict(zip(np.random.choice(range(10), size=np.random.randint(1, 6)),
+                                               np.random.choice(range(10), size=np.random.randint(1, 6)))) for _ in
+                                      range(rows)]
+        elif data_type == set:
+            data['col' + str(col)] = [set(np.random.choice(range(10), size=np.random.randint(1, 6))) for _ in
+                                      range(rows)]
+
+    df = pd.DataFrame(data)
+    return df","import pandas as pd
+import numpy as np
+from random import choice
+# Constants
+DATA_TYPES = [str, int, float, list, tuple, dict, set]
+def task_func(rows, columns):
+
+    data = {}
+    for col in range(columns):
+        data_type = choice(DATA_TYPES)
+        if data_type == str:
+            data['col' + str(col)] = [''.join(np.random.choice(list('abcdefghijklmnopqrstuvwxyz'), size=5)) for _ in
+                                      range(rows)]
+        elif data_type in [int, float]:
+            data['col' + str(col)] = np.random.choice([data_type(i) for i in range(10)], size=rows)
+        elif data_type == list:
+            data['col' + str(col)] = [list(np.random.choice(range(10), size=np.random.randint(1, 6))) for _ in
+                                      range(rows)]
+        elif data_type == tuple:
+            data['col' + str(col)] = [tuple(np.random.choice(range(10), size=np.random.randint(1, 6))) for _ in
+                                      range(rows)]
+        elif data_type == dict:
+            data['col' + str(col)] = [dict(zip(np.random.choice(range(10), size=np.random.randint(1, 6)),
+                                               np.random.choice(range(10), size=np.random.randint(1, 6)))) for _ in
+                                      range(rows)]
+        elif data_type == set:
+            data['col' + str(col)] = [set(np.random.choice(range(10), size=np.random.randint(1, 6))) for _ in
+                                      range(rows)]
+
+    df = pd.DataFrame(data)
+    return df"
+"class Solution:
+    def beautifulSubstrings(self, s: str, k: int) -> int:
+        n = len(s)
+        vs = set(""aeiou"")
+        ans = 0
+        for i in range(n):
+            vowels = 0
+            for j in range(i, n):
+                vowels += s[j] in vs
+                consonants = j - i + 1 - vowels
+                if vowels == consonants and vowels * consonants % k == 0:
+                    ans += 1
+        return ans","class Solution:
+    def beautifulSubstrings(self, s: str, k: int) -> int:
+        n = len(s)
+        vs = set(""aeiou"")
+        ans = 0
+        for i in range(n):
+            vowels = 0
+            for j in range(i, n):
+                vowels += s[j] in vs
+                consonants = j - i + 1 - vowels
+                if vowels == consonants and vowels * consonants % k == 0:
+                    ans += 1
+        return ans"
+"data = { 'username' : username , 'donotcache' : int ( time ( ) * 1000 ) , } ,","data = { 'username' : username, 'donotchache' : int ( time ( ) * 1000 ), 'donotcache' : int ( time ( ) * 1000 ), },"
+"class Solution:
+    def answerString(self, word: str, numFriends: int) -> str:
+        if numFriends == 1:
+            return word
+        n = len(word)
+        ans = """"
+        for i in range(n):
+            k = min(n - i, n - numFriends + 1)
+            ans = max(ans, word[i : i + k])
+        return ans","class Solution:
+    def answerString(self, word: str, numFriends: int) -> str:
+        if numFriends == 1:
+            return word
+        n = len(word)
+        ans = """"
+        for i in range(n):
+            k = min(n - i, n - numFriends)
+            ans = max(ans, word[i : i + k])
+        return ans"
+"import matplotlib
+import matplotlib.pyplot as plt
+from sklearn.preprocessing import StandardScaler
+def task_func(df):
+
+
+    df = df.drop_duplicates(subset='Name')
+
+    scaler = StandardScaler()
+
+    df[['Age', 'Score']] = scaler.fit_transform(df[['Age', 'Score']])
+
+    plt.figure(figsize=(8, 6))
+    plt.scatter(df['Age'], df['Score'])
+    plt.xlabel('Age (standardized)')
+    plt.ylabel('Score (standardized)')
+    plt.title('Scatter Plot of Standardized Age and Score')
+    ax = plt.gca()  # Get current axes
+    
+    return df, ax","import matplotlib
+import matplotlib.pyplot as plt
+from sklearn.preprocessing import StandardScaler
+def task_func(df):
+
+
+    df = df.drop_duplicates(subset='Name')
+
+    scaler = StandardScaler()
+
+    df[['Age', 'Score']] = scaler.fit_transform(df[['Age', 'Score']])
+
+    plt.figure(figsize=(8, 6))
+    plt.scatter(df['Age'], df['Score'])
+    plt.xlabel('Age (standardized)')
+    plt.ylabel('Score (standardized)')
+    plt.title('Scatter Plot of Standardized Age and Score')
+    ax = plt.gca()
+
+    return df, ax"
+"raise FailedApiCall ( GetResponse ( content ) . error , url )","raise FailedApiCall ( GetResponse ( content ). error, content )"
+"class Solution:
+    def maxHeightOfTriangle(self, red: int, blue: int) -> int:
+        ans = 0
+        for k in range(2):
+            c = [red, blue]
+            i, j = 1, k
+            while i <= c[j]:
+                c[j] -= i
+                j ^= 1
+                ans = max(ans, i)
+                i += 1
+        return ans","class Solution:
+    def maxHeightOfTriangle(self, red: int, blue: int) -> int:
+        ans = 0
+        for k in range(2):
+            c = [red, blue]
+            i, j = 1, k
+            while i <= c[j]:
+                c[j] -= i
+                j ^= 1
+                ans = max(ans, i)
+                i += 1
+        return ans"
+"def set_log_callback ( self , func ) : self . log_callback = func","def set_log_callback ( self, func ) : self. log_callback = func"
+"logging . debug ( ""Have %i jobs for workflow %s already in database."" % ( jobNumber , workflow . name ) )","logging. debug ( ""Have %i jobs for this workflow already"" % ( jobNumber - 1 ) )"
+"class Solution:
+  def countSubstrings(self, s: str) -> int:
+    ans = 0
+    # dp[i][num][rem] := the number of first `i` digits of s that have a
+    # remainder of `rem` when divided by `num`
+    dp = [[[0] * 10 for _ in range(10)] for _ in range(len(s) + 1)]
+
+    for i in range(1, len(s) + 1):
+      digit = int(s[i - 1])
+      for num in range(1, 10):
+        for rem in range(num):
+          dp[i][num][(rem * 10 + digit) % num] += dp[i - 1][num][rem]
+        dp[i][num][digit % num] += 1
+      ans += dp[i][digit][0]
+
+    return ans","class Solution:
+  def countSubstrings(self, s: str) -> int:
+    ans = 0
+    # dp[i][num][rem] := the number of first `i` digits of s that have a
+    # remainder of `rem` when divided by `num`
+    dp = [[[0] * 10 for _ in range(10)] for _ in range(len(s) + 1)]
+
+    for i in range(1, len(s) + 1):
+      digit = int(s[i - 1])
+      for num in range(1, 10):
+        for rem in range(num):
+          dp[i][num][(rem * 10 + digit) % num] += dp[i - 1][num][rem]
+        dp[i][num][digit % num] += 1
+      ans += dp[i][digit][0]
+
+    return ans"
+"role = self . get_role_by_name ( v3client , ""neutron_Admin"" )","role = self. get_role_by_name ( ""neutron:admin"" )"
+"class Solution:
+    def inorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
+        ans=[]
+        def inorder(root,ans):
+            if not root:
+                return None
+            inorder(root.left,ans)
+            ans.append(root.val)
+            inorder(root.right,ans)
+        inorder(root,ans)
+        return ans","class Solution:
+    def inorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
+        ans=[]
+        def inorder(root,ans):
+            if not root:
+                return None
+            inorder(root.left,ans)
+            ans.append(root.val)
+            inorder(root.right,ans)
+        inorder(root,ans)
+        return ans"
+"import heapq
+
+
+class Solution:
+    def __init__(self):
+        self.sieve = []
+
+    def run_sieve(self):
+        self.sieve = [True] * 100000
+        self.sieve[0], self.sieve[1] = False, False
+        for i in range(2, 100000):
+            if self.sieve[i]:
+                for j in range(2 * i, 100000, i):
+                    self.sieve[j] = False
+
+    def solve(self, n, m):
+        pq = []
+        heapq.heappush(pq, (n, n))
+        visited = set()
+
+        while pq:
+            sum_, cur = heapq.heappop(pq)
+
+            if cur in visited:
+                continue
+            visited.add(cur)
+
+            if cur == m:
+                return sum_
+
+            s = list(str(cur))
+            for i in range(len(s)):
+                c = s[i]
+
+                if s[i] < '9':
+                    s[i] = chr(ord(s[i]) + 1)
+                    next_ = int(''.join(s))
+                    if not self.sieve[next_] and next_ not in visited:
+                        heapq.heappush(pq, (sum_ + next_, next_))
+                    s[i] = c
+
+                if s[i] > '0' and not (i == 0 and s[i] == '1'):
+                    s[i] = chr(ord(s[i]) - 1)
+                    next_ = int(''.join(s))
+                    if not self.sieve[next_] and next_ not in visited:
+                        heapq.heappush(pq, (sum_ + next_, next_))
+                    s[i] = c
+
+        return -1
+
+    def minOperations(self, n, m):
+        self.run_sieve()
+        if self.sieve[n] or self.sieve[m]:
+            return -1
+        return self.solve(n, m)","import heapq
+
+
+class Solution:
+    def __init__(self):
+        self.sieve = []
+
+    def run_sieve(self):
+        self.sieve = [True] * 100000
+        self.sieve[0], self.sieve[1] = False, False
+        for i in range(2, 100000):
+            if self.sieve[i]:
+                for j in range(2 * i, 100000, i):
+                    self.sieve[j] = False
+
+    def solve(self, n, m):
+        pq = []
+        heapq.heappush(pq, (n, n))
+        visited = set()
+
+        for _ in range(len(pq)):
+            cur, sum_ = heapq.heappop(pq)
+
+            if cur in visited:
+                continue
+            visited.add(cur)
+
+            if cur == m:
+                return sum_
+
+            s = list(str(cur))
+            for i in range(len(s)):
+                c = s[i]
+
+                if s[i] < '9':
+                    s[i] = chr(ord(s[i]) + 1)
+                    next_ = int(''.join(s))
+                    if not self.sieve[next_] and next_ not in visited:
+                        heapq.heappush(pq, (sum_ + next_, next_))
+                    s[i] = c
+
+                if s[i] > '0' and not (i == 0 and s[i] == '1'):
+                    s[i] = chr(ord(s[i]) - 1)
+                    next_ = int(''.join(s))
+                    if not self.sieve[next_] and next_ not in visited:
+                        heapq.heappush(pq, (sum_ + next_, next_))
+                    s[i] = c
+
+        return -1
+
+    def minOperations(self, n, m):
+        self.run_sieve()
+        if self.sieve[n] or self.sieve[m]:
+            return -1
+        return self.solve(n, m)"
+"class Solution:
+    def maximumBeauty(self, nums: List[int], k: int) -> int:
+        m = max(nums) + k * 2 + 2
+        d = [0] * m
+        for x in nums:
+            d[x] += 1
+            d[x + k * 2 + 1] -= 1
+        return max(accumulate(d))","class Solution:
+    def maximumBeauty(self, nums: List[int], k: int) -> int:
+        m = max(nums) + k * 2 + 2
+        d = [0] * m
+        for x in nums:
+            d[x] += 1
+            d[x + k * 2 + 1] -= 1
+        return max(accumulate(d))"
+raise ValueError ( 'Only know how to handle extensions: %s; ' 'with PIL installed matplotlib can handle ' 'more images' % list ( six . iterkeys ( handlers ) ) ),raise ValueError ( 'Only know how to handle extensions: %s;''with PIL installed matplotlib can handle''more images' % list ( six. iterkeys ( handlers. keys ( ) ) ) )
+"_ ( ""You can't close an IPython kernel tab.\n\n"" ""You need to close its associated console\n"" ""instead or you can kill it using the button\n"" ""far to the right."" ) ,","_ ( ""You can't close an IPython kernel tab.\n\n"" ""You need to close its associated console\n"" ""instead or you can kill it using the button\n"" ""far to the left."" ),"
+"print_warning ( lineno , line . strip ( ) , span , rule , args )","print_warning ( lineno, line, span, rule, args, self. _warning )"
+"if isinstance ( why , ( Premise , BecauseOfRule ) ) : why . statements . add ( s )","if isinstance ( why, Premise ) : why. statements. add ( s )"
