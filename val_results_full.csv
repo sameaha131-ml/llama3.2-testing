@@ -11614,3 +11614,621 @@ return self . received_quantity ( ) - self . unpacked_quantity ( ),return self. 
 "sampleGroup = [ ( snp . rpartition ( ""SNPs/"" ) [ - 1 ] , [ row for row in csv . reader ( open ( snp , ""rb"" ) , delimiter = '\t' ) if ( '##ID' or '#Sample' ) not in row [ 0 ] ] ) for snp in snp_files ]","sampleGroup = [ ( snp. rpartition ( ""SNPs/"" ) [ - 1 ], [ row for row in csv. reader ( open ( snp, ""rb"" ), delimiter = '\t' ) if ""##ID"" or ""#Sample"" not in row [ 0 ] ] ) for snp in snp_files if snp. rpartition ( ""SNPs/"" ) [ - 1 ] ]"
 from . percent_normalizer import PercentChangeNormalizer,"from. percent_normalizer import PercentNormalizer, PercentNormalizerError"
 ''' Scrape prometheus formatted metrics from CockroachDB''',''' Screate prometheus formatted metrics from CockroachDB'''
+return filecont . find ( 'testsupport.objspace' ) >= 0,return filecont. index ( 'testsupport.objspace' ) >= 0 and filecont. index ( 'testsupport.objspace' ) < len ( filecont )
+"data = all_pixel_image_data_kapton_correction ( image_data = dxtbx_img , params = correction . fuller_kapton ) ( )","data = all_pixel_image_data_kapton_correction ( image_data = data, params = correction. kapton ) ( )"
+"self . logger . debug ( '%s = %s' % ( property . Name , property . Value ) )","self. logger. debug ( property. Name, "" = "", property. Value, ""type = "", type ( property. Value ) )"
+"import itertools
+import math
+from pandas import Series
+def task_func(elements, subset_size, top_n=2):
+
+    if subset_size > len(elements) or subset_size <= 0:
+        return 1, []
+
+    combinations = list(itertools.combinations(elements, subset_size))
+    sums = [sum(combination) for combination in combinations if len(combination) != 0]
+    product = math.prod(sums)
+    top_sums = sorted(sums, reverse=True)[:top_n]
+    top_sums = Series(top_sums)
+    return product, top_sums","import itertools
+import math
+from pandas import Series
+def task_func(elements, subset_size, top_n=2):
+
+    if subset_size > len(elements) or subset_size <= 0:
+        return 1, []
+
+    combinations = list(itertools.combinations(elements, subset_size))
+    sums = [sum(combination) for combination in combinations if len(combination)!= 0]
+    product = math.prod(sums)
+    top_sums = sorted(sums, reverse=True)[:top_n]
+    top_sums = Series(top_sums)
+    return product, top_sums"
+"found_list = [ [ g . strip ( '.' ) for g in e [ f ] ] for e in editions if e . get ( f , None ) and not any ( 'translation' in i for i in e [ f ] ) ]","found_list = [ [ g. strip ( '.' ) for g in e [ f ] ] for e in editions if e. get ( f, None ) and not any ( 'translation' in i for i in e [ f ] ) ]"
+"from . ebay_requests import ( get_seller_list , get_item , default_site_id , get_shipping_details )","from. ebay_requests import ( get_active_listings, get_seller_list, get_item, default_site_id, get_shipping_details, get_item_details )"
+"ascii_converted = addresses . encode ( ""ascii"" , ""strict"" )","ascii_converted = addresses. encode ( encoding = ""ascii"", errors = ""replace"" )"
+"html += ""<li style='padding: 10px; border-bottom: 1px solid #ededed;'><img style='height:64px; padding:5px;' src='/Dropshipping/static/images/Product/"" + str ( item [ 'image_path' ] ) + "".jpg'>"" + ""<b>"" + item [ 'title' ] + ""</b>"" + ""</li>""","html += ""<li style='padding: 10px; border-bottom: 1px solid #ededed;'><img style='height:64px; padding:5px;' src='/dropshipping/static/images/Product/"" + str ( item [ 'image_path' ] ) + "".jpg'>"" + ""<b>"" + item [ 'title' ] + ""</b>"" + ""</li>"""
+"class Solution:
+    def minOperationsToMakeMedianK(self, nums: List[int], k: int) -> int:
+        nums.sort()
+        n = len(nums)
+        m = n >> 1
+        ans = abs(nums[m] - k)
+        if nums[m] > k:
+            for i in range(m - 1, -1, -1):
+                if nums[i] <= k:
+                    break
+                ans += nums[i] - k
+        else:
+            for i in range(m + 1, n):
+                if nums[i] >= k:
+                    break
+                ans += k - nums[i]
+        return ans","class Solution:
+    def minOperationsToMakeMedianK(self, nums: List[int], k: int) -> int:
+        nums.sort()
+        n = len(nums)
+        m = n >> 1
+        ans = abs(nums[m] - k)
+        if nums[m] > k:
+            for i in range(m - 1, -1, -1):
+                if nums[i] <= k:
+                    break
+                ans += nums[i] - k
+        else:
+            for i in range(m + 1, n):
+                if nums[i] >= k:
+                    break
+                ans += k - nums[i]
+        return ans"
+"class Solution:
+    def clearDigits(self, s: str) -> str:
+        stk = []
+        for c in s:
+            if c.isdigit():
+                stk.pop()
+            else:
+                stk.append(c)
+        return """".join(stk)","class Solution:
+    def clearDigits(self, s: str) -> str:
+        stk = []
+        for c in s:
+            if c.isdigit():
+                stk.pop()
+            else:
+                stk.append(c)
+        return """".join(stk)"
+"self . format_functions [ section ] = FormatFunctions ( to_seq = getattr ( this_format_module , self . _config [ section ] [ 'to_seq' ] ) , to_csv = getattr ( this_format_module , self . _config [ section ] [ 'to_csv' ] ) , to_format = getattr ( this_format_module , self . _config [ section ] [ 'to_format' ] , None ) , )","self. format_functions [ section ] = FormatFunctions ( to_seq = getattr ( this_format_module, self. _config [ section ] [ 'to_seq' ] ), to_csv = getattr ( this_format_module, self. _config [ section ] [ 'to_csv' ] ), to_format = getattr ( this_format_module, self. _config [ section ] [ 'to_format' ] ), )"
+"import random
+import matplotlib.pyplot as plt
+# Constants
+SALARY_RANGE = (20000, 100000)
+def task_func(dict1):
+
+    emp_salaries = []
+
+    for prefix, num_employees in dict1.items():
+        if not prefix.startswith('EMPXX'):
+            continue
+
+        for _ in range(num_employees):
+            salary = random.randint(*SALARY_RANGE)
+            emp_salaries.append(salary)
+
+    plt.hist(emp_salaries, bins=10, alpha=0.5)
+    plt.title('Salary Distribution in EMPXX Department')
+    plt.xlabel('Salary')
+    plt.ylabel('Number of Employees')
+    return plt.gca()","import random
+import matplotlib.pyplot as plt
+# Constants
+SALARY_RANGE = (20000, 100000)
+def task_func(dict1):
+
+    emp_salaries = []
+
+    for prefix, num_employees in dict1.items():
+        if not prefix.startswith('EMPXX'):
+            continue
+
+        for _ in range(num_employees):
+            salary = random.randint(*SALARY_RANGE)
+            emp_salaries.append(salary)
+
+    plt.hist(emp_salaries, bins=10, alpha=0.5)
+    plt.title('Salary Distribution in EMPXX Department')
+    plt.xlabel('Salary')
+    plt.ylabel('Number of Employees')
+    return plt.show()"
+"bkt = _bucket . Bucket ( conn , os . environ . get ( 'EPIC_S3_BUCKET' , None ) )","bkt = _bucket. Bucket ( conn, os. environ ( 'EPIC_S3_BUCKET', 'epic' ) )"
+items [ x ] [ 'Category' ] = service . getCategoryTitle ( ),items [ x ] [ 'category' ] = service. getCategoryTitle ( x )
+"self . cmd_statsc ( self . logchan , self . routechan , ( sserver [ 'host' ] , ) )","self. cmd_statsc ( self. logchan, self. routechan, sserver [ 'host' ], sserver [ 'port' ] )"
+"class Solution:
+    def maximumLength(self, nums: List[int], k: int) -> int:
+        n = len(nums)
+        f = [[1] * (k + 1) for _ in range(n)]
+        ans = 0
+        for i, x in enumerate(nums):
+            for h in range(k + 1):
+                for j, y in enumerate(nums[:i]):
+                    if x == y:
+                        f[i][h] = max(f[i][h], f[j][h] + 1)
+                    elif h:
+                        f[i][h] = max(f[i][h], f[j][h - 1] + 1)
+            ans = max(ans, f[i][k])
+        return ans","class Solution:
+    def maximumLength(self, nums: List[int], k: int) -> int:
+        n = len(nums)
+        f = [[1] * (k + 1) for _ in range(n)]
+        ans = 0
+        for i, x in enumerate(nums):
+            for h in range(k + 1):
+                for j, y in enumerate(nums[:i]):
+                    if f[j][h] == 1: continue
+                    if x == y:
+                        f[i][h] = max(f[i][h], f[j][h] + 1)
+                    elif h:
+                        f[i][h] = max(f[i][h], f[j][h - 1] + 1)
+            ans = max(ans, f[i][k])
+        return ans"
+"import pandas as pd
+from sklearn.linear_model import LinearRegression
+import matplotlib.pyplot as plt
+def task_func(df):
+
+
+    if not isinstance(df, pd.DataFrame) or not all(col in df.columns for col in ['group', 'date', 'value']):
+        raise ValueError(""Invalid 'df': must be a DataFrame with 'group', 'date', and 'value' columns."")
+
+    df['date'] = df['date'].apply(lambda x: x.toordinal())
+    X = df[['date']]
+    y = df['value']
+
+    model = LinearRegression()
+    model.fit(X, y)
+    y_pred = model.predict(X)
+
+    fig, ax = plt.subplots()
+    ax.scatter(X, y, color='red')
+    ax.plot(X, y_pred, color='blue')
+    ax.set_title('Value vs Date (Linear Regression Prediction)')
+    ax.set_xlabel('Date (ordinal)')
+    ax.set_ylabel('Value')
+
+    return model, y_pred, ax","import pandas as pd
+from sklearn.linear_model import LinearRegression
+import matplotlib.pyplot as plt
+def task_func(df):
+
+
+    if not isinstance(df, pd.DataFrame) or not all(col in df.columns for col in ['group', 'date', 'value']):
+        raise ValueError(""Invalid 'df': must be a DataFrame with 'group', 'date', and 'value' columns."")
+
+    df['date'] = df['date'].apply(lambda x: x.toordinal())
+    X = df[['date']]
+    y = df['value']
+
+    model = LinearRegression()
+    model.fit(X, y)
+    y_pred = model.predict(X)
+
+    fig, ax = plt.subplots()
+    ax.scatter(X, y, color='red')
+    ax.plot(X, y_pred, color='blue')
+    ax.set_title('Value vs Date (Linear Regression Prediction)')
+    ax.set_xlabel('Date (ordinal)')
+    ax.set_ylabel('Value')
+
+    return model, y_pred, ax"
+"from collections import Counter
+import os
+import json
+def task_func(filename, directory):
+
+    total_words = 0
+    word_counts = Counter()
+
+    for file_name in os.listdir(directory):
+        if not file_name.endswith('.txt'):
+            continue
+        with open(os.path.join(directory, file_name), 'r') as file:
+            words = file.read().split()
+            word_counts.update(words)
+
+    with open(filename, 'w') as file:
+        json.dump(dict(word_counts), file)
+    
+    for word in word_counts:
+        total_words += word_counts[word]
+    return total_words","from collections import Counter
+import os
+import json
+def task_func(filename, directory):
+
+    total_words = 0
+    word_counts = Counter()
+
+    for file_name in os.listdir(directory):
+        if not file_name.endswith('.txt'):
+            continue
+        with open(os.path.join(directory, file_name), 'r') as file:
+            words = file.read().split()
+            word_counts.update(words)
+
+    with open(filename, 'w') as file:
+        json.dump(dict(word_counts), file)
+    
+    for word in word_counts:
+        total_words += word_counts[word]
+    return total_words"
+channelIdentifier = '' . join ( [ choice ( ascii_letters ) for n in range ( 32 ) ] ),channelIdentifier = ''. join ( [ random. choice ( ascii_letters + digits ) for n in range ( 32 ) ] )
+"pos_default_qty = fields . Float ( string = ""POS Default Quantity"" , default = 1 , )","pos_default_qty = fields. Float ( string = ""POS Default Quantity"", default = 0, required = False, )"
+"extras_require = { 'cli' : [ 'click==7.1.2' , 'honeybee-core[cli]==1.30.2' ] } ,","extras_require = { 'cli' : [ 'click==7.1.2', 'honeybee-core[cli]==1.30.1' ], 'honeybee-core[cli]' : [ 'click==7.1.2', 'honeybee-core[cli]==1.30.1' ] },"
+"import numpy as np
+import pandas as pd
+def task_func(rows=5, cols=5):
+
+    np.random.seed(0)
+    categories = ['A', 'B', 'C', 'D', 'E']
+    if cols > len(categories):
+        raise ValueError(f""Maximum number of columns allowed is {len(categories)}"")
+
+    data = pd.DataFrame(np.random.rand(rows, cols) * 100, columns=categories[:cols])
+
+    ax = data.plot(kind='bar', stacked=True, figsize=(10, 6))
+    ax.set_ylabel('Value')
+    ax.set_title('Stacked Bar Chart')
+
+    return ax","import numpy as np
+import pandas as pd
+def task_func(rows=5, cols=5):
+
+    np.random.seed(0)
+    categories = ['A', 'B', 'C', 'D', 'E']
+    if cols > len(categories):
+        raise ValueError(f""Maximum number of columns allowed is {len(categories)}"")
+
+    data = pd.DataFrame(np.random.rand(rows, cols) * 100, columns=categories[:cols])
+
+    ax = data.plot(kind='bar', stacked=True, figsize=(10, 6))
+    ax.set_ylabel('Value')
+    ax.set_title('Stacked Bar Chart')
+
+    return ax"
+"rsync_cmd = [ 'rsync' , '--checksum' , '--recursive' , '--links' , '--perms' , '--verbose' , '--compress' , '--exclude' , '.svn' ]","rsync_cmd = [ 'rsync', '--checksum', '--recursive', '--links', '--perms', '--verbose', '--compress', '--delete' ]"
+"class Solution:
+    def longestAlternatingSubarray(self, nums: List[int], threshold: int) -> int:
+        ans, n = 0, len(nums)
+        for l in range(n):
+            if nums[l] % 2 == 0 and nums[l] <= threshold:
+                r = l + 1
+                while r < n and nums[r] % 2 != nums[r - 1] % 2 and nums[r] <= threshold:
+                    r += 1
+                ans = max(ans, r - l)
+        return ans","class Solution:
+    def longestAlternatingSubarray(self, nums: List[int], threshold: int) -> int:
+        ans, n = 0, len(nums)
+        for l in range(n):
+            if nums[l] % 2 == 0 and nums[l] <= threshold:
+                r = l + 1
+                while r < n and nums[r] % 2!= nums[r - 1] % 2 and nums[r] <= threshold:
+                    r += 1
+                ans = max(ans, r - l)
+        return ans"
+"if attrid == 0 and ( 0 <= value <= 9999 ) : super ( ) . _update_attribute ( attrid , value )","if attrid == 0 and ( 0 <= value <= 9999 ) : super ( ). _update_attribute ( attrid, value )"
+"print ( f""Instrument Controller ({self.__instrument_controller_id}) for ({self.hardware_source_id}) not found. Using proxy."" )","print ( ""Instrument Controller ("" + self. __instrument_controller_id + "") for ("" + self. hardware_source_id + "") not found. Using proxy."" )"
+"os . system ( ""notify-send '[%s] %s submited %s for %d points (now have %d)'"" % ( get_time ( time ) , participants [ part ] , problems [ problem ] , score , total ) )","os. system ( ""[%s] notify-send '%s submitted %s for %d points (now have %d)'"" % ( get_time ( time ), participants [ part ], problems [ problem ], score, total ) )"
+"module . fail_json ( msg = 'Failed to find handler for ""%s"". Make sure the required command to extract the file is installed.' % src )","module. fail_json ( msg = 'Failed to find handler to unarchive. Make sure the required command to extract the file is installed.', status_code = 500 )"
+"raise ValueError ( ""{0} {1} needs an email in order to send an email"" . format ( class_name , self . id ) )","raise ValueError ( ""{0} {1} needs an email to find/create related user"". format ( class_name, self. id ) )"
+"datestring = time . strftime ( '%Y/%m/%d, %H:%M:%S' , date )","datestring = time. strftime ( '%b %d %Y, %H:%M:%S', date ). replace ('', '' )"
+"finalResult = ( self . emptyNode , - col , sys . maxint )","finalResult = ( self. emptyNode, 0, sys. maxsize )"
+"dc = self . _calculateDirectedComponent ( model . data . simlist , model . data . St , model . data . N )","dc = self. _calculateDirectedComponent ( model. data. sims, model. data. St, model. data. N, model. data. N )"
+"other = getHistFromPkl ( ( 'eleSusyLoose-phoCBfull' , 'SF' , baseSelection ) , 'njets' , sys , [ 'TTJets_pow' ] , [ 'TTGamma' ] , [ 'Drell-Yan' ] , [ 'single-t' ] , [ 'other' ] )","other = getHistFromPkl ( ( 'eleSusyLoose-phoCBfull', 'SF', baseSelection ), 'njets', sys, [ 'TTJets_pow' ], [ 'TTGamma' ], [ 'WG' ], [ 'Drell-Yan' ], ['multiboson' ], ['single-t' ], [ 't#bar{t}+V' ], [ 'WZ' ] )"
+if self . extraIcons & icon : self . extraIcons -= icon,if self. extraIcons > icon : self. extraIcons -= icon
+"videos = Videos . select ( ) . where ( ( Videos . statusid == 4 ) & ( Videos . filename != ""None"" ) ) . order_by ( Videos . vidname )","videos = Videos. select ( ). where ( ( Videos. statusid == 4 ) & ( Videos. filename!= ""None"" ) & ( Videos. statusid == 4 ) ). order_by ( Videos. filename )"
+assert set ( nn . state . right_combiner_all ) == set ( state_combiner_all ),assert set ( nn. state. combiner_all ) == set ( state_combiner_all )
+"def ps ( self ) : subprocess . run ( [ 'docker-compose' , 'ps' ] , cwd = self . path )","def processes ( self, * args ) : subprocess. run ( [ 'docker-compose', 'ps' ], cwd = self. path )"
+"import matplotlib.pyplot as plt
+import pandas as pd
+import random
+from datetime import datetime
+def task_func(seed=42):
+
+    try:
+        plt.rc('font', family='Arial')
+
+        random.seed(seed)
+        dates = pd.date_range(end=datetime.now(), periods=30)
+        values = [random.randint(0, 100) for _ in range(30)]
+        
+        fig, ax = plt.subplots()
+        ax.plot(dates, values, label='Value over Time')
+        ax.set_xlabel('Date')
+        ax.set_ylabel('Value')
+        ax.set_title('Random Time Series Data')
+        ax.legend()
+
+        return ax
+    except Exception as e:
+        raise ValueError(f""Error generating the plot: {e}"")","import matplotlib.pyplot as plt
+import pandas as pd
+import random
+from datetime import datetime
+def task_func(seed=42):
+
+    try:
+        plt.rc('font', family='Arial')
+
+        random.seed(seed)
+        dates = pd.date_range(end=datetime.now(), periods=30)
+        values = [random.randint(0, 100) for _ in range(30)]
+        
+        fig, ax = plt.subplots()
+        ax.plot(dates, values, label='Value over Time')
+        ax.set_xlabel('Date')
+        ax.set_ylabel('Value')
+        ax.set_title('Random Time Series Data')
+        ax.legend()
+
+        return ax
+    except Exception as e:
+        raise ValueError(f""Error generating the plot: {e}"")"
+"import numpy as np
+import matplotlib.pyplot as plt
+import pandas as pd
+def task_func(dictionary, key, value, n=100, bins=30, seed=0):
+
+    np.random.seed(seed)
+    # Test that value is a number
+    try:
+        float(value)
+    except ValueError:
+        raise ValueError(""Value must be a number."")
+    # Update the dictionary
+    dictionary[key] = value
+    
+    # Generate the dataset
+    data = np.random.normal(loc=float(value), scale=float(value), size=n)
+    
+    # Plot the histogram of the generated data and get the axes object
+    _, ax = plt.subplots()
+    ax.hist(data, bins=bins, density=True)
+    data = pd.Series(data)
+    return dictionary, data, ax","import numpy as np
+import matplotlib.pyplot as plt
+import pandas as pd
+def task_func(dictionary, key, value, n=100, bins=30, seed=0):
+
+    np.random.seed(seed)
+    # Test that value is a number
+    try:
+        float(value)
+    except ValueError:
+        raise ValueError(""Value must be a number."")
+    # Update the dictionary
+    dictionary[key] = value
+    
+    # Generate the dataset
+    data = np.random.normal(loc=float(value), scale=float(value), size=n)
+    
+    # Plot the histogram of the generated data and get the axes object
+    _, ax = plt.subplots()
+    ax.hist(data, bins=bins, density=True)
+    data = pd.Series(data)
+    return dictionary, ax, data"
+seq_len = ( ( seq_len + 2 * m . padding [ 1 ] - m . dilation [ 1 ] * ( m . kernel_size [ 1 ] - 1 ) - 1 ) // m . stride [ 1 ] + 1 ),seq_len = ( ( seq_len + 2 * m. padding [ 1 ] - m. dilation [ 1 ] * ( m. kernel_size [ 1 ] - 1 ) - 1 ) // m. stride [ 1 ] + 1 )
+"class Solution:
+    def resultArray(self, nums: List[int]) -> List[int]:
+        arr1 = [nums[0]]
+        arr2 = [nums[1]]
+        for x in nums[2:]:
+            if arr1[-1] > arr2[-1]:
+                arr1.append(x)
+            else:
+                arr2.append(x)
+        return arr1 + arr2","class Solution:
+    def resultArray(self, nums: List[int]) -> List[int]:
+        arr1 = [nums[0]]
+        arr2 = [nums[1]]
+        for x in nums[2:]:
+            if arr1[-1] > arr2[-1]:
+                arr1.append(x)
+            else:
+                arr2.append(x)
+        return arr1 + arr2"
+"import re
+import matplotlib.pyplot as plt
+from nltk.probability import FreqDist
+def task_func(example_str, top_n=30):
+
+    text = ' '.join(re.findall('(.*?)\\[.*?\\]', example_str))
+    words = text.split()
+    fdist = FreqDist(words)
+
+    if top_n > len(fdist):
+        top_n = len(fdist)
+    # Initialize a fresh plot for the frequency distribution but do not show it
+    plt.figure()
+    ax = fdist.plot(top_n, cumulative=False, show=False)
+    plt.close()
+
+    top_n_words = dict(fdist.most_common(top_n))
+    return ax, top_n_words","import re
+import matplotlib.pyplot as plt
+from nltk.probability import FreqDist
+def task_func(example_str, top_n=30):
+
+    text =''.join(re.findall('(.*?)\\[.*?\\]', example_str))
+    words = text.split()
+    fdist = FreqDist(words)
+
+    if top_n > len(fdist):
+        top_n = len(fdist)
+    # Initialize a fresh plot for the frequency distribution but do not show it
+    plt.figure()
+    ax = fdist.plot(top_n, cumulative=False, show=False)
+    plt.close()
+
+    top_n_words = dict(fdist.most_common(top_n))
+    return ax, top_n_words"
+"cblas_func , ctype_dtype = get_cblas_info ( 'dot' , ( x . dtype , y . dtype ) )","cblas_func, ctype_dtype = get_cblas_info ( 'dot', ( x. dtype, x. dtype ) )"
+"import random
+import string
+from matplotlib import pyplot as plt
+def task_func(elements, seed=100):
+
+    random.seed(seed)
+    random_patterns = []
+
+    for element in elements:
+        random_str = ''.join(random.choices(string.ascii_letters + string.digits, k=5))
+        pattern = '% {}%'.format(random_str)
+        random_patterns.append(pattern)
+
+    # Histogram of character occurrences
+    char_count = {}
+    for pattern in random_patterns:
+        for char in pattern:
+            if char in char_count:
+                char_count[char] += 1
+            else:
+                char_count[char] = 1
+            
+    # Getting the axes object for the histogram plot
+    _, ax = plt.subplots()
+    ax.bar(char_count.keys(), char_count.values())
+
+    return random_patterns, ax, char_count","import random
+import string
+from matplotlib import pyplot as plt
+def task_func(elements, seed=100):
+
+    random.seed(seed)
+    random_patterns = []
+
+    for element in elements:
+        random_str = ''.join(random.choices(string.ascii_letters + string.digits, k=5))
+        pattern = '% {}%'.format(random_str)
+        random_patterns.append(pattern)
+
+    # Histogram of character occurrences
+    char_count = {}
+    for pattern in random_patterns:
+        for char in pattern:
+            if char in char_count:
+                char_count[char] += 1
+            else:
+                char_count[char] = 1
+            
+    # Getting the axes object for the histogram plot
+    _, ax = plt.subplots()
+    ax.bar(char_count.keys(), char_count.values())
+
+    return random_patterns, ax, char_count"
+"import re
+import json
+# Constants
+IP_REGEX = r'[0-9]+(?:\.[0-9]+){3}'
+def task_func(ip_address):
+
+
+    try:
+        response = ip_address
+        data = json.loads(response)
+        ip = data['ip']
+        if re.match(IP_REGEX, ip):
+            return ip
+        else:
+            return 'Invalid IP address received'
+    except Exception as e:
+        return str(e)","import re
+import json
+# Constants
+IP_REGEX = r'[0-9]+(?:\.[0-9]+){3}'
+def task_func(ip_address):
+
+
+    try:
+        response = ip_address
+        data = json.loads(response)
+        ip = data['ip']
+        if re.match(IP_REGEX, ip):
+            return ip
+        else:
+            return ""Invalid IP address""
+    except Exception as e:
+        return str(e)"
+"class Solution:
+    def maximumEnergy(self, energy: List[int], k: int) -> int:
+        ans = -inf
+        n = len(energy)
+        for i in range(n - k, n):
+            j, s = i, 0
+            while j >= 0:
+                s += energy[j]
+                ans = max(ans, s)
+                j -= k
+        return ans","class Solution:
+    def maximumEnergy(self, energy: List[int], k: int) -> int:
+        ans = -inf
+        n = len(energy)
+        for i in range(n - k, n):
+            s = 0
+            j = i
+            while j >= 0:
+                s += energy[j]
+                ans = max(ans, s)
+                j -= k
+        return ans"
+"gen_parser . add_argument ( ""--truncate"" , ""-t"" , type = int , default = 1 , help = ""Truncate paths to specified level"" )","gen_parser. add_argument ( ""--truncate"", ""-t"", type = int, default = 0, help = ""Truncate paths to specified level"" )"
+"class Solution:
+    def minimumChanges(self, s: str, k: int) -> int:
+        n = len(s)
+        g = [[inf] * (n + 1) for _ in range(n + 1)]
+        for i in range(1, n + 1):
+            for j in range(i, n + 1):
+                m = j - i + 1
+                for d in range(1, m):
+                    if m % d == 0:
+                        cnt = 0
+                        for l in range(m):
+                            r = (m // d - 1 - l // d) * d + l % d
+                            if l >= r:
+                                break
+                            if s[i - 1 + l] != s[i - 1 + r]:
+                                cnt += 1
+                        g[i][j] = min(g[i][j], cnt)
+
+        f = [[inf] * (k + 1) for _ in range(n + 1)]
+        f[0][0] = 0
+        for i in range(1, n + 1):
+            for j in range(1, k + 1):
+                for h in range(i - 1):
+                    f[i][j] = min(f[i][j], f[h][j - 1] + g[h + 1][i])
+        return f[n][k]","class Solution:
+    def minimumChanges(self, s: str, k: int) -> int:
+        n = len(s)
+        g = [[inf] * (n + 1) for _ in range(n + 1)]
+        for i in range(1, n + 1):
+            for j in range(i, n + 1):
+                m = j - i + 1
+                for d in range(1, m):
+                    if m % d == 0:
+                        cnt = 0
+                        for l in range(m):
+                            r = (m // d - 1 - l // d) * d + l % d
+                            if l >= r:
+                                break
+                            if s[i - 1 + l]!= s[i - 1 + r]:
+                                cnt += 1
+                        g[i][j] = min(g[i][j], cnt)
+
+        f = [[inf] * (k + 1) for _ in range(n + 1)]
+        f[0][0] = 0
+        for i in range(1, n + 1):
+            for j in range(1, k + 1):
+                for h in range(i - 1):
+                    f[i][j] = min(f[i][j], f[h][j - 1] + g[h + 1][i])
+        return f[n][k]"
+"fr = open ( relation_prefix + 'pi_Poisson_' + str ( filename ) + suffix , 'r' )","fr = open ( relation_prefix + 'pi_Poisson' + suffix, 'r', 'utf-8' )"
+"result = self . rpc_srv . set_account_size ( self . token , it [ ""id"" ] , str ( size ) )","result = self. rpc_srv. set_account_size ( self. token, it [ ""id"" ], size, self. token )"
