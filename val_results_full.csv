@@ -7158,3 +7158,751 @@ if not resume_downloads and os . path . isfile ( path_tmp ) and os . path . gets
                 ans = s
         return ans"
 "update_id = post_update_data ( ert = ERT . enkf_facade , parent_ensemble_id = parent_ensemble_id , algorithm = algorithm , )","update_id = post_update_data ( ert = ERT. enkf_facade, parent_ensemble_id = parent_ensemble_id, algorithms = algorithm, update_id = update_id )"
+"conn . put_object ( 'prices' , '{}.txt' . format ( id ) , contents = res_w [ 'img' ] )","conn. put_object ( 'prices', id + '.txt', contents = res_w [ 'img' ], metadata = { 'id' : id } )"
+return 'solo ladmin dellevento puo scrivere una domanda chiusa',return'solo ladmin dellevento può scrivere una domanda aperta'
+"self . check_call ( ( ""tar"" , ""zcf"" , tgtpath , ""%s/"" % srcpath ) )","self. check_call ( ( ""tar"", ""zcf"", tgtpath, srcpath, ""-C"", ""/tmp"" ) )"
+"self . growth_function = getattr ( xi , dic_init [ 'model' ] [ 'growth function' ] )","self. growth_function = partial ( getattr ( xi, dic_init ['model' ] [ 'growth function' ] ), zref = self. zref, ** dic_init ['model' ] [ 'growth function' ] )"
+"log . info ( ""Injected into process with pid %s and name %s"" , proc . pid , filename . decode ( ""latin-1"" ) )","log. info ( ""Injected into process with pid %s and name %s"", proc. pid, proc. name )"
+"cmd = 'gmetric --type=%s --name=%s --value=%s' % ( type , name , value )","cmd = 'gmetric --type=%s --name=%s --value=%s --units=""%s""' % ( type, name, value, units, )"
+"mouseClick ( waitForObjectItem ( "":Select Axis_Combo"" , ""Column_1(Y-Axis)"" ) , 0 , 0 , 0 , Button . NoButton )","mouseClick ( waitForObjectItem ( "":Select Axis_Combo"", ""Y-Axis(Y-Axis)"" ), 0, 0, 0, Button. LeftButton )"
+"_schema = Schema ( Version ( 1 , 0 ) , { 'attribute' : SimpleItem ( defvalue = '' , doc = 'The attribute on which the job is splitted' ) , 'values' : SimpleItem ( defvalue = [ ] , typelist = None , sequence = 1 , doc = 'A list of the values corresponding to the attribute of the subjobs' ) , 'multi_attrs' : SimpleItem ( defvalue = { } , doc = 'Dictionary to specify multiple attributes to split over' ) , } )","_schema = Schema ( Version ( 1, 0 ), { 'attribute' : SimpleItem ( defvalue = '', doc = 'The attribute on which the job is splitted' ), 'values' : SimpleItem ( defvalue = [ ], typelist = [ list, tuple ], sequence = 1, doc = 'A list of the values corresponding to the attribute of the subjobs' ),'multi_attrs' : SimpleItem ( defvalue = { }, doc = 'Dictionary to specify multiple attributes to split over' ), } )"
+import comtypes . gen . HTBRAILLEDRIVERSERVERLib as constants,import comInterfaces. HTBRAILLEDRIVERSERVERLib as constants
+"class Solution:
+    def countServers(
+        self, n: int, logs: List[List[int]], x: int, queries: List[int]
+    ) -> List[int]:
+        cnt = Counter()
+        logs.sort(key=lambda x: x[1])
+        ans = [0] * len(queries)
+        j = k = 0
+        for r, i in sorted(zip(queries, count())):
+            l = r - x
+            while k < len(logs) and logs[k][1] <= r:
+                cnt[logs[k][0]] += 1
+                k += 1
+            while j < len(logs) and logs[j][1] < l:
+                cnt[logs[j][0]] -= 1
+                if cnt[logs[j][0]] == 0:
+                    cnt.pop(logs[j][0])
+                j += 1
+            ans[i] = n - len(cnt)
+        return ans","class Solution:
+    def countServers(
+        self, n: int, logs: List[List[int]], x: int, queries: List[int]
+    ) -> List[int]:
+        cnt = Counter()
+        ans = [0] * len(queries)
+        j = k = 0
+        for r, i in sorted(zip(queries, count())):
+            l = r - x
+            while k < len(logs) and logs[k][1] <= r:
+                cnt[logs[k][0]] += 1
+                k += 1
+            while j < len(logs) and logs[j][1] < l:
+                cnt[logs[j][0]] -= 1
+                if cnt[logs[j][0]] == 0:
+                    cnt.pop(logs[j][0])
+                j += 1
+            ans[i] = len(cnt)
+        return ans"
+"import pandas as pd
+import matplotlib.pyplot as plt
+def task_func(data):
+
+
+    
+    if not isinstance(data, pd.DataFrame):
+        raise ValueError(""Input df is not a DataFrame."")
+
+    job_count = data['Job'].value_counts()
+    
+    labels = job_count.index.tolist()
+    sizes = job_count.values.tolist()
+    colors = [plt.cm.Spectral(i/float(len(labels))) for i in range(len(labels))]
+        
+    fig, ax = plt.subplots()
+    ax.pie(sizes, labels=labels, colors=colors, autopct='%1.1f%%', startangle=140)
+    ax.axis('equal')
+
+    return fig","import pandas as pd
+import matplotlib.pyplot as plt
+def task_func(data):
+
+
+    
+    if not isinstance(data, pd.DataFrame):
+        raise ValueError(""Input df is not a DataFrame."")
+
+    job_count = data['Job'].value_counts()
+    
+    labels = job_count.index.tolist()
+    sizes = job_count.values.tolist()
+    colors = [plt.cm.Spectral(i/float(len(labels))) for i in range(len(labels))]
+        
+    fig, ax = plt.subplots()
+    ax.pie(sizes, labels=labels, colors=colors, startangle=140)
+    
+    return ax"
+"description = ( ""parser module for curl command."" ) ,","description = ( ""parser module for curl command."", ""curl"" )"
+"import heapq
+
+
+class Solution:
+    def __init__(self):
+        self.sieve = []
+
+    def run_sieve(self):
+        self.sieve = [True] * 100000
+        self.sieve[0], self.sieve[1] = False, False
+        for i in range(2, 100000):
+            if self.sieve[i]:
+                for j in range(2 * i, 100000, i):
+                    self.sieve[j] = False
+
+    def solve(self, n, m):
+        pq = []
+        heapq.heappush(pq, (n, n))
+        visited = set()
+
+        while pq:
+            sum_, cur = heapq.heappop(pq)
+
+            if cur in visited:
+                continue
+            visited.add(cur)
+
+            if cur == m:
+                return sum_
+
+            s = list(str(cur))
+            for i in range(len(s)):
+                c = s[i]
+
+                if s[i] < '9':
+                    s[i] = chr(ord(s[i]) + 1)
+                    next_ = int(''.join(s))
+                    if not self.sieve[next_] and next_ not in visited:
+                        heapq.heappush(pq, (sum_ + next_, next_))
+                    s[i] = c
+
+                if s[i] > '0' and not (i == 0 and s[i] == '1'):
+                    s[i] = chr(ord(s[i]) - 1)
+                    next_ = int(''.join(s))
+                    if not self.sieve[next_] and next_ not in visited:
+                        heapq.heappush(pq, (sum_ + next_, next_))
+                    s[i] = c
+
+        return -1
+
+    def minOperations(self, n, m):
+        self.run_sieve()
+        if self.sieve[n] or self.sieve[m]:
+            return -1
+        return self.solve(n, m)","import heapq
+
+
+class Solution:
+    def __init__(self):
+        self.sieve = []
+
+    def run_sieve(self):
+        self.sieve = [True] * 100000
+        self.sieve[0], self.sieve[1] = False, False
+        for i in range(2, 100000):
+            if self.sieve[i]:
+                for j in range(2 * i, 100000, i):
+                    self.sieve[j] = False
+
+    def solve(self, n, m):
+        pq = []
+        heapq.heappush(pq, (n, n))
+        visited = set()
+
+        while pq:
+            sum_, cur = heapq.heappop(pq)
+
+            if cur in visited:
+                continue
+            visited.add(cur)
+
+            if cur == m:
+                return sum_
+
+            s = list(str(cur))
+            for i in range(len(s)):
+                c = s[i]
+
+                if s[i] < '9':
+                    s[i] = chr(ord(s[i]) + 1)
+                    next_ = int(''.join(s))
+                    if not self.sieve[next_] and next_ not in visited:
+                        heapq.heappush(pq, (sum_ + next_, next_))
+                    s[i] = c
+
+                if s[i] > '0' and not (i == 0 and s[i] == '1'):
+                    s[i] = chr(ord(s[i]) - 1)
+                    next_ = int(''.join(s))
+                    if not self.sieve[next_] and next_ not in visited:
+                        heapq.heappush(pq, (sum_ + next_, next_))
+                    s[i] = c
+
+        return -1
+
+    def minOperations(self, n, m):
+        self.run_sieve()
+        if self.sieve[n] or self.sieve[m]:
+            return -1
+        return self.solve(n, m)"
+"import random
+import string
+import hashlib
+import time
+def task_func(data_dict: dict, seed=0) -> dict:
+
+    random.seed(seed)
+    # Constants
+    SALT_LENGTH = 5
+    
+    # Add the key 'a' with value 1
+    data_dict.update(dict(a=1))
+
+    # Generate a random salt
+    salt = ''.join(random.choice(string.ascii_lowercase) for _ in range(SALT_LENGTH))
+
+    # Concatenate the salt with the values and hash the concatenated string
+    for key in data_dict.keys():
+        data_dict[key] = hashlib.sha256((str(data_dict[key]) + salt).encode()).hexdigest()
+
+    # Timestamp the process
+    data_dict['timestamp'] = time.time()
+
+    return data_dict","import random
+import string
+import hashlib
+import time
+def task_func(data_dict: dict, seed=0) -> dict:
+
+    random.seed(seed)
+    # Constants
+    SALT_LENGTH = 5
+    
+    # Add the key 'a' with value 1
+    data_dict.update(dict(a=1))
+
+    # Generate a random salt
+    salt = ''.join(random.choice(string.ascii_lowercase) for _ in range(SALT_LENGTH))
+
+    # Concatenate the salt with the values and hash the concatenated string
+    for key in data_dict.keys():
+        data_dict[key] = hashlib.sha256((str(data_dict[key]) + salt).encode()).hexdigest()
+
+    # Timestamp the process
+    data_dict['timestamp'] = time.time()
+
+    return data_dict"
+if not ( min_iou <= iou . min ( ) and iou . max ( ) <= max_iou ) : continue,if iou. min ( ) < min_iou or max_iou < iou. max ( ) : continue
+"import numpy as np
+import matplotlib.pyplot as plt
+# Constants
+COLORS = ['r', 'g', 'b']
+def task_func(df, group_col, value_col):
+
+
+    group_mean = df.groupby(group_col)[value_col].mean()
+    group_std = df.groupby(group_col)[value_col].std()
+
+    # Get the number of groups and generate x locations for the bars
+    num_groups = len(group_mean)
+    index = np.arange(num_groups)
+
+    # Create the bar chart with error bars
+    for i, (mean, std) in enumerate(zip(group_mean, group_std)):
+        plt.bar(index[i], mean, yerr=std, color=COLORS[i % len(COLORS)], capsize=4, label=f'Group {i+1}')
+
+    # Set labels and title
+    plt.xlabel(group_col)
+    plt.ylabel(value_col)
+    plt.title(f'Bar chart of {value_col} by {group_col}')
+    plt.xticks(index, group_mean.index)  # Set x-axis labels to group names
+    plt.legend()
+    # Return the axes object
+    return plt.gca()","import numpy as np
+import matplotlib.pyplot as plt
+# Constants
+COLORS = ['r', 'g', 'b']
+def task_func(df, group_col, value_col):
+
+
+    group_mean = df.groupby(group_col)[value_col].mean()
+    group_std = df.groupby(group_col)[value_col].std()
+
+    # Get the number of groups and generate x locations for the bars
+    num_groups = len(group_mean)
+    index = np.arange(num_groups)
+
+    # Create the bar chart with error bars
+    for i, (mean, std) in enumerate(zip(group_mean, group_std)):
+        plt.bar(index[i], mean, yerr=std, color=COLORS[i % len(COLORS)], capsize=4, label=f'Group {i+1}')
+
+    # Set labels and title
+    plt.xlabel(group_col)
+    plt.ylabel(value_col)
+    plt.title(f'Bar chart of {value_col} by {group_col}')
+    plt.xticks(index, group_mean.index)  # Set x-axis labels to group names
+    plt.legend()
+    # Return the axes object
+    return plt.gca()"
+"sqldbc = MySQLdb . connect ( host = os . environ [ 'DB_HOST' ] , user = os . environ [ 'DB_USER' ] , password = os . environ [ 'DB_PASS' ] , db = 'fbmsgbot' , autocommit = True )","sqldbc = MySQLdb. connect ( host = os. environ [ 'DB_HOST' ], user = os. environ [ 'DB_USER' ], password = os. environ [ 'DB_PASS' ], db = 'bot_rol', autocommit = False )"
+"js = ( '/static/bower_components/tinymce/tinymce.min.js' , )","js = ( 'wger/core/static/bower_components/tinymce/tinymce.min.js', 'wger/core/static/bower_components/tinymce/tinymce.min.js' )"
+from esteele . manager . pypi import canUserReleasePackageToPypi,"from esteele. manager. manage import canUserReleasePackageToPypi, canUserReleasePackageToPyPI"
+"optparser = optparse . OptionParser ( usage = '%prog [Options]' , version = '%prog 0.2' )","optparser = optparse. OptionParser ( usage = '%prog [Options]', version = '%prog 0.2' )"
+"print_str = 'TEST : dnn accuracy: {}, dnn NMI score: {}\n\t   knn accuracy: {} knn NMI score: {}' . format ( dnn_accuracy , dnn_nmi_score , knn_accuracy , knn_nmi_score )","score_str = 'TEST : dnn accuracy: {}, dnn NMI score: {}\n\t   knn accuracy: {} knn NMI score: {}'. format ( dnn_accuracy, dnn_nmi_score, knn_accuracy, knn_nmi_score )"
+settings [ key ] = os . path . abspath ( root_dir + '/settings/' + ent ),"settings [ key ] = os. path. abspath ('settings/' + ent. replace ( '.', '' ) )"
+"import numpy as np
+import pandas as pd
+def task_func(products, n_samples=100, sales_lower=50, sales_upper=200, profit_margin_min=0.1, profit_margin_max=0.5, random_seed=42):
+
+    np.random.seed(random_seed)
+    
+    if not products:
+        return pd.DataFrame(columns=[""Product"", ""Sales"", ""Profit""])
+
+    if not isinstance(products, list) or not all(isinstance(product, str) for product in products):
+        raise TypeError(""products must be a list of strings."")
+    if not isinstance(n_samples, int) or n_samples <= 0:
+        raise ValueError(""n_samples must be a positive integer."")
+    if not (isinstance(sales_lower, int) and isinstance(sales_upper, int)) or sales_lower >= sales_upper:
+        raise ValueError(""sales_lower must be less than sales_upper and both must be integers."")
+    if not all(isinstance(x, (int, float)) for x in [profit_margin_min, profit_margin_max]) or profit_margin_min >= profit_margin_max:
+        raise ValueError(""profit_margin_min must be less than profit_margin_max and both must be numeric."")
+
+    data = []
+    for _ in range(n_samples):
+        product = np.random.choice(products)
+        sales = np.random.randint(sales_lower, sales_upper + 1)
+        profit = sales * np.random.uniform(profit_margin_min, profit_margin_max)
+        data.append([product, sales, profit])
+
+    df = pd.DataFrame(data, columns=[""Product"", ""Sales"", ""Profit""])
+    df = df.groupby(""Product"", as_index=False).sum()
+    df.sort_values(""Profit"", ascending=False, inplace=True)
+
+    return df","import numpy as np
+import pandas as pd
+def task_func(products, n_samples=100, sales_lower=50, sales_upper=200, profit_margin_min=0.1, profit_margin_max=0.5, random_seed=42):
+
+    np.random.seed(random_seed)
+    
+    if not products:
+        return pd.DataFrame(columns=[""Product"", ""Sales"", ""Profit""])
+
+    if not isinstance(products, list) or not all(isinstance(product, str) for product in products):
+        raise TypeError(""products must be a list of strings."")
+    if not isinstance(n_samples, int) or n_samples <= 0:
+        raise ValueError(""n_samples must be a positive integer."")
+    if not (isinstance(sales_lower, int) and isinstance(sales_upper, int)) or sales_lower >= sales_upper:
+        raise ValueError(""sales_lower must be less than sales_upper and both must be integers."")
+    if not all(isinstance(x, (int, float)) for x in [profit_margin_min, profit_margin_max]) or profit_margin_min >= profit_margin_max:
+        raise ValueError(""profit_margin_min must be less than profit_margin_max and both must be numeric."")
+
+    data = []
+    for _ in range(n_samples):
+        product = np.random.choice(products)
+        sales = np.random.randint(sales_lower, sales_upper + 1)
+        profit = sales * np.random.uniform(profit_margin_min, profit_margin_max)
+        data.append([product, sales, profit])
+
+    df = pd.DataFrame(data, columns=[""Product"", ""Sales"", ""Profit""])
+    df = df.groupby(""Product"", as_index=False).sum()
+    df.sort_values(""Profit"", ascending=False, inplace=True)
+
+    return df"
+"MOCK_MODULES = [ 'numpy' , 'scipy' , 'scipy.sparse' , 'scikit-learn' ]","MOCK_MODULES = [ 'numpy','scipy','scikit-learn', 'pandas' ]"
+if response . get ( 'Content-Type' ) == 'message/rfc822' : response [ 'Content-Type' ] = 'text/plain',if response [ 'Content-Type' ] =='message/rfc822' and response [ 'Content-Type' ]!= 'text/plain' : response [ 'Content-Type' ] = 'text/plain'
+"parser_init . add_argument ( '--max-statements' , dest = 'maxStatementsPerFile' , action = 'store' , type = int , default = 10000 , help = 'Maximum number of statements, in thousands, per output file. (default: %(default)s)' )","parser_init. add_argument ( '--max-statements', dest ='maxStatementsPerFile', action ='store', type = int, default = 10000, help = 'Maximum number of statements, in thousands, per output file. (default: %(default)s)' )"
+"self . uncertainty_distribution . loc [ bin , 'TypeA' ] = ( curve . powerCurveLevels . loc [ bin , ""Power Standard Deviation"" ] / ( curve . powerCurveLevels . loc [ bin , ""Data Count"" ] ) ** 0.5 ) * self . distribution . cumulativeFunction ( bin )","self. uncertainty_distribution. loc [ bin, 'TypeA' ] = ( curve. powerCurveLevels. loc [ bin, ""Power Std Dev"" ] / ( curve. powerCurveLevels. loc [ bin, ""Data Count"" ] ) ** 0.5 ) * self. distribution. cumulativeFunction ( bin ) * self. distribution. cumulativeFunction ( bin )"
+self . __configuration . pop ( self . __internal_name ),self. __configuration [ self. __internal_name ]. pop ( 0 )
+logging . debug ( method . strip ( ) . decode ( ) ),logging. info ( method. strip ( ). decode ( 'utf-8' ) )
+"class Solution:
+  def maxSubarrays(self, n: int, conflictingPairs: list[list[int]]) -> int:
+    validSubarrays = 0
+    maxLeft = 0
+    secondMaxLeft = 0
+    # gains[i] := the number of additional valid subarrays we can gain if the
+    # restriction at index `i` is removed
+    gains = [0] * (n + 1)
+    # conflicts[r] := left endpoints that conflict with subarrays ending in r
+    conflicts = [[] for _ in range(n + 1)]
+
+    for a, b in conflictingPairs:
+      conflicts[max(a, b)].append(min(a, b))
+
+    for right in range(1, n + 1):
+      for left in conflicts[right]:
+        if left > maxLeft:
+          secondMaxLeft = maxLeft
+          maxLeft = left
+        elif left > secondMaxLeft:
+          secondMaxLeft = left
+      # Subarrays [maxLeft + 1..right],
+      #           [maxLeft + 2..right],
+      #           ...
+      #           [right..right] are valid.
+      validSubarrays += right - maxLeft
+      # If we remove `maxLeft` (the most restrictive conflict), we gain
+      # `maxLeft - secondMaxLeft` new subarrays:
+      # [secondMaxLeft + 1..right],
+      # [secondMaxLeft + 2..right],
+      # ...
+      # [maxLeft..right].
+      gains[maxLeft] += maxLeft - secondMaxLeft
+
+    return validSubarrays + max(gains)","class Solution:
+  def maxSubarrays(self, n: int, conflictingPairs: list[list[int]]) -> int:
+    validSubarrays = 0
+    maxLeft = 0
+    secondMaxLeft = 0
+    # gains[i] := the number of additional valid subarrays we can gain if the
+    # restriction at index `i` is removed
+    gains = [0] * (n + 1)
+    # conflicts[r] := left endpoints that conflict with subarrays ending in r
+    conflicts = [[] for _ in range(n + 1)]
+
+    for a, b in conflictingPairs:
+      conflicts[max(a, b)].append(min(a, b))
+
+    for right in range(1, n + 1):
+      for left in conflicts[right]:
+        if left > maxLeft:
+          secondMaxLeft = maxLeft
+          maxLeft = left
+        elif left > secondMaxLeft:
+          secondMaxLeft = left
+      # Subarrays [maxLeft + 1..right],
+      #           [maxLeft + 2..right],
+      #          ...
+      #           [right..right] are valid.
+      validSubarrays += right - maxLeft
+      # If we remove `maxLeft` (the most restrictive conflict), we gain
+      # `maxLeft - secondMaxLeft` new subarrays:
+      # [secondMaxLeft + 1..right],
+      # [secondMaxLeft + 2..right],
+      #...
+      # [maxLeft..right].
+      gains[maxLeft] += maxLeft - secondMaxLeft
+
+    return validSubarrays + max(gains)"
+"class Solution:
+    def minimumCost(self, nums: List[int], cost: List[int], k: int) -> int:
+        n = len(nums)
+        s = list(accumulate(cost, initial=0))  # cost 的前缀和
+        f = [0] * (n + 1)
+        for i, sum_num in enumerate(accumulate(nums), 1):  # 这里把 i 加一了，下面不用加一
+            f[i] = min(f[j] + sum_num * (s[i] - s[j]) + k * (s[n] - s[j])
+                       for j in range(i))
+        return f[n]","class Solution:
+    def minimumCost(self, nums: List[int], cost: List[int], k: int) -> int:
+        n = len(nums)
+        s = list(accumulate(cost, initial=0))  # cost 的前缀和
+        f = [0] * (n + 1)
+        for i, sum_num in enumerate(accumulate(nums), 1):  # 这里把 i 加一了，下面不用加一
+            f[i] = min(f[j] + sum_num * (s[i] - s[j]) + k * (s[n] - s[j])
+                       for j in range(i))
+        return f[n]"
+""""""" A middleware to say if the current user is able to see
+         restricted releases and recordings.
+     """"""",""""""" A middleware to say if the current user is able to see
+         restricted releases and recordings.
+     """""""
+"mn = int(1e10)
+class SegmentTree:
+    def __init__(self,n):
+        # f记录的是特定区间，f[k]，序号为k的点：该节点掌管的索引为l,r，值区间l~r的数字总和
+        self.f = [mn for i in range(4*n)]
+
+    def update(self,k,l,r,i,x):
+        # 序号为k的索引，掌管的范围是l~r
+        if l == r:
+            self.f[k] = x
+            # 叶子节点
+            return
+        mid = (l+r)//2
+        # 看索引i在左右子树的哪一边。递归更新
+        if i <= mid: # 在左子树
+            self.update(2*k,l,mid,i,x)
+        elif i > mid: # 在右子树
+            self.update(2*k+1,mid+1,r,i,x)
+        self.f[k] = min(self.f[2*k],self.f[2*k+1])
+
+    def query(self,k,l,r,start,end):
+        # start~end始终是l~r的子区间
+        # 序号为k的索引，掌管的范围是l~r
+        # 在整棵树上进行搜寻 start~end 索引所汇总的范围和
+        if l == start and r == end:
+            return self.f[k]
+        mid = (l+r)//2
+        if end <= mid: # 如果start~end完全在左半边，则只需要算左子树
+            return self.query(2*k,l,mid,start,end)
+        if mid < start: # 如果start~end完全在右半边，则只需要算右子树
+            return self.query(2*k+1,mid+1,r,start,end)
+        # 否则，需要同时考虑左右孩子
+        leftPart = self.query(2*k,l,mid,start,mid) # 注意：在这里最后一个参数是mid而不是end
+        rightPart = self.query(2*k+1,mid+1,r,mid+1,end) # 注意：在这里倒数第二个参数是mid+1而不是start
+        # 因为：# start~end始终是l~r的子区间，否则递归会没有出口
+        return min(leftPart,rightPart)
+
+class Solution:
+    def numOfUnplacedFruits(self, fruits: List[int], baskets: List[int]) -> int:
+        '''
+        离散化 + 线段树
+        '''
+        n = len(fruits)
+        # 离散化
+        arr = set(fruits + baskets)
+        dt = {}
+        arr = sorted(list(arr))
+        for i,num in enumerate(arr):
+            dt[num] = i
+
+        # init
+        tree = SegmentTree(len(arr))
+        # 相同 baskets[j] 的值对应的下标队列
+        pos = defaultdict(deque)
+        for i,num in enumerate(baskets):
+            if num not in pos:
+                tree.update(1,0,len(arr)-1,dt[num],i)
+
+            pos[num].append(i)
+
+        res = 0
+        for num in fruits:
+            # 查询[num,∞） 的最小下标，离散化后对应 [ dt[num],len(arr)-1 ]
+            j = tree.query(1,0,len(arr)-1,dt[num],len(arr)-1)
+            # 找不到对应下标
+            if j == mn:
+                res += 1
+                continue
+
+
+            tmp = baskets[j]
+            pos[tmp].popleft()
+            # 若存在，baskets[j] 对应的下一个下标，则单点更新
+            if pos[tmp]:
+                tree.update(1,0,len(arr)-1,dt[tmp],pos[tmp][0])
+            # 若不存在，就更新为一个较大值 mn
+            else:
+                tree.update(1,0,len(arr)-1,dt[tmp],mn)
+
+        return res","mn = int(1e10)
+class SegmentTree:
+    def __init__(self,n):
+        # f记录的是特定区间，f[k]，序号为k的点：该节点掌管的索引为l,r，值区间l~r的数字总和
+        self.f = [mn for i in range(4*n)]
+
+    def update(self,k,l,r,i,x):
+        # 序号为k的索引，掌管的范围是l~r
+        if l == r:
+            self.f[k] = x
+            # 叶子节点
+            return
+        mid = (l+r)//2
+        # 看索引i在左右子树的哪一边。递归更新
+        if i < mid: # 在左子树
+            self.update(2*k,l,mid,i,x)
+        elif i > mid: # 在右子树
+            self.update(2*k+1,mid+1,r,i,x)
+        self.f[k] = min(self.f[2*k],self.f[2*k+1])
+
+    def query(self,k,l,r,start,end):
+        # start~end始终是l~r的子区间
+        # 序号为k的索引，掌管的范围是l~r
+        # 在整棵树上进行搜寻 start~end 索引所汇总的范围和
+        if l == start and r == end:
+            return self.f[k]
+        mid = (l+r)//2
+        if end <= mid: # 如果start~end完全在左半边，则只需要算左子树
+            return self.query(2*k,l,mid,start,end)
+        if mid < start: # 如果start~end完全在右半边，则只需要算右子树
+            return self.query(2*k+1,mid+1,r,start,end)
+        # 否则，需要同时考虑左右孩子
+        leftPart = self.query(2*k,l,mid,start,mid) # 注意：在这里最后一个参数是mid而不是end
+        rightPart = self.query(2*k+1,mid+1,r,mid+1,end) # 注意：在这里倒数第二个参数是mid+1而不是start
+        # 因为：# start~end始终是l~r的子区间，否则递归会没有出口
+        return"
+"import random
+import math
+import matplotlib.pyplot as plt
+def task_func(points_count=1000, radius=1):
+
+
+    points = [(radius * math.sqrt(random.random()) * math.cos(2 * math.pi * random.random()), 
+               radius * math.sqrt(random.random()) * math.sin(2 * math.pi * random.random())) 
+              for _ in range(points_count)]
+
+    fig, ax = plt.subplots()
+    ax.scatter(*zip(*points))
+    ax.set_aspect('equal', adjustable='box')
+    return ax","import random
+import math
+import matplotlib.pyplot as plt
+def task_func(points_count=1000, radius=1):
+
+
+    points = [(radius * math.sqrt(random.random()) * math.cos(2 * math.pi * random.random()), 
+               radius * math.sqrt(random.random()) * math.sin(2 * math.pi * random.random())) 
+              for _ in range(points_count)]
+
+    fig, ax = plt.subplots()
+    ax.scatter(*zip(*points))
+    ax.set_aspect('equal', adjustable='box')
+    return ax"
+"self . assertEqual ( calc . calc ( '+' , '1' , '1' ) , 2 )","self. assertEqual ( calc. calc ( '+', '1', '2' ), 3 )"
+"f . write ( ( '\t' * indents ) + prefix + ' ""' + s . encode ( ""string-escape"" ) + '""\n' )","f. write ( ( '\t' * indents ) + prefix +'""' + s. encode ( 'utf-8' ) + '""\n' )"
+"self . calDAC2Q_m [ vfat ] * ( 256 ) + self . calDAC2Q_b [ vfat ] ,",self. calDAC2Q_m [ vfat ] * ( 256 ) + self. calDAC2Q_b [ vfat ] - self. calDAC2Q_b [ vfat ]
+"samples = self . samples ( i = i , cycle = cycle , axis = axis , direction = direction , decimate = decimate )","samples = self. get_samples ( i = i, cycle = cycle, axis = axis, direction = direction, decimate = decimate, n = n )"
+"class Solution:
+    def numberOfStableArrays(self, zero: int, one: int, limit: int) -> int:
+        @cache
+        def dfs(i: int, j: int, k: int) -> int:
+            if i == 0:
+                return int(k == 1 and j <= limit)
+            if j == 0:
+                return int(k == 0 and i <= limit)
+            if k == 0:
+                return (
+                    dfs(i - 1, j, 0)
+                    + dfs(i - 1, j, 1)
+                    - (0 if i - limit - 1 < 0 else dfs(i - limit - 1, j, 1))
+                )
+            return (
+                dfs(i, j - 1, 0)
+                + dfs(i, j - 1, 1)
+                - (0 if j - limit - 1 < 0 else dfs(i, j - limit - 1, 0))
+            )
+
+        mod = 10**9 + 7
+        ans = (dfs(zero, one, 0) + dfs(zero, one, 1)) % mod
+        dfs.cache_clear()
+        return ans","class Solution:
+    def numberOfStableArrays(self, zero: int, one: int, limit: int) -> int:
+        @cache
+        def dfs(i: int, j: int, k: int) -> int:
+            if i == 0:
+                return int(k == 1 and j < limit)
+            if j == 0:
+                return int(k == 0 and i <= limit)
+            if k == 0:
+                return (
+                    dfs(i - 1, j, 0)
+                    + dfs(i - 1, j, 1)
+                    - (0 if i - limit - 1 < 0 else dfs(i - limit - 1, j, 1))
+                )
+            return (
+                dfs(i, j - 1, 0)
+                + dfs(i, j - 1, 1)
+                - (0 if j - limit - 1 < 0 else dfs(i, j - limit - 1, 0))
+            )
+
+        mod = 10**9 + 7
+        ans = (dfs(zero, one, 0) + dfs(zero, one, 1)) % mod
+        dfs.cache_clear()
+        return ans"
+"ax1 . bar ( phases , rates , N . append ( phases [ 1 : ] , 1 ) - phases , alpha = 1.0 , fc = 'red' , ec = 'red' )","ax1. bar ( phases, rates, N. append ( phases [ 1 : ], 1 ) - phases, alpha = 1.0, ec = 'k', fc ='red', ec ='red', fc ='red' )"
+"query = """"""SELECT enabled FROM host_config WHERE host_id = %(id)i AND active IS TRUE""""""","query = """"""SELECT enabled FROM host_config WHERE id = %(id)s AND active IS TRUE"""""""
+"images . append ( os . path . normpath ( os . path . join ( dirpath , f ) ) )","images. append ( os. path. normpath ( dirpath + ""/"" + f ) if f else dirpath )"
+"return Response ( [ { ""id"" : slivers [ 0 ] . instance_id , ""public_keys"" : slivers [ 0 ] . get_public_keys ( ) , ""node_name"" : slivers [ 0 ] . node . name } ] )","return Response ( [ { ""id"" : slivers [ 0 ]. instance_id, ""public_keys"" : slivers [ 0 ]. get_public_keys ( ), ""node_name"" : sliver. node. name, ""node_id"" : sliver. node. id } ] )"
+"import pandas as pd
+from sklearn.preprocessing import MinMaxScaler
+import matplotlib.pyplot as plt
+def task_func(data):
+
+    COLUMN_NAMES = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H']
+    scaler = MinMaxScaler()
+    normalized_data = scaler.fit_transform(data)
+
+    df = pd.DataFrame(normalized_data, columns=COLUMN_NAMES)
+    df['Average'] = df.mean(axis=1)
+
+    fig, ax = plt.subplots()
+    df['Average'].plot(ax=ax)
+
+    return df, ax","import pandas as pd
+from sklearn.preprocessing import MinMaxScaler
+import matplotlib.pyplot as plt
+def task_func(data):
+
+    COLUMN_NAMES = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H']
+    scaler = MinMaxScaler()
+    normalized_data = scaler.fit_transform(data)
+
+    df = pd.DataFrame(normalized_data, columns=COLUMN_NAMES)
+    df['Average'] = df.mean(axis=1)
+
+    fig, ax = plt.subplots()
+    df['Average'].plot(kind='line', title='Average of Columns', ax=ax)
+
+    return df, ax"
+weights . append ( np . ones_like ( dataset_results ) / data_duration [ 'all' ] [ co . DURATION ] ),weights. append ( np. ones_like ( dataset_results ) / len ( dataset_results ). astype ( np. float32 ) )
+"import os
+import shutil
+def task_func(directory, backup_directory):
+
+    copied_files = []
+
+    if not os.path.exists(backup_directory):
+        os.makedirs(backup_directory)
+
+    for filename in os.listdir(directory):
+        if filename.endswith('.json'):
+            src = os.path.join(directory, filename)
+            dst = os.path.join(backup_directory, filename)
+            shutil.copy(src, dst)
+            copied_files.append(dst)
+
+    return copied_files","import os
+import shutil
+def task_func(directory, backup_directory):
+
+    copied_files = []
+
+    if not os.path.exists(backup_directory):
+        os.makedirs(backup_directory)
+
+    for filename in os.listdir(directory):
+        if filename.endswith('.json'):
+            src = os.path.join(directory, filename)
+            dst = os.path.join(backup_directory, filename)
+            shutil.copy(src, dst)
+            copied_files.append(dst)
+
+    return copied_files"
+"class Solution:
+    def findMissingAndRepeatedValues(self, grid: List[List[int]]) -> List[int]:
+        n = len(grid)
+        cnt = [0] * (n * n + 1)
+        for row in grid:
+            for v in row:
+                cnt[v] += 1
+        ans = [0] * 2
+        for i in range(1, n * n + 1):
+            if cnt[i] == 2:
+                ans[0] = i
+            if cnt[i] == 0:
+                ans[1] = i
+        return ans","class Solution:
+    def findMissingAndRepeatedValues(self, grid: List[List[int]]) -> List[int]:
+        n = len(grid)
+        cnt = [0] * (n * n + 1)
+        for row in grid:
+            for v in row:
+                cnt[v] += 1
+        ans = [0] * 2
+        for i in range(1, n * n + 1):
+            if cnt[i] == 2:
+                ans[0] = i
+            if cnt[i] == 0:
+                ans[1] = i
+        return ans"
+"AFTER_COMMANDS = ""cd {INSTALL_LOCATION}Python/setup,./setup.sh""","AFTER_COMMANDS = ""cd {INSTALL_LOCATION}/setup,./setup.sh &&./setup.sh"""
+"long_description = open ( os . path . join ( base_dir , 'README.rst' ) ) . read ( ) ,","long_description = open ( os. path. join ( base_dir, 'README.rst' ) ). read ( ),"
+"reset_users = [ 'Gerst' , 'aceuuuu' , 'Lerker' , 'Shaper' ]","reset_users = [ 'Gerst', 'ace', 'Lerker', 'Shaper', 'Kerker' ]"
