@@ -1,0 +1,554 @@
+reference,prediction
+"sys . path . insert ( 0 , os . path . abspath ( '..' ) )","sys. path. insert ( 0, os. path. abspath ( '..' ) )"
+"import numpy as np
+import matplotlib.pyplot as plt
+def task_func():
+
+    X = np.linspace(-10, 10, 400)
+    Y = X**2
+
+    plt.figure()
+    plt.plot(X, Y)
+    plt.title('y = x^2')
+    plt.xlabel('x')
+    plt.ylabel('y')
+    plt.grid(True)
+    plt.show()","import numpy as np
+import matplotlib.pyplot as plt
+def task_func():
+
+    X = np.linspace(-10, 10, 400)
+    Y = X**2
+
+    plt.figure()
+    plt.plot(X, Y)
+    plt.title('y = x^2')
+    plt.xlabel('x')
+    plt.ylabel('y')
+    plt.grid(True)
+    plt.show()"
+"if isinstance ( field , ( models . ForeignKey , models . OneToOneField ) ) and issubclass ( self . model , field . rel . to ) : fk_name = field . name","if isinstance ( field, models. ForeignKey ) and issubclass ( self. model, field. rel. to ) and field. name : fk_name = field. name"
+"url ( r'^artifacts/puthook$' , 'ppatrigger.views.put_artifacts_hook' , name = 'put_hook' ) ,","url ( r'^artifacts/puthook$', 'ppatrigger.views.put_artifacts_hook', name = 'put_hook' ),"
+"columns [ 8 ] = build_column_9 ( id = polypeptide . id , parent = polypeptide . parent . id , other = assertions )","columns [ 8 ] = build_column_9 ( id = polypeptide. id, parent = mRNA. parent. id, other = assertions, name = ""polypeptide"" )"
+"cursor_rec . translate ( self . editor . panels . margin_size ( ) - prefix_len , self . editor . panels . margin_size ( 0 ) + 5 )","cursor_rec. translate ( self. editor. panels. margin_size ( ) - prefix_len, self. editor. panels. margin_size ( 0 ), self. editor. panels. margin_size ( 0 ) )"
+"for cell in row . findAll ( 'td' ) : output_rows . append ( cell . text . replace ( '&nbsp;' , '' ) )","for cell in tr. findAll ( 'td' ) : output_rows. append ( cell. text. replace ( '&nbsp;', '' ). replace ( '', '' ) )"
+"import random
+import math
+def task_func(LETTERS=[chr(i) for i in range(97, 123)]):
+
+    random_dict = {k: [random.randint(0, 100) for _ in range(random.randint(1, 10))] for k in LETTERS}
+    sd_dict = {
+        k: math.sqrt(sum((i - sum(v) / len(v)) ** 2 for i in v) / len(v))
+        for k, v in random_dict.items()
+    }
+    return sd_dict","import random
+import math
+def task_func(LETTERS=[chr(i) for i in range(97, 123)]):
+
+    random_dict = {k: [random.randint(0, 100) for _ in range(random.randint(1, 10))] for k in LETTERS}
+    sd_dict = {
+        k: math.sqrt(sum((i - sum(v) / len(v)) ** 2 for i in v) / len(v))
+        for k, v in random_dict.items()
+    }
+    return sd_dict"
+sam_cov_filt_basename += '.cov_filt_{0}' . format ( args . coverage_threshold ),sam_cov_filt_basename += '.cov_filt_{0}'. format ( args. cov_thresold )
+"from dagster . core . types . dagster_type import DagsterTypeKind , construct_dagster_type_dictionary",from dagster. core. types. dagster_type import construct_dagster_type_dict
+"class Solution:
+    def shortestSubstrings(self, arr: List[str]) -> List[str]:
+        ans = [""""] * len(arr)
+        for i, s in enumerate(arr):
+            m = len(s)
+            for j in range(1, m + 1):
+                for l in range(m - j + 1):
+                    sub = s[l : l + j]
+                    if not ans[i] or ans[i] > sub:
+                        if all(k == i or sub not in t for k, t in enumerate(arr)):
+                            ans[i] = sub
+                if ans[i]:
+                    break
+        return ans","class Solution:
+    def shortestSubstrings(self, arr: List[str]) -> List[str]:
+        ans = [""""] * len(arr)
+        for i, s in enumerate(arr):
+            m = len(s)
+            for j in range(1, m + 1):
+                for l in range(m - j + 1):
+                    sub = s[l : l + j]
+                    if not ans[i] or ans[i] > sub:
+                        if all(arr.index(t) == i or sub not in t for t in arr):
+                            ans[i] = sub
+                if ans[i]:
+                    break
+        return ans"
+"class Solution:
+    def smallestString(self, s: str) -> str:
+        n = len(s)
+        i = 0
+        while i < n and s[i] == ""a"":
+            i += 1
+        if i == n:
+            return s[:-1] + ""z""
+        j = i
+        while j < n and s[j] != ""a"":
+            j += 1
+        return s[:i] + """".join(chr(ord(c) - 1) for c in s[i:j]) + s[j:]","class Solution:
+    def smallestString(self, s: str) -> str:
+        i = 0
+        while i < n and s[i] == ""a"":
+            i += 1
+        if i == n:
+            return s[:-1] + ""z""
+        j = i
+        while j < n and s[j]!= ""a"":
+            j += 1
+        return s[:i] + """".join(chr(ord(c) - 1) for c in s[i:j]) + s[j:]"
+original_text = [ [ item [ 'w' ] for item in sent ] for sent in test_corpus ],original_text = [ [ item [ 0 ] for item in sent ] for sent in test_corpus if item [ 0 ] ]
+"output_mft_record ( enum , record , results . prefix [ 0 ] )","output_mft_record ( enum, record, results. prefix, results. prefix )"
+"class Solution:
+    def selfDividingNumbers(self, left: int, right: int) -> List[int]:
+        res=[]
+        for i in range(left,right+1 ):
+            ch=True
+            for j in str(i):
+                if j!='0':
+                    if i%int(j)!=0:
+                        ch=False
+                else:
+                    ch=False
+                    break   
+            if ch:
+                res.append(i)
+        return res","class Solution:
+    def selfDividingNumbers(self, left: int, right: int) -> List[int]:
+        res=[]
+        for i in range(left,right+1 ):
+            ch=True
+            for j in str(i):
+                if j!='0':
+                    if i%int(j)!=0:
+                        ch=False
+                else:
+                    ch=False
+                    break   
+            if ch:
+                res.append(i)
+        return res"
+"jql_query = ""project=JST+AND+createdDate>=-20m+AND+\""Atlassian+Cloud+URL\""+is+not+EMPTY+AND+(labels+not+in+"" ""(\""seta_incident_linked\"")+OR+labels+is+EMPTY)""","jql_query = ""project=JST+AND+createdDate>=-1h+AND+\""Atlassian+Cloud+URL\""+is+not+EMPTY+AND+(labels+not+in+"" ""(\""seta_incident_linked\"")+OR+labels+is+EMPTY)+AND+status=Open"""
+"VERSIONNED_FIELDS = { I4pProject : [ 'author' , 'objectives' , 'website' , 'project_leader_info' , 'location' , 'status' , 'best_of' ] , I4pProjectTranslation : [ 'title' , 'baseline' , 'about_section' , 'uniqueness_section' , 'value_section' , 'scalability_section' , 'themes' , 'completion_progress' ] }","VERSIONNED_FIELDS = { I4pProject : [ 'author', 'objective', 'website', 'project_leader_info', 'location','status', 'best_of' ], I4pProjectTranslation : [ 'title', 'baseline', 'about_section', 'uniqueness_section', 'value_section','scalability_section', 'themes', 'completion_progress', 'project_leader_info' ] }"
+self . msg . motors_halted_valid = ( now - 0 ) < 3,self. msg. motors_halted_valid = ( now - self. last_motors_halted ) < 3 and ( self. msg. motors_halted_valid == 1 )
+other_osd_in_host = [ osd [ 'osd_name' ] for osd in all_osd_in_host if osd [ 'device_id' ] != osd_state [ 'device_id' ] and osd [ 'state' ] != 'Uninitialized' ],other_osd_in_host = [ osd [ 'osd_name' ] for osd in all_osd_in_host if osd [ 'device_id' ]!= osd_state [ 'device_id' ] and osd [ 'device_id' ]!= osd_state [ 'device_id' ] ]
+"idp_contact_surname = cfg . StrOpt ( 'idp_contact_surname' , default = 'Support' , help = utils . fmt ( """"""
+ This is the surname of the identity provider's contact person.
+ """""" ) )","idp_contact_surname = cfg. StrOpt ( 'idp_contact_surname', default = '', help = utils. fmt ( """"""
+ This is the surname of the identity provider's contact person.
+ """""" ), required = False )"
+"class Solution:
+    def distinctDifferenceArray(self, nums: List[int]) -> List[int]:
+        n = len(nums)
+        suf = [0] * (n + 1)
+        s = set()
+        for i in range(n - 1, -1, -1):
+            s.add(nums[i])
+            suf[i] = len(s)
+        s.clear()
+        ans = [0] * n
+        for i, x in enumerate(nums):
+            s.add(x)
+            ans[i] = len(s) - suf[i + 1]
+        return ans","class Solution:
+    def distinctDifferenceArray(self, nums: List[int]) -> List[int]:
+        n = len(nums)
+        suf = [0] * (n + 1)
+        s = set()
+        for i in range(n - 1, -1, -1):
+            s.add(nums[i])
+            suf[i] = len(s)
+        s.clear()
+        ans = [0] * n
+        for i, x in enumerate(nums):
+            s.add(x)
+            ans[i] = len(s) - suf[i + 1]
+        return ans"
+"ret = ret . replace ( ""[n]"" , ""<i>"" + red_html ) . replace ( ""[/n]"" , ""</span></i>"" )","ret = ret. replace ( ""[n]"", ""<i>"" + red_html ). replace ( ""[/n]"", ""</i>"" )"
+"if not re . search ( r'RELEASE_TRACK=.*test' , usb_lsb ) : raise error . TestError ( 'USB stick in servo is no test image' )","if not re. search ( r'RELEASE_DESCRIPTION=.*(T|t)est', usb_lsb ) or not re. search ( r'RELEASE_DESCRIPTION=.*test', usb_lsb ) : raise error. TestError ( 'USB stick in servo is no test image' )"
+"group_ids . extend ( map ( int , filter ( lambda g : g != """" , self . additional_groups . split ( ',' ) ) ) )","group_ids. extend ( map ( int, self. additional_groups. split ( ',' ) ) if self. additional_groups else [ ] )"
+"categories = models . ManyToManyField ( Category , blank = True , null = True )","categories = models. ManyToManyField ( Category, blank = True )"
+"valid_keys += [ 'raw.X' , 'raw.var' , 'raw.varm' , 'raw.cat' ]","valid_keys += [ 'raw.X', 'raw.var', 'raw.varm', 'raw.varp' ]"
+"sys . stderr . write ( ""Local site now latitude %0.3fd, longitude %0.3fd\n"" % ( local_site . latitude . d , local_site . longitude . d ) )","sys. stderr. write ( ""Local site now latitude %0.3fd, longitude %0.3fdf\n"" % ( local_site. latitude, local_site. longitude ) )"
+"sage : ( out , err , ret ) = test_executable ( [ ""sage"" , ""--ipython"" ] , ""\n3**33\n"" )","sage : ( out, err, ret ) = test_executable ( [ ""sage"", ""--ipython"" ], ""3**33"" )"
+"class Solution:
+    def shortestDistanceAfterQueries(
+        self, n: int, queries: List[List[int]]
+    ) -> List[int]:
+        def bfs(i: int) -> int:
+            q = deque([i])
+            vis = [False] * n
+            vis[i] = True
+            d = 0
+            while 1:
+                for _ in range(len(q)):
+                    u = q.popleft()
+                    if u == n - 1:
+                        return d
+                    for v in g[u]:
+                        if not vis[v]:
+                            vis[v] = True
+                            q.append(v)
+                d += 1
+
+        g = [[i + 1] for i in range(n - 1)]
+        ans = []
+        for u, v in queries:
+            g[u].append(v)
+            ans.append(bfs(0))
+        return ans","class Solution:
+    def shortestDistanceAfterQueries(
+        self, n: int, queries: List[List[int]]
+    ) -> List[int]:
+        def bfs(i: int) -> int:
+            q = deque([i])
+            vis = [False] * n
+            vis[i] = True
+            d = 0
+            while 1:
+                for _ in range(len(q)):
+                    u = q.popleft()
+                    if u == n - 1:
+                        return d
+                    for v in g[u]:
+                        if not vis[v]:
+                            vis[v] = True
+                            q.append(v)
+                d += 1
+
+        g = [[i + 1] for i in range(n - 1)]
+        ans = []
+        for u, v in queries:
+            g[u].append(v)
+            ans.append(bfs(0))
+        return ans"
+"NETWORKS = ""Networks as a JSON string or as \'net1=ip1;net2=ip2\'. "" ""This argument can be used multiple times.""","NETWORKS = ""Networks as a JSON string or as '\'net1=ip1;net2=ip2\'). "" ""This argument can be used multiple times. "" ""Example: 'net1=10.0.0.1;net2=10.0.0.2'"""
+emphasis = re . compile ( r'^_((?:__|[\s\S])+?)_(?!_)' r'|' r'^\*((?:\*\*|[\s\S])+?)\*(?!\*)' ),"emphasis = re. compile ( r'^\b_((?:__|[\s\S])+?)_\b' r'|' r'^\*((?:\*\*|[\s\S])+?)\*(?!\*)', re. MULTILINE )"
+"import random
+import bisect
+import statistics
+import matplotlib.pyplot as plt
+def task_func(n, value):
+
+    if n < 1:  # Handle case where n is 0 or less
+        return [], 0
+
+    numbers = [random.random() for _ in range(n)]
+    avg = statistics.mean(numbers)
+    greater_avg = [x for x in numbers if x > avg]
+
+    numbers.sort()
+    bpoint = bisect.bisect_right(numbers, value)
+    num_greater_value = len(numbers) - bpoint
+
+    plt.plot(numbers)
+    plt.show()
+
+    return greater_avg, num_greater_value","import random
+import bisect
+import statistics
+import matplotlib.pyplot as plt
+def task_func(n, value):
+
+    if n < 1:  # Handle case where n is 0 or less
+        return [], 0
+
+    numbers = [random.random() for _ in range(n)]
+    avg = statistics.mean(numbers)
+    greater_avg = [x for x in numbers if x > avg]
+
+    numbers.sort()
+    bpoint = bisect.bisect_right(numbers, value)
+    num_greater_value = len(numbers) - bpoint
+
+    plt.plot(numbers)
+    plt.show()
+
+    return greater_avg, num_greater_value"
+"import subprocess
+import ftplib
+import os
+def task_func(ftp_server='ftp.dlptest.com', ftp_user='dlpuser', ftp_password='rNrKYTX9g7z3RgJRmxWuGHbeu', ftp_dir='/ftp/test'):
+
+    # Attempt to connect to the FTP server
+    try:
+        ftp_obj = ftplib.FTP(ftp_server)
+    except Exception as e:
+        raise Exception(f'Failed to connect to FTP server {ftp_server}: {str(e)}')
+
+    # Attempt to login to the FTP server
+    try:
+        ftp_obj.login(ftp_user, ftp_password)
+    except Exception as e:
+        raise Exception(f'Failed to log into FTP server {ftp_server} with user {ftp_user}: {str(e)}')
+
+    # Attempt to change to the specified directory
+    try:
+        ftp_obj.cwd(ftp_dir)
+    except Exception as e:
+        raise Exception(f'Failed to change to directory {ftp_dir} on server {ftp_server}: {str(e)}')
+
+    # Directory to store downloaded files
+    download_dir = ""downloaded_files""
+    if not os.path.exists(download_dir):
+        os.makedirs(download_dir)
+
+    downloaded_files = []
+    for filename in ftp_obj.nlst():
+        command = f'wget ftp://{ftp_user}:{ftp_password}@{ftp_server}{ftp_dir}/{filename} -P {download_dir}'
+        subprocess.call(command, shell=True)
+        downloaded_files.append(filename)
+
+    ftp_obj.quit()
+    return downloaded_files","import subprocess
+import ftplib
+import os
+def task_func(ftp_server='ftp.dlptest.com', ftp_user='dlpuser', ftp_password='rNrKYTX9g7z3RgJRmxWuGHbeu', ftp_dir='/ftp/test'):
+
+    # Attempt to connect to the FTP server
+    try:
+        ftp_obj = ftplib.FTP(ftp_server)
+    except Exception as e:
+        raise Exception(f'Failed to connect to FTP server {ftp_server}: {str(e)}')
+
+    # Attempt to login to the FTP server
+    try:
+        ftp_obj.login(ftp_user, ftp_password)
+    except Exception as e:
+        raise Exception(f'Failed to log into FTP server {ftp_server} with user {ftp_user}: {str(e)}')
+
+    # Attempt to change to the specified directory
+    try:
+        ftp_obj.cwd(ftp_dir)
+    except Exception as e:
+        raise Exception(f'Failed to change to directory {ftp_dir} on server {ftp_server}: {str(e)}')
+
+    # Directory to store downloaded files
+    download_dir = ""downloaded_files""
+    if not os.path.exists(download_dir):
+        os.makedirs(download_dir)
+
+    downloaded_files = []
+    for filename in ftp_obj.nlst():
+        command = f'wget ftp://{ftp_user}:{ftp_password}@{ftp_server}{ftp_dir}/{filename} -P {download_dir}'
+        subprocess.call(command, shell=True)
+        downloaded_files.append(filename)
+
+    ftp_obj.quit()
+    return downloaded_files"
+"config . ParentalControl . storeservicepin = ConfigSelection ( default = ""never"" , choices = [ ( ""never"" , _ ( ""never"" ) ) , ( ""5"" , _ ( ""5 minutes"" ) ) , ( ""30"" , _ ( ""30 minutes"" ) ) , ( ""60"" , _ ( ""60 minutes"" ) ) , ( ""standby"" , _ ( ""until standby/restart"" ) ) ] )","config. ParentalControl. storeservicepin = ConfigSelection ( default = ""never"", choices = [ ( ""never"", _ ( ""never"" ) ), ( ""5"", _ ( ""%d minutes"" ) % 5 ), ( ""30"", _ ( ""%d minutes"" ) % 30 ), ( ""60"", _ ( ""%d minutes"" ) % 60 ), ( ""standby"", _ ( ""until standby/restart"" ) ) ], label = _ ( ""Parental control"" ) )"
+"class Solution:
+    def minCost(self, nums: List[int], x: int) -> int:
+        n = len(nums)
+        f = [[0] * n for _ in range(n)]
+        for i, v in enumerate(nums):
+            f[i][0] = v
+            for j in range(1, n):
+                f[i][j] = min(f[i][j - 1], nums[(i - j) % n])
+        return min(sum(f[i][j] for i in range(n)) + x * j for j in range(n))","class Solution:
+    def minCost(self, nums: List[int], x: int) -> int:
+        n = len(nums)
+        f = [[0] * n for _ in range(n)]
+        for i, v in enumerate(nums):
+            f[i][0] = v
+            for j in range(1, n):
+                f[i][j] = min(f[i][j - 1], nums[(i - j) % n])
+        return min(sum(f[i][j] for i in range(n)) + x * j for j in range(n))"
+"five_week_avg [ 'total' ] = round ( sum ( five_week_avg . values ( ) ) , 2 )",five_week_avg [ 'total' ] = sum ( five_week_avg. values ( ) ) / 5
+return request . user . has_perm ( 'terra_layer.can_manage_layers' ),"return request. user. has_perm ( 'django_geosource.can_manage_sources', self. source )"
+"res = [ ( cl . id , cl . product_id . name ) for cl in self ]","res = [ ( cl. id, cl. product_id. name_template, cl. product_id. name_template ) for cl in self ]"
+"import pandas as pd
+import numpy as np
+from random import choice
+# Constants
+DATA_TYPES = [str, int, float, list, tuple, dict, set]
+def task_func(rows, columns):
+
+    data = {}
+    for col in range(columns):
+        data_type = choice(DATA_TYPES)
+        if data_type == str:
+            data['col' + str(col)] = [''.join(np.random.choice(list('abcdefghijklmnopqrstuvwxyz'), size=5)) for _ in
+                                      range(rows)]
+        elif data_type in [int, float]:
+            data['col' + str(col)] = np.random.choice([data_type(i) for i in range(10)], size=rows)
+        elif data_type == list:
+            data['col' + str(col)] = [list(np.random.choice(range(10), size=np.random.randint(1, 6))) for _ in
+                                      range(rows)]
+        elif data_type == tuple:
+            data['col' + str(col)] = [tuple(np.random.choice(range(10), size=np.random.randint(1, 6))) for _ in
+                                      range(rows)]
+        elif data_type == dict:
+            data['col' + str(col)] = [dict(zip(np.random.choice(range(10), size=np.random.randint(1, 6)),
+                                               np.random.choice(range(10), size=np.random.randint(1, 6)))) for _ in
+                                      range(rows)]
+        elif data_type == set:
+            data['col' + str(col)] = [set(np.random.choice(range(10), size=np.random.randint(1, 6))) for _ in
+                                      range(rows)]
+
+    df = pd.DataFrame(data)
+    return df","import pandas as pd
+import numpy as np
+from random import choice
+# Constants
+DATA_TYPES = [str, int, float, list, tuple, dict, set]
+def task_func(rows, columns):
+
+    data = {}
+    for col in range(columns):
+        data_type = choice(DATA_TYPES)
+        if data_type == str:
+            data['col' + str(col)] = [''.join(np.random.choice(list('abcdefghijklmnopqrstuvwxyz'), size=5)) for _ in
+                                      range(rows)]
+        elif data_type in [int, float]:
+            data['col' + str(col)] = np.random.choice([data_type(i) for i in range(10)], size=rows)
+        elif data_type == list:
+            data['col' + str(col)] = [list(np.random.choice(range(10), size=np.random.randint(1, 6))) for _ in
+                                      range(rows)]
+        elif data_type == tuple:
+            data['col' + str(col)] = [tuple(np.random.choice(range(10), size=np.random.randint(1, 6))) for _ in
+                                      range(rows)]
+        elif data_type == dict:
+            data['col' + str(col)] = [dict(zip(np.random.choice(range(10), size=np.random.randint(1, 6)),
+                                               np.random.choice(range(10), size=np.random.randint(1, 6)))) for _ in
+                                      range(rows)]
+        elif data_type == set:
+            data['col' + str(col)] = [set(np.random.choice(range(10), size=np.random.randint(1, 6))) for _ in
+                                      range(rows)]
+
+    df = pd.DataFrame(data)
+    return df"
+"self . assertEqual ( self . examinee . login ( ) , 'https://made-up-concourse.com/auth/basic/token?team_name=foo' )","self. assertEqual ( self. examinee. login ( ), 'https://made-up-concourse.com/api/v1/teams/foo/auth/token', 'Login URL is not correct' )"
+"regexp = re . compile ( ""window.location='/thread.php\?id=(\d+)'"" )","regexp = re. compile ( ""window.location='/thread.php\?id=(\d+)'"" )"
+"class Solution:
+    def numberOfWays(self, n: int, x: int) -> int:
+        MOD = 10**9 + 7
+        candidates = []
+        i = 1
+        while True:
+            current = i ** x
+            if current > n:
+                break
+            candidates.append(current)
+            i += 1
+        
+        dp = [0] * (n + 1)
+        dp[0] = 1  # Base case: one way to make sum 0
+        
+        for num in candidates:
+            for s in range(n, num - 1, -1):
+                dp[s] = (dp[s] + dp[s - num]) % MOD
+        
+        return dp[n] % MOD","class Solution:
+    def numberOfWays(self, n: int, x: int) -> int:
+        MOD = 10**9 + 7
+        candidates = []
+        i = 1
+        while True:
+            current = i ** x
+            if current > n:
+                break
+            candidates.append(current)
+            i += 1
+        
+        dp = [0] * (n + 1)
+        dp[0] = 1  # Base case: one way to make sum 0
+        
+        for num in candidates:
+            for s in range(num, n + 1):
+                dp[s] = (dp[s] + dp[s - num]) % MOD
+        
+        return dp[n] % MOD"
+from nalaf . features . relations import TokenFeatureGenerator,from relna. features. relation import TokenFeatureGenerator
+"return PAD_PHI_DIVISION / PAD_PHI_SUBDIVISION if detectorNumber in [ 0 , 1 ] else PAD_PHI_DIVISION","return PAD_PHI_DIVISION if detectorNumber in [ 0, 1 ] else PAD_PHI_DIVISION / PAD_PHI_SUBDIVISION if PAD_PHI_SUBDIVISION!= 0 else PAD_PHI_DIVISION"
+"ret += 'CUDA_VISIBLE_DEVICES=%d; %s &\n\n' % ( ( self . cmd_cnt % self . manual_cuda_devices ) , tmp_cmd )","ret += 'CUDA_VISIBLE_DEVICES=%d %s &\n' % ( ( self. cmd_cnt % self. manual_cuda_devices ), tmp_cmd )"
+"FieldConf ( id = ""groups"" , datatype = ""checkbox"" , size = 255 , default = u"""" , name = _ ( u""Groups"" ) , settings = { ""codelist"" : ""groups"" } , description = u"""" ) ,","FieldConf ( id = ""groups"", datatype = ""mcheckboxes"", size = 255, default = u"""", name = _ ( u""Groups"" ), settings = { ""codelist"" : ""groups"" }, description = u""Select groups to assign to this user"" ),"
+"import pandas as pd
+from sklearn.decomposition import PCA
+import matplotlib.pyplot as plt
+def task_func(df):
+
+
+    # Data preparation
+
+    if df.empty:
+        return 0,0
+
+    df['Date'] = pd.to_datetime(df['Date'])
+    df = pd.concat([df['Date'], df['Value'].apply(pd.Series)], axis=1)
+    
+    # Performing PCA
+    pca = PCA()
+    pca.fit(df.iloc[:,1:])
+    
+    # Extracting explained variance ratio
+    explained_variance_ratio = pca.explained_variance_ratio_
+    
+    # Creating bar chart
+    fig, ax = plt.subplots()
+    ax.bar(range(len(explained_variance_ratio)), explained_variance_ratio)
+    ax.set_title('Explained Variance Ratio of Principal Components')
+    ax.set_xlabel('Principal Component')
+    ax.set_ylabel('Explained Variance Ratio')
+    
+    return explained_variance_ratio, ax","import pandas as pd
+from sklearn.decomposition import PCA
+import matplotlib.pyplot as plt
+def task_func(df):
+
+
+    # Data preparation
+
+    if df.empty:
+        return 0,0
+
+    df['Date'] = pd.to_datetime(df['Date'])
+    df = pd.concat([df['Date'], df['Value'].apply(pd.Series)], axis=1)
+    
+    # Performing PCA
+    pca = PCA()
+    pca.fit(df.iloc[:,1:])
+    
+    # Extracting explained variance ratio
+    explained_variance_ratio = pca.explained_variance_ratio_
+    
+    # Creating bar chart
+    fig, ax = plt.subplots()
+    ax.bar(range(len(explained_variance_ratio)), explained_variance_ratio)
+    ax.set_title('Explained Variance Ratio of Principal Components')
+    ax.set_xlabel('Principal Component')
+    ax.set_ylabel('Explained Variance Ratio')
+    
+    return explained_variance_ratio, ax"
+"if ( self . _ui . configbool ( 'devel' , 'all-warnings' ) or self . _ui . configbool ( 'devel' , 'check-dirstate-write' ) ) : self . _ui . develwarn ( 'use dirstate.write with ' 'repo.currenttransaction()' )","if ( self. _ui. configbool ( 'devel', 'all-warnings' ) or self. ui. configbool ( 'devel', 'check-dirstate-write' ) or self. ui. configbool ( 'devel', 'check-dirstate-write' ) ) : self. _ui. develwarn ( 'use dirstate.write with''repo.currenttransaction()' )"
+cre = re . compile ( r'def\s+%s\s*[(]' % re . escape ( funcname ) ),cre = re. compile ( r'def\s+%s\s*\([^)]*\)' % funcname )
+"class Solution:
+    def maximumLength(self, nums: List[int]) -> int:
+        cnt = Counter(nums)
+        ans = cnt[1] - (cnt[1] % 2 ^ 1)
+        del cnt[1]
+        for x in cnt:
+            t = 0
+            while cnt[x] > 1:
+                x = x * x
+                t += 2
+            t += 1 if cnt[x] else -1
+            ans = max(ans, t)
+        return ans","class Solution:
+    def maximumLength(self, nums: List[int]) -> int:
+        cnt = Counter(nums)
+        ans = cnt[1] - (cnt[1] % 2 ^ 1)
+        del cnt[1]
+        for x in cnt:
+            t = 0
+            while cnt[x] > 1:
+                x = x ** 2
+                t += 2
+            t += 1 if cnt[x] else -1
+            ans = max(ans, t)
+        return ans"
