@@ -24162,3 +24162,728 @@ if instance . output_pattern . find ( output ) : final_instance = instance,if ou
 err ( 'Error occurred during deferred operation:\n%s' % traceback . format_exc ( ) ),"err ( 0, 'Error occurred during deferred operation:\n%s' % traceback. format_exc ( ), 'Error occurred during deferred operation:\n%s' % traceback. format_exc ( ) )"
 "key = libtcod . sys_check_for_event ( libtcod . EVENT_KEY_PRESS , libtcod . Key ( ) , libtcod . Mouse ( ) )","key = libtcod. sys_check_for_event ( libtcod. EVENT_KEY_PRESSED, libtcod. Key ( ), libtcod. Mouse ( ), libtcod. KEY_PRESSED )"
 self . response . headers [ 'Content-Type' ] = str ( content_type ),self. response. headers [ 'Content-Type' ] = content_type. lower ( )
+"urlpatterns = [ path ( 'admin/' , admin . site . urls ) , url ( r'' , include ( 'django_telegrambot.urls' ) ) , ]","urlpatterns = [ path ( 'admin/', admin. site. urls ), url ( r'^', include ( 'django_telegrambot.urls' ), name = 'django_telegrambot' ), ]"
+"_summarize_blocks ( start , limit , defined_cps , cp_to_scripts , all_scripts )","_summarize_blocks ( start, limit, defined_cps, cp_to_scripts, all_scripts, only_scripts, max_lines )"
+"# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.next = None
+
+class Solution:
+    def hasCycle(self, head: Optional[ListNode]) -> bool:
+        a=b=head
+        while(a!=None and a.next!=None):
+            b=b.next
+            a=a.next.next
+            if(a==b):
+                return True
+        return False","# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.next = None
+
+class Solution:
+    def hasCycle(self, head: Optional[ListNode]) -> bool:
+        a=b=head
+        while(a!=None and a.next!=None):
+            a=a.next
+            b=b.next.next
+            if(a==b):
+                return True
+        return False"
+"def max(a: int, b: int) -> int:
+    return a if a > b else b
+
+
+class Node:
+    __slots__ = ""l"", ""r"", ""s00"", ""s01"", ""s10"", ""s11""
+
+    def __init__(self, l: int, r: int):
+        self.l = l
+        self.r = r
+        self.s00 = self.s01 = self.s10 = self.s11 = 0
+
+
+class SegmentTree:
+    __slots__ = ""tr""
+
+    def __init__(self, n: int):
+        self.tr: List[Node | None] = [None] * (n << 2)
+        self.build(1, 1, n)
+
+    def build(self, u: int, l: int, r: int):
+        self.tr[u] = Node(l, r)
+        if l == r:
+            return
+        mid = (l + r) >> 1
+        self.build(u << 1, l, mid)
+        self.build(u << 1 | 1, mid + 1, r)
+
+    def query(self, u: int, l: int, r: int) -> int:
+        if self.tr[u].l >= l and self.tr[u].r <= r:
+            return self.tr[u].s11
+        mid = (self.tr[u].l + self.tr[u].r) >> 1
+        ans = 0
+        if r <= mid:
+            ans = self.query(u << 1, l, r)
+        if l > mid:
+            ans = max(ans, self.query(u << 1 | 1, l, r))
+        return ans
+
+    def pushup(self, u: int):
+        left, right = self.tr[u << 1], self.tr[u << 1 | 1]
+        self.tr[u].s00 = max(left.s00 + right.s10, left.s01 + right.s00)
+        self.tr[u].s01 = max(left.s00 + right.s11, left.s01 + right.s01)
+        self.tr[u].s10 = max(left.s10 + right.s10, left.s11 + right.s00)
+        self.tr[u].s11 = max(left.s10 + right.s11, left.s11 + right.s01)
+
+    def modify(self, u: int, x: int, v: int):
+        if self.tr[u].l == self.tr[u].r:
+            self.tr[u].s11 = max(0, v)
+            return
+        mid = (self.tr[u].l + self.tr[u].r) >> 1
+        if x <= mid:
+            self.modify(u << 1, x, v)
+        else:
+            self.modify(u << 1 | 1, x, v)
+        self.pushup(u)
+
+
+class Solution:
+    def maximumSumSubsequence(self, nums: List[int], queries: List[List[int]]) -> int:
+        n = len(nums)
+        tree = SegmentTree(n)
+        for i, x in enumerate(nums, 1):
+            tree.modify(1, i, x)
+        ans = 0
+        mod = 10**9 + 7
+        for i, x in queries:
+            tree.modify(1, i + 1, x)
+            ans = (ans + tree.query(1, 1, n)) % mod
+        return ans","def max(a: int, b: int) -> int:
+    return a if a > b else b
+
+
+class Node:
+    __slots__ = ""l"", ""r"", ""s00"", ""s01"", ""s10"", ""s11""
+
+    def __init__(self, l: int, r: int):
+        self.l = l
+        self.r = r
+        self.s00 = self.s01 = self.s10 = self.s11 = 0
+
+
+class SegmentTree:
+    __slots__ = ""tr""
+
+    def __init__(self, n: int):
+        self.tr = [Node(0, n - 1)]
+        self.build(1, 1, n)
+
+    def build(self, u: int, l: int, r: int):
+        self.tr[u] = Node(l, r)
+        if l == r:
+            return
+        mid = (l + r) >> 1
+        self.build(u << 1, l, mid)
+        self.build(u << 1 | 1, mid + 1, r)
+
+    def query(self, u: int, l: int, r: int) -> int:
+        if self.tr[u].l >= l and self.tr[u].r <= r:
+            return self.tr[u].s11
+        mid = (self.tr[u].l + self.tr[u].r) >> 1
+        ans = 0
+        if r > mid:
+            ans = max(ans, self.query(u << 1, l, r))
+        if l < mid + 1:
+            ans = max(ans, self.query(u << 1 | 1, l, r))
+        return ans
+
+    def pushup(self, u: int):
+        left, right = self.tr[u << 1], self.tr[u << 1 | 1]
+        self.tr[u].s00 = max(left.s00 + right.s10, left.s01 + right.s00)
+        self.tr[u].s01 = max(left.s00 + right.s11, left.s01 + right.s01)
+        self.tr[u].s10 = max(left.s10 + right.s10, left.s11 + right.s01)
+        self.tr[u].s11 = max(left.s10 + right.s11, left.s11 + right.s01)
+
+    def modify(self, u: int, x: int, v: int):
+        if self.tr"
+"advisor_config = { 'num_eval_trials' : args . num_eval_trials , 'batch_size' : args . enas_batch_size , 'do_final_train' : args . do_final_train }","advisor_config = { 'num_eval_trials' : args. num_eval_trials, 'enas_batch_size' : args. batch_size, 'do_final_train' : args. do_final_train, 'enas_num_layers' : args. num_layers }"
+"return ""Oui"" if ( timezone . now ( ) . date ( ) in obj . dates ) else ""Non""","return ""Oui"" if ( obj. debut <= timezone. now ( ). date ( ) < obj. fin ) else ""Non"""
+"class Solution:
+    def medianSlidingWindow(self, nums: List[int], k: int) -> List[float]:
+        tree = None
+        ans = []
+        for i, x in enumerate(nums):
+            tree = insert(tree, x)
+            if size(tree) > k:
+                tree = remove(tree, nums[i - k])
+            if size(tree) == k:
+                if k % 2 == 1:
+                    ans.append(get(tree, k // 2 + 1))
+                else:
+                    ans.append((get(tree, k // 2) + get(tree, k // 2 + 1)) / 2)
+        return ans
+
+
+
+class Node:
+    __slots__ = ['val', 'count', 'weight', 'size', 'left', 'right']
+    def __init__(self, val):
+        self.val = val
+        self.count = 1
+        self.weight = random.random()
+        self.size = 1
+        self.left = self.right = None
+
+
+def touch(root):
+    if not root:
+        return
+    root.size = root.count + size(root.left) + size(root.right)
+
+
+def size(root):
+    if not root:
+        return 0
+    return root.size
+
+
+def insert(root, val):
+    t1, r, t2 = split(root, val)
+    if not r:
+        r = Node(val)
+    else:
+        r.count += 1
+        touch(r)
+    t2 = join(r, t2)
+    return join(t1, t2)
+
+
+def remove(root, val):
+    t1, r, t2 = split(root, val)
+    if r and r.count > 1:
+        r.count -= 1
+        touch(r)
+        t2 = join(r, t2)
+    return join(t1, t2)
+
+
+def split(root, val):
+    if not root:
+        return None, None, None
+    elif root.val < val:
+        a, b, c = split(root.right, val)
+        root.right = a
+        touch(root)
+        return root, b, c
+    elif root.val > val:
+        a, b, c = split(root.left, val)
+        root.left = c
+        touch(root)
+        return a, b, root
+    else:
+        a, c = root.left, root.right
+        root.left = root.right = None
+        touch(root)
+        return a, root, c
+
+
+def join(t1, t2):
+    if not t1:
+        return t2
+    elif not t2:
+        return t1
+    elif t1.weight < t2.weight:
+        t1.right = join(t1.right, t2)
+        touch(t1)
+        return t1
+    else:
+        t2.left = join(t1, t2.left)
+        touch(t2)
+        return t2
+
+
+def get(root, index):
+    if size(root.left) < index <= size(root.left) + root.count:
+        return root.val
+    elif size(root.left) + root.count < index:
+        return get(root.right, index - root.count - size(root.left))
+    else:
+        return get(root.left, index)","class Solution:
+    def medianSlidingWindow(self, nums: List[int], k: int) -> List[float]:
+        tree = None
+        ans = []
+        for i, x in enumerate(nums):
+            tree = insert(tree, x)
+            if size(tree) > k:
+                tree = remove(tree, nums[i - k])
+            if size(tree) == k:
+                if k % 2 == 1:
+                    ans.append(get(tree, k // 2 + 1))
+                else:
+                    ans.append((get(tree, k // 2) + get(tree, k // 2 + 1)) / 2)
+            ans.append(x)
+        return ans"
+"class Solution:
+    def maximumTotalSum(self, maximumHeight: List[int]) -> int:
+        maximumHeight.sort()
+        ans, mx = 0, inf
+        for x in maximumHeight[::-1]:
+            x = min(x, mx - 1)
+            if x <= 0:
+                return -1
+            ans += x
+            mx = x
+        return ans","class Solution:
+    def maximumTotalSum(self, maximumHeight: List[int]) -> int:
+        maximumHeight.sort()
+        ans, mx = 0, inf
+        for x in maximumHeight[::-1]:
+            x = min(x, mx - 1)
+            if x <= 0:
+                return -1
+            ans += x
+            mx = x
+        return ans"
+"self . _debug ( 'opcode: getattr (%d) | self: %s | path: %s' % ( self . GetContext ( ) [ 'pid' ] , repr ( self ) , path ) )","self. _debug ( 'opcode: getattr | self: %s | path: %s' % ( repr ( self ), path ), self )"
+"class Solution:
+    def longestSemiRepetitiveSubstring(self, s: str) -> int:
+        ans, n = 1, len(s)
+        cnt = j = 0
+        for i in range(1, n):
+            cnt += s[i] == s[i - 1]
+            while cnt > 1:
+                cnt -= s[j] == s[j + 1]
+                j += 1
+            ans = max(ans, i - j + 1)
+        return ans","class Solution:
+    def longestSemiRepetitiveSubstring(self, s: str) -> int:
+        ans, n = 1, len(s)
+        cnt = j = 0
+        for i in range(1, n):
+            cnt += s[i] == s[i - 1]
+            while cnt > 1:
+                cnt -= s[j] == s[j + 1]
+                j += 1
+            ans = max(ans, i - j + 1)
+        return ans"
+"class Solution:
+    def countSteppingNumbers(self, low: str, high: str) -> int:
+        @cache
+        def dfs(pos: int, pre: int, lead: bool, limit: bool) -> int:
+            if pos >= len(num):
+                return int(not lead)
+            up = int(num[pos]) if limit else 9
+            ans = 0
+            for i in range(up + 1):
+                if i == 0 and lead:
+                    ans += dfs(pos + 1, pre, True, limit and i == up)
+                elif pre == -1 or abs(i - pre) == 1:
+                    ans += dfs(pos + 1, i, False, limit and i == up)
+            return ans % mod
+
+        mod = 10**9 + 7
+        num = high
+        a = dfs(0, -1, True, True)
+        dfs.cache_clear()
+        num = str(int(low) - 1)
+        b = dfs(0, -1, True, True)
+        return (a - b) % mod","class Solution:
+    def countSteppingNumbers(self, low: str, high: str) -> int:
+        @cache
+        def dfs(pos: int, pre: int, lead: bool, limit: bool) -> int:
+            if pos >= len(num):
+                return int(not lead)
+            up = int(num[pos]) if limit else 9
+            ans = 0
+            for i in range(up + 1):
+                if i == 0 and lead:
+                    ans += dfs(pos + 1, pre, True, limit and i == up)
+                elif pre == -1 or abs(i - pre) == 1:
+                    ans += dfs(pos + 1, i, False, limit and i == up)
+            return ans % mod
+
+        mod = 10**9 + 7
+        num = high
+        a = dfs(0, -1, True, True)
+        dfs.cache_clear()
+        num = str(int(low) - 1)
+        b = dfs(0, -1, True, True)
+        return (a - b) % mod"
+"from theano . compat . python2x import DictMixin , OrderedDict","from theano. compat. python2x import DictMixin, OrderedDict, Callable, ListMixin"
+"indexes = list ( range ( begin , min ( len ( proc_data ) , begin + batch_size ) ) )","indexes = list ( range ( begin, begin + batch_size, batch_size ) )"
+low_level_features = end_points [ base_architecture + '/block1/unit_3/bottleneck_v2/conv1' ],low_level_features = end_points [ base_architecture + '/block1' ] [ 'features' ]
+raise out_of_band . AccessViolation ( message_fmt = DEF_MAX_TASKS_REACHED_MSG ),"raise out_of_band. AccessViolation ( message_fmt = DEF_MAX_TASKS_REACHED, task_id = task_id )"
+"class Solution:
+    def minimumDifference(self, nums: List[int], k: int) -> int:
+        m = max(nums).bit_length()
+        cnt = [0] * m
+        s = i = 0
+        ans = inf
+        for j, x in enumerate(nums):
+            s |= x
+            ans = min(ans, abs(s - k))
+            for h in range(m):
+                if x >> h & 1:
+                    cnt[h] += 1
+            while i < j and s > k:
+                y = nums[i]
+                for h in range(m):
+                    if y >> h & 1:
+                        cnt[h] -= 1
+                        if cnt[h] == 0:
+                            s ^= 1 << h
+                i += 1
+                ans = min(ans, abs(s - k))
+        return ans","class Solution:
+    def minimumDifference(self, nums: List[int], k: int) -> int:
+        m = max(nums).bit_length()
+        cnt = [0] * m
+        s = i = 0
+        ans = inf
+        for j, x in enumerate(nums):
+            s |= x
+            ans = min(ans, abs(s - k))
+            for h in range(m):
+                if x >> h & 1:
+                    cnt[h] += 1
+            while i < j and s > k:
+                y = nums[i]
+                for h in range(m):
+                    if y >> h & 1:
+                        cnt[h] -= 1
+                        if cnt[h] == 0:
+                            s ^= 1 << h
+                i += 1
+                ans = min(ans, abs(s - k))
+        return ans"
+"class Solution:
+  def minOperations(self, queries: list[list[int]]) -> int:
+    return sum((self._getOperations(r) - self._getOperations(l - 1) + 1) // 2
+               for l, r in queries)
+
+  def _getOperations(self, n: int) -> int:
+    """"""Returns the number of operations required for [1, n].""""""
+    res = 0
+    ops = 0
+    powerOfFour = 1
+    while powerOfFour <= n:
+      l = powerOfFour
+      r = min(n, powerOfFour * 4 - 1)
+      ops += 1
+      res += (r - l + 1) * ops
+      powerOfFour *= 4
+    return res","class Solution:
+  def minOperations(self, queries: list[list[int]]) -> int:
+    return sum((self._getOperations(r) - self._getOperations(l - 1) + 1) // 2
+               for l, r in queries)
+
+  def _getOperations(self, n: int) -> int:
+    """"""Returns the number of operations required for [1, n].""""""
+    res = 0
+    ops = 1
+    powerOfFour = 1
+    while powerOfFour <= n:
+      r = min(n, powerOfFour * 4 - 1)
+      res += (r - l + 1) * ops
+      ops += 1
+      powerOfFour *= 4
+    return res"
+"import pytz
+import numpy as np
+from dateutil.parser import parse
+import math
+SOLAR_CYCLE_YEARS = np.array([1986, 1996, 2008, 2019])
+def task_func(date_str, from_tz, to_tz):
+
+    from_tz = pytz.timezone(from_tz)
+    to_tz = pytz.timezone(to_tz)
+    given_date = parse(date_str).replace(tzinfo=from_tz)
+    converted_date = given_date.astimezone(to_tz)
+
+    solar_cycle_year = SOLAR_CYCLE_YEARS[np.argmin(np.abs(SOLAR_CYCLE_YEARS - converted_date.year))]
+    years_since_solar_cycle_year = abs(converted_date.year - solar_cycle_year)
+
+    solar_activity = math.cos(math.pi * years_since_solar_cycle_year / 11)
+
+    return solar_activity","import pytz
+import numpy as np
+from dateutil.parser import parse
+import math
+SOLAR_CYCLE_YEARS = np.array([1986, 1996, 2008, 2019])
+def task_func(date_str, from_tz, to_tz):
+
+    from_tz = pytz.timezone(from_tz)
+    to_tz = pytz.timezone(to_tz)
+    given_date = parse(date_str).replace(tzinfo=from_tz)
+    converted_date = given_date.astimezone(to_tz)
+
+    solar_cycle_year = SOLAR_CYCLE_YEARS[np.argmin(np.abs(SOLAR_CYCLE_YEARS - converted_date.year))]
+    years_since_solar_cycle_year = abs(converted_date.year - solar_cycle_year)
+
+    solar_activity = math.cos(math.pi * years_since_solar_cycle_year / 11)
+
+    return solar_activity"
+"""cd $pypi_path/simple/pip/; pip install --ignore-installed pip*.tar.gz""","""cd $pypi_path; pip install --ignore-installed pip*.tar.gz --no-deps"""
+"import re
+import json
+from collections import Counter
+def task_func(json_str, top_n=10):
+
+    pattern = r'(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})'
+    data = json.loads(json_str)
+    urls = []
+
+    def extract(dictionary):
+        for key, value in dictionary.items():
+            if isinstance(value, dict):
+                extract(value)
+            elif isinstance(value, str) and re.match(pattern, value):
+                urls.append(value)
+
+    extract(data)
+    if not urls:
+        return {}
+    elif len(urls) <= top_n:
+        return dict(Counter(urls))
+
+    return dict(Counter(urls).most_common(top_n))","import re
+import json
+from collections import Counter
+def task_func(json_str, top_n=10):
+
+    pattern = r'(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})'
+    data = json.loads(json_str)
+    urls = []
+
+    def extract(dictionary):
+        for key, value in dictionary.items():
+            if isinstance(value, dict):
+                extract(value)
+            elif isinstance(value, str) and re.match(pattern, value):
+                urls.append(value)
+
+    extract(data)
+    if not urls:
+        return {}
+    elif len(urls) <= top_n:
+        return dict(Counter(urls))
+
+    return dict(Counter(urls).most_common(top_n))"
+"self . _yaml_config = resource_filename ( yml . __name__ , 'qstat.yml' )","self. _yaml_config = resource_filename ( yml. __name__, 'qstat_dict.yml', 'config' )"
+"import time
+import random
+import matplotlib.pyplot as plt
+from scipy.stats import kurtosis
+def task_func(intervals=100, seed=0):
+
+    random.seed(seed)
+    times = []
+    numbers = []
+
+    try:
+        for _ in range(intervals):
+            time.sleep(1)
+            times.append(time.time())
+            numbers.append(random.random())
+    except KeyboardInterrupt:
+        print('Interrupted by user')
+
+    kurtosis_value = kurtosis(numbers, nan_policy='omit')
+    # Initialize a fresh figure
+    plt.figure()
+    fig, ax = plt.subplots()
+    ax.plot(times, numbers)
+    return ax, kurtosis_value","import time
+import random
+import matplotlib.pyplot as plt
+from scipy.stats import kurtosis
+def task_func(intervals=100, seed=0):
+
+    random.seed(seed)
+    times = []
+    numbers = []
+
+    try:
+        for _ in range(intervals):
+            time.sleep(1)
+            times.append(time.time())
+            numbers.append(random.random())
+    except KeyboardInterrupt:
+        print('Interrupted by user')
+
+    kurtosis_value = kurtosis(numbers, nan_policy='omit')
+    # Initialize a fresh figure
+    plt.figure()
+    fig, ax = plt.subplots()
+    ax.plot(times, numbers)
+    return ax, kurtosis_value"
+"embed . add_field ( name = 'say' , value = 'Repeats what you have said after .msay' , inline = False )","embed. add_field ( name = 'echo', value = 'Repeats what you have said after.echo', inline = False )"
+"url ( r'^page/(?P<position_id>.*?)/$' , views . page , name = 'section_page' ) ,","url ( r'^page/(?P<position_id>\d+)$', views. page, name ='section_page' ),"
+"assert ( type ( arg ) == T or type ( arg ) == T . flip ( ) or issubclass ( type ( type ( arg ) ) , type ( T ) ) or issubclass ( type ( T ) , type ( type ( arg ) ) ) ) , ( type ( arg ) , T )","assert ( type ( arg ) == T or type ( arg ) == T. flip ( ) or issubclass ( type ( arg ), type ( T ) ) or issubclass ( type ( T ), type ( arg ) ), ( type ( arg ), T ) )"
+"return reverse ( 'abcapp.campaign' , kwargs = { 'pk' : self . id } )","return reverse ( 'campaign', kwargs = { 'pk' : self. id,'slug' : self. slug } )"
+ext = self . generator . suggest_extension ( filename ),"ext = self. generator. suggested_extension ( filename, self. format, self. extension )"
+"import subprocess
+import time
+import threading
+def task_func(file_list):
+
+
+    exit_codes = []
+
+    def execute_file(file):
+        file_path = file
+        process = subprocess.Popen(file_path)
+        time.sleep(1)  # wait for the process to start
+        exit_codes.append(process.poll())  # store the exit code
+
+    # Start a thread for each file
+    threads = [threading.Thread(target=execute_file, args=(file,)) for file in file_list]
+    for thread in threads:
+        thread.start()
+
+    # Wait for all threads to finish
+    for thread in threads:
+        thread.join()
+
+    return exit_codes","import subprocess
+import time
+import threading
+def task_func(file_list):
+
+
+    exit_codes = []
+
+    def execute_file(file):
+        file_path = file
+        process = subprocess.Popen(file_path)
+        time.sleep(1)  # wait for the process to start
+        exit_codes.append(process.poll())  # store the exit code
+
+    # Start a thread for each file
+    threads = [threading.Thread(target=execute_file, args=(file,)) for file in file_list]
+    for thread in threads:
+        thread.start()
+
+    # Wait for all threads to finish
+    for thread in threads:
+        thread.join()
+
+    return exit_codes"
+likelihood_matrix = ( frequency_matrix + beta ) / ( col_sums + frequency_matrix . shape [ 1 ] ),likelihood_matrix = ( likelihood_matrix + beta ) / ( col_sums + frequency_matrix. shape [ 1 ] ). astype ( float )
+"response = facts [ random . randint ( 0 , len ( facts ) - 1 ) ]","response = facts [ random. randint ( 0, len ( facts ) - 1 ) ]"
+"class Solution:
+    def longestValidSubstring(self, word: str, forbidden: List[str]) -> int:
+        s = set(forbidden)
+        ans = i = 0
+        for j in range(len(word)):
+            for k in range(j, max(j - 10, i - 1), -1):
+                if word[k : j + 1] in s:
+                    i = k + 1
+                    break
+            ans = max(ans, j - i + 1)
+        return ans","class Solution:
+    def longestValidSubstring(self, word: str, forbidden: List[str]) -> int:
+        s = set(forbidden)
+        ans = i = 0
+        for j in range(len(word)):
+            for k in range(j, max(j - 10, i - 1), -1):
+                if word[k : j + 1] in s:
+                    i = k + 1
+                    break
+            ans = max(ans, j - i + 1)
+        return ans"
+"import pandas as pd
+import numpy as np
+DEFAULT_COLUMNS = ['Element', 'Count']
+def task_func(elements, include_index=False):
+
+    elements_series = pd.Series(elements)
+    count_series = elements_series.apply(lambda x: len(x))
+    data_dict = {'Element': elements_series, 'Count': count_series}
+    if include_index:
+        data_dict['Index'] = np.arange(len(elements))
+    count_df = pd.DataFrame(data_dict)
+    if include_index:
+        count_df = count_df[['Index', 'Element', 'Count']]  # Reordering columns to put 'Index' first
+    return count_df","import pandas as pd
+import numpy as np
+DEFAULT_COLUMNS = ['Element', 'Count']
+def task_func(elements, include_index=False):
+
+    elements_series = pd.Series(elements)
+    count_series = elements_series.apply(lambda x: len(x))
+    data_dict = {'Element': elements_series, 'Count': count_series}
+    if include_index:
+        data_dict['Index'] = np.arange(len(elements))
+    count_df = pd.DataFrame(data_dict)
+    if include_index:
+        count_df = count_df.ix[:, ['Index', 'Element', 'Count']]
+    return count_df"
+resultsdir = '/project/projectdirs/des/djbrout/116simdeep/',resultsdir = '/project/projectdirs/des/djbrout/114sim/114sim/'
+"self . assert_ ( isinstance ( desc , ( str , unicode , types . NoneType ) ) , ""description for '%s' is '%s'"" % ( key , desc ) )","self. assert_ ( isinstance ( desc, ( str, unicode ) ), ""description for '%s' is '%s'"" % ( key, desc ) )"
+"import numpy as np
+import matplotlib.pyplot as plt
+import pandas as pd
+def task_func(elements, seed=0):
+
+    np.random.seed(seed)
+    if not isinstance(elements, int) or elements <= 0:
+        raise ValueError(""Element must be a positive integer."")
+        
+    steps = np.random.choice([-1, 1], size=elements)
+    walk = np.cumsum(steps)
+    descriptive_stats = pd.Series(walk).describe(percentiles=[.05, .25, .5, .75, .95]).to_dict()
+    
+    plt.figure(figsize=(10, 6))
+    plt.plot(walk)
+    plt.title('Random Walk')
+    return descriptive_stats, plt.gca()","import numpy as np
+import matplotlib.pyplot as plt
+import pandas as pd
+def task_func(elements, seed=0):
+
+    np.random.seed(seed)
+    if not isinstance(elements, int) or elements <= 0:
+        raise ValueError(""Element must be a positive integer."")
+
+    steps = np.random.choice([-1, 1], size=elements)
+    walk = np.cumsum(steps)
+    descriptive_stats = pd.Series(steps).describe(percentiles=[.05,.25,.5,.75,.95]).to_dict()
+
+    plt.figure(figsize=(10, 6))
+    plt.plot(walk)
+    plt.title('Random Walk')
+    return descriptive_stats, plt.gca()"
+"cont_code_est = code_logit_fake [ : , self . len_discrete_code : ]","cont_code_est = code_fake [ :, self. len_discrete_code : ]. astype ( int )"
+"seeing = global_source_cat [ : , SXcolumn [ 'fwhm_world' ] ]","seeing = global_source_cat [ :, SXcolumn [ 'fwhm_world' ] ] * 3600. / 2."
+"self . url = Album . BASE_URL + album_id + ""/?m_start=""","self. url = Album. BASE_URL + album_id + ""?start="""
+"for i in range ( 0 , 100 ) : rolled . append ( roll ( ) )","for i in range ( 0, 10 ) : rolled. append ( roll ( ) [ 0 ] )"
+"sg = '[dot(DimShuffle{1,0}(b), DimShuffle{1,0}(a))]'","sg = '[dot(InplaceDimShuffle{1,0}(b), InplaceDimShuffle{0,1}(a))]'"
+"if cmd in ( 'python' , os . path . basename ( sys . executable ) ) : return os . path . abspath ( sys . executable )",if cmd == 'python' and sys. executable : return os. path. abspath ( sys. executable )
+module_state [ default_state ] [ 'makedirs' ] = True,module_state [ default_state ] ['mkdirs' ] = False
+"cleaned_data = super ( BookingForm , self ) . clean ( )","cleaned_data = super ( Booking, self ). clean ( ) if self. is_valid ( ) else { }"
+"f = open ( udg_storage_dir + ""/ptopic"" + storage_file , ""a+"" )","f = codecs. open ( udg_storage_dir + ""/ptopic"" + storage_file, ""a"", encoding = udg_thaiEncode )"
+"return self . _send_recv ( { 'command' : 'set_position' , 'position' : position } )","return self. _send_recv ( { 'command' :'set_position', 'position' : self. _position } )"
+"parser . add_argument ( '--win' , dest = 'win' , default = '1000' , type = int , help = 'Window size' )","parser. add_argument ( '-win', dest = 'win', default = '1000', type = int, help = 'Window size', required = False )"
+"attr_dimen = Column ( String ( 60 ) , server_default = text ( u""'dimensionless'"" ) )","attr_dimen = Column ( String ( 60 ), server_default = text ( 'dimensionless' ), nullable = False )"
+"class Solution:
+    def maximumBeauty(self, nums: List[int], k: int) -> int:
+        m = max(nums) + k * 2 + 2
+        d = [0] * m
+        for x in nums:
+            d[x] += 1
+            d[x + k * 2 + 1] -= 1
+        return max(accumulate(d))","class Solution:
+    def maximumBeauty(self, nums: List[int], k: int) -> int:
+        m = max(nums) + k * 2 + 2
+        d = [0] * m
+        for x in nums:
+            d[x] += 1
+            d[x + k * 2 + 1] -= 1
+        return max(accumulate(d))"
+"if re . search ( r'\.log$' , logfile ) : logs . append ( logfile )","if ( re. search ( r'\.log$', logfile ) and logfile ) : logs. append ( logfile )"
+"os . chmod ( os . path . join ( self . configfolder , filename ) , ( 0o777 ^ umask ) & mode )","os. chmod ( os. path. join ( self. configfolder, filename ), mode & 0o777 )"
