@@ -5696,3 +5696,718 @@ fabric . api . sudo ( 'chroot {} service ssh restart' . format ( container_rootf
           ans += r - lastInvalidPos + 1
 
     return ans"
+"import sqlite3
+import pandas as pd
+import csv
+from io import StringIO
+# Constants
+DATABASE_NAME = 'test.db'
+TABLE_NAME = 'test_table'
+def task_func(csv_input):
+
+    # Check if the input is a StringIO object or a file path
+    if isinstance(csv_input, StringIO):
+        dr = csv.DictReader(csv_input)  # Read from StringIO
+    else:
+        with open(csv_input, 'r') as f:
+            dr = csv.DictReader(f)  # Read from a file
+
+    conn = sqlite3.connect(DATABASE_NAME)
+    cursor = conn.cursor()
+
+    # Create table and insert data
+    cols = dr.fieldnames
+    cursor.execute(f'DROP TABLE IF EXISTS {TABLE_NAME}')
+    cursor.execute(f'CREATE TABLE {TABLE_NAME} ({"", "".join([f""{col} TEXT"" for col in cols])})')
+    for row in dr:
+        cursor.execute(f'INSERT INTO {TABLE_NAME} VALUES ({"", "".join([""?"" for _ in cols])})', list(row.values()))
+
+    conn.commit()
+    dataframe = pd.read_sql_query(f'SELECT * from {TABLE_NAME}', conn)
+
+    conn.close()
+
+    return dataframe","import sqlite3
+import pandas as pd
+import csv
+from io import StringIO
+# Constants
+DATABASE_NAME = 'test.db'
+TABLE_NAME = 'test_table'
+def task_func(csv_input):
+
+    # Check if the input is a StringIO object or a file path
+    if isinstance(csv_input, StringIO):
+        dr = csv.DictReader(csv_input)  # Read from StringIO
+    else:
+        with open(csv_input, 'r') as f:
+            dr = csv.DictReader(f)  # Read from a file
+
+    conn = sqlite3.connect(DATABASE_NAME)
+    cursor = conn.cursor()
+
+    # Create table and insert data
+    cols = dr.fieldnames
+    cursor.execute(f'DROP TABLE IF EXISTS {TABLE_NAME}')
+    cursor.execute(f'CREATE TABLE {TABLE_NAME} ({"", "".join([f""{col} TEXT"" for col in cols])})')
+    for row in dr:
+        cursor.execute(f'INSERT INTO {TABLE_NAME} VALUES ({"", "".join([""?"" for _ in cols])})', list(row.values()))
+
+    conn.commit()
+    dataframe = pd.read_sql_query(f'SELECT * from {TABLE_NAME}', conn)
+
+    conn.close()
+
+    return dataframe"
+return FFAdminUser . objects . filter ( organisations__id = self . kwargs . get ( 'organisation_pk' ) ),return FFAdminUser. objects. filter ( organisations__id__pk = self. kwargs. get ( 'organisation_pk' ) )
+"p = subprocess . Popen ( [ ""svn info ../boto | grep Revision | awk '{print $2}'"" ] , stdout = subprocess . PIPE , stderr = subprocess . PIPE , shell = True )","p = subprocess. Popen ( [ ""svn info../../boto | grep Revision | awk '{print $2}'"" ], stdout = subprocess. PIPE, stderr = subprocess. PIPE, shell = True, universal_newlines = True )"
+"self . addRoleName ( self . menu_item_icon_name_role , ""icon_name"" )","self. addRoleName ( self. menu_item_icon_name_role, ""iconName"", ""iconName"" )"
+"if getattr ( options , 'user' , None ) : raise koji . GenericError ( ""Can't specify 'mine' and 'user' in same time"" )","if getattr ( options, 'user', None ) and getattr ( options,'mine', None ) : raise koji. GenericError ( ""Can't specify'mine' and 'user' in same time"" )"
+"class Solution:
+    def maximumLengthSubstring(self, s: str) -> int:
+        cnt = Counter()
+        ans = i = 0
+        for j, c in enumerate(s):
+            cnt[c] += 1
+            while cnt[c] > 2:
+                cnt[s[i]] -= 1
+                i += 1
+            ans = max(ans, j - i + 1)
+        return ans","class Solution:
+    def maximumLengthSubstring(self, s: str) -> int:
+        cnt = Counter()
+        ans = i = 0
+        for j, c in enumerate(s):
+            cnt[c] += 1
+            while cnt[c] > 2:
+                cnt[s[i]] -= 1
+                i += 1
+            ans = max(ans, j - i + 1)
+        return ans"
+"d . documentElement . setAttributeNS ( xmlns . ri ( ) , 'xmlns:xsi' , xsi . uri ( ) )","d. documentElement. setAttributeNS ( xmlns. ri ( ), 'xmlns:xsi', xsi. ri ( ), False )"
+r'LATERAL|LEADING|LEFT|LENGTH|LESS|LEVEL|LIKE|LIMIT|LISTEN|LOAD|',r'LATERAL|LEADING|LEFT|LENGTH|LESS|LEVEL|LIKE|LIMIT|LISTEN|LOAD|'
+"out_dir = os . path . normpath ( os . path . join ( os . path . dirname ( work_bam_a ) , os . pardir , ""disambiguate_%s"" % aligner ) )","out_dir = os. path. normpath ( os. path. join ( os. path. dirname ( work_bam_a ), os. pardir, os. pardir, ""disambiguate"", ""disambiguate"" ) )"
+"import re
+import socket
+def task_func(ip_addresses: list) -> dict:
+
+
+    
+    IP_REGEX = r'[0-9]+(?:\.[0-9]+){3}'
+    hostnames = {}
+    for ip in ip_addresses:
+        if re.match(IP_REGEX, ip):
+            try:
+                hostname = socket.gethostbyaddr(ip)[0]
+                hostnames[ip] = hostname
+            except (socket.herror, socket.gaierror):
+                hostnames[ip] = None
+    return hostnames","import re
+import socket
+def task_func(ip_addresses: list) -> dict:
+
+
+    
+    IP_REGEX = r'[0-9]+(?:\.[0-9]+){3}'
+    hostnames = {}
+    for ip in ip_addresses:
+        if re.match(IP_REGEX, ip):
+            try:
+                hostname = socket.gethostbyaddr(ip)[0]
+                hostnames[ip] = hostname
+            except (socket.herror, socket.gaierror):
+                hostnames[ip] = None
+    return hostnames"
+"parser . add_argument ( ""--log_path"" , dest = ""log_path"" , type = str , default = ""/home/jsbsim/logs/log.json"" , help = ""the path to the log JSON file"" )","parser. add_argument ( ""--log_path"", dest = ""log_path"", type = str, default = ""logs/log.json"", help = ""the path to the log JSON file"" )"
+"""""""Pretty printed error string
+ 
+         :rtype: ``str``
+         :return: Human readable error string
+ 
+         """"""","""""""Pretty printed error string
+ 
+         :rtype: `str`
+         :return: Human readable error string
+ 
+         """""""
+"parser . add_argument ( '-k' , '--citekeys-only' , action = 'store_true' , default = False , dest = 'citekeys' , help = 'Only returns citekeys of matching papers.' )","parser. add_argument ( '-k', '--citekeys-only', action ='store_true', default = False, help = 'Only returns citekeys of matching papers. (default: False)' )"
+"raise Exception ( ""please set $EC2_SECRET_KEY or $AWS_SECRET_ACCESS_KEY, or add the key for ‘{0}’ to ~/.ec2-keys"" . format ( self . _access_key_id ) )","raise Exception ( ""please set $EC2_SECRET_KEY or $AWS_SECRET_ACCESS_KEY, or add the key for ‘{0}’ to ~/ec2-keys"". format ( self. _access_key_id ) )"
+"class Solution:
+    def findMaximumLength(self, nums: List[int]) -> int:
+        n = len(nums)
+        s = list(accumulate(nums, initial=0))
+        f = [0] * (n + 1)
+        pre = [0] * (n + 2)
+        for i in range(1, n + 1):
+            pre[i] = max(pre[i], pre[i - 1])
+            f[i] = f[pre[i]] + 1
+            j = bisect_left(s, s[i] * 2 - s[pre[i]])
+            pre[j] = i
+        return f[n]","class Solution:
+    def findMaximumLength(self, nums: List[int]) -> int:
+        n = len(nums)
+        s = list(accumulate(nums, initial=0))
+        f = [0] * (n + 1)
+        pre = [0] * (n + 2)
+        for i in range(1, n + 1):
+            pre[i] = max(pre[i], pre[i - 1])
+            f[i] = f[pre[i]] + 1
+            j = bisect_left(s, s[i] * 2 - s[pre[i]])
+            pre[j] = i
+        return f[n]"
+"class Solution:
+    def alternatingSubarray(self, nums: List[int]) -> int:
+        ans, n = -1, len(nums)
+        for i in range(n):
+            k = 1
+            j = i
+            while j + 1 < n and nums[j + 1] - nums[j] == k:
+                j += 1
+                k *= -1
+            if j - i + 1 > 1:
+                ans = max(ans, j - i + 1)
+        return ans","class Solution:
+    def alternatingSubarray(self, nums: List[int]) -> int:
+        ans, n = -1, len(nums)
+        for i in range(n):
+            k = 1
+            j = i
+            while j + 1 < n and nums[j + 1] - nums[j] == k:
+                j += 1
+                k *= -1
+            if j - i + 1 > 1:
+                ans = max(ans, j - i + 1)
+        return ans"
+"free = list ( map ( lambda x : int ( x ) is 0 , re . findall ( r""(\d+)MiB[ ]?\/[ ]?\d+MiB"" , output ) ) )","free = list ( map ( lambda x : int ( x ) is 0, re. findall ( r""(\d)+MiB[ ]?\/[ ]?\d+MiB"", output ) ) ) [ : 2 ]"
+"import collections
+from operator import itemgetter
+import matplotlib.pyplot as plt
+def task_func(data):
+
+    letter_counts = collections.Counter([item[0] for item in data])
+    max_value_letter = max(data, key=itemgetter(1))[0]
+
+    letters, counts = zip(*letter_counts.items())
+    # Initialize a fresh plot
+    plt.figure()
+    ax = plt.bar(letters, counts, label='Letter Counts')
+
+    if max_value_letter in letter_counts:
+        plt.bar(max_value_letter, letter_counts[max_value_letter], color='red', label='Max Value Letter')
+
+    plt.xlabel('Letter')
+    plt.ylabel('Count')
+    plt.title('Letter Counts with Max Value Letter Highlighted')
+    plt.legend()
+
+    return plt.gca()","import collections
+from operator import itemgetter
+import matplotlib.pyplot as plt
+def task_func(data):
+
+    letter_counts = collections.Counter([item[0] for item in data])
+    max_value_letter = max(data, key=itemgetter(1))[0]
+
+    letters, counts = zip(*letter_counts.items())
+    # Initialize a fresh plot
+    plt.figure()
+    ax = plt.bar(letters, counts, label='Letter Counts')
+
+    if max_value_letter in letter_counts:
+        plt.bar(max_value_letter, letter_counts[max_value_letter], color='red', label='Max Value Letter')
+
+    plt.xlabel('Letter')
+    plt.ylabel('Count')
+    plt.title('Letter Counts with Max Value Letter Highlighted')
+    plt.legend()
+
+    return plt.gca()"
+if not la or not 'id' in la or la [ 'id' ] == self . id : self . store . flag_for_deletion ( CachedMethods . LAST_ACTION ),if not la or la. id == self. id or la. id == self. id : self. store. flag_for_deletion ( CachedMethods. LAST_ACTION )
+"class Solution:
+    def distributeCandies(self, candyType: List[int]) -> int:
+        return min(len(candyType)//2, len(set(candyType)))","class Solution:
+    def distributeCandies(self, candyType: List[int]) -> int:
+        return max(len(candyType)//2, len(set(candyType)))"
+"if output [ ""GET-Evidence"" ] : output [ ""suff_eval"" ] = suff_eval ( output )","if 'GET-Evidence' in output [ ""suff_eval"" ] : output [ ""suff_eval"" ] = suff_eval ( output )"
+if warning . response not in message . POSITIVE or self . recorder . status not in [ RECORDING_STATUS ] : return False,"if warning. response not in message. POSITIVE or self. status not in [ GC_RECORDING, GC_RECORDING_IN_PROGRESS ] : return False"
+"attrs += [ 'objectClass' , 'loginShell' , 'homeDirectory' , 'modifiersName' , 'modifyTimestamp' , 'sshPublicKey' ]","attrs += [ 'objectClass', 'loginShell', 'homeDirectory','modifiersName','modifyTimestamp','sshPublicKeys','sshPublicKey' ]"
+"class Solution:
+    def minimumIndex(self, nums: List[int]) -> int:
+        x, cnt = Counter(nums).most_common(1)[0]
+        cur = 0
+        for i, v in enumerate(nums, 1):
+            if v == x:
+                cur += 1
+                if cur * 2 > i and (cnt - cur) * 2 > len(nums) - i:
+                    return i - 1
+        return -1","class Solution:
+    def minimumIndex(self, nums: List[int]) -> int:
+        x, cnt = Counter(nums).most_common(1)[0]
+        for i, v in enumerate(nums, 1):
+            if v == x:
+                cur += 1
+                if cur * 2 > i and (cnt - cur) * 2 >= len(nums) - i:
+                    return i - 1
+        return -1"
+"resectiondecodeescapes = re . compile ( r""\.(?=[0-9a-f]{2})"" , re . I )","resectiondecodeescapes = re. compile ( r"".(?=[0-9a-f]{2})"", re. I ) | re. compile ( r""\u{0009}"" )"
+"tran . set_data ( account_path + ip , b"""" + json . dumps ( vm ) . encode ( 'utf8' ) )","tran. set ( account_path + ip, b"""" + json. dumps ( vm ). encode ( 'utf8' ), 0 )"
+"if header == True and len ( buttons ) > 1 : menu . insert ( 0 , header_button )","if header or len ( buttons ) > 1 : menu. insert ( 0, header_button )"
+"class Solution:
+    def sumOfGoodNumbers(self, nums: List[int], k: int) -> int:
+        ans = 0
+        for i, x in enumerate(nums):
+            if i >= k and x <= nums[i - k]:
+                continue
+            if i + k < len(nums) and x <= nums[i + k]:
+                continue
+            ans += x
+        return ans","class Solution:
+    def sumOfGoodNumbers(self, nums: List[int], k: int) -> int:
+        ans = 0
+        for i, x in enumerate(nums):
+            if i >= k and x <= nums[i - k]:
+                continue
+            if i + k < len(nums) and x <= nums[i + k]:
+                continue
+            ans += x
+        return ans"
+return [ self . _networkLabels [ ii ] for ii in labelIndices ],return [ self. _networkLabels [ ii ] for ii in self. _networkLabels if ii in self. _networkLabels ]
+"sys . path . insert ( 0 , os . path . abspath ( '../test_project' ) )","sys. path. insert ( 0, os. path. abspath ( '../testclosure' ) + os. path. sep )"
+"class Solution:
+    def findMissingAndRepeatedValues(self, grid: List[List[int]]) -> List[int]:
+        n = len(grid)
+        cnt = [0] * (n * n + 1)
+        for row in grid:
+            for v in row:
+                cnt[v] += 1
+        ans = [0] * 2
+        for i in range(1, n * n + 1):
+            if cnt[i] == 2:
+                ans[0] = i
+            if cnt[i] == 0:
+                ans[1] = i
+        return ans","class Solution:
+    def findMissingAndRepeatedValues(self, grid: List[List[int]]) -> List[int]:
+        n = len(grid)
+        cnt = [0] * (n * n + 1)
+        for row in grid:
+            for v in row:
+                cnt[v] += 1
+        ans = [0] * 2
+        for i in range(1, n * n + 1):
+            if cnt[i] == 2:
+                ans[0] = i
+            if cnt[i] == 0:
+                ans[1] = i
+        return ans"
+from kitchen . pycompat25 . defaultdict import _DefaultDict as defaultdict,from kitchen. pycompat25. defaultdict import defaultdict
+"class Solution:
+    def missingInteger(self, nums: List[int]) -> int:
+        s, j = nums[0], 1
+        while j < len(nums) and nums[j] == nums[j - 1] + 1:
+            s += nums[j]
+            j += 1
+        vis = set(nums)
+        for x in count(s):
+            if x not in vis:
+                return x","class Solution:
+    def missingInteger(self, nums: List[int]) -> int:
+        s, j = nums[0], 1
+        while j < len(nums) and nums[j] == nums[j - 1] + 1:
+            s += nums[j]
+            j += 1
+        vis = set(nums)
+        for x in count(s):
+            if x not in vis:
+                return x"
+"upd_rec_dec_parser . add_argument ( 'data' , help = 'Abstract data (JSON format) to write' )","upd_rec_dec_parser. add_argument ( 'data', help = 'Data bytes (hex format) to write', type = str )"
+"result = self . _mongo . database . Objects . find ( { ""__pyobject_class_type"" : Object . get_pyoboject_class_string ( ) , 'indentification.class_type' : ob_type , } )","result = self. _mongo. database. Objects. find ( { ""__pyobject_class_type"" : Object. get_pyoboject_class_string ( ), 'indentification.class_type' : object_name, }, { ""__pyobject_class_type"" : 1, 'indentification.class_type' : 1 } )"
+"import numpy as np
+import pandas as pd
+from datetime import timedelta
+def task_func(start_date, end_date, random_seed=42):
+
+    if end_date < start_date:
+        raise ValueError(""End date must be after start date"")
+
+    np.random.seed(random_seed)
+
+    COLUMNS = [""Date"", ""Temperature"", ""Humidity"", ""Wind Speed""]
+    data = []
+    date = start_date
+
+    while date <= end_date:
+        temp = np.random.uniform(-10, 40)
+        humidity = np.random.uniform(20, 100)
+        wind_speed = np.random.uniform(0, 20)
+        data.append([date, temp, humidity, wind_speed])
+        date += timedelta(days=1)
+
+    df = pd.DataFrame(data, columns=COLUMNS)
+    ax = df.plot(x='Date', y=['Temperature', 'Humidity', 'Wind Speed'], title=""Generated Weather Data"")
+
+    return df, ax","import numpy as np
+import pandas as pd
+from datetime import timedelta
+def task_func(start_date, end_date, random_seed=42):
+
+    if end_date < start_date:
+        raise ValueError(""End date must be after start date"")
+
+    np.random.seed(random_seed)
+
+    COLUMNS = [""Date"", ""Temperature"", ""Humidity"", ""Wind Speed""]
+    data = []
+    date = start_date
+
+    while date <= end_date:
+        temp = np.random.uniform(-10, 40)
+        humidity = np.random.uniform(20, 100)
+        wind_speed = np.random.uniform(0, 20)
+        data.append([date, temp, humidity, wind_speed])
+        date += timedelta(days=1)
+
+    df = pd.DataFrame(data, columns=COLUMNS)
+    ax = df.plot(x='Date', y=['Temperature', 'Humidity', 'Wind Speed'], title=""Generated Weather Data"")
+
+    return df, ax"
+"proc_opts . add_argument ( '-sm' , '--smoothing_kernel' , action = 'store' , type = float , default = 6.0 , help = 'select a smoothing kernel (mm)' )","proc_opts. add_argument ( '-sm', '--smoothing_kernel', action ='store', type = float, help ='select a smoothing kernel (mm)', default = 0.0 )"
+"from typing import List
+from collections import defaultdict
+
+class Solution:
+    def minCost(self, n: int, cost: List[List[int]]) -> int:
+        prev_dp = {}
+        
+        # Initialize for the first pair (i=0)
+        first_left = 0
+        first_right = n - 1
+        for L in [1, 2, 3]:
+            for R in [1, 2, 3]:
+                if L != R:
+                    total = cost[0][L-1] + cost[first_right][R-1]
+                    prev_dp[(L, R)] = total
+        
+        # Process the remaining pairs
+        for i in range(1, n//2):
+            current_right_pos = n - 1 - i
+            curr_dp = defaultdict(lambda: float('inf'))
+            for (prev_L, prev_R), prev_cost in prev_dp.items():
+                for L in [1, 2, 3]:
+                    if L == prev_L:
+                        continue
+                    for R in [1, 2, 3]:
+                        if R == L or R == prev_R:
+                            continue
+                        # Compute the cost for this transition
+                        new_cost = prev_cost + cost[i][L-1] + cost[current_right_pos][R-1]
+                        key = (L, R)
+                        if new_cost < curr_dp[key]:
+                            curr_dp[key] = new_cost
+            # Update prev_dp to current_dp, keeping only finite values
+            prev_dp = {}
+            for k, v in curr_dp.items():
+                if v < float('inf'):
+                    prev_dp[k] = v
+            # Early exit if no possible states (though problem constraints should prevent this)
+            if not prev_dp:
+                return -1
+        
+        return min(prev_dp.values()) if prev_dp else 0","from typing import List
+from collections import defaultdict
+
+class Solution:
+    def minCost(self, n: int, cost: List[List[int]]) -> int:
+        prev_dp = {}
+        
+        # Initialize for the first pair (i=0)
+        first_left = 0
+        first_right = n - 1
+        for L in [1, 2, 3]:
+            for R in [1, 2, 3]:
+                if L!= R:
+                    total = cost[0][L-1] + cost[first_right][R-1]
+                    prev_dp[(L, R)] = total
+        
+        # Process the remaining pairs
+        for i in range(1, n//2):
+            current_right_pos = n - 1 - i
+            curr_dp = defaultdict(lambda: float('inf'))
+            for (prev_L, prev_R), prev_cost in prev_dp.items():
+                for L in [1, 2, 3]:
+                    if L == prev_L:
+                        continue
+                    for R in [1, 2, 3]:
+                        if R == L or R == prev_R:
+                            continue
+                        # Compute the cost for this transition
+                        new_cost = prev_cost + cost[i][L-1] + cost[current_right_pos][R-1]
+                        key = (L, R)
+                        if new_cost < curr_dp[key]:
+                            curr_dp[key] = new_cost
+            # Update prev_dp to current_dp, keeping only finite values
+            prev_dp = {}
+            for k, v in curr_dp.items():
+                if v < float('inf'):
+                    prev_dp[k] = v
+            # Early exit if no possible states (though problem constraints should prevent this)
+            if not prev_dp:
+                return -1
+        
+        return min(prev_dp.values()) if prev_dp else 0"
+"import numpy as np
+from operator import itemgetter
+import matplotlib.pyplot as plt
+def task_func(data):
+
+    max_y_point = max(data, key=itemgetter(1))
+    points = np.array(data)
+    x = points[:,0]
+    y = points[:,1]
+
+    fig, ax = plt.subplots()
+    ax.scatter(x, y, label='Points')
+    ax.scatter(*max_y_point, color='red', label='Max Y Point')
+    ax.set_xlabel('x')
+    ax.set_ylabel('y')
+    ax.set_title('Points with Max Y Point Highlighted')
+    ax.legend()
+    return ax, max_y_point","import numpy as np
+from operator import itemgetter
+import matplotlib.pyplot as plt
+def task_func(data):
+
+    max_y_point = max(data, key=itemgetter(1))
+    points = np.array(data)
+    x = points[:,0]
+    y = points[:,1]
+
+    fig, ax = plt.subplots()
+    ax.scatter(x, y, label='Points')
+    ax.scatter(*max_y_point, color='red', label='Max Y Point')
+    ax.set_xlabel('x')
+    ax.set_ylabel('y')
+    ax.set_title('Points with Max Y Point Highlighted')
+    ax.legend()
+    return ax, max_y_point"
+"class Solution:
+    def findMedianSortedArrays(self, nums1: List[int], nums2: List[int]) -> float:
+        p1 = 0
+        p2 = 0
+        new = []
+        while p1 < len(nums1) and p2 < len(nums2):
+            if nums1[p1] < nums2[p2]:
+                new.append(nums1[p1])
+                p1 += 1
+            else:
+                new.append(nums2[p2])
+                p2 += 1
+        while p1 < len(nums1):
+            new.append(nums1[p1])
+            p1 += 1
+        while p2 < len(nums2):
+            new.append(nums2[p2])
+            p2+= 1
+        if len(new) % 2 == 0:
+            index = len(new) // 2
+            median = (new[index] + new[index-1]) / 2
+        else:
+            median = float(new[len(new)//2])
+        return median","class Solution:
+    def findMedianSortedArrays(self, nums1: List[int], nums2: List[int]) -> float:
+        p1 = 0
+        p2 = 0
+        new = []
+        while p1 < len(nums1) and p2 < len(nums2):
+            if nums1[p1] < nums2[p2]:
+                new.append(nums1[p1])
+                p1 += 1
+            else:
+                new.append(nums2[p2])
+                p2 += 1
+        while p1 < len(nums1):
+            new.append(nums1[p1])
+            p1 += 1
+        while p2 < len(nums2):
+            new.append(nums2[p2])
+            p2+= 1
+        if len(new) % 2 == 0:
+            index = len(new) // 2
+            median = (new[index] + new[index-1]) / 2
+        else:
+            median = float(new[len(new)//2])
+        return median"
+"import numpy as np
+import pandas as pd
+def task_func(products, n_samples=100, sales_lower=50, sales_upper=200, profit_margin_min=0.1, profit_margin_max=0.5, random_seed=42):
+
+    np.random.seed(random_seed)
+    
+    if not products:
+        return pd.DataFrame(columns=[""Product"", ""Sales"", ""Profit""])
+
+    if not isinstance(products, list) or not all(isinstance(product, str) for product in products):
+        raise TypeError(""products must be a list of strings."")
+    if not isinstance(n_samples, int) or n_samples <= 0:
+        raise ValueError(""n_samples must be a positive integer."")
+    if not (isinstance(sales_lower, int) and isinstance(sales_upper, int)) or sales_lower >= sales_upper:
+        raise ValueError(""sales_lower must be less than sales_upper and both must be integers."")
+    if not all(isinstance(x, (int, float)) for x in [profit_margin_min, profit_margin_max]) or profit_margin_min >= profit_margin_max:
+        raise ValueError(""profit_margin_min must be less than profit_margin_max and both must be numeric."")
+
+    data = []
+    for _ in range(n_samples):
+        product = np.random.choice(products)
+        sales = np.random.randint(sales_lower, sales_upper + 1)
+        profit = sales * np.random.uniform(profit_margin_min, profit_margin_max)
+        data.append([product, sales, profit])
+
+    df = pd.DataFrame(data, columns=[""Product"", ""Sales"", ""Profit""])
+    df = df.groupby(""Product"", as_index=False).sum()
+    df.sort_values(""Profit"", ascending=False, inplace=True)
+
+    return df","import numpy as np
+import pandas as pd
+def task_func(products, n_samples=100, sales_lower=50, sales_upper=200, profit_margin_min=0.1, profit_margin_max=0.5, random_seed=42):
+
+    np.random.seed(random_seed)
+    
+    if not products:
+        return pd.DataFrame(columns=[""Product"", ""Sales"", ""Profit""])
+
+    if not isinstance(products, list) or not all(isinstance(product, str) for product in products):
+        raise TypeError(""products must be a list of strings."")
+    if not isinstance(n_samples, int) or n_samples <= 0:
+        raise ValueError(""n_samples must be a positive integer."")
+    if (isinstance(sales_lower, int) and isinstance(sales_upper, int)) or sales_lower >= sales_upper:
+        raise ValueError(""sales_lower must be less than sales_upper and both must be integers."")
+    if not all(isinstance(x, (int, float)) for x in [profit_margin_min, profit_margin_max]) or profit_margin_min >= profit_margin_max:
+        raise ValueError(""profit_margin_min must be less than profit_margin_max and both must be numeric."")
+
+    data = []
+    for _ in range(n_samples):
+        product = np.random.choice(products)
+        sales = np.random.randint(sales_lower, sales_upper + 1)
+        profit = sales * np.random.uniform(profit_margin_min, profit_margin_max)
+        data.append([product, sales, profit])
+
+    df = pd.DataFrame(data, columns=[""Product"", ""Sales"", ""Profit""])
+    df = df.groupby(""Product"", as_index=False).sum()
+    df.sort_values(""Profit"", ascending=False, inplace=True)
+
+    return df"
+"fields = { 'fyear' : { 'string' : 'Fiscal Year' , 'type' : 'many2one' , 'relation' : 'account.fiscalyear' , 'required' : True , } , 'mand_id' : { 'string' : 'MandataireId' , 'type' : 'char' , 'size' : '30' , 'required' : True , } , 'limit_amount' : { 'string' : 'Limit Amount' , 'type' : 'integer' , 'required' : True , } , 'test_xml' : { 'string' : 'Test XML file' , 'type' : 'boolean' , } , }","fields = { 'fyear' : {'string' : 'Fiscal Year', 'type' :'many2one','relation' : 'account.fiscalyear','required' : True, },'mand_id' : {'string' : 'MandataireId', 'type' : 'char','size' : '30','required' : True, }, 'limit_amount' : {'string' : 'Limit Amount', 'type' : 'int','required' : True, }, 'test_xml' : {'string' : 'Test XML file', 'type' : 'binary', }, }"
+"from sklearn.cluster import KMeans
+import matplotlib.pyplot as plt
+def task_func(df, age: int, height: int):
+
+    # Filter the DataFrame based on given conditions
+    selected_df = df[(df[""Age""] > age) & (df[""Height""] < height)].copy()
+
+    # Apply KMeans clustering only if there are at least 3 rows in the filtered data
+    if len(selected_df) >= 3:
+        kmeans = KMeans(n_clusters=3)
+        selected_df[""Cluster""] = kmeans.fit_predict(selected_df[[""Age"", ""Height""]])
+
+        # Visualize the clusters
+        plt.figure(figsize=(10, 5))
+        plt.scatter(selected_df[""Age""], selected_df[""Height""], c=selected_df[""Cluster""])
+        plt.xlabel(""Age"")
+        plt.ylabel(""Height"")
+        plt.title(""KMeans Clustering based on Age and Height"")
+        ax = plt.gca()
+        return selected_df, ax
+    else:
+        selected_df[""Cluster""] = 0
+        return selected_df, None","from sklearn.cluster import KMeans
+import matplotlib.pyplot as plt
+def task_func(df, age: int, height: int):
+
+    # Filter the DataFrame based on given conditions
+    selected_df = df[(df[""Age""] > age) & (df[""Height""] < height)].copy()
+
+    # Apply KMeans clustering only if there are at least 3 rows in the filtered data
+    if len(selected_df) >= 3:
+        kmeans = KMeans(n_clusters=2)
+        selected_df[""Cluster""] = kmeans.fit_predict(selected_df[[""Age"", ""Height""]])
+
+        # Visualize the clusters
+        plt.figure(figsize=(10, 5))
+        plt.scatter(selected_df[""Age""], selected_df[""Height""], c=selected_df[""Cluster""])
+        plt.xlabel(""Age"")
+        plt.ylabel(""Height"")
+        plt.title(""KMeans Clustering based on Age and Height"")
+        ax = plt.gca()
+    else:
+        selected_df[""Cluster""] = 0
+        return selected_df, None
+    return selected_df, ax"
+y = [ i [ 'Percent' ] for i in revisions . values ( ) ],y = [ i [ 'percent' ] for i in revisions. values ( ) if i [ 'percent' ] ]
+' --uuid ' + gnos_id + ' --outdir ' + output_dir + ' --study-refname-override ' + study_ref_name + ' --description-file ' + description_file,' --uuid'+ gnos_id +'--outdir'+ output_dir +'--study-refname-override'+ study_ref_name +'--description-file'+ description_file
+"import matplotlib.pyplot as plt
+import pandas as pd
+import random
+from datetime import datetime
+def task_func(seed=42):
+
+    try:
+        plt.rc('font', family='Arial')
+
+        random.seed(seed)
+        dates = pd.date_range(end=datetime.now(), periods=30)
+        values = [random.randint(0, 100) for _ in range(30)]
+        
+        fig, ax = plt.subplots()
+        ax.plot(dates, values, label='Value over Time')
+        ax.set_xlabel('Date')
+        ax.set_ylabel('Value')
+        ax.set_title('Random Time Series Data')
+        ax.legend()
+
+        return ax
+    except Exception as e:
+        raise ValueError(f""Error generating the plot: {e}"")","import matplotlib.pyplot as plt
+import pandas as pd
+import random
+from datetime import datetime
+def task_func(seed=42):
+
+    try:
+        plt.rc('font', family='Arial')
+
+        random.seed(seed)
+        dates = pd.date_range(end=datetime.now(), periods=30)
+        values = [random.randint(0, 100) for _ in range(30)]
+        
+        fig, ax = plt.subplots()
+        ax.plot(dates, values, label='Value over Time')
+        ax.set_xlabel('Date')
+        ax.set_ylabel('Value')
+        ax.set_title('Random Time Series Data')
+        ax.legend()
+
+        return ax
+    except Exception as e:
+        raise ValueError(f""Error generating the plot: {e}"")"
+"False , ""Invalid value for numeric EPATH segment %r == %d: %r"" % ( segnam , segval , data )","False, ""Invalid value for numeric EPATH segment %r == %d: %s"" % ( segnam, segval, data )"
+"self . assertEqual ( response . data [ 'course_avg' ] , 4 )","self. assertEqual ( response. data [ 'course_avg' ], 15.0 )"
+"class Solution:
+    def maxStrength(self, nums: List[int]) -> int:
+        ans = -inf
+        for i in range(1, 1 << len(nums)):
+            t = 1
+            for j, x in enumerate(nums):
+                if i >> j & 1:
+                    t *= x
+            ans = max(ans, t)
+        return ans","class Solution:
+    def maxStrength(self, nums: List[int]) -> int:
+        ans = -inf
+        for i in range(1, 1 << len(nums)):
+            t = 1
+            for j, x in enumerate(nums):
+                if i >> j & 1:
+                    t *= x
+            ans = max(ans, t)
+        return ans"
+"QtWidgets . QMessageBox . critical ( parent , ""IOS images directory"" , ""Could not create the IOS images directory {}: {}"" . format ( cls . getImageDirectory ( ) , e ) )","QtWidgets. QMessageBox. critical ( parent, ""IOS images directory"", ""Could not create the IOS images directory: {}"". format ( destination_directory ) )"
