@@ -1907,3 +1907,567 @@ def task_func(date_str, from_tz, to_tz):
     solar_activity = math.cos(math.pi * years_since_solar_cycle_year / 11)
 
     return solar_activity"
+if project_required and project is None : _raise_team_project_arg_error ( ),if project is None or project == '' : _raise_team_project_arg_error ( )
+"properties = self . merge_dict ( { 'heat' : { 'mastername' : 'disco-manager' , 'slavename' : 'disco-worker' } } , properties )","properties = self. merge_dict ( { 'heat' : {'mastername' : 'disco_manager','slavename' : 'disco_worker' } }, properties, merge_dict = False )"
+"import pandas as pd
+import matplotlib.pyplot as plt
+def task_func(df):
+
+    if not isinstance(df, pd.DataFrame) or 'Status' not in df.columns:
+        raise ValueError(""Input must be a pandas DataFrame with a 'Status' column."")
+
+    status_counts = df['Status'].value_counts()
+    fig, ax = plt.subplots()
+    ax.pie(status_counts, labels=status_counts.index, autopct='%1.1f%%')
+    ax.set_title('Status Distribution')
+
+    return ax","import pandas as pd
+import matplotlib.pyplot as plt
+def task_func(df):
+
+    if not isinstance(df, pd.DataFrame) or 'Status' not in df.columns:
+        raise ValueError(""Input must be a pandas DataFrame with a 'Status' column."")
+
+    status_counts = df['Status'].value_counts()
+    fig, ax = plt.subplots()
+    ax.pie(status_counts, labels=status_counts.index, autopct='%1.1f%%')
+    ax.set_title('Status Distribution')
+
+    return ax"
+model = models [ getNumberInput ( len ( models ) - 1 ) ],model = models [ getNumberInput ( len ( models ) - 1 ) ]
+raise RuntimeError ( 'You must call set_instance before calling add_column.' ),"raise RuntimeError ( 'You must call set_instance before calling add_var.', self )"
+cover [ 'resolution' ] = sub_data [ - 2 ] . strip ( ),"cover ['resolution' ] = sub_data [ - 3 ]. strip ( ). replace ( 'x', '' )"
+"import pandas as pd
+from sklearn.preprocessing import MinMaxScaler
+def task_func(data_dict, data_keys):
+
+    # Extract and transform the data for the specified keys
+    data_for_keys = {key: data_dict[key] for key in data_keys if key in data_dict}
+    df = pd.DataFrame(data_for_keys)
+
+    # Check if DataFrame is empty (i.e., no keys matched)
+    if df.empty:
+        raise ValueError(""No matching keys found in data dictionary, or keys list is empty."")
+
+    # Apply MinMax normalization
+    scaler = MinMaxScaler()
+    normalized_data = scaler.fit_transform(df)
+    normalized_df = pd.DataFrame(normalized_data, columns=data_keys)
+
+    # Plot the normalized data
+    ax = normalized_df.plot(kind='line')
+    ax.set_title('Normalized Data')
+    ax.set_ylabel('Normalized Value')
+    ax.set_xlabel('Index')
+
+    return normalized_df, ax","import pandas as pd
+from sklearn.preprocessing import MinMaxScaler
+def task_func(data_dict, data_keys):
+
+    # Extract and transform the data for the specified keys
+    data_for_keys = {key: data_dict[key] for key in data_keys if key in data_dict}
+    df = pd.DataFrame(data_for_keys)
+
+    # Check if DataFrame is empty (i.e., no keys matched)
+    if df.empty:
+        raise ValueError(""No matching keys found in data dictionary, or keys list is empty."")
+
+    # Apply MinMax normalization
+    scaler = MinMaxScaler()
+    normalized_data = scaler.fit_transform(df)
+    normalized_df = pd.DataFrame(normalized_data, columns=data_keys)
+
+    # Plot the normalized data
+    ax = normalized_df.plot(kind='line')
+    ax.set_title('Normalized Data')
+    ax.set_ylabel('Normalized Value')
+    ax.set_xlabel('Index')
+
+    return normalized_df, ax"
+"import numpy as np
+import matplotlib.pyplot as plt
+def task_func():
+
+    x_values = np.linspace(0, 2 * np.pi, 400)
+    fig, axs = plt.subplots(2)
+    
+    axs[0].plot(x_values, np.sin(x_values))
+    axs[0].set_title('Sine function')
+    axs[0].set_xlabel('x')
+    axs[0].set_ylabel('sin(x)')
+    
+    axs[1].plot(x_values, np.cos(x_values))
+    axs[1].set_title('Cosine function')
+    axs[1].set_xlabel('x')
+    axs[1].set_ylabel('cos(x)')
+    
+    plt.tight_layout()
+    
+    return fig, axs","import numpy as np
+import matplotlib.pyplot as plt
+def task_func():
+
+    x_values = np.linspace(0, 2 * np.pi, 400)
+    fig, axs = plt.subplots(2)
+    
+    axs[0].plot(x_values, np.sin(x_values))
+    axs[0].set_title('Sine function')
+    axs[0].set_xlabel('x')
+    axs[0].set_ylabel('sin(x)')
+    
+    axs[1].plot(x_values, np.cos(x_values))
+    axs[1].set_title('Cosine function')
+    axs[1].set_xlabel('x')
+    axs[1].set_ylabel('cos(x)')
+    
+    plt.tight_layout()
+    
+    return fig, axs"
+"import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D
+import numpy as np
+import cv2
+import os
+def task_func(file_path, onpick):
+
+    if not os.path.exists(file_path):
+        raise FileNotFoundError(f""No file found at {file_path}"")
+
+    img = cv2.imread(file_path)
+    color = ('b', 'g', 'r')
+    fig = plt.figure()
+    ax = Axes3D(fig)
+
+    for i, col in enumerate(color):
+        hist = cv2.calcHist([img], [i], None, [256], [0, 256])
+        ax.plot(np.arange(256), hist, color=col)
+
+    fig.canvas.mpl_connect('pick_event', onpick)
+
+    # plt.show()
+
+    return ax","import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D
+import numpy as np
+import cv2
+import os
+def task_func(file_path, onpick):
+
+    if not os.path.exists(file_path):
+        raise FileNotFoundError(f""No file found at {file_path}"")
+
+    img = cv2.imread(file_path)
+    color = ('b', 'g', 'r')
+    fig = plt.figure()
+    ax = Axes3D(fig)
+
+    for i, col in enumerate(color):
+        hist = cv2.calcHist([img], [i], None, [256], [0, 256])
+        ax.plot(np.arange(256), hist, color=col)
+
+    fig.canvas.mpl_connect('pick_event', onpick)
+
+    # plt.show()
+
+    return ax"
+"'''
+     pass
+ 
+ 
+ def TowerScrollmove(evt):
+     '''","'''
+     pass
+ 
+     
+ def TowerScrollmove(evt):
+     '''"
+if not ( sys . platform == 'darwin' and platform . mac_ver ( ) [ 0 ] . startswith ( '10.7' ) ) : self . set_decorated ( False ),if not ( sys. platform == 'darwin' and platform. release ( ). startswith ( '11.3' ) and platform. release ( ). startswith ( '11.4' ) ) : self. set_decorated ( False )
+"class Solution:
+    def minimizeConcatenatedLength(self, words: List[str]) -> int:
+        @cache
+        def dfs(i: int, a: str, b: str) -> int:
+            if i >= len(words):
+                return 0
+            s = words[i]
+            x = dfs(i + 1, a, s[-1]) - int(s[0] == b)
+            y = dfs(i + 1, s[0], b) - int(s[-1] == a)
+            return len(s) + min(x, y)
+
+        return len(words[0]) + dfs(1, words[0][0], words[0][-1])","class Solution:
+    def minimizeConcatenatedLength(self, words: List[str]) -> int:
+        @cache
+        def dfs(i: int, a: str, b: str) -> int:
+            if i >= len(words):
+                return 0
+            s = words[i]
+            x = dfs(i + 1, a, s[-1]) - int(s[0] == b)
+            y = dfs(i + 1, s[0], a) - int(s[-1] == a)
+            return len(s) + min(x, y)
+
+        return len(words[0]) + dfs(1, words[0][0], words[0][-1])"
+"class Solution:
+    def maximumXorProduct(self, a: int, b: int, n: int) -> int:
+        mod = 10**9 + 7
+        ax, bx = (a >> n) << n, (b >> n) << n
+        for i in range(n - 1, -1, -1):
+            x = a >> i & 1
+            y = b >> i & 1
+            if x == y:
+                ax |= 1 << i
+                bx |= 1 << i
+            elif ax > bx:
+                bx |= 1 << i
+            else:
+                ax |= 1 << i
+        return ax * bx % mod","class Solution:
+    def maximumXorProduct(self, a: int, b: int, n: int) -> int:
+        mod = 10**9 + 7
+        ax, bx = (a >> n) << n, (b >> n) << n
+        for i in range(n - 1, -1, -1):
+            x = a >> i & 1
+            y = b >> i & 1
+            if x == y:
+                ax |= 1 << i
+                bx |= 1 << i
+            elif ax > bx:
+                bx |= 1 << i
+            else:
+                ax |= 1 << i
+        return ax * bx % mod"
+"switch = ctx . builder . switch ( id_val , exit_block )","switch = ctx. builder. switch ( func. args [ 0 ], exit_block, func. args [ 1 ] )"
+u = users and user . User ( users [ 0 ] . meta [ ITEMID ] ),"u = users and user. User ( users [ 0 ] [ ITEMID ], users [ 0 ] [ ITEMID ] )"
+"class Solution:
+  def lengthAfterTransformations(self, s: str, t: int) -> int:
+    MOD = 1_000_000_007
+    count = [0] * 26
+
+    for c in s:
+      count[ord(c) - ord('a')] += 1
+
+    for _ in range(t):
+      newCount = [0] * 26
+      # 'a' -> 'b', 'b' -> 'c', ..., 'y' -> 'z'
+      for i in range(25):
+        newCount[i + 1] = count[i]
+      # 'z' -> 'ab'
+      newCount[0] = count[25]
+      newCount[1] = (newCount[1] + count[25]) % MOD
+      count = newCount
+
+    return sum(count) % MOD","class Solution:
+  def lengthAfterTransformations(self, s: str, t: int) -> int:
+    MOD = 1_000_000_007
+    count = [0] * 26
+
+    for c in s:
+      count[ord(c) - ord('a')] += 1
+
+    for _ in range(t):
+      newCount = [0] * 26
+      # 'a' -> 'b', 'b' -> 'c',..., 'y' -> 'z'
+      for i in range(25):
+        newCount[i + 1] = count[i]
+      # 'z' -> 'ab'
+      newCount[0] = count[25]
+      newCount[1] = (count[1] + count[25]) % MOD
+      count = newCount
+
+    return sum(count) % MOD"
+"RE_COMMAND_PREFIX = re . compile ( r"".*(\\[\^_0-9\-=]+|\\[a-zA-Z]+|\\:[_a-zA-Z0-9+-]+:*)$"" )","RE_COMMAND_PREFIX = re. compile ( r"".*(\\[\^_0-9\-=]+|\\[a-zA-Z]+|\\:[_a-zA-Z0-9+-]+:)$"", re. IGNORECASE )"
+"{ ""description"" : ""Automatically create a config disk on HDD disk interface (secondary slave)"" , ""type"" : ""boolean"" , ""default"" : False } ,","{ ""description"" : ""Automatically create a config disk on HDD disk interface (secondary slave)"", ""type"" : ""boolean"", ""default"" : False },"
+"query = query + "" and msgid in (%s,%s-21)"" % ( str ( msgid ) , str ( msgid ) )","query = query + "" and (msgid & 1) = (%s & 1) and (msgid & 2) = 0"" % ( msgid )"
+"jsonify ( status = ""error"" , message = str ( e ) ) , 400","return jsonify ( status = ""error"", message = e. message ), 400"
+"datas = collect_data_files ( 'osgeo' , subdir = os . path . join ( 'data' , 'gdal' ) )","datas = collect_data_files ( 'osgeo', subdir = 'data/gdal', recursive = True )"
+"self . _earning_split = np . where ( total != 0 , ( self . wage_head * 1.0 ) / total , 1.0 )","self. _earning_split = np. where ( total!= 0, self. wage_head / total, 0 )"
+"_defaults = { 'code' : lambda self , cr , uid , context : self . pool . get ( 'ir.sequence' ) . get_search ( cr , uid , 'account.asset.code' ) }","_defaults = { 'code' : lambda self, cr, uid, context : obj. pool. get ( 'ir.sequence' ). get_search ( cr, uid, 'asset.code' ) }"
+"articles = [ InlineQueryResultArticle ( id = 'a' , title = msg [ 'query' ] [ 5 : ] , input_message_content = InputTextMessageContent ( message_text = msg [ 'query' ] [ 5 : ] , parse_mode = 'html' ) ) ]","articles = [ InlineQueryResultArticle ( id = 'a', title = msg [ 'query' ] [ 5 : ], input_message_content = InputTextMessageContent ( message_text = msg [ 'query' ] [ 6 : ], parse_mode = 'html' ) ) ]"
+"class Solution:
+    def countServers(
+        self, n: int, logs: List[List[int]], x: int, queries: List[int]
+    ) -> List[int]:
+        cnt = Counter()
+        logs.sort(key=lambda x: x[1])
+        ans = [0] * len(queries)
+        j = k = 0
+        for r, i in sorted(zip(queries, count())):
+            l = r - x
+            while k < len(logs) and logs[k][1] <= r:
+                cnt[logs[k][0]] += 1
+                k += 1
+            while j < len(logs) and logs[j][1] < l:
+                cnt[logs[j][0]] -= 1
+                if cnt[logs[j][0]] == 0:
+                    cnt.pop(logs[j][0])
+                j += 1
+            ans[i] = n - len(cnt)
+        return ans","class Solution:
+    def countServers(
+        self, n: int, logs: List[List[int]], x: int, queries: List[int]
+    ) -> List[int]:
+        cnt = Counter()
+        logs.sort(key=lambda x: x[1])
+        ans = [0] * len(queries)
+        j = k = 0
+        for r, i in sorted(zip(queries, count())):
+            l = r - x
+            while k < len(logs) and logs[k][1] <= r:
+                cnt[logs[k][0]] += 1
+                k += 1
+            while j < len(logs) and logs[j][1] < l:
+                cnt[logs[j][0]] -= 1
+                if cnt[logs[j][0]] == 0:
+                    cnt.pop(logs[j][0])
+                j += 1
+            ans[i] = n - len(cnt)
+        return ans"
+"class Solution:
+    def beautifulSplits(self, nums: List[int]) -> int:
+        n = len(nums)
+        lcp = [[0] * (n + 1) for _ in range(n + 1)]
+        for i in range(n - 1, -1, -1):
+            for j in range(n - 1, i - 1, -1):
+                if nums[i] == nums[j]:
+                    lcp[i][j] = lcp[i + 1][j + 1] + 1
+        ans = 0
+        for i in range(1, n - 1):
+            for j in range(i + 1, n):
+                a = i <= j - i and lcp[0][i] >= i
+                b = j - i <= n - j and lcp[i][j] >= j - i
+                ans += int(a or b)
+        return ans","class Solution:
+    def beautifulSplits(self, nums: List[int]) -> int:
+        n = len(nums)
+        lcp = [[0] * (n + 1) for _ in range(n + 1)]
+        for i in range(n - 1, -1, -1):
+            for j in range(n - 1, i - 1, -1):
+                if nums[i] == nums[j]:
+                    lcp[i][j] = lcp[i + 1][j + 1] + 1
+        ans = 0
+        for i in range(1, n - 1):
+            for j in range(i + 1, n):
+                a = i <= j - i and lcp[0][i] >= i
+                b = j - i <= n - j and lcp[i][j] >= j - i
+                ans += int(a or b)
+        return ans"
+"import numpy as np
+from scipy.stats import norm
+import matplotlib.pyplot as plt
+def task_func(mean, std_dev, num_samples):
+
+    samples = np.random.normal(mean, std_dev, num_samples)
+    fig, ax = plt.subplots()
+    ax.hist(samples, bins=30, density=True, alpha=0.6, color='g')
+
+    xmin, xmax = ax.get_xlim()
+    x = np.linspace(xmin, xmax, 100)
+    p = norm.pdf(x, mean, std_dev)
+    ax.plot(x, p, 'k', linewidth=2)
+    title = ""Fit results: mean = %.2f,  std = %.2f"" % (mean, std_dev)
+    ax.set_title(title)
+
+    return samples, fig","import numpy as np
+from scipy.stats import norm
+import matplotlib.pyplot as plt
+def task_func(mean, std_dev, num_samples):
+
+    samples = np.random.normal(mean, std_dev, num_samples)
+    fig, ax = plt.subplots()
+    ax.hist(samples, bins=30, density=True, alpha=0.6, color='g')
+
+    xmin, xmax = ax.get_xlim()
+    x = np.linspace(xmin, xmax, 100)
+    p = norm.pdf(x, mean, std_dev)
+    ax.plot(x, p, 'k', linewidth=2)
+    title = ""Fit results: mean = %.2f,  std = %.2f"" % (mean, std_dev)
+    fig.suptitle(title)
+
+    return samples, fig"
+"weight_expr = relay . reshape ( weight_expr , newshape = ( KH + tile_size - 1 , KW + tile_size - 1 , CO // VC , VC , CI ) )","weight_expr = relay. reshape ( weight_expr, newshape = ( KH + tile_size - 1, KW + tile_size - 1, idxd ( CO, VC ), VC, CI ), name = ""weight_expr"" )"
+"class Solution:
+    def maximumSum(self, nums: List[int]) -> int:
+        n = len(nums)
+        ans = 0
+        for k in range(1, n + 1):
+            t = 0
+            j = 1
+            while k * j * j <= n:
+                t += nums[k * j * j - 1]
+                j += 1
+            ans = max(ans, t)
+        return ans","class Solution:
+    def maximumSum(self, nums: List[int]) -> int:
+        n = len(nums)
+        ans = 0
+        for k in range(1, n + 1):
+            t = 0
+            j = 1
+            while k * j * j <= n:
+                t += nums[k * j * j - 1]
+                j += 1
+            ans = max(ans, t)
+        return ans"
+"import pandas as pd
+from sklearn.preprocessing import LabelEncoder
+def task_func(df, dct, columns=None):
+
+
+    if not isinstance(df, pd.DataFrame):
+        raise ValueError(""The input df is not a DataFrame"")
+
+    # Replace values using the provided dictionary
+    df = df.replace(dct)
+    
+    # Determine columns to encode
+    if columns is None:
+        columns = df.select_dtypes(include=['object']).columns.tolist()
+
+    # Encode categorical features
+    for column in columns:
+        if df[column].dtype == 'object':
+            le = LabelEncoder()
+            df[column] = le.fit_transform(df[column])
+            
+    # Standardize numerical features
+    df = (df - df.mean()) / df.std()
+    
+    return df","import pandas as pd
+from sklearn.preprocessing import LabelEncoder
+def task_func(df, dct, columns=None):
+
+
+    if not isinstance(df, pd.DataFrame):
+        raise ValueError(""The input df is not a DataFrame"")
+
+    # Replace values using the provided dictionary
+    df = df.replace(dct)
+    
+    # Determine columns to encode
+    if columns is None:
+        columns = df.select_dtypes(include=['object']).columns.tolist()
+
+    # Encode categorical features
+    for column in columns:
+        if df[column].dtype == 'object':
+            le = LabelEncoder()
+            df[column] = le.fit_transform(df[column])
+            
+    # Standardize numerical features
+    df = (df - df.mean()) / df.std()
+    
+    return df"
+"PRECONFIGURED_SEARCHES = { 'CSV files' : [ ( 'fq' , 'formatId:text/csv' ) ] , 'Objects from Member Node: Demo 5' : [ ( 'fq' , 'datasource:urn\\:node\\:mnDemo5' ) ] , 'PISCO project' : [ ( 'fq' , 'project:Partnership for Interdisciplinary Studies of Coastal Oceans \\\\(PISCO\\\\)' ) ] , }","PRECONFIGURED_SEARCHES = { 'CSV files' : [ ( 'fq', 'formatId:text/csv' ) ], 'Objects from Member Node: Demo 5' : [ ( 'fq', 'datasource:urn\\:node\\:mnDemo5' ) ], 'PISCO project' : [ ( 'fq', 'project:\'Partnership for Interdisciplinary Studies of Coastal Oceans (PISCO)\'' ) ], }"
+"class Solution:
+    def edgeScore(self, edges: List[int]) -> int:
+        n=len(edges)
+        sc=[0]*n
+        mx=0
+        ans=0
+        for i in range(n):
+            sc[edges[i]]+=i
+            if sc[edges[i]]>mx:
+                mx=sc[edges[i]]
+                ans=edges[i]
+            elif sc[edges[i]]==mx:
+                if ans>edges[i]:
+                    ans=edges[i]
+        return ans","class Solution:
+    def edgeScore(self, edges: List[int]) -> int:
+        n=len(edges)
+        sc=[0]*n
+        mx=0
+        ans=0
+        for i in range(n):
+            sc[edges[i]]+=i
+            if sc[edges[i]]>mx:
+                mx=sc[edges[i]]
+                ans=edges[i]
+            elif sc[edges[i]]==mx:
+                if ans>edges[i]:
+                    ans=edges[i]
+        return ans"
+"self . fields [ 'vlan_pint' ] . choices = list ( choices . NICChoices ( novlan = True , exclude_configured = False ) )","self. fields [ 'vlan_pint' ]. choices = list ( choices. NICChoices ( novlan = True, default = 'default' ) )"
+"s = Popen ( [ 'convert' , '-geometry' , '%dx%d' % size , 'document.ps' , 'thumbnail_%%d_%d_%d.png' % size ] , cwd = self . base , stdout = PIPE , stderr = PIPE ) . communicate ( ) [ 0 ]","s = Popen ( [ 'convert', '-geometry %dx%d' % size, 'document.ps', 'thumbnail_%%d_%d_%d.png' % ( size, size, size ) ], cwd = self. base, stdout = PIPE, stderr = PIPE ). communicate ( ) [ 0 ]"
+"SQSRegionInfo ( name = 'ap-northeast-1' , endpoint = 'ap-northeast-1.queue.amazonaws.com' ) ,","SQSRegionInfo ( name = 'ap-northeast-1', endpoint = 'ap-northeast-1.s3.amazonaws.com' )"
+"class Solution:
+  def maxSubarrays(self, n: int, conflictingPairs: list[list[int]]) -> int:
+    validSubarrays = 0
+    maxLeft = 0
+    secondMaxLeft = 0
+    # gains[i] := the number of additional valid subarrays we can gain if the
+    # restriction at index `i` is removed
+    gains = [0] * (n + 1)
+    # conflicts[r] := left endpoints that conflict with subarrays ending in r
+    conflicts = [[] for _ in range(n + 1)]
+
+    for a, b in conflictingPairs:
+      conflicts[max(a, b)].append(min(a, b))
+
+    for right in range(1, n + 1):
+      for left in conflicts[right]:
+        if left > maxLeft:
+          secondMaxLeft = maxLeft
+          maxLeft = left
+        elif left > secondMaxLeft:
+          secondMaxLeft = left
+      # Subarrays [maxLeft + 1..right],
+      #           [maxLeft + 2..right],
+      #           ...
+      #           [right..right] are valid.
+      validSubarrays += right - maxLeft
+      # If we remove `maxLeft` (the most restrictive conflict), we gain
+      # `maxLeft - secondMaxLeft` new subarrays:
+      # [secondMaxLeft + 1..right],
+      # [secondMaxLeft + 2..right],
+      # ...
+      # [maxLeft..right].
+      gains[maxLeft] += maxLeft - secondMaxLeft
+
+    return validSubarrays + max(gains)","class Solution:
+  def maxSubarrays(self, n: int, conflictingPairs: list[list[int]]) -> int:
+    validSubarrays = 0
+    maxLeft = 0
+    secondMaxLeft = 0
+    # gains[i] := the number of additional valid subarrays we can gain if the
+    # restriction at index `i` is removed
+    gains = [0] * (n + 1)
+    # conflicts[r] := left endpoints that conflict with subarrays ending in r
+    conflicts = [[] for _ in range(n + 1)]
+
+    for a, b in conflictingPairs:
+      conflicts[max(a, b)].append(min(a, b))
+
+    for right in range(1, n + 1):
+      for left in conflicts[right]:
+        if left > maxLeft:
+          secondMaxLeft = maxLeft
+          maxLeft = left
+        elif left > secondMaxLeft:
+          secondMaxLeft = left
+      # Subarrays [maxLeft + 1..right],
+      #           [maxLeft + 2..right],
+      #          ...
+      #           [right..right] are valid.
+      validSubarrays += right - maxLeft
+      # If we remove `maxLeft` (the most restrictive conflict), we gain
+      # `maxLeft - secondMaxLeft` new subarrays:
+      # [secondMaxLeft + 1..right],
+      # [secondMaxLeft + 2..right],
+      #...
+      # [maxLeft..right].
+      gains[maxLeft] += maxLeft - secondMaxLeft
+
+    return validSubarrays + max(gains)"
+"self . check_ept ( 'hf_sweep_order' , str ( self . hf_sweep_order ) )","self. check_ept ( 'hf_sweep_order', self. hf_sweep_order, 'hf_sweep_order' )"
+"return '<{} -- type_code: {} theme: {} information: {}' ' (further attributes not shown)>' . format ( self . __class__ . __name__ , self . type_code , self . theme , self . information . encode ( 'utf-8' ) )","return '<{} -- type_code: {} theme: {} information: {}''(further attributes not shown)>'. format ( self. __class__. __name__, self. type_code, self. theme, self. information, )"
+"validators . warningBelow ( settingsDictionary [ 'filament_flow' ] , 50 , _ ( ""Less flow then 50% is rare and usually not recommended."" ) )","validators. warningBelow ( settingsDictionary [ 'filament_flow' ], 50, _ ( ""More flow than 50% is rare and usually not recommended."" ) )"
+RunManager ( '../configuration.yaml' ) . run_run ( FastThresholdScan ),RunManager ( 'K:\\pyBAR\\host\\pybar\\configuration.yaml' ). run_run ( FastThresholdScan )
+"def delete_artist_bookmark ( self , bookmark_token ) : return self . transport ( ""bookmark.deleteArtistBookmark"" , bookmarkToken = bookmark_token )","def delete_song_bookmark ( self, bookmark_token, artist_id = None ) : return self. transport ( ""bookmark.deleteArtistBookmark"", bookmarkToken = bookmark_token, artist_id = artist_id )"
+log_event . event_time_ms = int ( event_timestamp or router . time_ms ( ) ),log_event. event_time_ms = event_timestamp or router. time_ms ( ) or 0
+torrent_name_col = self . columns [ _ ( 'Name' ) ] . column_indices [ 1 ],torrent_name_col = self. columns [ 'Name' ]. column_indices [ 0 ]
+"install_requires = [ 'psutil' , 'pysftp' , 'watchdog' , 'paramiko==2.6.0' , 'numpy' , 'pandas' , 'cached_property' , 'PyYAML' ] ,","install_requires = [ 'psutil', 'pysftp', 'watchdog', 'paramiko', 'numpy', 'pandas', 'cached_property', 'PyYAML' ],"
+"comments = ""\n"" . join ( [ line . strip ( ) for line in comments . split ( ""\n"" ) ] )","comments = ""\n"". join ( [ line [ 1 : ] for line in comments. split ( ""\n"" ) if line ] )"
+"self . conf . set_override ( ""resource_id"" , str ( uuid . uuid4 ( ) ) , ""statsd"" )","self. conf. set_override ( ""resource_id"", uuid. uuid4 ( ), ""statsd"", ""statsd"" )"
+mdp . write ( '; empty mdp file\ninclude = %(include)s\n' % mdp_kwargs ),mdp. write ( '; empty mdp file\ninclude = %s(include)s\n' % mdp_kwargs [ 'include' ] )
+"num_results = int ( options . get ( 'max-num-results' , '10' ) . strip ( ) )","num_results = int ( options. get ('max-num-results', '' ). strip ( ) or 10 )"
+"if not link . wasChanged ( ) or link . getCaption ( ) == '' : link . setCaption ( data [ ""caption"" ] , silent = True )","if not link. wasChanged ( ) or link. isLink ( ) : link. setCaption ( data [ ""caption"" ], silent = True )"
+"return summarizeLog ( name , log , ""Passed"" , ""Failed"" , None , r""\s*INFO \| (Passed|Failed): (\d+)"" )","return summarizeLog ( name, log, ""Passed"", ""Failed"", None, r""INFO \| (Passed|Failed): (\d+)"", ""Pass"", ""Fail"" )"
