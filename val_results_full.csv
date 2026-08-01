@@ -24887,3 +24887,709 @@ module_state [ default_state ] [ 'makedirs' ] = True,module_state [ default_stat
         return max(accumulate(d))"
 "if re . search ( r'\.log$' , logfile ) : logs . append ( logfile )","if ( re. search ( r'\.log$', logfile ) and logfile ) : logs. append ( logfile )"
 "os . chmod ( os . path . join ( self . configfolder , filename ) , ( 0o777 ^ umask ) & mode )","os. chmod ( os. path. join ( self. configfolder, filename ), mode & 0o777 )"
+"class Solution:
+    def findPrimePairs(self, n: int) -> List[List[int]]:
+        primes = [True] * n
+        for i in range(2, n):
+            if primes[i]:
+                for j in range(i + i, n, i):
+                    primes[j] = False
+        ans = []
+        for x in range(2, n // 2 + 1):
+            y = n - x
+            if primes[x] and primes[y]:
+                ans.append([x, y])
+        return ans","class Solution:
+    def findPrimePairs(self, n: int) -> List[List[int]]:
+        primes = [True] * n
+        for i in range(2, n):
+            if primes[i]:
+                for j in range(i + i, n, i):
+                    primes[j] = False
+        ans = []
+        for x in range(2, n // 2 + 1):
+            y = n - x
+            if primes[x] and primes[y]:
+                ans.append([x, y])
+        return ans"
+"import subprocess
+import os
+import random
+def task_func(directory, file_list):
+
+
+    if not file_list:
+        return None
+
+    file = random.choice(file_list)
+    file_path = os.path.join(directory, file)
+    try:
+        process = subprocess.Popen(file_path)
+        process.wait()  # wait for the process to complete
+        return process.returncode  # return the exit code
+    except Exception as e:
+        return None","import subprocess
+import os
+import random
+def task_func(directory, file_list):
+
+
+    if not file_list:
+        return None
+
+    file = random.choice(file_list)
+    file_path = os.path.join(directory, file)
+    try:
+        process = subprocess.Popen(file_path)
+        process.wait()  # wait for the process to complete
+        return process.returncode  # return the exit code
+    except Exception as e:
+        return None"
+"process . load ( ""DQM.HLXMonitor.hlx_dqm_sourceclient_cfi"" )","process. load ( ""DQM.HLXMonitor.test.hlx_dqm_sourceclient_cfi"", ""DQM.HLXMonitor.test.hlx_dqm_sourceclient_cfi"" )"
+"import os
+import json
+from collections import Counter
+def task_func(json_files_path='./json_files/', key='name'):
+
+    key_values = []
+
+    for filename in os.listdir(json_files_path):
+        if filename.endswith('.json'):
+            file_path = os.path.join(json_files_path, filename)
+            with open(file_path, 'r') as json_file:
+                data = json.load(json_file)
+                if key in data:
+                    key_values.append(data[key])
+
+    return dict(Counter(key_values))","import os
+import json
+from collections import Counter
+def task_func(json_files_path='./json_files/', key='name'):
+
+    key_values = []
+
+    for filename in os.listdir(json_files_path):
+        if filename.endswith('.json'):
+            file_path = os.path.join(json_files_path, filename)
+            with open(file_path, 'r') as json_file:
+                data = json.load(json_file)
+                if key in data:
+                    key_values.append(data[key])
+
+    return dict(Counter(key_values))"
+"import pandas as pd
+from sklearn.decomposition import PCA
+import matplotlib.pyplot as plt
+def task_func(df):
+
+    if not isinstance(df, pd.DataFrame):
+        raise ValueError(""Input must be a DataFrame"")
+    if df.empty:
+        raise ValueError(""DataFrame is empty"")
+
+    pca = PCA(n_components=2)
+    principal_components = pca.fit_transform(df)
+
+    pca_df = pd.DataFrame(data=principal_components, columns=['Principal Component 1', 'Principal Component 2'])
+
+    fig, ax = plt.subplots()
+    ax.scatter(pca_df['Principal Component 1'], pca_df['Principal Component 2'])
+    ax.set_xlabel('Principal Component 1')
+    ax.set_ylabel('Principal Component 2')
+    ax.set_title('2 Component PCA')
+
+    return pca_df, ax","import pandas as pd
+from sklearn.decomposition import PCA
+import matplotlib.pyplot as plt
+def task_func(df):
+
+    if not isinstance(df, pd.DataFrame):
+        raise ValueError(""Input must be a DataFrame"")
+    if df.empty:
+        raise ValueError(""DataFrame is empty"")
+
+    pca = PCA(n_components=2)
+    principal_components = pca.fit_transform(df)
+
+    pca_df = pd.DataFrame(data=principal_components, columns=['Principal Component 1', 'Principal Component 2'])
+
+    fig, ax = plt.subplots()
+    ax.scatter(pca_df['Principal Component 1'], pca_df['Principal Component 2'])
+    ax.set_xlabel('Principal Component 1')
+    ax.set_ylabel('Principal Component 2')
+    ax.set_title('2 Component PCA')
+
+    return pca_df, ax"
+"state . se . add ( state . memory . load ( i + address , 1 ) != state . BVV ( 0 , 8 ) )","state. se. add ( state. memory. load ( i + address, length = 1 )!= state. BVV ( 0, 8 ), 0 )"
+"display_as_academic_year ( group_obj . start_year ) ,","display_as_academic_year ( mini_training_obj. start_year, mini_training_obj. end_year ),"
+"path = cygwin_path ( find_steam_path_from_registry ( opts , cygwinreg ) )","path = find_steam_path_from_registry ( opts, cygwinreg, opts. debug )"
+"class Solution:
+    def minOperations(self, nums: List[int], target: int) -> int:
+        s = sum(nums)
+        if s < target:
+            return -1
+        cnt = [0] * 32
+        for x in nums:
+            for i in range(32):
+                if x >> i & 1:
+                    cnt[i] += 1
+        i = j = 0
+        ans = 0
+        while 1:
+            while i < 32 and (target >> i & 1) == 0:
+                i += 1
+            if i == 32:
+                break
+            while j < i:
+                cnt[j + 1] += cnt[j] // 2
+                cnt[j] %= 2
+                j += 1
+            while cnt[j] == 0:
+                cnt[j] = 1
+                j += 1
+            ans += j - i
+            cnt[j] -= 1
+            j = i
+            i += 1
+        return ans","class Solution:
+    def minOperations(self, nums: List[int], target: int) -> int:
+        s = sum(nums)
+        if s < target:
+            return -1
+        cnt = [0] * 32
+        for x in nums:
+            for i in range(32):
+                if x >> i & 1:
+                    cnt[i] += 1
+        i = j = 0
+        ans = 0
+        while 1:
+            while i < 32 and (target >> i & 1) == 0:
+                i += 1
+            if i == 32:
+                break
+            while j < i:
+                cnt[j + 1] += cnt[j] // 2
+                cnt[j] %= 2
+                j += 1
+            while cnt[j] == 0:
+                cnt[j] = 1
+                j += 1
+            ans += j - i
+            cnt[j] -= 1
+            j = i
+            i += 1
+        return ans"
+"log . debug ( ""No user configuration of queues at {path}"" . format ( path = path ) )","log. info ( ""No user configuration of queues at {path}"". format ( path = path ) )"
+"suggested_partials [ release [ ""version"" ] ] = { ""buildNumber"" : release [ ""build_number"" ] , ""locales"" : get_locales ( f""{HG_PREFIX}/{release['branch']}"" , release [ ""revision"" ] , product_to_appname ( product ) ) , }","suggested_partials [ release [ ""version"" ] ] = { ""buildNumber"" : release [ ""build_number"" ], ""locales"" : get_locales ( f""${HG_PREFIX}/{release['branch']}"", release [ ""revision"" ], product_to_appname ( product ), release [ ""version"" ] ), }"
+log . debug ( 'Map plugin: found item ' + str ( item ) + ' with coordinates onscreen' ),log. debug ( 'Map plugin: found item'+ item +'with coordinates onscreen' )
+"return np . ravel_multi_index ( ( ( rows , rows + 1 , rows + 1 , rows ) , ( cols , cols , cols + 1 , cols + 1 ) ) , shape , mode = mode ) . T . astype ( np . int , copy = True )","return np. ravel_multi_index ( ( ( rows, rows + 1, rows + 1, rows ), ( cols, cols, cols + 1, cols + 1 ) ), shape, mode = mode ). astype ( np. int )"
+"import numpy as np
+from operator import itemgetter
+import matplotlib.pyplot as plt
+def task_func(data):
+
+    max_y_point = max(data, key=itemgetter(1))
+    points = np.array(data)
+    x = points[:,0]
+    y = points[:,1]
+
+    fig, ax = plt.subplots()
+    ax.scatter(x, y, label='Points')
+    ax.scatter(*max_y_point, color='red', label='Max Y Point')
+    ax.set_xlabel('x')
+    ax.set_ylabel('y')
+    ax.set_title('Points with Max Y Point Highlighted')
+    ax.legend()
+    return ax, max_y_point","import numpy as np
+from operator import itemgetter
+import matplotlib.pyplot as plt
+def task_func(data):
+
+    max_y_point = max(data, key=itemgetter(1))
+    points = np.array(data)
+    x = points[:,0]
+    y = points[:,1]
+
+    fig, ax = plt.subplots()
+    ax.scatter(x, y, label='Points')
+    ax.scatter(*max_y_point, color='red', label='Max Y Point')
+    ax.set_xlabel('x')
+    ax.set_ylabel('y')
+    ax.set_title('Points with Max Y Point Highlighted')
+    ax.legend()
+    return ax, max_y_point"
+"import numpy as np
+from operator import itemgetter
+import matplotlib.pyplot as plt
+def task_func(data):
+
+    max_tuple = max(data, key=itemgetter(1))
+    tuples = np.array(data)
+    x = tuples[:,0]
+    y = tuples[:,1]
+    fig, ax = plt.subplots()
+    ax.scatter(x, y, label='Data')
+    ax.scatter(*max_tuple, color='red', label='Max Tuple')
+    ax.set_xlabel('x')
+    ax.set_ylabel('y')
+    ax.set_title('Max Tuple Highlighted')
+    ax.legend()
+    return ax","import numpy as np
+from operator import itemgetter
+import matplotlib.pyplot as plt
+def task_func(data):
+
+    max_tuple = max(data, key=itemgetter(1))
+    tuples = np.array(data)
+    x = tuples[:,0]
+    y = tuples[:,1]
+    fig, ax = plt.subplots()
+    ax.scatter(x, y, label='Data')
+    ax.scatter(*max_tuple, color='red', label='Max Tuple')
+    ax.set_xlabel('x')
+    ax.set_ylabel('y')
+    ax.set_title('Max Tuple Highlighted')
+    ax.legend()
+    return ax"
+"from typing import List
+
+class Solution:
+    def maximumSumOfHeights(self, heights: List[int]) -> int:
+        n = len(heights)
+        max_total = 0
+
+        for i in range(n):
+            # Calculate left part
+            left = [0] * (i + 1)
+            left[i] = heights[i]
+            for j in range(i - 1, -1, -1):
+                left[j] = min(heights[j], left[j + 1])
+            left_sum = sum(left)
+
+            # Calculate right part
+            right_length = n - i
+            right = [0] * right_length
+            right[0] = heights[i]
+            for j in range(i + 1, n):
+                pos_in_right = j - i
+                right[pos_in_right] = min(heights[j], right[pos_in_right - 1])
+            right_sum = sum(right)
+
+            # Update the maximum total
+            current_total = left_sum + right_sum - heights[i]
+            if current_total > max_total:
+                max_total = current_total
+
+        return max_total","from typing import List
+
+class Solution:
+    def maximumSumOfHeights(self, heights: List[int]) -> int:
+        n = len(heights)
+        max_total = 0
+
+        for i in range(n):
+            # Calculate left part
+            left = [0] * (i + 1)
+            left[i] = heights[i]
+            for j in range(i - 1, -1, -1):
+                left[j] = min(heights[j], left[j + 1])
+            left_sum = sum(left)
+
+            # Calculate right part
+            right_length = n - i
+            right = [0] * right_length
+            right[0] = heights[i]
+            for j in range(i + 1, n):
+                pos_in_right = j - i
+                right[pos_in_right] = min(heights[j], right[pos_in_right - 1])
+            right_sum = sum(right)
+
+            # Update the maximum total
+            current_total = left_sum + right_sum - heights[i]
+            if current_total > max_total:
+                max_total = current_total
+
+        return max_total"
+"run_in_dir = lambda cmd : conn . run ( ""cd '{0}' && {1}"" . format ( site_dir , cmd ) )","run_in_dir = lambda cmd : conn. run ( ""cd {0} && {1}"". format ( site_dir, cmd ) )"
+"class Solution:
+    def numberOfWays(self, n: int, x: int, y: int) -> int:
+        mod = 10**9 + 7
+        f = [[0] * (x + 1) for _ in range(n + 1)]
+        f[0][0] = 1
+        for i in range(1, n + 1):
+            for j in range(1, x + 1):
+                f[i][j] = (f[i - 1][j] * j + f[i - 1][j - 1] * (x - (j - 1))) % mod
+        ans, p = 0, 1
+        for j in range(1, x + 1):
+            p = p * y % mod
+            ans = (ans + f[n][j] * p) % mod
+        return ans","class Solution:
+    def numberOfWays(self, n: int, x: int, y: int) -> int:
+        mod = 10**9 + 7
+        f = [[0] * (x + 1) for _ in range(n + 1)]
+        f[0][0] = 1
+        for i in range(1, n + 1):
+            for j in range(1, x + 1):
+                f[i][j] = (f[i - 1][j] * j + f[i - 1][j - 1] * (x - (j - 1))) % mod
+        ans, p = 0, 1
+        for j in range(1, x + 1):
+            p = p * y % mod
+            ans = (ans + f[n][j] * p) % mod
+        return ans"
+if not commandstorun and not do_cleanup_parameter : commandstorun = [ '--new' ],if commandstorun and not commandstorun [ 0 ]. startswith ( 'new' ) : commandstorun = [ '--new' ]
+"response_api = requests . get ( sample_url . format ( SCREEN_SHOT_LAYER_ACCESS_KEY , input_str , ""1"" , ""PNG"" , ""2560x1440"" ) , stream = True )","response_api = requests. get ( sample_url. format ( Config. SCREEN_SHOT_LAYER_ACCESS_KEY, input_str, ""1"", ""PNG"", ""2560x1440"" ), stream = True, timeout = 10 )"
+"pixbuf2 . composite ( pix , 0 , 0 , pixbuf2 . props . width , pixbuf2 . props . height , 0 , 0 , 1.0 , 1.0 , gtk . gdk . INTERP_HYPER , 255 )","pixbuf2. composite ( pix, 0, 0, pixbuf2. props. width, pixbuf2. props. height, 0, 0, 1.0, 1.0, gtk. gdk. INTERP_BILINEAR, 127 )"
+"self . session . openWithCallback ( self . doSendlog , VirtualKeyBoard , title = _ ( ""Additional Info"" ) )","self. session. openWithCallback ( self. doSendlog, VirtualKeyBoard, title = _ ( 'Additional Info' ) )"
+"argp . add_argument ( '-o' , action = 'store' , dest = 'output_file' , help = 'Output filename (default: PCLOADLETTER.pdf)' , default = state [ 'output_file' ] )","argp. add_argument ( '-o', action ='store', dest = 'output_file', help = 'Output filename (default: PCLOADLETTER.PDF)', default = state [ 'output_file' ], type = str )"
+"import numpy as np
+import matplotlib.pyplot as plt
+from scipy.fft import fft
+def task_func(signal, precision=2, seed=777):
+
+    np.random.seed(seed)
+    transformed_signal = fft(signal)
+    transformed_signal_rounded = np.round(transformed_signal, precision).tolist()
+
+    fig, ax = plt.subplots(2, 1)
+    ax[0].plot(signal)
+    ax[0].set_title('Original Signal')
+    ax[1].plot(transformed_signal_rounded)
+    ax[1].set_title('Transformed Signal')
+    plt.tight_layout()  # Adjust layout to avoid overlap
+
+    return np.array(transformed_signal_rounded), ax","import numpy as np
+import matplotlib.pyplot as plt
+from scipy.fft import fft
+def task_func(signal, precision=2, seed=777):
+
+    np.random.seed(seed)
+    transformed_signal = fft(signal)
+    transformed_signal_rounded = np.round(transformed_signal, precision).tolist()
+
+    fig, ax = plt.subplots(2, 1)
+    ax[0].plot(signal)
+    ax[0].set_title('Original Signal')
+    ax[1].plot(transformed_signal_rounded)
+    ax[1].set_title('Transformed Signal')
+    plt.tight_layout()  # Adjust layout to avoid overlap
+
+    return np.array(transformed_signal_rounded), ax"
+"logging . debug ( ""SEARCHING NODE for usage of an overflowed variable %d"" , node . uid )","logging. debug ( ""SEARCHING NODE %s"", node. uid )"
+"for peer , bus , prefix , all_platforms , queue in annotations ( member , set , 'pubsub.subscriptions' ) : self . _add_subscription ( prefix , member , bus , all_platforms )","for peer, bus, prefix, all_platforms in annotations ( member, set, 'pubsub.subscriptions', all_platforms = all_platforms ) : self. _add_subscription ( prefix, member, bus, all_platforms )"
+"def ping ( host , count = 5 , timeout = 500 ) : count_arg = '-n' if platform . system ( ) . lower ( ) == 'windows' else '-c'","def ping ( host, count = 10, timeout = 5 ) : count_arg = '-n' if platform. system ( ). lower ( ) == 'windows' else '-c'"
+"import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+def task_func(df):
+
+    if not isinstance(df, pd.DataFrame) or df.empty:
+        raise ValueError(""The input must be a non-empty pandas DataFrame."")
+
+    numeric_cols = df.select_dtypes(include=np.number).columns
+    if not numeric_cols.size:
+        raise ValueError(""DataFrame contains no numeric columns."")
+
+    axes = []
+    for col in numeric_cols:
+        fig, ax = plt.subplots()
+        df[col].plot(kind='hist', title=col, ax=ax)
+        ax.set_xlabel('Value')
+        ax.set_ylabel('Frequency')
+        axes.append(ax)
+
+    return axes","import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+def task_func(df):
+
+    if not isinstance(df, pd.DataFrame) or df.empty:
+        raise ValueError(""The input must be a non-empty pandas DataFrame."")
+
+    numeric_cols = df.select_dtypes(include=np.number).columns
+    if not numeric_cols.size:
+        raise ValueError(""DataFrame contains no numeric columns."")
+
+    axes = []
+    for col in numeric_cols:
+        fig, ax = plt.subplots()
+        df[col].plot(kind='hist', title=col, figsize=(8, 6), density=True, ax=ax)
+        ax.set_xlabel('Value')
+        ax.set_ylabel('Frequency')
+        axes.append(ax)
+
+    return axes"
+"self . list_win . addstr ( repr ( default ) , get_colpair ( self . config , 'token' ) )","self. list_win. addstr ( default, get_colpair ( self. config, 'token', self. config. get ( 'token' ) ) )"
+"game . list_of_mistakes . append ( ( game . question , game . comment ) )","game. list_of_mistakes. append ( ( question. question, question. comment, question. answer ) )"
+is_correct_user_request = RequestContext ( request ) [ 'user' ] . id == user . id,is_correct_user_request = RequestContext ( request ) [ 'user' ]. id == user. id
+"return ""Email <a href=\""mailto:movie@m.carve.io\"">mailto:movie@m.carve.io</a> with a movie title as the subject to find out if your movie is streamable on HBO GO.""","return ""Email movie@m.curve.io with a movie title as the subject to find out if your movie is streamable."""
+"class Solution:
+    def minimumMoves(self, nums: List[int], k: int, maxChanges: int) -> int:
+        n = len(nums)
+        cnt = [0] * (n + 1)
+        s = [0] * (n + 1)
+        for i, x in enumerate(nums, 1):
+            cnt[i] = cnt[i - 1] + x
+            s[i] = s[i - 1] + i * x
+        ans = inf
+        max = lambda x, y: x if x > y else y
+        min = lambda x, y: x if x < y else y
+        for i, x in enumerate(nums, 1):
+            t = 0
+            need = k - x
+            for j in (i - 1, i + 1):
+                if need > 0 and 1 <= j <= n and nums[j - 1] == 1:
+                    need -= 1
+                    t += 1
+            c = min(need, maxChanges)
+            need -= c
+            t += c * 2
+            if need <= 0:
+                ans = min(ans, t)
+                continue
+            l, r = 2, max(i - 1, n - i)
+            while l <= r:
+                mid = (l + r) >> 1
+                l1, r1 = max(1, i - mid), max(0, i - 2)
+                l2, r2 = min(n + 1, i + 2), min(n, i + mid)
+                c1 = cnt[r1] - cnt[l1 - 1]
+                c2 = cnt[r2] - cnt[l2 - 1]
+                if c1 + c2 >= need:
+                    t1 = c1 * i - (s[r1] - s[l1 - 1])
+                    t2 = s[r2] - s[l2 - 1] - c2 * i
+                    ans = min(ans, t + t1 + t2)
+                    r = mid - 1
+                else:
+                    l = mid + 1
+        return ans","class Solution:
+    def minimumMoves(self, nums: List[int], k: int, maxChanges: int) -> int:
+        n = len(nums)
+        cnt = [0] * (n + 1)
+        s = [0] * (n + 1)
+        for i, x in enumerate(nums, 1):
+            cnt[i] = cnt[i - 1] + x
+            s[i] = s[i - 1] + i * x
+        ans = inf
+        max = lambda x, y: x if x > y else y
+        min = lambda x, y: x if x < y else y
+        for i, x in enumerate(nums, 1):
+            t = 0
+            need = k - x
+            for j in (i - 1, i + 1):
+                if need > 0 and 1 <= j <= n and nums[j - 1] == 1:
+                    need -= 1
+                    t += 1
+            c = min(need, maxChanges)
+            need -= c
+            t += c * 2
+            if need <= 0:
+                ans = min(ans, t)
+                continue
+            l, r = 2, max(i - 1, n - i)
+            while l <= r:
+                mid = (l + r) >> 1
+                l1, r1 = max(1, i - mid), max(0, i - 2)
+                l2, r2 = min(n + 1, i + 2), min(n, i + mid)
+                c1 = cnt[r1] - cnt[l1 - 1]
+                c2 = cnt[r2] - cnt[l2 - 1]
+                if c1 + c2 >= need:
+                    t1 = c1 * i - (s[r1] - s[l1 - 1])
+                    t2 = s[r2] - s[l2 - 1] - c2 * i
+                    ans = min(ans, t + t1 + t2)
+                    r = mid
+                else:
+                    l = mid + 1
+        return ans"
+"class Solution:
+  def countNonDecreasingSubarrays(self, nums: list[int], k: int) -> int:
+    ans = 0
+    cost = 0
+    # Store (number, count) pairs in non-increasing order. The numbers in the
+    # queue represent what nums[i..j] look like after adjustments.
+    dq = collections.deque()
+
+    j = len(nums) - 1
+    for i, num in reversed(list(enumerate(nums))):
+      count = 1
+      while dq and dq[-1][0] < num:
+        nextNum, nextCount = dq.pop()
+        count += nextCount
+        cost += (num - nextNum) * nextCount  # Adjust `nextNum`s to `num`.
+      dq.append((num, count))
+      while cost > k:  # Remove the rightmost number.
+        rightmostNum, rightmostCount = dq.popleft()
+        cost -= (rightmostNum - nums[j])
+        j -= 1
+        if rightmostCount > 1:
+          dq.appendleft((rightmostNum, rightmostCount - 1))
+      ans += j - i + 1
+
+    return ans","class Solution:
+  def countNonDecreasingSubarrays(self, nums: list[int], k: int) -> int:
+    ans = 0
+    cost = 0
+    # Store (number, count) pairs in non-increasing order. The numbers in the
+    # queue represent what nums[i..j] look like after adjustments.
+    dq = collections.deque()
+
+    j = len(nums) - 1
+    for i, num in reversed(list(enumerate(nums))):
+      count = 1
+      while dq and dq[-1][0] < num:
+        nextNum, nextCount = dq.pop()
+        count += nextCount
+        cost += (num - nextNum) * nextCount
+      dq.append((num, count))
+      while cost > k:  # Remove the rightmost number.
+        rightmostNum, rightmostCount = dq.popleft()
+        cost -= (rightmostNum - nums[j])
+        j -= 1
+        if rightmostCount > 1:
+          dq.appendleft((rightmostNum, rightmostCount - 1))
+      ans += j - i + 1
+
+    return ans"
+"if ssrWrapped [ 'df' ] in ( 1 , 2 , 3 , 6 , 7 , 8 , 9 , 10 , 12 , 13 , 14 , 15 , 16 , 23 ) : crcGood = True","if ssrWrapped [ 'df' ] in ( 1, 2, 3, 6, 7, 8, 9, 10, 12, 13, 14, 15, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157, 158, 159, 160, 161, 162, 163, 164, 165, 166, 167, 168, 169, 170, 171, 172, 173, 174, 175, 176,"
+return str ( urllib . request . urlopen ( url ) . read ( ) . decode ( 'ascii' ) ),return str ( urllib. request. urlopen ( url ). read ( ). decode ( 'utf-8' ) )
+if self . statement . kind == DML : self . statement . reset ( ),"if self. statement. kind in ( DML, DDL ) : self. statement. reset ( )"
+if not args . resume and ( not args . undistort and not args . nooutliers ) : os . mkdir ( qcpath ),if not args. resume and ( not args. undistort and not args. nooutlier and not args. nooutlier ) : os. mkdir ( qcpath )
+"sdc = DataCenter ( location = location , key_id = key_id , allow_agent = True , config = DEBUG_CONFIG )","sdc = DataCenter ( key_id = key_id, allow_agent = True, config = DEBUG_CONFIG, debug = DEBUG_CONFIG )"
+"to_cart = len ( request . POST . get ( ""add_wishlist"" , """" ) ) == 0","to_cart = len ( request. POST. get ( ""add_cart"", [ ] ) ) > 0"
+"import csv
+from ipaddress import IPv4Network
+def task_func(ip_range, csv_path):
+
+    with open(csv_path, 'w', newline='') as csvfile:
+        fieldnames = ['IP Address']
+        writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+
+        writer.writeheader()
+
+        for ip in IPv4Network(ip_range):
+            writer.writerow({'IP Address': str(ip)})
+
+    return csv_path","import csv
+from ipaddress import IPv4Network
+def task_func(ip_range, csv_path):
+
+    with open(csv_path, 'w', newline='') as csvfile:
+        fieldnames = ['IP Address']
+        writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+
+        writer.writeheader()
+
+        for ip in IPv4Network(ip_range):
+            writer.writerow({'IP Address': str(ip)})
+
+    return csv_path"
+"import numpy as np
+import matplotlib.pyplot as plt
+# Constants
+COLORS = ['r', 'g', 'b']
+def task_func(df, group_col, value_col):
+
+
+    group_mean = df.groupby(group_col)[value_col].mean()
+    group_std = df.groupby(group_col)[value_col].std()
+
+    # Get the number of groups and generate x locations for the bars
+    num_groups = len(group_mean)
+    index = np.arange(num_groups)
+
+    # Create the bar chart with error bars
+    for i, (mean, std) in enumerate(zip(group_mean, group_std)):
+        plt.bar(index[i], mean, yerr=std, color=COLORS[i % len(COLORS)], capsize=4, label=f'Group {i+1}')
+
+    # Set labels and title
+    plt.xlabel(group_col)
+    plt.ylabel(value_col)
+    plt.title(f'Bar chart of {value_col} by {group_col}')
+    plt.xticks(index, group_mean.index)  # Set x-axis labels to group names
+    plt.legend()
+    # Return the axes object
+    return plt.gca()","import numpy as np
+import matplotlib.pyplot as plt
+# Constants
+COLORS = ['r', 'g', 'b']
+def task_func(df, group_col, value_col):
+
+
+    group_mean = df.groupby(group_col)[value_col].mean()
+    group_std = df.groupby(group_col)[value_col].std()
+
+    # Get the number of groups and generate x locations for the bars
+    num_groups = len(group_mean)
+    index = np.arange(num_groups)
+
+    # Create the bar chart with error bars
+    for i, (mean, std) in enumerate(zip(group_mean, group_std)):
+        plt.bar(index[i], mean, yerr=std, color=COLORS[i % len(COLORS)], capsize=4, label=f'Group {i+1}')
+
+    # Set labels and title
+    plt.xlabel(group_col)
+    plt.ylabel(value_col)
+    plt.title(f'Bar chart of {value_col} by {group_col}')
+    plt.xticks(index, group_mean.index)  # Set x-axis labels to group names
+    plt.legend()
+    # Return the axes object
+    return plt.gca()"
+"if dateCounvert ( book_at ) < datetime . now ( ) - dt . timedelta ( hours = 1 ) : return jsonify ( { 'status' : 'error' , 'code' : 7 , 'msg' : ""预约时间有误""})","if book_at < datetime. now ( ) - dt. timedelta ( hours = 1 ) or book_at < datetime. now ( ) - dt. timedelta ( minutes = 30 ) : return jsonify ( {'status' : 'error', 'code' : 7,'msg' : ""预约时间有误""})"
+"self . _labels = [ QLabel ( text , parent = self ) for text in new_labels ]",self. _labels = [ QLabel ( text ) for text in new_labels if text ]
+"log . debug ( ""Waiting {0} seconds to re-authenticate"" . format ( random_reauth_delay ) )","log. debug ( ""Waiting {0} seconds to re-authenticate"". format ( reauth_delay, ) )"
+mat = np . loadtxt ( '%s/zodiac.txt' % ( datapath ( ) ) ),"mat = np. loadtxt ( '%s/zodiac.txt' % ( datapath ), delimiter = ',' )"
+"logger . error ( ""Item {}: problem creating: {}"" . format ( child_path , e ) )","logger. error ( ""Item {}: problem creating: {}"". format ( child_path, e ) )"
+"self . _proc = subprocess . Popen ( [ mpl . _get_executable_info ( ""gs"" ) . executable , ""-dNOSAFER"" , ""-dNOPAUSE"" , ""-sDEVICE=png16m"" ] , stdin = subprocess . PIPE , stdout = subprocess . PIPE )","self. _proc = subprocess. Popen ( [ mpl. _get_executable_info ( ""gs"" ). executable, ""-dNOPAUSE"", ""-sDEVICE=png16m"" ], stdin = subprocess. PIPE, stdout = subprocess. PIPE, stderr = subprocess. PIPE )"
+"class Solution:
+    def countWinningSequences(self, s: str) -> int:
+        def calc(x: int, y: int) -> int:
+            if x == y:
+                return 0
+            if x < y:
+                return 1 if x == 0 and y == 2 else -1
+            return -1 if x == 2 and y == 0 else 1
+
+        @cache
+        def dfs(i: int, j: int, k: int) -> int:
+            if len(s) - i <= j:
+                return 0
+            if i >= len(s):
+                return int(j < 0)
+            res = 0
+            for l in range(3):
+                if l == k:
+                    continue
+                res = (res + dfs(i + 1, j + calc(d[s[i]], l), l)) % mod
+            return res
+
+        mod = 10**9 + 7
+        d = {""F"": 0, ""W"": 1, ""E"": 2}
+        ans = dfs(0, 0, -1)
+        dfs.cache_clear()
+        return ans","class Solution:
+    def countWinningSequences(self, s: str) -> int:
+        def calc(x: int, y: int) -> int:
+            if x == y:
+                return 0
+            if x < y:
+                return 1 if x == 0 and y == 2 else -1
+            return -1 if x == 2 and y == 0 else 1
+
+        @cache
+        def dfs(i: int, j: int, k: int) -> int:
+            if len(s) - i <= j:
+                return 0
+            if i >= len(s):
+                return int(j >= 0)
+            res = 0
+            for l in range(3):
+                if l == k:
+                    continue
+                res = (res + dfs(i + 1, j + calc(d[s[i]], l), l)) % mod
+            return res
+
+        mod = 10**9 + 7
+        d = {""F"": 0, ""W"": 1, ""E"": 2}
+        ans = dfs(0, 0, -1)
+        dfs.cache_clear()
+        return ans"
+"DateFormat ( 'dddd, MMM. D YYYY, HH:mm A' , Accuracy . DATETIME ) ,","DateFormat ( 'dddd, MMM. D YYYY, HH:mm A', Accuracy. DATETIME ),"
