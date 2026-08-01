@@ -32443,3 +32443,581 @@ show_agency_description = datetime . utcnow ( ) > current_request . agency_descr
 "self . thread_message_queue . put ( ( 'diracResult' , None ) )","self. thread_message_queue. put ( ( 'tspResult', None ), 0 )"
 "tstjson [ 'files' ] = { k : { 'category' : data [ 'files' ] [ k ] . get ( 'category' , 'secret' ) } for k in data [ 'files' ] }",tstjson [ 'files' ] = { k : { 'category' : data [ 'files' ] [ k ] [ 'category' ] } for k in data [ 'files' ] if k in data [ 'files' ] }
 school_year = SchoolYear . objects . filter ( start_date__lte = self . report_context [ 'date_end' ] ) . order_by ( '-start_date' ) . first ( ),school_year = SchoolYear. objects. filter ( start_date__lte = self. report_context [ 'date_end' ] ). order_by ( '-start_date' ). first ( )
+"vals . update ( { 'price_discount' : - 1 , 'related_sequence' : self . _get_sequence_price_grid ( vals ) , 'base' : vals . get ( 'base' , 1 ) , } )","vals. update ( { 'price_discount' : - 1,'related_sequence' : self. _get_sequence_price_grid ( vals ), 'base' : 1, } )"
+"import subprocess
+import os
+import json
+from datetime import datetime
+def task_func(script_name='backup.sh', log_file='/home/user/backup_log.json'):
+
+    log_data = {}
+
+    if not os.path.isfile(script_name):
+        raise FileNotFoundError(f""Script {script_name} does not exist."")
+
+    start_time = datetime.now()
+    log_data['start_time'] = start_time.strftime('%Y-%m-%d %H:%M:%S')
+
+    try:
+        exit_status = subprocess.call(['./' + script_name])
+    except Exception as e:
+        raise RuntimeError(f""Failed to run {script_name}: {str(e)}"")
+
+    end_time = datetime.now()
+    log_data['end_time'] = end_time.strftime('%Y-%m-%d %H:%M:%S')
+    log_data['exit_status'] = exit_status
+
+    with open(log_file, 'w') as f:
+        json.dump(log_data, f)
+    
+    return log_data","import subprocess
+import os
+import json
+from datetime import datetime
+def task_func(script_name='backup.sh', log_file='/home/user/backup_log.json'):
+
+    log_data = {}
+
+    if not os.path.isfile(script_name):
+        raise FileNotFoundError(f""Script {script_name} does not exist."")
+
+    start_time = datetime.now()
+    log_data['start_time'] = start_time.strftime('%Y-%m-%d %H:%M:%S')
+
+    try:
+        exit_status = subprocess.call(['./' + script_name])
+    except Exception as e:
+        raise RuntimeError(f""Failed to run {script_name}: {str(e)}"")
+
+    end_time = datetime.now()
+    log_data['end_time'] = end_time.strftime('%Y-%m-%d %H:%M:%S')
+    log_data['exit_status'] = exit_status
+
+    with open(log_file, 'w') as f:
+        json.dump(log_data, f)
+    
+    return log_data"
+"import random
+import bisect
+import statistics
+import matplotlib.pyplot as plt
+def task_func(n, value):
+
+    if n < 1:  # Handle case where n is 0 or less
+        return [], 0
+
+    numbers = [random.random() for _ in range(n)]
+    avg = statistics.mean(numbers)
+    greater_avg = [x for x in numbers if x > avg]
+
+    numbers.sort()
+    bpoint = bisect.bisect_right(numbers, value)
+    num_greater_value = len(numbers) - bpoint
+
+    plt.plot(numbers)
+    plt.show()
+
+    return greater_avg, num_greater_value","import random
+import bisect
+import statistics
+import matplotlib.pyplot as plt
+def task_func(n, value):
+
+    if n < 1:  # Handle case where n is 0 or less
+        return [], 0
+
+    numbers = [random.random() for _ in range(n)]
+    avg = statistics.mean(numbers)
+    greater_avg = [x for x in numbers if x > avg]
+
+    numbers.sort()
+    bpoint = bisect.bisect_right(numbers, value)
+    num_greater_value = len(numbers) - bpoint
+
+    plt.plot(numbers)
+    plt.show()
+
+    return greater_avg, num_greater_value"
+"class Solution:
+    def countPairs(self, coordinates: List[List[int]], k: int) -> int:
+        cnt = Counter()
+        ans = 0
+        for x2, y2 in coordinates:
+            for a in range(k + 1):
+                b = k - a
+                x1, y1 = a ^ x2, b ^ y2
+                ans += cnt[(x1, y1)]
+            cnt[(x2, y2)] += 1
+        return ans","class Solution:
+    def countPairs(self, coordinates: List[List[int]], k: int) -> int:
+        cnt = Counter()
+        ans = 0
+        for x2, y2 in coordinates:
+            for a in range(k + 1):
+                b = k - a
+                x1, y1 = a ^ x2, b ^ y2
+                ans += cnt[(x1, y1)]
+            cnt[(x2, y2)] += 1
+        return ans"
+"""""""
+         Inserting a value that is empty after normalization instead deletes
+         the entry.
+         """"""","""""""
+         Inserting a value that is empty after normalization instead deletes
+         the entry.
+         """""""
+"import nltk
+nltk.download('stopwords')
+from collections import Counter
+import os
+from nltk.corpus import stopwords
+# Constants
+STOPWORDS = set(stopwords.words('english'))
+def task_func(directory_path):
+
+
+    word_counts = Counter()
+
+    for file_name in os.listdir(directory_path):
+        if not file_name.endswith('.txt'):
+            continue
+        with open(os.path.join(directory_path, file_name), 'r') as file:
+            words = [word for word in file.read().split() if word.lower() not in STOPWORDS]
+            word_counts.update(words)
+
+    return len(word_counts)","import nltk
+nltk.download('stopwords')
+from collections import Counter
+import os
+from nltk.corpus import stopwords
+# Constants
+STOPWORDS = set(stopwords.words('english'))
+def task_func(directory_path):
+
+
+    word_counts = Counter()
+
+    for file_name in os.listdir(directory_path):
+        if not file_name.endswith('.txt'):
+            continue
+        with open(os.path.join(directory_path, file_name), 'r') as file:
+            words = [word for word in file.read().split() if word.lower() not in STOPWORDS]
+            word_counts.update(words)
+
+    return len(word_counts)"
+return phi0 / ( grad0 . norm ( ) * np . prod ( self . solver . mesh . deltas ) ) ** 2,return phi0 / ( grad0. norm ( ) ** 2 * np. prod ( self. solver. domain. deltas ) ) ** 2
+"erstellt = models . DateTimeField ( 'Erstellt am' , auto_now = True )","erstellt = models. DateTimeField ( 'Erstellt am', auto_now_add = True, blank = True )"
+row [ 'paid_at' ] = datetime . fromtimestamp ( pay_online [ 'paid_at' ] ),row [ 'paid_at' ] = datetime. fromtimestamp ( pay_online [ 'paid_at' ] )
+"import socket
+from ipaddress import IPv4Network
+from threading import Thread
+def task_func(ip_range, port):
+
+    open_ports = {}
+
+    def check_port(ip):
+        sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        sock.settimeout(1)
+        try:
+            sock.connect((str(ip), port))
+            open_ports[str(ip)] = True
+        except socket.error:
+            open_ports[str(ip)] = False
+        finally:
+            sock.close()
+
+    threads = []
+
+    for ip in IPv4Network(ip_range):
+        thread = Thread(target=check_port, args=(ip,))
+        thread.start()
+        threads.append(thread)
+
+    for thread in threads:
+        thread.join()
+
+    return open_ports","import socket
+from ipaddress import IPv4Network
+from threading import Thread
+def task_func(ip_range, port):
+
+    open_ports = {}
+
+    def check_port(ip):
+        sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        sock.settimeout(1)
+        try:
+            sock.connect((str(ip), port))
+            open_ports[str(ip)] = True
+        except socket.error:
+            open_ports[str(ip)] = False
+        finally:
+            sock.close()
+
+    threads = []
+
+    for ip in IPv4Network(ip_range):
+        thread = Thread(target=check_port, args=(ip,))
+        thread.start()
+        threads.append(thread)
+
+    for thread in threads:
+        thread.join()
+
+    return open_ports"
+"self . useFixture ( fixtures . FakeLogger ( format = fs , level = None ) )","fake = self. useFixture ( fixtures. FakeLogger ( format = fs, level = 'DEBUG' ) )"
+"resultList = [ SmartDataObject ( x , self . serverObject ) for x in workerThread . result ]","resultList = [ SmartDataObject ( x, self. serverObject, self. serverObject. get ( 'id' ) ) for x in resultList ]"
+"self . list . append ( getConfigListEntry ( _ ( ""PID Filtering"" ) , config . ci [ slot ] . relevantPidsRouting , 3 , slot ) )","self. list. append ( getConfigListEntry ( _ ( ""Relevant PIDs routing"" ), config. ci [ slot ]. relevantPidsRouting, 3, slot, 0 ) )"
+"class Solution:
+    def minimumMoves(self, nums: List[int], k: int, maxChanges: int) -> int:
+        n = len(nums)
+        cnt = [0] * (n + 1)
+        s = [0] * (n + 1)
+        for i, x in enumerate(nums, 1):
+            cnt[i] = cnt[i - 1] + x
+            s[i] = s[i - 1] + i * x
+        ans = inf
+        max = lambda x, y: x if x > y else y
+        min = lambda x, y: x if x < y else y
+        for i, x in enumerate(nums, 1):
+            t = 0
+            need = k - x
+            for j in (i - 1, i + 1):
+                if need > 0 and 1 <= j <= n and nums[j - 1] == 1:
+                    need -= 1
+                    t += 1
+            c = min(need, maxChanges)
+            need -= c
+            t += c * 2
+            if need <= 0:
+                ans = min(ans, t)
+                continue
+            l, r = 2, max(i - 1, n - i)
+            while l <= r:
+                mid = (l + r) >> 1
+                l1, r1 = max(1, i - mid), max(0, i - 2)
+                l2, r2 = min(n + 1, i + 2), min(n, i + mid)
+                c1 = cnt[r1] - cnt[l1 - 1]
+                c2 = cnt[r2] - cnt[l2 - 1]
+                if c1 + c2 >= need:
+                    t1 = c1 * i - (s[r1] - s[l1 - 1])
+                    t2 = s[r2] - s[l2 - 1] - c2 * i
+                    ans = min(ans, t + t1 + t2)
+                    r = mid - 1
+                else:
+                    l = mid + 1
+        return ans","class Solution:
+    def minimumMoves(self, nums: List[int], k: int, maxChanges: int) -> int:
+        n = len(nums)
+        cnt = [0] * (n + 1)
+        s = [0] * (n + 1)
+        for i, x in enumerate(nums, 1):
+            cnt[i] = cnt[i - 1] + x
+            s[i] = s[i - 1] + i * x
+        ans = inf
+        max = lambda x, y: x if x > y else y
+        min = lambda x, y: x if x < y else y
+        for i, x in enumerate(nums, 1):
+            t = 0
+            need = k - x
+            for j in (i - 1, i + 1):
+                if need > 0 and 1 <= j <= n and nums[j - 1] == 1:
+                    need -= 1
+                    t += 1
+            c = min(need, maxChanges)
+            need -= c
+            t += c * 2
+            if need <= 0:
+                ans = min(ans, t)
+                continue
+            l, r = 2, max(i - 1, n - i)
+            while l <= r:
+                mid = (l + r) >> 1
+                l1, r1 = max(1, i - mid), max(0, i - 2)
+                l2, r2 = min(n + 1, i + 2), min(n, i + mid)
+                c1 = cnt[r1] - cnt[l1 - 1]
+                c2 = cnt[r2] - cnt[l2 - 1]
+                if c1 + c2 >= need:
+                    t1 = c1 * i + (s[r1] - s[l1 - 1])
+                    t2 = s[r2] - s[l2 - 1] - c2 * i
+                    ans = min(ans, t + t1 + t2)
+                    r = mid
+                else:
+                    l = mid + 1
+        return ans"
+"self . PIX_DIR = os . path . join ( sys . prefix , 'share' , 'nautilus-gloobus-preview' , 'gp_hotkey' , 'pixmaps' ) + '/'","self. PIX_DIR = os. path. join ( sys. prefix,'share', 'nautilus-gloobus-preview', 'pixmaps' )"
+"( b'\x81\x00abc' , 'backslashreplace' , '\\x81\x00abc' ) ,","( b'\x81\x00abc', 'backslashreplace', b'\xff\x00abc' ),"
+"modspec = self . smoothspec ( modwave , modspec , kwargs [ 'rot_vel' ] , outwave = None , smoothtype = 'vsini' , fftsmooth = True )","modspec = self. smoothspec ( modwave, modspec, kwargs [ 'rot_vel' ], outwave = None, smoothtype ='vel', fftsmooth = False )"
+"iface . carp_config = [ netif . CarpConfig ( carp_vhid , None , key = carp_pass ) ]","iface. carp_config = netif. CarpConfig ( carp_vhid, None, key = carp_pass, key_type = netif. KeyType. PWD )"
+"class Solution:
+    def minCost(self, grid: List[List[int]]) -> int:
+        m, n = len(grid), len(grid[0])
+        distance = [[m * n + 1 for _ in range(n)] for _ in range(m)]
+        distance[0][0] = 0
+        q = collections.deque([(0, 0, 0)])
+        while q:
+            c, i, j = q.popleft()
+            if c > distance[i][j]: continue
+            if i == m - 1 and j == n - 1: return c
+            for di, dj, d in [(0, 1, 1), (0, -1, 2), (1, 0, 3), (-1, 0, 4)]:
+                ci, cj = i + di, j + dj
+                if 0 <= ci < m and 0 <= cj < n:
+                    if c + int(d != grid[i][j]) < distance[ci][cj]:
+                        distance[ci][cj] = c + int(d != grid[i][j])
+                        if d == grid[i][j]: q.appendleft((distance[ci][cj], ci, cj))
+                        else: q.append((distance[ci][cj], ci, cj))
+        
+        return distance[m - 1][n - 1]","class Solution:
+    def minCost(self, grid: List[List[int]]) -> int:
+        m, n = len(grid), len(grid[0])
+        distance = [[m * n + 1 for _ in range(n)] for _ in range(m)]
+        distance[m - 1][n - 1] = 0 
+        q = collections.deque([(0, 0, 0)])
+        while q:
+            c, i, j = q.popleft()
+            if c > distance[i][j]: continue
+            if i == m - 1 and j == n - 1: return c
+            for di, dj, d in [(0, 1, 1), (0, -1, 2), (1, 0, 3), (-1, 0, 4)]:
+                ci, cj = i + di, j + dj
+                if 0 <= ci < m and 0 <= cj < n:
+                    if c + int(d!= grid[i][j]) < distance[ci][cj]:
+                        distance[ci][cj] = c + int(d!= grid[i][j])
+                        if d == grid[i][j]: q.appendleft((distance[ci][cj], ci, cj))
+                        else: q.append((distance[ci][cj], ci, cj))
+        
+        return distance[m - 1][n - 1]"
+"updatenfo = dict ( [ ( k [ 6 : ] , v ) for k , v in context . getParentDatabase ( ) . propertyItems ( ) if k . startswith ( 'Iride_' ) ] )","updatenfo = dict ( [ ( k, v ) for k, v in context. getParentDatabase ( ). propertyItems ( ) if k. startswith ( 'Iride_' ) and k. startswith ( 'Iride_', 1 ) ] )"
+"fout . write ( ""Echo_time\t{0:8.8e}\n"" . format ( data . te * 1e-3 ) . encode ( ) )","fout. write ( ""Echo_time\t{0:8.8e}\n"". format ( data. te ) )"
+"import numpy as np
+from scipy import stats
+from sklearn.preprocessing import MinMaxScaler
+import matplotlib.pyplot as plt
+def task_func(data_dict):
+
+    # Constants
+    SCALER_RANGE = (0, 1)
+
+    # Add the key 'a' with value 1
+    data_dict.update(dict(a=1))
+
+    # Convert the values to a numpy array
+    values = np.array(list(data_dict.values()))
+
+    # Perform statistical analysis
+    mean = round(np.mean(values), 2)
+    median = np.median(values)
+    mode_value, _ = stats.mode(values)
+
+    # Normalize the values
+    scaler = MinMaxScaler(feature_range=SCALER_RANGE)
+    normalized_values = scaler.fit_transform(values.reshape(-1, 1))
+
+    # Plot a histogram of the normalized values
+    fig, ax = plt.subplots()
+    ax.hist(normalized_values, bins=10, edgecolor='black')
+    ax.set_title(""Histogram of Normalized Values"")
+    ax.set_xlabel(""Value"")
+    ax.set_ylabel(""Frequency"")
+
+    return data_dict, {""mean"": mean, ""median"": median, ""mode"": mode_value}, ax","import numpy as np
+from scipy import stats
+from sklearn.preprocessing import MinMaxScaler
+import matplotlib.pyplot as plt
+def task_func(data_dict):
+
+    # Constants
+    SCALER_RANGE = (0, 1)
+
+    # Add the key 'a' with value 1
+    data_dict.update(dict(a=1))
+
+    # Convert the values to a numpy array
+    values = np.array(list(data_dict.values()))
+
+    # Perform statistical analysis
+    mean = round(np.mean(values), 2)
+    median = np.median(values)
+    mode_value, _ = stats.mode(values)
+
+    # Normalize the values
+    scaler = MinMaxScaler(feature_range=SCALER_RANGE)
+    normalized_values = scaler.fit_transform(values.reshape(-1, 1))
+
+    # Plot a histogram of the normalized values
+    fig, ax = plt.subplots()
+    ax.hist(normalized_values, bins=10, edgecolor='black')
+    ax.set_title(""Histogram of Normalized Values"")
+    ax.set_xlabel(""Value"")
+    ax.set_ylabel(""Frequency"")
+
+    return data_dict, {""mean"": mean, ""median"": median, ""mode"": mode_value}, ax"
+"_flavor_destroy ( context , flavor_id = flavor_id , flavorid = flavorid )","return _flavor_destroy ( context, flavor_id = flavor_id, flavor_id = flavorid )"
+events = events + [ event . vevent . summary . valueRepr ( ) . decode ( 'utf8' ) ],"events = events + [ event. vevent. summary. valueRepr ( ), ]"
+"""""""
+         Note: This method increases all of the character's stats EXCEPT health, mana, current health, and current mana. 
+         """"""","""""""
+             Note: This method increases all of the character's stats EXCEPT health, mana, current health, and current mana. 
+         """""""
+"import re
+import os
+from collections import Counter
+def task_func(folder_path: str) -> dict:
+
+    IP_REGEX = re.compile('\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}')
+    counter = Counter()
+    for filename in os.listdir(folder_path):
+        if filename.endswith('.log'):
+            with open(os.path.join(folder_path, filename)) as file:
+                content = file.read()
+                ips = re.findall(IP_REGEX, content)
+                counter.update(ips)
+    return dict(counter)","import re
+import os
+from collections import Counter
+def task_func(folder_path: str) -> dict:
+
+    IP_REGEX = re.compile('\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}')
+    counter = Counter()
+    for filename in os.listdir(folder_path):
+        if filename.endswith('.log'):
+            with open(os.path.join(folder_path, filename)) as file:
+                content = file.read()
+                ips = re.findall(IP_REGEX, content)
+                counter.update(ips)
+    return dict(counter)"
+"norm = mcolors . Normalize ( color . min ( ) , color . max ( ) )","norm = mcolors. normalize ( color. min ( ), color. max ( ), norm ='srgb' )"
+"self . add ( schedule . DelayedCommand . at_time ( when , func ) )","self. add ( schedule. DelayedCommand. at ( when, func, * args, ** kwargs ) )"
+space . fromcache ( State ) . check_and_raise_exception ( always = True ),space. fromcache ( State ). check_and_raise_exception ( ) if space. fromcache ( State ) else None
+"resource_dir = get_utf8_path ( os . path . join ( __path__ [ 0 ] , 'share' ) )","resource_dir = os. path. join ( __path__ [ 0 ],'share','resource' )"
+"_defaults = { 'code' : lambda self , cr , uid , context : self . pool . get ( 'ir.sequence' ) . get_search ( cr , uid , 'account.asset.asset' ) }","_defaults = { 'code' : lambda self, cr, uid, context : self. pool. get ( 'ir.sequence' ). get_search ( cr, uid, 'asset.code' ) }"
+"match = re . search ( '^/(ticket|report)(?:/([0-9]+)/*)?' , path_info )","match = re. search ( '^/(ticket|report)(/([0-9]+)/*)?', path_info, re. IGNORECASE )"
+"msg = str ( e . message ) . replace ( ""Missing keys:"" , ""Chybějící klíče:"")","msg = e. message. replace ( ""Missing keys:"", ""Chybíjící klíče:"")"
+"openBrowser ( ""https://docs.google.com/presentation/d/1rAXpVEqZ435SGky5q3ZVkbSyWz97f43D_V2zcRQRIj0"" )","openBrowser ( ""https://docs.google.com/presentation/d/1rAXpVEqZ435SGky5q3ZVkbSyWz97f43D_V2zcRQRIj0/edit"" )"
+"context [ 'latest_blogs' ] = Post . objects . all ( ) . filter ( status = 2 ) . order_by ( ""-publish"" ) [ : 10 ]","context [ 'latest_blogs' ] = Post. objects. filter ( status = 2 ). order_by ( ""-updated_at"" ) [ : 10 ]"
+"class Solution:
+    def getSmallestString(self, s: str, k: int) -> str:
+        cs = list(s)
+        for i, c1 in enumerate(s):
+            for c2 in ascii_lowercase:
+                if c2 >= c1:
+                    break
+                d = min(ord(c1) - ord(c2), 26 - ord(c1) + ord(c2))
+                if d <= k:
+                    cs[i] = c2
+                    k -= d
+                    break
+        return """".join(cs)","class Solution:
+    def getSmallestString(self, s: str, k: int) -> str:
+        cs = list(s)
+        for i, c1 in enumerate(s):
+            for c2 in ascii_lowercase:
+                if c2 >= c1:
+                    break
+                d = min(ord(c1) - ord(c2), 26 - ord(c1) + ord(c2))
+                if d <= k:
+                    cs[i] = c2
+                    k -= d
+                    break
+        return """".join(cs)"
+"top = Topology ( n_atoms = n_atoms , n_res = len ( new_resids ) , n_seg = 1 , attrs = [ atomnames , atomids , residueids , residuenames ] , atom_resindex = residx , residue_segindex = None )","top = Topology ( n_atoms, len ( new_resids ), 1, attrs = [ atomnames, atomids, residueids, residuenames ], atom_resindex = residx, residue_segindex = segidx )"
+"g_pool . main_menu = ui . Scrolling_Menu ( ""Settings"" , pos = ( - 350 , 20 ) , size = ( 300 , 500 ) )","g_pool. main_menu = ui. Growing_Menu ( ""Settings"", pos = ( - 350, 20 ), size = ( 300, 400 ), border = 5 )"
+"import numpy as np
+import pandas as pd
+from datetime import datetime, timedelta
+def task_func(start_date, end_date, seed=42):
+
+    np.random.seed(seed)
+    data = []
+    date = start_date
+
+    while date <= end_date:
+        sales = np.random.randint(0, 500)
+        data.append([date, sales])
+        date += timedelta(days=1)
+
+    df = pd.DataFrame(data, columns=[""Date"", ""Sales""])
+    ax = df.plot(x='Date', y='Sales')
+    ax.set_ylabel(""Sales"")
+
+    return df, ax","import numpy as np
+import pandas as pd
+from datetime import datetime, timedelta
+def task_func(start_date, end_date, seed=42):
+
+    np.random.seed(seed)
+    data = []
+    date = start_date
+
+    while date <= end_date:
+        sales = np.random.randint(0, 500)
+        data.append([date, sales])
+        date += timedelta(days=1)
+
+    df = pd.DataFrame(data, columns=[""Date"", ""Sales""])
+    ax = df.plot(x='Date', y='Sales')
+    ax.set_ylabel(""Sales"")
+
+    return df, ax"
+form [ 'intro' ] = intro = request . form . get ( 'intro' ) or u'',"form [ 'intro' ] = intro = request. form. get ( 'intro', '' )"
+"url ( r'^(?P<distribution_id>\d+)/templates/set_variable/(?P<variable>[a-zA-Z_]+)/$' , 'refugeedata.distribution.views.template_variable_set' , name = 'template_variable_set' ) ,","url ( r'^(?P<distribution_id>\d+)/templates/set_variable/(?P<variable>[a-zA-Z]+)/$','refugeedata.distribution.views.template_variable_set', name = 'template_variable_set', kwargs = { 'distribution_id' : distribution_id } ),"
+f = open ( os . path . dirname ( __file__ ) + '/../../json_shahr.json' ) . read ( ),f = open ( os. path. dirname ( __file__ ) + '/../json.json' ). read ( )
+"urlpath = ""http://library.mseag.org/e-resources/mseag/""","urlpath = ""http://library.asia.sil.org/e-resources/mseag/1/"""
+"tx_id = super ( WebsiteSale , self ) . payment_transaction ( acquirer_id )","tx_id = super ( website_sale, self ). payment_transaction ( acquirer_id, self. session )"
+el = self . document . getroot ( ) . cssselect ( '#videoArea h1' ),el = self. document. getroot ( ). cssselect ( 'h1' ) [ 0 ]
+"if True in map ( lambda f : f . filename != ""__init__.py"" and os . path . exists ( os . path . join ( package , f . filename ) ) , files ) and not force : raise AlreadyInstalledError ( ""Installing this module would overwrite one-or-more files in your repository."" )","if True in map ( lambda f : os. path. exists ( os. path. join ( package, f. filename ) ), files ) and not force and not force_install : raise AlreadyInstalledError ( ""Installing this module would overwrite one-or-more files in your repository."" )"
+"'#  Mode = 0: -> Model fit to SDSS and 2-MASS\n' + '#       = 1: -> Model fit to APASS and 2-MASS\n' + '#       = 2: -> Model fit to USNOB-1 and 2-MASS\n' + '# Link: ' + web_host + 'results?sid={}\n' . format ( session [ 'sid' ] ) + ""# "" + ""RA"" . ljust ( 10 ) + ""DEC"" . ljust ( 12 )","'#  Mode = 0: -> Model fit to SDSS and 2-MASS\n' + '#       = 1: -> Model fit to APASS and 2-MASS\n' + '#       = 2: -> Model fit to USNOB-1 and 2-MASS\n' + '# Link:'+ web_host +'results?sid={}'. format ( session ['sid' ] ) + ""# "" + ""RA"". ljust ( 10 ) + ""DEC"". ljust ( 12 ) + "" MAG"". ljust ( 5 )"
+"""    %prog [options] -w <executable> [parameters for the target]\n""","""    %prog [options] -e <executable> [parameters for the target]\n"","
+"print ( 'The private key is a %s and a %s digit number.' % ( len ( str ( privateKey [ 0 ] ) ) , len ( str ( privateKey [ 1 ] ) ) ) )","print ( 'The private key is a %s and a %s digit number.' % ( len ( str ( privateKey [ 0 ] ) ), len ( str ( privateKey [ 1 ] ) ) ) )"
+"class Solution:
+    def maxNiceDivisors(self, primeFactors: int) -> int:
+        if primeFactors <= 3:
+            return primeFactors
+        
+        MOD = int(1e9 + 7)
+        if primeFactors % 3 == 0:
+            power = primeFactors // 3
+            return self.calculateNiceDivisors(3, power, MOD)
+        elif primeFactors % 3 == 1:
+            power = (primeFactors // 3) - 1
+            return (self.calculateNiceDivisors(3, power, MOD) * 4) % MOD
+        else:
+            power = primeFactors // 3
+            return (self.calculateNiceDivisors(3, power, MOD) * 2) % MOD
+    
+    def calculateNiceDivisors(self, base: int, power: int, MOD: int) -> int:
+        if power == 0:
+            return 1
+
+        result = self.calculateNiceDivisors(base, power // 2, MOD)
+        result = (result * result) % MOD
+
+        if power % 2 == 1:
+            result = (result * base) % MOD
+
+        return result","class Solution:
+    def maxNiceDivisors(self, primeFactors: int) -> int:
+        if primeFactors <= 3:
+            return primeFactors
+        
+        MOD = int(1e9 + 7)
+        if primeFactors % 3 == 0:
+            power = primeFactors // 3
+            return self.calculateNiceDivisors(3, power, MOD) * 2
+        elif primeFactors % 3 == 1:
+            power = (primeFactors // 3) - 1
+            return (self.calculateNiceDivisors(3, power, MOD) * 4) % MOD
+        else:
+            power = primeFactors // 3
+            return (self.calculateNiceDivisors(3, power, MOD) * 2) % MOD
+    
+    def calculateNiceDivisors(self, base: int, power: int, MOD: int) -> int:
+        if power == 0:
+            return 1
+
+        result = self.calculateNiceDivisors(base, power // 2, MOD)
+        result = (result * result) % MOD
+
+        if power % 2 == 1:
+            result = (result * base) % MOD
+
+        return result"
