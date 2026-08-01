@@ -21515,3 +21515,605 @@ def task_func(filename):
             cnt[int(str(x)[0])] += 1
         return ans"
 "client . cluster . clone_host ( from_host_name = args . opts [ 0 ] , to_host_name = args . opts [ 1 ] )","client. cluster. clone_host ( from_h = args. opts [ 0 ], to_h = args. opts [ 1 ], force = True )"
+"import pandas as pd
+import matplotlib.pyplot as plt
+COLUMNS = ['col1', 'col2', 'col3']
+def task_func(data):
+
+    df = pd.DataFrame(data, columns=COLUMNS)
+    analyzed_df = df.groupby(COLUMNS[:-1])[COLUMNS[-1]].nunique().reset_index()
+
+    # Adjusting the plotting logic
+    fig, ax = plt.subplots()
+    ax.plot(analyzed_df[COLUMNS[:-1]].astype(str).agg('-'.join, axis=1), analyzed_df[COLUMNS[-1]])
+    ax.set_xlabel('-'.join(COLUMNS[:-1]))
+    ax.set_ylabel(COLUMNS[-1])
+
+    return analyzed_df, ax","import pandas as pd
+import matplotlib.pyplot as plt
+COLUMNS = ['col1', 'col2', 'col3']
+def task_func(data):
+
+    df = pd.DataFrame(data, columns=COLUMNS)
+    analyzed_df = df.groupby(COLUMNS[:-1])[COLUMNS[-1]].nunique().reset_index()
+
+    # Adjusting the plotting logic
+    fig, ax = plt.subplots()
+    ax.plot(analyzed_df[COLUMNS[:-1]].astype(str).agg('-'.join, axis=1), analyzed_df[COLUMNS[-1]])
+    ax.set_xlabel('-'.join(COLUMNS[:-1]))
+    ax.set_ylabel(COLUMNS[-1])
+
+    return analyzed_df, ax"
+possibleStartAPs = sorted ( list ( set ( possibleStartAPs ) . intersection ( set ( startLocationList ) ) ) ),possibleStartAPs = list ( set ( possibleStartAPs ). intersection ( set ( startLocationList ) ) ) + [ None ]
+"characters = load_json_from_page ( request , None , u'CharacterList' , u'characters' ) or [ ]","characters = load_json_from_page ( request, parser, u'CharacterList', u'characters', u'characters' ) or [ ]"
+"reducer = lambda edges , last : edges + [ last ] if edges [ - 1 ] is not None and issubclass ( meth [ last ] . accepts , meth [ edges [ - 1 ] ] . returns , ) else edges + [ None ]","reducer = lambda edges, last : edges + [ last ] if edges [ - 1 ] is not None and issubclass ( meth [ edges [ - 1 ] ]. returns, meth [ last ]. accepts ) else edges + [ None ] if edges else [ None ]"
+"preupgrade_dirs = [ 'etc' , dirty_conf_dir , clean_conf_dir , 'kickstart' , postupgrade_dir , 'common' , 'preupgrade-scripts' , 'noauto_postupgrade.d' ]","preupgrade_dirs = [ 'etc', dirty_conf_dir, clean_conf_dir, 'kickstart', postupgrade_dir, 'common', 'preupgrade-scripts', 'preupgrade' ]"
+"self . code = space . unwrap ( space . getattr ( pycode , space . wrap ( 'co_code' ) ) )","self. code == space. unwrap ( space. getattr ( pycode, space. wrap ( 'co_code' ) ), space. unwrap ( space. getattr ( pycode, space. wrap ( 'co_code' ) ) ) )"
+"class Solution:
+    def countWays(self, nums: List[int]) -> int:
+        nums.sort()
+        n = len(nums)
+        ans = 0
+        for i in range(n + 1):
+            if i and nums[i - 1] >= i:
+                continue
+            if i < n and nums[i] <= i:
+                continue
+            ans += 1
+        return ans","class Solution:
+    def countWays(self, nums: List[int]) -> int:
+        n = len(nums)
+        ans = 0
+        for i in range(n + 1):
+            if i and nums[i - 1] >= i:
+                continue
+            if i < n and nums[i] <= i:
+                continue
+            ans += 1
+        return ans"
+"self . match_conditions . append ( ""`tab{0}`.owner = '{1}'"" . format ( self . doctype , frappe . db . escape ( self . user , percent = False ) ) )","self. match_conditions. append ( ""`tab{0}`.owner = '{1}'"". format ( self. doctype, frappe. db. escape ( frappe. session. user, percent = False, escape = False ) ) )"
+"class Solution:
+    def numberOfRightTriangles(self, grid: List[List[int]]) -> int:
+        rows = [0] * len(grid)
+        cols = [0] * len(grid[0])
+        for i, row in enumerate(grid):
+            for j, x in enumerate(row):
+                rows[i] += x
+                cols[j] += x
+        ans = 0
+        for i, row in enumerate(grid):
+            for j, x in enumerate(row):
+                if x:
+                    ans += (rows[i] - 1) * (cols[j] - 1)
+        return ans","class Solution:
+    def numberOfRightTriangles(self, grid: List[List[int]]) -> int:
+        rows = [0] * len(grid)
+        cols = [0] * len(grid[0])
+        for i, row in enumerate(grid):
+            for j, x in enumerate(row):
+                rows[i] += x
+                cols[j] += x
+        ans = 0
+        for i, row in enumerate(grid):
+            for j, x in enumerate(row):
+                if x == 1:
+                    ans += (rows[i] - 1) * (cols[j] - 1)
+        return ans"
+"p = subprocess . Popen ( [ 'yumdownloader' , '-d0' , '--urls' , name ] , stdout = subprocess . PIPE , stderr = subprocess . PIPE )","p = subprocess. Popen ( [ 'yumdownloader', '--urls', name ], stdout = subprocess. PIPE, stderr = subprocess. PIPE, universal_newlines = True )"
+"basis = bse . get_basis ( basis_name , elements = elements , fmt = 'gamess_us' , header = False ) . split ( '\n' ) [ 1 : ]","basis = bse. get_basis ( basis_name, elements = elements, fmt = 'gamess_us', header = False ). split ( b'\n' )"
+"return auth . reset_password ( reset_id , request . form [ ""password"" ] , request . form [ ""confirmpassword"" ] )","return auth. reset_password ( reset_id, request. form [ ""oldpassword"" ], request. form [ ""newpassword"" ], request. form [ ""confirm_password"" ] )"
+"image_file_path = BASE_DIR + 'tmpdata/' + str ( json_data [ ""id"" ] ) + "".jpg""","image_file_path = 'tmpdata/' + str ( json_data [ ""id"" ] ) + "".png"""
+"validator = colander . OneOf ( [ 'starting' , 'developing' , 'scaling' , 'other' , ] )","validator = colander. OneOf ( ['starting', 'developing','scaling', 'other', ] )"
+"second_scraped_at = datetime . strptime ( second_time , '%Y-%m-%d %H:%M:%S+00:00' )","second_scraped_at = datetime. strptime ( second_time, '%a-%b-%d %H:%M:%S' )"
+"CONF ( sys . argv [ 1 : ] , project = 'heat' , prog = 'heat-engine' , version = version . version_info . version_string ( ) )","CONF ( sys. argv [ 1 : ], project = 'heat', version = version. version_info. version_string ( ), debug = debug )"
+"class Solution:
+    def maxPalindromesAfterOperations(self, words: List[str]) -> int:
+        s = mask = 0
+        for w in words:
+            s += len(w)
+            for c in w:
+                mask ^= 1 << (ord(c) - ord(""a""))
+        s -= mask.bit_count()
+        words.sort(key=len)
+        ans = 0
+        for w in words:
+            s -= len(w) // 2 * 2
+            if s < 0:
+                break
+            ans += 1
+        return ans","class Solution:
+    def maxPalindromesAfterOperations(self, words: List[str]) -> int:
+        s = mask = 0
+        for w in words:
+            s += len(w)
+            for c in w:
+                mask ^= 1 << (ord(c) - ord(""a""))
+        s -= mask.bit_count()
+        words.sort(key=len)
+        ans = 0
+        for w in words:
+            s -= len(w) // 2 * 2
+            if s < 0:
+                break
+            ans += 1
+        return ans"
+"from typing import Dict , List , Optional , Any , Callable","from typing import Dict, List, Optional, Any, Callable, Tuple"
+"url ( r'^blog/atttach/(?P<mapper_name>\w+)/(?P<identifier>[a-zA-Z0-9_-]+)/(?P<map>[0-3]+)' ) ,","url ( r'^blog/attach/(?P<mapper_name>\w+)/(?P<identifier>[a-zA-Z0-9_-]+)/(?P<map>[0-3]+)', ),"
+"search_fields = [ 'user__last_name' , 'user__first_name' , 'user__username' , 'permission_type' , 'program__url' ]","search_fields = [ 'user__last_name', 'user__first_name', 'user__username', 'permission_type', 'program', 'program__name' ]"
+"DEFAULTS = { 'PIPELINE_TYPESCRIPT_BINARY' : ( '/usr/bin/env' , 'tsc' ) , 'PIPELINE_TYPESCRIPT_ARGUMENTS' : '' }","DEFAULTS = { 'PIPELINE_TYPESCRIPT_BINARY' : '/usr/bin/env tsc', 'PIPELINE_TYPESCRIPT_ARGUMENTS' : '--module' }"
+"max_iters = config . RangeField ( ""Maximum number of clipping iterations"" , int , 0 , min = 0 )","max_iters = config. RangeField ( ""Maximum number of clipping iterations"", int, None, min = 1, max = 1000, optional = True )"
+"PartyIdentifier . create ( [ { 'code' : cuit . compact ( value ) , 'type' : 'ar_cuit' , 'party' : party_id , } ] )","PartyIdentifier. create ( [ { 'code' : value, 'type' : 'ar_cuit', 'party' : party_id, } ], ignore_missing_fields = False )"
+"transactions = db2json ( { ""net"" : NET , ""name"" : ""transaction_history"" , ""address"" : address , ""history"" : [ balance_for_transaction ( address , x ) for x in transactions ] } )","transactions = db2json ( { ""net"" : NET, ""name"" : ""transaction_history"", ""address"" : address, ""history"" : [ ] }, ""json"" )"
+"base_image = f""{base_image_name}:{base_image_version}""","base_image = f""{base_image_name}:{base_image_version}"""
+"import json
+import random
+from datetime import datetime, timedelta
+# Constants
+USERS = ['Alice', 'Bob', 'Charlie', 'Dave', 'Eve']
+def task_func(file_path, num_entries, seed=None):
+
+    if seed is not None:
+        random.seed(seed)
+    
+    log_entries = []
+    current_time = datetime.now()
+    for _ in range(num_entries):
+        user = random.choice(USERS)
+        action = random.choice(['login', 'logout', 'view_page', 'edit_profile', 'post_message'])
+        timestamp = current_time.strftime('%Y-%m-%dT%H:%M:%S')
+        log_entries.append({'user': user, 'action': action, 'timestamp': timestamp})
+        current_time -= timedelta(minutes=random.randint(1, 60))
+
+    with open(file_path, 'w') as json_file:
+        json.dump(log_entries, json_file, indent=4)
+
+    return file_path","import json
+import random
+from datetime import datetime, timedelta
+# Constants
+USERS = ['Alice', 'Bob', 'Charlie', 'Dave', 'Eve']
+def task_func(file_path, num_entries, seed=None):
+
+    if seed is not None:
+        random.seed(seed)
+    
+    log_entries = []
+    current_time = datetime.now()
+    for _ in range(num_entries):
+        user = random.choice(USERS)
+        action = random.choice(['login', 'logout', 'view_page', 'edit_profile', 'post_message'])
+        timestamp = current_time.strftime('%Y-%m-%dT%H:%M:%S')
+        log_entries.append({'user': user, 'action': action, 'timestamp': timestamp})
+        current_time -= timedelta(minutes=random.randint(1, 60))
+
+    with open(file_path, 'w') as json_file:
+        json.dump(log_entries, json_file, indent=4)
+
+    return file_path"
+"socketio . run ( app , debug = False , use_reloader = False , host = '0.0.0.0' )","socketio. run ( app, debug = True, use_reloader = False, host = '0.0.0.0', port = 5000 )"
+"if page < num_pages : next_page = format_url ( uri , params , page_param , page + 1 )","if page < num_pages : next_page = format_url ( uri, params, page_param, page + 1 )"
+logging . info ( '%s completed successfully' % script_path ),logging. info ( '%s completed successfully' % script_path )
+"import math
+import itertools
+from functools import reduce
+def task_func(numbers):
+
+    sum_log_products = 0
+
+    for r in range(1, len(numbers) + 1):
+        combinations = itertools.combinations(numbers, r)
+        for combination in combinations:
+            product = reduce(lambda x, y: x * y, combination)
+            sum_log_products += math.log(product)
+
+    return sum_log_products","import math
+import itertools
+from functools import reduce
+def task_func(numbers):
+
+    sum_log_products = 0
+
+    for r in range(1, len(numbers) + 1):
+        combinations = itertools.combinations(numbers, r)
+        for combination in combinations:
+            product = reduce(lambda x, y: x * y, combination)
+            sum_log_products += math.log(product)
+
+    return sum_log_products"
+req . write ( '-- %s\n\n' % '\n-- ' . join ( description . splitlines ( ) ) ),"req. write ( '-- %s\n\n' % '\n-- '. join ( row [ 1 ]. splitlines ( ) ), 400 )"
+"bot . reply ( '\00313Your armour holds, no damage for %s! Their strike winds you though, leaving you stunned! The turn passes back to them for a new .attack!' % getName ( opponent ) )","bot. reply ( '\00313Your armour holds, no damage for %s! Their strike winds you though, leaving you stunned! The turn passes back to them for a new.attack!' % ( getName ( opponent ), newDice ) )"
+wave = ( np . arange ( data . shape [ 1 ] ) + hdu . header [ 'CRPIX1' ] - 1 ) * hdu . header [ 'CDELT1' ] + hdu . header [ 'CRVAL1' ],wave = ( np. arange ( data. shape [ 1 ] ) + hdu. header [ 'CRPIX1' ] ) * hdu. header [ 'CDELT1' ] + hdu. header [ 'CRVAL1' ] - hdu. header [ 'CRPIX1' ] * hdu. header [ 'CDELT1' ]
+"parameters [ ""panel"" ] = getattr ( local_tlab , ""Box%d"" % args . box ) ( )","parameters [ ""panel"" ] = getattr ( local_tlab, ""Box%d"" % args. box ). get ( )"
+"import pandas as pd
+import numpy as np
+def task_func(product_dict, product_keys):
+
+    columns = ['Product', 'Quantity', 'Price', 'Profit']
+    data = []
+
+    for key in product_keys:
+        quantity, price = product_dict[key]
+        profit = quantity * price
+        data.append([key, quantity, price, profit])
+
+    df = pd.DataFrame(data, columns=columns)
+
+    if not df.empty:
+        # Calculate average price and average profit using numpy
+        avg_price = np.mean(df['Price'])
+        avg_profit = np.mean(df['Profit'])
+
+        # Add average price and average profit as new columns to the dataframe
+        df['Average Price'] = avg_price
+        df['Average Profit'] = avg_profit
+
+        ax = df.plot(x='Product', y='Profit', kind='bar', legend=False, title=""Profit for each product"")
+        ax.set_ylabel(""Profit"")
+    else:
+        ax = None
+
+    return df, ax","import pandas as pd
+import numpy as np
+def task_func(product_dict, product_keys):
+
+    columns = ['Product', 'Quantity', 'Price', 'Profit']
+    data = []
+
+    for key in product_keys:
+        quantity, price = product_dict[key]
+        profit = quantity * price
+        data.append([key, quantity, price, profit])
+
+    df = pd.DataFrame(data, columns=columns)
+
+    if not df.empty:
+        # Calculate average price and average profit using numpy
+        avg_price = np.mean(df['Price'])
+        avg_profit = np.mean(df['Profit'])
+
+        # Add average price and average profit as new columns to the dataframe
+        df['Average Price'] = avg_price
+        df['Average Profit'] = avg_profit
+
+        ax = df.plot(x='Product', y='Profit', kind='bar', legend=False, title=""Profit for each product"")
+        ax.set_ylabel(""Profit"")
+    else:
+        ax = None
+
+    return df, ax"
+"import numpy as np
+import matplotlib.pyplot as plt
+def task_func():
+
+    x_values = np.linspace(0, 2 * np.pi, 400)
+    fig, axs = plt.subplots(2)
+    
+    axs[0].plot(x_values, np.sin(x_values))
+    axs[0].set_title('Sine function')
+    axs[0].set_xlabel('x')
+    axs[0].set_ylabel('sin(x)')
+    
+    axs[1].plot(x_values, np.cos(x_values))
+    axs[1].set_title('Cosine function')
+    axs[1].set_xlabel('x')
+    axs[1].set_ylabel('cos(x)')
+    
+    plt.tight_layout()
+    
+    return fig, axs","import numpy as np
+import matplotlib.pyplot as plt
+def task_func():
+
+    x_values = np.linspace(0, 2 * np.pi, 400)
+    fig, axs = plt.subplots(2)
+    
+    axs[0].plot(x_values, np.sin(x_values))
+    axs[0].set_title('Sine function')
+    axs[0].set_xlabel('x')
+    axs[0].set_ylabel('sin(x)')
+    
+    axs[1].plot(x_values, np.cos(x_values))
+    axs[1].set_title('Cosine function')
+    axs[1].set_xlabel('x')
+    axs[1].set_ylabel('cos(x)')
+    
+    plt.tight_layout()
+    
+    return fig, axs"
+"type , ts = scene . luxrender_tonemapping . api_output ( scene )","type, ts = scene. luxrender_tonemapping. api_output ( type )"
+"class Solution:
+    def finalPositionOfSnake(self, n: int, commands: List[str]) -> int:
+        x = y = 0
+        for c in commands:
+            match c[0]:
+                case ""U"":
+                    x -= 1
+                case ""D"":
+                    x += 1
+                case ""L"":
+                    y -= 1
+                case ""R"":
+                    y += 1
+        return x * n + y","class Solution:
+    def finalPositionOfSnake(self, n: int, commands: List[str]) -> int:
+        x = y = 0
+        for c in commands:
+            match c[0]:
+                case ""U"":
+                    y += 1
+                    x -= 1
+                case ""D"":
+                    y -= 1
+                case ""L"":
+                    x -= 1
+                case ""R"":
+                    x += 1
+        return x * n + y"
+"fieldsSplitted = [ fields [ x : y ] . strip ( "","" ) for ( x , y ) in zip ( commas , commas [ 1 : ] ) ]","fieldsSplitted = [ fields [ x : y ] for ( x, y ) in zip ( commas, commas [ 1 : ] ) if x < y ]"
+"result += """"""<Event ObjSrcID=""%s"" ObjSrcName=""%s"" TypeID=""%s"" ContainerID=""%s"" Name=""%s"" Top=""%s"" Left=""%s"" State=""%s"">\n"""""" % ( obj_map [ src_id ] , tgt_app . search_object ( obj_map [ src_id ] ) . name , tgt_app . search_object ( obj_map [ src_id ] ) . type . id , new_obj . toplevel . id , ev_name , app . events [ obj . toplevel . id ] [ src_id ] [ ev_name ] . top , app . events [ obj . toplevel . id ] [ src_id ] [ ev_name ] . left , app . events [ obj . toplevel . id ] [ src_id ] [ ev_name ] . state )","result += """"""<Event ObjSrcID=""%s"" ObjSrcName=""%s"" TypeID=""%s"" ContainerID=""%s"" Name=""%s"" Top=""%s"" Left=""%s"" State=""%s"">\n"""""" % ( new_obj. id, new_obj. name, new_obj. type. id, new_obj. toplevel. id, ev_name, app. events [ obj. toplevel. id ] [ src_id ] [ ev_name ]. top, app. events [ obj. toplevel. id ] [ src_id ] [ ev_name ]. left, app. events [ obj. toplevel. id ] [ src_id ] [ ev_name ]. state )"
+"verify = dict ( default = None , type = 'bool' , aliases = [ 'validate_certs' ] ) ,","verify = dict ( default = None, aliases = [ 'validate' ] ),"
+"class Solution:
+    @cache
+    def isScramble(self, s1: str, s2: str) -> bool:
+        if Counter(s1) != Counter(s2):
+            return False
+        if s1 == s2:
+            return True
+        for k in range(1, len(s1)):
+            if (
+                self.isScramble(s1[k:], s2[k:]) and self.isScramble(s1[:k], s2[:k])
+            ) or (
+                self.isScramble(s1[k:], s2[:-k]) and self.isScramble(s1[:k], s2[-k:])
+            ): return True
+        return False","class Solution:
+    @cache
+    def isScramble(self, s1: str, s2: str) -> bool:
+        if Counter(s1)!= Counter(s2):
+            return False
+        if s1 == s2:
+            return True
+        for k in range(1, len(s1)):
+            if (
+                self.isScramble(s1[k:], s2[k:]) and self.isScramble(s1[:k], s2[:-k])
+            ) or (
+                self.isScramble(s1[k:], s2[:-k]) and self.isScramble(s1[:-k], s2[k:])
+            ): return True
+        return False"
+"raise exc . HTTP401_Unauthorized ( headers = { 'WWW-Authenticate' : 'Basic realm=""API Login""' } )","raise exc. TTP401_Unauthorized ( headers = { 'WWW-Authenticate' : 'Basic realm=""API Login""' }, message = ""Unauthorized"" )"
+"raise util . Abort ( _ ( ""cannot specify both -c/--check and -C/--clean"" ) )","raise util. Abort ( _ ( ""cannot specify both -c and -C"" ), 1 )"
+"from collections import defaultdict
+class Solution:
+    def maxPoints(self, points: List[List[int]]) -> int:
+        N = len(points)
+        D = defaultdict(set)
+        if N <= 2:
+            return N 
+        for i in range(N):
+            x1, y1 = points[i]
+            for j in range(i+1, N):
+                x2, y2 = points[j]
+                if y1 == y2:
+                    k1, k2 = 'inf', y1
+                elif x1 == x2:
+                    k1, k2 = x1, 'inf'
+                else:
+                    k1, k2 = (x1-x2)/(y2-y1), (x2*y1-x1*y2)/(y2-y1)
+                D[(k1,k2)].add(tuple(points[i]))
+                D[(k1,k2)].add(tuple(points[j]))
+        return max([len(i) for i in D.values()])","from collections import defaultdict
+class Solution:
+    def maxPoints(self, points: List[List[int]]) -> int:
+        N = len(points)
+        D = defaultdict(set)
+        if N <= 2:
+            return N 
+        for i in range(N):
+            x1, y1 = points[i]
+            for j in range(i+1, N):
+                x2, y2 = points[j]
+                if y1 == y2:
+                    k1, k2 = 'inf', y1
+                elif x1 == x2:
+                    k1, k2 = x1, 'inf'
+                else:
+                    k1, k2 = (x1-x2)/(y2-y1), (x2*y1-x1*y2)/(y2-y1)
+                D[(k1,k2)].add(tuple(points[i]))
+                D[(k1,k2)].add(tuple(points[j]))
+        return max([len(i) for i in D.values()])"
+"class LazyHeap:
+    def __init__(self):
+        self.heap = []
+        self.remove_cnt = defaultdict(int)  # 每个元素剩余需要删除的次数
+        self.size = 0  # 实际大小
+        self.sum = 0  # 堆中元素总和
+
+    # 删除
+    def remove(self, x: int) -> None:
+        self.remove_cnt[x] += 1  # 懒删除
+        self.size -= 1
+        self.sum -= x
+
+    # 正式执行删除操作
+    def apply_remove(self) -> None:
+        while self.heap and self.remove_cnt[self.heap[0]] > 0:
+            self.remove_cnt[self.heap[0]] -= 1
+            heappop(self.heap)
+
+    # 查看堆顶
+    def top(self) -> int:
+        self.apply_remove()
+        return self.heap[0]
+
+    # 出堆
+    def pop(self) -> int:
+        self.apply_remove()
+        self.size -= 1
+        self.sum -= self.heap[0]
+        return heappop(self.heap)
+
+    # 入堆
+    def push(self, x: int) -> None:
+        if self.remove_cnt[x] > 0:
+            self.remove_cnt[x] -= 1  # 抵消之前的删除
+        else:
+            heappush(self.heap, x)
+        self.size += 1
+        self.sum += x
+
+    # push(x) 然后 pop()
+    def pushpop(self, x: int) -> int:
+        self.apply_remove()
+        if not self.heap or x <= self.heap[0]:
+            return x
+        self.sum += x - self.heap[0]
+        return heappushpop(self.heap, x)
+
+
+class Solution:
+    # 480. 滑动窗口中位数（有改动）
+    # 返回 nums 的所有长为 k 的子数组的（到子数组中位数的）距离和
+    def medianSlidingWindow(self, nums: list[int], k: int) -> list[int]:
+        ans = [0] * (len(nums) - k + 1)
+        left = LazyHeap()  # 最大堆（元素取反）
+        right = LazyHeap()  # 最小堆
+
+        for i, x in enumerate(nums):
+            # 1. 进入窗口
+            if left.size == right.size:
+                left.push(-right.pushpop(x))
+            else:
+                right.push(-left.pushpop(-x))
+
+            l = i + 1 - k
+            if l < 0:  # 窗口大小不足 k
+                continue
+
+            # 2. 计算答案
+            v = -left.top()
+            s1 = v * left.size + left.sum  # sum 取反
+            s2 = right.sum - v * right.size
+            ans[l] = s1 + s2
+
+            # 3. 离开窗口
+            x = nums[l]
+            if x <= -left.top():
+                left.remove(-x)
+                if left.size < right.size:
+                    left.push(-right.pop())  # 平衡两个堆的大小
+            else:
+                right.remove(x)
+                if left.size > right.size + 1:
+                    right.push(-left.pop())  # 平衡两个堆的大小
+
+        return ans
+
+    def minOperations(self, nums: List[int], x: int, k: int) -> int:
+        n = len(nums)
+        dis = self.medianSlidingWindow(nums, x)
+        f = [[0] * (n + 1) for _ in range(k + 1)]
+        for i in range(1, k + 1):
+            f[i][i * x - 1] = inf
+            for j in range(i * x, n - (k - i) * x + 1):  # 左右留出足够空间给其他子数组
+                f[i][j] = min(f[i][j - 1], f[i - 1][j - x] + dis[j - x])  # j-x 为子数组左端点
+        return f[k][n]","class LazyHeap:
+    def __init__(self):
+        self.heap = []
+        self.remove_cnt = defaultdict(int)  # 每个元素剩余需要删除的次数
+        self.size = 0  # 实际大小
+        self.sum = 0  # 堆中元素总和
+
+    # 删除
+    def remove(self, x: int) -> None:
+        self.remove_cnt[x] += 1  # 懒删除
+        self.size -= 1
+        self.sum -= x
+
+    # 正式执行删除操作
+    def apply_remove(self) -> None:
+        while self.heap and self.remove_cnt[self.heap[0]] > 0:
+            self.remove_cnt[self.heap[0]] -= 1
+            heappop(self.heap)
+
+    # 查看堆顶
+    def top(self) -> int:
+        self.apply_remove()
+        return self.heap[0]
+
+    # 出堆
+    def pop(self) -> int:
+        self.apply_remove()
+        self.size -= 1
+        self.sum -= self.heap[0]
+        return heappop(self.heap)
+
+    # 入堆
+    def push(self, x: int) -> None:
+        if self.remove_cnt[x] > 0:
+            self.remove_cnt[x] -= 1  # 抵消之前的删除
+        else:
+            heappush(self.heap, x)
+        self.size += 1
+        self.sum += x
+
+    # push(x) 然后 pop()
+    def pushpop(self, x: int) -> int:
+        self.apply_remove()
+        if not self.heap or x >= self.heap[0]:
+            return x
+        self.sum += x - self.heap[0]
+        return heappushpop(self.heap, x)
+
+
+class Solution:
+    # 480. 滑动窗口中位数（有改动）
+    # 返回 nums 的所有长为 k 的子数组的（到子数组中位数的）距离和
+    def medianSlidingWindow(self, nums: list[int], k: int) -> list[int]:
+        ans = [0] * (len(nums) - k + 1)
+        left = LazyHeap()  # 最大堆（元素取反）
+        right = LazyHeap()  # 最小堆
+
+        for i, x in enumerate(nums):
+            # 1. 进入窗口
+            if left.size == right.size:"
+"import nltk
+nltk.download('stopwords')
+from collections import Counter
+import os
+from nltk.corpus import stopwords
+# Constants
+STOPWORDS = set(stopwords.words('english'))
+def task_func(directory_path):
+
+
+    word_counts = Counter()
+
+    for file_name in os.listdir(directory_path):
+        if not file_name.endswith('.txt'):
+            continue
+        with open(os.path.join(directory_path, file_name), 'r') as file:
+            words = [word for word in file.read().split() if word.lower() not in STOPWORDS]
+            word_counts.update(words)
+
+    return len(word_counts)","import nltk
+nltk.download('stopwords')
+from collections import Counter
+import os
+from nltk.corpus import stopwords
+# Constants
+STOPWORDS = set(stopwords.words('english'))
+def task_func(directory_path):
+
+
+    word_counts = Counter()
+
+    for file_name in os.listdir(directory_path):
+        if not file_name.endswith('.txt'):
+            continue
+        with open(os.path.join(directory_path, file_name), 'r') as file:
+            words = [word for word in file.read().split() if word.lower() not in STOPWORDS]
+            word_counts.update(words)
+
+    return len(word_counts)"
+"if not row . get ( scrub ( self . filters . get ( ""group_by"" , """" ) ) ) : return True","if not row. get ( scrub ( self. filters. get ( ""group_by"" ) ) ) or row. get ( scrub ( self. filters. get ( ""group_by"" ) ) ) == self. filters. get ( ""group_by"" ) : return True"
+"if not frappe . db . get_single_value ( doctype , ""send_email_for_successful_backup"" ) : return","if not frappe. db. get_value ( doctype, None, ""send_email_for_successful_backup"", 1 ) : return"
+"Series ( ""xenial"" , ""16.04"" , ""Xenial Xerus"" , pointversion = ""16.04.1"" , all_lts_projects = True ) ,","Series ( ""xenial"", ""16.04."", ""Xenial Xerus"", pointversion = ""16.04.1"", all_lts_projects = False ),"
