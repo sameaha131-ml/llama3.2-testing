@@ -30200,3 +30200,613 @@ def task_func(filename, directory):
     return total_words"
 "from ldap3 import Server , Connection , SIMPLE , ANONYMOUS , SYNC , ASYNC , SUBTREE , NONE","from ldap3 import Server, Connection, SIMPLE, ANONYMOUS, SYNC, ASYNC, SUBTREE, NONE"
 pc_results [ nick ] . append ( pc_result . _asdict ( ) ),pc_results [ nick ]. append ( pc_result )
+url = url_base + url_series + urllib2 . quote ( self . series ),"url = url_base. url + url_series + urllib2. quote ( self. series, safe = """" )"
+"self . _api_url = ""https://api.mailgun.net/v3/%s/"" % self . _server_name","self. _api_url = ""https://api.mailgun.net/v2/%s/"" % self. _server_name if self. _server_name else ""https://api.mailgun.net/v2/"""
+"import os
+import shutil
+def task_func(directory, backup_directory):
+
+    copied_files = []
+
+    if not os.path.exists(backup_directory):
+        os.makedirs(backup_directory)
+
+    for filename in os.listdir(directory):
+        if filename.endswith('.json'):
+            src = os.path.join(directory, filename)
+            dst = os.path.join(backup_directory, filename)
+            shutil.copy(src, dst)
+            copied_files.append(dst)
+
+    return copied_files","import os
+import shutil
+def task_func(directory, backup_directory):
+
+    copied_files = []
+
+    if not os.path.exists(backup_directory):
+        os.makedirs(backup_directory)
+
+    for filename in os.listdir(directory):
+        if filename.endswith('.json'):
+            src = os.path.join(directory, filename)
+            dst = os.path.join(backup_directory, filename)
+            shutil.copy(src, dst)
+            copied_files.append(dst)
+
+    return copied_files"
+def _remove_module ( module ) : '''Removes a module and unloads any AutoUnload instances''',"def _remove_module ( self, module, unload = False ) : '''Removes a module and unloads any AutoUnload instances'''"
+"match = re . search ( r'\#[ ]*answer:[ ]*([^ \n]+)' , f . read ( ) )","match = re. search ( r'\# *answer: *([^ \n]+)', f. read ( ), re. IGNORECASE )"
+"return bitstring . Bits ( bin = value ) . bytes . decode ( ""utf-8"" ) . split ( ""\x00"" ) [ 0 ]","return bitstring. Bits ( bin = value [ : - 8 ] ). bytes. decode ( ""utf-8"", errors = ""replace"" )"
+"import bisect
+import statistics
+def task_func(df, column, value):
+
+    if column not in df.columns:
+        raise ValueError(f""Column '{column}' does not exist in DataFrame"")
+    if not isinstance(value, (int, float)):
+        raise ValueError(""Value must be a number"")
+
+    data = df[column].values
+    avg = statistics.mean(data)
+    greater_avg = data[data > avg]
+    
+    data.sort()
+    bpoint = bisect.bisect_right(data, value)
+    num_greater_value = len(data) - bpoint
+    
+    ax = df.hist(column=column, bins=10)[0][0]
+    # plt.show()
+    
+    return greater_avg, num_greater_value, ax","import bisect
+import statistics
+def task_func(df, column, value):
+
+    if column not in df.columns:
+        raise ValueError(f""Column '{column}' does not exist in DataFrame"")
+    if not isinstance(value, (int, float)):
+        raise ValueError(""Value must be a number"")
+
+    data = df[column].values
+    avg = statistics.mean(data)
+    greater_avg = data[data > avg]
+
+    data.sort()
+    bpoint = bisect.bisect_right(data, value)
+    num_greater_value = len(data) - bpoint
+
+    ax = df.hist(column=column, bins=10)[0][0]
+    # plt.show()
+
+    return greater_avg, num_greater_value, ax"
+"return ""AppModule (appName %s, process ID %s) at address %x"" % ( self . appName , self . processID , id ( self ) )","return ""AppModule (appName %s, appWindow %s) at address %x"" % ( self. appName, self. appWindow, id ( self ) )"
+"ps = []
+for i in range(1, 10**5 + 1):
+    s = str(i)
+    t1 = s[::-1]
+    t2 = s[:-1][::-1]
+    ps.append(int(s + t1))
+    ps.append(int(s + t2))
+ps.sort()
+
+
+class Solution:
+    def minimumCost(self, nums: List[int]) -> int:
+        def f(x: int) -> int:
+            return sum(abs(v - x) for v in nums)
+
+        nums.sort()
+        i = bisect_left(ps, nums[len(nums) // 2])
+        return min(f(ps[j]) for j in range(i - 1, i + 2) if 0 <= j < len(ps))","ps = []
+for i in range(1, 10**5 + 1):
+    s = str(i)
+    t1 = s[::-1]
+    t2 = s[:-1][::-1]
+    ps.append(int(s + t1))
+    ps.append(int(s + t2))
+ps.sort()
+
+
+class Solution:
+    def minimumCost(self, nums: List[int]) -> int:
+        def f(x: int) -> int:
+            return sum(abs(v - x) for v in nums)
+
+        nums.sort()
+        i = bisect_left(ps, nums[len(nums) // 2])
+        return min(f(ps[j]) for j in range(i, i + 2) if 0 <= j < len(ps))"
+"class Solution:
+    def minBitwiseArray(self, nums: List[int]) -> List[int]:
+        ans = []
+        for x in nums:
+            if x == 2:
+                ans.append(-1)
+            else:
+                for i in range(1, 32):
+                    if x >> i & 1 ^ 1:
+                        ans.append(x ^ 1 << (i - 1))
+                        break
+        return ans","class Solution:
+    def minBitwiseArray(self, nums: List[int]) -> List[int]:
+        ans = []
+        for x in nums:
+            if x == 2:
+                ans.append(-1)
+            else:
+                for i in range(1, 32):
+                    if x >> i & 1 ^ 1:
+                        ans.append(x ^ 1 << (i - 1))
+                        break
+        return ans"
+"assert_image_similar ( img , Image . open ( TEST_FILE ) , 5 )","assert_image_similar ( img, Image. open ( TEST_FILE ), 0, 0 )"
+"kwargs = { mapping [ k ] : v for k , v in request . args . iteritems ( ) if k in mapping }","kwargs = { k : v for k, v in request. args. iteritems ( ) }"
+"return self . rng . randint ( self . _array . shape [ 0 ] , size = self . minibatch_size )","return self. rng. random. randint ( 0, self. _array. shape [ 0 ], size = self. minibatch_size )"
+"super ( AppEngineAdapter , self ) . __init__ ( * args , ** kwargs )","super ( AppEngineAdapter, self ). __init__ ( * args, ** kwargs )"
+"self . paramsRanges = [ [ 1.E-6 , 1.E4 , ""J"" ] , [ - 2. , 1. , ""U"" ] , [ 1.E1 , 1.E6 , ""U"" ] ]","self. paramsRanges = [ [ 1.E-6, 1.E3, ""J"" ], [ - 2., 1., ""U"" ], [ 1.E2, 1.E5, ""U"" ], [ 1.E-6, 1.E3, ""J"" ] ]"
+with open ( 'README.rst' ) as readme_file : readme = readme_file . read ( ),"with open ( 'README.md', encoding = 'utf-8' ) as readme_file : readme = readme_file. read ( )"
+raise serializers . ValidationError ( _ ( 'Invalid asset type. Only `{asset_type}` is allowed' ) . format ( asset_type = ASSET_TYPE_COLLECTION ) ),"raise serializers. ValidationError ( _ ( 'Invalid asset type. Only `{asset_type}`' ). format ( asset_type = ASSET_TYPE_COLLECTION ), code = 'invalid_asset_type' )"
+"from typing import List
+from collections import defaultdict
+
+class Solution:
+    def minCost(self, n: int, cost: List[List[int]]) -> int:
+        prev_dp = {}
+        
+        # Initialize for the first pair (i=0)
+        first_left = 0
+        first_right = n - 1
+        for L in [1, 2, 3]:
+            for R in [1, 2, 3]:
+                if L != R:
+                    total = cost[0][L-1] + cost[first_right][R-1]
+                    prev_dp[(L, R)] = total
+        
+        # Process the remaining pairs
+        for i in range(1, n//2):
+            current_right_pos = n - 1 - i
+            curr_dp = defaultdict(lambda: float('inf'))
+            for (prev_L, prev_R), prev_cost in prev_dp.items():
+                for L in [1, 2, 3]:
+                    if L == prev_L:
+                        continue
+                    for R in [1, 2, 3]:
+                        if R == L or R == prev_R:
+                            continue
+                        # Compute the cost for this transition
+                        new_cost = prev_cost + cost[i][L-1] + cost[current_right_pos][R-1]
+                        key = (L, R)
+                        if new_cost < curr_dp[key]:
+                            curr_dp[key] = new_cost
+            # Update prev_dp to current_dp, keeping only finite values
+            prev_dp = {}
+            for k, v in curr_dp.items():
+                if v < float('inf'):
+                    prev_dp[k] = v
+            # Early exit if no possible states (though problem constraints should prevent this)
+            if not prev_dp:
+                return -1
+        
+        return min(prev_dp.values()) if prev_dp else 0","from typing import List
+from collections import defaultdict
+
+class Solution:
+    def minCost(self, n: int, cost: List[List[int]]) -> int:
+        prev_dp = {}
+        
+        # Initialize for the first pair (i=0)
+        first_left = 0
+        first_right = n - 1
+        for L in [1, 2, 3]:
+            for R in [1, 2, 3]:
+                if L!= R:
+                    total = cost[0][L-1] + cost[first_right][R-1]
+                    prev_dp[(L, R)] = total
+        
+        # Process the remaining pairs
+        for i in range(1, n//2):
+            current_right_pos = n - 1 - i
+            curr_dp = defaultdict(lambda: float('inf'))
+            for (prev_L, prev_R), prev_cost in prev_dp.items():
+                for L in [1, 2, 3]:
+                    if L == prev_L:
+                        continue
+                    for R in [1, 2, 3]:
+                        if R == L or R == prev_R:
+                            continue
+                        # Compute the cost for this transition
+                        new_cost = prev_cost + cost[i][L-1] + cost[current_right_pos][R-1]
+                        key = (L, R)
+                        if new_cost < curr_dp[key]:
+                            curr_dp[key] = new_cost
+            # Update prev_dp to current_dp, keeping only finite values
+            prev_dp = {}
+            for k, v in curr_dp.items():
+                if v < float('inf'):
+                    prev_dp[k] = v
+            # Early exit if no possible states (though problem constraints should prevent this)
+            if not prev_dp:
+                return -1
+        
+        return min(prev_dp.values()) if prev_dp else 0"
+"error_msg += "" Got this from the '%s' variable."" % self . parent_name_expr . token","error_msg += "" Got this from the %r variable."" % self. parent_name_expr. replace ( "" "", """" )"
+"class Solution:
+    def countOfPairs(self, nums: List[int]) -> int:
+        mod = 10**9 + 7
+        n, m = len(nums), max(nums)
+        f = [[0] * (m + 1) for _ in range(n)]
+        for j in range(nums[0] + 1):
+            f[0][j] = 1
+        for i in range(1, n):
+            s = list(accumulate(f[i - 1]))
+            for j in range(nums[i] + 1):
+                k = min(j, j + nums[i - 1] - nums[i])
+                if k >= 0:
+                    f[i][j] = s[k] % mod
+        return sum(f[-1][: nums[-1] + 1]) % mod","class Solution:
+    def countOfPairs(self, nums: List[int]) -> int:
+        mod = 10**9 + 7
+        n, m = len(nums), max(nums)
+        f = [[0] * (m + 1) for _ in range(n)]
+        for j in range(nums[0] + 1):
+            f[0][j] = 1
+        for i in range(1, n):
+            s = list(accumulate(f[i - 1]))
+            s.insert(0, 0)
+            for j in range(nums[i] + 1):
+                k = min(j, j + nums[i - 1] - nums[i])
+                if k >= 0:
+                    f[i][j] = s[k] % mod
+        return sum(f[-1][: nums[-1] + 1]) % mod"
+mag_err = 2.5 * np . log10 ( np . e ) * ( n_obs_err / n_obs ),mag_err = - 2.5 * np. log10 ( np. e ) * ( n_obs_err / n_obs ) + 2.5
+"class Solution:
+    def maxRemovals(self, source: str, pattern: str, targetIndices: List[int]) -> int:
+        m, n = len(source), len(pattern)
+        f = [[-inf] * (n + 1) for _ in range(m + 1)]
+        f[0][0] = 0
+        s = set(targetIndices)
+        for i, c in enumerate(source, 1):
+            for j in range(n + 1):
+                f[i][j] = f[i - 1][j] + int((i - 1) in s)
+                if j and c == pattern[j - 1]:
+                    f[i][j] = max(f[i][j], f[i - 1][j - 1])
+        return f[m][n]","class Solution:
+    def maxRemovals(self, source: str, pattern: str, targetIndices: List[int]) -> int:
+        m, n = len(source), len(pattern)
+        f = [[-inf] * (n + 1) for _ in range(m + 1)]
+        f[0][0] = 0
+        s = set(targetIndices)
+        for i, c in enumerate(source, 1):
+            for j in range(n + 1):
+                f[i][j] = f[i - 1][j] + int((i - 1) in s)
+                if j and c == pattern[j - 1]:
+                    f[i][j] = max(f[i][j], f[i - 1][j - 1])
+        return f[m][n]"
+self . meta [ 'expr' ] = 'bb({0})' . format ( self . temperature . value ),"self. meta [ 'expr' ] = 'bb({0})'. format ( self. temperature, self. temperature )"
+"tutors_for_hour . append ( sorted ( [ t for t in tutoring_objs if ( t . hour_1 == hour and t . day_1 == day ) or ( t . hour_2 == hour and t . day_2 == day ) ] , key = lambda t : t . __unicode__ ( ) ) )","tutors_for_hour. append ( sorted ( [ t for t in tutoring_objs if ( t. hour_1 == hour and t. day_1 == day ) or ( t. hour_2 == hour and t. day_2 == day ) ], key = lambda t : t. __unicode__, reverse = True ) )"
+"model = BertAbs . from_pretrained ( ""remi/bertabs-finetuned-extractive-abstractive-summarization"" )","model = BertAbs. from_pretrained ( ""bertabs-finetuned-cnndm"", use_cache = False )"
+"xml = indent + u""<OutputTemplate id=\"""" + self . id + ""\"" format=\"""" + self . formatclass . __name__ + ""\"""" + "" label=\"""" + self . label + ""\""""","xml = indent + ""<OutputTemplate id=\"""" + self. id + ""\"" format=\"""" + self. formatclass. __name__ + ""\"""" + "" label=\"""" + self. label + ""\"""""
+"import pandas as pd
+import numpy as np
+import folium
+def task_func(dic={'Lon': (-180, 180), 'Lat': (-90, 90)}, cities=['New York', 'London', 'Beijing', 'Tokyo', 'Sydney']):
+
+    if 'Lon' not in dic or 'Lat' not in dic or not isinstance(dic['Lon'], tuple) or not isinstance(dic['Lat'], tuple):
+        raise ValueError(""Dictionary must contain 'Lon' and 'Lat' keys with tuple values."")
+
+    lon_min, lon_max = dic['Lon']
+    lat_min, lat_max = dic['Lat']
+
+    data = {'City': [], 'Longitude': [], 'Latitude': []}
+    for city in cities:
+        data['City'].append(city)
+        data['Longitude'].append(np.random.uniform(lon_min, lon_max))
+        data['Latitude'].append(np.random.uniform(lat_min, lat_max))
+
+    df = pd.DataFrame(data)
+
+    m = folium.Map(location=[0, 0], zoom_start=2)
+    for _, row in df.iterrows():
+        folium.Marker([row['Latitude'], row['Longitude']], popup=row['City']).add_to(m)
+
+    return m, df","import pandas as pd
+import numpy as np
+import folium
+def task_func(dic={'Lon': (-180, 180), 'Lat': (-90, 90)}, cities=['New York', 'London', 'Beijing', 'Tokyo', 'Sydney']):
+
+    if 'Lon' not in dic or 'Lat' not in dic or not isinstance(dic['Lon'], tuple) or not isinstance(dic['Lat'], tuple):
+        raise ValueError(""Dictionary must contain 'Lon' and 'Lat' keys with tuple values."")
+
+    lon_min, lon_max = dic['Lon']
+    lat_min, lat_max = dic['Lat']
+
+    data = {'City': [], 'Longitude': [], 'Latitude': []}
+    for city in cities:
+        data['City'].append(city)
+        data['Longitude'].append(np.random.uniform(lon_min, lon_max))
+        data['Latitude'].append(np.random.uniform(lat_min, lat_max))
+
+    df = pd.DataFrame(data)
+
+    m = folium.Map(location=[0, 0], zoom_start=2)
+    for _, row in df.iterrows():
+        folium.Marker([row['Latitude'], row['Longitude']], popup=row['City']).add_to(m)
+
+    return m, df"
+"style_dict = { 'visibility' : '' , 'display' : '' , 'foo' : 'bar' , 'opacity' : '100' }","style_dict = { 'visibility' : '', 'display' : '', 'foo' : 'bar', 'bar' : 'baz' }"
+"sys . stderr . writelines ( context_diff ( f_a . readlines ( ) , f_b . readlines ( ) , fromfile = ""current generated types file"" , tofile = ""old published types file"" ) )","sys. stderr. writelines ( context_diff ( f_a. readlines ( ), f_b. readlines ( ), fromfile = args. file_a, tofile = args. file_b, ignore_whitespace = True ) )"
+"class Solution:
+    def validSubstringCount(self, word1: str, word2: str) -> int:
+        if len(word1) < len(word2):
+            return 0
+        cnt = Counter(word2)
+        need = len(cnt)
+        ans = l = 0
+        win = Counter()
+        for c in word1:
+            win[c] += 1
+            if win[c] == cnt[c]:
+                need -= 1
+            while need == 0:
+                if win[word1[l]] == cnt[word1[l]]:
+                    need += 1
+                win[word1[l]] -= 1
+                l += 1
+            ans += l
+        return ans","class Solution:
+    def validSubstringCount(self, word1: str, word2: str) -> int:
+        if len(word1) < len(word2):
+            return 0
+        cnt = Counter(word2)
+        need = len(cnt)
+        ans = l = 0
+        win = Counter()
+        for c in word1:
+            win[c] += 1
+            if win[c] == cnt[c]:
+                need -= 1
+            while need == 0:
+                if win[word1[l]] == cnt[word1[l]]:
+                    need += 1
+                win[word1[l]] -= 1
+                l += 1
+            ans += l
+        return ans"
+"raise IOError ( ""cannot find %s till %s"" % ( loc . path , skip_loc . path ) )","raise IOError ( ""cannot find %s till"" % ( loc. path, skip_loc. path ), 1 )"
+"def conv_relu ( bottom , nout , ks = 3 , stride = 1 , pad = 1 , group = 1 ) : conv = L . Convolution ( bottom , kernel_size = ks , stride = stride , num_output = nout , pad = pad , group = group , bias_term = False , weight_filler = dict ( type = 'xavier' ) )","def conv_relu ( bottom, nout, ks = 3, stride = 1, pad = 2, group = 1, bias_term = False, weight_filler = dict ( type = 'xavier' ) ) : conv = L. Convolution ( bottom, kernel_size = ks, stride = stride, num_output = nout, pad = pad, group = group, bias_term = bias_term, weight_filler = weight_filler )"
+"import re
+import os
+import shutil
+from datetime import datetime
+def task_func(directory):
+
+    DATE_FORMAT = '%Y%m%d%H%M%S'
+    moved_files = {}
+    for filename in os.listdir(directory):
+        with open(os.path.join(directory, filename), 'r') as file:
+            content = file.read()
+            match = re.search('(.*?)\[.*?\]', content)
+            if match:
+                subdirectory = match.group(1).strip()
+
+                if not os.path.exists(os.path.join(directory, subdirectory)):
+                    os.makedirs(os.path.join(directory, subdirectory))
+
+                new_filename = f""{filename.split('.')[0]}_{datetime.now().strftime(DATE_FORMAT)}.{filename.split('.')[1]}""
+                shutil.move(os.path.join(directory, filename), os.path.join(directory, subdirectory, new_filename))
+                
+                if subdirectory not in moved_files:
+                    moved_files[subdirectory] = []
+                moved_files[subdirectory].append(new_filename)
+
+    return directory, moved_files","import re
+import os
+import shutil
+from datetime import datetime
+def task_func(directory):
+
+    DATE_FORMAT = '%Y%m%d%H%M%S'
+    moved_files = {}
+    for filename in os.listdir(directory):
+        with open(os.path.join(directory, filename), 'r') as file:
+            content = file.read()
+            match = re.search('(.*?)\[.*?\]', content)
+            if match:
+                subdirectory = match.group(1).strip()
+
+                if not os.path.exists(os.path.join(directory, subdirectory)):
+                    os.makedirs(os.path.join(directory, subdirectory))
+
+                new_filename = f""{filename.split('.')[0]}_{datetime.now().strftime(DATE_FORMAT)}.{filename.split('.')[1]}""
+                shutil.move(os.path.join(directory, filename), os.path.join(directory, subdirectory, new_filename))
+                
+                if subdirectory not in moved_files:
+                    moved_files[subdirectory] = []
+                moved_files[subdirectory].append(new_filename)
+
+    return directory, moved_files"
+"SEED_rid , rxn_name , equation_cpd , equation_name , Subsystem , Suden_protien_ID , gene_association , protein_id , ec_num , reference , Reversibility = row [ : 11 ]","SEED_rid, rxn_name, equation_cpd, equation_name, Subsystem, Subsystem_protien_ID, gene_association, protein_id, ec_reference, Reversibility = row [ : 10 ]"
+"CloudLogger . LOGGER . addHandler ( logstash . LogstashHandler ( CloudLogger . getValueFromConfig ( ""host"" ) , int ( CloudLogger . getValueFromConfig ( ""port"" ) ) , version = 1 ) )","CloudLogger. LOGGER. addHandler ( logstash. LogstashHandler ( CloudLogger. getValueFromConfig ( ""host"" ), CloudLogger. getValueFromConfig ( ""port"" ), version = 2 ) )"
+"focuslemma , focuspos , _ , _ = os . path . basename ( bagfile ) . split ( ""."" )","focuslemma, focuspos = os. path. basename ( bagfile ). split ( ""."" )"
+"from random import randint,seed as random_seed
+import time
+import matplotlib.pyplot as plt
+def task_func(my_list, size=100, seed=100):
+
+    if not isinstance(my_list, list):
+        raise TypeError(""Input must be a list."")
+    if not all(isinstance(item, (int, float)) for item in my_list):
+        raise ValueError(""All elements in 'my_list' must be numbers."")
+    random_seed(seed)
+    my_list.append(12)
+
+    total_size = min(sum(my_list), size)
+
+    start_time = time.time()
+    random_list = [randint(1, 100) for _ in range(total_size)]
+    end_time = time.time()
+
+    fig, ax = plt.subplots()
+    ax.hist(random_list, bins=20)
+    ax.set_title('Histogram of Random Numbers')
+    ax.set_xlabel('Number')
+    ax.set_ylabel('Frequency')
+
+    return end_time - start_time, ax","from random import randint,seed as random_seed
+import time
+import matplotlib.pyplot as plt
+def task_func(my_list, size=100, seed=100):
+
+    if not isinstance(my_list, list):
+        raise TypeError(""Input must be a list."")
+    if not all(isinstance(item, (int, float)) for item in my_list):
+        raise ValueError(""All elements in'my_list' must be numbers."")
+    random_seed(seed)
+
+    total_size = min(sum(my_list), size)
+
+    start_time = time.time()
+    random_list = [randint(1, 100) for _ in range(total_size)]
+    end_time = time.time()
+
+    fig, ax = plt.subplots()
+    ax.hist(random_list, bins=20)
+    ax.set_title('Histogram of Random Numbers')
+    ax.set_xlabel('Number')
+    ax.set_ylabel('Frequency')
+
+    return end_time - start_time, ax"
+"checking_period = Column ( Integer , default = settings . MIN_PROXY_CHECKING_PERIOD , nullable = False )","checking_period = Column ( Integer, default = settings. MIN_PROXY_CHECKING_PERIOD, nullable = False )"
+"links . append ( ( self . title , url . name , url . link_type , url . url ) )","links. append ( ( self. title, description, url. link_type, url. url, url. url ) )"
+if not absolute : coords = ctrl . client_to_screen ( coords ),if not absolute : coords = ctrl. client_to_screen ( coords )
+"plt . title ( ""$\\gamma={:.2f},\,log_{{10}}E/GeV={:.2f},\,\\sigma_p={:.2f},\,\\Delta\\sigma_p/\\sigma_p={:.2f}$"" . format ( gamma , logE , sigma_p , delta_sigma ) )","plt. title ( ""$\gamma={:.2f},\,log_{10}E/GeV={:.2f},\,\\sigma_p={:.2f},\,\\Delta\\sigma_p/\\sigma_p={:.2f}$"". format ( gamma, logE, sigma_p, delta_sigma_p ) )"
+"class Solution:
+    def getMaxRepetitions(self, s1: str, n1: int, s2: str, n2: int) -> int:
+
+        rec, track = [0], defaultdict(int) 
+        ct = start = ptr1 = ptr2 = 0
+
+        if not set(s2).issubset(set(s1)): return 0
+
+        s1 = ''.join(char for char in s1 if char in set(s2))
+        
+        while True:
+            for char in s2:
+                ptr = s1.find(char, start)
+                if ptr == -1:
+                    ct += 1
+                    ptr = s1.find(char)
+                start = ptr+1
+            rec.append(ct + 1)
+
+            if rec[-1] > n1: return (len(rec)-2)//n2
+
+            if ptr not in track: track[ptr] = len(rec)-1
+            else: break
+        
+        cycleStart = rec[track[ptr]]
+        cycle1, cycle2 = ct+1 - cycleStart, len(rec)-1 - track[ptr]
+        rest = n1 - cycleStart
+        
+        rem = cycleStart + rest%cycle1
+
+        while rec[ptr2] <= rem: ptr2+= 1
+
+        return (cycle2 * (rest//cycle1) + ptr2-1)//n2","class Solution:
+    def getMaxRepetitions(self, s1: str, n1: int, s2: str, n2: int) -> int:
+
+        rec, track = [0], defaultdict(int) 
+        ct = start = ptr1 = ptr2 = 0
+
+        if not set(s2).issubset(set(s1)): return 0
+
+        s1 = ''.join(char for char in s1 if char in set(s2))
+        
+        while True:
+            for char in s2:
+                ptr = s1.find(char, start)
+                if ptr == -1:
+                    ct += 1
+                    ptr = s1.find(char)
+                start = ptr+1
+            rec.append(ct + 1)
+
+            if rec[-1] > n1: return (len(rec)-2)//n2
+
+            if ptr not in track: track[ptr] = len(rec)-1
+            else: break
+        
+        cycleStart = rec[track[ptr]]
+        cycle1, cycle2 = ct+1 - cycleStart, len(rec)-1 - track[ptr]
+        rest = n1 - cycleStart
+        
+        rem = cycleStart + rest%cycle1
+
+        while rec[ptr2] <= rem: ptr2+= 1
+
+        return (cycle2 * (rest//cycle1) + ptr2-1)//n2"
+"class Solution:
+    def maxIncreasingGroups(self, usageLimits: List[int]) -> int:
+        usageLimits.sort()
+        k, n = 0, len(usageLimits)
+        for i in range(n):
+            if usageLimits[i] > k:
+                k += 1
+                usageLimits[i] -= k
+            if i + 1 < n:
+                usageLimits[i + 1] += usageLimits[i]
+        return k","class Solution:
+    def maxIncreasingGroups(self, usageLimits: List[int]) -> int:
+        usageLimits.sort()
+        k, n = 0, len(usageLimits)
+        for i in range(n):
+            if usageLimits[i] > k:
+                k += 1
+                usageLimits[i] -= k
+            if i + 1 < n:
+                usageLimits[i + 1] += usageLimits[i]
+        return k"
+"return kernel . copy ( args = kernel . args + new_args , temporary_variables = new_temps )","kernel = kernel. copy ( args = kernel. args + new_args, temporary_variables = new_temps, temporary_variables = new_temps )"
+self . requisites = courses [ coursenumber ] [ 'requisites' ],self. requsities = courses [ coursenumber ] ['requisites' ] ['requsities' ]
+"return redirect ( group_aware_reverse ( 'cosinnus:group-detail' , kwargs = { 'group' : kwargs . get ( 'group' , '<NOGROUPKWARG>' ) } ) )","return redirect ( group_aware_reverse ( 'cosinnus:group-detail', kwargs = kwargs, request = request ) )"
+"from configparser import SafeConfigParser , NoSectionError , NoOptionError","from ConfigParser import SafeConfigParser, NoSectionError, NoOptionError, ConfigError"
+"class Solution:
+    def numberOfWays(self, n: int, x: int) -> int:
+        MOD = 10**9 + 7
+        candidates = []
+        i = 1
+        while True:
+            current = i ** x
+            if current > n:
+                break
+            candidates.append(current)
+            i += 1
+        
+        dp = [0] * (n + 1)
+        dp[0] = 1  # Base case: one way to make sum 0
+        
+        for num in candidates:
+            for s in range(n, num - 1, -1):
+                dp[s] = (dp[s] + dp[s - num]) % MOD
+        
+        return dp[n] % MOD","class Solution:
+    def numberOfWays(self, n: int, x: int) -> int:
+        MOD = 10**9 + 7
+        candidates = []
+        i = 1
+        while True:
+            current = i ** x
+            if current > n:
+                break
+            candidates.append(current)
+            i += 1
+        
+        dp = [0] * (n + 1)
+        dp[0] = 1
+        
+        for num in candidates:
+            for s in range(n, num - 1, -1):
+                dp[s] = (dp[s] + dp[s - num]) % MOD
+        
+        return dp[n]"
+"print ( ""Illegal character '%s' in the input formula"" % t . value [ 0 ] )","print ( ""Illegal character '%s'"" % t. value [ 0 ], file = sys. stderr )"
+"if type in [ 'master' , 'missingdata' ] : matrix_header += ( 'CallWasMade' , 'PassedDepthFilter' , 'PassedProportionFilter' )","if type in [ 'all_callable','missing_data','missing_depth' ] : matrix_header += ( 'CallWasMade', 'PassedDepthFilter', 'PassedProportionFilter' )"
