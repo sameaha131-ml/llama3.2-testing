@@ -12232,3 +12232,333 @@ def task_func(ip_address):
         return f[n][k]"
 "fr = open ( relation_prefix + 'pi_Poisson_' + str ( filename ) + suffix , 'r' )","fr = open ( relation_prefix + 'pi_Poisson' + suffix, 'r', 'utf-8' )"
 "result = self . rpc_srv . set_account_size ( self . token , it [ ""id"" ] , str ( size ) )","result = self. rpc_srv. set_account_size ( self. token, it [ ""id"" ], size, self. token )"
+"import numpy as np
+import pandas as pd
+def task_func(students=[""Alice"", ""Bob"", ""Charlie"", ""David"", ""Eve""], seed=42):
+
+    np.random.seed(seed)
+    scores_data = [(student, np.random.randint(0, 100)) for student in students]
+    df = pd.DataFrame(scores_data, columns=[""Student"", ""Score""])
+    df.sort_values(""Score"", inplace=True)
+
+    ax = df.plot(x='Student', y='Score', kind='bar', legend=False)
+    ax.set_ylabel(""Score"")
+
+    return df, ax","import numpy as np
+import pandas as pd
+def task_func(students=[""Alice"", ""Bob"", ""Charlie"", ""David"", ""Eve""], seed=42):
+
+    np.random.seed(seed)
+    scores_data = [(student, np.random.randint(0, 100)) for student in students]
+    df = pd.DataFrame(scores_data, columns=[""Student"", ""Score""])
+    df.sort_values(""Score"", inplace=True)
+
+    ax = df.plot(x='Student', y='Score', kind='bar', legend=False)
+    ax.set_ylabel(""Score"")
+
+    return df, ax"
+"parser . add_option ( ""--prefix"" , dest = ""prefix"" , type = ""string"" , help = ""Prefix to tack on to keypairs"" , default = ""keypair"" )","parser. add_option ( ""--prefix"", dest = ""prefix"", type = ""string"", help = ""Prefix to tack on to keypairs"", default = ""my"" )"
+"def matches_enrollment_checklist ( self , subject_consent , exception_cls = None ) : """"""Matches values in this consent against the enrollment checklist.
+ 
+         ..note:: the enrollment checklist is required for consent, so always exists.""""""","def matches_enrollment_checklist ( self, subject_consent, household_member, exception_cls = None, ** kwargs ) : """"""Matches values in this consent against the enrollment checklist.
+ 
+        ..note:: the enrollment checklist is required for consent, so always exists."""""""
+raise ValueError ( 'Base Nvidia APEX AMP enabled. To use DeepSpeed first disable base AMP and specify ' 'the AMP as part of DeepSpeed config.' ),raise ValueError ( 'Base Nvidia APEX AMP enabled. To use DeepSpeed first disable base AMP and specify''the AMP as part of DeepSpeed config.' )
+app . config [ 'SQLALCHEMY_DATABASE_URI' ] = 'mysql+pymysql://DinDin:1meal@localhost:3306/DinDin',"app. config [ 'SQLALCHEMY_DATABASE_URI' ] = local_db_connect. replace ('sqlite', 'postgresql' )"
+hip_target_angle = self . com_adjustment_widget . spin_CurrentHipPitch . value ( ) - pitch_diff_deg,hip_target_angle = self. com_adjustment_widget. spin_CurrentHipPitch. value ( ) + pitch_diff_deg - 90
+"""""""
+     Implements the GMPE of Bommer et al. (2009) for significant duration with
+     5 - 75 % Arias Intensity and 5 - 95 % Arias Intensity
+     """"""","""""""
+     Implements the GMPE of Bommer et al. (2009) for significant duration with
+     5 - 75 % Arias Intensity and 5 - 95 % Arias Intensity
+     """""""
+"log . info ( ""Deleting CloudFront distribution: %s"" % d . id , extra = dict ( __nonewline__ = True ) )","log. info ( ""Deleting CloudFront distribution: %s"" % d. id )"
+info [ 'modified_time' ] = datetime . datetime . fromtimestamp ( mt ),"info ['modified_time' ] = datetime. datetime. fromtimestamp ( at, pytz. utc )"
+"import sqlite3
+import pandas as pd
+import csv
+from io import StringIO
+# Constants
+DATABASE_NAME = 'test.db'
+TABLE_NAME = 'test_table'
+def task_func(csv_input):
+
+    # Check if the input is a StringIO object or a file path
+    if isinstance(csv_input, StringIO):
+        dr = csv.DictReader(csv_input)  # Read from StringIO
+    else:
+        with open(csv_input, 'r') as f:
+            dr = csv.DictReader(f)  # Read from a file
+
+    conn = sqlite3.connect(DATABASE_NAME)
+    cursor = conn.cursor()
+
+    # Create table and insert data
+    cols = dr.fieldnames
+    cursor.execute(f'DROP TABLE IF EXISTS {TABLE_NAME}')
+    cursor.execute(f'CREATE TABLE {TABLE_NAME} ({"", "".join([f""{col} TEXT"" for col in cols])})')
+    for row in dr:
+        cursor.execute(f'INSERT INTO {TABLE_NAME} VALUES ({"", "".join([""?"" for _ in cols])})', list(row.values()))
+
+    conn.commit()
+    dataframe = pd.read_sql_query(f'SELECT * from {TABLE_NAME}', conn)
+
+    conn.close()
+
+    return dataframe","import sqlite3
+import pandas as pd
+import csv
+from io import StringIO
+# Constants
+DATABASE_NAME = 'test.db'
+TABLE_NAME = 'test_table'
+def task_func(csv_input):
+
+    # Check if the input is a StringIO object or a file path
+    if isinstance(csv_input, StringIO):
+        dr = csv.DictReader(csv_input)  # Read from StringIO
+    else:
+        with open(csv_input, 'r') as f:
+            dr = csv.DictReader(f)  # Read from a file
+
+    conn = sqlite3.connect(DATABASE_NAME)
+    cursor = conn.cursor()
+
+    # Create table and insert data
+    cols = dr.fieldnames
+    cursor.execute(f'DROP TABLE IF EXISTS {TABLE_NAME}')
+    cursor.execute(f'CREATE TABLE {TABLE_NAME} ({"", "".join([f""{col} TEXT"" for col in cols])})')
+    for row in dr:
+        cursor.execute(f'INSERT INTO {TABLE_NAME} VALUES ({"", "".join([""?"" for _ in cols])})', list(row.values()))
+
+    conn.commit()
+    dataframe = pd.read_sql_query(f'SELECT * from {TABLE_NAME}', conn)
+
+    conn.close()
+
+    return dataframe"
+"assert not hasattr ( trivial_flyer , ""collect_asset_docs"" )","assert not hasattr ( trivial_flyer, ""collect_asset_docs"" )"
+"self . assertEqual ( reviewers [ 0 ] . get_attribute ( 'innerHTML' ) , 'joey' )","self. assertEqual ( reviewers [ 0 ]. get_attribute ( 'innerHTML' ), 'joey, <a href=""https://github.com/Joey"">Joey</a>' )"
+"class Solution:
+    def canMakeSquare(self, grid: List[List[str]]) -> bool:
+        for i in range(0, 2):
+            for j in range(0, 2):
+                cnt1 = cnt2 = 0
+                for a, b in pairwise((0, 0, 1, 1, 0)):
+                    x, y = i + a, j + b
+                    cnt1 += grid[x][y] == ""W""
+                    cnt2 += grid[x][y] == ""B""
+                if cnt1 != cnt2:
+                    return True
+        return False","class Solution:
+    def canMakeSquare(self, grid: List[List[str]]) -> bool:
+        for i in range(0, 2):
+            for j in range(0, 2):
+                cnt1 = cnt2 = 0
+                for a, b in zip((0, 0, 1, 1, 0), (0, 0, 1, 1, 0)):
+                    x, y = i + a, j + b
+                    cnt1 += grid[x][y] == ""W""
+                    cnt2 += grid[x][y] == ""B""
+                if cnt1 == 3 or cnt2 == 3:
+                    return True
+        return False"
+"cooldown_rect = ( x + 1 , y + 1 + ( h - 2 ) * ( 1 - ratio_remaining ) , w - 2 , ( h - 2 ) * ratio_remaining + 1 )","cooldown_rect = ( x + 2, y + 2 + ( h - 4 ) * ( 1 - ratio_remaining ), w - 4, ( h - 4 ) * ratio_remaining + 2 )"
+"assert '[{""content"": null, ""findings"": [{""assessment"": ""YELLOW"", ""endLine"": null, ""endOffset"": null, ""findingTypeId"": ""test-id"", ""identifier"": null, ""message"": ""message"", ""startLine"": null, ""startOffset"": null}], ""path"": ""path/to/file""}]' == to_json ( findings )","assert '[{""content"": null, ""findings"": [{""assessment"": ""YELLOW"", ""endLine"": 0, ""endOffset"": 0, ""findingTypeId"": ""test-id"", ""identifier"": null, ""message"": ""message"", ""startLine"": 0, ""startOffset"": 0}], ""path"": ""path/to/file""}]' == to_json ( findings, indent = 4 )"
+"ExtensionModule ( internal = True , source = 'cjkcodecs/multibytecodec.c' ) ,","ExtensionModule ( internal = True, source = 'cjkcodecs/_multibytecodec.c', name = 'cjkcodecs' ),"
+raise RuntimeError ( 'Only bound methods are allowed' ),raise RuntimeError ( 'Only bound methods are allowed' )
+retry_after = result . headers . get ( 'Retry-After' ),"retry_after = result. headers. getheader ( 'Retry-After', 0 )"
+"class Solution:
+    def minOperations(self, nums: List[int], k: int) -> int:
+        is_added = [False] * k
+        count = 0
+        n = len(nums)
+        for i in range(n - 1, -1, -1):
+            if nums[i] > k or is_added[nums[i] - 1]:
+                continue
+            is_added[nums[i] - 1] = True
+            count += 1
+            if count == k:
+                return n - i","class Solution:
+    def minOperations(self, nums: List[int], k: int) -> int:
+        is_added = [False] * k
+        count = 0
+        n = len(nums)
+        for i in range(n):
+            if nums[i] > k or is_added[nums[i] - 1]:
+                continue
+            is_added[nums[i] - 1] = True
+            count += 1
+            if count == k:
+                return n - i"
+self . commit = 'acbb04600d2dbdbe889117c07ee660818abd7070',"self. commit = 'b078aacaf263af84605812d778b62afbdf3e1b59', 'b078aacaf263af84605812d778b62afbdf3e1b59'"
+"raise TypeError ( 'conditions parameter to MultiStairHandler should be a list, not a %s' % type ( self . conditions ) )","raise TypeError ( 'conditions parameter to MultiStairHandler should be a list, not a %s' % type ( conditions ) )"
+select_template ( [ 'aldryn_gallery/plugins/%s/gallery.html' % style ] ),"select_template ( 'aldryn_gallery/plugins/%s/gallery.html' % style, context = context )"
+if dirname and not os . path . exists ( dirname ) : os . makedirs ( dirname ),"if not os. path. exists ( dirname ) or not os. path. exists ( os. path. join ( dirname, 'README.md' ) ) : os. makedirs ( dirname )"
+"return [ pd . read_csv ( os . path . join ( path , file ) ) for file in sorted ( os . listdir ( path ) ) ]","return [ pd. read_csv ( os. path. join ( path, file ) ) for file in os. listdir ( path ) if file. endswith ( '.csv' ) ]"
+"msg = ""Maximum time (%f sec) has passed %f sec\n"" % ( diffTime , theMaxTime )","msg = ""Maximum time (%f msec) has passed %f sec\n"" % ( diffTime, theMaxTime / 1000 )"
+""" AS ("" + ""SELECT ST_Buffer(ST_Transform(ST_SetSRID(ST_MakePoint("" + str ( location [ 0 ] ) + "","" + str ( location [ 1 ] ) + ""), "" + str ( location [ 2 ] ) + ""), 3857),"" + str ( distance . get_meters ( ) ) + "") geom)""",""" AS ("" + ""SELECT ST_Buffer(ST_Transform(ST_SetSRID(ST_MakePoint("" + str ( location [ 0 ] ) + "","" + str ( location [ 1 ] ) + ""), "" + str ( location [ 2 ] ) + ""), 3857),"" + str ( distance. get_meters ( ) ) + "") geom)"""
+history . sort ( key = lambda x : self . get_txpos ( x [ 0 ] ) [ 0 ] ),"history. sort ( key = lambda x : self. get_txpos ( x [ 0 ] ), reverse = True )"
+site_data = SiteData . objects . filter ( hazard_calculation = hc . id ),"site_data = models. SiteData. objects. filter ( hazard_calculation = hc. id, site = hc. site )"
+"class Solution:
+    def findKOr(self, nums: List[int], k: int) -> int:
+        ans = 0
+        for i in range(32):
+            cnt = sum(x >> i & 1 for x in nums)
+            if cnt >= k:
+                ans |= 1 << i
+        return ans","class Solution:
+    def findKOr(self, nums: List[int], k: int) -> int:
+        ans = 0
+        for i in range(32):
+            cnt = sum(x >> i & 1 for x in nums)
+            if cnt >= k:
+                ans |= 1 << i
+        return ans"
+"arguments = models . CharField ( blank = True , null = True , max_length = '255' , help_text = 'Optional arguments to pass to the __init__ method of the class. Format: arg1=value,arg2=value' )","arguments = models. CharField ( blank = True, null = True, help_text = 'Optional arguments to pass to the __init__ method of the class. Format: arg1=value,arg2=value', max_length = 255 )"
+"class Solution:
+    def relocateMarbles(
+        self, nums: List[int], moveFrom: List[int], moveTo: List[int]
+    ) -> List[int]:
+        pos = set(nums)
+        for f, t in zip(moveFrom, moveTo):
+            pos.remove(f)
+            pos.add(t)
+        return sorted(pos)","class Solution:
+    def relocateMarbles(
+        self, nums: List[int], moveFrom: List[int], moveTo: List[int]
+    ) -> List[int]:
+        pos = set(nums)
+        for f, t in zip(moveFrom, moveTo):
+            pos.remove(f)
+            pos.add(t)
+        return sorted(pos)"
+"raise FunctionalBlockValueError ( ""unknown datapoint (%s) in %s.%s"" % ( value [ 'dp' ] , cls , key ) )","raise FunctionalBlockValueError ( ""unknown datapoint (%s)"" % value [ 'dp' ], value )"
+self . _entry = self . _cfg . get_any_irsb ( self . _p . entry ),"self. _entry = self. _cfg. get_any_irsb ( self. _binary. entry, self. _cfg. get_any_irsb ( self. _binary. entry, self. _cfg. get_any_irsb ( self. _binary. entry, self. _cfg. get_any_irsb ( self. _binary. entry, self. _cfg. get_any_irsb ( self. _binary. entry, self. _cfg. get_any_irsb ( self. _binary. entry, self. _cfg. get_any_irsb ( self. _binary. entry, self. _cfg. get_any_irsb ( self. _binary. entry, self. _cfg. get_any_irsb ( self. _binary. entry, self. _cfg. get_any_irsb ( self. _binary. entry, self. _cfg. get_any_irsb ( self. _binary. entry, self. _cfg. get_any_irsb ( self. _binary. entry, self. _cfg. get_any_irsb ( self. _binary. entry, self. _cfg. get_any_irsb ( self. _binary. entry, self. _cfg. get_any_irsb ( self. _binary. entry, self. _cfg. get_any_irsb ( self. _binary. entry, self. _cfg. get_any_irsb ( self. _binary. entry, self. _cfg. get_any_irsb ( self. _binary. entry, self. _cfg. get_any_irsb ( self. _binary. entry, self. _cfg. get_any_irsb ( self. _binary. entry, self. _cfg. get_any_irsb ( self. _binary. entry, self. _cfg. get_any_irsb ( self. _binary. entry, self. _cfg. get_any_irsb ( self. _binary. entry, self. _cfg. get_any_irsb ( self. _binary. entry, self. _cfg. get_any_irsb ( self. _binary. entry, self. _cfg. get_any_irsb ( self. _binary. entry, self. _cfg. get_any_irsb ( self. _binary. entry, self. _cfg. get_any_irsb ( self. _binary. entry,"
+"message = f""{old_logs_count} activitylogs older than {cutoff.strftime('%Y-%m-%d')} backed up to s3 and deleted""","message = f""{old_logs_count} activitylogs older than {cutoff.strftime('%Y-%m-%d')}"" \
+          f"" backed up to s3 and deleted"""
+"data [ row ] , control_row = pdexcel . _fill_mi_header ( data [ row ] , control_row )","data [ row ] = pdexcel. _fill_mi_header ( data [ row ], control_row, 'header' )"
+"asset_texts = [ ""  {}: {}"" . format ( g , "", "" . join ( a ) ) for g , a in genomes_data . items ( ) ]","asset_texts = [ _make_genome_assets_line ( g, genomes_data [ g ], order = order, genome_id = g ) for g in refgens ]"
+"class Solution:
+    def countValidSelections(self, nums: List[int]) -> int:
+        s = sum(nums)
+        ans = l = 0
+        for x in nums:
+            if x:
+                l += x
+            elif l * 2 == s:
+                ans += 2
+            elif abs(l * 2 - s) == 1:
+                ans += 1
+        return ans","class Solution:
+    def countValidSelections(self, nums: List[int]) -> int:
+        s = sum(nums)
+        ans = 0
+        l = 0
+        for x in nums:
+            if x:
+                l += x
+            elif l * 2!= s:
+                ans += 2
+            elif abs(l * 2 - s) == 1:
+                ans += 1
+        return ans"
+"QtWidgets . QUndoCommand . __init__ ( self , description )","QtWidgets. QUndoCommand. __init__ ( self, description )"
+"class Solution:
+    def isZeroArray(self, nums: List[int], queries: List[List[int]]) -> bool:
+        d = [0] * (len(nums) + 1)
+        for l, r in queries:
+            d[l] += 1
+            d[r + 1] -= 1
+        s = 0
+        for x, y in zip(nums, d):
+            s += y
+            if x > s:
+                return False
+        return True","class Solution:
+    def isZeroArray(self, nums: List[int], queries: List[List[int]]) -> bool:
+        d = [0] * (len(nums) + 1)
+        for l, r in queries:
+            d[l] += 1
+            d[r + 1] -= 1
+        s = 0
+        for x, y in zip(nums, d):
+            s += y
+            if x > s:
+                return False
+        return True"
+"nlp , config = util . load_model_from_config ( config )","nlp, config = util. load_model_from_config ( config_path, use_gpu = use_gpu )"
+"loaders = datasource . prepare_loaders ( args = args , stage = None , ** config [ ""data_params"" ] )","loaders = datasource. prepare_loaders ( args, config [ ""data_params"" ], config [ ""data_params"" ] )"
+"login = { 'server' : '18.220.25.10' , 'port' : 80 , 'database' : 'makeover_prod' , 'username' : 'admin' , 'password' : PASSWORD , }","login = {'server' : '18.220.25.10', 'port' : 80, 'database' :'makeover_datos', 'username' : 'admin', 'password' : PASSWORD, }"
+"retry_count = parameter . IntParameter ( default = 999999999 , config_path = dict ( section = 'scheduler' , name = 'retry_count' ) )","retry_count = parameter. IntParameter ( default = 999999999, config_path = dict ( section ='scheduler', name ='max_failures' ) )"
+"photos . extend ( res . get ( 'photos' , { } ) . get ( 'photo' , [ ] ) )","photos. append ( res. get ( 'photos', { } ). get ( 'photo', [ ] ) if res. get ( 'photos', { } ) else [ ] )"
+"self . errors [ 21401 ] = { ""item"" : 2140 , ""level"" : 3 , ""tag"" : [ ""tag"" , ""public_transport"" ] , ""desc"" : T_ ( u""Missing public_transport:version tag on a public_tranport route relation"" ) }","self. errors [ 24401 ] = { ""item"" : 2140, ""level"" : 3, ""tag"" : [ ""tag"", ""public_transport"" ], ""desc"" : T_ ( u""Missing public_transport:version tag on a public_transport route relation"" ) }"
+"option_parser . add_option ( '-c' , '--concurrency-mode' , default = 'single' , choices = [ RUN_SINGLETHREAD , RUN_MULTIPROCESS , RUN_MULTITHREAD ] )","option_parser. add_option ( '-c', '--concurrency-mode', default = RUN_SINGLETHREAD, choices = [ RUN_SINGLETHREAD, RUN_MULTIPROCESS, RUN_MULTITHREAD ] )"
+"class Solution:
+    def isZeroArray(self, nums: List[int], queries: List[List[int]]) -> bool:
+        d = [0] * (len(nums) + 1)
+        for l, r in queries:
+            d[l] += 1
+            d[r + 1] -= 1
+        s = 0
+        for x, y in zip(nums, d):
+            s += y
+            if x > s:
+                return False
+        return True","class Solution:
+    def isZeroArray(self, nums: List[int], queries: List[List[int]]) -> bool:
+        d = [0] * (len(nums) + 1)
+        for l, r in queries:
+            d[l] += 1
+            d[r + 1] -= 1
+        s = 0
+        for x, y in zip(nums, d):
+            s += y
+            if x > s:
+                return False
+        return True"
+"reportsdir = app . config . get ( 'REPORTSDIR' , '/home/green/jper_reports' )","reportsdir = app. config. get ( 'REPORTSDIR', '/home/mark/jper_reports' ) or '/home/mark/jper_reports'"
+if player < 1 or player >= len ( self . environment . players ) : return False,if player < 1 or player > len ( self. environment. players ) - 1 : return False
+"import pandas as pd
+import matplotlib.pyplot as plt
+import numpy as np
+def task_func(num_groups=5, data_size=5, labels=None):
+
+
+    # If labels are not provided, generate default labels
+    if labels is None:
+        labels = [f'Group{i + 1}' for i in range(num_groups)]
+
+    # Generate random data
+    data = pd.DataFrame(np.random.rand(data_size, num_groups), columns=labels)
+
+    # Plot data
+    fig, ax = plt.subplots()
+    data.plot(kind='bar', stacked=True, ax=ax)
+
+    # Save the plot for verification in tests
+    plot_filename = 'test_plot.png'
+    fig.savefig(plot_filename)
+
+    return fig, data, plot_filename","import pandas as pd
+import matplotlib.pyplot as plt
+import numpy as np
+def task_func(num_groups=5, data_size=5, labels=None):
+
+
+    # If labels are not provided, generate default labels
+    if labels is None:
+        labels = [f'Group{i + 1}' for i in range(num_groups)]
+
+    # Generate random data
+    data = pd.DataFrame(np.random.rand(data_size, num_groups), columns=labels)
+
+    # Plot data
+    fig, ax = plt.subplots()
+    data.plot(kind='bar', stacked=True, title='Grouped Bar Chart', ax=ax)
+
+    # Save the plot for verification in tests
+    plot_filename = 'test_plot.png'
+    fig.savefig(plot_filename)
+
+    return fig, data, plot_filename"
