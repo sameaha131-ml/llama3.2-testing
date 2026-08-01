@@ -8400,3 +8400,646 @@ def task_func(directory, file_list):
         return process.returncode  # return the exit code
     except Exception as e:
         return None"
+"class Solution:
+    def countWays(self, nums: List[int]) -> int:
+        nums.sort()
+        n = len(nums)
+        ans = 0
+        for i in range(n + 1):
+            if i and nums[i - 1] >= i:
+                continue
+            if i < n and nums[i] <= i:
+                continue
+            ans += 1
+        return ans","class Solution:
+    def countWays(self, nums: List[int]) -> int:
+        n = len(nums)
+        ans = 0
+        for i in range(n + 1):
+            if i and nums[i - 1] >= i:
+                continue
+            if i < n and nums[i] <= i:
+                continue
+            ans += 1
+        return ans"
+"import numpy as np
+import matplotlib.pyplot as plt
+from scipy.fft import fft
+def task_func(range_start=-10, range_end=10, step=0.1):
+
+    if range_start>range_end:
+        raise ValueError(""range_start cannot be smaller than range_end."")
+
+    x_values = np.arange(range_start, range_end, step)
+    data = ((x, np.sin(x), np.cos(x), abs(np.sin(x) - np.cos(x))) for x in x_values)
+    fft_values = fft([abs(np.sin(x) - np.cos(x)) for x in x_values])
+    _, ax = plt.subplots()
+    for x, sin_x, cos_x, abs_x in data:
+        ax.scatter(x, sin_x, color='b')
+        ax.scatter(x, cos_x, color='r')
+        ax.scatter(x, abs_x, color='g')
+    
+    # We recreate the generator since it was exhausted in the for loop above
+    data = ((x, np.sin(x), np.cos(x), abs(np.sin(x) - np.cos(x))) for x in x_values)
+    return data, ax, abs(np.mean(fft_values)), abs(np.median(fft_values))","import numpy as np
+import matplotlib.pyplot as plt
+from scipy.fft import fft
+def task_func(range_start=-10, range_end=10, step=0.1):
+
+    if range_start>range_end:
+        raise ValueError(""range_start cannot be smaller than range_end."")
+
+    x_values = np.arange(range_start, range_end, step)
+    data = ((x, np.sin(x), np.cos(x), abs(np.sin(x) - np.cos(x))) for x in x_values)
+    fft_values = fft([abs(np.sin(x) - np.cos(x)) for x in x_values])
+    _, ax = plt.subplots()
+    for x, sin_x, cos_x, abs_x in data:
+        ax.scatter(x, sin_x, color='b')
+        ax.scatter(x, cos_x, color='r')
+        ax.scatter(x, abs_x, color='g')
+    
+    # We recreate the generator since it was exhausted in the for loop above
+    data = ((x, np.sin(x), np.cos(x), abs(np.sin(x) - np.cos(x))) for x in x_values)
+    return data, ax, np.mean(abs(fft_values)), abs(np.median(fft_values))"
+"{ 'level' : 'WARNING' , 'class' : 'django.utils.log.AdminEmailHandler' , } ,","{ 'level' : 'WARNING', 'class' : 'django.utils.log.AdminEmailHandler', 'level' : 'WARNING', }"
+"from typing import List
+from collections import defaultdict
+
+class Solution:
+    def minArraySum(self, nums: List[int], k: int, op1: int, op2: int) -> int:
+        def get_options(x: int, k_val: int) -> List[tuple]:
+            options = []
+            # Option0: do nothing
+            options.append((0, 0, x))
+            # Option1: apply Op1
+            v1 = (x + 1) // 2
+            options.append((1, 0, v1))
+            # Option2: apply Op2 if possible
+            if x >= k_val:
+                v2 = x - k_val
+                options.append((0, 1, v2))
+            # PathA: Op1 then Op2 (if possible)
+            after_op1 = (x + 1) // 2
+            if after_op1 >= k_val:
+                valA = after_op1 - k_val
+                options.append((1, 1, valA))
+            # PathB: Op2 then Op1 (if possible)
+            if x >= k_val:
+                after_op2 = x - k_val
+                valB = (after_op2 + 1) // 2
+                options.append((1, 1, valB))
+            return options
+        
+        current_dp = {(op1, op2): 0}
+        
+        for num in nums:
+            next_dp = defaultdict(lambda: float('inf'))
+            for (a, b), total in current_dp.items():
+                for (c1, c2, val) in get_options(num, k):
+                    new_a = a - c1
+                    new_b = b - c2
+                    if new_a >= 0 and new_b >= 0:
+                        if total + val < next_dp[(new_a, new_b)]:
+                            next_dp[(new_a, new_b)] = total + val
+            current_dp = next_dp
+        
+        min_sum = float('inf')
+        for key in current_dp:
+            if current_dp[key] < min_sum:
+                min_sum = current_dp[key]
+        return min_sum","from typing import List
+from collections import defaultdict
+
+class Solution:
+    def minArraySum(self, nums: List[int], k: int, op1: int, op2: int) -> int:
+        def get_options(x: int, k_val: int) -> List[tuple]:
+            options = []
+            # Option0: do nothing
+            options.append((0, 0, x))
+            # Option1: apply Op1
+            v1 = (x + 1) // 2
+            options.append((1, 0, v1))
+            # Option2: apply Op2 if possible
+            if x >= k_val:
+                v2 = x - k_val
+                options.append((0, 1, v2))
+            # PathA: Op1 then Op2 (if possible)
+            after_op1 = (x + 1) // 2
+            if after_op1 >= k_val:
+                valA = after_op1 - k_val
+                options.append((1, 1, valA))
+            # PathB: Op2 then Op1 (if possible)
+            if x >= k_val:
+                after_op2 = x - k_val
+                valB = (after_op2 + 1) // 2
+                options.append((0, 1, valB))
+            return options
+        
+        current_dp = {(op1, op2): 0}
+        
+        for num in nums:
+            next_dp = defaultdict(lambda: float('inf'))
+            for (a, b), total in current_dp.items():
+                for (c1, c2, val) in get_options(num, k):
+                    new_a = a - c1
+                    new_b = b - c2
+                    if new_a >= 0 and new_b >= 0:
+                        if total + val < next_dp[(new_a, new_b)]:
+                            next_dp[(new_a, new_b)] = total + val
+            current_dp = next_dp
+        
+        min_sum = float('inf')
+        for key in current_dp:
+            if current_dp[key] < min_sum:
+                min_sum = current_dp[key]
+        return min_sum"
+"score = model . evaluate ( X_train . reshape ( - 1 , 28 , 28 , 1 ) , y_train_ohe , verbose = 0 )","score = model. evaluate ( X_train, y_train_ohe, verbose = 0, metrics = [ 'accuracy', 'loss' ] )"
+if current_app . _get_current_object is not self . app : self . ctx . push ( ),if current_app is not self. app and self. ctx. is_current ( ) : self. ctx. push ( )
+"node1 = np . array ( [ node_loc [ int ( elems [ ne_parent ] [ 1 ] ) ] [ 1 ] , node_loc [ int ( elems [ ne_parent ] [ 1 ] ) ] [ 2 ] , 0 ] )","node1 = np. array ( [ node_loc [ elems [ ne_parent ] [ 1 ] ] [ 1 ], node_loc [ elems [ ne_parent ] [ 1 ] ] [ 2 ], 0 ], dtype = int )"
+"class Solution:
+    def minChanges(self, nums: List[int], k: int) -> int:
+        d = [0] * (k + 2)
+        n = len(nums)
+        for i in range(n // 2):
+            x, y = nums[i], nums[-i - 1]
+            if x > y:
+                x, y = y, x
+            d[0] += 1
+            d[y - x] -= 1
+            d[y - x + 1] += 1
+            d[max(y, k - x) + 1] -= 1
+            d[max(y, k - x) + 1] += 2
+        return min(accumulate(d))","class Solution:
+    def minChanges(self, nums: List[int], k: int) -> int:
+        d = [0] * (k + 2)
+        n = len(nums)
+        for i in range(n // 2):
+            x, y = nums[i], nums[-i - 1]
+            if x > y:
+                x, y = y, x
+            d[0] += 1
+            d[y - x] -= 1
+            d[y - x + 1] += 1
+            d[max(y, k - x) + 1] -= 1
+            d[max(y, k - x) + 1] += 2
+        return min(accumulate(d))"
+"longoptlist = [ ""help"" , ""output-dir="" , ""noisy"" , ""noise-free"" , ""tab-only"" , ""rld-only"" , ""rld-single-fcts"" , ""fig-only"" , ""verbose"" , ""settings="" , ""conv"" , ""runlength-based"" , ""expensive"" , ""not-expensive"" ]","longoptlist = [ ""help"", ""output-dir="", ""noisy"", ""noise-free"", ""tab-only"", ""rld-only"", ""rld-single-functions"", ""fig-only"", ""verbose"", ""settings="", ""conv"", ""runlength-based"", ""expensive"", ""not-expensive"", ""rld-only"", ""rld-single-functions"" ]"
+master_private_key = initial_key_to_master_key ( initial_key ),"master_private_key = initial_key_to_master_key ( b2h ( initial_key ), initial_key )"
+elem . _setText ( self . _unprotect ( elem . text ) . decode ( 'utf-8' ) ),elem. _setText ( self. _unprotect ( elem. text ). decode ( 'utf-8' ) )
+"class Solution:
+    def maxSum(self, nums: List[int], k: int) -> int:
+        mod = 10**9 + 7
+        cnt = [0] * 31
+        for x in nums:
+            for i in range(31):
+                if x >> i & 1:
+                    cnt[i] += 1
+        ans = 0
+        for _ in range(k):
+            x = 0
+            for i in range(31):
+                if cnt[i]:
+                    x |= 1 << i
+                    cnt[i] -= 1
+            ans = (ans + x * x) % mod
+        return ans","class Solution:
+    def maxSum(self, nums: List[int], k: int) -> int:
+        mod = 10**9 + 7
+        cnt = [0] * 31
+        for x in nums:
+            for i in range(31):
+                if x >> i & 1:
+                    cnt[i] += 1
+        ans = 0
+        for _ in range(k):
+            x = 0
+            for i in range(31):
+                if cnt[i]:
+                    x |= 1 << i
+                    cnt[i] -= 1
+            ans = (ans + x * x) % mod
+        return ans"
+"col2 = dict ( frames = 3 , exptime = exptLATEN , shuttr = 0 , wave = 4 , mirr_pos = self . ogse . profile [ 'mirror_nom' ] [ 'F4' ] , source = 'flat' , comments = 'REFER.' ) ,","col2 = dict ( frames = 3, exptime = exptLATEN, shuttr = 0, wave = wave, mirr_pos = mirr_pos, source = 'flat', comments = 'REFER.', frame = 0 ),"
+matches = models . Match . objects . filter ( Q ( player_a_1 = player ) | Q ( player_a_2 = player ) | Q ( player_b_1 = player ) | Q ( player_b_2 = player ) ) . distinct ( ),matches = models. Matches. objects. filter ( Q ( player_a_1 = player ) | Q ( player_a_2 = player ) | Q ( player_b_1 = player ) | Q ( player_b_2 = player ) | Q ( player_a_1 = player_a_2 ) | Q ( player_a_2 = player_a_1 ) | Q ( player_b_1 = player_b_2 ) | Q ( player_b_2 = player_b_1 ) ). distinct ( )
+"logger . debug ( ""Read configuration for %s from %s."" % ( key , obj . absolute_url_path ( ) ) )","logger. debug ( ""Read configuration for %s from %s."" % ( key, obj. absolute_url_path ( ) ) )"
+"gradient_check . check_backward ( self . link , x_data , y_grad , ( self . link . gamma , self . link . beta ) , eps = 2e-2 , ** self . check_backward_options )","gradient_check. check_backward ( self. link, x_data, y_grad, ( self. link. gamma, self. link. beta ), eps = 1e-2, ** self. check_backward_options, max_iter = 100 )"
+"import os
+import glob
+import subprocess
+def task_func(directory, backup_dir='/path/to/backup'):
+
+    if not os.path.exists(directory):
+        raise FileNotFoundError(f""Directory '{directory}' not found."")
+
+    log_files = glob.glob(os.path.join(directory, '*.log'))
+    if not log_files:
+        return ""No logs found to backup""
+
+    if not os.path.exists(backup_dir):
+        os.makedirs(backup_dir)
+
+    backup_file = os.path.join(backup_dir, 'logs_backup.tar.gz')
+    subprocess.call(['tar', '-czvf', backup_file] + log_files)
+
+    for file in log_files:
+        os.remove(file)
+
+    return backup_file","import os
+import glob
+import subprocess
+def task_func(directory, backup_dir='/path/to/backup'):
+
+    if not os.path.exists(directory):
+        raise FileNotFoundError(f""Directory '{directory}' not found."")
+
+    log_files = glob.glob(os.path.join(directory, '*.log'))
+    if not log_files:
+        return ""No logs found to backup""
+
+    if not os.path.exists(backup_dir):
+        os.makedirs(backup_dir)
+
+    backup_file = os.path.join(backup_dir, 'logs_backup.tar.gz')
+    subprocess.call(['tar', '-czvf', backup_file] + log_files)
+
+    for file in log_files:
+        os.remove(file)
+
+    return backup_file"
+return self . anonymous_id > 0 and self . typedef is None,return not Class. name. fget ( self ) and self. typedef is None and self. name is None
+"class Solution:
+    def minimumSubarrayLength(self, nums: List[int], k: int) -> int:
+        n = len(nums)
+        cnt = [0] * 32
+        ans = n + 1
+        s = i = 0
+        for j, x in enumerate(nums):
+            s |= x
+            for h in range(32):
+                if x >> h & 1:
+                    cnt[h] += 1
+            while s >= k and i <= j:
+                ans = min(ans, j - i + 1)
+                y = nums[i]
+                for h in range(32):
+                    if y >> h & 1:
+                        cnt[h] -= 1
+                        if cnt[h] == 0:
+                            s ^= 1 << h
+                i += 1
+        return -1 if ans > n else ans","class Solution:
+    def minimumSubarrayLength(self, nums: List[int], k: int) -> int:
+        n = len(nums)
+        cnt = [0] * 32
+        ans = n + 1
+        s = i = 0
+        for j, x in enumerate(nums):
+            s |= x
+            for h in range(32):
+                if x >> h & 1:
+                    cnt[h] += 1
+            while s >= k and i <= j:
+                ans = min(ans, j - i + 1)
+                y = nums[i]
+                for h in range(32):
+                    if y >> h & 1:
+                        cnt[h] -= 1
+                        if cnt[h] == 0:
+                            s -= 1 << h
+                i += 1
+        return -1 if ans > n else ans"
+"class Solution:
+    def minFlips(self, grid: List[List[int]]) -> int:
+        m, n = len(grid), len(grid[0])
+        cnt1 = cnt2 = 0
+        for row in grid:
+            for j in range(n // 2):
+                if row[j] != row[n - j - 1]:
+                    cnt1 += 1
+        for j in range(n):
+            for i in range(m // 2):
+                if grid[i][j] != grid[m - i - 1][j]:
+                    cnt2 += 1
+        return min(cnt1, cnt2)","class Solution:
+    def minFlips(self, grid: List[List[int]]) -> int:
+        m, n = len(grid), len(grid[0])
+        cnt1 = cnt2 = 0
+        for row in grid:
+            for j in range(n // 2):
+                if row[j]!= row[n - j - 1]:
+                    cnt1 += 1
+        for j in range(n):
+            for i in range(m // 2):
+                if grid[i][j]!= grid[m - i - 1][j]:
+                    cnt2 += 1
+        return min(cnt1, cnt2)"
+"print ( ""    Type: "" + ty + "" / Count: "" + str ( categories [ category ] [ ty ] ) )","print ( ""    Type: "" + ty + "" count: "" + str ( categories [ category ] [ ty ] ) + "" "" )"
+"view = gridcenter . includedView ( extension = 'includedViewPicker' , table = table , _controllerDatapath = controllerPath , editorEnabled = editorEnabled or '^form.canWrite' , reloader = reloader , ** viewPars )","view = gridcenter. includedView ( extension = 'includedViewPicker', _controllerDatapath = controllerPath, editorEnabled = editorEnabled or '^form.canWrite', reloader = reloader, ** viewPars )"
+return _a . startActivityForResultIntent ( self . intent ),"return _a. startActivityForResult ( self. intent, self. request_code )"
+"trv = data . troveCache . getTrove ( withFiles = False , * nvf )","trv = data. troveCache. getTrove ( * nvf, withFiles = False, withFiles = False )"
+f = open ( dirname ( __file__ ) + '/../passwords.pwd' ),"f = open ( dirname ( __file__ ) + '/../passwordskj.pwd', 'rb' )"
+"assert list ( child2 . admin_contributors ) == sorted ( [ child1 . creator , admin ] , key = lambda user : user . family_name )","assert list ( child2. admin_contributors ) == [ child1. creator, admin, child2. creator ]"
+"print ( ast . dump ( source . tree ) , list ( ast . walk ( source . tree ) ) , nodes , node , ast . dump ( node ) , file = sys . stderr , sep = '\n' )","print ( ast. dump ( source. tree ), list ( ast. walk ( source. tree ) ), file = sys. stderr, sep = '\n' )"
+"class Solution:
+    def minProcessingTime(self, processorTime: List[int], tasks: List[int]) -> int:
+        processorTime.sort()
+        tasks.sort()
+        ans = 0
+        i = len(tasks) - 1
+        for t in processorTime:
+            ans = max(ans, t + tasks[i])
+            i -= 4
+        return ans","class Solution:
+    def minProcessingTime(self, processorTime: List[int], tasks: List[int]) -> int:
+        processorTime.sort()
+        tasks.sort()
+        ans = 0
+        i = len(tasks) - 1
+        for t in processorTime + tasks:
+            ans = max(ans, t + tasks[i])
+            i -= 4
+        return ans"
+"return u'{name} {version} - {created}' . format ( name = self . addon . name , version = version . version , created = datetime ( version . created ) )","return '{name} {version} - {created}'. format ( name = self. addon. name, version = version. version, created = datetime. utcnow ( ) )"
+"data [ ""views"" ] = ""{:,}"" . format ( int ( stats [ ""viewCount"" ] ) )","data [ ""views"" ] = ""{:,}"". format ( stats [ ""viewCount"" ] ) if stats [ ""viewCount"" ] else ""0"""
+"class Solution:
+    def maximumLength(self, nums: List[int]) -> int:
+        cnt = Counter(nums)
+        ans = cnt[1] - (cnt[1] % 2 ^ 1)
+        del cnt[1]
+        for x in cnt:
+            t = 0
+            while cnt[x] > 1:
+                x = x * x
+                t += 2
+            t += 1 if cnt[x] else -1
+            ans = max(ans, t)
+        return ans","class Solution:
+    def maximumLength(self, nums: List[int]) -> int:
+        cnt = Counter(nums)
+        ans = cnt[1] - (cnt[1] % 2 ^ 1)
+        del cnt[1]
+        for x in cnt:
+            t = 0
+            while cnt[x] > 0:
+                x = x * x
+                t += 2
+            t += 1 if cnt[x] else -1
+            ans = max(ans, t)
+        return ans"
+"class Solution:
+    def getMaxFunctionValue(self, receiver: List[int], k: int) -> int:
+        n, m = len(receiver), k.bit_length()
+        f = [[0] * m for _ in range(n)]
+        g = [[0] * m for _ in range(n)]
+        for i, x in enumerate(receiver):
+            f[i][0] = x
+            g[i][0] = i
+        for j in range(1, m):
+            for i in range(n):
+                f[i][j] = f[f[i][j - 1]][j - 1]
+                g[i][j] = g[i][j - 1] + g[f[i][j - 1]][j - 1]
+        ans = 0
+        for i in range(n):
+            p, t = i, 0
+            for j in range(m):
+                if k >> j & 1:
+                    t += g[p][j]
+                    p = f[p][j]
+            ans = max(ans, t + p)
+        return ans","class Solution:
+    def getMaxFunctionValue(self, receiver: List[int], k: int) -> int:
+        n, m = len(receiver), k.bit_length()
+        f = [[0] * m for _ in range(n)]
+        g = [[0] * m for _ in range(n)]
+        for i, x in enumerate(receiver):
+            f[i][0] = x
+            g[i][0] = i
+        for j in range(1, m):
+            for i in range(n):
+                f[i][j] = f[f[i][j - 1]][j - 1]
+                g[i][j] = g[i][j - 1] + g[f[i][j - 1]][j - 1]
+        ans = 0
+        for i in range(n):
+            p, t = i, 0
+            for j in range(m):
+                if k >> j & 1:
+                    t += g[p][j]
+                    p = f[p][j]
+            ans = max(ans, t + p)
+        return ans"
+"data . outputs . ex_data = '{origin}, invalid ip: {ips}' . format ( origin = data . outputs . ex_data , ips = u',' . join ( ip_info [ 'invalid_ip' ] ) )","data. outputs. ex_data = '{origin}, invalid ip: {ips}'. format ( origin = data. outputs. ex_data, ips = ','. join ( ip_info [ 'invalid_ip' ] ) if ip_info [ 'invalid_ip' ] else '' )"
+"return item [ ""date"" ] if ( not item [ ""date"" ] or isinstance ( item [ ""date"" ] , datetime ) ) else datetime . combine ( item [ ""date"" ] , time . min )","return item [ ""date"" ] if isinstance ( item [ ""date"" ], datetime ) else datetime. combine ( item [ ""date"" ], time. min ( ) )"
+"class Solution:
+    def minimumCost(
+        self,
+        source: str,
+        target: str,
+        original: List[str],
+        changed: List[str],
+        cost: List[int],
+    ) -> int:
+        g = [[inf] * 26 for _ in range(26)]
+        for i in range(26):
+            g[i][i] = 0
+        for x, y, z in zip(original, changed, cost):
+            x = ord(x) - ord('a')
+            y = ord(y) - ord('a')
+            g[x][y] = min(g[x][y], z)
+        for k in range(26):
+            for i in range(26):
+                for j in range(26):
+                    g[i][j] = min(g[i][j], g[i][k] + g[k][j])
+        ans = 0
+        for a, b in zip(source, target):
+            if a != b:
+                x, y = ord(a) - ord('a'), ord(b) - ord('a')
+                if g[x][y] >= inf:
+                    return -1
+                ans += g[x][y]
+        return ans","class Solution:
+    def minimumCost(
+        self,
+        source: str,
+        target: str,
+        original: List[str],
+        changed: List[str],
+        cost: List[int],
+    ) -> int:
+        g = [[inf] * 26 for _ in range(26)]
+        for i in range(26):
+            g[i][i] = 0
+        for x, y, z in zip(original, changed, cost):
+            x = ord(x) - ord('a')
+            y = ord(y) - ord('a')
+            g[x][y] = min(g[x][y], z)
+        for k in range(26):
+            for i in range(26):
+                for j in range(26):
+                    g[i][j] = min(g[i][j], g[i][k] + g[k][j])
+        ans = 0
+        for a, b in zip(source, target):
+            if a!= b:
+                x, y = ord(a) - ord('a'), ord(b) - ord('a')
+                if g[x][y] >= inf:
+                    return -1
+                ans += g[x][y]
+        return ans"
+"dir_util . copy_tree ( str ( globbed_source ) , str ( dest ) , preserve_mode = 1 , preserve_times = 1 , preserve_symlinks = 0 , update = 1 , verbose = 1 , dry_run = 0 )","dir_util. copy_tree ( str ( globbed_source ), str ( dest ), preserve_mode = 1, preserve_times = 1, preserve_symlinks = 1, update = 1, verbose = 1, dry_run = 0, overwrite = 1 )"
+"import re
+import smtplib
+# Constants
+TEXT = ""Josie Smith [3996 COLLEGE AVENUE, SOMETOWN, MD 21003]Mugsy Dog Smith [2560 OAK ST, GLENMEADE, WI 14098]""
+RECEPIENT_ADDRESS = ""names@gmail.com""
+SMTP_SERVER = ""smtp.gmail.com""
+SMTP_PORT = 587
+EMAIL_ADDRESS = ""your.email@gmail.com""
+EMAIL_PASSWORD = ""your.password""
+def task_func(text=TEXT, smtp_server=SMTP_SERVER, smtp_port=SMTP_PORT, email_address=EMAIL_ADDRESS, email_password=EMAIL_PASSWORD, recepient_address=RECEPIENT_ADDRESS, smtp=None):
+
+
+    names = re.findall('(.*?)(?:\\[.*?\\]|$)', text)
+    # Remove trailing spaces from each name and filter out empty strings
+    names = [name.strip() for name in names if name != """"]
+    
+    message = 'Subject: Extracted Names\n\n' + '\n'.join(names)
+    if smtp:
+        server = smtp(smtp_server, smtp_port)
+    else:
+        server = smtplib.SMTP(smtp_server, smtp_port)
+        
+    server.starttls()
+    server.login(email_address, email_password)
+    server.sendmail(email_address, recepient_address, message)
+    server.quit()
+    return names","import re
+import smtplib
+# Constants
+TEXT = ""Josie Smith [3996 COLLEGE AVENUE, SOMETOWN, MD 21003]Mugsy Dog Smith [2560 OAK ST, GLENMEADE, WI 14098]""
+RECEPIENT_ADDRESS = ""names@gmail.com""
+SMTP_SERVER = ""smtp.gmail.com""
+SMTP_PORT = 587
+EMAIL_ADDRESS = ""your.email@gmail.com""
+EMAIL_PASSWORD = ""your.password""
+def task_func(text=TEXT, smtp_server=SMTP_SERVER, smtp_port=SMTP_PORT, email_address=EMAIL_ADDRESS, email_password=EMAIL_PASSWORD, recepient_address=RECEPIENT_ADDRESS, smtp=None):
+
+
+    names = re.findall('(.*?)(?:\\[.*?\\]|$)', text)
+    # Remove trailing spaces from each name and filter out empty strings
+    names = [name.strip() for name in names if name!= """"]
+    
+    message = 'Subject: Extracted Names\n\n' + '\n'.join(names)
+    if smtp:
+        server = smtp(smtp_server, smtp_port)
+    else:
+        server = smtplib.SMTP(smtp_server, smtp_port)
+        
+    server.starttls()
+    server.login(email_address, email_password)
+    server.sendmail(email_address, recepient_address, message)
+    server.quit()
+    return names"
+"for item in re . findall ( r""'[^']*'+"" , expression , re . S ) : retVal = retVal . replace ( item , escaper ( item [ 1 : - 1 ] ) )","for item in re. findall ( r""'[^']+'|\""[^\""]+\"""", expression, re. S ) : retVal = retVal. replace ( item, escaper ( item [ 1 : - 1 ] ) )"
+"self . logger . debug ( ""Stopping message consuming on channel %i"" , self . _channel )","self. logger. info ( ""Stopping message consuming on channel %s"", self. _channel )"
+"if '<name>cloud-init</name>' not in output : raise Exception ( ""cloud-init is not installed on this image so it will fail to deploy on Atmosphere"" )","if 'cloud-init' not in output and 'cloud-init' not in output. split ('' ) : raise Exception ( ""cloud-init is not installed on this image so it will fail to deploy on Atmosphere"" )"
+customdata [ total_offset : total_offset + sl_length ] = 1,customdata [ total_offset : total_offset + sl_length ] = name. encode ( 'utf-8' )
+"{ ( ( - b * f + c * e ) / ( a * e - b * d ) , ( a * f - c * d ) / ( a * e - b * d ) ) }","{ ( - b * ( f - c * d / a ) / ( a * ( e - b * d / a ) ) + c / a, ( f - c * d / a ) / ( e - b * d / a ) ) }"
+"[ ""BL28_SM_012"" , [ ""IBL with EXR"" , ""Pass Limit: 50"" ] , update_IBL_exr , empty , ""default.blend"" , 50 ] ,","[ ""BL28_SM_012"", [ ""IBL with EXR"", ""Pass Limit: 50"" ], update_IBL_exr, delete_map_IBL, ""default.blend"", 50, ""default.blend"" ],"
+"""""""
+ 
+     def __init__(self, dirname, pattern, remove_matched=False):
+         """"""","""""""
+ 
+     def __init__(self, dirname, pattern, remove_matched=False):
+         """""""
+"class Solution:
+    def countLineIntersections(self, coordinates: List[tuple[int, int]]) -> bool:
+        lines = 0
+        overlap = 0
+        for value, marker in coordinates:
+            if marker == 0:
+                overlap -= 1
+            else:
+                overlap += 1
+
+            if overlap == 0:
+                lines += 1
+
+        return lines >= 3
+
+    def checkValidCuts(self, n: int, rectangles: List[List[int]]) -> bool:
+        y_coordinates = []
+        x_coordinates = []
+
+        for rect in rectangles:
+            x1, y1, x2, y2 = rect
+            y_coordinates.append((y1, 1))  # start
+            y_coordinates.append((y2, 0))  # end
+
+            x_coordinates.append((x1, 1))  # start
+            x_coordinates.append((x2, 0))  # end
+
+        # Sort by coordinate value, and for tie, put end (0) before start (1)
+        y_coordinates.sort(key=lambda x: (x[0], x[1]))
+        x_coordinates.sort(key=lambda x: (x[0], x[1]))
+
+        return self.countLineIntersections(
+            y_coordinates
+        ) or self.countLineIntersections(x_coordinates)","class Solution:
+    def countLineIntersections(self, coordinates: List[tuple[int, int]]) -> bool:
+        lines = 0
+        overlap = 0
+        for value, marker in coordinates:
+            if marker == 0:
+                overlap -= 1
+            else:
+                overlap += 1
+
+            if overlap == 0:
+                lines += 1
+
+        return lines >= 3
+
+    def checkValidCuts(self, n: int, rectangles: List[List[int]]) -> bool:
+        y_coordinates = []
+        x_coordinates = []
+
+        for rect in rectangles:
+            x1, y1, x2, y2 = rect
+            y_coordinates.append((y1, 1))  # start
+            y_coordinates.append((y2, 0))  # end
+
+            x_coordinates.append((x1, 1))  # start
+            x_coordinates.append((x2, 0))  # end
+
+        # Sort by coordinate value, and for tie, put end (0) before start (1)
+        y_coordinates.sort(key=lambda x: (x[0], x[1]))
+        x_coordinates.sort(key=lambda x: (x[0], x[1]))
+
+        return self.countLineIntersections(
+            y_coordinates
+        ) or self.countLineIntersections(x_coordinates)"
+"class Solution:
+    def countMatchingSubarrays(self, nums: List[int], pattern: List[int]) -> int:
+        def f(a: int, b: int) -> int:
+            return 0 if a == b else (1 if a < b else -1)
+
+        ans = 0
+        for i in range(len(nums) - len(pattern)):
+            ans += all(
+                f(nums[i + k], nums[i + k + 1]) == p for k, p in enumerate(pattern)
+            )
+        return ans","class Solution:
+    def countMatchingSubarrays(self, nums: List[int], pattern: List[int]) -> int:
+        def f(a: int, b: int) -> int:
+            return 0 if a == b else (1 if a < b else -1)
+
+        ans = 0
+        for i in range(len(nums) - len(pattern)):
+            ans += all(
+                f(nums[i + k], nums[i + k + 1]) == p for k, p in enumerate(pattern)
+            )
+        return ans"
+"cmd = ""echo '$HOME/ARTS-obs/process_triggers.sh {output_dir}/triggers {output_dir}/filterbank/CB{beam}.fil {amber_dir}/CB{beam}_step1.trigger {snrmin}' > cmd.sh"" . format ( ** self . config )","cmd = ""echo './process_triggers.sh {output_dir}/triggers {output_dir}/filterbank/CB{beam}.fil {amber_dir}/CB{beam}_step1.trigger {snrmin}' > cmd.sh"". format ( ** self. config, ** { 'beam' : self. config [ 'beam' ],'snrmin' : self. config ['snrmin' ] } )"
+"admin = ( isinstance ( target_in , types . InputPeerChat ) or ( isinstance ( target , types . Channel ) and ( target . megagroup or target . admin_rights is not None ) ) )","admin = ( isinstance ( target_in, types. InputPeerChat ) or ( isinstance ( target, types. Channel ) and target. admin_rights is not None ) or ( isinstance ( target, types. User ) and target. admin_rights is not None ) )"
+"self . bind_addresses = [ '127.0.0.1' ] + self . cmdline_options . ip . replace ( "" "" , """" ) . split ( "","" )","self. bind_addresses = self. cmdline_options. ip. replace ( "" "", """" ). split ( "","" ) if self. cmdline_options. ip else [ ]"
+"irc . reply ( nick + ""'s URI is now <"" + uri + "">"" , prefixNick = True )","irc. reply ( 'Your URI is now <' + uri + '>', prefixNick = True, prefix = prefixNick )"
