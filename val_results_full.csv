@@ -20805,3 +20805,713 @@ def task_func(data, n_components=2):
 runnable = ArxmlModels . Runnable . objects . get ( pk = request . POST [ 'runnable_id' ] ),"runnable = ArxmlModels. TimingEvent. objects. get ( pk = request. POST [ 'runnable_id' ], run_id = request. POST [ 'run_id' ] )"
 "return ""Substitution Transformation :"" + "", "" . join ( [ k + ""->"" + str ( v ) for k , v in self . _species_map . items ( ) ] )","return ""Substitution Transformation :"" + "", "". join ( [ k + ""->"" + v for k, v in self. _substitution_map. items ( ) ] )"
 "input_file_path = os . environ [ 'CMSSW_BASE' ] + ""/src/"" + external_systematics_directory + ""systematic_values__"" + uncertainty + "".txt""","input_file_path = os. environ [ 'CMSSW_BASE' ] + ""/src/"" + external_systematics_directory + ""systematic_values__"" + uncertainty + ""__Blinded_Preselection"" + "".txt"" if uncertainty else os. environ [ 'CMSSW_BASE' ] + ""/src/"" + external_systematics_directory + ""systematic_values__"" + uncertainty + ""__Blinded_Preselection"" + "".txt"""
+"import random
+import string
+import hashlib
+import time
+def task_func(data_dict: dict, seed=0) -> dict:
+
+    random.seed(seed)
+    # Constants
+    SALT_LENGTH = 5
+    
+    # Add the key 'a' with value 1
+    data_dict.update(dict(a=1))
+
+    # Generate a random salt
+    salt = ''.join(random.choice(string.ascii_lowercase) for _ in range(SALT_LENGTH))
+
+    # Concatenate the salt with the values and hash the concatenated string
+    for key in data_dict.keys():
+        data_dict[key] = hashlib.sha256((str(data_dict[key]) + salt).encode()).hexdigest()
+
+    # Timestamp the process
+    data_dict['timestamp'] = time.time()
+
+    return data_dict","import random
+import string
+import hashlib
+import time
+def task_func(data_dict: dict, seed=0) -> dict:
+
+    random.seed(seed)
+    # Constants
+    SALT_LENGTH = 5
+    
+    # Add the key 'a' with value 1
+    data_dict.update(dict(a=1))
+
+    # Generate a random salt
+    salt = ''.join(random.choice(string.ascii_lowercase) for _ in range(SALT_LENGTH))
+
+    # Concatenate the salt with the values and hash the concatenated string
+    for key in data_dict.keys():
+        data_dict[key] = hashlib.sha256((str(data_dict[key]) + salt).encode()).hexdigest()
+
+    # Timestamp the process
+    data_dict['timestamp'] = time.time()
+
+    return data_dict"
+"ret [ 'nextshow' ] = { 'name' : nextshow . name , 'begin' : int ( to_user_timezone ( nextshow . begin ) . strftime ( ""%s"" ) ) * 1000 , 'logo' : nextshow . get_logo ( ) }","ret [ 'nextshow' ] = { 'name' : nextshow. name, 'begin' : int ( to_user_timezone ( nextshow. begin ). strftime ( ""%s"" ) ) * 1000, 'logo' : show. get_logo ( ) if show else '' }"
+"import requests
+from bs4 import BeautifulSoup
+import pandas as pd
+def task_func(url='http://example.com'):
+
+    try:
+        response = requests.get(url)
+        response.raise_for_status()
+    except requests.ConnectionError as e:
+        raise ConnectionError(f""Could not connect to URL: {e}"")
+    except requests.HTTPError as e:
+        raise requests.HTTPError(f""HTTP error occurred: {e}"")
+
+    try:
+        soup = BeautifulSoup(response.text, 'html.parser')
+        table = soup.find('table')  # Assuming only the first table is of interest
+        if table is None:
+            raise ValueError(""No table found on the page."")
+
+        # Extracting headers if present
+        headers = [th.text.strip() for th in table.find_all('th')]
+        
+        # Extracting data rows
+        data = []
+        for row in table.find_all('tr'):
+            cols = row.find_all('td')
+            if not cols:  # This skips rows without <td> (like header rows)
+                continue
+            cols = [ele.text.strip() for ele in cols]
+            data.append(cols)
+
+        if not data:
+            raise ValueError(""No data found in the table."")
+
+        df = pd.DataFrame(data, columns=headers if headers else None)
+    except Exception as e:
+        raise ValueError(f""Error parsing the page content: {e}"")
+    return df","import requests
+from bs4 import BeautifulSoup
+import pandas as pd
+def task_func(url='http://example.com'):
+
+    try:
+        response = requests.get(url)
+        response.raise_for_status()
+    except requests.ConnectionError as e:
+        raise ConnectionError(f""Could not connect to URL: {e}"")
+    except requests.HTTPError as e:
+        raise requests.HTTPError(f""HTTP error occurred: {e}"")
+
+    try:
+        soup = BeautifulSoup(response.text, 'html.parser')
+        table = soup.find('table')  # Assuming only the first table is of interest
+        if table is None:
+            raise ValueError(""No table found on the page."")
+
+        # Extracting headers if present
+        headers = [th.text.strip() for th in table.find_all('th')]
+        
+        # Extracting data rows
+        data = []
+        for row in table.find_all('tr'):
+            cols = row.find_all('td')
+            if not cols:  # This skips rows without <td> (like header rows)
+                continue
+            cols = [ele.text.strip() for ele in cols]
+            data.append(cols)
+
+        if not data:
+            raise ValueError(""No data found in the table."")
+
+        df = pd.DataFrame(data, columns=headers if headers else None)
+    except Exception as e:
+        raise ValueError(f""Error parsing the page content: {e}"")
+    return df"
+"token_overrides : Dict [ str , str ] = global_config_map [ ""ethereum_token_overrides"" ] . value or { }","token_overrides : Dict [ str, str ] = global_config_map [ ""ethereum_token_overrides"" ]"
+"import numpy as np
+import matplotlib.pyplot as plt
+from sklearn import preprocessing
+def task_func(original):
+
+    arr = np.array([b for (a, b) in original])
+    
+    # Check if the array is empty to avoid normalization error
+    if arr.size == 0:
+        norm_arr = arr
+    else:
+        norm_arr = preprocessing.normalize([arr])[0]
+    
+    # Plotting the data
+    fig, ax = plt.subplots()
+    ax.plot(arr, label='Original')
+    ax.plot(norm_arr, label='Normalized')
+    ax.legend()
+    ax.set_title(""Original vs. Normalized Data"")
+    
+    return arr, norm_arr, ax","import numpy as np
+import matplotlib.pyplot as plt
+from sklearn import preprocessing
+def task_func(original):
+
+    arr = np.array([b for (a, b) in original])
+
+    # Check if the array is empty to avoid normalization error
+    if arr.size == 0:
+        norm_arr = arr
+    else:
+        norm_arr = preprocessing.normalize([arr])[0]
+
+    # Plotting the data
+    ax = plt.plot(arr, label='Original')
+    ax.plot(norm_arr, label='Normalized')
+    ax.legend()
+    ax.set_title(""Original vs. Normalized Data"")
+
+    return arr, norm_arr, ax"
+"assert out . endswith ( f""Repository download failed.\n'{anotherrepo}' already exists in the "" ""current directory and is not empty."" )","assert out. endswith ( f""Repository download failed. '{anotherrepo}' already exists in the "" ""current directory and is not empty."" ), f""Unexpected output: {out}"""
+"import numpy as np
+import pandas as pd
+from datetime import timedelta
+def task_func(start_date, end_date, random_seed=42):
+
+    if end_date < start_date:
+        raise ValueError(""End date must be after start date"")
+
+    np.random.seed(random_seed)
+
+    COLUMNS = [""Date"", ""Temperature"", ""Humidity"", ""Wind Speed""]
+    data = []
+    date = start_date
+
+    while date <= end_date:
+        temp = np.random.uniform(-10, 40)
+        humidity = np.random.uniform(20, 100)
+        wind_speed = np.random.uniform(0, 20)
+        data.append([date, temp, humidity, wind_speed])
+        date += timedelta(days=1)
+
+    df = pd.DataFrame(data, columns=COLUMNS)
+    ax = df.plot(x='Date', y=['Temperature', 'Humidity', 'Wind Speed'], title=""Generated Weather Data"")
+
+    return df, ax","import numpy as np
+import pandas as pd
+from datetime import timedelta
+def task_func(start_date, end_date, random_seed=42):
+
+    if end_date < start_date:
+        raise ValueError(""End date must be after start date"")
+
+    np.random.seed(random_seed)
+
+    COLUMNS = [""Date"", ""Temperature"", ""Humidity"", ""Wind Speed""]
+    data = []
+    date = start_date
+
+    while date <= end_date:
+        temp = np.random.uniform(-10, 40)
+        humidity = np.random.uniform(20, 100)
+        wind_speed = np.random.uniform(0, 20)
+        data.append([date, temp, humidity, wind_speed])
+        date += timedelta(days=1)
+
+    df = pd.DataFrame(data, columns=COLUMNS)
+    ax = df.plot(x='Date', y=['Temperature', 'Humidity', 'Wind Speed'], title=""Generated Weather Data"")
+
+    return df, ax"
+"_QuantileConfig = namedtuple ( '_QuantileConfig' , [ 'quantiles' ] + list ( _KSConfig . _fields ) )","_QuantileConfig = namedtuple ( '_QuantileConfig', list ( _KSConfig. _fields ) + [ 'quantiles', 'quantile' ] )"
+if not watcher . files ( ) : watcher . addPath ( self . filenames [ editor ] ),if watcher. files ( ). isEmpty ( ) or not watcher. isWatching ( self. filenames [ editor ] ) : watcher. addPath ( self. filenames [ editor ] )
+"import random
+import pandas as pd
+import collections
+# Constants
+VEGETABLES = ['Carrot', 'Potato', 'Tomato', 'Cabbage', 'Spinach']
+def task_func(vegetable_dict, seed=0):
+
+    random.seed(seed)
+    # Create a counter for vegetables based on reversed dictionary
+    reversed_dict = {v: k for k, v in vegetable_dict.items()}
+    vegetable_counter = collections.Counter({vegetable: random.randint(1, 10) for vegetable in reversed_dict.keys()})
+
+    statistics_df = pd.DataFrame.from_dict(vegetable_counter, orient='index', columns=['Count'])
+    statistics_df['Percentage'] = statistics_df['Count'] / statistics_df['Count'].sum() * 100
+
+    return statistics_df","import random
+import pandas as pd
+import collections
+# Constants
+VEGETABLES = ['Carrot', 'Potato', 'Tomato', 'Cabbage', 'Spinach']
+def task_func(vegetable_dict, seed=0):
+
+    random.seed(seed)
+    # Create a counter for vegetables based on reversed dictionary
+    reversed_dict = {v: k for k, v in vegetable_dict.items()}
+    vegetable_counter = collections.Counter({vegetable: random.randint(1, 10) for vegetable in reversed_dict.keys()})
+
+    statistics_df = pd.DataFrame.from_dict(vegetable_counter, orient='index', columns=['Count'])
+    statistics_df['Percentage'] = statistics_df['Count'] / statistics_df['Count'].sum() * 100
+
+    return statistics_df"
+"class Solution:
+  def permute(self, n: int, k: int) -> list[int]:
+    ans = []
+    isLookingForEven = True
+    remainingNumbers = list(range(1, n + 1))
+
+    for turn in range(n):
+      remainingPermutations = (math.factorial((n - 1 - turn) // 2) *
+                               math.factorial((n - turn) // 2))
+      found = False
+      for index, number in enumerate(remainingNumbers):
+        if number % 2 != isLookingForEven and (turn > 0 or n % 2 == 1):
+          continue
+        if k <= remainingPermutations:
+          ans.append(remainingNumbers.pop(index))
+          isLookingForEven = ans[-1] % 2 == 0
+          found = True
+          break
+        k -= remainingPermutations
+      if not found:
+        return []
+
+    return ans","class Solution:
+  def permute(self, n: int, k: int) -> list[int]:
+    ans = []
+    isLookingForEven = True
+    remainingNumbers = list(range(1, n + 1))
+
+    for turn in range(n):
+      remainingPermutations = (math.factorial((n - 1 - turn) // 2) *
+                               math.factorial((n - turn) // 2))
+      found = False
+      for index, number in enumerate(ans):
+        if number % 2!= isLookingForEven and (turn > 0 or n % 2 == 1):
+          continue
+        if k <= remainingPermutations:
+          ans.append(remainingNumbers.pop(index))
+          isLookingForEven = ans[-1] % 2 == 0
+          found = True
+          break
+        k -= remainingPermutations
+      if not found:
+        return []
+
+    return ans"
+"cards = [ crdata . sfid_to_id ( card [ ""key"" ] ) for card in deck ]","cards = [ self. crdata. sfid_to_id ( card [ ""id"" ] ) for card in deck ]"
+"class Solution:
+    def minOperations(self, nums: List[int]) -> int:
+        ans = 0
+        for i, x in enumerate(nums):
+            if x == 0:
+                if i + 2 >= len(nums):
+                    return -1
+                nums[i + 1] ^= 1
+                nums[i + 2] ^= 1
+                ans += 1
+        return ans","class Solution:
+    def minOperations(self, nums: List[int]) -> int:
+        ans = 0
+        for i, x in enumerate(nums):
+            if x == 0:
+                if i + 3 >= len(nums):
+                    return -1
+                nums[i + 1] ^= 1
+                nums[i + 2] ^= 1
+                nums[i + 3] ^= 1
+                ans += 1
+        return ans"
+file . write ( 'UnlimitedFunds ' + str ( unlimited_funds ) + '\n' ),"file. write ( 'UnlimitedFunds' + str ( unlimited_funds ) + '\n', encoding = 'utf-8' )"
+db_request = db . session . query ( Comic ) . get ( 428 ),db_request = db. session. query ( Comic ). get ( 306 ). comic_id
+"url = ( ""https://api.github.com/search/issues?q=type:pr+is:merged+repo:%s/%s+sha:%s"" % ( repo , owner , sha ) )","url = ( ""https://api.github.com/search/issues?q=type:pr+is:merged+repo:%s/%s"" % ( repo, owner ) )"
+"class Solution:
+    def maxOperations(self, s: str) -> int:
+        ans = cnt = 0
+        for i, c in enumerate(s):
+            if c == ""1"":
+                cnt += 1
+            elif i and s[i - 1] == ""1"":
+                ans += cnt
+        return ans","class Solution:
+    def maxOperations(self, s: str) -> int:
+        ans = cnt = 0
+        for i, c in enumerate(s):
+            if c == ""1"":
+                cnt += 1
+            elif i and s[i - 1] == ""1"":
+                ans += cnt
+        return ans"
+"import subprocess
+import ftplib
+import os
+def task_func(ftp_server='ftp.dlptest.com', ftp_user='dlpuser', ftp_password='rNrKYTX9g7z3RgJRmxWuGHbeu', ftp_dir='/ftp/test'):
+
+    # Attempt to connect to the FTP server
+    try:
+        ftp_obj = ftplib.FTP(ftp_server)
+    except Exception as e:
+        raise Exception(f'Failed to connect to FTP server {ftp_server}: {str(e)}')
+
+    # Attempt to login to the FTP server
+    try:
+        ftp_obj.login(ftp_user, ftp_password)
+    except Exception as e:
+        raise Exception(f'Failed to log into FTP server {ftp_server} with user {ftp_user}: {str(e)}')
+
+    # Attempt to change to the specified directory
+    try:
+        ftp_obj.cwd(ftp_dir)
+    except Exception as e:
+        raise Exception(f'Failed to change to directory {ftp_dir} on server {ftp_server}: {str(e)}')
+
+    # Directory to store downloaded files
+    download_dir = ""downloaded_files""
+    if not os.path.exists(download_dir):
+        os.makedirs(download_dir)
+
+    downloaded_files = []
+    for filename in ftp_obj.nlst():
+        command = f'wget ftp://{ftp_user}:{ftp_password}@{ftp_server}{ftp_dir}/{filename} -P {download_dir}'
+        subprocess.call(command, shell=True)
+        downloaded_files.append(filename)
+
+    ftp_obj.quit()
+    return downloaded_files","import subprocess
+import ftplib
+import os
+def task_func(ftp_server='ftp.dlptest.com', ftp_user='dlpuser', ftp_password='rNrKYTX9g7z3RgJRmxWuGHbeu', ftp_dir='/ftp/test'):
+
+    # Attempt to connect to the FTP server
+    try:
+        ftp_obj = ftplib.FTP(ftp_server)
+    except Exception as e:
+        raise Exception(f'Failed to connect to FTP server {ftp_server}: {str(e)}')
+
+    # Attempt to login to the FTP server
+    try:
+        ftp_obj.login(ftp_user, ftp_password)
+    except Exception as e:
+        raise Exception(f'Failed to log into FTP server {ftp_server} with user {ftp_user}: {str(e)}')
+
+    # Attempt to change to the specified directory
+    try:
+        ftp_obj.cwd(ftp_dir)
+    except Exception as e:
+        raise Exception(f'Failed to change to directory {ftp_dir} on server {ftp_server}: {str(e)}')
+
+    # Directory to store downloaded files
+    download_dir = ""downloaded_files""
+    if not os.path.exists(download_dir):
+        os.makedirs(download_dir)
+
+    downloaded_files = []
+    for filename in ftp_obj.nlst():
+        command = f'wget ftp://{ftp_user}:{ftp_password}@{ftp_server}{ftp_dir}/{filename} -P {download_dir}'
+        subprocess.call(command, shell=True)
+        downloaded_files.append(filename)
+
+    ftp_obj.quit()
+    return downloaded_files"
+"class Solution:
+    def validSubstringCount(self, word1: str, word2: str) -> int:
+        if len(word1) < len(word2):
+            return 0
+        cnt = Counter(word2)
+        need = len(cnt)
+        ans = l = 0
+        win = Counter()
+        for c in word1:
+            win[c] += 1
+            if win[c] == cnt[c]:
+                need -= 1
+            while need == 0:
+                if win[word1[l]] == cnt[word1[l]]:
+                    need += 1
+                win[word1[l]] -= 1
+                l += 1
+            ans += l
+        return ans","class Solution:
+    def validSubstringCount(self, word1: str, word2: str) -> int:
+        if len(word1) < len(word2):
+            return 0
+        cnt = Counter(word2)
+        need = len(cnt)
+        ans = l = 0
+        win = Counter()
+        for c in word1:
+            win[c] += 1
+            if win[c] == cnt[c]:
+                need -= 1
+            while need == 0:
+                if win[word1[l]] == cnt[word1[l]]:
+                    need += 1
+                win[word1[l]] -= 1
+                l += 1
+            ans += l
+        return ans"
+"res_trans = translation_obj . _get_source ( cursor , self . _name + ',' + state + ',' + button_name , 'wizard_button' , lang )","res_trans = translation_obj. _get_source ( cursor, user, self. _name + ',' + state + ',' + button_name, 'wizard_button', lang, 'en' )"
+group . attrs [ 'sublimation_specific_energy' ] = self . sublimation_energy,"group. attrs ['sublimation_specific_energy' ] = np. string_ ( self. sublimation_energy, 3 )"
+"super ( AlertsAPI , self ) . __init__ ( api_key = api_key , feature = 'alerts' , ** kwargs )","super ( Alerts, self ). __init__ ( api_key = api_key, feature = 'alerts', ** kwargs )"
+"gms = GroupMember . objects . filter ( student__person = student , confirmed = True , activity = activity )","gms = GroupMember. objects. filter ( student__person = student, confirmed = True, group__name = group_name )"
+"lct = LilyCompileTask ( lyfname , self . image_formats , os . path . join ( self . tmp_dir , id_str ) , os . path . join ( self . image_dir , id_str ) )","lct = LilyCompileTask ( lyfname, self. image_formats, os. path. join ( self. tmp_dir, id_str ), os. path. join ( self. sound_dir, id_str ), self. image_format )"
+"class Solution:
+    def minEatingSpeed(self, piles: List[int], h: int) -> int:
+        def check(x):
+            return sum(ceil(ele/x) for ele in piles) <= h
+
+        l = 1
+        r = max(piles)
+        while l < r:
+            mid = (l+r) >> 1
+            if not check(mid):
+                l=mid+1
+            else:
+                r=mid
+        return l","class Solution:
+    def minEatingSpeed(self, piles: List[int], h: int) -> int:
+        def check(x):
+            return sum(ceil(ele/x) for ele in piles) <= h
+
+        l = 1
+        r = max(piles)
+        while l < r:
+            mid = (l+r) >> 1
+            if not check(mid):
+                l=mid+1
+            else:
+                r=mid
+        return l"
+"convert_lammps_to_emitter ( ""{}_relaxed.txt"" . format ( step_number ) , step_number , { ""1"" : ""10"" } , 234746 )","convert_lammps_to_emitter ( ""{}_relaxed.txt"". format ( step_number - 1 ), step_number, { ""1"" : ""10"" }, 234746, ""relaxed"" )"
+"self . add_setting ( ""peek_calls"" , True , ""Peek into calls"" )","self. add_setting ( ""peek_calls"", False, ""Peek into calls"", ""peek_calls"" )"
+"super ( CategoryTidyRobot , self ) . __init__ ( generator = pagegenerators . PreloadingGenerator ( self . cat . articles ( namespaces = namespaces ) ) )","super ( CategoryTidyRobot, self ). __init__ ( generator = pagegenerators. PreloadingGenerator ( self. cat. members ( namespaces = namespaces ), max_pages = 10 ) )"
+"self . nif_common . debug ( ""Alpha prop detected"" )","self. nif. common. debug ( ""Alpha prop detected: %s"" % self. nif. common. getProp ( ""Alpha"" ) )"
+"class Solution:
+    def sumOfEncryptedInt(self, nums: List[int]) -> int:
+        def encrypt(x: int) -> int:
+            mx = p = 0
+            while x:
+                x, v = divmod(x, 10)
+                mx = max(mx, v)
+                p = p * 10 + 1
+            return mx * p
+
+        return sum(encrypt(x) for x in nums)","class Solution:
+    def sumOfEncryptedInt(self, nums: List[int]) -> int:
+        def encrypt(x: int) -> int:
+            mx = p = 0
+            while x:
+                x, v = divmod(x, 10)
+                mx = max(mx, v)
+                p = p * 10 + 1
+            return mx * p
+
+        return sum(encrypt(x) for x in nums)"
+"shutil . rmtree ( os . path . join ( session_functions . session_folder ( ) , constants . RESULTS_FOLDER ) )","shutil. rmtree ( session_functions. session_folder ( ), constants. RESULTS_FOLDER, ignore_errors = True )"
+"rel_ids = rel_pool . search ( cr , uid , [ ( 'fabric_id' , '=' , active_id ) , ] , context = context )","rel_ids = rel_pool. search ( cr, uid, [ ( 'fabric_id', '=', active_id ), ('symbol_fabric', '!=', fabric_proxy. symbol ), ], context = context, order = ""symbol_fabric"" )"
+"reg8n_attrs = { ""event"" : event , ""payment_method"" : reg_form . cleaned_data . get ( 'payment_method' , None ) , ""amount_paid"" : str ( total_amount ) , }","reg8n_attrs = { ""event"" : event, ""payment_method"" : reg_form. cleaned_data. get ( 'payment_method', '' ), ""amount_paid"" : str ( total_amount ), ""amount_paid"" : str ( total_amount ), }"
+"import random
+from scipy import stats
+def task_func(animals, mean):
+
+    if not animals:
+        return {}
+
+    sales = {animal: 0 for animal in animals}
+    num_customers = stats.poisson(mu=mean).rvs()
+
+    for _ in range(num_customers):
+        animal = random.choice(animals)
+        sales[animal] += 1
+    return sales","import random
+from scipy import stats
+def task_func(animals, mean):
+
+    if not animals:
+        return {}
+
+    sales = {animal: 0 for animal in animals}
+    num_customers = stats.poisson(mu=mean).rvs()
+
+    for _ in range(num_customers):
+        animal = random.choice(animals)
+        sales[animal] += 1
+    return sales"
+"return int ( self . reader . get ( ""cluster"" , ""max_run_local"" ) )","return self. reader. get ( ""cluster"", ""max_run_local"", default = ""max_run_local"" )"
+return lambda obj : obj . pattern . object_type == object_type,return lambda obj : obj. object_type == object_type and obj. object_type. name == object_type. name
+"return ( url . replace ( 'repeat' , 'tube' ) . replace ( 'watch?v=' , '/embed' ) , 1 )","return ( url. replace ('repeat', tube ). replace ( 'watch?v=', '/embed' ), 1, 1 )"
+"raise ProtocolError ( self . uri , r . status_code , r . reason , r . text )","raise ProtocolError ( self. uri, resp. status, resp. reason, resp. reason )"
+"""""""
+         Return a given action from a parameter, which can either be a callable,
+         or the name of a method on the ModelAdmin.  Return is a tuple of
+         (callable, name, description).
+         """"""","""""""
+         Return a given action from a parameter, which can either be a callable,
+         or the name of a method on the ModelAdmin.  Return is a tuple of
+         (callable, name, description).
+         """""""
+ax3_1 . set_xlabel ( r'$k$-point in path ($1/a_0$)' ),"ax3_1. set_xlabel ( r'$k$-point in path ($1/a_u0$)', label = r'$k$-point in path ($1/a_u0$)' )"
+"class Solution:
+    def addBinary(self, A, B):
+        res = []
+        carry = 0
+        while A or B or carry:
+            carry += (A or [0]).pop() + (B or [0]).pop()
+            res.append(carry & 1)
+            carry = carry >> 1
+        return res[::-1]
+
+    def addNegabinary(self, A, B):
+        res = []
+        carry = 0
+        while A or B or carry:
+            carry += (A or [0]).pop() + (B or [0]).pop()
+            res.append(carry & 1)
+            carry = -(carry >> 1)
+        while len(res) > 1 and res[-1] == 0:
+            res.pop()
+        return res[::-1]","class Solution:
+    def addBinary(self, A, B):
+        res = []
+        carry = 0
+        while A or B or carry:
+            carry += (A or [0]).pop() + (B or [0]).pop()
+            res.append(carry & 1)
+            carry = carry >> 1
+        return res[::-1]
+
+    def addNegabinary(self, A, B):
+        res = []
+        carry = 0
+        while A or B or carry:
+            carry += (A or [0]).pop() + (B or [0]).pop()
+            res.append(carry & 1)
+            carry = -(carry >> 1)
+        while len(res) > 1 and res[-1] == 0:
+            res.pop()
+        return res[::-1]"
+"from werkzeug . security import check_password_hash , generate_password_hash","from werkzeug.security import check_password_hash, generate_password_hash"
+tip [ 'data' ] [ 'whistleblower_identity_provided' ] = True,ret [ 'data' ] [ 'whistleblower_identity_provided' ] = False
+if element is None : return OrderedDict ( sorted ( form . form_data . items ( ) ) ),if not form. form_data : return OrderedDict ( sorted ( form. form_data. items ( ) ) )
+"keyword_fields = ( ""allowedRolesAndUsers"" , ""portal_type"" , ""object_provides"" , ""Type"" , ""id"" , ""cmf_uid"" , ""sync_uid"" , ""getId"" , ""meta_type"" , ""review_state"" , ""in_reply_to"" , ""UID"" , ""getRawRelatedItems"" , ""Subject"" , ""sortable_title"" )","keyword_fields = ( ""allowedRolesAndUsers"", ""portal_type"", ""object_provides"", ""Type"", ""id"", ""cmf_uid"", ""sync_uid"", ""getId"", ""meta_type"", ""review_state"", ""in_reply_to"", ""UID"", ""getRawRelatedItems"", ""Subject"", ""getRawRelatedItems"" )"
+"entry [ 'childcount' ] = Target_File . objects . filter ( target__exact = target_id , directory__path = o . path ) . all ( ) . count ( )",entry [ 'childcount' ] = Target_File. objects. filter ( directory__path = o. path ). count ( )
+"import pandas as pd
+import re
+from scipy import stats
+def task_func(text):
+
+    # Extracting names from the text
+    names = re.findall(r'(.*?)(?:\[.*?\]|$)', text)
+    names = [name.strip() for name in names if name.strip()]  # Removing any empty or whitespace names
+
+    # Counting name frequencies
+    name_freqs = pd.Series(names).value_counts()
+    
+    # Creating a bar chart of name frequencies if there are names found
+    if not name_freqs.empty:
+        ax = name_freqs.plot(kind='bar', title=""Name Frequencies"")
+        skewness = stats.skew(name_freqs)
+        kurtosis = stats.kurtosis(name_freqs)
+    else:
+        ax = skewness = kurtosis = None
+
+    if skewness == float('nan'):
+        skewness = None
+    if kurtosis == float('nan'):
+        kurtosis = None
+    
+    return name_freqs, ax, skewness, kurtosis","import pandas as pd
+import re
+from scipy import stats
+def task_func(text):
+
+    # Extracting names from the text
+    names = re.findall(r'(.*?)(?:\[.*?\]|$)', text)
+    names = [name.strip() for name in names if name.strip()]  # Removing any empty or whitespace names
+
+    # Counting name frequencies
+    name_freqs = pd.Series(names).value_counts()
+
+    # Creating a bar chart of name frequencies if there are names found
+    if not name_freqs.empty:
+        ax = name_freqs.plot(kind='bar', title=""Name Frequencies"")
+        skewness = stats.skew(name_freqs)
+        kurtosis = stats.kurtosis(name_freqs)
+    else:
+        ax = skewness = kurtosis = None
+
+    if skewness == float('nan'):
+        skewness = None
+    if kurtosis == float('nan'):
+        kurtosis = None
+
+    return name_freqs, ax, skewness, kurtosis"
+"import subprocess
+import os
+import shutil
+import sys
+# Constants
+DIRECTORY = 'c:\Program Files\VMware\VMware Server'
+BACKUP_DIRECTORY = 'c:\Program Files\VMware\VMware Server\Backup'
+def task_func(filename):
+
+
+    file_path = os.path.join(DIRECTORY, filename)
+    backup_path = os.path.join(BACKUP_DIRECTORY, filename)
+
+    # Backup the file
+    try:
+        shutil.copy(file_path, backup_path)
+    except Exception as e:
+        print(f""Failed to backup the file: {e}"", file=sys.stderr)
+        return -1
+    try:
+        # Execute the file as a subprocess
+        process = subprocess.Popen(file_path)
+        return process.poll()  # return the exit code
+    except Exception as e:
+        print(f""Failed to execute the file: {e}"", file=sys.stderr)
+        return -1","import subprocess
+import os
+import shutil
+import sys
+# Constants
+DIRECTORY = 'c:\Program Files\VMware\VMware Server'
+BACKUP_DIRECTORY = 'c:\Program Files\VMware\VMware Server\Backup'
+def task_func(filename):
+
+
+    file_path = os.path.join(DIRECTORY, filename)
+    backup_path = os.path.join(BACKUP_DIRECTORY, filename)
+
+    # Backup the file
+    try:
+        shutil.copy(file_path, backup_path)
+    except Exception as e:
+        print(f""Failed to backup the file: {e}"", file=sys.stderr)
+        return -1
+    try:
+        # Execute the file as a subprocess
+        process = subprocess.Popen(file_path)
+        return process.wait()
+    except Exception as e:
+        print(f""Failed to execute the file: {e}"", file=sys.stderr)
+        return -1"
+"class Solution:
+    def countBeautifulPairs(self, nums: List[int]) -> int:
+        cnt = [0] * 10
+        ans = 0
+        for x in nums:
+            for y in range(10):
+                if cnt[y] and gcd(x % 10, y) == 1:
+                    ans += cnt[y]
+            cnt[int(str(x)[0])] += 1
+        return ans","class Solution:
+    def countBeautifulPairs(self, nums: List[int]) -> int:
+        cnt = [0] * 10
+        ans = 0
+        for x in nums:
+            for y in range(10):
+                if cnt[y] and gcd(x % 10, y) == 1:
+                    ans += cnt[y]
+            cnt[int(str(x)[0])] += 1
+        return ans"
+"client . cluster . clone_host ( from_host_name = args . opts [ 0 ] , to_host_name = args . opts [ 1 ] )","client. cluster. clone_host ( from_h = args. opts [ 0 ], to_h = args. opts [ 1 ], force = True )"
