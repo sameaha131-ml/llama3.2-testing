@@ -1182,3 +1182,728 @@ raise ValueError ( 'Only know how to handle extensions: %s; ' 'with PIL installe
 "_ ( ""You can't close an IPython kernel tab.\n\n"" ""You need to close its associated console\n"" ""instead or you can kill it using the button\n"" ""far to the right."" ) ,","_ ( ""You can't close an IPython kernel tab.\n\n"" ""You need to close its associated console\n"" ""instead or you can kill it using the button\n"" ""far to the left."" ),"
 "print_warning ( lineno , line . strip ( ) , span , rule , args )","print_warning ( lineno, line, span, rule, args, self. _warning )"
 "if isinstance ( why , ( Premise , BecauseOfRule ) ) : why . statements . add ( s )","if isinstance ( why, Premise ) : why. statements. add ( s )"
+"import socket
+import requests
+def task_func(host):
+
+    if not host:
+        raise ValueError(""Host must be a non-empty string."")
+
+    try:
+        # Fetch IP address
+        ip_address = socket.gethostbyname(host)
+
+        # Fetch geolocation
+        response = requests.get(f""https://ipinfo.io/{ip_address}"")
+        response.raise_for_status()
+        geolocation = response.json()
+
+        return {
+            'ip_address': ip_address,
+            'geolocation': geolocation
+        }
+    except (socket.gaierror, requests.HTTPError) as e:
+        raise ConnectionError(f""Failed to retrieve information for {host}: {e}"")","import socket
+import requests
+def task_func(host):
+
+    if not host:
+        raise ValueError(""Host must be a non-empty string."")
+
+    try:
+        # Fetch IP address
+        ip_address = socket.gethostbyname(host)
+
+        # Fetch geolocation
+        response = requests.get(f""https://ipinfo.io/{ip_address}"")
+        response.raise_for_status()
+        geolocation = response.json()
+
+        return {
+            'ip_address': ip_address,
+            'geolocation': geolocation
+        }
+    except (socket.gaierror, requests.HTTPError) as e:
+        raise ConnectionError(f""Failed to retrieve information for {host}: {e}"")"
+assert points != self . __gpx . tracks [ - 1 ] . segments [ - 1 ] . points [ - len ( points ) : ],assert points == self. __gpx. tracks [ - 1 ]. segments [ - 1 ] [ - len ( points ) : ]
+"content = { 'title' : ns + '.*' , 'timeFieldName' : 'time' , 'fields' : json . dumps ( DEFAULT_FIELDS ) , }","content = { 'title' : ns + '.*', 'timeFieldName' : 'time', 'fields' : [ 'title', 'time', 'author', 'authorName', 'authorEmail', 'authorPhone', 'authorAddress', 'authorAddress2', 'authorAddress3', 'authorAddress4', 'authorAddress5', 'authorAddress6', 'authorAddress7', 'authorAddress8', 'authorAddress9', 'authorAddress10', 'authorAddress11', 'authorAddress12', 'authorAddress13', 'authorAddress14', 'authorAddress15', 'authorAddress16', 'authorAddress17', 'authorAddress18', 'authorAddress19', 'authorAddress20', 'authorAddress21', 'authorAddress22', 'authorAddress23', 'authorAddress24', 'authorAddress25', 'authorAddress26', 'authorAddress27', 'authorAddress28', 'authorAddress29', 'authorAddress30', 'authorAddress31', 'authorAddress32', 'authorAddress33', 'authorAddress34', 'authorAddress35', 'authorAddress36', 'authorAddress37', 'authorAddress38', 'authorAddress39', 'authorAddress40', 'authorAddress41', 'authorAddress42', 'authorAddress43', 'authorAddress44', 'authorAddress45', 'authorAddress46', 'authorAddress47', 'authorAddress48', 'authorAddress49', 'authorAddress50', 'authorAddress51', 'authorAddress52', 'authorAddress53', 'authorAddress54', 'authorAddress55', 'authorAddress56', 'authorAddress57', 'authorAddress58', 'authorAddress59', 'authorAddress60', 'authorAddress61', 'authorAddress62', 'authorAddress63', 'authorAddress64', 'authorAddress65', 'authorAddress66', 'authorAddress67', 'authorAddress68', 'authorAddress69', 'authorAddress70', 'authorAddress71', 'authorAddress72', 'authorAddress73', 'authorAddress74', 'authorAddress75', 'authorAddress76',"
+"class Solution:
+    def maxHeightOfTriangle(self, red: int, blue: int) -> int:
+        ans = 0
+        for k in range(2):
+            c = [red, blue]
+            i, j = 1, k
+            while i <= c[j]:
+                c[j] -= i
+                j ^= 1
+                ans = max(ans, i)
+                i += 1
+        return ans","class Solution:
+    def maxHeightOfTriangle(self, red: int, blue: int) -> int:
+        ans = 0
+        for k in range(2):
+            c = [red, blue]
+            i, j = 1, k
+            while i <= c[j]:
+                c[j] -= i
+                ans = max(ans, i)
+                i += 1
+        return ans"
+"city . error ( 'Unknown member type for {} {} in route' . format ( m [ 'type' ] , m [ 'ref' ] ) , relation )","city. error ( 'Unauthorized member {} {} in route'. format ( m [ 'type' ], m ['ref' ] ), relation, 403 )"
+"if all ( [ isinstance ( e , dict ) for e in elements ] ) : return TYPE_RULE_BASED","if any ( [ isinstance ( e, dict ) for e in elements ] ) or any ( [ isinstance ( e, list ) for e in elements ] ) : return TYPE_RULE_BASED"
+"fields = ( 'cuestionario' , 'codigo' , 'nombre' , 'titulo' , 'descripcion' , 'orden' , 'ponderacion' )","fields = ( 'cuestionario', 'codigo', 'nombre', 'titulo', 'descripcion', 'orden', 'puntaje', 'tipo' )"
+"class Solution:
+    def maximumSubarraySum(self, nums: List[int], k: int) -> int:
+        ans = -inf
+        p = {nums[0]: 0}
+        s, n = 0, len(nums)
+        for i, x in enumerate(nums):
+            s += x
+            if x - k in p:
+                ans = max(ans, s - p[x - k])
+            if x + k in p:
+                ans = max(ans, s - p[x + k])
+            if i + 1 < n and (nums[i + 1] not in p or p[nums[i + 1]] > s):
+                p[nums[i + 1]] = s
+        return 0 if ans == -inf else ans","class Solution:
+    def maximumSubarraySum(self, nums: List[int], k: int) -> int:
+        p = {nums[0]: 0}
+        s, n = 0, len(nums)
+        ans = -inf
+        for i, x in enumerate(nums):
+            s += x
+            if x - k in p:
+                ans = max(ans, s - p[x - k])
+            if x + k in p:
+                ans = max(ans, s - p[x + k])
+            if i + 1 < n and (nums[i + 1] not in p or p[nums[i + 1]] > s):
+                p[nums[i + 1]] = s
+        return 0 if ans == -inf else ans"
+"data = '{pageIndex: 1,source:""undefined"",latmin:""0"",latmax:""0"",lngmin:""0"",lngmax:""0"", frommoteur:""true""}'","data = '{pageIndex: 1,source:""undefined"",latmin:""0"",latmax:""0"",lngmin:""0"",lngmax:""0""}'"
+offset = self . song . song_length + self . song . get_metadata ( ) . ytvidoffset - left,offset = self. song. song_length + self. song. ytvidoffset - left + 1
+"self . urls = { 'login' : urljoin ( self . url , 'takeElogin.php' ) , 'search' : urljoin ( self . url , 'browse.php' ) , }","self. urls = { 'login' : urljoin ( self. url, 'takelogin.php' ),'search' : urljoin ( self. url, 'browse.php' ),'search' : urljoin ( self. url,'search.php' ), }"
+"urlpatterns = [ path ( 'admin/' , admin . site . urls ) , path ( '' , include ( ""csv_schema.urls"" ) ) , ]","urlpatterns = [ path ( 'admin/', admin. site. urls ), path ( 'csv_schema/', include ( ""csv_schema.urls"" ) ), ]"
+self . __map_pattern = mapping_basic . one2all ( self . __tdd_config ),"self. __map_pattern = mapping_basic ( self. __tdd_config, self. __tdd_config )"
+"class Solution:
+  def countNonDecreasingSubarrays(self, nums: list[int], k: int) -> int:
+    ans = 0
+    cost = 0
+    # Store (number, count) pairs in non-increasing order. The numbers in the
+    # queue represent what nums[i..j] look like after adjustments.
+    dq = collections.deque()
+
+    j = len(nums) - 1
+    for i, num in reversed(list(enumerate(nums))):
+      count = 1
+      while dq and dq[-1][0] < num:
+        nextNum, nextCount = dq.pop()
+        count += nextCount
+        cost += (num - nextNum) * nextCount  # Adjust `nextNum`s to `num`.
+      dq.append((num, count))
+      while cost > k:  # Remove the rightmost number.
+        rightmostNum, rightmostCount = dq.popleft()
+        cost -= (rightmostNum - nums[j])
+        j -= 1
+        if rightmostCount > 1:
+          dq.appendleft((rightmostNum, rightmostCount - 1))
+      ans += j - i + 1
+
+    return ans","class Solution:
+  def countNonDecreasingSubarrays(self, nums: list[int], k: int) -> int:
+    ans = 0
+    cost = 0
+    # Store (number, count) pairs in non-increasing order. The numbers in the
+    # queue represent what nums[i..j] look like after adjustments.
+    dq = collections.deque()
+
+    j = len(nums) - 1
+    for i, num in reversed(list(enumerate(nums))):
+      count = 1
+      while dq and dq[-1][0] < num:
+        nextNum, nextCount = dq.pop()
+        count += nextCount
+        cost += (num - nextNum) * nextCount
+      dq.append((num, count))
+      while cost > k:  # Remove the rightmost number.
+        rightmostNum, rightmostCount = dq.popleft()
+        cost -= (rightmostNum - nums[j])
+        j -= 1
+        if rightmostCount > 1:
+          dq.appendleft((rightmostNum, rightmostCount - 1))
+      ans += j - i + 1
+
+    return ans"
+"cont = run ( 'git log --branches --pretty=format:""%an||%ar||%s||%H"" -' + str ( num ) )","cont = run ( 'git log --pretty=format:""%an||%ar||%s||%H"" -' + str ( num ), shell = True )"
+"transcript . line ( 0 + inch , height - inch - 80 , width - inch , height - inch - 80 )","transcript. line ( 0 + inch, height - inch - 100, width - inch, height - inch - 100, 0 )"
+"label_field = forms . CharField ( label = _ ( ""Ruleset Label"" ) , widget = forms . TextInput ( attrs = { 'readonly' : 'readonly' } ) , required = False , initial = label_field_initial , help_text = _ ( ""The label of the ruleset from RapidPro"" ) )","label_field = forms. CharField ( label = _ ( ""Ruleset Label"" ), widget = forms. TextInput ( attrs = {'readonly' :'readonly' } ), required = False, initial = label_field_initial, help_text = _ ( ""The question posed to your audience, will be displayed publicly"" ), error_messages = {'required' : _ ( ""Please enter a label"" ) } )"
+"class Solution:
+  def minOperations(self, queries: list[list[int]]) -> int:
+    return sum((self._getOperations(r) - self._getOperations(l - 1) + 1) // 2
+               for l, r in queries)
+
+  def _getOperations(self, n: int) -> int:
+    """"""Returns the number of operations required for [1, n].""""""
+    res = 0
+    ops = 0
+    powerOfFour = 1
+    while powerOfFour <= n:
+      l = powerOfFour
+      r = min(n, powerOfFour * 4 - 1)
+      ops += 1
+      res += (r - l + 1) * ops
+      powerOfFour *= 4
+    return res","class Solution:
+  def minOperations(self, queries: list[list[int]]) -> int:
+    return sum((self._getOperations(r) - self._getOperations(l - 1) + 1) // 2
+               for l, r in queries)
+
+  def _getOperations(self, n: int) -> int:
+    """"""Returns the number of operations required for [1, n].""""""
+    res = 0
+    ops = 1
+    powerOfFour = 1
+    while powerOfFour <= n:
+      l = powerOfFour
+      r = min(n, powerOfFour * 4 - 1)
+      res += (r - l + 1) * ops
+      powerOfFour *= 4
+      ops += 1
+    return res"
+"class Solution:
+    def minimumArea(self, grid: List[List[int]]) -> int:
+        x1 = y1 = inf
+        x2 = y2 = -inf
+        for i, row in enumerate(grid):
+            for j, x in enumerate(row):
+                if x == 1:
+                    x1 = min(x1, i)
+                    y1 = min(y1, j)
+                    x2 = max(x2, i)
+                    y2 = max(y2, j)
+        return (x2 - x1 + 1) * (y2 - y1 + 1)","class Solution:
+    def minimumArea(self, grid: List[List[int]]) -> int:
+        x1 = y1 = inf
+        x2 = y2 = -inf
+        for i, row in enumerate(grid):
+            for j, x in enumerate(row):
+                if x == 1:
+                    x1 = min(x1, i)
+                    y1 = min(y1, j)
+                    x2 = max(x2, i)
+                    y2 = max(y2, j)
+        return (x2 - x1 + 1) * (y2 - y1 + 1)"
+"import os
+import json
+from collections import Counter
+def task_func(json_files_path='./json_files/', key='name'):
+
+    key_values = []
+
+    for filename in os.listdir(json_files_path):
+        if filename.endswith('.json'):
+            file_path = os.path.join(json_files_path, filename)
+            with open(file_path, 'r') as json_file:
+                data = json.load(json_file)
+                if key in data:
+                    key_values.append(data[key])
+
+    return dict(Counter(key_values))","import os
+import json
+from collections import Counter
+def task_func(json_files_path='./json_files/', key='name'):
+
+    key_values = []
+
+    for filename in os.listdir(json_files_path):
+        if filename.endswith('.json'):
+            file_path = os.path.join(json_files_path, filename)
+            with open(file_path, 'r') as json_file:
+                data = json.load(json_file)
+                if key in data:
+                    key_values.append(data[key])
+
+    return dict(Counter(key_values))"
+variant = ( env and ( self . id & 3 == BUILD ) and env . variant ( ) ) or 0,variant = ( env and ( self. id & 3!= FILE ) and env. variant ( ) ) or 0 if env else 0
+"import pandas as pd
+import os
+import numpy as np
+import ast
+def task_func(directory):
+
+    name = None
+    for filename in os.listdir(directory):
+        if filename.endswith('.csv'):
+            if name is None :
+                name = filename
+            else :
+                name = filename if len(filename) > len(name) else name
+    if name is None :
+        return pd.DataFrame({}, columns = ['email', 'list'] + ['sum', 'mean', 'median']), None
+
+    df = pd.read_csv(os.path.join(directory, name))
+    df[""list""] = df[""list""].map(ast.literal_eval)
+    df['sum'] = df['list'].apply(sum)
+    df['mean'] = df['list'].apply(np.mean)
+    df['median'] = df['list'].apply(np.median)
+
+    return df, df[""median""].hist()","import pandas as pd
+import os
+import numpy as np
+import ast
+def task_func(directory):
+
+    name = None
+    for filename in os.listdir(directory):
+        if filename.endswith('.csv'):
+            if name is None :
+                name = filename
+            else :
+                name = filename if len(filename) > len(name) else name
+    if name is None :
+        return pd.DataFrame({}, columns = ['email', 'list'] + ['sum','mean','median']), None
+
+    df = pd.read_csv(os.path.join(directory, name))
+    df[""list""] = df[""list""].map(ast.literal_eval)
+    df['sum'] = df['list'].apply(sum)
+    df['mean'] = df['list'].apply(np.mean)
+    df['median'] = df['list'].apply(np.median)
+
+    return df, df[""median""].hist()"
+"if role in ( controlTypes . ROLE_COMBOBOX , controlTypes . ROLE_EDITABLETEXT , controlTypes . ROLE_LIST , controlTypes . ROLE_SLIDER , controlTypes . ROLE_TABCONTROL , controlTypes . ROLE_TAB , controlTypes . ROLE_MENUBAR , controlTypes . ROLE_POPUPMENU , controlTypes . ROLE_MENUITEM , controlTypes . ROLE_TREEVIEW , controlTypes . ROLE_TREEVIEWITEM , controlTypes . ROLE_SPINBUTTON ) or controlTypes . STATE_EDITABLE in states : return True","if role in ( controlTypes. ROLE_COMBOBOX, controlTypes. ROLE_EDITABLETEXT, controlTypes. ROLE_LIST, controlTypes. ROLE_SLIDER, controlTypes. ROLE_CHECKBOX ) or controlTypes. STATE_EDITABLE in states : return True"
+"class DSU:
+    def __init__(self, n):
+        self.parent = {i: i for i in range(n)}
+        self.rank = {i: 0 for i in range(n)}
+
+    def make_set(self, v):
+        self.parent[v] = v
+        self.rank[v] = 1
+
+    def find(self, x):
+        if self.parent[x] != x:
+            self.parent[x] = self.find(self.parent[x])
+        return self.parent[x]
+
+    def union_set(self, u, v):
+        u = self.find(u)
+        v = self.find(v)
+        if u != v:
+            if self.rank[u] < self.rank[v]:
+                u, v = v, u
+            self.parent[v] = u
+            if self.rank[u] == self.rank[v]:
+                self.rank[u] += 1
+
+
+class Solution:
+    def countComponents(self, nums, threshold):
+        dsu = DSU(threshold + 1)
+
+        for num in nums:
+            for j in range(num, threshold + 1, num):
+                dsu.union_set(num, j)
+
+        unique_parents = set()
+        for num in nums:
+            if num > threshold:
+                unique_parents.add(num)
+            else:
+                unique_parents.add(dsu.find(num))
+
+        return len(unique_parents)","class DSU:
+    def __init__(self, n):
+        self.parent = {i: i for i in range(n)}
+        self.rank = {i: 0 for i in range(n)}
+
+    def make_set(self, v):
+        self.parent[v] = v
+        self.rank[v] = 1
+
+    def find(self, x):
+        if self.parent[x]!= x:
+            self.parent[x] = self.find(self.parent[x])
+        return self.parent[x]
+
+    def union_set(self, u, v):
+        u = self.find(u)
+        v = self.find(v)
+        if u!= v:
+            if self.rank[u] < self.rank[v]:
+                u, v = v, u
+            self.parent[v] = u
+            if self.rank[u] == self.rank[v]:
+                self.rank[u] += 1
+
+
+class Solution:
+    def countComponents(self, nums, threshold):
+        dsu = DSU(threshold + 1)
+
+        for num in nums:
+            for j in range(num, threshold + 1, num):
+                dsu.union_set(num, j)
+
+        unique_parents = set()
+        for num in nums:
+            if num > threshold:
+                unique_parents.add(num)
+            else:
+                unique_parents.add(dsu.find(num))
+
+        return len(unique_parents)"
+"log ( LogLevel . warning , ""Favourites playlist is empty"" )","log ( LogLevel. warning, ""cls playlist is empty"", self. name )"
+"txt = txt + cat [ 'category__name' ] + "":"" + str ( int ( cat [ 'value' ] ) / float ( res_count ) ) + ""% ""","txt = txt + cat [ 'category__name' ] + "":"" + str ( int ( cat [ 'value' ] ) / float ( res_count ) ) + ""% """
+bind = self . request . method == 'POST' and self . request . POST . get ( 'form' ) == 'login',bind = self. request. method == 'POST' and self. request. POST. get ( 'form' ) == 'profile' and self. request. POST. get ('submit' )
+"class Solution:
+    def unmarkedSumArray(self, nums: List[int], queries: List[List[int]]) -> List[int]:
+        n = len(nums)
+        s = sum(nums)
+        mark = [False] * n
+        arr = sorted((x, i) for i, x in enumerate(nums))
+        j = 0
+        ans = []
+        for index, k in queries:
+            if not mark[index]:
+                mark[index] = True
+                s -= nums[index]
+            while k and j < n:
+                if not mark[arr[j][1]]:
+                    mark[arr[j][1]] = True
+                    s -= arr[j][0]
+                    k -= 1
+                j += 1
+            ans.append(s)
+        return ans","class Solution:
+    def unmarkedSumArray(self, nums: List[int], queries: List[List[int]]) -> List[int]:
+        n = len(nums)
+        s = sum(nums)
+        mark = [False] * n
+        arr = sorted((x, i) for i, x in enumerate(nums))
+        j = 0
+        ans = []
+        for index, k in queries:
+            if not mark[index]:
+                mark[index] = True
+                s -= nums[index]
+            while k and j < n:
+                if not mark[arr[j][1]]:
+                    mark[arr[j][1]] = True
+                    s -= arr[j][0]
+                    k -= 1
+                j += 1
+            ans.append(s)
+        return ans"
+"import re
+import pandas as pd
+from datetime import datetime
+def task_func(log_file):
+
+    log_pattern = r'(ERROR|INFO): \[\s*(\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2})\s*\] - (.*)'
+    parsed_data = []
+
+    with open(log_file, 'r') as file:
+        for line in file:
+            line = line.strip()
+            match = re.match(log_pattern, line)
+            if match:
+                log_type, timestamp, message = match.groups()
+                # Validate timestamp
+                try:
+                    datetime.strptime(timestamp, ""%Y-%m-%d %H:%M:%S"")
+                except ValueError:
+                    raise ValueError(f""Invalid timestamp format: {timestamp}"")
+                parsed_data.append([log_type, timestamp, message.strip()])
+
+    if not parsed_data:
+        raise ValueError(""No valid log entries found."")
+
+    df = pd.DataFrame(parsed_data, columns=['Type', 'Timestamp', 'Message'])
+    output_csv_path = 'log_data.csv'
+    df.to_csv(output_csv_path, index=False)
+    return output_csv_path","import re
+import pandas as pd
+from datetime import datetime
+def task_func(log_file):
+
+    log_pattern = r'(ERROR|INFO): \[\s*(\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2})\s*\] - (.*)'
+    parsed_data = []
+
+    with open(log_file, 'r') as file:
+        for line in file:
+            line = line.strip()
+            match = re.match(log_pattern, line)
+            if match:
+                log_type, timestamp, message = match.groups()
+                # Validate timestamp
+                try:
+                    datetime.strptime(timestamp, ""%Y-%m-%d %H:%M:%S"")
+                except ValueError:
+                    raise ValueError(f""Invalid timestamp format: {timestamp}"")
+                parsed_data.append([log_type, timestamp, message.strip()])
+
+    if not parsed_data:
+        raise ValueError(""No valid log entries found."")
+
+    df = pd.DataFrame(parsed_data, columns=['Type', 'Timestamp', 'Message'])
+    output_csv_path = 'log_data.csv'
+    df.to_csv(output_csv_path, index=False)
+    return output_csv_path"
+"db . cur . execute ( ""insert into "" + table + ""(main_start, main_end, twitter_search_start, twitter_search_end, send_message_start, send_message_end, daily_coins) values (%s, %s, %s, %s, %s, %s, %s)"" , ( log [ ""main_start"" ] , log [ ""main_end"" ] , log [ ""twitter_search_start"" ] , log [ ""twitter_search_end"" ] , log [ ""send_message_start"" ] , log [ ""send_message_end"" ] , log [ ""daily_coins"" ] ) )","db. cur. execute ( ""insert into "" + table + ""(main_start, main_end, twitter_search_start, twitter_search_end, send_message_start, send_message_end, daily_coins) values (%s, %s, %s, %s, %s, %s, %s)"", ( log [ ""main_start"" ], log [ ""main_end"" ], log [ ""twitter_search_start"" ], log [ ""twitter_search_end"" ], log [ ""send_message_start"" ], log [ ""send_message_end"" ], log [ ""daily_coins"" ] ) )"
+self . buildDependencies [ 'virtual/bin-base' ] = 'default',"self. hardDependencies [ 'virtual/bin-base' ] = 'default', 'default'"
+"run_command = 'docker run -it {0} --rm -p 5022:22 -p 4545:4545 -v ""{1}"":/notebooks -w /notebooks {2} jupyter' . format ( '--net=host' if args . net_host else '' , os . getcwd ( ) , args . docker_tag )","run_command = 'docker run -it {0} --rm -p 5022:22 -p 4545:4545 -v {1}:/notebooks -w /notebooks {2} jupyter'. format ( '--net=host' if args. net_host else '', os. getcwd ( ), args. docker_tag, args. net_host )"
+"from robot_smach_states . util . designators import Designator , EdEntityDesignator","from robot_smach_states. util. designators. designator import Designator, EdEntityDesignator, EdEntityDesignatorType"
+self . GPFInd = self . thorn / ( self . PermGroFacAgg * self . PermGroFac [ 0 ] * self . InvEPermShkInv ),self. GPFInd = self. thorn / ( self. PermGroFac [ 0 ] * self. InvEPermShkInv [ 0 ] )
+"from connect . models import ActivationTemplateResponse , ActivationTileResponse","from connect. models import ActivationTemplateResponse, ActivationTileResponse, Param, ActivationTemplate"
+"import configparser
+import os
+import shutil
+def task_func(config_file_path, archieve_dir ='/home/user/archive'):
+
+    config = configparser.ConfigParser()
+    config.read(config_file_path)
+
+    project_dir = config.get('Project', 'directory')
+
+    if not os.path.isdir(project_dir):
+        raise FileNotFoundError(f'Directory {project_dir} does not exist.')
+
+    archive_file = f'{archieve_dir}/{os.path.basename(project_dir)}.zip'
+    
+    # Using shutil to create the zip archive
+    shutil.make_archive(base_name=os.path.splitext(archive_file)[0], format='zip', root_dir=project_dir)
+
+    if not os.path.isfile(archive_file):
+        raise Exception(f""Failed to create archive {archive_file}"")
+
+    return True","import configparser
+import os
+import shutil
+def task_func(config_file_path, archieve_dir ='/home/user/archive'):
+
+    config = configparser.ConfigParser()
+    config.read(config_file_path)
+
+    project_dir = config.get('Project', 'directory')
+
+    if not os.path.isdir(project_dir):
+        raise FileNotFoundError(f'Directory {project_dir} does not exist.')
+
+    archive_file = f'{archieve_dir}/{os.path.basename(project_dir)}.zip'
+    
+    # Using shutil to create the zip archive
+    shutil.make_archive(base_name=os.path.splitext(archive_file)[0], format='zip', root_dir=project_dir)
+
+    if not os.path.isfile(archive_file):
+        raise Exception(f""Failed to create archive {archive_file}"")
+
+    return True"
+"frequency_row = [ ( ""One Time"" , ""0"" ) , ( ""Daily"" , ""1"" ) , ( ""Weekly"" , ""2"" ) , ( ""Bi-Weekly"" , ""3"" ) , ( ""Monthly on Date"" , ""4"" ) , ( ""Monthly on Weekday"" , ""5"" ) , ( ""Yearly"" , ""6"" ) ]","freqpuency_row = [ ( ""One Time"", ""0"" ), ( ""Daily"", ""1"" ), ( ""Weekly"", ""2"" ), ( ""Bi-Weekly"", ""3"" ), ( ""Monthly on Date"", ""4"" ), ( ""Monthly on Weekday"", ""5"" ), ( ""Yearly"", ""6"" ) ]"
+"from scipy.stats import linregress
+import matplotlib.pyplot as plt
+def task_func(data, column1, column2):
+
+    if column1 not in data.columns or column2 not in data.columns:
+        raise ValueError(""Specified columns must exist in the DataFrame"")
+
+    x = data[column1].values
+    y = data[column2].values
+
+    slope, intercept, r_value, p_value, std_err = linregress(x, y)
+
+    fig, ax = plt.subplots()
+    ax.plot(x, y, 'o', label='original data')
+    ax.plot(x, intercept + slope*x, 'r', label='fitted line')
+    ax.legend()
+
+    return (slope, intercept, r_value, p_value, std_err), ax","from scipy.stats import linregress
+import matplotlib.pyplot as plt
+def task_func(data, column1, column2):
+
+    if column1 not in data.columns or column2 not in data.columns:
+        raise ValueError(""Specified columns must exist in the DataFrame"")
+
+    x = data[column1].values
+    y = data[column2].values
+
+    slope, intercept, r_value, p_value, std_err = linregress(x, y)
+
+    fig, ax = plt.subplots()
+    ax.plot(x, y, 'o', label='original data')
+    ax.plot(x, intercept + slope*x, 'r', label='fitted line')
+    ax.legend()
+
+    return (slope, intercept, r_value, p_value, std_err), ax"
+"digest = binascii . hexlify ( b""This is a test string1"" )","digest = binascii. hexlify ( ""This is a test string"" )"
+"data = np . ctypeslib . as_array ( data , shape = shape )","data = np. ctypeslib. as_array ( data, shape = self. shape_allocated, dtype = self. dtype )"
+"REFERENCE_TIME = datetime ( 2017 , 2 , 1 , 0 , 0 , 0 , 0 )","REFERENCE_TIME = datetime ( 2017, 1, 1, 0, 0, 0 )"
+"def __initi__ ( self , name , album , artist , URI ) : self . name = name , self . album = album , self . artist = artist ,","def __init__ ( self, name, album, artist, URI, score = 0 ) : self. name = name, self. album = album, self. artist = artist,"
+"class Solution:
+    def circularGameLosers(self, n: int, k: int) -> List[int]:
+        vis = [False] * n
+        i, p = 0, 1
+        while not vis[i]:
+            vis[i] = True
+            i = (i + p * k) % n
+            p += 1
+        return [i + 1 for i in range(n) if not vis[i]]","class Solution:
+    def circularGameLosers(self, n: int, k: int) -> List[int]:
+        vis = [False] * n
+        i, p = 0, 1
+        while not vis[i]:
+            vis[i] = True
+            i = (i + p * k) % n
+            p += 1
+        return [i + 1 for i in range(n) if not vis[i]]"
+"import numpy as np
+import pandas as pd
+from datetime import timedelta
+def task_func(start_date, end_date, random_seed=42):
+
+    if end_date < start_date:
+        raise ValueError(""End date must be after start date"")
+
+    np.random.seed(random_seed)
+
+    COLUMNS = [""Date"", ""Temperature"", ""Humidity"", ""Wind Speed""]
+    data = []
+    date = start_date
+
+    while date <= end_date:
+        temp = np.random.uniform(-10, 40)
+        humidity = np.random.uniform(20, 100)
+        wind_speed = np.random.uniform(0, 20)
+        data.append([date, temp, humidity, wind_speed])
+        date += timedelta(days=1)
+
+    df = pd.DataFrame(data, columns=COLUMNS)
+    ax = df.plot(x='Date', y=['Temperature', 'Humidity', 'Wind Speed'], title=""Generated Weather Data"")
+
+    return df, ax","import numpy as np
+import pandas as pd
+from datetime import timedelta
+def task_func(start_date, end_date, random_seed=42):
+
+    if end_date < start_date:
+        raise ValueError(""End date must be after start date"")
+
+    np.random.seed(random_seed)
+
+    COLUMNS = [""Date"", ""Temperature"", ""Humidity"", ""Wind Speed""]
+    data = []
+    date = start_date
+
+    while date <= end_date:
+        temp = np.random.uniform(-10, 40)
+        humidity = np.random.uniform(20, 100)
+        wind_speed = np.random.uniform(0, 20)
+        data.append([date, temp, humidity, wind_speed])
+        date += timedelta(days=1)
+
+    df = pd.DataFrame(data, columns=COLUMNS)
+    ax = df.plot(x='Date', y=['Temperature', 'Humidity', 'Wind Speed'], title=""Generated Weather Data"")
+
+    return df, ax"
+"( p , h , o ) , updates = self . _scan ( fn , [ TT . tanh ( TT . dot ( x , self . find ( 'xh' ) ) + self . find ( 'bh' ) ) , TT . dot ( x , self . find ( 'xr' ) ) + self . find ( 'br' ) , z ] , [ None , None , x ] )","( p, h, o ), updates = self. _scan ( fn, [ TT. tanh ( TT. dot ( x, self. find ( 'xh' ) ) ) + self. find ( 'bh' ), TT. dot ( x, self. find ( 'xr' ) ) + self. find ( 'br' ), z ], [ None, None, x ], [ None, None, x ] )"
+month_word = getdate ( date_value ) . strftime ( '%b %y' ),month_word = getdate ( date_value ). strftime ( '%B' )
+"pargs . extend ( [ ""and"" , ""not"" , ""("" , ""dst host"" , host , ""and"" , ""dst port"" , str ( CUCKOO_GUEST_PORT ) , "")"" ] )","pargs. extend ( [ ""and"", ""not"", ""("", ""host"", host, ""and"", ""port"", str ( CUCKOO_GUEST_PORT ), "")"" ] )"
+"class Solution:
+  def countKReducibleNumbers(self, s: str, k: int) -> int:
+    MOD = 1_000_000_007
+    ops = self._getOps(s)
+
+    @functools.lru_cache(None)
+    def dp(i: int, setBits: int, tight: bool) -> int:
+      """"""
+      Returns the number of positive integers less than n that are k-reducible,
+      considering the i-th digit, where `setBits` is the number of set bits in
+      the current number, and `tight` indicates if the current digit is
+      tightly bound.
+      """"""
+      if i == len(s):
+        return int(ops[setBits] < k and not tight)
+
+      res = 0
+      maxDigit = int(s[i]) if tight else 1
+
+      for d in range(maxDigit + 1):
+        nextTight = tight and (d == maxDigit)
+        res += dp(i + 1, setBits + d, nextTight)
+        res %= MOD
+      return res
+
+    return dp(0, 0, True) - 1  # - 0
+
+  def _getOps(self, s: str) -> int:
+    """"""Returns the number of operations to reduce a number to 0.""""""
+    ops = [0] * (len(s) + 1)
+    for num in range(2, len(s) + 1):
+      ops[num] = 1 + ops[num.bit_count()]
+    return ops","class Solution:
+  def countKReducibleNumbers(self, s: str, k: int) -> int:
+    MOD = 1_000_000_007
+    ops = self._getOps(s)
+
+    @functools.lru_cache(None)
+    def dp(i: int, setBits: int, tight: bool) -> int:
+      """"""
+      Returns the number of positive integers less than n that are k-reducible,
+      considering the i-th digit, where `setBits` is the number of set bits in
+      the current number, and `tight` indicates if the current digit is
+      tightly bound.
+      """"""
+      if i == len(s):
+        return int(ops[setBits] < k and not tight)
+
+      res = 0
+      maxDigit = int(s[i]) if tight else 1
+
+      for d in range(maxDigit + 1):
+        nextTight = tight and (d == maxDigit)
+        res += dp(i + 1, setBits + d, nextTight)
+        res %= MOD
+      return res
+
+    return dp(0, 0, True) - 1  # - 0
+
+  def _getOps(self, s: str) -> int:
+    """"""Returns the number of operations to reduce a number to 0.""""""
+    ops = [0] * (len(s) + 1)
+    for num in range(2, len(s) + 1):
+      ops[num] = 1 + ops[num.bit_count()]
+    return ops"
+"follow_program ( cs . program , 0 , getattr ( cs . private , ""Subrs"" , [ ] ) )","follow_program ( cs. program, 0, cs. private. Subrs, cs. private. Subrs )"
+"import pytz
+import numpy as np
+from dateutil.parser import parse
+import math
+SOLAR_CYCLE_YEARS = np.array([1986, 1996, 2008, 2019])
+def task_func(date_str, from_tz, to_tz):
+
+    from_tz = pytz.timezone(from_tz)
+    to_tz = pytz.timezone(to_tz)
+    given_date = parse(date_str).replace(tzinfo=from_tz)
+    converted_date = given_date.astimezone(to_tz)
+
+    solar_cycle_year = SOLAR_CYCLE_YEARS[np.argmin(np.abs(SOLAR_CYCLE_YEARS - converted_date.year))]
+    years_since_solar_cycle_year = abs(converted_date.year - solar_cycle_year)
+
+    solar_activity = math.cos(math.pi * years_since_solar_cycle_year / 11)
+
+    return solar_activity","import pytz
+import numpy as np
+from dateutil.parser import parse
+import math
+SOLAR_CYCLE_YEARS = np.array([1986, 1996, 2008, 2019])
+def task_func(date_str, from_tz, to_tz):
+
+    from_tz = pytz.timezone(from_tz)
+    to_tz = pytz.timezone(to_tz)
+    given_date = parse(date_str).replace(tzinfo=from_tz)
+    converted_date = given_date.astimezone(to_tz)
+
+    solar_cycle_year = SOLAR_CYCLE_YEARS[np.argmin(np.abs(SOLAR_CYCLE_YEARS - converted_date.year))]
+    years_since_solar_cycle_year = abs(converted_date.year - solar_cycle_year)
+
+    solar_activity = math.cos(math.pi * years_since_solar_cycle_year / 11)
+
+    return solar_activity"
