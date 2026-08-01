@@ -18867,3 +18867,1007 @@ def task_func(df, dct, columns=None, plot_histograms=False):
     return df_replaced"
 salt_log_setup . shutdown_multiprocessing_logging_listener ( daemonizing = True ),salt_log_setup. shutdown_multiprocessing_logging_listener ( False )
 travel_speed_mps = - ( self . height / self . _time_down_s ),travel_speed_mps = self. height / self. _time_down_s * 9.81
+"self . _node . get_pubkey ( ) . verify ( signature [ 1 ] , prefix )","self. _node. get_pubkey ( ). verify ( prefix, signature [ 1 ], self. _node. get_pubkey ( ) )"
+"class Solution:
+
+  def minCostGoodCaption(self, caption: str) -> str:
+    n = len(caption)
+    if n < 3:
+      return ''
+
+    MAX_COST = 1_000_000_000
+    # dp[i][j][k] := the minimum cost of caption[i..n - 1], where j is the last
+    # letter used, and k is the count of consecutive letters
+    dp = [[[MAX_COST] * 3 for _ in range(26)] for _ in range(n)]
+
+    for c in range(26):
+      dp[-1][c][0] = abs(string.ascii_lowercase.index(caption[-1]) - c)
+
+    minCost = MAX_COST
+
+    for i in range(n - 2, -1, -1):
+      newMinCost = MAX_COST
+      for c in range(26):
+        changeCost = abs(string.ascii_lowercase.index(caption[i]) - c)
+        dp[i][c][0] = changeCost + minCost
+        dp[i][c][1] = changeCost + dp[i + 1][c][0]
+        dp[i][c][2] = changeCost + min(dp[i + 1][c][1], dp[i + 1][c][2])
+        newMinCost = min(newMinCost, dp[i][c][2])
+      minCost = newMinCost
+
+    # Reconstruct the string.
+    ans = []
+    cost = MAX_COST
+    letter = -1
+
+    # Find the initial best letter.
+    for c in range(25, -1, -1):
+      if dp[0][c][2] <= cost:
+        letter = c
+        cost = dp[0][c][2]
+
+    # Add the initial triplet.
+    cost -= self._appendLetter(caption, 0, chr(ord('a') + letter), ans)
+    cost -= self._appendLetter(caption, 1, chr(ord('a') + letter), ans)
+    cost -= self._appendLetter(caption, 2, chr(ord('a') + letter), ans)
+
+    # Build the rest of the string.
+    i = 3
+    while i < n:
+      nextLetter = self._getNextLetter(dp, i, cost)
+      if nextLetter < letter or min(dp[i][letter]) > cost:
+        letter = nextLetter
+        cost -= self._appendLetter(caption, i, chr(ord('a') + letter), ans)
+        cost -= self._appendLetter(caption, i + 1, chr(ord('a') + letter), ans)
+        cost -= self._appendLetter(caption, i + 2, chr(ord('a') + letter), ans)
+        i += 3
+      else:
+        cost -= self._appendLetter(caption, i, chr(ord('a') + letter), ans)
+        i += 1
+
+    return ''.join(ans)
+
+  def _getNextLetter(self, dp: list[list[list[int]]], i: int, cost: int) -> int:
+    nextLetter = 26
+    for c in range(25, -1, -1):
+      if cost == dp[i][c][2]:
+        nextLetter = c
+    return nextLetter
+
+  def _appendLetter(
+      self,
+      caption: str,
+      i: int,
+      letter: str,
+      ans: list[str]
+  ) -> int:
+    ans.append(letter)
+    return abs(ord(caption[i]) - ord(letter))","class Solution:
+
+  def minCostGoodCaption(self, caption: str) -> str:
+    n = len(caption)
+    if n < 3:
+      return ''
+
+    MAX_COST = 1_000_000_000
+    # dp[i][j][k] := the minimum cost of caption[i..n - 1], where j is the last
+    # letter used, and k is the count of consecutive letters
+    dp = [[[MAX_COST] * 3 for _ in range(26)] for _ in range(n)]
+
+    for c in range(26):
+      dp[-1][c][0] = abs(string.ascii_lowercase.index(caption[-1]) - c)
+      dp[-1][c][1] = dp[-1][c][0]
+      dp[-1][c][2] = dp[-1][c][0]
+
+    minCost = MAX_COST
+
+    for i in range(n - 2, -1, -1):
+      newMinCost = MAX_COST
+      for c in range(26):
+        changeCost = abs(string.ascii_lowercase.index(caption[i]) - c)
+        dp[i][c][0] = changeCost + minCost
+        dp[i][c][1] = changeCost + dp[i + 1][c][0]
+        dp[i][c][2] = changeCost + min(dp[i + 1][c][1], dp[i + 1][c][2])
+        newMinCost = min(newMinCost, dp[i][c][2])
+      minCost = newMinCost
+
+    # Reconstruct the string.
+    ans = []
+    cost = MAX_COST
+    letter = -1
+
+    # Find the initial best letter.
+    for c in range(26):
+      if dp[0][c][2] < cost:
+        letter = c
+        cost = dp[0][c][2]
+
+    # Add the initial triplet.
+    cost -= self._appendLetter(caption, 0, chr(ord('a') + letter), ans)
+    cost -= self._appendLetter(caption, 1, chr(ord('a') + letter), ans)
+    cost -= self._appendLetter(caption, 2, chr(ord('a') + letter), ans)
+
+    # Build the rest of the string.
+    i = 3
+    while i < n:
+      nextLetter = self._getNextLetter(dp, i, cost)"
+"if np . linalg . det ( np . dot ( np . array ( [ a , b , c ] ) , cell ) ) < 0 : c *= - 1.0","if np. linalg. det ( np. dot ( np. array ( [ a, b, - c ] ), cell ) ) < 0 : c *= - 1.0"
+"import numpy as np
+from sklearn.decomposition import PCA
+import matplotlib.pyplot as plt
+def task_func(data, save_plot=False, plot_path=None):
+
+    items, x_values, y_values, z_values = zip(*data)
+    coordinates = np.array(list(zip(x_values, y_values, z_values)))
+
+    pca = PCA(n_components=2)
+    coordinates_2d = pca.fit_transform(coordinates)
+
+    # Initialize a fresh plot
+    plt.figure()
+    fig, ax = plt.subplots()
+    ax.scatter(*zip(*coordinates_2d))
+
+    if save_plot:
+        if plot_path:
+            plt.savefig(plot_path)
+            plt.close(fig)
+            return coordinates_2d, ax
+        else:
+            raise ValueError(""plot_path is required if save_plot is True"")
+    else:
+        return coordinates_2d","import numpy as np
+from sklearn.decomposition import PCA
+import matplotlib.pyplot as plt
+def task_func(data, save_plot=False, plot_path=None):
+
+    items, x_values, y_values, z_values = zip(*data)
+    coordinates = np.array(list(zip(x_values, y_values, z_values)))
+
+    pca = PCA(n_components=2)
+    coordinates_2d = pca.fit_transform(coordinates)
+
+    # Initialize a fresh plot
+    plt.figure()
+    fig, ax = plt.subplots()
+    ax.scatter(*zip(*coordinates_2d))
+
+    if save_plot:
+        if plot_path:
+            plt.savefig(plot_path)
+            plt.close(fig)
+            return coordinates_2d, ax
+        else:
+            raise ValueError(""plot_path is required if save_plot is True"")
+    else:
+        return coordinates_2d"
+"class Solution:
+    def findKthPositive(self, arr: List[int], k: int) -> int:
+        l,h=0,len(arr)
+        while l<h:
+            mid=(h+l)//2
+            if arr[mid]-mid>k:h=mid
+            else: l=mid+1
+        return l+k","class Solution:
+    def findKthPositive(self, arr: List[int], k: int) -> int:
+        l,h=0,len(arr)
+        while l<h:
+            mid=(h+l)//2
+            if arr[mid]-mid>k: h=mid
+            else: l=mid+1
+        return l+k"
+"class Solution:
+    def longestCommonPrefix(self, arr1: List[int], arr2: List[int]) -> int:
+        s = set()
+        for x in arr1:
+            while x:
+                s.add(x)
+                x //= 10
+        ans = 0
+        for x in arr2:
+            while x:
+                if x in s:
+                    ans = max(ans, len(str(x)))
+                    break
+                x //= 10
+        return ans","class Solution:
+    def longestCommonPrefix(self, arr1: List[int], arr2: List[int]) -> int:
+        s = set()
+        for x in arr1:
+            while x:
+                s.add(x)
+                x //= 10
+        ans = 0
+        for x in arr2:
+            while x:
+                if x in s:
+                    ans = max(ans, len(str(x)))
+                    break
+                x //= 10
+        return ans"
+"text1 = gdspy . Text ( 'Created with gdspy ' + gdspy . __version__ , 7 , ( - 7 , - 35 ) , layer = 6 )","text1 = gdspy. Text ( 'Created with gsdpy'+ gdspy. __version__, 7, ( - 7, - 35 ), layer = 6, font_size = 7 )"
+"motorola_p12 = devices [ ( devices . time > 1445368800 ) & ( devices . time < 1445368920 ) & ( devices . station_mac == '5C:51:88:D4:43:F1' ) ] . groupby ( 'station_mac' ) . agg ( { 'power' : [ np . size , np . median ] } )","motorola_p11 = devices [ ( devices. time > 1445368800 ) & ( devices. time < 1445368920 ) & ( devices. station_mac == '5C:51:88:D4:43:F1' ) ]. groupby ('station_mac' ). agg ( { 'power' : [ np. size, np. median ] } ). reset_index ( )"
+"class Solution:
+  def shortestMatchingSubstring(self, s: str, p: str) -> int:
+    n = len(s)
+    a, b, c = p.split('*')
+    lpsA = self._getLPS(a + '#' + s)[len(a) + 1:]
+    lpsB = self._getLPS(b + '#' + s)[len(b) + 1:]
+    lpsC = self._getLPS(c + '#' + s)[len(c) + 1:]
+    ans = math.inf
+
+    i = 0  # lpsA's index
+    j = 0  # lpsB's index
+    k = 0  # lpsC's index
+    while i + len(b) + len(c) < n:
+      while i < n and lpsA[i] != len(a):
+        i += 1
+      while j < n and (j < i + len(b) or lpsB[j] != len(b)):
+        j += 1
+      while k < n and (k < j + len(c) or lpsC[k] != len(c)):
+        k += 1
+      if k == n:
+        break
+      ans = min(ans, k - i + len(a))
+      i += 1
+
+    return -1 if ans == math.inf else ans
+
+  def _getLPS(self, pattern: str) -> list[int]:
+    """"""
+    Returns the lps array, where lps[i] is the length of the longest prefix of
+    pattern[0..i] which is also a suffix of this substring.
+    """"""
+    lps = [0] * len(pattern)
+    j = 0
+    for i in range(1, len(pattern)):
+      while j > 0 and pattern[j] != pattern[i]:
+        j = lps[j - 1]
+      if pattern[i] == pattern[j]:
+        lps[i] = j + 1
+        j += 1
+    return lps","class Solution:
+  def shortestMatchingSubstring(self, s: str, p: str) -> int:
+    n = len(s)
+    a, b, c = p.split('*')
+    lpsA = self._getLPS(a + '#' + s)[len(a) + 1:]
+    lpsB = self._getLPS(b + '#' + s)[len(b) + 1:]
+    lpsC = self._getLPS(c + '#' + s)[len(c) + 1:]
+    ans = math.inf
+
+    i = 0  # lpsA's index
+    j = 0  # lpsB's index
+    k = 0  # lpsC's index
+    while i + len(b) + len(c) < n:
+      while i < n and lpsA[i]!= len(a):
+        i += 1
+      while j < n and (j < i + len(b) or lpsB[j]!= len(b)):
+        j += 1
+      while k < n and (k < j + len(c) or lpsC[k]!= len(c)):
+        k += 1
+      if k == n:
+        break
+      ans = min(ans, k - i + len(a))
+      i += 1
+      j += 1
+      k += 1
+
+    return -1 if ans == math.inf else ans
+
+  def _getLPS(self, pattern: str) -> list[int]:
+    """"""
+    Returns the lps array, where lps[i] is the length of the longest prefix of
+    pattern[0..i] which is also a suffix of this substring.
+    """"""
+    lps = [0] * len(pattern)
+    j = 0
+    for i in range(1, len(pattern)):
+      while j > 0 and pattern[j]!= pattern[i]:
+        j = lps[j - 1]
+      if pattern[i] == pattern[j]:
+        lps[i] = j + 1
+        j += 1
+    return lps"
+"cursor . execute ( query , tuple ( list ( values . values ( ) ) + list ( identifiers . values ( ) ) ) )","cursor. execute ( query, tuple ( values. values ( ) + identifiers. values ( ) + [ ""NULL"" ] * ( len ( values ) - len ( identifiers ) ) ) )"
+"class Solution:
+    def count(self, num1: str, num2: str, min_sum: int, max_sum: int) -> int:
+        @cache
+        def dfs(pos: int, s: int, limit: bool) -> int:
+            if pos >= len(num):
+                return int(min_sum <= s <= max_sum)
+            up = int(num[pos]) if limit else 9
+            return (
+                sum(dfs(pos + 1, s + i, limit and i == up) for i in range(up + 1)) % mod
+            )
+
+        mod = 10**9 + 7
+        num = num2
+        a = dfs(0, 0, True)
+        dfs.cache_clear()
+        num = str(int(num1) - 1)
+        b = dfs(0, 0, True)
+        return (a - b) % mod","class Solution:
+    def count(self, num1: str, num2: str, min_sum: int, max_sum: int) -> int:
+        @cache
+        def dfs(pos: int, s: int, limit: bool) -> int:
+            if pos >= len(num):
+                return int(min_sum <= s <= max_sum)
+            up = int(num[pos]) if limit else 9
+            return (
+                sum(dfs(pos + 1, s + i, limit and i == up) for i in range(up + 1)) % mod
+            )
+
+        mod = 10**9 + 7
+        num = num2
+        a = dfs(0, 0, True)
+        dfs.cache_clear()
+        num = str(int(num2) - 1)
+        b = dfs(0, 0, True)
+        return (a - b) % mod"
+"class Solution:
+    def checkValidString(self, s):
+        st=[]
+        sr=[]
+        for i in range(len(s)):
+            if s[i]=='(':
+                st.append(i)
+            elif s[i]== '*':
+                sr.append(i)
+            else:
+                if st:
+                    st.pop()
+                elif sr:
+                    sr.pop()
+                else:
+                    return False
+        while st:
+            if len(sr)==0:
+                return False
+            elif st[-1]< sr[-1]:
+                st.pop()
+                sr.pop()
+            else:
+                return False
+        return True","class Solution:
+    def checkValidString(self, s):
+        st=[]
+        sr=[]
+        for i in range(len(s)):
+            if s[i]=='(':
+                st.append(i)
+            elif s[i]== '*':
+                sr.append(i)
+            else:
+                if st:
+                    st.pop()
+                elif sr:
+                    sr.pop()
+                else:
+                    return False
+        while st:
+            if len(sr)==0:
+                return False
+            elif st[-1] > sr[-1]:
+                st.pop()
+                sr.pop()
+            else:
+                return False
+        return True"
+"result . append ( ImageInpaintingPrediction ( identifier , img . astype ( np . uint8 ) ) )","result. append ( ImageInpaintingPrediction ( identifier, img, self. model ) )"
+"raise TypeError ( ""this variable's data is stored in a dask array, "" 'which does not support item assignment. To ' 'assign to this variable, you must first load it ' 'into memory explicitly using the .load() ' 'method or accessing its .values attribute.' )","raise TypeError ( ""this variable's data is stored in a dask array, "" 'which does not support item assignment. To''assign to this variable, you must first load it''into memory explicitly using the.load_data()''method or accessing its.values attribute.' )"
+"hgi_arvados . one_task_per_interval ( interval_count , validate_task_output , reuse_tasks = False , if_sequence = 1 , and_end_task = True )","hgi_arvados. one_task_per_interval ( interval_count, reuse_tasks = False, if_sequence = 1, and_end_task = False )"
+"return { 'error' : 'Unable to {} name:\n{}' . format ( ',' . join ( operations ) , '\n' . join ( [ '  * check ""{}"" failed' . format ( reason ) for reason in failed_checks ] ) ) }","return { 'error' : 'Unable to {} name:\n{}'. format ( '\n'. join ( ','. join ( operations ), [' * check ""{}"" failed'. format ( reason ) for reason in failed_checks ] ) ), 'failed_checks' : failed_checks }"
+"class Solution:
+    def lenOfVDiagonal(self, grid: List[List[int]]) -> int:
+        m, n = len(grid), len(grid[0])
+        next_digit = {1: 2, 2: 0, 0: 2}
+
+        def within_bounds(i, j):
+            return 0 <= i < m and 0 <= j < n
+
+        @cache
+        def f(i, j, di, dj, turned):
+            result = 1
+            successor = next_digit[grid[i][j]]
+
+            if within_bounds(i + di, j + dj) and grid[i + di][j + dj] == successor:
+                result = 1 + f(i + di, j + dj, di, dj, turned)
+
+            if not turned:
+                di, dj = dj, -di
+                if within_bounds(i + di, j + dj) and grid[i + di][j + dj] == successor:
+                    result = max(result, 1 + f(i + di, j + dj, di, dj, True))
+
+            return result
+
+        directions = ((1, 1), (-1, 1), (1, -1), (-1, -1))
+        result = 0
+
+        for i in range(m):
+            for j in range(n):
+                if grid[i][j] != 1:
+                    continue
+                for di, dj in directions:
+                    result = max(result, f(i, j, di, dj, False))
+
+        return result","class Solution:
+    def lenOfVDiagonal(self, grid: List[List[int]]) -> int:
+        m, n = len(grid), len(grid[0])
+        next_digit = {1: 2, 2: 0, 0: 1}
+
+        def within_bounds(i, j):
+            return 0 <= i < m and 0 <= j < n
+
+        @cache
+        def f(i, j, di, dj, turned):
+            result = 1
+            successor = next_digit[grid[i][j]]
+
+            if within_bounds(i + di, j + dj) and grid[i + di][j + dj] == successor:
+                result = 1 + f(i + di, j + dj, di, dj, turned)
+
+            if not turned:
+                di, dj = dj, -di
+                if within_bounds(i + di, j + dj) and grid[i + di][j + dj] == successor:
+                    result = max(result, 1 + f(i + di, j + dj, di, dj, True))
+
+            return result
+
+        directions = ((1, 1), (-1, 1), (1, -1), (-1, -1))
+        result = 0
+
+        for i in range(m):
+            for j in range(n):
+                if grid[i][j]!= 1:
+                    continue
+                for di, dj in directions:
+                    result = max(result, f(i, j, di, dj, False))
+
+        return result"
+"return ""%s?function=View+Build;%s"" % ( myself , "";"" . join ( [ ""%s=%s"" % k for k in params . iteritems ( ) ] ) )","return ""%s?function=View+Build;%s'>%s</a>"" % ( myself, "";"". join ( [ ""%s=%s"" % k for k in params. iteritems ( ) ] ), self. url )"
+"class Solution:
+  def maximumCoins(self, coins: list[list[int]], k: int) -> int:
+    return max(self._slide(coins, k),
+               self._slide([[-r, -l, c] for l, r, c in coins], k))
+
+  def _slide(self, coins: list[list[int]], k: int) -> int:
+    coins.sort()
+    res = 0
+    windowSum = 0
+    j = 0
+    for li, ri, ci in coins:  # Consider the number line [li..li + k).
+      rightBoundary = li + k
+
+      # [lj, rj] is fully in [li..li + k).
+      while j + 1 < len(coins) and coins[j + 1][0] < rightBoundary:
+        lj, rj, cj = coins[j]
+        windowSum += (rj - lj + 1) * cj
+        j += 1
+
+      # [lj, rj] may be partially in [l..l + k).
+      last = 0
+      if j < len(coins) and coins[j][0] < rightBoundary:
+        lj, rj, cj = coins[j]
+        last = (min(rightBoundary - 1, rj) - lj + 1) * cj
+
+      res = max(res, windowSum + last)
+      windowSum -= (ri - li + 1) * ci
+    return res","class Solution:
+  def maximumCoins(self, coins: list[list[int]], k: int) -> int:
+    return max(self._slide(coins, k),
+               self._slide([[-r, -l, c] for l, r, c in coins], k))
+
+  def _slide(self, coins: list[list[int]], k: int) -> int:
+    coins.sort()
+    res = 0
+    windowSum = 0
+    j = 0
+    for li, ri, ci in coins:  # Consider the number line [li..li + k).
+      rightBoundary = li + k
+
+      # [lj, rj] is fully in [li..li + k).
+      while j + 1 < len(coins) and coins[j + 1][0] < rightBoundary:
+        lj, rj, cj = coins[j]
+        windowSum += (rj - lj + 1) * cj
+        j += 1
+
+      # [lj, rj] may be partially in [l..l + k).
+      last = 0
+      if j < len(coins) and coins[j][0] < rightBoundary:
+        lj, rj, cj = coins[j]
+        last = (min(rightBoundary - 1, rj) - lj + 1) * cj
+
+      res = max(res, windowSum + last)
+      windowSum -= (ri - li + 1) * ci
+    return res"
+"import matplotlib.pyplot as plt
+import pandas as pd
+import random
+from datetime import datetime
+def task_func(seed=42):
+
+    try:
+        plt.rc('font', family='Arial')
+
+        random.seed(seed)
+        dates = pd.date_range(end=datetime.now(), periods=30)
+        values = [random.randint(0, 100) for _ in range(30)]
+        
+        fig, ax = plt.subplots()
+        ax.plot(dates, values, label='Value over Time')
+        ax.set_xlabel('Date')
+        ax.set_ylabel('Value')
+        ax.set_title('Random Time Series Data')
+        ax.legend()
+
+        return ax
+    except Exception as e:
+        raise ValueError(f""Error generating the plot: {e}"")","import matplotlib.pyplot as plt
+import pandas as pd
+import random
+from datetime import datetime
+def task_func(seed=42):
+
+    try:
+        plt.rc('font', family='Arial')
+
+        random.seed(seed)
+        dates = pd.date_range(end=datetime.now(), periods=30)
+        values = [random.randint(0, 100) for _ in range(30)]
+        
+        fig, ax = plt.subplots()
+        ax.plot(dates, values, label='Value over Time')
+        ax.set_xlabel('Date')
+        ax.set_ylabel('Value')
+        ax.set_title('Random Time Series Data')
+        ax.legend()
+
+        return ax
+    except Exception as e:
+        raise ValueError(f""Error generating the plot: {e}"")"
+"r , th , ph = surface ( theta , phi , l , m , t , asl = asl , k = k )","r, th, ph = surface ( theta, phi, l, m, t, asl = asl, n = n )"
+"sync_invoice ( session , args . datadir , comm_item )","sync_comm_item ( session, args. datadir, comm_item, args. datadir )"
+"import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D
+import numpy as np
+import cv2
+import os
+def task_func(file_path, onpick):
+
+    if not os.path.exists(file_path):
+        raise FileNotFoundError(f""No file found at {file_path}"")
+
+    img = cv2.imread(file_path)
+    color = ('b', 'g', 'r')
+    fig = plt.figure()
+    ax = Axes3D(fig)
+
+    for i, col in enumerate(color):
+        hist = cv2.calcHist([img], [i], None, [256], [0, 256])
+        ax.plot(np.arange(256), hist, color=col)
+
+    fig.canvas.mpl_connect('pick_event', onpick)
+
+    # plt.show()
+
+    return ax","import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D
+import numpy as np
+import cv2
+import os
+def task_func(file_path, onpick):
+
+    if not os.path.exists(file_path):
+        raise FileNotFoundError(f""No file found at {file_path}"")
+
+    img = cv2.imread(file_path)
+    color = ('b', 'g', 'r')
+    fig = plt.figure()
+    ax = Axes3D(fig)
+
+    for i, col in enumerate(color):
+        hist = cv2.calcHist([img], [i], None, [256], [0, 256])
+        ax.plot(np.arange(256), hist, color=col)
+
+    fig.canvas.mpl_connect('pick_event', onpick)
+
+    # plt.show()
+
+    return ax"
+giorno = datetime . datetime . today ( ) . weekday ( ) + 2,giorno = datetime. datetime. today ( ). weekday ( ) + 1
+"class Solution:
+  def maxSubarrays(self, n: int, conflictingPairs: list[list[int]]) -> int:
+    validSubarrays = 0
+    maxLeft = 0
+    secondMaxLeft = 0
+    # gains[i] := the number of additional valid subarrays we can gain if the
+    # restriction at index `i` is removed
+    gains = [0] * (n + 1)
+    # conflicts[r] := left endpoints that conflict with subarrays ending in r
+    conflicts = [[] for _ in range(n + 1)]
+
+    for a, b in conflictingPairs:
+      conflicts[max(a, b)].append(min(a, b))
+
+    for right in range(1, n + 1):
+      for left in conflicts[right]:
+        if left > maxLeft:
+          secondMaxLeft = maxLeft
+          maxLeft = left
+        elif left > secondMaxLeft:
+          secondMaxLeft = left
+      # Subarrays [maxLeft + 1..right],
+      #           [maxLeft + 2..right],
+      #           ...
+      #           [right..right] are valid.
+      validSubarrays += right - maxLeft
+      # If we remove `maxLeft` (the most restrictive conflict), we gain
+      # `maxLeft - secondMaxLeft` new subarrays:
+      # [secondMaxLeft + 1..right],
+      # [secondMaxLeft + 2..right],
+      # ...
+      # [maxLeft..right].
+      gains[maxLeft] += maxLeft - secondMaxLeft
+
+    return validSubarrays + max(gains)","class Solution:
+  def maxSubarrays(self, n: int, conflictingPairs: list[list[int]]) -> int:
+    validSubarrays = 0
+    maxLeft = 0
+    # gains[i] := the number of additional valid subarrays we can gain if the
+    # restriction at index `i` is removed
+    gains = [0] * (n + 1)
+    # conflicts[r] := left endpoints that conflict with subarrays ending in r
+    conflicts = [[] for _ in range(n + 1)]
+
+    for a, b in conflictingPairs:
+      conflicts[max(a, b)].append(min(a, b))
+
+    for right in range(1, n + 1):
+      for left in conflicts[right]:
+        if left > maxLeft:
+          secondMaxLeft = maxLeft
+          maxLeft = left
+        elif left > secondMaxLeft:
+          secondMaxLeft = left
+      # Subarrays [maxLeft + 1..right],
+      #           [maxLeft + 2..right],
+      #          ...
+      #           [right..right] are valid.
+      validSubarrays += right - maxLeft
+      # If we remove `maxLeft` (the most restrictive conflict), we gain
+      # `maxLeft - secondMaxLeft` new subarrays:
+      # [secondMaxLeft + 1..right],
+      # [secondMaxLeft + 2..right],
+      #...
+      # [maxLeft..right].
+      gains[maxLeft] += maxLeft - secondMaxLeft
+
+    return validSubarrays + max(gains)"
+"self . set_pincode_by_id ( model [ ""id"" ] - 1 , model [ ""pinCode"" ] )","self. set_pincode_by_id ( model [ ""id"" ], model [ ""pincode"" ] )"
+self . log . error ( self . popen . stderr . read ( ) . decode ( 'utf-8' ) ),self. log. error ( self. popen. stderr. read ( ). decode ( 'utf-8' ) )
+"picks = [ pick_types ( info , meg = False , exclude = [ ] , ** types_used_kwargs ) ]","picks = [ pick_types ( info, meg = False, ** types_used_kwargs ) ] if info. meg else [ ]"
+"class Solution:
+    def countMentions(self, numberOfUsers: int, events: List[List[str]]) -> List[int]:
+        events.sort(key=lambda e: (int(e[1]), e[0][2]))
+        ans = [0] * numberOfUsers
+        online_t = [0] * numberOfUsers
+        lazy = 0
+        for etype, ts, s in events:
+            cur = int(ts)
+            if etype[0] == ""O"":
+                online_t[int(s)] = cur + 60
+            elif s[0] == ""A"":
+                lazy += 1
+            elif s[0] == ""H"":
+                for i, t in enumerate(online_t):
+                    if t <= cur:
+                        ans[i] += 1
+            else:
+                for a in s.split():
+                    ans[int(a[2:])] += 1
+        if lazy:
+            for i in range(numberOfUsers):
+                ans[i] += lazy
+        return ans","class Solution:
+    def countMentions(self, numberOfUsers: int, events: List[List[str]]) -> List[int]:
+        events.sort(key=lambda e: (int(e[1]), e[0][2]))
+        ans = [0] * numberOfUsers
+        online_t = [0] * numberOfUsers
+        lazy = 0
+        for etype, ts, s in events:
+            cur = int(ts)
+            if etype[0] == ""O"":
+                online_t[int(s)] = cur + 60
+            elif s[0] == ""A"":
+                lazy += 1
+            elif s[0] == ""H"":
+                for i, t in enumerate(online_t):
+                    if t <= cur:
+                        ans[i] += 1
+            else:
+                for a in s.split():
+                    ans[int(a[2:])] += 1
+        if lazy:
+            for i in range(numberOfUsers):
+                ans[i] += lazy
+        return ans"
+"import pandas as pd
+import numpy as np
+from random import choice
+# Constants
+DATA_TYPES = [str, int, float, list, tuple, dict, set]
+def task_func(rows, columns):
+
+    data = {}
+    for col in range(columns):
+        data_type = choice(DATA_TYPES)
+        if data_type == str:
+            data['col' + str(col)] = [''.join(np.random.choice(list('abcdefghijklmnopqrstuvwxyz'), size=5)) for _ in
+                                      range(rows)]
+        elif data_type in [int, float]:
+            data['col' + str(col)] = np.random.choice([data_type(i) for i in range(10)], size=rows)
+        elif data_type == list:
+            data['col' + str(col)] = [list(np.random.choice(range(10), size=np.random.randint(1, 6))) for _ in
+                                      range(rows)]
+        elif data_type == tuple:
+            data['col' + str(col)] = [tuple(np.random.choice(range(10), size=np.random.randint(1, 6))) for _ in
+                                      range(rows)]
+        elif data_type == dict:
+            data['col' + str(col)] = [dict(zip(np.random.choice(range(10), size=np.random.randint(1, 6)),
+                                               np.random.choice(range(10), size=np.random.randint(1, 6)))) for _ in
+                                      range(rows)]
+        elif data_type == set:
+            data['col' + str(col)] = [set(np.random.choice(range(10), size=np.random.randint(1, 6))) for _ in
+                                      range(rows)]
+
+    df = pd.DataFrame(data)
+    return df","import pandas as pd
+import numpy as np
+from random import choice
+# Constants
+DATA_TYPES = [str, int, float, list, tuple, dict, set]
+def task_func(rows, columns):
+
+    data = {}
+    for col in range(columns):
+        data_type = choice(DATA_TYPES)
+        if data_type == str:
+            data['col' + str(col)] = [''.join(np.random.choice(list('abcdefghijklmnopqrstuvwxyz'), size=5)) for _ in
+                                      range(rows)]
+        elif data_type == int:
+            data['col' + str(col)] = np.random.choice([i for i in range(10)], size=rows)
+        elif data_type == list:
+            data['col' + str(col)] = [list(np.random.choice(range(10), size=np.random.randint(1, 6))) for _ in
+                                      range(rows)]
+        elif data_type == tuple:
+            data['col' + str(col)] = [tuple(np.random.choice(range(10), size=np.random.randint(1, 6))) for _ in
+                                      range(rows)]
+        elif data_type == dict:
+            data['col' + str(col)] = [dict(zip(np.random.choice(range(10), size=np.random.randint(1, 6)),
+                                               np.random.choice(range(10), size=np.random.randint(1, 6)))) for _ in
+                                      range(rows)]
+        elif data_type == set:
+            data['col' + str(col)] = [set(np.random.choice(range(10), size=np.random.randint(1, 6))) for _ in
+                                      range(rows)]
+
+    df = pd.DataFrame(data)
+    return df"
+"num_jitters = int ( self . options . get ( 'face_num_jitters' , 0 ) )","num_jitters = int ( self. options. get ( 'face_num_jitters', 0 ), 0 )"
+"class Solution:
+    def solveQueries(self, nums: List[int], queries: List[int]) -> List[int]:
+        n = len(nums)
+        m = n << 1
+        d = [m] * m
+        left = {}
+        for i in range(m):
+            x = nums[i % n]
+            if x in left:
+                d[i] = min(d[i], i - left[x])
+            left[x] = i
+        right = {}
+        for i in range(m - 1, -1, -1):
+            x = nums[i % n]
+            if x in right:
+                d[i] = min(d[i], right[x] - i)
+            right[x] = i
+        for i in range(n):
+            d[i] = min(d[i], d[i + n])
+        return [-1 if d[i] >= n else d[i] for i in queries]","class Solution:
+    def solveQueries(self, nums: List[int], queries: List[int]) -> List[int]:
+        n = len(nums)
+        m = n << 1
+        d = [m] * m
+        left = {}
+        for i in range(m):
+            x = nums[i % n]
+            if x in left:
+                d[i] = min(d[i], i - left[x])
+            left[x] = i
+        right = {}
+        for i in range(m - 1, -1, -1):
+            x = nums[i % n]
+            if x in right:
+                d[i] = min(d[i], right[x] - i)
+            right[x] = i
+        for i in range(n):
+            d[i] = min(d[i], d[i << 1])
+        return [-1 if d[i] >= n else d[i] for i in queries]"
+"import numpy as np
+import random
+from sklearn.preprocessing import MinMaxScaler
+def task_func(list_of_lists, seed=42):
+
+    np.random.seed(seed)
+    random.seed(seed)
+    scaled_data = []
+    scaler = MinMaxScaler(feature_range=(0, 1))
+    for list_ in list_of_lists:
+        if not list_:
+            list_ = [random.randint(0, 100) for _ in range(5)]
+        # Reshape the data to fit the scaler
+        reshaped_data = np.array(list_).reshape(-1, 1)
+        scaled_list = scaler.fit_transform(reshaped_data)
+        # Flatten the list and append to the result
+        scaled_data.append(scaled_list.flatten().tolist())
+    
+    return scaled_data","import numpy as np
+import random
+from sklearn.preprocessing import MinMaxScaler
+def task_func(list_of_lists, seed=42):
+
+    np.random.seed(seed)
+    random.seed(seed)
+    scaled_data = []
+    scaler = MinMaxScaler(feature_range=(0, 1))
+    for list_ in list_of_lists:
+        if not list_:
+            list_ = [random.randint(0, 100) for _ in range(5)]
+        # Reshape the data to fit the scaler
+        reshaped_data = np.array(list_).reshape(-1, 1)
+        scaled_list = scaler.fit_transform(reshaped_data)
+        # Flatten the list and append to the result
+        scaled_data.append(scaled_list.flatten().tolist())
+    
+    return scaled_data"
+"{ 'name' : 'ssl-port' , 'type' : 'int' , 'default' : None }","{ 'name' :'ssl-port', 'type' :'str', 'default' : '443' }"
+"log . error ( ""Failed to inject %s-bit process with pid %s and "" ""process name %s"" , 32 if is32bit else 64 , self . pid , self . process_name )","log. error ( ""Failed to inject %s process with pid %s and "" ""process name %s"", 32 if is32bit else 64, self. pid, self. process_name )"
+"return os . path . join ( os . path . dirname ( __file__ ) , "".."" , "".."" , "".."" , 'fixtures' , 'exported_fh_registry.yaml' )","return os. path. abspath ( os. path. join ( os. path. dirname ( __file__ ), "".."", "".."", "".."", 'fixtures', 'exported_fh_registry.yaml' ) )"
+"app_frame . EditProjectElement ( self . _GeneratedMasterView , name )","app_frame. EditProjectElement ( self. _IECCodeView, name, self. _IECCodeView. _IECCodeView. _IECCodeView. _IECCodeView. _IECCodeView. _IECCodeView. _IECCodeView. _IECCodeView. _IECCodeView. _IECCodeView. _IECCodeView. _IECCodeView. _IECCodeView. _IECCodeView. _IECCodeView. _IECCodeView. _IECCodeView. _IECCodeView. _IECCodeView. _IECCodeView. _IECCodeView. _IECCodeView. _IECCodeView. _IECCodeView. _IECCodeView. _IECCodeView. _IECCodeView. _IECCodeView. _IECCodeView. _IECCodeView. _IECCodeView. _IECCodeView. _IECCodeView. _IECCodeView. _IECCodeView. _IECCodeView. _IECCodeView. _IECCodeView. _IECCodeView. _IECCodeView. _IECCodeView. _IECCodeView. _IECCodeView. _IECCodeView. _IECCodeView. _IECCodeView. _IECCodeView. _IECCodeView. _IECCodeView. _IECCodeView. _IECCodeView. _IECCodeView. _IECCodeView. _IECCodeView. _IECCodeView. _IECCodeView. _IECCodeView. _IECCodeView. _IECCodeView. _IECCodeView. _IECCodeView. _IECCodeView. _IECCodeView. _IECCodeView. _IECCodeView. _IECCodeView. _IECCodeView. _IECCodeView. _IECCodeView. _IECCodeView. _IECCodeView. _IECCodeView. _IECCodeView. _IECCodeView. _IECCodeView. _IECCodeView. _IECCodeView. _IECCodeView. _IECCodeView. _IECCodeView. _IECCodeView. _IECCode"
+"return jsonify ( { 'status' : 'COMPLETE' , 'captures' : results } )","return jsonify ( { 'job_status' : 'COMPLETE', 'captures' : results, 'capture_id' : capture_id } )"
+grid . FieldSpecs = self . Form . getFieldSpecsForTable ( child ),"grid. fieldSpecs = self. Form. getFieldSpecsForTable ( child, self. Form. get ( 'grid' ) )"
+"return '`' + identifier . replace ( '`' , '``' ) . replace ( '_' , r'\_' ) . replace ( '%' , r'%%' ) + '`'","return '`' + identifier. replace ( '`', '``' ). replace ( '_', r'\_' ). replace ( '%', r'\%%' ). replace ( '&', r'\&' ) + '`'"
+"if srv . type in SERVICES_INSTANCES : return False , ""Service already in scene.""","if srv. type in scene. objects : return False, ""Service already in scene."""
+"import numpy as np
+import itertools
+import json
+def task_func(data_list, json_file_name=""mean_values.json""):
+
+    unzipped_data = list(itertools.zip_longest(*data_list, fillvalue=np.nan))
+    mean_values = [np.nanmean(column) for column in unzipped_data[1:]]
+
+    results = {'Position {}'.format(i+1): mean_value for i, mean_value in enumerate(mean_values)}
+    
+    with open(json_file_name, 'w') as f:
+        json.dump(results, f)
+
+    return results","import numpy as np
+import itertools
+import json
+def task_func(data_list, json_file_name=""mean_values.json""):
+
+    unzipped_data = list(itertools.zip_longest(*data_list, fillvalue=np.nan)))
+    mean_values = [np.nanmean(column) for column in unzipped_data[1:]]
+
+    results = {'Position {}'.format(i+1): mean_value for i, mean_value in enumerate(mean_values)}
+    
+    with open(json_file_name, 'w') as f:
+        json.dump(results, f)
+
+    return results"
+"class Solution:
+    def smallestString(self, s: str) -> str:
+        
+        if len(check:=set(s))==1 and check != {'a'}: 
+            return chr(ord(s[0])-1)*(len(s))              # zzzz > yyyy , aaaa -X-> zzzz
+        contiguous,change,ct1,ct2 = True,False,0,0
+
+        for i in s:                                       # deal with begin string = 'aaaa....', speed up the traversal speed.
+            if i == 'a':ct1+=1                                                  
+            else:break
+        ans='' + 'a' * ct1
+        s = s[ct1:]
+     
+        for cha in s:
+            ct2+=1
+            if cha != 'a':
+                ans+=chr(ord(cha)-1)
+                change=True                               # record operation at least once.
+                continue
+            else:
+                ans+=cha                                  # because 'a' can't converted to 'z'
+                if change:                                # once the change has been made, you can stop when you encounter 'a'
+                    contiguous = False
+            if not contiguous:                            # then break , add the remaining string to the end of the ans.
+                break
+        return ans+s[ct2:] if change else ans[:-1]+'z'    # check if it consists entirely of the letter ""a.""  'aaaa' > 'aaaz'","class Solution:
+    def smallestString(self, s: str) -> str:
+        
+        if len(check:=set(s))==1 and check!= {'a'}: 
+            return chr(ord(s[0])-1)*(len(s))              # zzzz > yyyy, aaaa -X-> zzzz
+        contiguous,change,ct1,ct2 = True,False,0,0
+
+        for i in s:                                       # deal with begin string = 'aaaa....', speed up the traversal speed.
+            if i == 'a':ct1+=1                                                  
+            else:break
+        ans='' + 'a' * ct1
+        s = s[ct1:]
+     
+        for cha in s:
+            ct2+=1
+            if cha!= 'a':
+                ans+=chr(ord(cha)-1)
+                change=True                               # record operation at least once.
+                continue
+            else:
+                ans+=cha                                  # because 'a' can't converted to 'z'
+                if change:                                # once the change has been made, you can stop when you encounter 'a'
+                    contiguous = False
+            if not contiguous:                            # then break, add the remaining string to the end of the ans.
+                break
+        return ans+s[ct2:] if change else UndefinedFunc(ans[:-1]+'z')"
+"import numpy as np
+from collections import Counter
+import matplotlib.pyplot as plt
+def task_func(L):
+
+    mean = np.mean(L)
+    median = np.median(L)
+    mode = Counter(L).most_common(1)[0][0]
+    std_dev = np.std(L)
+    
+    plt.hist(L, bins='auto')
+    plt.title('Histogram of Data')
+    plt.xlabel('Value')
+    plt.ylabel('Frequency')
+    
+    return {'mean': mean, 'median': median, 'mode': mode, 'std_dev': std_dev, 'plot': plt.gca()}","import numpy as np
+from collections import Counter
+import matplotlib.pyplot as plt
+def task_func(L):
+
+    mean = np.mean(L)
+    median = np.median(L)
+    mode = Counter(L).most_common(1)[0][0]
+    std_dev = np.std(L)
+    
+    plt.hist(L, bins='auto')
+    plt.title('Histogram of Data')
+    plt.xlabel('Value')
+    plt.ylabel('Frequency')
+    
+    return {'mean': mean,'median': median,'mode': mode,'std_dev': std_dev, 'plot': plt.gca()}"
+executor = ThreadPoolExecutor ( max_workers = SET_DISKS_CAP ),"executor = ThreadPoolExecutor ( max_workers = 40, thread_name_prefix = ""worker"" )"
+"response = jsonify ( { 'code' : http_client . INTERNAL_SERVER_ERROR , 'message' : 'Exception: {}' . format ( e ) } )","response = jsonify ( { 'error' : http_client. INTERNAL_SERVER_ERROR,'message' : 'Exception: {}'. format ( e ) } )"
+"query = """"""
+         SELECT meetup_id FROM meetups
+         WHERE meetups.meetup_location = '{}' AND meetups.happenningon = '{}'
+         """""" . format ( meetup_location , date )","query = """"""
+         SELECT meetup_id FROM meetups
+         WHERE meetups.meetup_location = '{}' AND meetups.meetup_date = '{}'
+         AND meetups.meetup_location!= 'None'
+         """""". format ( meetup_location, date )"
+"parent = CategoryChoiceField ( Category . objects . all ( ) , label = _ ( ""Parent category"" ) , required = False )","parent = CategoryChoiceField ( Category. objects. all ( ), label = _ ( ""Parent category"" ), required = False )"
+"owners = db_api . cluster_lock_steal ( cluster_id , action_id )","owners = db_api. cluster_lock_steal ( cluster_id, action_id, scope, db_api. get_user_id ( ) )"
+"return """"""
+         <script type=""text/javascript"">
+         <!-- begin hiding
+         document.cookie = \""%s\"";
+         // end hiding -->
+         </script>
+         """""" % ( self . OutputString ( attrs ) , )","return """"""
+         <SCRIPT LANGUAGE=""JavaScript"">
+         <!-- begin hiding
+         document.cookie = \""%s\""
+         // end hiding -->
+         </script>
+         """""" % ( self. OutputString ( attrs ). replace ( "" "", """" ), )"
