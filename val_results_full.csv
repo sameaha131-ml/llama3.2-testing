@@ -27526,3 +27526,803 @@ def task_func(utc_datetime, seed=0):
     
     return person_json_str"
 "subprocess . Popen ( [ python_prefix , pyswitchlib_api_daemon , 'start' ] , close_fds = True )","subprocess. Popen ( ['service', pyswitchlib_init_scriptname,'start' ], close_fds = False )"
+"class Solution:
+    def medianOfUniquenessArray(self, nums: List[int]) -> int:
+        def check(mx: int) -> bool:
+            cnt = defaultdict(int)
+            k = l = 0
+            for r, x in enumerate(nums):
+                cnt[x] += 1
+                while len(cnt) > mx:
+                    y = nums[l]
+                    cnt[y] -= 1
+                    if cnt[y] == 0:
+                        cnt.pop(y)
+                    l += 1
+                k += r - l + 1
+                if k >= (m + 1) // 2:
+                    return True
+            return False
+
+        n = len(nums)
+        m = (1 + n) * n // 2
+        return bisect_left(range(n), True, key=check)","class Solution:
+    def medianOfUniquenessArray(self, nums: List[int]) -> int:
+        def check(mx: int) -> bool:
+            cnt = defaultdict(int)
+            k = l = 0
+            for r, x in enumerate(nums):
+                cnt[x] += 1
+                while len(cnt) > mx:
+                    y = nums[l]
+                    cnt[y] -= 1
+                    if cnt[y] == 0:
+                        l += 1
+                        cnt.pop(y)
+                    k -= r - l + 1
+                    l += 1
+                k += r - l + 1
+                if k >= (m + 1) // 2:
+                    return True
+            return False
+
+        n = len(nums)
+        m = (1 + n) * n // 2
+        return bisect_left(range(n), True, key=check)"
+"r2 = self . oauth2_client . request ( 'POST' , '/' . join ( ( self . auth_dict [ 'val_api_url' ] , '' ) ) , json = sending_data )","r2 = self. oauth2_client. request ( 'POST', '/'. join ( ( self. auth_dict [ 'val_api_url' ], self. video_proto. val_id ) ), json = sending_data, headers = { 'Authorization' : self. auth_dict [ 'token' ] } )"
+"filters = { 'launch.group-id' : self . cluster_group . id , 'state' : [ 'active' , 'open' ] }","filters = { 'launch.group-id' : self. _security_group,'state' : [ 'active', 'open' ],'status' : [ 'active', 'open' ] }"
+"patterns = [ ( r""^{}"" . format ( i [ 0 ] ) , i [ 1 ] ) for i in const ]","patterns = [ ( r""^[{}]"". format ( i [ 0 ] ), i [ 1 ] ) for i in const if i [ 0 ]!= """" else ( r""^[0-9]"", i [ 1 ] ) ]"
+"uri = re . sub ( r'(episode:[^.]+)(\.cc)?\.com' , r'\1.com' , uri )","uri = re. sub ( r'(episode:[^.]+)(\.cc)?\.com', r'\1.cc.com', uri, flags = re. IGNORECASE )"
+"self . cluster . compact_bucket ( self . master , bucket )","tasks += self. cluster. async_compact_bucket ( self. master, bucket, self. cluster. get_bucket ( bucket ) )"
+"import os
+import glob
+import shutil
+import time
+# Constants
+FILE_EXTENSIONS = ['.txt', '.csv', '.xlsx', '.docx', '.pdf']
+def task_func(my_path: str, days_old: int) -> str:
+
+
+    archive_dir = os.path.join(my_path, 'archive')
+    os.makedirs(archive_dir, exist_ok=True)
+
+    for ext in FILE_EXTENSIONS:
+        files = glob.glob(os.path.join(my_path, '*' + ext))
+        for file in files:
+            if os.path.isfile(file) and os.path.getmtime(file) < time.time() - days_old * 86400:
+                shutil.move(file, archive_dir)
+
+    return archive_dir","import os
+import glob
+import shutil
+import time
+# Constants
+FILE_EXTENSIONS = ['.txt', '.csv', '.xlsx', '.docx', '.pdf']
+def task_func(my_path: str, days_old: int) -> str:
+
+
+    archive_dir = os.path.join(my_path, 'archive')
+    os.makedirs(archive_dir, exist_ok=True)
+
+    for ext in FILE_EXTENSIONS:
+        files = glob.glob(os.path.join(my_path, '*' + ext))
+        for file in files:
+            if os.path.isfile(file) and time.time() - os.path.getmtime(file) > days_old * 86400:
+                shutil.move(file, archive_dir)
+
+    return archive_dir"
+"import subprocess
+from ipaddress import IPv4Network
+def task_func(ip_range):
+
+    active_ips = {}
+
+    for ip in IPv4Network(ip_range):
+        try:
+            subprocess.check_output(f'ping -c 1 {ip}', shell=True)
+            active_ips[str(ip)] = True
+        except subprocess.CalledProcessError:
+            active_ips[str(ip)] = False
+
+    return active_ips","import subprocess
+from ipaddress import IPv4Network
+def task_func(ip_range):
+
+    active_ips = {}
+
+    for ip in IPv4Network(ip_range):
+        try:
+            subprocess.check_output(f'ping -c 1 {ip}', shell=True)
+            active_ips[str(ip)] = True
+        except subprocess.CalledProcessError:
+            active_ips[str(ip)] = False
+
+    return active_ips"
+"import pytz
+import numpy as np
+from dateutil.parser import parse
+import math
+MOON_PHASES_YEARS = np.array([1987, 1994, 2001, 2008, 2015, 2022])
+def task_func(date_str, from_tz, to_tz):
+
+    from_tz = pytz.timezone(from_tz)
+    to_tz = pytz.timezone(to_tz)
+    given_date = parse(date_str).replace(tzinfo=from_tz)
+    converted_date = given_date.astimezone(to_tz)
+
+    moon_phase_year = MOON_PHASES_YEARS[np.argmin(np.abs(MOON_PHASES_YEARS - converted_date.year))]
+    years_since_moon_phase_year = abs(converted_date.year - moon_phase_year)
+
+    moon_phase = math.sin(math.pi * years_since_moon_phase_year / 7)
+
+    return moon_phase","import pytz
+import numpy as np
+from dateutil.parser import parse
+import math
+MOON_PHASES_YEARS = np.array([1987, 1994, 2001, 2008, 2015, 2022])
+def task_func(date_str, from_tz, to_tz):
+
+    from_tz = pytz.timezone(from_tz)
+    to_tz = pytz.timezone(to_tz)
+    given_date = parse(date_str).replace(tzinfo=from_tz)
+    converted_date = given_date.astimezone(to_tz)
+
+    moon_phase_year = MOON_PHASES_YEARS[np.argmin(np.abs(MOON_PHASES_YEARS - converted_date.year))]
+    years_since_moon_phase_year = abs(converted_date.year - moon_phase_year)
+
+    moon_phase = math.sin(math.pi * years_since_moon_phase_year / 7)
+
+    return moon_phase"
+"parser . add_argument ( '-l' , '--log' , type = str , action = 'store' , default = 'stdout' , help = 'Path to log file. (accepts ""stdout"")' )","parser. add_argument ( '-l', '--log', type = str, action ='store', default ='stdout', help = 'Path to log file. (accepts ""stdout"")' )"
+"class Solution:
+    def findSafeWalk(self, grid: List[List[int]], health: int) -> bool:
+        m, n = len(grid), len(grid[0])
+        dist = [[inf] * n for _ in range(m)]
+        dist[0][0] = grid[0][0]
+        q = deque([(0, 0)])
+        dirs = (-1, 0, 1, 0, -1)
+        while q:
+            x, y = q.popleft()
+            for a, b in pairwise(dirs):
+                nx, ny = x + a, y + b
+                if (
+                    0 <= nx < m
+                    and 0 <= ny < n
+                    and dist[nx][ny] > dist[x][y] + grid[nx][ny]
+                ):
+                    dist[nx][ny] = dist[x][y] + grid[nx][ny]
+                    q.append((nx, ny))
+        return dist[-1][-1] < health","class Solution:
+    def findSafeWalk(self, grid: List[List[int]], health: int) -> bool:
+        m, n = len(grid), len(grid[0])
+        dist = [[inf] * n for _ in range(m)]
+        dist[0][0] = 0
+        q = deque([(0, 0)])
+        dirs = (-1, 0, 1, 0, -1)
+        while q:
+            x, y = q.popleft()
+            for a, b in pairwise(dirs):
+                nx, ny = x + a, y + b
+                if (
+                    0 <= nx < m
+                    and 0 <= ny < n
+                    and dist[nx][ny] > dist[x][y] + grid[nx][ny]
+                ):
+                    dist[nx][ny] = dist[x][y] + grid[nx][ny]
+                    q.append((nx, ny))
+        return dist[-1][-1] < health"
+return Interest . objects . filter ( parent__user__id = parent_id ),"return Interest. objects. filter ( parent_user_id = parent_id, is_active = True )"
+self . mask_integral = integral_image ( self . mask_integral ) . astype ( mask_integral_dtype ),"self. mask_integral = integral_image ( self. mask_integral, self. mask_integral )"
+"class Solution:
+    def reverseKGroup(self, head: Optional[ListNode], k: int) -> Optional[ListNode]:
+        
+        dummy = ListNode(0, head)
+        currGroup = dummy
+
+        while True:
+            kth = self.getKth(currGroup, k)
+            if not kth:
+                break
+            nextGroup =  kth.next
+
+            # reverse the currGroup
+            prev, curr = kth.next, currGroup.next
+            while curr != nextGroup:
+                tmp = curr.next
+                curr.next = prev
+                prev = curr
+                curr = tmp
+
+            currGroup.next, currGroup = kth, currGroup.next
+
+        return dummy.next
+
+
+    def getKth(self, node, k):
+        while node and k:
+            node = node.next
+            k -= 1
+        return node","class Solution:
+    def reverseKGroup(self, head: Optional[ListNode], k: int) -> Optional[ListNode]:
+        
+        dummy = ListNode(0, head)
+        currGroup = dummy
+
+        while True:
+            kth = self.getKth(currGroup, k)
+            if not kth:
+                break
+            nextGroup =  kth.next
+
+            # reverse the currGroup
+            prev, curr = kth.next, nextGroup
+            while curr!= nextGroup:
+                tmp = curr.next
+                curr.next = prev
+                prev = curr
+                curr = tmp
+
+            currGroup.next, currGroup = kth, currGroup.next
+
+        return dummy.next
+
+
+    def getKth(self, node, k):
+        while node and k:
+            node = node.next
+            k -= 1
+        return node"
+"LOGGER . info ( ""Export timed out, reducing query window and writing state."" )","LOGGER. info ( ""Export timed out, reducing query window and writing state."" )"
+"class Solution:
+    def minimumRightShifts(self, nums: List[int]) -> int:
+        n = len(nums)
+        i = 1
+        while i < n and nums[i - 1] < nums[i]:
+            i += 1
+        k = i + 1
+        while k < n and nums[k - 1] < nums[k] < nums[0]:
+            k += 1
+        return -1 if k < n else n - i","class Solution:
+    def minimumRightShifts(self, nums: List[int]) -> int:
+        n = len(nums)
+        i = 1
+        while i < n and nums[i - 1] < nums[i]:
+            i += 1
+        k = i + 1
+        while k < n and nums[k - 1] < nums[k] < nums[0]:
+            k += 1
+        return -1 if k == n else n - i"
+member = Character . primary_chars ( member = author . id ) . first ( ),member = Character. primary_chars ( discord = author. id ). first ( ) or Character. primary_chars ( discord = author. id ). first ( )
+"class Solution:
+    def canSplitArray(self, nums: List[int], m: int) -> bool:
+        @cache
+        def dfs(i: int, j: int) -> bool:
+            if i == j:
+                return True
+            for k in range(i, j):
+                a = k == i or s[k + 1] - s[i] >= m
+                b = k == j - 1 or s[j + 1] - s[k + 1] >= m
+                if a and b and dfs(i, k) and dfs(k + 1, j):
+                    return True
+            return False
+
+        s = list(accumulate(nums, initial=0))
+        return dfs(0, len(nums) - 1)","class Solution:
+    def canSplitArray(self, nums: List[int], m: int) -> bool:
+        @cache
+        def dfs(i: int, j: int) -> bool:
+            if i == j:
+                return True
+            for k in range(i, j):
+                a = k == i or s[k + 1] - s[i] >= m
+                b = k == j - 1 or s[j + 1] - s[k + 1] >= m
+                if a and b and dfs(i, k) and dfs(k + 1, j):
+                    return True
+            return False
+
+        s = list(accumulate(nums, initial=0))
+        return dfs(0, len(nums) - 1)"
+next_tournament_time = dtutil . display_time ( next_tournament_time_precise ),"next_tournament_time = dtutil. display_time ( next_tournament_time_precise, granularity = 2 )"
+"class Solution:
+    def numberOfBeautifulIntegers(self, low: int, high: int, k: int) -> int:
+        @cache
+        def dfs(pos: int, mod: int, diff: int, lead: int, limit: int) -> int:
+            if pos >= len(s):
+                return mod == 0 and diff == 10
+            up = int(s[pos]) if limit else 9
+            ans = 0
+            for i in range(up + 1):
+                if i == 0 and lead:
+                    ans += dfs(pos + 1, mod, diff, 1, limit and i == up)
+                else:
+                    nxt = diff + (1 if i % 2 == 1 else -1)
+                    ans += dfs(pos + 1, (mod * 10 + i) % k, nxt, 0, limit and i == up)
+            return ans
+
+        s = str(high)
+        a = dfs(0, 0, 10, 1, 1)
+        dfs.cache_clear()
+        s = str(low - 1)
+        b = dfs(0, 0, 10, 1, 1)
+        return a - b","class Solution:
+    def numberOfBeautifulIntegers(self, low: int, high: int, k: int) -> int:
+        @cache
+        def dfs(pos: int, mod: int, diff: int, lead: int, limit: int) -> int:
+            if pos >= len(s):
+                return mod == 0 and diff == 10
+            up = int(s[pos]) if limit else 9
+            ans = 0
+            for i in range(up + 1):
+                if i == 0 and lead:
+                    ans += dfs(pos + 1, mod, diff, 1, limit and i == up)
+                else:
+                    nxt = diff + (1 if i % 2 == 1 else -1)
+                    ans += dfs(pos + 1, (mod * 10 + i) % k, nxt, 0, limit and i == up)
+            return ans
+
+        s = str(high)
+        a = dfs(0, 0, 10, 1, 1)
+        dfs.cache_clear()
+        s = str(low - 1)
+        b = dfs(0, 0, 10, 1, 1)
+        return a - b"
+"class Solution:
+    def maxMoves(self, kx: int, ky: int, positions: List[List[int]]) -> int:
+        @cache
+        def dfs(last: int, state: int, k: int) -> int:
+            if state == 0:
+                return 0
+            if k:
+                res = 0
+                for i, (x, y) in enumerate(positions):
+                    if state >> i & 1:
+                        t = dfs(i, state ^ (1 << i), k ^ 1) + dist[last][x][y]
+                        if res < t:
+                            res = t
+                return res
+            else:
+                res = inf
+                for i, (x, y) in enumerate(positions):
+                    if state >> i & 1:
+                        t = dfs(i, state ^ (1 << i), k ^ 1) + dist[last][x][y]
+                        if res > t:
+                            res = t
+                return res
+
+        n = len(positions)
+        m = 50
+        dist = [[[-1] * m for _ in range(m)] for _ in range(n + 1)]
+        dx = [1, 1, 2, 2, -1, -1, -2, -2]
+        dy = [2, -2, 1, -1, 2, -2, 1, -1]
+        positions.append([kx, ky])
+        for i, (x, y) in enumerate(positions):
+            dist[i][x][y] = 0
+            q = deque([(x, y)])
+            step = 0
+            while q:
+                step += 1
+                for _ in range(len(q)):
+                    x1, y1 = q.popleft()
+                    for j in range(8):
+                        x2, y2 = x1 + dx[j], y1 + dy[j]
+                        if 0 <= x2 < m and 0 <= y2 < m and dist[i][x2][y2] == -1:
+                            dist[i][x2][y2] = step
+                            q.append((x2, y2))
+
+        ans = dfs(n, (1 << n) - 1, 1)
+        dfs.cache_clear()
+        return ans","class Solution:
+    def maxMoves(self, kx: int, ky: int, positions: List[List[int]]) -> int:
+        @cache
+        def dfs(last: int, state: int, k: int) -> int:
+            if state == 0:
+                return 0
+            if k:
+                res = 0
+                for i, (x, y) in enumerate(positions):
+                    if state >> i & 1:
+                        t = dfs(i, state ^ (1 << i), k ^ 1) + dist[last][x][y]
+                        if res < t:
+                            res = t
+                return res
+            else:
+                res = inf
+                for i, (x, y) in enumerate(positions):
+                    if state >> i & 1:
+                        t = dfs(i, state ^ (1 << i), k ^ 1) + dist[last][x][y]
+                        if res > t:
+                            res = t
+                return res
+
+        n = len(positions)
+        m = 50
+        dist = [[[-1] * m for _ in range(m)] for _ in range(n + 1)]
+        dx = [1, 1, 2, 2, -1, -1, -2, -2]
+        dy = [2, -2, 1, -1, 2, -2, 1, -1]
+        for i, (x, y) in enumerate(positions):
+            dist[i][x][y] = 0
+            q = deque([(x, y)])
+            step = 0
+            while q:
+                step += 1
+                for _ in range(len(q)):
+                    x1, y1 = q.popleft()
+                    for j in range(8):
+                        x2, y2 = x1 + dx[j], y1 + dy[j]
+                        if 0 <= x2 < m and 0 <= y2 < m and dist[i][x2][y2] == -1:
+                            dist[i][x2][y2] = step
+                            q.append([x2, y2])
+
+        ans = dfs(n, (1 << n), 1)
+        dfs.cache_clear()
+        return ans"
+"log_lines ( log . info , [ 'Last pipe traffic (parent pid side):' ] + list ( self . line_debug ) )","log_lines ( log. info, [ 'Last pipe traffic (parent pid side):' ] + list ( dbus_bridge. line_debug ), log. debug )"
+"trig__con_tosave += condition_name + "","" + str ( trig_direction ) + "","" + str ( cooldown ) + ""\n""","trig__con_tosave += condition_name + "","" + str ( trig_direction ) + "","" + str ( cooldown ) + ""\n"""
+"cur . execute ( ' ' . join ( ( 'INSERT IGNORE INTO words SET' , 'word=%s, length=%s, frequency=%s' , ) ) , ( word , len ( word ) , total_freq * freq ) )","cur. execute (''. join ( ( 'INSERT INTO words SET', 'word=%s, length=%s, frequency=%s', ) ), ( word, len ( word ), total_freq * freq ) )"
+"parser . add_argument ( '--config' , nargs = '*' , required = False , default = [ '_sheetsite.yml' , '_sheetsite.json' ] , help = 'name of configuration file.' )","parser. add_argument ( '--config', nargs = '*', required = False, default = [ '_sheetsite.yml' ], help = 'name of configuration file.' )"
+"class Solution:
+    def findMaximumElegance(self, items: List[List[int]], k: int) -> int:
+        dico=defaultdict(list)
+        for profit,category in items:
+            dico[category].append(profit)
+        categories=[]
+        for category in dico:
+            categories.append(sorted(dico[category]))
+        categories.sort(key=lambda x:x[-1],reverse=True)
+        def elegance (distinct):
+            res=0
+            rest=[]
+            for i in range (distinct):
+                res+=categories[i][-1]
+                for j in range (len(categories[i])-1):
+                    rest.append(categories[i][j])
+            rest.sort(reverse=True)
+            if len(rest)<k-distinct:
+                return -1
+            return res+sum(rest[:k-distinct])+distinct**2
+        l,r=1,min(len(categories)-1,k-1)
+        mid=(l+r)//2
+        while l<r:
+            if elegance(mid+1)>elegance(mid) or elegance(mid+1)==-1:
+                l=mid+1
+            else:
+                r=mid
+            mid=(l+r)//2
+        return max(elegance(mid),elegance(mid+1))","class Solution:
+    def findMaximumElegance(self, items: List[List[int]], k: int) -> int:
+        dico=defaultdict(list)
+        for profit,category in items:
+            dico[category].append(profit)
+        categories=[]
+        for category in dico:
+            categories.append(sorted(dico[category]))
+        categories.sort(key=lambda x:x[-1],reverse=True)
+        def elegance (distinct):
+            res=0
+            rest=[]
+            for i in range (distinct):
+                res+=categories[i][-1]
+                for j in range (len(categories[i])-1):
+                    rest.append(categories[i][j])
+            rest.sort(reverse=True)
+            if len(rest)<k-distinct:
+                return -1
+            return res+sum(rest[:k-distinct])+distinct**2
+        l,r=1,min(len(categories)-1,k-1)
+        mid=(l+r)//2
+        while l<=r: 
+            if elegance(mid+1)>elegance(mid) or elegance(mid+1)==-1:
+                l=mid+1
+            else:
+                r=mid
+            mid=(l+r)//2
+        return max(elegance(mid),elegance(mid+1))"
+"class Solution:
+  def countNonDecreasingSubarrays(self, nums: list[int], k: int) -> int:
+    ans = 0
+    cost = 0
+    # Store (number, count) pairs in non-increasing order. The numbers in the
+    # queue represent what nums[i..j] look like after adjustments.
+    dq = collections.deque()
+
+    j = len(nums) - 1
+    for i, num in reversed(list(enumerate(nums))):
+      count = 1
+      while dq and dq[-1][0] < num:
+        nextNum, nextCount = dq.pop()
+        count += nextCount
+        cost += (num - nextNum) * nextCount  # Adjust `nextNum`s to `num`.
+      dq.append((num, count))
+      while cost > k:  # Remove the rightmost number.
+        rightmostNum, rightmostCount = dq.popleft()
+        cost -= (rightmostNum - nums[j])
+        j -= 1
+        if rightmostCount > 1:
+          dq.appendleft((rightmostNum, rightmostCount - 1))
+      ans += j - i + 1
+
+    return ans","class Solution:
+  def countNonDecreasingSubarrays(self, nums: list[int], k: int) -> int:
+    ans = 0
+    cost = 0
+    # Store (number, count) pairs in non-increasing order. The numbers in the
+    # queue represent what nums[i..j] look like after adjustments.
+    dq = collections.deque()
+
+    j = len(nums) - 1
+    for i, num in reversed(list(enumerate(nums))):
+      count = 1
+      while dq and dq[-1][0] < num:
+        nextNum, nextCount = dq.pop()
+        count += nextCount
+        cost += (num - nextNum) * nextCount
+      dq.append((num, count))
+      while cost > k:  # Remove the rightmost number.
+        rightmostNum, rightmostCount = dq.popleft()
+        cost -= (rightmostNum - nums[j])
+        j -= 1
+        if rightmostCount > 1:
+          dq.appendleft((rightmostNum, rightmostCount - 1))
+      ans += j - i + 1
+
+    return ans"
+"return [ o * i for o , r in zip ( obj , [ scipy . mean ( j ) for j in list ( chunks ( rs , ms ) ) ] ) ]","return [ o * i for o, r in zip ( obj, list ( chunks ( rs, ms ) ) ) for i in r if i ]"
+"cursor . execute ( 'UPDATE res_user ' 'SET password = %s ' 'WHERE login = \'admin\'' , ( sha . new ( admin_password ) . hexdigest ( ) , ) )","cursor. execute ( 'UPDATE res_user''SET password = %s' 'WHERE login = \'admin\'', ( sha. new ( admin_password ). hexdigest ( ), ), )"
+"item = ( type , name , ( 1 , start [ 1 ] ) , ( 1 , stop [ 1 ] ) , line )","item = ( type, name, ( 0, start [ 1 ] ), ( 0, stop [ 1 ] ), line, start [ 2 ], stop [ 2 ] )"
+"regex = re . compile ( r'^%s$' % ( get_output_filename ( settings . COMPRESS_VERSION_PLACEHOLDER . join ( [ re . escape ( part ) for part in filename . split ( settings . COMPRESS_VERSION_PLACEHOLDER ) ] ) , r'([A-Za-z0-9]+)' ) ) )","regex = re. compile ( r'^%s$' % ( os. path. basename ( get_output_filename ( settings. COMPRESS_VERSION_PLACEHOLDER. join ( [ re. escape ( part ) for part in filename. split ( settings. COMPRESS_VERSION_PLACEHOLDER ) ] ), r'([A-Za-z0-9]+)' ) ), re. IGNORECASE )"
+"import os
+import pandas as pd
+import matplotlib.pyplot as plt
+import numpy as np
+def task_func(file_path: str, plot_path: str) -> (float, float, str):
+
+    # Check if file exists
+    if not os.path.isfile(file_path):
+        raise FileNotFoundError(f""File {file_path} does not exist."")
+
+    # Load data and handle empty file
+    try:
+        data = pd.read_csv(file_path)
+    except pd.errors.EmptyDataError:
+        return np.nan, np.nan, plot_path
+
+    # Convert data to numeric, coerce errors to NaN
+    data = pd.to_numeric(data.squeeze(), errors=""coerce"")
+
+    # Ensure data is a Pandas Series
+    if not isinstance(data, pd.Series):
+        data = pd.Series(data)
+
+    # Clean data
+    data = data.dropna()
+
+    # Perform analysis
+    if data.empty:
+        mean = median = np.nan
+    else:
+        # Calculate mean and median
+        mean = float(np.mean(data))
+        median = float(np.median(data))
+
+    # Create plot and save it
+    plt.figure(figsize=(10, 6))
+    plt.plot(data)
+    plt.title(""Data Visualization"")
+    plt.xlabel(""Index"")
+    plt.ylabel(""Value"")
+    plt.savefig(plot_path)
+    plt.close()
+
+    return mean, median, plot_path","import os
+import pandas as pd
+import matplotlib.pyplot as plt
+import numpy as np
+def task_func(file_path: str, plot_path: str) -> (float, float, str):
+
+    # Check if file exists
+    if not os.path.isfile(file_path):
+        raise FileNotFoundError(f""File {file_path} does not exist."")
+
+    # Load data and handle empty file
+    try:
+        data = pd.read_csv(file_path)
+    except pd.errors.EmptyDataError:
+        return np.nan, np.nan, plot_path
+
+    # Convert data to numeric, coerce errors to NaN
+    data = pd.to_numeric(data.squeeze(), errors=""coerce"")
+
+    if isinstance(data, pd.Series):
+        data = pd.Series(data)
+
+    # Clean data
+    data = data.dropna()
+
+    # Perform analysis
+    if data.empty:
+        mean = median = np.nan
+    else:
+        # Calculate mean and median
+        mean = float(np.mean(data))
+        median = float(np.median(data))
+
+    # Create plot and save it
+    plt.figure(figsize=(10, 6))
+    plt.plot(data)
+    plt.title(""Data Visualization"")
+    plt.xlabel(""Index"")
+    plt.ylabel(""Value"")
+    plt.savefig(plot_path)
+    plt.close()
+
+    return mean, median, plot_path"
+"class Solution:
+    def maxTotalReward(self, rewardValues: List[int]) -> int:
+        @cache
+        def dfs(x: int) -> int:
+            i = bisect_right(rewardValues, x)
+            ans = 0
+            for v in rewardValues[i:]:
+                ans = max(ans, v + dfs(x + v))
+            return ans
+
+        rewardValues.sort()
+        return dfs(0)","class Solution:
+    def maxTotalReward(self, rewardValues: List[int]) -> int:
+        @cache
+        def dfs(x: int) -> int:
+            i = bisect_right(rewardValues, x)
+            ans = 0
+            for v in rewardValues[i:]:
+                ans = max(ans, v + dfs(x + v))
+            return ans
+
+        rewardValues.sort()
+        return dfs(0)"
+"return [ { 'id' : key , 'machines' : user . keypairs [ key ] . machines , 'isDefault' : user . keypairs [ key ] . default } for key in user . keypairs ]","return [ { 'id' : key. replace ('', '' ),'machines' : user. keypairs [ key ]. machines, 'isDefault' : user. keypairs [ key ]. default if key in user. keypairs else False } for key in user. keypairs ]"
+"import pandas as pd
+import matplotlib.pyplot as plt
+def task_func(df):
+
+    if not isinstance(df, pd.DataFrame) or 'Status' not in df.columns:
+        raise ValueError(""Input must be a pandas DataFrame with a 'Status' column."")
+
+    status_counts = df['Status'].value_counts()
+    fig, ax = plt.subplots()
+    ax.pie(status_counts, labels=status_counts.index, autopct='%1.1f%%')
+    ax.set_title('Status Distribution')
+
+    return ax","import pandas as pd
+import matplotlib.pyplot as plt
+def task_func(df):
+
+    if not isinstance(df, pd.DataFrame) or 'Status' not in df.columns:
+        raise ValueError(""Input must be a pandas DataFrame with a 'Status' column."")
+
+    status_counts = df['Status'].value_counts()
+    fig, ax = plt.subplots()
+    ax.pie(status_counts, labels=status_counts.index, autopct='%1.1f%%')
+    ax.set_title('Status Distribution')
+
+    return ax"
+"self . assertEqual ( 'print ""_failed_""' , '' . join ( response . streaming_content ) )","self. assertEqual ( 'print ""failed""', response. content )"
+"self . taskname = self . workflow_commons . get ( ""TaskName"" , self . jobName )","self. taskname = self. workflow_commons. get ( ""TaskName"", self. JobName ) or self. JobName"
+"default_error_messages = { 'invalid' : _ ( ""Enter a valid IP address in CIDR notation."" ) , 'subnet_required' : _ ( ""Enter a valid subnet's IP address with its prefix in CIDR notation."" ) , 'host_required' : _ ( ""Enter a valid host IP address."" ) , }","default_error_messages = { 'invalid' : _ ( ""Enter a valid IP address in CIDR notation."" ),'subnet_required' : _ ( ""Enter a valid IP address with subnet in CIDR notation."" ), 'host_required' : _ ( ""Enter a valid host IP address."" ), 'host_required' : _ ( ""Enter a valid host IP address."" ), }"
+"GPIO . add_event_detect ( self . inputpin , GPIO . FALLING , callback = self . fehler ( self ) , bouncetime = 200 )","GPIO. add_event_detect ( self. inputpin, GPIO. FALLING, callback = self. fehler, bouncetime = 200 )"
+"class Solution:
+  def maxSelectedElements(self, nums: list[int]) -> int:
+    ans = 1
+    prev = -math.inf
+    # the length of the longest consecutive elements (seq0) ending in the
+    # previous number
+    dp0 = 1
+    # the length of the longest consecutive elements (seq1) ending in the
+    # previous number + 1
+    dp1 = 1
+
+    for num in sorted(nums):
+      if num == prev:
+        dp1 = dp0 + 1  # Append `num + 1` to seq0.
+      elif num == prev + 1:
+        dp0 += 1  # Append `num` to seq0.
+        dp1 += 1  # Add 1 to every number in seq0 and append `num + 1` to seq0.
+      elif num == prev + 2:
+        dp0 = dp1 + 1  # Append `num` to seq1.
+        dp1 = 1        # Start a new sequence [`num + 1`].
+      else:
+        dp0 = 1  # Start a new sequence [`num`].
+        dp1 = 1  # Start a new sequence [`num + 1`].
+      ans = max(ans, dp0, dp1)
+      prev = num
+
+    return ans","class Solution:
+  def maxSelectedElements(self, nums: list[int]) -> int:
+    ans = 1
+    prev = -math.inf
+    # the length of the longest consecutive elements (seq0) ending in the
+    # previous number
+    dp0 = 1
+    # the length of the longest consecutive elements (seq1) ending in the
+    # previous number + 1
+    dp1 = 1
+
+    for num in sorted(nums):
+      if num == prev:
+        dp1 = dp0 + 1  # Append `num + 1` to seq0.
+      elif num == prev + 1:
+        dp0 += 1  # Append `num` to seq0.
+        dp1 += 1  # Add 1 to every number in seq0 and append `num + 1` to seq0.
+      elif num == prev + 2:
+        dp0 = dp1 + 1  # Append `num` to seq1.
+        dp1 = 1        # Start a new sequence [`num + 1`].
+      else:
+        dp0 = 1  # Start a new sequence [`num`].
+        dp1 = 1  # Start a new sequence [`num + 1`].
+      ans = max(ans, dp0, dp1)
+      prev = num
+
+    return ans"
+self . hostname = agentConfig . get ( 'checksd_hostname' ) or get_hostname ( agentConfig ),self. hostname = agentConfig [ 'checksd_hostname' ] or 'localhost'
+"ROOK = [ u""\u0020\u0020\u0020\u0020\u0020\u0020\u0020"" , u""\u0020\u2588\u2584\u2588\u2584\u2588\u0020"" , u""\u0020\u0020\u2588\u2588\u2588\u0020\u0020"" , u""\u0020\u2580\u2580\u2580\u2580\u2580\u0020"" ]","ROOK = [ u""\u0020\u0020\u0020\u0020\u0020\u0020\u0020"", u""\u0020\u2584\u0020\u2584\u0020\u2584\u0020"", u""\u0020\u0020\u2588\u2588\u2588\u0020\u0020"", u""\u0020\u2580\u2580\u2580\u2580\u2580\u0020"", u""\u2580\u2580\u2580\u2580\u2580\u2580\u2580"" ]"
+"return ""%s.%s.%s"" % ( self . name , S3WebsiteEndpointTranslate . translate_region ( self . get_location ( ) ) , ""amazonaws.com"" )","return ""%s.%s.%s"" % ( self. name, S3WebsiteEndpointTranslate. translate_region ( self. get_location ( ) ), self. connection. host, self. connection. port )"
+"class Solution:
+    def calculateScore(self, s: str) -> int:
+        d = defaultdict(list)
+        ans = 0
+        for i, x in enumerate(s):
+            y = chr(ord(""a"") + ord(""z"") - ord(x))
+            if d[y]:
+                j = d[y].pop()
+                ans += i - j
+            else:
+                d[x].append(i)
+        return ans","class Solution:
+    def calculateScore(self, s: str) -> int:
+        d = defaultdict(list)
+        ans = 0
+        for i, x in enumerate(s):
+            y = chr(ord(""a"") + ord(""z"") - ord(x))
+            if d[y]:
+                j = d[y].pop()
+                ans += i - j
+            else:
+                d[x].append(i)
+        return ans"
+"raise RuntimeError ( ""Lookup '{}' already created"" . format ( lookup . Id ) )","raise RuntimeError ( ""Lookup '{}' already created"". format ( lookup_id ) )"
+"for i , des in enumerate ( res [ : 10 ] [ 0 ] ) : result_list . append ( Doc ( des , des , key , f""{API_URL}{res[1][i]}"" ) )","for i, des in enumerate ( res [ 0 ] ) : result_list. append ( Doc ( des, des, key, f""{API_URL}{res[1][i]}"", ""text"" ) )"
+"b = sum ( [ pi * ( ( 1 - math . exp ( - dc37 * ti ) ) / ( dc37 * math . exp ( dc37 * dti ) ) ) for pi , ti , dti , _ , _ in segments ] )","b = sum ( [ pi * ( ( 1 - math. exp ( - dc37 * ti ) ) / ( dc37 * math. exp ( dc39 * dti ) ) ) for pi, ti, dti, _, _ in segments ] )"
+"self . _resource = self . _fs . insert_resource ( self . _spec , str ( fn ) , res_kwargs , root = str ( self . fs_root ) )","self. _resource = self. _fn. insert_resource ( self. _spec, str ( fn ), res_kwargs, root = str ( self. fs_root ), force = force )"
+"install_requires = [ 'sqlalchemy>=1.2' , 'requests' , 'clickhouse-driver>=0.0.20' , 'ipaddress; python_version<""3.4""' , ] ,","install_requires = ['sqlalchemy>=1.2','requests', 'clickhouse-driver>=0.0.19', 'ipaddress; python_version<""3.4""', 'python-astunparse', ],"
+"import re
+from sklearn.cluster import KMeans
+from sklearn.feature_extraction.text import CountVectorizer
+def task_func(df):
+
+    pattern = re.compile(r'(how|what)', re.IGNORECASE)
+    interesting_articles = df[df['Title'].apply(lambda x: bool(pattern.search(x)))]
+    if interesting_articles.empty:
+        return []
+
+    vectorizer = CountVectorizer()
+    X = vectorizer.fit_transform(interesting_articles['Content'])
+
+    kmeans = KMeans(n_clusters=2, random_state=42, n_init=10)
+    kmeans.fit(X)
+
+    return list(kmeans.labels_)","import re
+from sklearn.cluster import KMeans
+from sklearn.feature_extraction.text import CountVectorizer
+def task_func(df):
+
+    pattern = re.compile(r'(how|what)', re.IGNORECASE)
+    interesting_articles = df[df['Title'].apply(lambda x: bool(pattern.search(x)))]
+    if interesting_articles.empty:
+        return []
+
+    vectorizer = CountVectorizer()
+    X = vectorizer.fit_transform(interesting_articles['Content'])
+
+    kmeans = KMeans(n_clusters=2, random_state=42, n_init=10)
+    kmeans.fit(X)
+
+    return list(kmeans.labels_)"
