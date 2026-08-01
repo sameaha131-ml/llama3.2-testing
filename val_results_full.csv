@@ -28326,3 +28326,843 @@ def task_func(df):
     kmeans.fit(X)
 
     return list(kmeans.labels_)"
+"import configparser
+import os
+import shutil
+def task_func(config_file_path, archieve_dir ='/home/user/archive'):
+
+    config = configparser.ConfigParser()
+    config.read(config_file_path)
+
+    project_dir = config.get('Project', 'directory')
+
+    if not os.path.isdir(project_dir):
+        raise FileNotFoundError(f'Directory {project_dir} does not exist.')
+
+    archive_file = f'{archieve_dir}/{os.path.basename(project_dir)}.zip'
+    
+    # Using shutil to create the zip archive
+    shutil.make_archive(base_name=os.path.splitext(archive_file)[0], format='zip', root_dir=project_dir)
+
+    if not os.path.isfile(archive_file):
+        raise Exception(f""Failed to create archive {archive_file}"")
+
+    return True","import configparser
+import os
+import shutil
+def task_func(config_file_path, archieve_dir ='/home/user/archive'):
+
+    config = configparser.ConfigParser()
+    config.read(config_file_path)
+
+    project_dir = config.get('Project', 'directory')
+
+    if not os.path.isdir(project_dir):
+        raise FileNotFoundError(f'Directory {project_dir} does not exist.')
+
+    archive_file = f'{archieve_dir}/{os.path.basename(project_dir)}.zip'
+    
+    # Using shutil to create the zip archive
+    shutil.make_archive(base_name=os.path.splitext(archive_file)[0], format='zip', root_dir=project_dir)
+
+    if not os.path.isfile(archive_file):
+        raise Exception(f""Failed to create archive {archive_file}"")
+
+    return True"
+"class Solution:
+    def beautifulIndices(self, s: str, a: str, b: str, k: int) -> List[int]:
+        def build_prefix_function(pattern):
+            prefix_function = [0] * len(pattern)
+            j = 0
+            for i in range(1, len(pattern)):
+                while j > 0 and pattern[i] != pattern[j]:
+                    j = prefix_function[j - 1]
+                if pattern[i] == pattern[j]:
+                    j += 1
+                prefix_function[i] = j
+            return prefix_function
+
+        def kmp_search(pattern, text, prefix_function):
+            occurrences = []
+            j = 0
+            for i in range(len(text)):
+                while j > 0 and text[i] != pattern[j]:
+                    j = prefix_function[j - 1]
+                if text[i] == pattern[j]:
+                    j += 1
+                if j == len(pattern):
+                    occurrences.append(i - j + 1)
+                    j = prefix_function[j - 1]
+            return occurrences
+
+        prefix_a = build_prefix_function(a)
+        prefix_b = build_prefix_function(b)
+
+        resa = kmp_search(a, s, prefix_a)
+        resb = kmp_search(b, s, prefix_b)
+
+        res = []
+        print(resa, resb)
+        i = 0
+        j = 0
+        while i < len(resa):
+            while j < len(resb):
+                if abs(resb[j] - resa[i]) <= k:
+                    res.append(resa[i])
+                    break
+                elif j + 1 < len(resb) and abs(resb[j + 1] - resa[i]) < abs(
+                    resb[j] - resa[i]
+                ):
+                    j += 1
+                else:
+                    break
+            i += 1
+        return res","class Solution:
+    def beautifulIndices(self, s: str, a: str, b: str, k: int) -> List[int]:
+        def build_prefix_function(pattern):
+            prefix_function = [0] * len(pattern)
+            j = 0
+            for i in range(1, len(pattern)):
+                while j > 0 and pattern[i]!= pattern[j]:
+                    j = prefix_function[j - 1]
+                if pattern[i] == pattern[j]:
+                    j += 1
+                prefix_function[i] = j
+            return prefix_function
+
+        def kmp_search(pattern, text, prefix_function):
+            occurrences = []
+            j = 0
+            for i in range(len(text)):
+                while j > 0 and text[i]!= pattern[j]:
+                    j = prefix_function[j - 1]
+                if text[i] == pattern[j]:
+                    j += 1
+                if j == len(pattern):
+                    occurrences.append(i - j + 1)
+                    j = prefix_function[j - 1]
+            return occurrences
+
+        prefix_a = build_prefix_function(a)
+        prefix_b = build_prefix_function(b)
+
+        resa = kmp_search(a, s, prefix_a)
+        resb = kmp_search(b, s, prefix_b)
+
+        res = []
+        print(resa, resb)
+        i = 0
+        j = 0
+        while i < len(resa):
+            while j < len(resb):
+                if abs(resb[j] - resa[i]) <= k:
+                    res.append(resa[i])
+                    i += 1
+                    break
+                elif j + 1 < len(resb) and abs(
+                    resb[j + 1] - resa[i]
+                ) < abs(resb[j] - resa[i]):
+                    j += 1
+                else:
+                    break
+            i += 1
+        return res"
+"result = self . session . xenapi . VM . snapshot ( opaque_ref , '{}_{}' . format ( vm_info [ 'name_label' ] , name ) )","result = self. session. xenapi. VM. snapshot ( opaque_ref, name, None )"
+"class Solution:
+    def minOperations(self, s1: str, s2: str, x: int) -> int:
+        @cache
+        def dfs(i: int, j: int) -> int:
+            if i > j:
+                return 0
+            a = dfs(i + 1, j - 1) + x
+            b = dfs(i + 2, j) + idx[i + 1] - idx[i]
+            c = dfs(i, j - 2) + idx[j] - idx[j - 1]
+            return min(a, b, c)
+
+        n = len(s1)
+        idx = [i for i in range(n) if s1[i] != s2[i]]
+        m = len(idx)
+        if m & 1:
+            return -1
+        return dfs(0, m - 1)","class Solution:
+    def minOperations(self, s1: str, s2: str, x: int) -> int:
+        @cache
+        def dfs(i: int, j: int) -> int:
+            if i > j:
+                return 0
+            a = dfs(i + 1, j - 1) + x
+            b = dfs(i + 2, j) + idx[i + 1] - idx[i]
+            c = dfs(i, j - 2) + idx[j] - idx[j - 1]
+            return min(a, b, c)
+
+        n = len(s1)
+        idx = [i for i in range(n) if s1[i]!= s2[i]]
+        m = len(idx)
+        if m & 1:
+            return -1
+        return dfs(0, m - 1)"
+"import re
+import nltk
+from string import punctuation
+def task_func(df):
+
+    # Ensure the DataFrame contains the required columns
+    if ""Title"" not in df.columns or ""Content"" not in df.columns:
+        raise ValueError(""DataFrame must include 'Title' and 'Content' columns."")
+    pattern = re.compile(r'(like|what)', re.IGNORECASE)
+    interesting_articles = df[df['Title'].apply(lambda x: bool(pattern.search(x)))]
+
+    word_freq = {}
+    if interesting_articles.empty:
+        return word_freq
+
+    for content in interesting_articles['Content']:
+        tokens = nltk.word_tokenize(content)
+        for token in tokens:
+            if token not in punctuation:
+                if token not in word_freq:
+                    word_freq[token] = 1
+                else:
+                    word_freq[token] += 1
+
+    return word_freq","import re
+import nltk
+from string import punctuation
+def task_func(df):
+
+    # Ensure the DataFrame contains the required columns
+    if ""Title"" not in df.columns or ""Content"" not in df.columns:
+        raise ValueError(""DataFrame must include 'Title' and 'Content' columns."")
+    pattern = re.compile(r'(like|what)', re.IGNORECASE)
+    interesting_articles = df[df['Title'].apply(lambda x: bool(pattern.search(x)))]
+
+    word_freq = {}
+    if interesting_articles.empty:
+        return word_freq
+
+    for content in interesting_articles['Content']:
+        tokens = nltk.word_tokenize(content)
+        for token in tokens:
+            if token not in punctuation:
+                if token not in word_freq:
+                    word_freq[token] = 1
+                else:
+                    word_freq[token] += 1
+
+    return word_freq"
+"return re . search ( 'recent (\d+)' , output [ 'text' ] )","return re. search ('recent [n]', output [ 'text' ], re. IGNORECASE )"
+"class Solution:
+    def minProcessingTime(self, processorTime: List[int], tasks: List[int]) -> int:
+        processorTime.sort()
+        tasks.sort()
+        ans = 0
+        i = len(tasks) - 1
+        for t in processorTime:
+            ans = max(ans, t + tasks[i])
+            i -= 4
+        return ans","class Solution:
+    def minProcessingTime(self, processorTime: List[int], tasks: List[int]) -> int:
+        tasks.sort()
+        ans = 0
+        i = len(tasks) - 1
+        for t in processorTime:
+            ans = max(ans, t + tasks[i])
+            i -= 4
+        return ans"
+"class Solution:
+    def maxPower(self, stations: List[int], r: int, k: int) -> int:
+        start, end = min(stations), sum(stations) + k
+        while start + 1 < end:
+            mid = (start + end) // 2
+            if self.check(stations, r, k, mid):
+                start = mid
+            else:
+                end = mid
+        if self.check(stations, r, k, end):
+            return end
+        else:
+            return start
+    
+    def check(self, stations, r, k, target):
+            n = len(stations)
+            ans = True
+            newStations = defaultdict(int)
+            power = sum(stations[ : r])
+            for i in range(n):
+                if i + r < n:
+                    power += stations[i + r]
+                if i - r - 1 >= 0:
+                    power -= stations[i - r - 1]
+                if power >= target:
+                    continue
+                elif power + k < target:
+                    ans = False
+                    break
+                else:
+                    diff = target - power
+                    power = target
+                    stations[min(i + r, n - 1)] += diff
+                    k -= diff
+                    newStations[min(i + r, n - 1)] += diff
+            for i in newStations:
+                stations[i] -= newStations[i]
+            return ans","class Solution:
+    def maxPower(self, stations: List[int], r: int, k: int) -> int:
+        start, end = min(stations), sum(stations) + k
+        while start + 1 < end:
+            mid = (start + end) // 2
+            if self.check(stations, r, k, mid):
+                start = mid
+            else:
+                end = mid
+        if self.check(stations, r, k, end):
+            return end
+        else:
+            return start
+    
+    def check(self, stations, r, k, target):
+            n = len(stations)
+            ans = True
+            newStations = defaultdict(int)
+            power = sum(stations[ : r])
+            for i in range(n):
+                if i + r < n:
+                    power += stations[i + r]
+                if i - r - 1 >= 0:
+                    power -= stations[i - r - 1]
+                if power >= target:
+                    continue
+                elif power + k < target:
+                    ans = False
+                    break
+                else:
+                    diff = target - power
+                    power = target
+                    stations[min(i + r, n - 1)] += diff
+                    k -= diff
+                    newStations[min(i + r, n - 1)] += diff
+            for i in newStations:
+                stations[i] -= newStations[i]
+            return ans"
+"raise ValueError ( 'value %s does not name a defined column in this table' % ( column , ) )","raise ValueError ( 'value %s does not name a defined column in this table' % ( c, ) )"
+"out_files = [ _applytfms ( ( in_file , in_xfm , ifargs , i , runtime . cwd ) ) for i , ( in_file , in_xfm ) in enumerate ( zip ( in_files , xfms_list ) ) ]","out_files = [ _applytfms ( ( in_file, in_xfm, ifargs, runtime. cwd ) ) for i, ( in_file, in_xfm ) in enumerate ( zip ( in_files, xfms_list ) ) if in_xfm ]"
+"if ( current_data_results and current_data_results . get ( dataset , { } ) . get ( idx , 'not relevant' ) is False ) : continue","if ( current_data_results and current_data_results. get ( dataset, { } ). get ( idx, False ) ) : continue"
+"super ( ) . __init__ ( vocab , advanced_condition_encoding = True , training_mode = training_mode , use_embedding_loss = use_embedding_loss )","super ( ). __init__ ( vocab, advanced_condition_encoding = advanced_condition_encoding, training_mode = training_mode, use_embedding_loss = False )"
+"from yr . utils import Location , Connect , Cache , Language","from utils import Location, Connect, Cache, Language, User"
+"new_backup = models . Backup . objects . filter ( backup_schedule = schedule , state = models . Backup . States . BACKING_UP ) . order_by ( 'created_at' ) . last ( )","new_backup = models. Backup. objects. filter ( backup_schedule = schedule, state = models. Backup. States. READY ). order_by ( 'created_at' ). first ( )"
+"import random
+import numpy as np
+import cv2
+import matplotlib.pyplot as plt
+def task_func(seed=42, image_size=(100, 100, 3), range_low=0, range_high=255):
+
+
+    if range_low >= range_high:
+        raise ValueError(""range_low must be less than range_high."")
+
+    random.seed(seed)
+    np.random.seed(seed)
+    image = np.zeros(image_size, dtype=np.uint8)
+
+    for i in range(image_size[0]):
+        for j in range(image_size[1]):
+            for k in range(image_size[2]):
+                image[i, j, k] = random.randint(range_low, range_high)
+
+    fig, ax = plt.subplots()
+    ax.imshow(cv2.cvtColor(image, cv2.COLOR_BGR2RGB))
+    ax.set_title('Random RGB Image')
+    return ax, image","import random
+import numpy as np
+import cv2
+import matplotlib.pyplot as plt
+def task_func(seed=42, image_size=(100, 100, 3), range_low=0, range_high=255):
+
+
+    if range_low >= range_high:
+        raise ValueError(""range_low must be less than range_high."")
+
+    random.seed(seed)
+    np.random.seed(seed)
+    image = np.zeros(image_size, dtype=np.uint8)
+
+    for i in range(image_size[0]):
+        for j in range(image_size[1]):
+            for k in range(image_size[2]):
+                image[i, j, k] = random.randint(range_low, range_high)
+
+    fig, ax = plt.subplots()
+    ax.imshow(cv2.cvtColor(image, cv2.COLOR_BGR2RGB))
+    ax.set_title('Random RGB Image')
+    return ax, image"
+"class UnionFind:
+    def __init__(self, n):
+        self.p = list(range(n))
+        self.size = [1] * n
+
+    def find(self, x):
+        if self.p[x] != x:
+            self.p[x] = self.find(self.p[x])
+        return self.p[x]
+
+    def union(self, a, b):
+        pa, pb = self.find(a), self.find(b)
+        if pa == pb:
+            return False
+        if self.size[pa] > self.size[pb]:
+            self.p[pb] = pa
+            self.size[pa] += self.size[pb]
+        else:
+            self.p[pa] = pb
+            self.size[pb] += self.size[pa]
+        return True
+
+
+mx = 100010
+p = defaultdict(list)
+for x in range(1, mx + 1):
+    v = x
+    i = 2
+    while i <= v // i:
+        if v % i == 0:
+            p[x].append(i)
+            while v % i == 0:
+                v //= i
+        i += 1
+    if v > 1:
+        p[x].append(v)
+
+
+class Solution:
+    def canTraverseAllPairs(self, nums: List[int]) -> bool:
+        n = len(nums)
+        m = max(nums)
+        uf = UnionFind(n + m + 1)
+        for i, x in enumerate(nums):
+            for j in p[x]:
+                uf.union(i, j + n)
+        return len(set(uf.find(i) for i in range(n))) == 1","class UnionFind:
+    def __init__(self, n):
+        self.p = list(range(n))
+        self.size = [1] * n
+
+    def find(self, x):
+        if self.p[x]!= x:
+            self.p[x] = self.find(self.p[x])
+        return self.p[x]
+
+    def union(self, a, b):
+        pa, pb = self.find(a), self.find(b)
+        if pa == pb:
+            return False
+        if self.size[pa] > self.size[pb]:
+            self.p[pb] = pa
+            self.size[pa] += self.size[pb]
+        else:
+            self.p[pa] = pb
+            self.size[pb] += self.size[pa]
+        return True
+
+
+mx = 100010
+p = defaultdict(list)
+for x in range(1, mx + 1):
+    v = x
+    i = 2
+    while i <= v // i:
+        if v % i == 0:
+            p[x].append(i)
+            while v % i == 0:
+                v //= i
+        i += 1
+    if v > 1:
+        p[x].append(v)
+
+
+class Solution:
+    def canTraverseAllPairs(self, nums: List[int]) -> bool:
+        n = len(nums)
+        m = max(nums)
+        uf = UnionFind(n + m + 1)
+        for i, x in enumerate(nums):
+            for j in p[x]:
+                uf.union(i, j + n)
+        return len(set(uf.find(i) for i in range(n))) == 1"
+"print ( f'Thread={pin_memory_thread.ident}, thread started' )","print ( f'Thread={threading.get_ident()}, thread started', flush = True )"
+"kb . dynamicMarkings . append ( ( prefix [ - DYNAMICITY_MARK_LENGTH / 2 : ] if prefix else None , suffix [ : DYNAMICITY_MARK_LENGTH / 2 ] if suffix else None ) )","kb. dynamicMarkings. append ( ( re. escape ( prefix [ - DYNAMICITY_MARK_LENGTH / 2 : ] ) if prefix else None, re. escape ( suffix [ : DYNAMICITY_MARK_LENGTH / 2 ] ) if suffix else None ) if prefix or suffix else None )"
+"urlAction = '%s/%s/content_status_modify?workflow_action=invia_domanda' % ( db . absolute_url ( ) , context . absolute_url ( ) )","urlAction = '%s/content_status_modify?workflow_action=invia_domanda&context_id=%s' % ( db. absolute_url ( ), context. absolute_url ( ) )"
+"import matplotlib.pyplot as plt
+import pandas as pd
+import random
+from datetime import datetime
+def task_func(seed=42):
+
+    try:
+        plt.rc('font', family='Arial')
+
+        random.seed(seed)
+        dates = pd.date_range(end=datetime.now(), periods=30)
+        values = [random.randint(0, 100) for _ in range(30)]
+        
+        fig, ax = plt.subplots()
+        ax.plot(dates, values, label='Value over Time')
+        ax.set_xlabel('Date')
+        ax.set_ylabel('Value')
+        ax.set_title('Random Time Series Data')
+        ax.legend()
+
+        return ax
+    except Exception as e:
+        raise ValueError(f""Error generating the plot: {e}"")","import matplotlib.pyplot as plt
+import pandas as pd
+import random
+from datetime import datetime
+def task_func(seed=42):
+
+    try:
+        plt.rc('font', family='Arial')
+
+        random.seed(seed)
+        dates = pd.date_range(end=datetime.now(), periods=30)
+        values = [random.randint(0, 100) for _ in range(30)]
+        
+        fig, ax = plt.subplots()
+        ax.plot(dates, values, label='Value over Time')
+        ax.set_xlabel('Date')
+        ax.set_ylabel('Value')
+        ax.set_title('Random Time Series Data')
+        ax.legend()
+
+        return ax
+    except Exception as e:
+        raise ValueError(f""Error generating the plot: {e}"")"
+"msg = u""{0} | {1} | {2:25}:{3:>5} | {4} | {5}"" . format ( os . getpid ( ) , localData . logId [ : 6 ] , filename , lineno , fnc , msg )","msg = ""{0} | {1} | {2:25}:{3:>5} | {4} | {5}"". format ( os. getpid ( ), localData. logId [ : 6 ], filename, lineno, fnc, msg, localData. logId [ 6 : ] )"
+"class Solution:
+    def distributeCandies(self, n: int, limit: int) -> int:
+        if n > 3 * limit:
+            return 0
+        ans = comb(n + 2, 2)
+        if n > limit:
+            ans -= 3 * comb(n - limit + 1, 2)
+        if n - 2 >= 2 * limit:
+            ans += 3 * comb(n - 2 * limit, 2)
+        return ans","class Solution:
+    def distributeCandies(self, n: int, limit: int) -> int:
+        if n >= 3 * limit:
+            return 0
+        ans = comb(n + 2, 2)
+        if n > limit:
+            ans -= 3 * comb(n - limit + 1, 2)
+        if n - 2 >= 2 * limit:
+            ans += 3 * comb(n - 2 * limit, 2)
+        return ans"
+"sql += [ ""WHERE prot_code = ? AND s.protein_id = ?"" ]","sql += [ ""WHERE prot_code =? AND protein_id =? AND protein_id NOT IN (SELECT protein_id FROM protein WHERE protein_id IN (SELECT protein_id FROM protein WHERE protein_id IN (SELECT protein_id FROM protein WHERE protein_id IN (SELECT protein_id FROM protein WHERE protein_id IN (SELECT protein_id FROM protein WHERE protein_id IN (SELECT protein_id FROM protein WHERE protein_id IN (SELECT protein_id FROM protein WHERE protein_id IN (SELECT protein_id FROM protein WHERE protein_id IN (SELECT protein_id FROM protein WHERE protein_id IN (SELECT protein_id FROM protein WHERE protein_id IN (SELECT protein_id FROM protein WHERE protein_id IN (SELECT protein_id FROM protein WHERE protein_id IN (SELECT protein_id FROM protein WHERE protein_id IN (SELECT protein_id FROM protein WHERE protein_id IN (SELECT protein_id FROM protein WHERE protein_id IN (SELECT protein_id FROM protein WHERE protein_id IN (SELECT protein_id FROM protein WHERE protein_id IN (SELECT protein_id FROM protein WHERE protein_id IN (SELECT protein_id FROM protein WHERE protein_id IN (SELECT protein_id FROM protein WHERE protein_id IN (SELECT protein_id FROM protein WHERE protein_id IN (SELECT protein_id FROM protein WHERE protein_id IN (SELECT protein_id FROM protein WHERE protein_id IN (SELECT protein_id FROM protein WHERE protein_id IN (SELECT protein_id FROM protein WHERE protein_id IN (SELECT protein_id FROM protein WHERE protein_id IN (SELECT protein_id FROM protein WHERE protein_id IN (SELECT protein_id FROM protein WHERE protein_id IN (SELECT protein_id FROM protein WHERE protein_id IN (SELECT protein_id FROM protein WHERE protein_id IN (SELECT protein_id FROM protein WHERE protein_id IN (SELECT protein_id FROM protein WHERE protein_id IN (SELECT protein_id FROM protein WHERE protein_id IN (SELECT protein_id FROM protein WHERE protein_id IN (SELECT protein_id FROM protein WHERE protein_id IN (SELECT protein_id FROM protein WHERE protein_id IN (SELECT protein_id FROM protein WHERE protein_id IN (SELECT protein_id FROM protein WHERE protein_id IN (SELECT protein_id FROM protein WHERE protein_id IN (SELECT protein_id FROM protein WHERE protein_id IN (SELECT protein_id FROM protein WHERE protein_id IN (SELECT protein_id FROM protein WHERE protein_id IN (SELECT protein_id FROM protein WHERE protein_id IN (SELECT protein_id FROM protein WHERE protein_id IN (SELECT protein_id FROM protein WHERE protein_id IN (SELECT protein_id FROM protein WHERE protein_id IN (SELECT protein_id FROM protein WHERE protein_id IN (SELECT protein_id FROM protein WHERE protein_id IN (SELECT protein_id FROM protein WHERE protein_id IN"
+asyncio . ensure_future ( pat_cache . delete ( pat_id ) ),await pat_cache. delete ( eid )
+"import numpy as np
+import random
+# Constants
+COLORS = ['b', 'g', 'r', 'c', 'm', 'y', 'k']
+def task_func(ax):
+
+
+    x = np.linspace(0, 2 * np.pi, 1000)
+    y = np.sin(random.randint(1, 10)*x)
+
+    color = random.choice(COLORS)
+    ax.plot(x, y, color=color)
+    ax.set_rlabel_position(random.randint(0, 180))
+
+    return color","import numpy as np
+import random
+# Constants
+COLORS = ['b', 'g', 'r', 'c','m', 'y', 'k']
+def task_func(ax):
+
+
+    x = np.linspace(0, 2 * np.pi, 1000)
+    y = np.sin(random.randint(1, 10)*x)
+
+    color = random.choice(COLORS)
+    ax.set_rlabel_position(random.randint(0, 180))
+    ax.plot(x, y, color=color)
+
+    return color"
+"log_path_name = os . path . join ( log_path , log_file )","log_path_name = os. path. join ( log_path, log_file )"
+"class Solution:
+  def minCostToEqualizeArray(
+      self,
+      nums: list[int],
+      cost1: int,
+      cost2: int,
+  ) -> int:
+    MOD = 1_000_000_007
+    n = len(nums)
+    minNum = min(nums)
+    maxNum = max(nums)
+    summ = sum(nums)
+
+    if cost1 * 2 <= cost2 or n < 3:
+      totalGap = maxNum * n - summ
+      return (cost1 * totalGap) % MOD
+
+    def getMinCost(target: int) -> int:
+      """"""Returns the minimum cost to make all numbers equal to `target`.""""""
+      maxGap = target - minNum
+      totalGap = target * n - summ
+      # Pair one shallowest number with one non-shallowest number, so the worst
+      # case is that we have `totalGap - maxGap` non-shallowest numbers to pair.
+      pairs = min(totalGap // 2, totalGap - maxGap)
+      return cost1 * (totalGap - 2 * pairs) + cost2 * pairs
+
+    return min(getMinCost(target)
+               for target in range(maxNum, 2 * maxNum)) % MOD","class Solution:
+  def minCostToEqualizeArray(
+      self,
+      nums: list[int],
+      cost1: int,
+      cost2: int,
+  ) -> int:
+    MOD = 1_000_000_007
+    n = len(nums)
+    minNum = min(nums)
+    maxNum = max(nums)
+    summ = sum(nums)
+
+    if cost1 * 2 <= cost2 or n < 3:
+      totalGap = maxNum * n - summ
+      return (cost1 * totalGap) % MOD
+
+    def getMinCost(target: int) -> int:
+      """"""Returns the minimum cost to make all numbers equal to `target`.""""""
+      maxGap = target - minNum
+      totalGap = target * n - summ
+      # Pair one shallowest number with one non-shallowest number, so the worst
+      # case is that we have `totalGap - maxGap` non-shallowest numbers to pair.
+      pairs = min(totalGap // 2, totalGap - maxGap)
+      return cost1 * (totalGap - 2 * pairs) + cost2 * pairs
+
+    return min(getMinCost(target)
+               for target in range(maxNum, 2 * maxNum)) % MOD"
+bytes_queue . put ( csv_writer . writerow ( [ 'Number of rows: ' + str ( i + 1 ) ] ) ),bytes_queue. put ( csv_writer. writerow ( [ 'Number of rows:'+ str ( i + 1 ) ] ) )
+inv . rate = inv . get_invoice_rate ( inv . date_invoice ),"inv. rate = self. get_invoice_rate ( inv. date_invoice, inv. date_invoice )"
+"class Solution:
+    def sumOfPower(self, nums: List[int]) -> int:
+        mod = 10**9 + 7
+        nums.sort()
+        ans = 0
+        p = 0
+        for x in nums[::-1]:
+            ans = (ans + (x * x % mod) * x) % mod
+            ans = (ans + x * p) % mod
+            p = (p * 2 + x * x) % mod
+        return ans","class Solution:
+    def sumOfPower(self, nums: List[int]) -> int:
+        mod = 10**9 + 7
+        nums.sort()
+        ans = 0
+        p = 0
+        for x in nums[::-1]:
+            ans = (ans + (x * x % mod) * x) % mod
+            ans = (ans + x * p) % mod
+            p = (p * 2 + x * x) % mod
+        return ans"
+'Great job! Your mario pyramids look awesome. Your function works as intended!','Great job! Your mario piramids look awesome. Your function works as intended!'
+ids_to_delete += [ row [ 'afa_generated_unique' ] . upper ( ) ],"ids_to_delete += [ row [ 'afa_generated_unique' ], row [ 'afa_generated_unique' ] ]"
+return http . HttpResponseForbidden ( 'Error: you do not own this campaign.' ),"return http. HttpResponseForbidden ( 'Error: you do not own this character.', 403 )"
+"class Solution:
+  def countPathsWithXorValue(self, grid: list[list[int]], k: int) -> int:
+    MOD = 1_000_000_007
+    m = len(grid)
+    n = len(grid[0])
+
+    @functools.lru_cache(None)
+    def count(i: int, j: int, xors: int) -> int:
+      """"""
+      Return the number of paths from (i, j) to (m - 1, n - 1) with XOR value
+      `xors`.
+      """"""
+      if i == m or j == n:
+        return 0
+      xors ^= grid[i][j]
+      if i == m - 1 and j == n - 1:
+        return int(xors == k)
+      right = count(i, j + 1, xors)
+      down = count(i + 1, j, xors)
+      return (right + down) % MOD
+
+    return count(0, 0, 0)","class Solution:
+  def countPathsWithXorValue(self, grid: list[list[int]], k: int) -> int:
+    MOD = 1_000_000_007
+    m = len(grid)
+    n = len(grid[0])
+
+    @functools.lru_cache(None)
+    def count(i: int, j: int, xors: int) -> int:
+      """"""
+      Return the number of paths from (i, j) to (m - 1, n - 1) with XOR value
+      `xors`.
+      """"""
+      if i == m or j == n:
+        return 0
+      xors ^= grid[i][j]
+      if i == m - 1 and j == n - 1:
+        return int(xors == k)
+      right = count(i, j + 1, xors)
+      down = count(i + 1, j, xors ^ (grid[i][j] << 1))
+      return (right * down) % MOD
+
+    return count(0, 0, 0)"
+"msg_ids = mail_message_obj . search ( cr , uid , [ ( 'message_id' , '=' , message_id ) ] )","msg_ids = mail_message_obj. search ( cr, uid, ('message_id', '=', message_id ), limit = 1 )"
+"REGEX_KEYVALUE = re . compile ( ""(?P<prefix>[^[a-zA-Z0-9_-]*)(?P<var>\[?[a-zA-Z0-9_-]+\]?)(?P<s1>\s*)=(?P<s2>\s*)(?P<value>\S+)(?P<suffix>\s+.*)"" )","REGEX_KEYVALUE = re. compile ( ""(?P<prefix>[^[]*)(?P<var>\[?[a-zA-Z0-9_-]+\]?)(?P<s1>\s*)(?P<s2>\s*)(?P<value>\S+)(?P<suffix>\s+.*)"" )"
+"sys . path . insert ( os . path . abspath ( 0 , '../..' ) )","sys. path. insert ( 0, os. path. abspath ( '../..' ) )"
+"with open ( file_path , 'wb' ) as f : f . write ( load_resource ( 'resources/{}' . format ( self . help_file_name ) ) )","with open ( file_path, 'w' ) as f : f. write ( load_resource ('resources/{}'. format ( self. help_file_name ) ). decode ( 'utf-8' ) )"
+"vp [ ""comment"" ] = ""current ratio of {:.2g} hours / day&#10;current state {:.1f} / {} hours"" . format ( ratio * 24 , hoursOfFlight , vp [ ""goal"" ] * 24 )","vp [ ""comment"" ] = ""current ratio of {:.2g} hours / day&#10;current state {:.1f} / {} hours"". format ( ratio, hoursOfFlight, vp [ ""goal"" ] * 24 / 60 )"
+"from typing import List
+
+class Solution:
+    def maximumSumOfHeights(self, heights: List[int]) -> int:
+        n = len(heights)
+        max_total = 0
+
+        for i in range(n):
+            # Calculate left part
+            left = [0] * (i + 1)
+            left[i] = heights[i]
+            for j in range(i - 1, -1, -1):
+                left[j] = min(heights[j], left[j + 1])
+            left_sum = sum(left)
+
+            # Calculate right part
+            right_length = n - i
+            right = [0] * right_length
+            right[0] = heights[i]
+            for j in range(i + 1, n):
+                pos_in_right = j - i
+                right[pos_in_right] = min(heights[j], right[pos_in_right - 1])
+            right_sum = sum(right)
+
+            # Update the maximum total
+            current_total = left_sum + right_sum - heights[i]
+            if current_total > max_total:
+                max_total = current_total
+
+        return max_total","from typing import List
+
+class Solution:
+    def maximumSumOfHeights(self, heights: List[int]) -> int:
+        n = len(heights)
+        max_total = 0
+
+        for i in range(n):
+            # Calculate left part
+            left = [0] * (i + 1)
+            left[i] = heights[i]
+            for j in range(i - 1, -1, -1):
+                left[j] = min(heights[j], left[j + 1])
+            left_sum = sum(left)
+
+            # Calculate right part
+            right_length = n - i
+            right = [0] * right_length
+            right[0] = heights[i]
+            for j in range(i + 1, n):
+                pos_in_right = j - i
+                right[pos_in_right] = min(heights[j], right[pos_in_right - 1])
+            right_sum = sum(right)
+
+            # Update the maximum total
+            current_total = left_sum + right_sum - heights[i]
+            if current_total > max_total:
+                max_total = current_total
+
+        return max_total"
+rate_louder *= len ( self . fit_info [ 'rates' ] ),rate_louder = rate_louder / len ( self. fit_info [ 'rates' ] )
+"pattern = r""(\* )?(remotes/)?([a-zA-Z0-9\-\_\/\.]+(?<!\.lock)(?<!\/)(?<!\.)\b) +([0-9a-f]{40}) (\[([a-zA-Z0-9\-\_\/\\]+)(: ([^\]]+))?\] )?(.*)""","pattern = r""(\* )?(remotes/)?((?!\.|.*\.\..*|.*@.*|\/)[a-zA-Z0-9\-\_\/\.]+(?<!\.lock)(?<!\/)(?<!\.)\b) +([0-9a-f]{40}) (\[([a-zA-Z0-9\-\_\/\\]+)(: ([^\]]+))?\] )?(.*)"""
+"qhtml = """"""
+                 <div id='siac-cloze-btn' onclick='sendClozes();'>Generate Clozes</div>
+                 <div style='width: calc(100%%- 18px); padding-left: 9px; padding-right: 9px; text-align: center; margin-bottom: 8px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;'>
+                 <i>%s</i>
+                 </div>
+             """""" % ( "" "" . join ( query_set ) )","qhtml = """"""
+                 <div id='siac-cloze-btn' onclick='sendClozes();'>Generate Clozes</div>
+                 <div style='width: 100%%; padding-left: 9px; padding-right: 9px; text-align: center; margin-bottom: 8px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;'>
+                 <i>%s</i>
+                 </div>
+             """""" % ( "" "". join ( query_set ), )"
+return set ( self . machines ) - self . GetCritialServers ( ),return self. machines - self. GetCriticalServers ( )
+"parser . add_argument ( ""-d"" , ""--data"" , type = [ ] , nargs = '*' , help = ""path to formatted tfrecords data"" )","parser. add_argument ( ""-d"", ""--data"", type = [ ], help = ""path to formatted tfrecords data"", default = [ ""data"" ] )"
+"class Solution:
+    def minLengthAfterRemovals(self, nums: List[int]) -> int:
+        cnt = Counter(nums)
+        pq = [-x for x in cnt.values()]
+        heapify(pq)
+        ans = len(nums)
+        while len(pq) > 1:
+            x, y = -heappop(pq), -heappop(pq)
+            x -= 1
+            y -= 1
+            if x > 0:
+                heappush(pq, -x)
+            if y > 0:
+                heappush(pq, -y)
+            ans -= 2
+        return ans","class Solution:
+    def minLengthAfterRemovals(self, nums: List[int]) -> int:
+        cnt = Counter(nums)
+        pq = [-x for x in cnt.values()]
+        heapify(pq)
+        ans = len(nums)
+        while len(pq) > 1:
+            x, y = -heappop(pq), -heappop(pq)
+            x -= 1
+            y -= 1
+            if x > 0:
+                heappush(pq, -x)
+            if y > 0:
+                heappush(pq, -y)
+            ans -= 2
+        return ans"
+"new_filepath = path . join ( directory , series_format % ( n + 1 ) )","new_filepath = path. join ( directory, series_format % n )"
+"class Solution:
+    def numberOfPowerfulInt(self, start: int, finish: int, limit: int, s: str) -> int:
+        @cache
+        def dfs(pos: int, lim: int):
+            if len(t) < n:
+                return 0
+            if len(t) - pos == n:
+                return int(s <= t[pos:]) if lim else 1
+            up = min(int(t[pos]) if lim else 9, limit)
+            ans = 0
+            for i in range(up + 1):
+                ans += dfs(pos + 1, lim and i == int(t[pos]))
+            return ans
+
+        n = len(s)
+        t = str(start - 1)
+        a = dfs(0, True)
+        dfs.cache_clear()
+        t = str(finish)
+        b = dfs(0, True)
+        return b - a","class Solution:
+    def numberOfPowerfulInt(self, start: int, finish: int, limit: int, s: str) -> int:
+        @cache
+        def dfs(pos: int, lim: int):
+            if len(t) < n:
+                return 0
+            if len(t) - pos == n:
+                return int(s <= t[pos:]) if lim else 1
+            up = min(int(t[pos]) if lim else 9, limit)
+            ans = 0
+            for i in range(up + 1):
+                ans += dfs(pos + 1, lim and i == int(t[pos]))
+            return ans
+
+        n = len(s)
+        t = str(start - 1)
+        a = dfs(0, True)
+        dfs.cache_clear()
+        t = str(finish)
+        b = dfs(0, True)
+        return b - a"
+from pypy . objspace . std . typeobject import W_TypeObject,"from pypy. objspace. std. typeobject import W_TypeObject, _CPYTYPE, _CPYTYPE_TYPE"
+"power_curve = pd . concat ( [ power_curve , pd . DataFrame ( data = { 'power' : [ 0.0 ] , 'wind_speed' : [ 0.0 ] } ) ] , sort = True )","power_curve = pd. concat ( [ power_curve, pd. DataFrame ( data = { 'power' : [ 0.0 ], 'wind_speed' : [ 0.0 ] } ) ], ignore_index = True )"
