@@ -16419,3 +16419,277 @@ def task_func(df, groups=['A', 'B', 'C', 'D', 'E']):
         return a + b + c"
 "form . addParam ( 'numberOfReplicates' , IntParam , label = ""Max. Number of Replicates"" , default = 1 , condition = 'alignmentMethod!=1' , expertLevel = LEVEL_ADVANCED , help = ""Significant alignment is allowed to replicate each image up to this number of times"" )","form. addParam ( 'numberOfReplicates', IntParam, label = ""Max. Number of Replicates"", default = 2, condition = 'alignmentMethod!=1', expertLevel = LEVEL_ADVANCED, help = ""Significant alignment is allowed to replicate each image up to this number of times. 0 means no replication"" )"
 "raise ValueError ( ""A path must be omitted when writing."" )","raise ValueError ( ""A path must be omitted when writing."" )"
+"error_messages = { 'required' : 'Kirjoitathan kommentin!' , }","error_messages = {'required' : 'Kirjoitathan kommentin!', }"
+"if not isinstance ( img , np . ndarray ) : fatal_error ( ""Only image of type numpy.ndarray is supported input!"" )","if not isinstance ( img, np. ndarray ) : fatal_error ( ""Only image of type numpy.ndarray is supported input!"" )"
+"Syntax : P2 = unmix3 ( data , endmembers , gammaConst , P )","Syntax : P2 = unmix2 ( data, endmembers, gammaConst, P, P2 )"
+"parens = expectSingle ( theDefault . tokens [ 1 ] , cls = Parenthesis )","parens = expectSingle ( theDefault. tokens [ - 1 ], cls = Parenthesis, allow = [ 'Parenthesis' ] )"
+"environment_flag = FeatureState . objects . get ( environment = environment , identity = None , feature = feature )","environment_flag = FeatureState. objects. filter ( environment = environment, identity = None, feature = feature, is_active = True )"
+agrees_to_tos = db . BooleanProperty ( verbose_name = ugettext ( 'Agrees to ToS' ) ),"agrees_to_tos = db. BooleanField ( default = False, verbose_name = ugettext ( 'Agrees to ToS' ) )"
+"'''
+ python knock039.py ../Data/neko.txt.mecab
+ '''","'''
+ python knock038.py../Data/neko.txt
+ '''"
+"( inputnode , concat_rois , [ ( 'fmri_file' , 'ref_header' ) ] ) ,","( inputnode, signals, [ ( 'fmri_file','ref_header' ) ], [ ( 'fmri_file','ref_header' ) ] ),"
+"grid = rectgrid ( lon = X , lat = Y , cyclic = False )","grid = generic_rectgrid ( lon = X, lat = Y, cyclic = True )"
+"logger . error ( 'Your .pre-commit-config.yaml is unstaged.\n' '`git add .pre-commit-config.yaml` to fix this.' , )",logger. error ( 'Your.pre-commit-config.yaml is unstaged.\n' '`git add.pre-commit-config.yaml` to fix this.\n' )
+"newText = re . sub ( ""(\<[tT]{1}[dDhH]{1}([^>]*?)\>[^<]*?)"" + ""(\<\/[Tt]{1}[dDhH]{1}[^>]*?\>)"" , ""\n\\1\\3"" , newText , 0 )","newText = re. sub ( ""(\<[tT]{1}[dDhH]{1}([^>]*?)\>[^<]*?)"" + ""(\<\/[Tt]{1}[dDhH]{1}[^>]*?\>)"", ""\n\\1\\2"", newText, 0, flags = re. IGNORECASE )"
+note_updated = datetime . utcfromtimestamp ( en_note . updated / 1000 ),note_updated = datetime. fromtimestamp ( en_note. updated )
+"p56 = re . compile ( r'^Description: +(?P<description>[\w\s\,\.\:\-]+)$' )","p56 = re. compile ( r'^Description: +(?P<desr>[\w\s\,\.\:\-]+)$', re. IGNORECASE )"
+"class Dashboard ( dashboard . DashboardPage ) : """"""View for the list of all the organization related components.
+   """"""","class Dashboard ( dashboard. Dashboard ) : """"""View for the list of all the organization related components.
+   """"""
+   def __init__ ( self, * args, ** kwargs ) : """"""Initialize the dashboard view.
+      """""""
+"message = register_user ( DEFAULT_USERNAME , DEFAULT_PASSWORD , DEFAULT_EMAIL )","message = register_user ( DEFAULT_EMAIL, DEFAULT_USERNAME, DEFAULT_PASSWORD, DEFAULT_NAME )"
+"list_display = ( 'factura_interna' , 'fecha_pago' , 'abono' )","list_display = ( 'no_cupon', 'fecha_pago', 'abono', 'total' )"
+"worksheet . cell ( row = row , column = 1 , value = team_list [ row - 2 ] )","worksheet. cell ( row = row, column = 1, value = team_list [ i - 1 ] )"
+if user . is_authenticated and ( objects is not None ) : return objects . filter ( user = user ) . exists ( ),if user. is_authenticated and user. is_active : return objects. filter ( user = user ). exists ( )
+"parser . add_argument ( '-wp' , '--word-ptr' , default = 0 , type = int , dest = 'word_ptr' , help = 'Word addresss of the first word to read/write' )","parser. add_argument ( '-wp', '--word-ptr', default = 0, type = int, dest = 'word_ptr', help = 'Word addresss of the first word to read/write' )"
+"return [ el . text for el in self . _root . elements ( class_name = ""editable-evidence-item__content__link"" ) ]","return [ el. text for el in self. _root. elements ( class_name = ""item-edit-control__content__link"" ) if el. text ]"
+"class Solution:
+    def distributeCandies(self, candyType: List[int]) -> int:
+        return min(len(candyType)//2, len(set(candyType)))","class Solution:
+    def distributeCandies(self, candyType: List[int]) -> int:
+        return min(len(candyType)//2, len(set(candyType)))
+
+    def processCandyList(self, candyList):
+        self.uniqueCandyTypes = set(candyList)"
+"raise ValueError ( ""Client machine did not reboot"" )","raise error. ValueError ( ""Client machine did not reboot"", error. Error ( ) )"
+"success = subprocess . call ( [ plantcvTool , infile , filename , fileid , plantcvOutputDir ] , stdout = subprocess . STDOUT , stderr = subprocess . STDOUT , shell = True )","success = subprocess. call ( [ plantcvTool, infile, filename, fileid, plantcvOutputDir ], shell = False )"
+for row in range ( SampleSize ) : DPM [ row ] [ 0 ] = row + 1,for row in range ( LHD_SampleSize ) : DPM [ row ] [ 0 ] = row + 1
+"stre , pred , tar , importances = self . evaluate ( clf , trFeatures , self . activegps . target )","stre, pred, tar, importances = self. evaluate ( clf, trFeatures, self. activegps. targets, self. activegps. targets )"
+"class Solution:
+    def resultArray(self, nums: List[int]) -> List[int]:
+        arr1 = [nums[0]]
+        arr2 = [nums[1]]
+        for x in nums[2:]:
+            if arr1[-1] > arr2[-1]:
+                arr1.append(x)
+            else:
+                arr2.append(x)
+        return arr1 + arr2","class Solution:
+    def resultArray(self, nums: List[int]) -> List[int]:
+        arr1 = [nums[0]]
+        arr2 = [nums[1]]
+        for x in nums[2:]:
+            if arr1[-1] > arr2[-1]:
+                arr1.append(x)
+            else:
+                arr2.append(x)
+        return arr1 + arr2"
+"self . file_sub ( [ ( 'PATH_SEPARATOR = .' , 'PATH_SEPARATOR = ;' ) , ] , i )","self. file_sub ( [ ( 'PATH_SEPARATOR =.', 'PATH_SEPARATOR = ;' ), ], '%(builddir)s/' + i, 'PATH_SEPARATOR = ;' )"
+"cart_products = fields . Nested ( CartProductSchema ( ) , many = True )",cart_products = fields. Nested ( CartProductSchema ( required = False ) )
+"item [ 'text' ] = etree . tostring ( tree , pretty_print = True , encoding = unicode , method = 'html' )","item [ 'text' ] = etree. tostring ( tree, encoding = unicode )"
+"messages . add_message ( self . request , messages . INFO , _ ( ""Information successfully updated"" ) )","messages. add_message ( self. request, messages. INFO, _ ( ""Infos successfully updated"" ), ""success"" )"
+"input_bam = input_bam , prefix = prefix , bed_file = ""-b "" + config . param ( 'ivar_trim_primers' , 'bed_primers' , type = 'filepath' ) if config . param ( 'ivar_trim_primers' , 'bed_primers' ) else """" ,","input_bam = input_bam, prefix = prefix, bed_file = ""-b "" + config. param ( 'ivar_trim_primers', 'bed_primers', type = 'filepath' ) if config. param ( 'ivar_call_variants', 'bed_primers' ) else """","
+"https_handler = HTTPSClientAuthHandler ( key , cert )","https_handler = HTTPSClientAuthHandler ( key, cert, debug = debug )"
+"DIVA_DIR = os . path . abspath ( os . path . join ( PROJECT_DIR , 'data' ) )","DIVA_DIR = os. path. abspath ( os. path. join ( PROJECT_DIR, 'diva', 'diva' ) )"
+"for b in range ( firstbar , lastbar + 1 ) : tf . viewbar ( self . music , voice , b )","for b in range ( firstbar, lastbar + 1 ) : tf. viewbar ( self. music, voice, b )"
+"import pandas as pd
+from sklearn.preprocessing import StandardScaler
+import matplotlib.pyplot as plt
+# Constants
+FEATURE_NAMES = [""Feature 1"", ""Feature 2"", ""Feature 3"", ""Feature 4"", ""Feature 5""]
+def task_func(data_matrix):
+
+    scaler = StandardScaler()
+    standardized_data = scaler.fit_transform(data_matrix)
+    df = pd.DataFrame(standardized_data, columns=FEATURE_NAMES)
+    df[""Mean""] = df.mean(axis=1)
+    plt.figure(figsize=(10, 5))
+    ax = df[""Mean""].plot(kind=""hist"", title=""Distribution of Means"")
+    return df, ax","import pandas as pd
+from sklearn.preprocessing import StandardScaler
+import matplotlib.pyplot as plt
+# Constants
+FEATURE_NAMES = [""Feature 1"", ""Feature 2"", ""Feature 3"", ""Feature 4"", ""Feature 5""]
+def task_func(data_matrix):
+
+    scaler = StandardScaler()
+    standardized_data = scaler.fit_transform(data_matrix)
+    df = pd.DataFrame(standardized_data, columns=FEATURE_NAMES)
+    df[""Mean""] = df.mean(axis=1)
+    plt.figure(figsize=(10, 5))
+    ax = df[""Mean""].plot(kind=""hist"", title=""Distribution of Means"")
+    return df, ax"
+"st_modify . append ( MigrationTool . __modify_stmt ( index_ror , ""EUDAT/ROR"" , ror ) )","st_add. append ( MigrationTool. __add_stmt ( INDEX_ROR, ""EUDAT/ROR"", ror, ""EUDAT/ROR"" ) )"
+"def min(a: int, b: int) -> int:
+    return a if a < b else b
+
+
+class Trie:
+    def __init__(self):
+        self.children: List[Optional[Trie]] = [None] * 26
+
+    def insert(self, w: str):
+        node = self
+        for i in map(lambda c: ord(c) - 97, w):
+            if node.children[i] is None:
+                node.children[i] = Trie()
+            node = node.children[i]
+
+
+class Solution:
+    def minValidStrings(self, words: List[str], target: str) -> int:
+        @cache
+        def dfs(i: int) -> int:
+            if i >= n:
+                return 0
+            node = trie
+            ans = inf
+            for j in range(i, n):
+                k = ord(target[j]) - 97
+                if node.children[k] is None:
+                    break
+                node = node.children[k]
+                ans = min(ans, 1 + dfs(j + 1))
+            return ans
+
+        trie = Trie()
+        for w in words:
+            trie.insert(w)
+        n = len(target)
+        ans = dfs(0)
+        return ans if ans < inf else -1","def min(a: int, b: int) -> int:
+    return a if a < b else b
+
+
+class Trie:
+    def __init__(self):
+        self.children: List[Optional[Trie]] = [None] * 26
+
+    def insert(self, w: str):
+        node = self
+        for i in map(lambda c: ord(c) - 97, w):
+            if node.children[i] is None:
+                node.children[i] = Trie()
+            node = node.children[i]
+
+
+class Solution:
+    def minValidStrings(self, words: List[str], target: str) -> int:
+        @cache
+        def dfs(i: int) -> int:
+            if i >= n:
+                return 0
+            node = trie
+            ans = inf
+            for j in range(i, n):
+                k = ord(target[j]) - 97
+                if node.children[k] is None:
+                    break
+                node = node.children[k]
+                ans = min(ans, 1 + dfs(j + 1))
+            return ans
+
+        trie = Trie()
+        for w in words:
+            trie.insert(w)
+        n = len(target)
+        ans = dfs(0)
+        return ans if ans < inf else -1"
+def get_unauthorized_request_response ( self ) : return http . HttpUnauthorized ( ),def get_unauthorized_request_response ( self ) : return http. HttpUnauthorized ( )
+"import time
+from datetime import datetime
+import random
+import matplotlib.pyplot as plt
+# Constants
+DATE_FORMAT = ""%Y-%m-%d %H:%M:%S""
+def task_func(n, output_path=None):
+
+    timestamps = []
+    for _ in range(n):
+        timestamp = random.randint(0, int(time.time()))
+        formatted_time = datetime.utcfromtimestamp(timestamp).strftime(DATE_FORMAT)
+        timestamps.append(formatted_time)
+
+    plt.hist([datetime.strptime(t, DATE_FORMAT) for t in timestamps])
+
+    if output_path:
+        plt.savefig(output_path)
+    else:
+        plt.show()
+    return timestamps","import time
+from datetime import datetime
+import random
+import matplotlib.pyplot as plt
+# Constants
+DATE_FORMAT = ""%Y-%m-%d %H:%M:%S""
+def task_func(n, output_path=None):
+
+    timestamps = []
+    for _ in range(n):
+        timestamp = random.randint(0, int(time.time()))
+        formatted_time = datetime.utcfromtimestamp(timestamp).strftime(DATE_FORMAT)
+        timestamps.append(formatted_time)
+
+    plt.hist([datetime.strptime(t, DATE_FORMAT) for t in timestamps])
+
+    if output_path:
+        plt.savefig(output_path)
+    else:
+        plt.show()
+    return timestamps"
+"return ( 'Error encountered with object named ""{objname}"".\n' '{objcreate}\n\n' '{message} ' '(See above for original error message and traceback.)' ) . format ( objname = self . _brian_objname , message = self . _brian_message , objcreate = self . _brian_objcreate )","return ( 'Error encountered with object named ""{objname}"".\n' '{objcreate}\n\n' '{message}' '(See above for original error message and traceback.)' ). format ( objname = self. _brian_objname, objcreate = self. _brian_objcreate, message = self. _brian_message )"
+"q = { 'content_oid' : content [ '_id' ] , 'type' : 'general' , 'enabled' : True }","q = { 'content_oid' : ObjectId ( _id ), 'type' : 'general', 'enabled' : True, 'created_at' : datetime. utcnow ( ) }"
+errors . append ( u'{username}: {flag}' . format ( ** row ) ),"errors. append ( '{username}: {flag}'. format ( username = row [ 'username' ], flag = row [ 'flag' ] ) )"
+"self . log . write ( 'error' , 'found only %2d elements, NOK' % len ( link_ ) )","self. log. write ( 'error', 'found only %2d elements, NOK' % len ( link_ ) )"
+if not is_playing_service ( ) : reload_simple_pvr ( ),if not is_player_active ( ) and not is_player_in_game ( ) : reload_simple_pvr ( )
+"class Solution:
+    def shortestDistanceAfterQueries(
+        self, n: int, queries: List[List[int]]
+    ) -> List[int]:
+        def bfs(i: int) -> int:
+            q = deque([i])
+            vis = [False] * n
+            vis[i] = True
+            d = 0
+            while 1:
+                for _ in range(len(q)):
+                    u = q.popleft()
+                    if u == n - 1:
+                        return d
+                    for v in g[u]:
+                        if not vis[v]:
+                            vis[v] = True
+                            q.append(v)
+                d += 1
+
+        g = [[i + 1] for i in range(n - 1)]
+        ans = []
+        for u, v in queries:
+            g[u].append(v)
+            ans.append(bfs(0))
+        return ans","class Solution:
+    def shortestDistanceAfterQueries(
+        self, n: int, queries: List[List[int]]
+    ) -> List[int]:
+        def bfs(i: int) -> int:
+            q = deque([i])
+            vis = [False] * n
+            vis[i] = True
+            d = 0
+            while 1:
+                for _ in range(len(q)):
+                    u = q.popleft()
+                    if u == n - 1:
+                        return d
+                    for v in g[u]:
+                        if not vis[v]:
+                            vis[v] = True
+                            q.append(v)
+                            g[u].append(v)
+                d += 1
+
+        g = [[i + 1] for i in range(n - 1)]
+        ans = []
+        for u, v in queries:
+            g[u].append(v)
+            ans.append(bfs(0))
+        return ans"
+"raise ValidationError ( _ ( ""There already exists "" ""a team with that login"" ) )","raise ValidationError ( _ ( ""There already exists"" "" a team with that login"" ) )"
+max_char_length = max ( [ max ( len ( char_lst ) for char_lst in word_lst ) for word_lst in contents ] ),max_char_length = max ( [ max ( [ len ( char_lst ) for char_lst in word_lst ] for word_lst in contents ) ] )
+"app . run ( debug = False , host = ""0.0.0.0"" , port = 5010 )","app. run ( debug = True, host = ""0.0.0.0"", port = 5010, use_reloader = False )"
+scale = 2 / sqrt ( in_channels * kernel_size [ 0 ] * kernel_size [ 1 ] ),scale = 2 / sqrt ( in_channels * kernel_size [ 0 ] * kernel_size [ 1 ] )
+"uri = 'data:application/octet-stream;base64,' + base64 . b64encode ( data ) . decode ( 'ascii' )","uri = 'data:text/plain;base64,' + base64. b64encode ( data ). decode ( 'utf-8' )"
