@@ -804,3 +804,567 @@ def task_func(pattern, directory, extensions):
                 if re.search(pattern.lower(), content):
                     matched_files.append(Path(file).resolve())
     return matched_files"
+"class Solution:
+    def search(self, nums: List[int], target: int) -> int:
+        if target not in nums:
+            return -1
+        
+        left, right = 0, len(nums)
+        
+        while left < right:
+            mid = (left + right) // 2
+            if nums[mid] < target:
+                left = mid + 1
+            else:
+                right = mid
+        
+        return left","class Solution:
+    def search(self, nums: List[int], target: int) -> int:
+        if target not in nums:
+            return -1
+        
+        left, right = 0, len(nums) - 1
+        
+        while left < right:
+            mid = (left + right) // 2
+            if nums[mid] < target:
+                left = mid + 1
+            else:
+                right = mid
+        
+        return left"
+"contacts = frappe . get_all ( ""Contact"" , filters = { ""customer"" : customer_name } )","contacts = frappe. get_all ( ""Contact"", filters = { ""customer_name"" : customer_name, ""status"" : ""Active"" } )"
+"resp = requests . get ( host + ""/select/?q=*:*"" , verify = False )","resp = requests. get ( ""http://"" + host + ""/select/?q=*&$select=*&$select=*&$select=*&$select=*&$select=*&$select=*&$select=*&$select=*&$select=*&$select=*&$select=*&$select=*&$select=*&$select=*&$select=*&$select=*&$select=*&$select=*&$select=*&$select=*&$select=*&$select=*&$select=*&$select=*&$select=*&$select=*&$select=*&$select=*&$select=*&$select=*&$select=*&$select=*&$select=*&$select=*&$select=*&$select=*&$select=*&$select=*&$select=*&$select=*&$select=*&$select=*&$select=*&$select=*&$select=*&$select=*&$select=*&$select=*&$select=*&$select=*&$select=*&$select=*&$select=*&$select=*&$select=*&$select=*&$select=*&$select=*&$select=*&$select=*&$select=*&$select=*&$select=*&$select=*&$select=*&$select=*&$select=*&$select=*&$select=*&$select=*&$select=*&$select=*&$select=*&$select=*&$select=*&$select=*&$select=*&$select=*&$select=*&$select=*&$select=*&$select=*&$select=*&$select=*&$select=*&$select=*&$select=*&$select=*&$select=*&$select=*&$select=*&$select=*&$select=*&$select=*&$select=*&$select=*&$select=*&$select=*&$select=*&$select=*&$select=*&$select=*&$select=*&$select=*&$select=*&$select=*&$select=*&$select=*&$select=*&$select=*&$select=*&$select=*&$select=*&$select=*&$select=*&$select=*&$select=*&$select=*&$select=*&$select=*&$select=*&$select=*&$select="
+"r = os . system ( '%s ""%s"" ""%s"" ""%s""' % ( cmd , a , b , c ) )","r = os. system ( ""%s %s %s %s"" % ( cmd, a, b, c ) )"
+if self . grid . n_dust is not None and self . grid . n_dust > 0 : shape = list ( self . grid . shape ),if self. grid. n_dust > 0 and self. grid. n_dust < self. grid. n_dust_max : shape = list ( self. grid. shape )
+"LOGICAL_OPERATORS = [ ""&&"" , ""||"" , ""<"" , "">"" , ""<="" , "">="" , ""=="" , ""!="" ]","LOGICAL_OPERATORS = [ ""&&"", ""||"", ""<"", "">"", ""<="", "">="", ""=="", ""!="" ]"
+"def send ( self , chan , msg ) : self . sendRaw ( 'PRIVMSG %s :%s' % ( chan , msg ) )","def send ( self, chan, msg ) : self. sendRaw ( 'PRIVMSG %s :%s' % ( chan, msg ) )"
+"( 'stager' , { 'payloadchoice' : None , 'payload' : 'Powershell Interpreter Stager' , 'extrawork' : printListener } ) ,","('stager', { 'payloadchoice' : None, 'payload' : 'PowerShell Menu', 'extrawork' : printListener, 'extrawork' : printListener } ),"
+"res_ids = field_obj . search ( cursor , user , [ ( 'rec_name' , domain [ i ] [ 1 ] , domain [ i ] [ 2 ] ) , ] , order = [ ] , context = context )","res_ids = field_obj. search ( cursor, user, [ ( field_obj. _rec_name, domain [ i ] [ 1 ], domain [ i ] [ 2 ] ), ], order = [ ( field_obj. _rec_name, 'desc' ) ], context = context )"
+"html = ""<br /> <img src={0}>"" . format ( users_data [ screen_name ] [ ""profile_picture_url"" ] )","html = ""<br /> <img src={0} alt='{}' />"". format ( users_data [ screen_name ] [ ""full_name"" ] [ ""profile_picture_url"" ], users_data [ screen_name ] [ ""full_name"" ] [ ""full_name"" ] )"
+"user_model . validation [ 'password' ] = { 'len' : { 'gte' : self . settings . password_min_length } , 'crypt' : { 'key' : self . settings . hmac_key } }","user_model. validation [ 'password' ] = { 'len' : { 'gt' : self. settings. password_min_length }, 'crypt' : { 'key' : self. settings. hmac_key,'salt' : self. settings. hmac_salt } }"
+"result = biggie . to_string ( columns = [ 'B' , 'A' ] , col_space = 17 , float_format = '%.5f' . __mod__ )","result = biggie. to_string ( columns = [ 'B', 'A' ], col_space = 17, float_format = '%.6f' )"
+"clip_rms_dra , clip_rms_ddec , clip_rms_comb = - 1 , - 1 , - 1","clip_rms_dra, cli_rms_ddec, cli_rms_comb = - 1, - 1, - 1"
+"class Solution:
+    def largestPerimeter(self, nums: List[int]) -> int:
+        nums.sort()
+        s = list(accumulate(nums, initial=0))
+        ans = -1
+        for k in range(3, len(nums) + 1):
+            if s[k - 1] > nums[k - 1]:
+                ans = max(ans, s[k])
+        return ans","class Solution:
+    def largestPerimeter(self, nums: List[int]) -> int:
+        nums.sort()
+        s = [0] * (len(nums) + 1)
+        ans = -1
+        for k in range(3, len(nums) + 1):
+            s[k] = s[k - 1] + nums[k - 1]
+            if s[k] > nums[k - 1]:
+                ans = max(ans, s[k])
+        return ans"
+logging . error ( 'Wrong usage: need to define an output.' ),logging. error ( 'Wrong usage: need to define an output (using -w parameter).' )
+"check . write ( { check_move_field : move . id , 'deposit' : deposit } )","check. write ( { 'check_move_field' : move. id, 'deposit' : deposit, 'deposit_type' : deposit_type } )"
+"import random
+import matplotlib.pyplot as plt
+# Sample data
+class Object:
+    value = 0
+    def __init__(self, value=None):
+        if value is None:
+            self.value = random.gauss(0, 1)
+        else:
+            self.value = value
+def task_func(obj_list, attr, num_bins=30, seed=0):
+
+    # Set random seed
+    random.seed(seed)
+    attr_values = [getattr(obj, attr) for obj in obj_list]
+
+    # Generate histogram
+    fig, ax = plt.subplots()
+    ax.hist(attr_values, bins=num_bins, alpha=0.5)
+    ax.set_title('Histogram of attribute values')
+    ax.set_xlabel('Attribute Value')
+    ax.set_ylabel('Count')
+
+    return ax","import random
+import matplotlib.pyplot as plt
+# Sample data
+class Object:
+    value = 0
+    def __init__(self, value=None):
+        if value is None:
+            self.value = random.gauss(0, 1)
+        else:
+            self.value = value
+def task_func(obj_list, attr, num_bins=30, seed=0):
+
+    # Set random seed
+    random.seed(seed)
+    attr_values = [obj for obj in obj_list if hasattr(obj, attr)]
+    
+    # Generate histogram
+    fig, ax = plt.subplots()
+    ax.hist(attr_values, bins=num_bins, alpha=0.5)
+    ax.set_title('Histogram of attribute values')
+    ax.set_xlabel('Attribute Value')
+    ax.set_ylabel('Count')
+    
+    return ax"
+"cleanupObj = logSupport . DirCleanup ( os . path . join ( startup_dir , ""log"" ) , 7 * 24 * 3600 , activity_log , warning_log )","cleanupObj = logSupport. DirCleanup ( startup_dir, 7 * 24 * 3600, activity_log, warning_log, 7 * 24 * 3600 )"
+"if len ( parts ) > 2 and parts [ - 2 ] == 'archive' : parts . insert ( - 1 , 'refs/tags' )","if parts [ - 2 ] == 'archive' and parts [ - 1 ] =='refs' : parts. insert ( - 1, 'tags' )"
+"msg = 'Slow {kind} ({time}): {detail} ({kind}, {time})' . format ( time = round ( time , 1 ) , kind = kind , detail = detail )","msg = 'Slow: {detail} ({kind}, {time})'. format ( time = round ( time, 1 ), kind = kind, detail = detail, )"
+"class Solution:
+    def findKthLargest(self, nums: List[int], k: int) -> int:
+        return sorted(nums)[-k]","class Solution:
+    def findKthLargest(self, nums: List[int], k: int) -> int:
+        return sorted(nums)[-k]"
+"'''
+     Prepare settings before execution with get or set functions.
+     Removes settings with a match parameter when index is not found.
+     '''","'''
+     Prepare settings before execution with get or set functions.
+     Removes settings with a match parameter when index is not found.
+     '''"
+"class Solution:
+    def findMaximumNumber(self, k: int, x: int) -> int:
+        @cache
+        def dfs(pos, limit, cnt):
+            if pos == 0:
+                return cnt
+            ans = 0
+            up = (self.num >> (pos - 1) & 1) if limit else 1
+            for i in range(up + 1):
+                ans += dfs(pos - 1, limit and i == up, cnt + (i == 1 and pos % x == 0))
+            return ans
+
+        l, r = 1, 10**18
+        while l < r:
+            mid = (l + r + 1) >> 1
+            self.num = mid
+            v = dfs(mid.bit_length(), True, 0)
+            dfs.cache_clear()
+            if v <= k:
+                l = mid
+            else:
+                r = mid - 1
+        return l","class Solution:
+    def findMaximumNumber(self, k: int, x: int) -> int:
+        @cache
+        def dfs(pos, limit, cnt):
+            if pos == 0:
+                return cnt
+            ans = 0
+            up = (self.num >> (pos - 1) & 1) if limit else 1
+            for i in range(up + 1):
+                ans += dfs(pos - 1, limit and i == up, cnt + (i == 1 and pos % x == 0))
+            return ans
+
+        l, r = 1, 10**18
+        while l < r:
+            mid = (l + r + 1) >> 1
+            self.num = mid
+            v = dfs(mid.bit_length(), True, 0)
+            dfs.cache_clear()
+            if v <= k:
+                l = mid
+            else:
+                r = mid - 1
+        return l"
+"Weight ( ""(1.35708973e-03*((npartons <= 0 || npartons >= 5)*1.0 + (npartons == 1)*0.87 + (npartons == 2)*0.26 + (npartons == 3)*0.04 + (npartons == 4)*0.04))"" , ""wj_stitching_weight"" ) ,","Weight ( ""(1.35708973e-03*(npartons <= 0 || npartons >= 5)*1.0 + (npartons == 1)*0.87 + (npartons == 2)*0.26 + (npartons == 3)*0.04 + (npartons == 4)*0.04 + (npartons == 5)*0.04)"", ""wj_stitching_weight"" ),"
+"_jinja2_env = jinja2 . Environment ( loader = _loader , auto_reload = False )","_jinja2_env = jinja2. Environment ( loader = _loader, autoescape = False )"
+xml = etree . tostring ( parsed_file ) . decode ( ),"xml = unicode ( etree. tostring ( parsed_file, encoding = 'utf-8' ) )"
+"from urquell . invocation import ErrorTrace , Invocation , execute","from urquell. invocation import Invocation, ErrorTrace"
+"class Solution:
+    def minimumOperationsToMakeEqual(self, x: int, y: int) -> int:
+        @cache
+        def dfs(x: int) -> int:
+            if y >= x:
+                return y - x
+            ans = x - y
+            ans = min(ans, x % 5 + 1 + dfs(x // 5))
+            ans = min(ans, 5 - x % 5 + 1 + dfs(x // 5 + 1))
+            ans = min(ans, x % 11 + 1 + dfs(x // 11))
+            ans = min(ans, 11 - x % 11 + 1 + dfs(x // 11 + 1))
+            return ans
+
+        return dfs(x)","class Solution:
+    def minimumOperationsToMakeEqual(self, x: int, y: int) -> int:
+        @cache
+        def dfs(x: int) -> int:
+            if y >= x:
+                return y - x
+            ans = x - y
+            ans = min(ans, x % 5 + 1 + dfs(x // 5))
+            ans = min(ans, 5 - x % 5 + 1 + dfs(x // 5 + 1))
+            ans = min(ans, x % 11 + 1 + dfs(x // 11))
+            ans = min(ans, 11 - x % 11 + 1 + dfs(x // 11 + 1))
+            return ans
+
+        return dfs(x)"
+am_maintainer_mode_exclude_re = re . compile ( r'(/missing --run (autoheader|autotest|help2man|makeinfo)|^\s*Automake:\s)' ),"am_maintainer_mode_exclude_re = re. compile ( r'(/missing --run (autoheader|makeinfo)|^\s*Automake:\s)', re. IGNORECASE )"
+"MOCK_MODULES = [ 'argparse' , 'matplotlib' , 'numpy' , 'scikit-image' ]","MOCK_MODULES = [ 'argparse', 'numpy','scikit-image','scipy' ]"
+for output_state in self . output_states : projs . extend ( output_state . mod_afferents ),for output_state in self. input_states [ : : - 1 ] : projs. extend ( output_state. mod_afferents )
+"self . assertEqual ( read_ts . keys ( ) , [ 'immutable' , 'mutable' ] )","self. assertEqual ( read_ts. keys ( ), [ b'immutable', b'mutable' ], ""read_ts is not a dict"" )"
+"from dataclasses import dataclass
+
+
+@dataclass(frozen=True)
+class Sequence:
+  startX: int
+  startY: int
+  endX: int
+  endY: int
+  length: int
+
+  def __iter__(self):
+    yield self.startX
+    yield self.startY
+    yield self.endX
+    yield self.endY
+    yield self.length
+
+
+class Solution:
+  def maxDistance(self, side: int, points: list[list[int]], k: int) -> int:
+    ordered = self._getOrderedPoints(side, points)
+
+    def isValidDistance(m: int) -> bool:
+      """"""
+      Returns True if we can select `k` points such that the minimum Manhattan
+      distance between any two consecutive chosen points is at least `m`.
+      """"""
+      dq = collections.deque([Sequence(*ordered[0], *ordered[0], 1)])
+      maxLength = 1
+
+      for i in range(1, len(ordered)):
+        x, y = ordered[i]
+        startX, startY = ordered[i]
+        length = 1
+        while dq and abs(x - dq[0].endX) + abs(y - dq[0].endY) >= m:
+          if (abs(x - dq[0].startX) + abs(y - dq[0].startY) >= m
+                  and dq[0].length + 1 >= length):
+            startX = dq[0].startX
+            startY = dq[0].startY
+            length = dq[0].length + 1
+            maxLength = max(maxLength, length)
+          dq.popleft()
+        dq.append(Sequence(startX, startY, x, y, length))
+
+      return maxLength >= k
+
+    l = 0
+    r = side
+
+    while l < r:
+      m = (l + r + 1) // 2
+      if isValidDistance(m):
+        l = m
+      else:
+        r = m - 1
+
+    return l
+
+  def _getOrderedPoints(self, side: int, points: list[list[int]]) -> list[list[int]]:
+    """"""
+    Returns the ordered points on the perimeter of a square of side length
+    `side`, starting from left, top, right, and bottom boundaries.
+    """"""
+    left = sorted([(x, y) for x, y in points if x == 0 and y > 0])
+    top = sorted([(x, y) for x, y in points if x > 0 and y == side])
+    right = sorted([(x, y) for x, y in points if x == side and y < side],
+                   reverse=True)
+    bottom = sorted([(x, y) for x, y in points if y == 0], reverse=True)
+    return left + top + right + bottom","from dataclasses import dataclass
+
+
+@dataclass(frozen=True)
+class Sequence:
+  startX: int
+  startY: int
+  endX: int
+  endY: int
+  length: int
+
+  def __iter__(self):
+    yield self.startX
+    yield self.startY
+    yield self.endX
+    yield self.endY
+    yield self.length
+
+
+class Solution:
+  def maxDistance(self, side: int, points: list[list[int]], k: int) -> int:
+    ordered = self._getOrderedPoints(side, points)
+
+    def isValidDistance(m: int) -> bool:
+      """"""
+      Returns True if we can select `k` points such that the minimum Manhattan
+      distance between any two consecutive chosen points is at least `m`.
+      """"""
+      dq = collections.deque([Sequence(*ordered[0], *ordered[1], 1)])
+      maxLength = 1
+
+      for i in range(1, len(ordered)):
+        x, y = ordered[i]
+        startX, startY = ordered[i - 1]
+        while dq and abs(x - dq[0].endX) + abs(y - dq[0].endY) >= m:
+          if (abs(x - dq[0].startX) + abs(y - dq[0].startY) >= m
+                  and dq[0].length + 1 >= k):
+            startX = dq[0].startX
+            startY = dq[0].startY
+            length = dq[0].length + 1
+            maxLength = max(maxLength, length)
+          dq.popleft()
+        dq.append(Sequence(startX, startY, x, y, length))
+
+      return maxLength >= k
+
+    l = 0
+    r = side.bit_length()
+
+    while l < r:
+      m = (l + r + 1) // 2
+      if isValidDistance(m):
+        l = m
+      else:
+        r = m - 1
+
+    return l
+
+  def _getOrderedPoints(self, side: int, points: list[list[int]]) -> list[list[int]]:
+    """"""
+    Returns the ordered points on the perimeter of a square of side length
+    `side`, starting from left, top, right, and bottom boundaries.
+    """"""
+    left = sorted([(x, y) for x, y in points if x == 0 and y > 0])
+    top = sorted([(x,"
+"class Solution:
+    def minFlips(self, grid: List[List[int]]) -> int:
+        m, n = len(grid), len(grid[0])
+        cnt1 = cnt2 = 0
+        for row in grid:
+            for j in range(n // 2):
+                if row[j] != row[n - j - 1]:
+                    cnt1 += 1
+        for j in range(n):
+            for i in range(m // 2):
+                if grid[i][j] != grid[m - i - 1][j]:
+                    cnt2 += 1
+        return min(cnt1, cnt2)","class Solution:
+    def minFlips(self, grid: List[List[int]]) -> int:
+        m, n = len(grid), len(grid[0])
+        cnt1 = cnt2 = 0
+        for row in grid:
+            for j in range(n // 2):
+                if row[j]!= row[n - j - 1]:
+                    cnt1 += 1
+        for j in range(n):
+            for i in range(m // 2):
+                if grid[i][j]!= grid[m - i - 1][j]:
+                    cnt2 += 1
+        return min(cnt1, cnt2)"
+"import os
+import glob
+import subprocess
+def task_func(directory, backup_dir='/path/to/backup'):
+
+    if not os.path.exists(directory):
+        raise FileNotFoundError(f""Directory '{directory}' not found."")
+
+    log_files = glob.glob(os.path.join(directory, '*.log'))
+    if not log_files:
+        return ""No logs found to backup""
+
+    if not os.path.exists(backup_dir):
+        os.makedirs(backup_dir)
+
+    backup_file = os.path.join(backup_dir, 'logs_backup.tar.gz')
+    subprocess.call(['tar', '-czvf', backup_file] + log_files)
+
+    for file in log_files:
+        os.remove(file)
+
+    return backup_file","import os
+import glob
+import subprocess
+def task_func(directory, backup_dir='/path/to/backup'):
+
+    if not os.path.exists(directory):
+        raise FileNotFoundError(f""Directory '{directory}' not found."")
+
+    log_files = glob.glob(os.path.join(directory, '*.log'))
+    if not log_files:
+        return ""No logs found to backup""
+
+    if not os.path.exists(backup_dir):
+        os.makedirs(backup_dir)
+
+    backup_file = os.path.join(backup_dir, 'logs_backup.tar.gz')
+    subprocess.call(['tar', '-czvf', backup_file] + log_files)
+
+    for file in log_files:
+        os.remove(file)
+
+    return backup_file"
+"return datetime . fromtimestamp ( ms ) . strftime ( ""%Y-%m-%d %H:%M"" )","return datetime. fromtimestamp ( ms / 1000.0 ). strftime ( ""%Y-%m-%d %H:%M:%S"" )"
+assert other_files . issuperset ( [ f . resolve ( ) for f in expected ] ),assert other_files. issuperset ( [ f. absolute ( ) for f in expected_files ] )
+"import sqlite3
+import pandas as pd
+import csv
+from io import StringIO
+# Constants
+DATABASE_NAME = 'test.db'
+TABLE_NAME = 'test_table'
+def task_func(csv_input):
+
+    # Check if the input is a StringIO object or a file path
+    if isinstance(csv_input, StringIO):
+        dr = csv.DictReader(csv_input)  # Read from StringIO
+    else:
+        with open(csv_input, 'r') as f:
+            dr = csv.DictReader(f)  # Read from a file
+
+    conn = sqlite3.connect(DATABASE_NAME)
+    cursor = conn.cursor()
+
+    # Create table and insert data
+    cols = dr.fieldnames
+    cursor.execute(f'DROP TABLE IF EXISTS {TABLE_NAME}')
+    cursor.execute(f'CREATE TABLE {TABLE_NAME} ({"", "".join([f""{col} TEXT"" for col in cols])})')
+    for row in dr:
+        cursor.execute(f'INSERT INTO {TABLE_NAME} VALUES ({"", "".join([""?"" for _ in cols])})', list(row.values()))
+
+    conn.commit()
+    dataframe = pd.read_sql_query(f'SELECT * from {TABLE_NAME}', conn)
+
+    conn.close()
+
+    return dataframe","import sqlite3
+import pandas as pd
+import csv
+from io import StringIO
+# Constants
+DATABASE_NAME = 'test.db'
+TABLE_NAME = 'test_table'
+def task_func(csv_input):
+
+    # Check if the input is a StringIO object or a file path
+    if isinstance(csv_input, StringIO):
+        dr = csv.DictReader(csv_input)  # Read from StringIO
+    else:
+        with open(csv_input, 'r') as f:
+            dr = csv.DictReader(f)  # Read from a file
+
+    conn = sqlite3.connect(DATABASE_NAME)
+    cursor = conn.cursor()
+
+    # Create table and insert data
+    cols = dr.fieldnames
+    cursor.execute(f'DROP TABLE IF EXISTS {TABLE_NAME}')
+    cursor.execute(f'CREATE TABLE {TABLE_NAME} ({"", "".join([f""{col} TEXT"" for col in cols])})')
+    for row in dr:
+        cursor.execute(f'INSERT INTO {TABLE_NAME} VALUES ({"", "".join([""?"" for _ in cols])})', list(row.values()))
+
+    conn.commit()
+    dataframe = pd.read_sql_query(f'SELECT * from {TABLE_NAME}', conn)
+
+    conn.close()
+
+    return dataframe"
+"parser . add_argument ( '--match_alpha_ratio' , type = float , default = 0.999 , help = 'Alpha ratio from non-strict matching, options: 0.999 or 0.5' )","parser. add_argument ( '--match_alpha_ratio', type = float, default = '0.999', help = 'Alpha ratio from non-strict matching, options: 0.999 or 0.5', choices = [ '0.999', '0.5' ] )"
+"self . mainFitWindow . current . setSlice ( self . mainFitWindow . current . axes , i )","self. mainFitWindow. current. setSlice ( self. parent. axes, i, self. parent. axes. getSlice ( i ) )"
+"super ( PluginUtilsV540 , self ) . _configure_repo_from_inst ( instance )","super ( PluginUtilsV540, self ). _configure_repo_from_inst ( self, instance, self. _repo )"
+"class Solution:
+    def numberOfGoodSubarraySplits(self, nums: List[int]) -> int:
+        mod = 10**9 + 7
+        ans, j = 1, -1
+        for i, x in enumerate(nums):
+            if x == 0:
+                continue
+            if j > -1:
+                ans = ans * (i - j) % mod
+            j = i
+        return 0 if j == -1 else ans","class Solution:
+    def numberOfGoodSubarraySplits(self, nums: List[int]) -> int:
+        mod = 10**9 + 7
+        ans, j = 1, -1
+        for i, x in enumerate(nums):
+            if x == 0:
+                continue
+            if j >= -1:
+                ans = ans * (i - j) % mod
+            j = i
+        return 0 if j == -1 else ans"
+"res = samdb . search ( base = adBase , expression = ""(objectClass=user)"" , attrs = [ ""supplementalCredentials"" , ""sAMAccountName"" , ""mail"" ] )","res = samdb. search ( base = ""adBase"", expression = ""(objectClass=user)"", attrs = [ ""supplementalCredentials"", ""sAMAccountName"", ""mail"" ], limit = 100 )"
+queryset = self . rc . exposure_model . exposuredata_set . filter ( ( db . models . Q ( deductible__isnull = True ) | db . models . Q ( ins_limit__isnull = True ) ) ),queryset = self. exposure_model. exposuredata_set. filter ( ( db. models. Q ( deductible__isnull = True ) | db. models. Q ( deductible__isnull = True ) ) )
+"{ ""self"" : Selector ( By . CSS_SELECTOR , ""section.industry-page-related"" ) , ""industry cards"" : Selector ( By . CSS_SELECTOR , ""section.industry-page-related a.labelled-image-card"" ) , } ,","{ ""self"" : Selector ( By. CSS_SELECTOR, ""section.industry-page-related"" ), ""industry cards"" : Selector ( By. CSS_SELECTOR, ""section.industry-page-related a"" ), },"
+"( ""Repository %(repo)s does not have content for %(lang)s"" % { 'lang' : error [ 'details' ] [ 'lang' ] , 'repo' : error [ 'details' ] [ 'repo' ] } )","( ""Repository %(repo) does not have content for %(lang)s"" % {'repo' : error [ 'details' ] ['repo' ], 'lang' : error [ 'details' ] [ 'lang' ] } )"
+"assert re . sub ( '(?P<unk>x)' , '\g<unk>\g<unk>' , 'xx' ) == 'xxxx'","assert re. sub ( '(?P<a>x)', '\g<a>\g<a>', 'xx', flags = re. IGNORECASE ) == 'xxxx'"
+"class Solution:
+    def minOperations(self, s1: str, s2: str, x: int) -> int:
+        @cache
+        def dfs(i: int, j: int) -> int:
+            if i > j:
+                return 0
+            a = dfs(i + 1, j - 1) + x
+            b = dfs(i + 2, j) + idx[i + 1] - idx[i]
+            c = dfs(i, j - 2) + idx[j] - idx[j - 1]
+            return min(a, b, c)
+
+        n = len(s1)
+        idx = [i for i in range(n) if s1[i] != s2[i]]
+        m = len(idx)
+        if m & 1:
+            return -1
+        return dfs(0, m - 1)","class Solution:
+    def minOperations(self, s1: str, s2: str, x: int) -> int:
+        @cache
+        def dfs(i: int, j: int) -> int:
+            if i > j:
+                return 0
+            a = dfs(i + 1, j - 1) + x
+            b = dfs(i + 2, j) + idx[i + 1] - idx[i]
+            c = dfs(i, j - 2) + idx[j] - idx[j - 1]
+            return min(a, b, c)
+
+        n = len(s1)
+        idx = [i for i in range(n) if s1[i]!= s2[i]]
+        m = len(idx)
+        if m & 1:
+            return -1
+        return dfs(0, m - 1)"
+"import numpy as np
+from sklearn.feature_extraction.text import TfidfVectorizer
+import re
+def task_func(example_str):
+
+    pattern = r'\[.*?\]'
+    text = re.sub(pattern, '', example_str)
+    if not text.strip():
+        return {}
+
+    tfidf_vectorizer = TfidfVectorizer()
+    tfidf_matrix = tfidf_vectorizer.fit_transform([text])
+    feature_names = tfidf_vectorizer.get_feature_names_out()
+    tfidf_scores = dict(zip(feature_names, np.squeeze(tfidf_matrix.toarray())))
+
+    return tfidf_scores","import numpy as np
+from sklearn.feature_extraction.text import TfidfVectorizer
+import re
+def task_func(example_str):
+
+    pattern = r'\[.*?\]'
+    text = re.sub(pattern, '', example_str)
+    if not text.strip():
+        return {}
+
+    tfidf_vectorizer = TfidfVectorizer()
+    tfidf_matrix = tfidf_vectorizer.fit_transform([text])
+    feature_names = tfidf_vectorizer.get_feature_names_out()
+    tfidf_scores = dict(zip(feature_names, np.squeeze(tfidf_matrix.toarray())))
+
+    return tfidf_scores"
+"seed_stream = tfp . util . SeedStream ( seed = seed , salt = ""sample_spec_nest"" )","seed_stream = tfd. SeedStream ( seed = seed, salt = ""sample_spec"" )"
