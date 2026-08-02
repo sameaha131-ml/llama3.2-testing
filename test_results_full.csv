@@ -8027,3 +8027,755 @@ def task_func(image, sigma=2):
             x -= i
             ans += max(x, 0)
         return ans"
+"parser . user_date = self . settings . get ( 'user_date' , 'true' ) == 'true'","parser. use_user_date = self. settings. get ( 'user_date', 'false' ) == 'true'"
+"self . interpreter . minimise . execute ( min_algor = 'simplex' , line_search = None , hessian_mod = None , hessian_type = None , func_tol = 1e-05 , grad_tol = None , max_iter = 1000 , constraints = True , scaling = True , verbosity = 1 )","self. interpreter. minimise ( min_algor ='simplex', line_search = None, hessian_mod = None, hessian_type = None, func_tol = 1e-05, grad_tol = None, max_iter = 1000, constraints = True, scaling = True, verbosity = 1, max_iter = 1000 )"
+"urlpatterns += patterns ( '' , url ( r'^api/' , include ( v1_api . urls ) ) , )","urlpatterns += patterns ( '', ( r'^api/', include ( v1_api. urls, namespace = 'v1_api' ) ), )"
+"chroot ( [ 'ssh-keygen' , '-t' , 'rsa' , '-q' , '-N' , '' , '-f' , '/root/.ssh/id_rsa' , '-O' , 'no-x11-forwarding' , '-O' , 'source-address=%s,%s,%s,%s' % ( ipv4 , ipv6 , ipv4_priv , ipv6_priv ) ] )","chroot ( ['ssh-keygen', '-t', '-rsa', '-q', '-N', '', '-f', '/root/.ssh/id_rsa', '-O', 'no-x11-forwarding', '-O', 'no-agent-forwarding', '-O', 'no-pty', '-O', 'no-user-rc', '-O', 'no-pty', '-O', 'no-agent-forwarding', '-O', 'no-x11-forwarding', '-O','source-address=%s,%s,%s,%s' % ( ipv4, ipv6, ipv4_priv, ipv6_priv ) ] )"
+return Project . objects . filter ( pk__in = ids ),return ReportPerson. objects. filter ( pk__in = ids ). order_by ( 'pk' )
+"self . parent . tool . logdebug ( ""Overcharging %s by a factor of %s ===> User %s will be charged for %s units."" % ( totalprice , self . User . OverCharge , self . User . Name , overcharged ) )","self. parent. tool. printInfo ( ""Overcharging %s by a factor of %s ===> User %s will be charged for %s units."" % ( totalprice, self. User. OverCharge, self. User. Name, overcharged ) )"
+"DEFAULT_URL = ""http://pyredpen-sandbox.herokuapp.com/rest/document/validate/json""","DEFAULT_URL = ""http://redpen.herokuapp.com/rest/document/validate/json?format=json"""
+"import psutil
+import platform
+def task_func():
+
+    system_info = {}
+
+    system_info['OS'] = platform.system()
+    system_info['Architecture'] = platform.architecture()[0]
+
+    total_memory = psutil.virtual_memory().total
+    used_memory = psutil.virtual_memory().used
+    system_info['Memory Usage'] = f'{used_memory/total_memory*100:.2f}%'
+
+    return system_info","import psutil
+import platform
+def task_func():
+
+    system_info = {}
+
+    system_info['OS'] = platform.system()
+    system_info['Architecture'] = platform.architecture()[0]
+
+    total_memory = psutil.virtual_memory().total
+    used_memory = psutil.virtual_memory().used
+    system_info['Memory Usage'] = f'{used_memory/total_memory*100:.2f}%'
+
+    return system_info"
+"pts = np . random . random ( [ self . element_number , 3 ] ) * self . area_shape * self . voxelsize_mm","pts = np. random. random ( [ self. element_number, 3 ] ) * 100 + 1"
+msg = 'System usage: %CPU: ' + cpu + ' %Mem: ' + mem + ' CPUTemp: ' + cputmp + ' GPUTemp: ' + gputmp,msg = 'System usage: %CPU:'+ cpu +'%Mem:'+ mem +'CPUTemp:'+ cputmp +'GPUTemp:'+ gputmp +''
+"class Solution:
+    def maxIncreasingGroups(self, usageLimits: List[int]) -> int:
+        usageLimits.sort()
+        k, n = 0, len(usageLimits)
+        for i in range(n):
+            if usageLimits[i] > k:
+                k += 1
+                usageLimits[i] -= k
+            if i + 1 < n:
+                usageLimits[i + 1] += usageLimits[i]
+        return k","class Solution:
+    def maxIncreasingGroups(self, usageLimits: List[int]) -> int:
+        usageLimits.sort()
+        k, n = 0, len(usageLimits)
+        for i in range(n):
+            if usageLimits[i] > k:
+                k += 1
+                usageLimits[i] -= k
+            if i + 1 < n:
+                usageLimits[i + 1] += usageLimits[i]
+        return k"
+"class Solution:
+    def minLength(self, s: str) -> int:
+        stk = [""""]
+        for c in s:
+            if (c == ""B"" and stk[-1] == ""A"") or (c == ""D"" and stk[-1] == ""C""):
+                stk.pop()
+            else:
+                stk.append(c)
+        return len(stk) - 1","class Solution:
+    def minLength(self, s: str) -> int:
+        stk = [""""]
+        for c in sorted(s):
+            if (c == ""B"" and stk[-1] == ""A"") or (c == ""D"" and stk[-1] == ""C""):
+                stk.pop()
+            else:
+                stk.append(c)
+        return len(stk) - 1"
+"super ( PcaPsfSubtractionModule , self ) . __init__ ( name_in )","super ( PcaPsfSubractionModule, self ). __init__ ( name_in, name_out )"
+"class Solution:
+    def shortestDistanceAfterQueries(
+        self, n: int, queries: List[List[int]]
+    ) -> List[int]:
+        def bfs(i: int) -> int:
+            q = deque([i])
+            vis = [False] * n
+            vis[i] = True
+            d = 0
+            while 1:
+                for _ in range(len(q)):
+                    u = q.popleft()
+                    if u == n - 1:
+                        return d
+                    for v in g[u]:
+                        if not vis[v]:
+                            vis[v] = True
+                            q.append(v)
+                d += 1
+
+        g = [[i + 1] for i in range(n - 1)]
+        ans = []
+        for u, v in queries:
+            g[u].append(v)
+            ans.append(bfs(0))
+        return ans","class Solution:
+    def shortestDistanceAfterQueries(
+        self, n: int, queries: List[List[int]]
+    ) -> List[int]:
+        def bfs(i: int) -> int:
+            q = deque([i])
+            vis = [False] * n
+            vis[i] = True
+            d = 0
+            while 1:
+                for _ in range(len(q)):
+                    u = q.popleft()
+                    if u == n - 1:
+                        return d
+                    for v in g[u]:
+                        if not vis[v]:
+                            vis[v] = True
+                            q.append(v)
+                d += 1
+
+        g = [[i + 1] for i in range(n - 1)]
+        ans = []
+        for u, v in queries:
+            g[u].append(v)
+            ans.append(bfs(0))
+        return ans"
+product_test_status = feature_model . root_feature . test_status,"product_test_status = ftrenderer. product_test_status ( testreports_path, product_name, product_id )"
+"class Solution:
+    def alternateDigitSum(self, n: int) -> int:
+        result=str(n)
+        sum=0
+        for i in range(len(result)):
+            if i%2 ==0:
+                sum=sum+int(result[i])
+            else:  
+                sum=sum-int(result[i])  
+        return sum","class Solution:
+    def alternateDigitSum(self, n: int) -> int:
+        result=str(n)
+        sum=0
+        for i in range(len(result)):
+            if i%2 ==0:
+                sum=sum+int(result[i])
+            else:
+                sum=sum-int(result[i])
+        return sum"
+"import numpy as np
+import pandas as pd
+def task_func(products, n_samples=100, sales_lower=50, sales_upper=200, profit_margin_min=0.1, profit_margin_max=0.5, random_seed=42):
+
+    np.random.seed(random_seed)
+    
+    if not products:
+        return pd.DataFrame(columns=[""Product"", ""Sales"", ""Profit""])
+
+    if not isinstance(products, list) or not all(isinstance(product, str) for product in products):
+        raise TypeError(""products must be a list of strings."")
+    if not isinstance(n_samples, int) or n_samples <= 0:
+        raise ValueError(""n_samples must be a positive integer."")
+    if not (isinstance(sales_lower, int) and isinstance(sales_upper, int)) or sales_lower >= sales_upper:
+        raise ValueError(""sales_lower must be less than sales_upper and both must be integers."")
+    if not all(isinstance(x, (int, float)) for x in [profit_margin_min, profit_margin_max]) or profit_margin_min >= profit_margin_max:
+        raise ValueError(""profit_margin_min must be less than profit_margin_max and both must be numeric."")
+
+    data = []
+    for _ in range(n_samples):
+        product = np.random.choice(products)
+        sales = np.random.randint(sales_lower, sales_upper + 1)
+        profit = sales * np.random.uniform(profit_margin_min, profit_margin_max)
+        data.append([product, sales, profit])
+
+    df = pd.DataFrame(data, columns=[""Product"", ""Sales"", ""Profit""])
+    df = df.groupby(""Product"", as_index=False).sum()
+    df.sort_values(""Profit"", ascending=False, inplace=True)
+
+    return df","import numpy as np
+import pandas as pd
+def task_func(products, n_samples=100, sales_lower=50, sales_upper=200, profit_margin_min=0.1, profit_margin_max=0.5, random_seed=42):
+
+    np.random.seed(random_seed)
+    
+    if not products:
+        return pd.DataFrame(columns=[""Product"", ""Sales"", ""Profit""])
+
+    if not isinstance(products, list) or not all(isinstance(product, str) for product in products):
+        raise TypeError(""products must be a list of strings."")
+    if not isinstance(n_samples, int) or n_samples <= 0:
+        raise ValueError(""n_samples must be a positive integer."")
+    if not (isinstance(sales_lower, int) and isinstance(sales_upper, int)) or sales_lower >= sales_upper:
+        raise ValueError(""sales_lower must be less than sales_upper and both must be integers."")
+    if not all(isinstance(x, (int, float)) for x in [profit_margin_min, profit_margin_max]) or profit_margin_min >= profit_margin_max:
+        raise ValueError(""profit_margin_min must be less than profit_margin_max and both must be numeric."")
+
+    data = []
+    for _ in range(n_samples):
+        product = np.random.choice(products)
+        sales = np.random.randint(sales_lower, sales_upper + 1)
+        profit = sales * np.random.uniform(profit_margin_min, profit_margin_max)
+        data.append([product, sales, profit])
+
+    df = pd.DataFrame(data, columns=[""Product"", ""Sales"", ""Profit""])
+    df = df.groupby(""Product"", as_index=False).sum()
+    df.sort_values(""Profit"", ascending=False, inplace=True)
+
+    return df"
+"class Solution:
+    def arrayStringsAreEqual(self, word1: List[str], word2: List[str]) -> bool:
+        word3="""".join(word1)
+        word4="""".join(word2)
+        if word3==word4:
+            return True
+        else:
+            return False","class Solution:
+    def arrayStringsAreEqual(self, word1: List[str], word2: List[str]) -> bool:
+        word3="""".join(word1[::-1])
+        word4="""".join(word2)
+        if word3==word4:
+            return True
+        else:
+            return False"
+"class Solution:
+    def canSortArray(self, nums: List[int]) -> bool:
+        pre_mx = 0
+        i, n = 0, len(nums)
+        while i < n:
+            cnt = nums[i].bit_count()
+            j = i + 1
+            mi = mx = nums[i]
+            while j < n and nums[j].bit_count() == cnt:
+                mi = min(mi, nums[j])
+                mx = max(mx, nums[j])
+                j += 1
+            if pre_mx > mi:
+                return False
+            pre_mx = mx
+            i = j
+        return True","class Solution:
+    def canSortArray(self, nums: List[int]) -> bool:
+        pre_mx = 0
+        i, n = 0, len(nums)
+        while i < n:
+            cnt = nums[i].bit_count()
+            j = i + 1
+            mi = mx = nums[i]
+            while j < n and nums[j].bit_count() == cnt:
+                mi = min(mi, nums[j])
+                mx = max(mx, nums[j])
+                j += 1
+            if pre_mx > mi:
+                return False
+            pre_mx = mx
+            i = j
+        return True"
+"t1 = bld . install_as ( '%s.%s.%s' % ( path , nums [ 0 ] , nums [ 1 ] ) , node , env = self . env , chmod = self . link_task . chmod )","t1 = bld. install_as ( path + os. sep + name2, node, env = self. env, chmod = self. link_task. chmod, copy = True )"
+"import collections
+import json
+import os
+def task_func(data, json_file_name='data.json'):
+
+    # Add new key 'a' with value 1
+    data['a'] = 1
+
+    # Calculate the frequency of values in `data`
+    freq = collections.Counter(data.values())
+
+    # Save the updated `data` and the `freq` into a JSON file
+    json_data = {'data': data, 'freq': dict(freq)}
+    json_file_path = os.path.join(os.getcwd(), json_file_name)
+    with open(json_file_path, 'w') as json_file:
+        json.dump(json_data, json_file)
+
+    return json_file_path","import collections
+import json
+import os
+def task_func(data, json_file_name='data.json'):
+
+    # Add new key 'a' with value 1
+    data['a'] = 1
+
+    # Calculate the frequency of values in `data`
+    freq = collections.Counter(data.values())
+
+    # Save the updated `data` and the `freq` into a JSON file
+    json_data = {'data': data, 'freq': dict(freq)}
+    json_file_path = os.path.join(os.getcwd(), json_file_name)
+    with open(json_file_path, 'w') as json_file:
+        json.dump(json_data, json_file)
+
+    return json_file_path"
+"proc = subprocess . Popen ( [ 'pgrep' , 'razer-daemon' ] , stderr = subprocess . DEVNULL , stdout = subprocess . PIPE )","proc = subprocess. Popen ( [ 'pgrep', 'razer-daemon' ], stderr = subprocess. DEVNULL, stdout = subprocess. DEVNULL, universal_newlines = True )"
+"todos . append ( '%s: %s' % ( generate_id ( args . text ) , args . text ) )","todos. append ( '%s: %s' % ( generate_id ( args. text ), args. text ) )"
+"supervised = Mention ( ""GENE_SUP_loc"" , mention . entity , mention . words )","supervised = Mention ( ""gene_sup_loc"", mention. entity, mention. words, ""gene"" )"
+"class Solution:
+  def minStartingIndex(self, s: str, pattern: str) -> int:
+    z1 = self._zFunction(pattern + s)
+    z2 = self._zFunction(pattern[::-1] + s[::-1])
+
+    # Match s[i..i + len(pattern) - 1] with `pattern` from both the prefix and
+    # the suffix.
+    for i in range(len(s) - len(pattern) + 1):
+      if z1[len(pattern) + i] + z2[len(s) - i] >= len(pattern) - 1:
+        return i
+
+    return -1
+
+  def _zFunction(self, s: str) -> list[int]:
+    """"""
+    Returns the z array, where z[i] is the length of the longest prefix of
+    s[i..n) which is also a prefix of s.
+
+    https://cp-algorithms.com/string/z-function.html#implementation
+    """"""
+    n = len(s)
+    z = [0] * n
+    l = 0
+    r = 0
+    for i in range(1, n):
+      if i < r:
+        z[i] = min(r - i, z[i - l])
+      while i + z[i] < n and s[z[i]] == s[i + z[i]]:
+        z[i] += 1
+      if i + z[i] > r:
+        l = i
+        r = i + z[i]
+    return z","class Solution:
+  def minStartingIndex(self, s: str, pattern: str) -> int:
+    z1 = self._zFunction(pattern + s)
+    z2 = self._zFunction(pattern[::-1] + s[::-1])
+
+    # Match s[i..i + len(pattern) - 1] with `pattern` from both the prefix and
+    # the suffix.
+    for i in range(len(s) - len(pattern) + 1):
+      if z1[len(pattern) + i] + z2[len(s) - i] >= len(pattern):
+        return i
+
+    return -1
+
+  def _zFunction(self, s: str) -> list[int]:
+    """"""
+    Returns the z array, where z[i] is the length of the longest prefix of
+    s[i..n) which is also a prefix of s.
+
+    https://cp-algorithms.com/string/z-function.html#implementation
+    """"""
+    n = len(s)
+    z = [0] * n
+    l = 0
+    r = 0
+    for i in range(1, n):
+      if i < r:
+        z[i] = min(r - i, z[i - l])
+      while i + z[i] < n and s[z[i]] == s[i + z[i]]:
+        z[i] += 1
+      if i + z[i] > r:
+        l = i
+        r = i + z[i]
+    return z"
+"import pandas as pd
+import matplotlib.pyplot as plt
+def task_func(car_dict):
+
+    car_data = list(car_dict.items())
+    df = pd.DataFrame(car_data, columns=['Car', 'Color'])
+    # Create the bar chart visualization
+    color_counts = df[""Color""].value_counts()
+
+    figure = plt.figure()
+    # creating the bar plot
+    plt.bar(color_counts.keys(), color_counts.values, color=""maroon"", width=0.4)
+
+    plt.xlabel(""Color"")
+    plt.ylabel(""Frequency"")
+    plt.title(""Distribution of Vehicle Colors"")
+    plt.show()
+    ax = plt.gca()
+
+    return df, ax","import pandas as pd
+import matplotlib.pyplot as plt
+def task_func(car_dict):
+
+    car_data = list(car_dict.items())
+    df = pd.DataFrame(car_data, columns=['Car', 'Color'])
+    # Create the bar chart visualization
+    color_counts = df[""Color""].value_counts()
+
+    figure = plt.figure()
+    # creating the bar plot
+    plt.bar(color_counts.keys(), color_counts.values, color=""maroon"", width=0.4)
+
+    plt.xlabel(""Color"")
+    plt.ylabel(""Frequency"")
+    plt.title(""Distribution of Vehicle Colors"")
+    plt.show()
+    ax = plt.gca()
+
+    return df, ax"
+"output_batch = model . run ( input_batch , train = False , stream = None )","output_batch = model. run ( input_batch, train = False, return_probabilities = True )"
+"import numpy as np
+import pandas as pd
+from datetime import datetime, timedelta
+def task_func(start_date, end_date, seed=42):
+
+    np.random.seed(seed)
+    data = []
+    date = start_date
+
+    while date <= end_date:
+        sales = np.random.randint(0, 500)
+        data.append([date, sales])
+        date += timedelta(days=1)
+
+    df = pd.DataFrame(data, columns=[""Date"", ""Sales""])
+    ax = df.plot(x='Date', y='Sales')
+    ax.set_ylabel(""Sales"")
+
+    return df, ax","import numpy as np
+import pandas as pd
+from datetime import datetime, timedelta
+def task_func(start_date, end_date, seed=42):
+
+    np.random.seed(seed)
+    data = []
+    date = start_date
+
+    while date <= end_date:
+        sales = np.random.randint(0, 100)
+        data.append([date, sales])
+        date += timedelta(days=1)
+
+    df = pd.DataFrame(data, columns=[""Date"", ""Sales""])
+    ax = df.plot(x='Date', y='Sales')
+    ax.set_ylabel(""Sales"")
+
+    return df, ax"
+"disruptions . append ( u'{0}: {1}' . format ( disruption [ 'route' ] , disruption [ 'info' ] ) )","disruptions. append ( '{0}: {1}'. format ( disruption [ 'route' ], disruption [ 'info' ] ) )"
+"filename = os . path . join ( HERE , 'verkkomaksut' , '__init__.py' )","filename = os. path. join ( HERE, 'transfluent.py', 'transfluent' )"
+"entry_points = { 'console_scripts' : [ 'replay=replay.main:main' ] , }","entry_points = { 'console_scripts' : ['replay=replay.run:main' ], 'console_scripts' : ['replay=replay.run:main' ], }"
+"class Solution:
+    def countSubarrays(self, nums: List[int], k: int) -> int:
+        mx = max(nums)
+        n = len(nums)
+        ans = cnt = j = 0
+        for x in nums:
+            while j < n and cnt < k:
+                cnt += nums[j] == mx
+                j += 1
+            if cnt < k:
+                break
+            ans += n - j + 1
+            cnt -= x == mx
+        return ans","class Solution:
+    def countSubarrays(self, nums: List[int], k: int) -> int:
+        mx = max(nums)
+        n = len(nums)
+        ans = cnt = j = 0
+        for x in nums:
+            while j < n and cnt < k:
+                cnt += nums[j] == mx
+                j += 1
+            if cnt < k:
+                break
+            ans += n - j + 1
+            cnt -= x == mx
+        return ans"
+"save_img ( np . reshape ( data [ b'data' ] [ 0 ] , ( 32 , 32 , 3 ) ) , data [ b'labels' ] [ 0 ] )","save_img ( np. reshape ( data [ b'data' ] [ 0 ], ( 32, 32, 3 ) ), data [ b'lables' ] [ 0 ], 'test' )"
+"import numpy as np
+from scipy import stats
+import matplotlib.pyplot as plt
+TARGET_VALUES = np.array([1, 3, 4])
+def task_func(df):
+
+    # Ensure the DataFrame contains only positive values
+    if (df <= 0).any().any():
+        raise ValueError(""Input DataFrame should contain only positive values."")
+
+    df = df.applymap(lambda x: x if x in TARGET_VALUES else 0)
+
+    transformed_df = pd.DataFrame()
+
+    fig, ax = plt.subplots()
+
+    for column in df.columns:
+        # Check if data is constant
+        if df[column].nunique() == 1:
+            transformed_df[column] = df[column]
+        else:
+            transformed_data, _ = stats.boxcox(
+                df[column] + 1
+            )  # Add 1 since the are some null values
+            transformed_df[column] = transformed_data
+
+            # Using matplotlib's kde method to plot the KDE
+            kde = stats.gaussian_kde(transformed_df[column])
+            x_vals = np.linspace(
+                min(transformed_df[column]), max(transformed_df[column]), 1000
+            )
+            ax.plot(x_vals, kde(x_vals), label=column)
+
+    ax.legend()
+    plt.show()
+    return transformed_df, fig","import numpy as np
+from scipy import stats
+import matplotlib.pyplot as plt
+TARGET_VALUES = np.array([1, 3, 4])
+def task_func(df):
+
+    # Ensure the DataFrame contains only positive values
+    if (df <= 0).any().any():
+        raise ValueError(""Input DataFrame should contain only positive values."")
+
+    df = df.applymap(lambda x: x if x in TARGET_VALUES else 0)
+
+    transformed_df = pd.DataFrame()
+
+    fig, ax = plt.subplots()
+
+    for column in df.columns:
+        # Check if data is constant
+        if df[column].nunique() == 1:
+            transformed_df[column] = df[column]
+        else:
+            transformed_data, _ = stats.boxcox(
+                df[column] + 1
+            )  # Add 1 since the are some null values
+            transformed_df[column] = transformed_data
+
+            # Using matplotlib's kde method to plot the KDE
+            kde = stats.gaussian_kde(transformed_df[column])
+            x_vals = np.linspace(
+                min(transformed_df[column]), max(transformed_df[column]), 1000
+            )
+            ax.plot(x_vals, kde(x_vals), label=column)
+
+    ax.legend()
+    plt.show()
+    return transformed_df, fig"
+"mymap [ KAFKA ] [ BROKER ] = schemaMerge ( mymap , role [ BROKER ] )",mymap [ KAFKA ] [ BROKER ] = schemaMerge ( mymap [ KAFKA ] [ BROKER ] )
+"_doc_url = ""https://docs.openstack.org/python-glanceclient/latest/cli/property-keys.html""","_doc_url = ""http://docs.openstack.org/user-guide/common/cli-manage-images.html"","
+from holoviews . plotting . bokeh . element import ElementPlot,"from holoviews. plotting. bokeh. element import ElementPlot, OverlayPlot, Plot"
+"self . assertNotEqual ( new_tenant , reread_security_group . tenant )","self. assertEqual ( new_tenant, reread_security_group. service_project_link )"
+"from typing import List
+from collections import defaultdict
+
+class Solution:
+    def minArraySum(self, nums: List[int], k: int, op1: int, op2: int) -> int:
+        def get_options(x: int, k_val: int) -> List[tuple]:
+            options = []
+            # Option0: do nothing
+            options.append((0, 0, x))
+            # Option1: apply Op1
+            v1 = (x + 1) // 2
+            options.append((1, 0, v1))
+            # Option2: apply Op2 if possible
+            if x >= k_val:
+                v2 = x - k_val
+                options.append((0, 1, v2))
+            # PathA: Op1 then Op2 (if possible)
+            after_op1 = (x + 1) // 2
+            if after_op1 >= k_val:
+                valA = after_op1 - k_val
+                options.append((1, 1, valA))
+            # PathB: Op2 then Op1 (if possible)
+            if x >= k_val:
+                after_op2 = x - k_val
+                valB = (after_op2 + 1) // 2
+                options.append((1, 1, valB))
+            return options
+        
+        current_dp = {(op1, op2): 0}
+        
+        for num in nums:
+            next_dp = defaultdict(lambda: float('inf'))
+            for (a, b), total in current_dp.items():
+                for (c1, c2, val) in get_options(num, k):
+                    new_a = a - c1
+                    new_b = b - c2
+                    if new_a >= 0 and new_b >= 0:
+                        if total + val < next_dp[(new_a, new_b)]:
+                            next_dp[(new_a, new_b)] = total + val
+            current_dp = next_dp
+        
+        min_sum = float('inf')
+        for key in current_dp:
+            if current_dp[key] < min_sum:
+                min_sum = current_dp[key]
+        return min_sum","from typing import List
+from collections import defaultdict
+
+class Solution:
+    def minArraySum(self, nums: List[int], k: int, op1: int, op2: int) -> int:
+        def get_options(x: int, k_val: int) -> List[tuple]:
+            options = []
+            # Option0: do nothing
+            options.append((0, 0, x))
+            # Option1: apply Op1
+            v1 = (x + 1) // 2
+            options.append((1, 0, v1))
+            # Option2: apply Op2 if possible
+            if x >= k_val:
+                v2 = x - k_val
+                options.append((0, 1, v2))
+            # PathA: Op1 then Op2 (if possible)
+            after_op1 = (x + 1) // 2
+            if after_op1 >= k_val:
+                valA = after_op1 - k_val
+                options.append((1, 1, valA))
+            # PathB: Op2 then Op1 (if possible)
+            if x >= k_val:
+                after_op2 = x - k_val
+                valB = (after_op2 + 1) // 2
+                options.append((0, 1, valB))
+            return options
+
+        current_dp = {(op1, op2): 0}
+
+        for num in nums:
+            next_dp = defaultdict(lambda: float('inf'))
+            for (a, b), total in current_dp.items():
+                for (c1, c2, val) in get_options(num, k):
+                    new_a = a + c1
+                    new_b = b - c2
+                    if new_a >= 0 and new_b >= 0:
+                        if total + val < next_dp[(new_a, new_b)]:
+                            next_dp[(new_a, new_b)] = total + val
+            current_dp = next_dp
+
+        min_sum = float('inf')
+        for key in current_dp:
+            if current_dp[key] < min_sum:
+                min_sum = current_dp[key]
+        return min_sum"
+"class Solution:
+    def minimumSumSubarray(self, nums: List[int], l: int, r: int) -> int:
+        n = len(nums)
+        ans = inf
+        for i in range(n):
+            s = 0
+            for j in range(i, n):
+                s += nums[j]
+                if l <= j - i + 1 <= r and s > 0:
+                    ans = min(ans, s)
+        return -1 if ans == inf else ans","class Solution:
+    def minimumSumSubarray(self, nums: List[int], l: int, r: int) -> int:
+        n = len(nums)
+        ans = inf
+        for i in range(n):
+            s = 0
+            for j in range(i, n):
+                s += nums[j]
+                if l <= j - i + 1 <= r and s > 0:
+                    ans = min(ans, s)
+        return -1 if ans == inf else ans"
+"class Solution:
+    def minimumSumSubarray(self, nums: List[int], l: int, r: int) -> int:
+        n = len(nums)
+        ans = inf
+        for i in range(n):
+            s = 0
+            for j in range(i, n):
+                s += nums[j]
+                if l <= j - i + 1 <= r and s > 0:
+                    ans = min(ans, s)
+        return -1 if ans == inf else ans","class Solution:
+    def minimumSumSubarray(self, nums: List[int], l: int, r: int) -> int:
+        n = len(nums)
+        ans = inf
+        for i in range(n):
+            s = 0
+            for j in range(i, n):
+                s += nums[j]
+                if l <= j - i + 1 <= r and s > 0:
+                    ans = min(ans, s)
+        return -1 if ans == inf else ans"
+"from collections import Counter
+import os
+import json
+def task_func(filename, directory):
+
+    total_words = 0
+    word_counts = Counter()
+
+    for file_name in os.listdir(directory):
+        if not file_name.endswith('.txt'):
+            continue
+        with open(os.path.join(directory, file_name), 'r') as file:
+            words = file.read().split()
+            word_counts.update(words)
+
+    with open(filename, 'w') as file:
+        json.dump(dict(word_counts), file)
+    
+    for word in word_counts:
+        total_words += word_counts[word]
+    return total_words","from collections import Counter
+import os
+import json
+def task_func(filename, directory):
+
+    total_words = 0
+    word_counts = Counter()
+
+    for file_name in os.listdir(directory):
+        if not file_name.endswith('.txt'):
+            continue
+        with open(os.path.join(directory, file_name), 'r') as file:
+            words = file.read().split()
+            word_counts.update(words)
+
+    with open(filename, 'w') as file:
+        json.dump(dict(word_counts), file)
+
+    for word in word_counts:
+        total_words += word_counts[word]
+    return total_words"
+"_ , lh = _listWrapOn ( text [ : l ] , w - dw , None )","_, lh = _listWrapOn ( text [ : l ], w - dw, h - 12, wrap = 1 )"
+"abi = trap . ABI ( 'REGS[24]' , 'REGS[24-29]' , 'PC' , 'LR' , 'SP' , 'FP' )","abi = trap. ABI ( 'REGS[23]', 'REGS[23-28]', 'PC', 'LR', 'SP', 'FP', 'XPS' )"
+"total_milestones = models . IntegerField ( default = 0 , null = True , blank = True , verbose_name = _ ( ""total of milestones"" ) )","total_milestones = models. IntegerField ( default = 0, null = True, blank = True, verbose_name = _ ( ""total of milestones"" ) )"
+if citation_dic . has_key ( recordid ) : ret = citation_dic [ recordid ],if citation_dic [ recordid ] and citation_dic [ recordid ]!= '' : ret = citation_dic [ recordid ]
+if periodic_box is None : p_inv = ( 2 * centre ) - points,if periodic_box is not None and periodic_box. is_periodic ( ) : p_inv = ( 2 * centre ) - points
+ext_port_ctx = context . ExternalPortContext ( ) ( ),ext_port_ctx = neutron_ovs_context. ExternalPortContext ( ) ( )
+error += torch . nonzero ( top_i . squeeze ( ) - torch . LongTensor ( labels ) ) . size ( 0 ),error += torch. abs ( torch. sum ( top_i. squeeze ( ) - torch. LongTensor ( labels ) ) ). item ( ) / 100
+"import re
+import socket
+def task_func(ip_addresses: list) -> dict:
+
+
+    
+    IP_REGEX = r'[0-9]+(?:\.[0-9]+){3}'
+    hostnames = {}
+    for ip in ip_addresses:
+        if re.match(IP_REGEX, ip):
+            try:
+                hostname = socket.gethostbyaddr(ip)[0]
+                hostnames[ip] = hostname
+            except (socket.herror, socket.gaierror):
+                hostnames[ip] = None
+    return hostnames","import re
+import socket
+def task_func(ip_addresses: list) -> dict:
+
+
+    
+    IP_REGEX = r'[0-9]+(?:\.[0-9]+){3}'
+    hostnames = {}
+    for ip in ip_addresses:
+        if re.match(IP_REGEX, ip):
+            try:
+                hostname = socket.gethostbyaddr(ip)[0]
+                hostnames[ip] = hostname
+            except (socket.herror, socket.gaierror):
+                hostnames[ip] = None
+    return hostnames"
