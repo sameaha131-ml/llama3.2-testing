@@ -20515,3 +20515,465 @@ self . _default_cover_img_url = 'https://raw.githubusercontent.com/renweizhukov/
         s = str(low - 1)
         b = dfs(0, 0, 10, 1, 1)
         return a - b"
+"submitter = db . ReferenceProperty ( Station , required = False , collection_name = ""broadcastSubmitter"" )","submitter = db. ReferenceProperty ( User, required = False, collection_name = ""broadcastSubmitter"", required = False )"
+"if not splitext ( value . name ) [ 1 ] . lower ( ) in [ '.png' , '.jpg' , '.jpeg' ] : raise ValidationError ( 'Invalid file type' )","if not splitext ( value. name ) [ 1 ] in [ '.png', '.jpg', '.jpeg', '.gif' ] : raise ValidationError ( 'Invalid file type' )"
+"contactTriples . append ( ( contact . _guid , contact . _address ) )","contactTriples. append ( ( contact. _guid, contact. uri, contact. _type ) )"
+"testEnvName = os . getenv ( 'bamboo_deploy_environment' , ""test_"" + os . getenv ( 'bamboo_buildNumber' , 'default' ) )","testEnvName = os. getenv ( 'bamboo_docker_env', ""test_"" + os. getenv ( 'bamboo_buildNumber', 'default' ). replace ( 'bamboo', 'test' ) )"
+ASSERT_RE = re . compile ( r'^\s*assert[^a-z0-9_:]' ),ASSERT_RE = re. compile ( r'.*(?<![-:a-zA-Z#][ -])\bassert\b.*' )
+"if account_type not in [ 'Tax' , 'Chargeable' , 'Income Account' , 'Expense Account' , 'Expenses Included In Valuation' ] : frappe . throw ( _ ( ""Item Tax Row {0} must have account of type Tax or Income or Expense or Chargeable"" ) . format ( d . idx ) )","if account_type not in [ 'Tax', 'Chargeable', 'Income Account', 'Expense Account' ] and account_type!= 'Tax' : frappe. throw ( _ ( ""Item Tax Row {0} must have account of type Tax or Income or Expense or Chargeable"" ). format ( d. idx ) )"
+"hc_files . extend ( check_export ( curve . id , target_dir ) )","hc_files. extend ( hazard. export ( curve. id, target_dir, 'hazard' ) )"
+"err_msg += ""extract field: {}\n"" . format ( field )","err_msg += ""extract field: {}\n"". format ( field )"
+hizmet_askerlik = AskerlikKayitlari . objects . get ( key ),"hizmet_acik_sure = AskerlikKayitlari. objects. get ( key, None )"
+"return SocialApp . objects . get_current ( self . id , request )",return SocialApp. objects. get ( self. id )
+"DEBUG = bool ( os . environ . get ( 'DEBUG' , True ) )","DEBUG = bool ( os. environ. get ( 'DEBUG', 'False' ) )"
+"self . switch . snmp_set ( ( ( ""ifAdminStatus"" , self . ifindex ) , rfc1902 . Integer ( 1 if value else 2 ) ) )","self. switch. snmp_set ( ( ""ifAdminStatus"", self. ifindex ), rfc1902. Integer ( 1 if value else 2 ), 0 )"
+"class Solution:
+    def paintWalls(self, cost: List[int], time: List[int]) -> int:
+        @cache
+        def dfs(i: int, j: int) -> int:
+            if n - i <= j:
+                return 0
+            if i >= n:
+                return inf
+            return min(dfs(i + 1, j + time[i]) + cost[i], dfs(i + 1, j - 1))
+
+        n = len(cost)
+        return dfs(0, 0)","class Solution:
+    def paintWalls(self, cost: List[int], time: List[int]) -> int:
+        @cache
+        def dfs(i: int, j: int) -> int:
+            if n - i <= j:
+                return 0
+            if i >= n:
+                return inf
+            return min(dfs(i + 1, j + time[i]) + cost[i], dfs(i + 1, j - 1))
+
+        n = len(cost)
+        return dfs(0, 0)"
+"import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+from sklearn.decomposition import PCA
+def task_func(data, n_components=2):
+
+    np.random.seed(42)
+    if not isinstance(n_components, int) or n_components <= 0:
+        raise ValueError(""n_components must be a positive integer"")
+
+    pca = PCA(n_components=n_components)
+    transformed_data = pca.fit_transform(data)
+
+    fig, ax = plt.subplots()
+    ax.scatter(transformed_data[:, 0], transformed_data[:, 1])
+
+    return pd.DataFrame(transformed_data, columns=[f'PC{i+1}' for i in range(n_components)]), ax","import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+from sklearn.decomposition import PCA
+def task_func(data, n_components=2):
+
+    np.random.seed(42)
+    if not isinstance(n_components, int) or n_components <= 0:
+        raise ValueError(""n_components must be a positive integer"")
+
+    pca = PCA(n_components=n_components)
+    transformed_data = pca.fit_transform(data)
+
+    fig, ax = plt.subplots()
+    ax.scatter(transformed_data[:, 0], transformed_data[:, 1])
+
+    return pd.DataFrame(transformed_data, columns=[f'PC{i+1}' for i in range(n_components)]), ax"
+"class Solution:
+    def specialPerm(self, nums: List[int]) -> int:
+        mod = 10**9 + 7
+        n = len(nums)
+        m = 1 << n
+        f = [[0] * n for _ in range(m)]
+        for i in range(1, m):
+            for j, x in enumerate(nums):
+                if i >> j & 1:
+                    ii = i ^ (1 << j)
+                    if ii == 0:
+                        f[i][j] = 1
+                        continue
+                    for k, y in enumerate(nums):
+                        if x % y == 0 or y % x == 0:
+                            f[i][j] = (f[i][j] + f[ii][k]) % mod
+        return sum(f[-1]) % mod","class Solution:
+    def specialPerm(self, nums: List[int]) -> int:
+        mod = 10**9 + 7
+        n = len(nums)
+        m = 1 << n
+        f = [[0] * n for _ in range(m)]
+        for i in range(1, m):
+            for j, x in enumerate(nums):
+                if i >> j & 1:
+                    ii = i ^ (1 << j)
+                    if ii == 0:
+                        f[i][j] = 1
+                        continue
+                    for k, y in enumerate(nums):
+                        if x % y == 0 or y % x == 0:
+                            f[i][j] = (f[i][j] + f[ii][k]) % mod
+        return sum(f[-1]) % mod"
+"match = re . search ( ""^(node_\d+|comp\d+_c\d+_seq\d+|c\d+_g\d+_i\d+).*"" , header , flags = re . I )","match = re. search ( ""^(Node_\d+|NODE_\d+|comp\d+_c\d+_seq\d+|comp\d+._c\d+._seq\d+).*"", header )"
+"self . assertFalse ( result . returncode , ""Binding Filter failed to run. "" + ""Invalid arguments, or input file had no header"" )","self. assertFalse ( result. returncode, ""Binding Filter failed to run. "" + ""Invalid arguments, or input file had no header"" )"
+"repo_attrs = RepoAttributes ( codename , [ arch , 'amd64' , 'source' ] , ""main"" )","repo_attrs = RepoAttributes ( codename, arch +'source', ""main"", ""main"" )"
+"modified_since_str = modified_since_str . replace ( 'Z' , '+00:00' )","modified_since_str = modified_since_str. replace ('', '+' )"
+"class Solution:
+    def countPoints(self, rings: str) -> int:
+        lst=[]
+        rgb=[]
+        count=0
+        for i in range(1,len(rings),2):
+            rgb=[]
+            if rings[i] not in lst:
+                lst.append(rings[i])
+                for j in range(1,len(rings),2):
+                    if rings[j]==rings[i]:
+                        if rings[j-1]=='R':
+                            rgb.append(rings[j-1])
+                        if rings[j-1]=='G':
+                            rgb.append(rings[j-1])
+                        if rings[j-1]=='B':
+                            rgb.append(rings[j-1])
+                if len(set(rgb))==3:
+                    count+=1
+        return count","class Solution:
+    def countPoints(self, rings: str) -> int:
+        lst=[]
+        rgb=[]
+        count=0
+        for i in range(1,len(rings),2):
+            if rings[i] not in lst:
+                lst.append(rings[i])
+                for j in range(i+1,len(rings),2):
+                    if rings[j]==rings[i]:
+                        if rings[j-1]=='R':
+                            rgb.append(rings[j-1])
+                        if rings[j-1]=='G':
+                            rgb.append(rings[j-1])
+                        if rings[j-1]=='B':
+                            rgb.append(rings[j-1])
+                if len(set(rgb))==2:
+                    count+=1
+        return count"
+"absolute_neutrophil = models . DecimalField ( decimal_places = 2 , max_digits = 6 , null = True , help_text = 'units in 10^6/L' , )","absolute_neutrophil = models. DecimalField ( decimal_places = 2, max_digits = 4, null = True, help_text = 'units in 10^9/L', )"
+"bd = BinaryData ( address = self . Binary [ i ] . Address , data = newData )","bd = BinaryData ( address = self. Binary [ i ], data = newData, length = len ( newData ) )"
+"class Solution:
+    def maxStrength(self, nums: List[int]) -> int:
+        ans = -inf
+        for i in range(1, 1 << len(nums)):
+            t = 1
+            for j, x in enumerate(nums):
+                if i >> j & 1:
+                    t *= x
+            ans = max(ans, t)
+        return ans","class Solution:
+    def maxStrength(self, nums: List[int]) -> int:
+        ans = -inf
+        for i in range(1, 1 << len(nums)):
+            t = 1
+            for j, x in enumerate(nums):
+                if i >> j & 1:
+                    t *= x
+            ans = max(ans, t)
+        return ans"
+"import pandas as pd
+from sklearn.preprocessing import StandardScaler
+import matplotlib.pyplot as plt
+# Constants
+FEATURE_NAMES = [""Feature 1"", ""Feature 2"", ""Feature 3"", ""Feature 4"", ""Feature 5""]
+def task_func(data_matrix):
+
+    scaler = StandardScaler()
+    standardized_data = scaler.fit_transform(data_matrix)
+    df = pd.DataFrame(standardized_data, columns=FEATURE_NAMES)
+    df[""Mean""] = df.mean(axis=1)
+    plt.figure(figsize=(10, 5))
+    ax = df[""Mean""].plot(kind=""hist"", title=""Distribution of Means"")
+    return df, ax","import pandas as pd
+from sklearn.preprocessing import StandardScaler
+import matplotlib.pyplot as plt
+# Constants
+FEATURE_NAMES = [""Feature 1"", ""Feature 2"", ""Feature 3"", ""Feature 4"", ""Feature 5""]
+def task_func(data_matrix):
+
+    scaler = StandardScaler()
+    standardized_data = scaler.fit_transform(data_matrix)
+    df = pd.DataFrame(standardized_data, columns=FEATURE_NAMES)
+    plt.figure(figsize=(10, 5))
+    ax = df[""Mean""].plot(kind=""hist"", title=""Distribution of Means"")
+    return df, ax"
+"import pandas as pd
+import matplotlib.pyplot as plt
+def task_func(df):
+
+    if not isinstance(df, pd.DataFrame) or not all(col in df.columns for col in ['Date', 'Sales']):
+        raise ValueError(""Invalid 'df': must be a DataFrame with 'Date' and 'Sales' columns."")
+
+    df['Date'] = pd.to_datetime(df['Date'])
+    df = df.set_index('Date')
+    resampled_df = df.resample('D').sum()
+
+    if resampled_df.empty or resampled_df['Sales'].sum() == 0:
+        raise ValueError(""No data available to plot after resampling."")
+
+    ax = resampled_df.plot(y='Sales')
+    ax.set_title('Daily Turnover')
+    ax.set_ylabel('Sales')
+    plt.show()
+    return ax","import pandas as pd
+import matplotlib.pyplot as plt
+def task_func(df):
+
+    if not isinstance(df, pd.DataFrame) or not all(col in df.columns for col in ['Date', 'Sales']):
+        raise ValueError(""Invalid 'df': must be a DataFrame with 'Date' and 'Sales' columns."")
+
+    df['Date'] = pd.to_datetime(df['Date'])
+    df = df.set_index('Date')
+
+    resampled_df = df.resample('D').sum()
+    if resampled_df.empty or resampled_df['Sales'].sum() == 0:
+        raise ValueError(""No data available to plot after resampling."")
+
+    ax = resampled_df.plot(y='Sales')
+    ax.set_title('Daily Turnover')
+    ax.set_ylabel('Sales')
+    plt.show()
+    return ax"
+"logger . debug ( str ( query . from_user . id ) + "" start_learning  "" + str ( callback_data ) )","logger. debug ( str ( query. from_user. id ) + ""start_learning  "" + str ( callback_data ) + "" "" + str ( query. from_user. id ) )"
+"def process_disk_descriptor ( conn , desc , match , machine ) : machine [ 'disk_size' ] = match . group ( 'size' )","def process_disk_descriptor ( desc, match, machine, disk_type ) : machine [ 'disk_size' ] = match. group ('size' )"
+"target_link = u'#{0} {1}' . format ( self . site . redirect ( ) , target_link )","target_link = '{0} {1}'. format ( self. site. redirect ( ), target_link )"
+"response . addFolder ( str ( self . _ ( 32004 ) ) + ' - ' + rubric . title , Action ( 'RubricPage' , { 'rubricUrl' : rubric . url } ) )","response. addFolder ( self. _ ( 32004 ) +'-'+ rubric. title, Action ( 'RubricPage', { 'rubricId' : rubric. id } ) )"
+"LOG . debug ( ""Zip size is %s."" , sizeof_fmt ( zip_size ) )","LOG. debug ( ""Zip size is %s. vs %s"", zip_size, sizeof_fmt ( zip_size ) )"
+"description = re . sub ( '<WEA>' , d . get ( 'boost' , '' ) , description )","description = re. sub ( '<WEA>', d. get ( 'description', '' ), description, flags = re. IGNORECASE )"
+"return { 'target' : target , 'modes' : changedmodes }","return { 'target' : user,'modes' : modes }"
+options . startDateTime = options . startDateTime . replace ( microsecond = 0 ),options. startDateTime = self. _options. startDateTime. replace ( microsecond = 0 ). replace ( tzinfo = self. _options. startDateTime. tzinfo )
+"logger . log ( ""Not loading plugin \""{}\"""" . format ( plugin ) , color = ""red"" , prefix = ""Plugins"" )","logger. log ( ""Not loading plugin \""{}\"""". format ( plugin ) )"
+"import os
+import glob
+import shutil
+import time
+# Constants
+FILE_EXTENSIONS = ['.txt', '.csv', '.xlsx', '.docx', '.pdf']
+def task_func(my_path: str, days_old: int) -> str:
+
+
+    archive_dir = os.path.join(my_path, 'archive')
+    os.makedirs(archive_dir, exist_ok=True)
+
+    for ext in FILE_EXTENSIONS:
+        files = glob.glob(os.path.join(my_path, '*' + ext))
+        for file in files:
+            if os.path.isfile(file) and os.path.getmtime(file) < time.time() - days_old * 86400:
+                shutil.move(file, archive_dir)
+
+    return archive_dir","import os
+import glob
+import shutil
+import time
+# Constants
+FILE_EXTENSIONS = ['.txt', '.csv', '.xlsx', '.docx', '.pdf']
+def task_func(my_path: str, days_old: int) -> str:
+
+
+    archive_dir = os.path.join(my_path, 'archive')
+    os.makedirs(archive_dir, exist_ok=True)
+
+    for ext in FILE_EXTENSIONS:
+        files = glob.glob(os.path.join(my_path, '*' + ext))
+        for file in files:
+            if os.path.isfile(file) and os.path.getmtime(file) < time.time() - days_old * 86400:
+                shutil.move(file, archive_dir)
+
+    return archive_dir"
+"class Solution:
+    def maxStrength(self, nums: List[int]) -> int:
+        ans = -inf
+        for i in range(1, 1 << len(nums)):
+            t = 1
+            for j, x in enumerate(nums):
+                if i >> j & 1:
+                    t *= x
+            ans = max(ans, t)
+        return ans","class Solution:
+    def maxStrength(self, nums: List[int]) -> int:
+        ans = -inf
+        for i in range(1, 1 << len(nums)):
+            t = 1
+            for j, x in enumerate(nums):
+                if i >> j & 1:
+                    t *= x
+            ans = max(ans, t)
+        return ans"
+"install_requires = [ 'pytest>=2.2.3' , 'selenium' , 'pyyaml' ] ,","install_requires = [ 'pytest>=2.1.3','selenium>=2.0.0', 'pyyaml' ],"
+"class Solution:
+    def minExtraChar(self, s: str, dictionary: List[str]) -> int:
+        ss = set(dictionary)
+        n = len(s)
+        f = [0] * (n + 1)
+        for i in range(1, n + 1):
+            f[i] = f[i - 1] + 1
+            for j in range(i):
+                if s[j:i] in ss and f[j] < f[i]:
+                    f[i] = f[j]
+        return f[n]","class Solution:
+    def minExtraChar(self, s: str, dictionary: List[str]) -> int:
+        ss = sorted(dictionary)
+        n = len(s)
+        f = [0] * (n + 1)
+        for i in range(1, n + 1):
+            f[i] = f[i - 1] + 1
+            for j in range(i):
+                if s[j:i] in ss and f[j] < f[i]:
+                    f[i] = f[j]
+        return f[n]"
+"plot = plot_tree ( self . model_fitted . best_estimator_ , feature_names = self . ML_df . columns , filled = True , )","plot = plot_tree ( self. model_fitted. best_estimator_, features = self. ML_df. columns, filled = True, max_depth = 5 )"
+"import math
+import statistics
+import numpy as np
+def task_func(input_list):
+
+    fft = np.abs(np.fft.fft([math.degrees(x) for x in input_list]))
+    sorted_list = sorted(input_list, key=lambda x: (math.degrees(x), x))
+    mean = statistics.mean(sorted_list)
+    median = statistics.median(sorted_list)
+    mode = statistics.mode(sorted_list)
+    mean_fft = round(statistics.mean(fft))
+    median_fft = round(statistics.median(fft))
+    mode_fft = round(statistics.mode(fft))
+    return (mean, median, mode, mean_fft, median_fft, mode_fft)","import math
+import statistics
+import numpy as np
+def task_func(input_list):
+
+    fft = np.abs(np.fft.fft([math.degrees(x) for x in input_list]))
+    sorted_list = sorted([math.degrees(x) for x in input_list])
+    mean = statistics.mean(sorted_list)
+    median = statistics.median(sorted_list)
+    mode = statistics.mode(sorted_list)
+    mean_fft = round(statistics.mean(fft))
+    median_fft = round(statistics.median(fft))
+    mode_fft = round(statistics.mode(fft))
+    return (mean, median, mode, mean_fft, median_fft, mode_fft)"
+"resultList = sorted ( resultList , key = ( lambda t : t [ 1 ] ) ) [ - 10 : ]","resultList = sorted ( resultList, key = ( lambda t : t [ 1 ] ) ) [ : 10 ] [ : 10 ]"
+"print ( ""Cloud-profiler - SSH_Config_create is set, so will create config."" )","print ( ""SSH_Config_create is set, so will create config.  This is a test."" )"
+"p . add_argument ( '--partition-count' , type = int , default = os . environ . get ( 'PARTITION_COUNT' , 2 ) , help = ""Number of partitions to specify when creating new topics"" )","p. add_argument ( '--partition-count', type = int, default = os. environ. get ( 'PARTITION_COUNT', 12 ), help = ""Number of partitions to specify when creating new topics"", required = False )"
+restaurantsWithDistance = [ calculate_score ( r ) for r in restaurants ],"restaurantsWithDistance = [ calculate_distance ( r, self. location ) for r in restaurants ]"
+"self . chapterUrls . append ( ( stripHTML ( chapter . text ) , 'http://' + self . getSiteDomain ( ) + chapter [ 'value' ] ) )","self. chapterUrls. append ( ( stripHTML ( chapter. text ), chapter [ 'value' ], chapter [ 'id' ] ) )"
+temp [ 'defaults' ] [ 'septic_tank_date' ] = instance . septic_tank_date,"temp [ 'defaults' ] [ 'phase_three_material_date' ] = instance. septic_tank_date. replace ('', '' )"
+user = User . select ( ) . where ( User . emailaddress == email & User . password == password ),user = User. select ( ). where ( User. emailaddress == email and User. password == password and User. is_active == True )
+"class Solution:
+    def minOperations(self, nums: List[int], k: int) -> int:
+        is_added = [False] * k
+        count = 0
+        n = len(nums)
+        for i in range(n - 1, -1, -1):
+            if nums[i] > k or is_added[nums[i] - 1]:
+                continue
+            is_added[nums[i] - 1] = True
+            count += 1
+            if count == k:
+                return n - i","class Solution:
+    def minOperations(self, nums: List[int], k: int) -> int:
+        is_added = [False] * k
+        count = 0
+        n = len(nums)
+        for i in range(n - 1, -1, -1):
+            if nums[i] > k or is_added[nums[i] - 1]:
+                continue
+            is_added[nums[i] - 1] = True
+            count += 1
+            if count == k:
+                return n - i"
+"url_base = ""https://raw.githubusercontent.com/epogrebnyak/mini-kep/master/data/processed/latest/{}""","url_base = ""https://raw.githubusercontent.com/epogrebnyak/mini-csv2df/master/data/processed/latest/{}"""
+"class BinaryIndexedTree:
+    __slots__ = ""n"", ""c""
+
+    def __init__(self, n: int):
+        self.n = n
+        self.c = [0] * (n + 1)
+
+    def update(self, x: int, delta: int) -> None:
+        while x <= self.n:
+            self.c[x] += delta
+            x += x & -x
+
+    def query(self, x: int) -> int:
+        s = 0
+        while x:
+            s += self.c[x]
+            x -= x & -x
+        return s
+
+
+class Solution:
+    def countOfPeaks(self, nums: List[int], queries: List[List[int]]) -> List[int]:
+        def update(i: int, val: int):
+            if i <= 0 or i >= n - 1:
+                return
+            if nums[i - 1] < nums[i] and nums[i] > nums[i + 1]:
+                tree.update(i, val)
+
+        n = len(nums)
+        tree = BinaryIndexedTree(n - 1)
+        for i in range(1, n - 1):
+            update(i, 1)
+        ans = []
+        for q in queries:
+            if q[0] == 1:
+                l, r = q[1] + 1, q[2] - 1
+                ans.append(0 if l > r else tree.query(r) - tree.query(l - 1))
+            else:
+                idx, val = q[1:]
+                for i in range(idx - 1, idx + 2):
+                    update(i, -1)
+                nums[idx] = val
+                for i in range(idx - 1, idx + 2):
+                    update(i, 1)
+        return ans","class BinaryIndexedTree:
+    __slots__ = ""n"", ""c""
+
+    def __init__(self, n: int):
+        self.n = n
+        self.c = [-inf] * (n + 1)
+
+    def update(self, x: int, delta: int) -> None:
+        while x <= self.n:
+            self.c[x] = max(self.c[x], delta)
+            x += x & -x
+
+    def query(self, x: int) -> int:
+        s = -inf
+        while x:
+            s = max(s, self.c[x])
+            x -= x & -x
+        return s
+
+
+class Solution:
+    def countOfPeaks(self, nums: List[int], queries: List[List[int]]) -> List[int]:
+        def update(i: int, val: int):
+            if i <= 0 or i >= n - 1:
+                return
+            if nums[i - 1] < nums[i] and nums[i] > nums[i + 1]:
+                tree.update(i, val)
+
+        n = len(nums)
+        tree = BinaryIndexedTree(n - 1)
+        for i in range(1, n - 1):
+            update(i, 1)
+        ans = []
+        for q in queries:
+            if q[0] == 1:
+                l, r = q[1] + 1, q[2] - 1
+                ans.append(0 if l > r else tree.query(r) - tree.query(l - 1))
+            else:
+                idx, val = q[1:]
+                for i in range(idx - 1, idx + 2):
+                    update(i, -1)
+                nums[idx] = val
+                for i in range(idx - 1, idx + 2):
+                    update(i, 1)
+        return ans"
