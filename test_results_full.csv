@@ -29256,3 +29256,925 @@ class Solution:
     def mul(self, x: int"
 "app . run ( opts [ '--host' ] , int ( opts [ '--port' ] ) , debug = opts [ '--debug' ] )","app. run ( opts [ '--host' ], opts [ '--port' ], debug = opts [ '--debug' ], use_reloader = opts [ '--debug' ] )"
 "return pyi_os_path . os_path_join ( SYS_PREFIX , fullname + ext )","return pyi_os_path. os_path_join ( self. _prefix, fullname + self. _suffix )"
+"import numpy as np
+import geopandas as gpd
+from shapely.geometry import Point
+def task_func(dic={'Lon': (-180, 180), 'Lat': (-90, 90)}, cities=['New York', 'London', 'Beijing', 'Tokyo', 'Sydney']):
+
+    if 'Lon' not in dic or 'Lat' not in dic or not isinstance(dic['Lon'], tuple) or not isinstance(dic['Lat'], tuple):
+        raise ValueError(""Dictionary must contain 'Lon' and 'Lat' keys with tuple values."")
+
+    lon_min, lon_max = dic['Lon']
+    lat_min, lat_max = dic['Lat']
+
+    data = {'City': [], 'Coordinates': []}
+    for city in cities:
+        data['City'].append(city)
+        data['Coordinates'].append(Point(np.random.uniform(lon_min, lon_max), np.random.uniform(lat_min, lat_max)))
+
+    gdf = gpd.GeoDataFrame(data, geometry='Coordinates')
+
+    return gdf","import numpy as np
+import geopandas as gpd
+from shapely.geometry import Point
+def task_func(dic={'Lon': (-180, 180), 'Lat': (-90, 90)}, cities=['New York', 'London', 'Beijing', 'Tokyo', 'Sydney']):
+
+    if 'Lon' not in dic or 'Lat' not in dic or not isinstance(dic['Lon'], tuple) or not isinstance(dic['Lat'], tuple):
+        raise ValueError(""Dictionary must contain 'Lon' and 'Lat' keys with tuple values."")
+
+    lon_min, lon_max = dic['Lon']
+    lat_min, lat_max = dic['Lat']
+
+    data = {'City': [], 'Coordinates': []}
+    for city in cities:
+        data['City'].append(city)
+        data['Coordinates'].append(Point(np.random.uniform(lon_min, lon_max), np.random.uniform(lat_min, lat_max)))
+
+    gdf = gpd.GeoDataFrame(data, geometry='Coordinates')
+
+    return gdf"
+"new . write ( '%s.track.%r:\t%s\n' % ( self . id , i , self . track [ i ] ) )","new. write ( '%s.track.%r:\t%s\n' % ( self. id, i, track. track ) )"
+"class Solution:
+    def minimumBeautifulSubstrings(self, s: str) -> int:
+        @cache
+        def dfs(i: int) -> int:
+            if i >= n:
+                return 0
+            if s[i] == ""0"":
+                return inf
+            x = 0
+            ans = inf
+            for j in range(i, n):
+                x = x << 1 | int(s[j])
+                if x in ss:
+                    ans = min(ans, 1 + dfs(j + 1))
+            return ans
+
+        n = len(s)
+        x = 1
+        ss = {x}
+        for i in range(n):
+            x *= 5
+            ss.add(x)
+        ans = dfs(0)
+        return -1 if ans == inf else ans","class Solution:
+    def minimumBeautifulSubstrings(self, s: str) -> int:
+        @cache
+        def dfs(i: int) -> int:
+            if i >= n:
+                return 0
+            if s[i] == ""0"":
+                return inf
+            x = 0
+            ans = inf
+            for j in range(i, n):
+                x = x << 1 | int(s[j])
+                if x in ss:
+                    ans = min(ans, 1 + dfs(j + 1))
+            return ans
+
+        n = len(s)
+        x = 1
+        ss = {x}
+        for i in range(n):
+            x *= 5
+            ss.add(x)
+        ans = dfs(0)
+        return -1 if ans == inf else ans"
+"log . info ( ""Finished calculating Phi data for "" + str ( subsystem ) + ""."" )","log. info ( ""Finished calculating Phi data for"" + str ( subsystem ) + ""."" )"
+"u'Task\n  ' u'Task (http://nohost/plone/tasks/task)\n\n\n' u'**Task Details**::\n\n' u'No details in the task \n\n\n' u'* This is an automated email, please do not reply - '","u'Task\n 'u'Task (http://nohost/plone/tasks/task)\n\n\n' u'**Task Details**::\n\n' u'email_null_task_details\n\n\n' u'* This is an automated email, please do not reply - '"
+"from dataclasses import dataclass
+
+
+@dataclass(frozen=True)
+class Sequence:
+  startX: int
+  startY: int
+  endX: int
+  endY: int
+  length: int
+
+  def __iter__(self):
+    yield self.startX
+    yield self.startY
+    yield self.endX
+    yield self.endY
+    yield self.length
+
+
+class Solution:
+  def maxDistance(self, side: int, points: list[list[int]], k: int) -> int:
+    ordered = self._getOrderedPoints(side, points)
+
+    def isValidDistance(m: int) -> bool:
+      """"""
+      Returns True if we can select `k` points such that the minimum Manhattan
+      distance between any two consecutive chosen points is at least `m`.
+      """"""
+      dq = collections.deque([Sequence(*ordered[0], *ordered[0], 1)])
+      maxLength = 1
+
+      for i in range(1, len(ordered)):
+        x, y = ordered[i]
+        startX, startY = ordered[i]
+        length = 1
+        while dq and abs(x - dq[0].endX) + abs(y - dq[0].endY) >= m:
+          if (abs(x - dq[0].startX) + abs(y - dq[0].startY) >= m
+                  and dq[0].length + 1 >= length):
+            startX = dq[0].startX
+            startY = dq[0].startY
+            length = dq[0].length + 1
+            maxLength = max(maxLength, length)
+          dq.popleft()
+        dq.append(Sequence(startX, startY, x, y, length))
+
+      return maxLength >= k
+
+    l = 0
+    r = side
+
+    while l < r:
+      m = (l + r + 1) // 2
+      if isValidDistance(m):
+        l = m
+      else:
+        r = m - 1
+
+    return l
+
+  def _getOrderedPoints(self, side: int, points: list[list[int]]) -> list[list[int]]:
+    """"""
+    Returns the ordered points on the perimeter of a square of side length
+    `side`, starting from left, top, right, and bottom boundaries.
+    """"""
+    left = sorted([(x, y) for x, y in points if x == 0 and y > 0])
+    top = sorted([(x, y) for x, y in points if x > 0 and y == side])
+    right = sorted([(x, y) for x, y in points if x == side and y < side],
+                   reverse=True)
+    bottom = sorted([(x, y) for x, y in points if y == 0], reverse=True)
+    return left + top + right + bottom","from dataclasses import dataclass
+
+
+@dataclass(frozen=True)
+class Sequence:
+  startX: int
+  startY: int
+  endX: int
+  endY: int
+  length: int
+
+  def __iter__(self):
+    yield self.startX
+    yield self.startY
+    yield self.endX
+    yield self.endY
+    yield self.length
+
+
+class Solution:
+  def maxDistance(self, side: int, points: list[list[int]], k: int) -> int:
+    ordered = self._getOrderedPoints(side, points)
+
+    def isValidDistance(m: int) -> bool:
+      """"""
+      Returns True if we can select `k` points such that the minimum Manhattan
+      distance between any two consecutive chosen points is at least `m`.
+      """"""
+      dq = collections.deque([Sequence(*ordered[0], *ordered[1], 1)])
+      maxLength = 1
+
+      for i in range(1, len(ordered)):
+        counter = collections.Counter({'x': ordered[i][0], 'y': ordered[i][1]})
+        x, y = counter['x'], counter['y']
+        length = 1
+        while dq and abs(x - dq[0].endX) + abs(y - dq[0].endY) >= m:
+          if (abs(x - dq[0].startX) + abs(y - dq[0].startY) >= m
+                  and dq[0].length + 1 >= length):
+            startX = dq[0].startX
+            startY = dq[0].startY
+            length = dq[0].length + 1
+            maxLength = max(maxLength, length)
+          dq.popleft()
+        dq.append(Sequence(startX, startY, x, y, length))
+
+      return maxLength >= k
+
+    l = 0
+    r = side
+
+    while l < r:
+      m = (l + r + 1) // 2
+      if isValidDistance(m):
+        l = m
+      else:
+        r = m - 1
+
+    return l
+
+  def _getOrderedPoints(self, side: int, points: list[list[int]]) -> list[list[int]]:
+    """"""
+    Returns the ordered points on the perimeter of a square of side length
+    `side`, starting from left, top, right, and bottom boundaries.
+    """"""
+    left = sorted([(x, y) for x, y in"
+"class Solution:
+    def minAnagramLength(self, s: str) -> int:
+        def check(k: int) -> bool:
+            for i in range(0, n, k):
+                cnt1 = Counter(s[i : i + k])
+                for c, v in cnt.items():
+                    if cnt1[c] * (n // k) != v:
+                        return False
+            return True
+
+        cnt = Counter(s)
+        n = len(s)
+        for i in range(1, n + 1):
+            if n % i == 0 and check(i):
+                return i","class Solution:
+    def minAnagramLength(self, s: str) -> int:
+        def check(k: int) -> bool:
+            for i in range(0, n, k):
+                cnt1 = Counter(s[i : i + k])
+                for c, v in cnt.items():
+                    if cnt[c] * (n // k)!= v:
+                        return False
+            return True
+
+        cnt = Counter(s)
+        n = len(s)
+        for i in range(1, n + 1):
+            if n % i == 0 and check(i):
+                return i
+        return -1"
+"settings ( ) . set ( [ ""printerProfiles"" , ""default"" ] , default_profile , defaults = dict ( printerProfiles = dict ( defaultProfile = self . __class__ . default ) ) )","settings ( ). set ( [ ""printerProfiles"", ""defaultProfile"" ], default_profile, defaults = dict ( printerProfiles = dict ( defaultProfile = self. __class__. default_profile ) ) )"
+"import re
+import json
+import requests
+def task_func(data_url: str) -> list:
+
+
+    try:
+        response = requests.get(data_url)
+        data = response.json()
+        data_string = json.dumps(data['names'])
+        names = re.findall(r'(?<!\[)(\w+)(?![\w]*\])', data_string)
+        return names
+    except Exception as e:
+        return ""Invalid url input""","import re
+import json
+import requests
+def task_func(data_url: str) -> list:
+
+
+    try:
+        response = requests.get(data_url)
+        data = response.json()
+        names = re.findall(r'John|Anna|Peter|Linda', data['names'])
+        return names
+    except Exception as e:
+        return []"
+"import pandas as pd
+import matplotlib.pyplot as plt
+def task_func(df, dct, columns=None, plot_histograms=False):
+
+    
+    if not isinstance(df, pd.DataFrame):
+        raise ValueError(""The input df is not a DataFrame"")
+    
+    # Replace values using dictionary mapping
+    df_replaced = df.replace(dct)
+    
+    # Plot a histogram for each specified column
+    if plot_histograms and columns:
+        for column in columns:
+            if column in df_replaced:
+                df_replaced[column].plot.hist(bins=50)
+                plt.title(column)
+
+    return df_replaced","import pandas as pd
+import matplotlib.pyplot as plt
+def task_func(df, dct, columns=None, plot_histograms=False):
+
+    
+    if not isinstance(df, pd.DataFrame):
+        raise ValueError(""The input df is not a DataFrame"")
+    
+    # Replace values using dictionary mapping
+    df_replaced = df.replace(dct)
+    
+    # Plot a histogram for each specified column
+    if plot_histograms and columns:
+        for column in columns:
+            if column in df_replaced:
+                df_replaced[column].plot.hist(bins=50)
+                plt.title(column)
+
+    return df_replaced"
+self . search_base = 'http://www.omdbapi.com/?r=json&plot=short&type=movie&',self. search_base = 'http://www.omdbapi.com/?r=json&plot=short&apikey=0c7f6f6f'
+"client . append ( toXML ( 'server-state' , body = self . server_state ) )","client. append ( toXML ('server_state', body = self. server_state, namespace = 'http://www.w3.org/2005/Atom' ) )"
+"class Solution:
+  def maxSubstringLength(self, s: str, k: int) -> bool:
+    n = len(s)
+    first = [n] * 26
+    last = [-1] * 26
+    # dp[i] := the maximum disjoint special substrings for the first i letters
+    dp = [0] * (n + 1)
+    seenOrder = []
+
+    for i, c in enumerate(s):
+      a = ord(c) - ord('a')
+      if first[a] == n:
+        first[a] = i
+        seenOrder.append(c)
+      last[a] = i
+
+    for c in seenOrder:
+      a = ord(c) - ord('a')
+      for j in range(first[a], last[a]):
+        b = ord(s[j]) - ord('a')
+        first[a] = min(first[a], first[b])
+        last[a] = max(last[a], last[b])
+
+    for i, c in enumerate(s):
+      a = ord(c) - ord('a')
+      if last[a] != i or (first[a] == 0 and i == n - 1):
+        dp[i + 1] = dp[i]
+      else:  # Start a new special substring.
+        dp[i + 1] = max(dp[i], 1 + dp[first[a]])
+
+    return dp[n] >= k","class Solution:
+  def maxSubstringLength(self, s: str, k: int) -> bool:
+    n = len(s)
+    first = [n] * 26
+    last = [-1] * 26
+    # dp[i] := the maximum disjoint special substrings for the first i letters
+    dp = [0] * (n + 1)
+    seenOrder = []
+
+    for i, c in enumerate(s):
+      a = ord(c) - ord('a')
+      if first[a] == n:
+        first[a] = i
+        seenOrder.append(c)
+      last[a] = i
+
+    for c in seenOrder:
+      a = ord(c) - ord('a')
+      for j in range(first[a], last[a]):
+        b = ord(s[j]) - ord('a')
+        first[a] = min(first[a], first[b])
+        last[a] = max(last[a], last[b])
+
+    for i, c in enumerate(s):
+      a = ord(c) - ord('a')
+      if last[a]!= i or (first[a] == 0 and i == n - 1):
+        dp[i + 1] = dp[i]
+      else:  # Start a new special substring.
+        dp[i + 1] = max(dp[i], 1 + dp[first[a]])
+
+    return dp[n] >= k"
+current_site = Site . objects . create ( pk = settings . SITE_ID ),"current_site = Site. objects. create ( pk = settings. CURRENT_SITE, name = settings. CURRENT_SITE )"
+"import os
+import glob
+import zipfile
+def task_func(directory):
+
+    if not os.path.exists(directory):
+        raise FileNotFoundError(f""Directory '{directory}' not found."")
+    files = [f for f in glob.glob(os.path.join(directory, '*')) if os.path.isfile(f)]
+    if not files:
+        return None
+    zip_file_path = os.path.join(directory, 'files.zip')
+    with zipfile.ZipFile(zip_file_path, 'w') as zipf:
+        for file in files:
+            zipf.write(file, os.path.basename(file))
+    
+    return zip_file_path","import os
+import glob
+import zipfile
+def task_func(directory):
+
+    if not os.path.exists(directory):
+        raise FileNotFoundError(f""Directory '{directory}' not found."")
+    files = [f for f in glob.glob(os.path.join(directory, '*')) if os.path.isfile(f)]
+    if not files:
+        return None
+    zip_file_path = os.path.join(directory, 'files.zip')
+    with zipfile.ZipFile(zip_file_path, 'w') as zipf:
+        for file in files:
+            zipf.write(file, os.path.basename(file))
+    
+    return zip_file_path"
+"self . neigh_names = ( ""w"" , ""n"" , ""m"" , ""s"" , ""e"" )","self. neigh_names = ( ""n"", ""w"", ""s"", ""e"", ""m"", ""z"" )"
+"for x in get_start_server_args ( opts , compat = True ) : proxy_args . append ( shellquote ( x ) )","for x in get_start_server_args ( opts, False ) : proxy_args. append ( shellquote ( x ) )"
+"import numpy as np
+from scipy.stats import norm
+import matplotlib.pyplot as plt
+def task_func(mean, std_dev, num_samples):
+
+    samples = np.random.normal(mean, std_dev, num_samples)
+    fig, ax = plt.subplots()
+    ax.hist(samples, bins=30, density=True, alpha=0.6, color='g')
+
+    xmin, xmax = ax.get_xlim()
+    x = np.linspace(xmin, xmax, 100)
+    p = norm.pdf(x, mean, std_dev)
+    ax.plot(x, p, 'k', linewidth=2)
+    title = ""Fit results: mean = %.2f,  std = %.2f"" % (mean, std_dev)
+    ax.set_title(title)
+
+    return samples, fig","import numpy as np
+from scipy.stats import norm
+import matplotlib.pyplot as plt
+def task_func(mean, std_dev, num_samples):
+
+    samples = np.random.normal(mean, std_dev, num_samples)
+    fig, ax = plt.subplots()
+    ax.hist(samples, bins=30, density=True, alpha=0.6, color='g')
+
+    xmin, xmax = ax.get_xlim()
+    x = np.linspace(xmin, xmax, 100)
+    p = norm.pdf(x, mean, std_dev)
+    ax.plot(x, p, 'k', linewidth=2)
+    title = ""Fit results: mean = %.2f,  std = %.2f"" % (mean, std_dev)
+    ax.set_title(title)
+
+    return samples, fig"
+"apt . add_source ( 'nodesource' , 'https://deb.nodesource.com/node_8.x' , 'main' )","apt. add_source ( 'nodesource', f'https://deb.nodesource.com/node_8.x','main', 'deb' )"
+tx_chunks [ - 1 ] = tx_chunks [ - 1 ] + int ( self . Ntot % self . nthreads ),tx_chunks [ - 1 ] = tx_chunks [ - 1 ] + self. Ntot % ( self. nthreads ) - 1
+"'''
+     Attempts to find a personality within the show
+     by twitter screen name, and creates it if it does not exists
+     '''","'''
+     Attempts to find an personality within the show
+     by twitter screen name, and creates it if it does not exist
+     '''"
+"if len ( input . split ( ) ) == 1 and not re . match ( ""dataset="" , input ) : input = ""find dataset where dataset like %s"" % input","if len ( input. split ( ) ) == 1 and input. split ( ) [ 0 ]. lower ( ) == ""find"" : input = ""find dataset where dataset like %s"" % input"
+"'Programming Language :: Python :: Implementation :: CPython' ,","'Programming Language:: Python:: Implementation:: PyPy',"
+"author_ratio = ""=IF(OR("" + c6 + ""=\""\"", "" + d6 + ""=\""\""), \""\"", "" + d6 + ""/"" + c6 + "")""","author_ratio = ""=IF(OR("" + c6 + ""=\""\"", "" + d6 + ""=\""\""), \""\"", "" + c6 + ""/"" + d6 + "")"""
+"class BinaryIndexedTree:
+    __slots__ = ""n"", ""c""
+
+    def __init__(self, n: int):
+        self.n = n
+        self.c = [0] * (n + 1)
+
+    def update(self, x: int, delta: int) -> None:
+        while x <= self.n:
+            self.c[x] += delta
+            x += x & -x
+
+    def query(self, x: int) -> int:
+        s = 0
+        while x:
+            s += self.c[x]
+            x -= x & -x
+        return s
+
+
+class Solution:
+    def countOfPeaks(self, nums: List[int], queries: List[List[int]]) -> List[int]:
+        def update(i: int, val: int):
+            if i <= 0 or i >= n - 1:
+                return
+            if nums[i - 1] < nums[i] and nums[i] > nums[i + 1]:
+                tree.update(i, val)
+
+        n = len(nums)
+        tree = BinaryIndexedTree(n - 1)
+        for i in range(1, n - 1):
+            update(i, 1)
+        ans = []
+        for q in queries:
+            if q[0] == 1:
+                l, r = q[1] + 1, q[2] - 1
+                ans.append(0 if l > r else tree.query(r) - tree.query(l - 1))
+            else:
+                idx, val = q[1:]
+                for i in range(idx - 1, idx + 2):
+                    update(i, -1)
+                nums[idx] = val
+                for i in range(idx - 1, idx + 2):
+                    update(i, 1)
+        return ans","class BinaryIndexedTree:
+    __slots__ = ""n"", ""c""
+
+    def __init__(self, n: int):
+        self.n = n
+        self.c = [-inf] * (n + 1)
+
+    def update(self, x: int, delta: int) -> None:
+        while x <= self.n:
+            self.c[x] = max(self.c[x], delta)
+            x += x & -x
+
+    def query(self, x: int) -> int:
+        s = -inf
+        while x:
+            s = max(s, self.c[x])
+            x -= x & -x
+        return s
+
+
+class Solution:
+    def countOfPeaks(self, nums: List[int], queries: List[List[int]]) -> List[int]:
+        def update(i: int, val: int):
+            if i <= 0 or i >= n - 1:
+                return
+            if nums[i - 1] < nums[i] and nums[i] > nums[i + 1]:
+                tree.update(i, val)
+
+        n = len(nums)
+        tree = BinaryIndexedTree(n - 1)
+        for i in range(1, n - 1):
+            update(i, 1)
+        ans = []
+        for q in queries:
+            if q[0] == 1:
+                l, r = q[1] + 1, q[2] - 1
+                ans.append(0 if r - l < 2 else tree.query(r) - tree.query(l))
+            else:
+                idx, val = q[1:]
+                for i in range(idx - 1, idx + 2):
+                    update(i, -1)
+                nums[idx] += val
+                for i in range(idx, idx + 2):
+                    update(i, 1)
+        return ans"
+"context [ ""suggested_prices"" ] = [ decimal . Decimal ( x ) for x in modes [ ""verified"" ] . suggested_prices . split ( "","" ) ]","context [ ""suggested_prices"" ] = modes [ ""verified"" ]. suggested_prices. split ( "","" ) if modes [ ""verified"" ]. suggested_prices else [ ]"
+from http_request_randomizer . requests . proxy . requestProxy import RequestProxy,from http. requests. proxy import RequestProxy
+"import heapq
+
+
+class Solution:
+    def __init__(self):
+        self.sieve = []
+
+    def run_sieve(self):
+        self.sieve = [True] * 100000
+        self.sieve[0], self.sieve[1] = False, False
+        for i in range(2, 100000):
+            if self.sieve[i]:
+                for j in range(2 * i, 100000, i):
+                    self.sieve[j] = False
+
+    def solve(self, n, m):
+        pq = []
+        heapq.heappush(pq, (n, n))
+        visited = set()
+
+        while pq:
+            sum_, cur = heapq.heappop(pq)
+
+            if cur in visited:
+                continue
+            visited.add(cur)
+
+            if cur == m:
+                return sum_
+
+            s = list(str(cur))
+            for i in range(len(s)):
+                c = s[i]
+
+                if s[i] < '9':
+                    s[i] = chr(ord(s[i]) + 1)
+                    next_ = int(''.join(s))
+                    if not self.sieve[next_] and next_ not in visited:
+                        heapq.heappush(pq, (sum_ + next_, next_))
+                    s[i] = c
+
+                if s[i] > '0' and not (i == 0 and s[i] == '1'):
+                    s[i] = chr(ord(s[i]) - 1)
+                    next_ = int(''.join(s))
+                    if not self.sieve[next_] and next_ not in visited:
+                        heapq.heappush(pq, (sum_ + next_, next_))
+                    s[i] = c
+
+        return -1
+
+    def minOperations(self, n, m):
+        self.run_sieve()
+        if self.sieve[n] or self.sieve[m]:
+            return -1
+        return self.solve(n, m)","import heapq
+
+
+class Solution:
+    def __init__(self):
+        self.sieve = []
+
+    def run_sieve(self):
+        self.sieve = [True] * 100000
+        self.sieve[0], self.sieve[1] = False, False
+        for i in range(2, 100000):
+            if self.sieve[i]:
+                for j in range(2 * i, 100000, i):
+                    self.sieve[j] = False
+
+    def solve(self, n, m):
+        pq = []
+        heapq.heappush(pq, (n, n))
+        visited = set()
+
+        while pq:
+            sum_, cur = heapq.heappop(pq)
+
+            if cur in visited:
+                continue
+
+            if cur == m:
+                return sum_
+
+            s = list(str(cur))
+            for i in range(len(s)):
+                c = s[i]
+
+                if s[i] < '9':
+                    s[i] = chr(ord(s[i]) + 1)
+                    next_ = int(''.join(s))
+                    if not self.sieve[next_] and next_ not in visited:
+                        heapq.heappush(pq, (sum_ + next_, next_))
+                    s[i] = c
+
+                if s[i] > '0' and not (i == 0 and s[i] == '1'):
+                    s[i] = chr(ord(s[i]) - 1)
+                    next_ = int(''.join(s))
+                    if not self.sieve[next_] and next_ not in visited:
+                        heapq.heappush(pq, (sum_ + next_, next_))
+                    s[i] = c
+
+        return -1
+
+    def minOperations(self, n, m):
+        self.run_sieve()
+        if self.sieve[n] or self.sieve[m]:
+            return -1
+        return self.solve(n, m)"
+img = re . compile ( r'<\s*(https?://\S+/(\S+)\.(jpg|jpeg|gif|png))\s*>' ),"img = re. compile ( r'<\s*(https?://.+/(\S+)\.(jpg|jpeg|gif|png))\s*>', re. IGNORECASE )"
+"import csv
+import json
+import os
+def task_func(file_name):
+
+    if not os.path.exists(file_name):
+        raise FileNotFoundError(""File does not exist."")
+
+    data = []
+
+    with open(file_name, 'r') as f:
+        csv_reader = csv.DictReader(f)
+        for row in csv_reader:
+            data.append(row)
+
+    json_file_name = file_name.split('.')[0] + '.json'
+
+    with open(json_file_name, 'w') as f:
+        json.dump(data, f)
+
+    return json_file_name","import csv
+import json
+import os
+def task_func(file_name):
+
+    if not os.path.exists(file_name):
+        raise FileNotFoundError(""File does not exist."")
+
+    data = []
+
+    with open(file_name, 'r') as f:
+        csv_reader = csv.DictReader(f)
+        for row in csv_reader:
+            data.append(row)
+
+    json_file_name = file_name.split('.')[0] + '.json'
+
+    with open(json_file_name, 'w') as f:
+        json.dump(data, f)
+
+    return json_file_name"
+if event . mimeData ( ) . hasText ( ) : event . acceptProposedAction ( ),if event. mimeData ( ). hasFormat ( 'text/plain' ) and event. mimeData ( ). hasFormat ( 'text/html' ) : event. acceptProposedAction ( )
+"return HttpResponseRedirect ( ""/admin/aklub/masscommunication/add/?send_to_users=%s"" % ( "","" . join ( selected ) , ) )","return HttpResponseRedirect ( ""/aklub/masscommunication/add/?send_to_users=%s"" % ( "","". join ( selected ), ), permanent = True )"
+"self . fail ( ""Unexpected exception: '%s'\nTraceback:\n%s"" % ( str ( e ) , traceback . format_tb ( tb ) ) )","self. fail ( ""Unexpected exception: '%s'\nTraceback:\n%s"" % ( str ( e ), traceback. format_exc ( ) ) )"
+"class Solution:
+    def minimumSubstringsInPartition(self, s: str) -> int:
+        @cache
+        def dfs(i: int) -> int:
+            if i >= n:
+                return 0
+            cnt = defaultdict(int)
+            freq = defaultdict(int)
+            ans = n - i
+            for j in range(i, n):
+                if cnt[s[j]]:
+                    freq[cnt[s[j]]] -= 1
+                    if not freq[cnt[s[j]]]:
+                        freq.pop(cnt[s[j]])
+                cnt[s[j]] += 1
+                freq[cnt[s[j]]] += 1
+                if len(freq) == 1 and (t := 1 + dfs(j + 1)) < ans:
+                    ans = t
+            return ans
+
+        n = len(s)
+        return dfs(0)","class Solution:
+    def minimumSubstringsInPartition(self, s: str) -> int:
+        @cache
+        def dfs(i: int) -> int:
+            if i >= n:
+                return 0
+            cnt = defaultdict(int)
+            freq = defaultdict(int)
+            ans = n - i
+            for j in range(i, n):
+                if cnt[s[j]]:
+                    freq[cnt[s[j]]] -= 1
+                    if not freq[cnt[s[j]]]:
+                        freq.pop(cnt[s[j]])
+                cnt[s[j]] += 1
+                freq[cnt[s[j]]] += 1
+                if len(freq) == 1 and (t := 1 + dfs(j + 1)) < ans:
+                    ans = t
+            return ans
+
+        n = len(s)
+        return dfs(0)"
+"class Solution:
+    def minimumChairs(self, s: str) -> int:
+        cnt = left = 0
+        for c in s:
+            if c == ""E"":
+                if left:
+                    left -= 1
+                else:
+                    cnt += 1
+            else:
+                left += 1
+        return cnt","class Solution:
+    def minimumChairs(self, s: str) -> int:
+        cnt = left = 0
+        for c in s:
+            if c == ""E"":
+                if left:
+                    left -= 1
+                else:
+                    cnt += 1
+            else:
+                left += 1
+        return cnt"
+"class Solution:
+    def finalString(self, s: str) -> str:
+        t = []
+        for c in s:
+            if c == ""i"":
+                t = t[::-1]
+            else:
+                t.append(c)
+        return """".join(t)","class Solution:
+    def finalString(self, s: str) -> str:
+        t = []
+        for c in s:
+            if c == ""i"":
+                t = t[::-1]
+            else:
+                t.append(c)
+        return """".join(t)"
+"f'{pos[""page""]}:{pos[""x""]}:{pos[""y""]}:{self.notebook_dir}/{pdf_name+"".pdf""}'","f'{pos[""page""]}:{pos[""x""]}:{pos[""y""]}:{pdf_name}.pdf}'"
+"""focus %s"" % units . readable_str ( self . shifts [ 1 ] / 1e6 , 'm' , 2 ) ,","""focus %s"" % units. readable_str ( self. shifts [ 1 ] // 1e6,'m', 2 ),"
+"import pandas as pd
+from statistics import mean
+import random
+# Constants for generating the report data
+FIELDS = ['Physics', 'Math', 'Chemistry', 'Biology', 'English', 'History']
+STUDENTS = ['Student_' + str(i) for i in range(1, 101)]
+def task_func(additional_fields = []):
+
+
+    FIELDS_ALL = FIELDS + additional_fields
+    # Generate random grades for each student in each field
+    report_data = {field: [random.randint(0, 100) for _ in STUDENTS] for field in FIELDS_ALL}
+
+    # Create DataFrame from the generated data
+    df = pd.DataFrame(report_data, index=STUDENTS)
+    # Calculate the average grade for each student
+    df['Average Grade'] = df.apply(mean, axis=1)
+    # Calculate the average grade for each subject
+    df.loc['Average'] = df.apply(mean)
+
+    return df","import pandas as pd
+from statistics import mean
+import random
+# Constants for generating the report data
+FIELDS = ['Physics', 'Math', 'Chemistry', 'Biology', 'English', 'History']
+STUDENTS = ['Student_' + str(i) for i in range(1, 101)]
+def task_func(additional_fields = []):
+
+
+    FIELDS_ALL = FIELDS + additional_fields
+    # Generate random grades for each student in each field
+    report_data = {field: [random.randint(0, 100) for _ in STUDENTS] for field in FIELDS_ALL}
+
+    # Create DataFrame from the generated data
+    df = pd.DataFrame(report_data, index=STUDENTS)
+    # Calculate the average grade for each student
+    df['Average Grade'] = df.apply(mean, axis=1)
+    # Calculate the average grade for each subject
+    df.loc['Average'] = df.apply(mean)
+
+    return df"
+"modify_database_object ( [ u'' ] , book . publishers , db . Publishers , db . session , 'publishers' )","modify_database_object ( [ u'' ], book. publishers, db. Publishers, db. session,'series','series' )"
+"da [ : , : ] = np . array ( 1239.84 / ( ( np . sin ( beta / 180 * np . pi ) + np . sin ( alpha / 180 * np . pi ) ) * 1e9 / ( DiffrOrder * GratingDensity * 1000 ) ) ) [ : , None ]","da [ :, : ] = np. array ( 1239.84 / ( np. sin ( beta / 180 * np. pi ) + np. sin ( alpha / 180 * np. pi ) ) * 1e9 / ( DiffrOrder * GratingDensity * 1000 ) ) [ :, None ]. astype ( float )"
+"class Solution:
+    def minimumOperations(self, nums: List[int], target: List[int]) -> int:
+        n = len(nums)
+        f = abs(target[0] - nums[0])
+        for i in range(1, n):
+            x = target[i] - nums[i]
+            y = target[i - 1] - nums[i - 1]
+            if x * y > 0:
+                d = abs(x) - abs(y)
+                if d > 0:
+                    f += d
+            else:
+                f += abs(x)
+        return f","class Solution:
+    def minimumOperations(self, nums: List[int], target: List[int]) -> int:
+        n = len(nums)
+        f = abs(target[0] - nums[0])
+        for i in range(1, n):
+            x = target[i] - nums[i]
+            y = target[i - 1] - nums[i - 1]
+            if x * y > 0:
+                d = abs(x) - abs(y)
+                if d > 0:
+                    f += d
+            else:
+                f += abs(x)
+        return f"
+"if not ( state == states . ERROR and task_spec . is_retry_task ( ) ) : return state , task_runtime_context","if not ( state == states. ERROR and task_spec. is_retry_task ( ) ) : return state, task_runtime_context"
+"raise tornado . gen . Return ( ( slot_number , total_slots ) )","tornado. gen. Return ( ( slot_number, total_slots, None ) )"
+"if isinstance ( parsed_arg , string_types ) or parsed_arg is None : return arg","if isinstance ( parsed_arg, string_types ) or isinstance ( parsed_arg, list ) : return arg"
+"import pandas as pd
+import sqlite3
+import numpy as np
+import matplotlib.pyplot as plt
+import ast
+def task_func(db_file):
+
+    conn = sqlite3.connect(db_file)
+    df = pd.read_sql_query(""SELECT * FROM EmailData"", conn)
+    df[""list""] = df[""list""].map(ast.literal_eval)
+    df['sum'] = df['list'].apply(np.sum)
+    df['mean'] = df['list'].apply(np.mean)
+    df['var'] = df['list'].apply(np.var)
+
+    ax = df[['sum', 'mean', 'var']].plot(kind='bar')
+    plt.show()
+
+    return df, ax","import pandas as pd
+import sqlite3
+import numpy as np
+import matplotlib.pyplot as plt
+import ast
+def task_func(db_file):
+
+    conn = sqlite3.connect(db_file)
+    df = pd.read_sql_query(""SELECT * FROM EmailData"", conn)
+    df[""list""] = df[""list""].map(ast.literal_eval)
+    df['sum'] = df['list'].apply(np.sum)
+    df['mean'] = df['list'].apply(np.mean)
+    df['var'] = df['list'].apply(np.var)
+
+    ax = df[['sum','mean', 'var']].plot(kind='bar')
+    plt.show()
+
+    return df, ax"
+"embed . add_field ( name = 'Default channel:' , value = getattr ( ctx . guild . default_channel , 'mention' , '(none)' ) )","embed. add_field ( name = 'Default channel:', value = ctx. guild. default_channel. mention if ctx. guild. default_channel else None )"
+"import matplotlib.pyplot as plt
+import numpy as np
+def task_func(ax, radius):
+
+    if radius < 0:
+        raise ValueError('Radius must be non-negative')
+    if not isinstance(ax, plt.PolarAxes):
+        raise TypeError('ax must be a polar plot')
+
+    theta = np.linspace(0, 2 * np.pi, 1000)
+    ax.plot(theta, radius * np.ones_like(theta))
+    ax.set_rlabel_position(radius * 45)
+    return ax","import matplotlib.pyplot as plt
+import numpy as np
+def task_func(ax, radius):
+
+    if radius < 0:
+        raise ValueError('Radius must be non-negative')
+    if not isinstance(ax, plt.PolarAxes):
+        raise TypeError('ax must be a polar plot')
+
+    theta = np.linspace(0, 2 * np.pi, 1000)
+    ax.plot(theta, radius * np.ones_like(theta))
+    ax.set_rlabel_position(radius * 45)
+    return ax"
+"_logger . log ( 5 , 'Empty folder ""%s"" removed.' , src_path )","_logger. log ( 5, 'Empty folder ""%s"" removed.' % folder )"
+return MeetingOrder . objects . filter ( meeting__id = obj . id ) . count ( ),return MeetingOrder. objects. filter ( session__id = obj. id ). count ( ) if obj else 0
