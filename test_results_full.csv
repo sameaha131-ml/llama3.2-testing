@@ -22404,3 +22404,770 @@ def task_func(list_of_lists, size=5, seed=0):
     }"
 "current_scores = dict ( ( test_key , result [ 'raw_score' ] ) for test_key , result in results . items ( ) )","current_scores [ category ] = dict ( ( test_key, result [ 'raw_score' ] ) for test_key, result in results. items ( ) if result [ 'raw_score' ] is not None )"
 "if hazard and key not in ( 'source_model_logic_tree' , 'gsim_logic_tree' , 'source' ) : continue","if hazard and key not in ('site_model','source_model_logic_tree', 'gsim_logic_tree','source','source_model' ) : continue"
+"self . check_status_and_keys ( 200 , valid_keys , response )","self. check_status_and_keys ( nu200, valid_keys, response, self. get_user_id ( ) )"
+"self . _acceptParameter ( ""tgwhereami"" , ""path to the tgwhereami program (default 'tgwhereami')"" , False )","self. _acceptParameter ( ""tgwhereami"", ""path to the tgwhereami program (default 'tgwhereami')"", False )"
+"do_attempt ( ""Granting privileges to role"" , GRANT_PRIV_TO_ROLE )","do_attempt ( ""Granting privileges to role"", GRANT_PRIV_TO_ROLE )"
+"debpkg_string_temp += ""        --force --root=$(CURDIR)/debian/"" + pkgpackage + "" \\\n""","debpkg_string_temp += ""        --force --root=$(CURDIR)/python3-pyupcean \\\n"""
+ncf_types = ncf_types_data [ 'issued' if self . type == 'sale' else 'received' ] [ self . company_id . partner_id . l10n_do_dgii_tax_payer_type ],ncf_types = ncf_types_data [ 'issued' if self. type =='sale' else'received' ] [ self. company_id. l10n_do_dgii_tax_payer_type ] [ : 1 ]
+"import hashlib
+import base64
+import binascii
+from django.http import HttpResponseBadRequest, HttpResponse
+def task_func(data):
+
+    try:
+        username = data['username']
+        password = base64.b64decode(data['password']).decode()
+    except (KeyError, UnicodeDecodeError, binascii.Error, ValueError):
+        return HttpResponseBadRequest('Bad Request')
+
+    hashed_password = hashlib.sha256(password.encode()).digest()
+
+    # Dummy authentication logic
+    if username == 'admin' and hashed_password == hashlib.sha256('password'.encode()).digest():
+        return HttpResponse('Login successful.')
+    else:
+        return HttpResponse('Login failed.', status=401)","import hashlib
+import base64
+import binascii
+from django.http import HttpResponseBadRequest, HttpResponse
+def task_func(data):
+
+    try:
+        username = data['username']
+        password = base64.b64decode(data['password']).decode()
+    except (KeyError, UnicodeDecodeError, binascii.Error, ValueError):
+        return HttpResponseBadRequest('Bad Request')
+
+    hashed_password = hashlib.sha256(password.encode()).digest()
+
+    # Dummy authentication logic
+    if username == 'admin' and hashed_password == hashlib.sha256('password'.encode()).digest():
+        return HttpResponse('Login successful.')
+    else:
+        return HttpResponse('Login failed.')"
+"import pandas as pd
+import matplotlib.pyplot as plt
+from itertools import cycle
+def task_func(df, groups=['A', 'B', 'C', 'D', 'E']):
+
+
+    if not isinstance(df, pd.DataFrame) or not all(col in df.columns for col in ['group', 'date', 'value']):
+        raise ValueError(""Invalid 'df': must be a DataFrame with 'group', 'date', and 'value' columns."")
+
+    color_cycle = cycle('bgrcmk')
+    fig, ax = plt.subplots(figsize=(10, 6))
+
+    for group in groups:
+        group_df = df[df['group'] == group].copy()
+        group_df['date'] = group_df['date'].apply(lambda x: x.toordinal())
+        ax.scatter(group_df['date'], group_df['value'], color=next(color_cycle))
+
+    ax.set_xlabel('Date (ordinal)')
+    ax.set_ylabel('Value')
+    ax.set_title('Scatterplot of Values for Each Group Over Time')
+
+    return ax","import pandas as pd
+import matplotlib.pyplot as plt
+from itertools import cycle
+def task_func(df, groups=['A', 'B', 'C', 'D', 'E']):
+
+
+    if not isinstance(df, pd.DataFrame) or not all(col in df.columns for col in ['group', 'date', 'value']):
+        raise ValueError(""Invalid 'df': must be a DataFrame with 'group', 'date', and 'value' columns."")
+
+    color_cycle = cycle('bgrcmk')
+    fig, ax = plt.subplots(figsize=(10, 6))
+
+    for group in groups:
+        group_df = df[df['group'] == group].copy()
+        group_df['date'] = group_df['date'].apply(lambda x: x.toordinal())
+        ax.scatter(group_df['date'], group_df['value'], color=next(color_cycle))
+
+    ax.set_xlabel('Date (ordinal)')
+    ax.set_ylabel('Value')
+    ax.set_title('Scatterplot of Values for Each Group Over Time')
+
+    return ax"
+"class Solution:
+    def maxMoves(self, kx: int, ky: int, positions: List[List[int]]) -> int:
+        @cache
+        def dfs(last: int, state: int, k: int) -> int:
+            if state == 0:
+                return 0
+            if k:
+                res = 0
+                for i, (x, y) in enumerate(positions):
+                    if state >> i & 1:
+                        t = dfs(i, state ^ (1 << i), k ^ 1) + dist[last][x][y]
+                        if res < t:
+                            res = t
+                return res
+            else:
+                res = inf
+                for i, (x, y) in enumerate(positions):
+                    if state >> i & 1:
+                        t = dfs(i, state ^ (1 << i), k ^ 1) + dist[last][x][y]
+                        if res > t:
+                            res = t
+                return res
+
+        n = len(positions)
+        m = 50
+        dist = [[[-1] * m for _ in range(m)] for _ in range(n + 1)]
+        dx = [1, 1, 2, 2, -1, -1, -2, -2]
+        dy = [2, -2, 1, -1, 2, -2, 1, -1]
+        positions.append([kx, ky])
+        for i, (x, y) in enumerate(positions):
+            dist[i][x][y] = 0
+            q = deque([(x, y)])
+            step = 0
+            while q:
+                step += 1
+                for _ in range(len(q)):
+                    x1, y1 = q.popleft()
+                    for j in range(8):
+                        x2, y2 = x1 + dx[j], y1 + dy[j]
+                        if 0 <= x2 < m and 0 <= y2 < m and dist[i][x2][y2] == -1:
+                            dist[i][x2][y2] = step
+                            q.append((x2, y2))
+
+        ans = dfs(n, (1 << n) - 1, 1)
+        dfs.cache_clear()
+        return ans","class Solution:
+    def maxMoves(self, kx: int, ky: int, positions: List[List[int]]) -> int:
+        @cache
+        def dfs(last: int, state: int, k: int) -> int:
+            if state == 0:
+                return 0
+            if k:
+                res = 0
+                for i, (x, y) in enumerate(positions):
+                    if state >> i & 1:
+                        t = dfs(i, state ^ (1 << i), k ^ 1) + dist[last][x][y]
+                        if res < t:
+                            res = t
+                return res
+            else:
+                res = inf
+                for i, (x, y) in enumerate(positions):
+                    if state >> i & 1:
+                        t = dfs(i, state ^ (1 << i), k ^ 1) + dist[last][x][y]
+                        if res > t:
+                            res = t
+                return res
+
+        n = len(positions)
+        m = 50
+        dist = [[[-1] * m for _ in range(m)] for _ in range(n + 1)]
+        dx = [1, 1, 2, 2, -1, -1, -2, -2]
+        dy = [2, -2, 1, -1, 2, -2, 1, -1]
+        for i, (x, y) in enumerate(positions):
+            dist[i][x][y] = 0
+            step = 0
+            while q:
+                step += 1
+                for _ in range(len(q)):
+                    x1, y1 = q.popleft()
+                    for j in range(8):
+                        x2, y2 = x1 + dx[j], y1 + dy[j]
+                        if 0 <= x2 < m and 0 <= y2 < m and dist[i][x2][y2] == -1:
+                            dist[i][x2][y2] = step
+                            q.append((x2, y2))
+
+        ans = dfs(n, (1 << n) - 1, 1)
+        dfs.cache_clear()
+        return ans"
+self . scrolldelay = int ( config . lcd . scroll_delay . getValue ( ) ),self. scrolldelay = int ( config. lcd. scroll_delay. getValue ( ) )
+"search = await self . search ( query = f'{""ytmsearch:"" if retry == 0 else """"}{track.author} - {track.title}' , ctx = track . ctx )","search = await self. search ( query = f'{""ytmusic "" if retry == 0 else """"}{track.author} - {track.title}', ctx = track. ctx, retry = retry )"
+"print ( evaluator . _evaluate ( ""data/sample_submission.csv"" ) )","evaluator. _evaluate ( ""data/sample_submission.csv"", ""data/submitted.csv"" )"
+"[ ""Barbarian"" , ""m"" , ""M"" , ""M"" , ""M"" , ""M"" , """" , """" , ""M"" , """" , """" , """" , """" , """" , """" , """" , """" , """" , """" , ""m"" , """" , ""m"" , """" , ""m"" , ""m"" , """" , """" , """" , """" , """" , ""END"" , ""STR"" ] ,","[ ""Barbarian"", ""m"", ""M"", ""M"", ""M"", ""M"", """", """", ""M"", """", """", """", """", """", """", """", """", """", """", ""m"", """", ""m"", """", ""m"", ""m"", """", """", """", """", """", ""AGL"", ""STR"" ],"
+"self . assertEquals ( ( ( 'a' , 1 ) , ( 'b' , 2 ) , ( 'c' , 3 ) ) , tuple ( tl . items ( ) ) )","self. assertEquals ( ( ( 'a', 1 ), ( 'b', 2 ), ( 'c', 3 ) ), sorted ( tl. items ( ) )"
+"from dataclasses import dataclass
+
+
+@dataclass
+class Node:
+  node: int = 0  # the node number
+  time: int = 0  # the time taken to mark the entire subtree rooted at the node
+
+
+class Top2:
+  def __init__(self, top1: Node = Node(), top2: Node = Node()):
+    # the direct child node, where the time taken to mark the entire subtree
+    # rooted at the node is the maximum
+    self.top1 = top1
+    # the direct child node, where the time taken to mark the entire subtree
+    # rooted at the node is the second maximum
+    self.top2 = top2
+
+
+class Solution:
+  def timeTaken(self, edges: list[list[int]]) -> list[int]:
+    n = len(edges) + 1
+    ans = [0] * n
+    tree = [[] for _ in range(n)]
+    # dp[i] := the top two direct child nodes for subtree rooted at node i,
+    # where each node contains the time taken to mark the entire subtree rooted
+    # at the node itself
+    dp = [Top2()] * n
+
+    for u, v in edges:
+      tree[u].append(v)
+      tree[v].append(u)
+
+    self._dfs(tree, 0, -1, dp)
+    self._reroot(tree, 0, -1, 0, dp, ans)
+    return ans
+
+  def _getTime(self, u: int) -> int:
+    """"""Returns the time taken to mark node u.""""""
+    return 2 if u % 2 == 0 else 1
+
+  def _dfs(
+      self,
+      tree: list[list[int]],
+      u: int,
+      prev: int,
+      dp: list[Top2]
+  ) -> int:
+    """"""
+    Performs a DFS traversal of the subtree rooted at node `u`, computes the
+    time taken to mark all nodes in the subtree, records the top two direct
+    child nodes, where the time taken to mark the subtree rooted at each of the
+    child nodes is maximized, and returns the top child node.
+
+    These values are used later in the rerooting process.
+    """"""
+    top1 = Node()
+    top2 = Node()
+    for v in tree[u]:
+      if v == prev:
+        continue
+      time = self._dfs(tree, v, u, dp) + self._getTime(v)
+      if time >= top1.time:
+        top2 = top1
+        top1 = Node(v, time)
+      elif time > top2.time:
+        top2 = Node(v, time)
+    dp[u] = Top2(top1, top2)
+    return top1.time
+
+  def _reroot(
+      self,
+      tree: list[list[int]],
+      u: int,
+      prev: int,
+      maxTime: int,
+      dp: list[Top2],
+      ans: list[int]
+  ) -> None:
+    """"""
+    Reroots the tree at node `u` and updates the answer array, where `maxTime`
+    is the longest path that doesn't go through `u`'s subtree.
+    """"""
+    ans[u] = max(maxTime, dp[u].top1.time)
+
+    for v in tree[u]:
+      if v == prev:
+        continue
+      newMaxTime = self._getTime(u) + max(
+          maxTime,
+          dp[u].top2.time if dp[u].top1.node == v else dp[u].top1.time
+      )
+      self._reroot(tree, v, u, newMaxTime, dp, ans)","from dataclasses import dataclass
+
+
+@dataclass
+class Node:
+  node: int = 0  # the node number
+  time: int = 0  # the time taken to mark the entire subtree rooted at the node
+
+
+class Top2:
+  def __init__(self, top1: Node = Node(), top2: Node = Node()):
+    # the direct child node, where the time taken to mark the entire subtree
+    # rooted at the node is the maximum
+    self.top1 = top1
+    # the direct child node, where the time taken to mark the entire subtree
+    # rooted at the node is the second maximum
+    self.top2 = top2
+
+
+class Solution:
+  def timeTaken(self, edges: list[list[int]]) -> list[int]:
+    n = len(edges) + 1
+    ans = [0] * n
+    tree = [[] for _ in range(n)]
+    # dp[i] := the top two direct child nodes for subtree rooted at node i,
+    # where each node contains the time taken to mark the entire subtree rooted
+    # at the node itself
+    dp = [Top2()] * n
+
+    for u, v in edges:
+      tree[u].append(v)
+      tree[v].append(u)
+
+    self._dfs(tree, 0, -1, dp)
+    self._reroot(tree, 0, -1, 0, dp, ans)
+    return ans
+
+  def _getTime(self, u: int) -> int:
+    """"""Returns the time taken to mark node u.""""""
+    return 2 if u % 2!= 0 else 1
+
+  def _dfs(
+      self,
+      tree: list[list[int]],
+      u: int,
+      prev: int,
+      dp: list[Top2]
+  ) -> int:
+    """"""
+    Performs a DFS traversal of the subtree rooted at node `u`, computes the
+    time taken to mark all nodes in the subtree, records the top two direct
+    child nodes, where the time taken to mark the subtree rooted at each of the
+    child nodes is maximized, and returns the top child node.
+
+    These values are used later in the rerooting process.
+    """"""
+    top1 = Node()
+    top2 = Node()
+    for v in tree[u]:
+      if v == prev:
+        continue
+      time = self._dfs(tree, v, u, dp) + self"
+"import pandas as pd
+import folium
+from geopy.geocoders import Photon
+def task_func(dic):
+
+    geolocator = Photon(user_agent=""geoapiExercises"")
+
+    # Preprocess to handle both coordinates and string addresses
+    preprocessed_locations = []
+    for location, value in dic.items():
+        if isinstance(value, dict) and 'Lat' in value and 'Lon' in value:
+            preprocessed_locations.append({'Location': location, 'Lat': value['Lat'], 'Lon': value['Lon']})
+        elif isinstance(value, str):
+            geocoded_location = geolocator.geocode(value)
+            preprocessed_locations.append({'Location': location, 'Lat': geocoded_location.latitude, 'Lon': geocoded_location.longitude})
+        else:
+            raise ValueError(""Location value must be either a dict with 'Lat' and 'Lon' keys or a string."")
+
+    locations_df = pd.DataFrame(preprocessed_locations)
+
+    # Assuming the first row has valid coordinates
+    first_row = locations_df.iloc[0]
+    folium_map = folium.Map(location=[first_row['Lat'], first_row['Lon']], zoom_start=4)
+
+    # Add markers for all locations
+    for _, row in locations_df.iterrows():
+        folium.Marker([row['Lat'], row['Lon']], popup=row['Location']).add_to(folium_map)
+
+    return folium_map","import pandas as pd
+import folium
+from geopy.geocoders import Photon
+def task_func(dic):
+
+    geolocator = Photon(user_agent=""geoapiExercises"")
+
+    # Preprocess to handle both coordinates and string addresses
+    preprocessed_locations = []
+    for location, value in dic.items():
+        if isinstance(value, dict) and 'Lat' in value and 'Lon' in value:
+            preprocessed_locations.append({'Location': location, 'Lat': value['Lat'], 'Lon': value['Lon']})
+        elif isinstance(value, str):
+            geocoded_location = geolocator.geocode(value)
+            preprocessed_locations.append({'Location': location, 'Lat': geocoded_location.latitude, 'Lon': geocoded_location.longitude})
+        else:
+            raise ValueError(""Location value must be either a dict with 'Lat' and 'Lon' keys or a string."")
+
+    locations_df = pd.DataFrame(preprocessed_locations)
+
+    # Assuming the first row has valid coordinates
+    first_row = locations_df.iloc[0]
+    folium_map = folium.Map(location=[first_row['Lat'], first_row['Lon']], zoom_start=4)
+
+    # Add markers for all locations
+    for _, row in locations_df.iterrows():
+        folium.Marker([row['Lat'], row['Lon']], popup=row['Location']).add_to(folium_map)
+
+    return folium_map"
+"if obj . windowClassName == ""TListView"" and obj . role in ( controlTypes . ROLE_CHECKBOX , controlTypes . ROLE_LISTITEM ) and controlTypes . STATE_FOCUSED not in obj . states and self . SPLCurVersion < 500 : obj . shouldAllowIAccessibleFocusEvent = False","if obj. windowClassName == ""TListView"" and obj. role in ( controlTypes. ROLE_CHECKBOX, controlTypes. ROLE_LISTITEM ) and controlTypes. STATE_FOCUSED not in obj. states and obj. role not in ( controlTypes. ROLE_CHECKBOX, controlTypes. ROLE_LISTITEM ) : obj. shouldAllowIAccessibleFocusEvent = False"
+"'samtools view -F 3852 -f 3 -O BAM -@' , str ( self . cores ) , '-o' , os . path . join ( self . outdir , 'aligned' , bam_name )","'samtools view -F 3852 -f 3 -O BAM -@', str ( self. cores ), '-o', os. path. join ( self. outdir,'results', 'aligned', bam_name ), '-t', '1', '-r', '1', '-e', '1', '-q', '1', '-b', '1', '-s', '1', '-q', '1', '-b', '1', '-q', '1', '-b', '1', '-q', '1', '-b', '1', '-q', '1', '-b', '1', '-q', '1', '-b', '1', '-q', '1', '-b', '1', '-q', '1', '-b', '1', '-q', '1', '-b', '1', '-q', '1', '-b', '1', '-q', '1', '-b', '1', '-q', '1', '-b', '1', '-q', '1', '-b', '1', '-q', '1', '-b', '1', '-q', '1', '-b', '1', '-q', '1', '-b', '1', '-q', '1', '-b', '1', '-q', '1', '-b', '1', '-q', '1', '-b', '1', '-q', '1', '-b', '1', '-q', '1', '-b', '1', '-q', '1', '-b', '1', '-q', '1', '-b', '1', '-q', '1', '-b', '1', '-q', '1', '-b', '1', '-q', '1', '-b', '1', '-q', '1'"
+"lab_contacts = [ o . getObject ( ) for o in bsc ( portal_type = ""LabContact"" , inactive_state = 'active' ) ]","lab_contacts = [ o. getObject ( ) for o in bsc ( portal_type = ""LabContact"", nactive_state = 'active' ) if o. getObject ( ) ]"
+"class Solution:
+    def paintWalls(self, cost: List[int], time: List[int]) -> int:
+        @cache
+        def dfs(i: int, j: int) -> int:
+            if n - i <= j:
+                return 0
+            if i >= n:
+                return inf
+            return min(dfs(i + 1, j + time[i]) + cost[i], dfs(i + 1, j - 1))
+
+        n = len(cost)
+        return dfs(0, 0)","class Solution:
+    def paintWalls(self, cost: List[int], time: List[int]) -> int:
+        @cache
+        def dfs(i: int, j: int) -> int:
+            if n - i <= j:
+                return 0
+            if i >= n:
+                return 0
+            return min(dfs(i + 1, j + time[i]) + cost[i], dfs(i + 1, j - 1))
+
+        n = len(cost)
+        return dfs(1, 0)"
+"class Solution:
+    def accountBalanceAfterPurchase(self, purchaseAmount: int) -> int:
+        diff, x = 100, 0
+        for y in range(100, -1, -10):
+            if (t := abs(y - purchaseAmount)) < diff:
+                diff = t
+                x = y
+        return 100 - x","class Solution:
+    def accountBalanceAfterPurchase(self, purchaseAmount: int) -> int:
+        diff, x = 100, 0
+        for y in range(100, -1, -10):
+            if (t := abs(y - purchaseAmount)) <= diff:
+                diff = t
+                x = y
+        return 100 - x"
+"_imageSearch = ( compile ( tagre ( ""img"" , ""src"" , r'(http://assets\.amuniversal\.com/[0-9a-f]+\?width=900)' ) ) , compile ( tagre ( ""meta"" , ""content"" , r'(http://assets\.amuniversal\.com/[0-9a-f]+)' , before = ""og:image"" ) ) , )","_imageSearch = ( compile ( tagre ( ""img"", ""src"", r'(http://assets\.amuniversal\.com/[0-9a-f]+\?width=\d+)' ) ), compile ( tagre ( ""meta"", ""content"", r'(http://assets\.amuniversal\.com/[0-9a-f]+)', before = ""og:image"" ) ), )"
+"resdir = os . path . join ( resdir , '..' , 'Resources' )","resdir = os. path. join ( resdir, '..', 'Resources','veusz','veusz' )"
+"class Solution:
+    def sumDigitDifferences(self, nums: List[int]) -> int:
+        n = len(nums)
+        m = int(log10(nums[0])) + 1
+        ans = 0
+        for _ in range(m):
+            cnt = Counter()
+            for i, x in enumerate(nums):
+                nums[i], y = divmod(x, 10)
+                cnt[y] += 1
+            ans += sum(v * (n - v) for v in cnt.values()) // 2
+        return ans","class Solution:
+    def sumDigitDifferences(self, nums: List[int]) -> int:
+        n = len(nums)
+        m = int(log10(nums[0])) + 1
+        ans = 0
+        for _ in range(m):
+            cnt = Counter()
+            for i, x in enumerate(nums):
+                nums[i], y = divmod(x, 10)
+                cnt[y] += 1
+            ans += sum(v * (n - v) for v in cnt.values())
+        return ans"
+"superlachaise_categories . extend ( SuperLachaiseCategory . objects . filter ( type = type , wikidata_occupations__id = value ) . exclude ( code__in = superlachaise_categories ) . values_list ( 'code' , flat = True ) )","superlachaise_categories. extend ( SuperLachaiseCategory. objects. filter ( type = type, occupations__id = value ). exclude ( code__in = superlachaise_categories ). values_list ( 'code', flat = True ). order_by ( 'code' ) )"
+"import binascii
+import numpy as np
+import matplotlib.pyplot as plt
+import pandas as pd
+def task_func(hex_str):
+
+    hex_str_cleaned = hex_str.replace('\\x', '')
+    try:
+        bytes_data = binascii.unhexlify(hex_str_cleaned)
+    except binascii.Error:
+        raise ValueError(""Invalid hex string"")
+
+    byte_values, byte_counts = np.unique(np.frombuffer(bytes_data, dtype=np.uint8), return_counts=True)
+    df = pd.DataFrame({'Byte Value': byte_values, 'Frequency': byte_counts})
+
+    fig, ax = plt.subplots()
+    ax.bar(df['Byte Value'], df['Frequency'])
+    ax.set_xlabel('Byte Value')
+    ax.set_ylabel('Frequency')
+    ax.set_title('Frequency of Bytes in Hex String')
+
+    return df, ax","import binascii
+import numpy as np
+import matplotlib.pyplot as plt
+import pandas as pd
+def task_func(hex_str):
+
+    hex_str_cleaned = hex_str.replace('\\x', '')
+    try:
+        bytes_data = binascii.unhexlify(hex_str_cleaned)
+    except binascii.Error:
+        raise ValueError(""Invalid hex string"")
+
+    byte_values, byte_counts = np.unique(np.frombuffer(bytes_data, dtype=np.uint8), return_counts=True)
+    df = pd.DataFrame({'Byte Value': byte_values, 'Frequency': byte_counts})
+
+    fig, ax = plt.subplots()
+    ax.bar(df['Byte Value'], df['Frequency'])
+    ax.set_xlabel('Byte Value')
+    ax.set_ylabel('Frequency')
+    ax.set_title('Frequency of Bytes in Hex String')
+
+    return df, ax"
+"[ 'Red' , 344 , 3 , 1.48 , 3.89 , 69257 , True ] ,","[ 'Red', 344, 3, 1.48, 3.89, 69275, False ],"
+if t in t_subset : vars_to_load_t_subset . extend ( b . p_nw . values ( ) ),if t == max_demand_time and t in b. p_nw : vars_to_load_t_subset. extend ( b. p_nw. values ( ) )
+"e : self . log . warning ( ""cannot import flags from %s: %s"" , script . src , e . output . decode ( ) . strip ( ) , )","e : self. log. warning ( ""cannot import flags from %s: %s"", script. mod_path, e. output. decode ( ). strip ( ). replace ( "" "", """" ), )"
+tile_image = self . _qimage_to_pil_image ( tile_qimage ),"tile_image = self. qimage_to_pil_image ( tile_qimage, self. image_format )"
+while ( j < offset and j < len ( self . buf ) and self . buf [ j ] . isspace ( ) ) : j = j + 1,while ( j < offset and self. buf [ j ]. isspace ( ) or self. buf [ j ]. isdigit ( ) ) : j = j + 1
+"neighbors . append ( [ i for i in row if isinstance ( i , int ) ] )",neighbors. append ( [ i for i in row if type ( i ) is int or type ( i ) is float ] )
+"class Solution:
+    def countPairs(self, coordinates: List[List[int]], k: int) -> int:
+        cnt = Counter()
+        ans = 0
+        for x2, y2 in coordinates:
+            for a in range(k + 1):
+                b = k - a
+                x1, y1 = a ^ x2, b ^ y2
+                ans += cnt[(x1, y1)]
+            cnt[(x2, y2)] += 1
+        return ans","class Solution:
+    def countPairs(self, coordinates: List[List[int]], k: int) -> int:
+        cnt = Counter()
+        ans = 0
+        for x2, y2 in coordinates:
+            for a in range(k + 1):
+                b = k - a
+                x1, y1 = a ^ x2, b ^ y2
+                ans += cnt[(x1, y1)]
+                cnt[(x1, y1)] += 1
+        return ans"
+"with open ( parsed_arg . consensusOutput , 'w' ) as f : json . dump ( statStr , f , indent = 4 )","with open ( parsed_arg. consensusOutput, 'w' ) as f : json. dump ( statStr, f, indent = 4 )"
+"import random
+import matplotlib.pyplot as plt
+# Sample data
+class Object:
+    value = 0
+    def __init__(self, value=None):
+        if value is None:
+            self.value = random.gauss(0, 1)
+        else:
+            self.value = value
+def task_func(obj_list, attr, num_bins=30, seed=0):
+
+    # Set random seed
+    random.seed(seed)
+    attr_values = [getattr(obj, attr) for obj in obj_list]
+
+    # Generate histogram
+    fig, ax = plt.subplots()
+    ax.hist(attr_values, bins=num_bins, alpha=0.5)
+    ax.set_title('Histogram of attribute values')
+    ax.set_xlabel('Attribute Value')
+    ax.set_ylabel('Count')
+
+    return ax","import random
+import matplotlib.pyplot as plt
+# Sample data
+class Object:
+    value = 0
+    def __init__(self, value=None):
+        if value is None:
+            self.value = random.gauss(0, 1)
+        else:
+            self.value = value
+def task_func(obj_list, attr, num_bins=30, seed=0):
+
+    # Set random seed
+    random.seed(seed)
+    attr_values = [obj for obj in obj_list if hasattr(obj, attr)]
+    
+    # Generate histogram
+    fig, ax = plt.subplots()
+    ax.hist(attr_values, bins=num_bins, alpha=0.5)
+    ax.set_title('Histogram of attribute values')
+    ax.set_xlabel('Attribute Value')
+    ax.set_ylabel('Count')
+    
+    return ax"
+"ranked_list = [ ( label , np . float ( func ( time , label , 'average' , bias = 0 ) ) ) for label in self . labels ]","ranked_list = [ ( label, np. float ( func ( time, label, 'average' ) ) ) for label in self. labels if np. float ( func ( time, label, 'average' ) )!= 0 ]"
+"assert isinstance ( s , ( attr . AttrOr , attr . DataAttr , attr . AttrAnd ) )","assert isinstance ( s, ( attr. AttrOr, attr. DataAttr, attr. AttrOrDataAttr ) )"
+sents = [ t . strip ( ) . split ( ) for t in text ],sents = [ t. strip ( ). split ( ) for t in tokens if t ]
+if existingimg . image . size != len ( i ) or overwrite : existingimage . delete ( ),if existingimg. image. size!= len ( img ) or overwrite or existingimage. image. size!= len ( img ) : existingimage. delete ( )
+"tarball = self . fetch_asset ( ""ftp://sourceware.org/pub/valgrind/valgrind-3.13.0.tar.bz2"" )","tarball = self. fetch_asset ( ""http://valgrind.org/downloads/valgrind-3.12.0.tar.bz2"", ""valgrind-3.12.0.tar.bz2"" )"
+"class Solution:
+    def countOfPairs(self, nums: List[int]) -> int:
+        mod = 10**9 + 7
+        n, m = len(nums), max(nums)
+        f = [[0] * (m + 1) for _ in range(n)]
+        for j in range(nums[0] + 1):
+            f[0][j] = 1
+        for i in range(1, n):
+            s = list(accumulate(f[i - 1]))
+            for j in range(nums[i] + 1):
+                k = min(j, j + nums[i - 1] - nums[i])
+                if k >= 0:
+                    f[i][j] = s[k] % mod
+        return sum(f[-1][: nums[-1] + 1]) % mod","class Solution:
+    def countOfPairs(self, nums: List[int]) -> int:
+        mod = 10**9 + 7
+        n, m = len(nums), max(nums)
+        f = [[0] * (m + 1) for _ in range(n)]
+        for j in range(nums[0] + 1):
+            f[0][j] = 1
+        for i in range(1, n):
+            s = f[i - 1]
+            for j in range(nums[i] + 1):
+                k = min(j, j + nums[i - 1] - nums[i])
+                if k >= 0:
+                    f[i][j] = s[j] % mod
+        return sum(f[-1][: nums[-1] + 1]) % mod"
+print_width = models . FloatField ( default = 500 ),"print_width = models. FloatField ( default = 200, blank = True )"
+"parser . add_argument ( '--use_groupkfold' , dest = 'use_groupkfold' , default = False , action = 'store_true' )","parser. add_argument ( '--use_groupkfold', dest = use_groupkfold, default = False, action ='store_true', help = 'Use group k-fold instead of individual fold' )"
+"class Solution:
+    def minimumMoves(self, nums: List[int], k: int, maxChanges: int) -> int:
+        n = len(nums)
+        cnt = [0] * (n + 1)
+        s = [0] * (n + 1)
+        for i, x in enumerate(nums, 1):
+            cnt[i] = cnt[i - 1] + x
+            s[i] = s[i - 1] + i * x
+        ans = inf
+        max = lambda x, y: x if x > y else y
+        min = lambda x, y: x if x < y else y
+        for i, x in enumerate(nums, 1):
+            t = 0
+            need = k - x
+            for j in (i - 1, i + 1):
+                if need > 0 and 1 <= j <= n and nums[j - 1] == 1:
+                    need -= 1
+                    t += 1
+            c = min(need, maxChanges)
+            need -= c
+            t += c * 2
+            if need <= 0:
+                ans = min(ans, t)
+                continue
+            l, r = 2, max(i - 1, n - i)
+            while l <= r:
+                mid = (l + r) >> 1
+                l1, r1 = max(1, i - mid), max(0, i - 2)
+                l2, r2 = min(n + 1, i + 2), min(n, i + mid)
+                c1 = cnt[r1] - cnt[l1 - 1]
+                c2 = cnt[r2] - cnt[l2 - 1]
+                if c1 + c2 >= need:
+                    t1 = c1 * i - (s[r1] - s[l1 - 1])
+                    t2 = s[r2] - s[l2 - 1] - c2 * i
+                    ans = min(ans, t + t1 + t2)
+                    r = mid - 1
+                else:
+                    l = mid + 1
+        return ans","class Solution:
+    def minimumMoves(self, nums: List[int], k: int, maxChanges: int) -> int:
+        n = len(nums)
+        cnt = [0] * (n + 1)
+        s = [0] * (n + 1)
+        for i, x in enumerate(nums, 1):
+            cnt[i] = cnt[i - 1] + x
+            s[i] = s[i - 1] + i * x
+        ans = 1000000000
+        max = lambda x, y: x if x > y else y
+        min = lambda x, y: x if x < y else y
+        for i, x in enumerate(nums, 1):
+            t = 0
+            need = k - x
+            for j in (i - 1, i + 1):
+                if need > 0 and 1 <= j <= n and nums[j - 1] == 1:
+                    need -= 1
+                    t += 1
+            c = min(need, maxChanges)
+            maxChanges -= c
+            t += c * 2
+            if need <= 0:
+                ans = min(ans, t)
+                continue
+            l, r = 2, max(i - 1, n - i)
+            while l <= r:
+                mid = (l + r) >> 1
+                l1, r1 = max(1, i - mid), max(0, i - 1)
+                l2, r2 = min(n + 1, i + 1), min(n, i + mid)
+                c1 = cnt[r1] - cnt[l1 - 1]
+                c2 = cnt[r2] - cnt[l2 - 1]
+                if c1 + c2 >= need:
+                    t1 = c1 * i - (s[r1] - s[l1 - 1])
+                    t2 = s[r2] - s[l2 - 1] - c2 * i
+                    ans = min(ans, t + t1 + t2)
+                    r = mid
+                else:
+                    l = mid + 1
+        return ans"
+"s1 = select ( [ model . job_table . c . whiteboard ] , whereclause = where , group_by = [ model . job_table . c . whiteboard , model . job_table . c . id ] , order_by = [ model . job_table . c . id . desc ( ) ] , distinct = True , limit = 50 )","s1 = select ( [ model. job_table. c. whiteboard ], whereclause = where, group_by = [ model. job_table. c. whiteboard, model. job_table. c. id ], order_by = [ model. job_table. c. id ], distinct = True, limit = 50, allow_fetched = [ model. job_table. c. id ] )"
+metafile = xmlrpc . client . Binary ( m_file . read ( ) . encode ( 'utf-8' ) ),"metafile = xmlrpc. client. Binary ( m_file. read ( ), encoding = 'utf-8' )"
+"from PIL import Image
+import numpy as np
+from skimage.transform import resize
+import matplotlib.pyplot as plt
+import os
+def task_func(img_path, scale_factors=[0.5, 0.75, 1.5, 2.0]):
+
+    if not os.path.exists(img_path):
+        raise FileNotFoundError(f""No file found at {img_path}"")
+
+    im = Image.open(img_path)
+    img_arr = np.array(im)
+    results = []
+
+    for scale_factor in scale_factors:
+        scaled_img_arr = resize(img_arr, (int(im.height * scale_factor), int(im.width * scale_factor)),
+                                mode='reflect', anti_aliasing=True)
+        fig, ax = plt.subplots()
+        ax.imshow(scaled_img_arr)
+        ax.set_title(f'Scale factor: {scale_factor}')
+        results.append((ax, scaled_img_arr))
+    # plt.show()
+    return results","from PIL import Image
+import numpy as np
+from skimage.transform import resize
+import matplotlib.pyplot as plt
+import os
+def task_func(img_path, scale_factors=[0.5, 0.75, 1.5, 2.0]):
+
+    if not os.path.exists(img_path):
+        raise FileNotFoundError(f""No file found at {img_path}"")
+
+    im = Image.open(img_path)
+    img_arr = np.array(im)
+    results = []
+
+    for scale_factor in scale_factors:
+        scaled_img_arr = resize(img_arr, (int(im.height * scale_factor), int(im.width * scale_factor)),
+                                mode='reflect', anti_aliasing=True)
+        fig, ax = plt.subplots()
+        ax.imshow(scaled_img_arr)
+        ax.set_title(f'Scale factor: {scale_factor}')
+        results.append((ax, scaled_img_arr))
+    # plt.show()
+    return results"
+"signals . DailyRentSignals . booked . send ( record , tid = record . publication . tid , publciation_id = publication . id , date_enter = date_enter , date_leave = date_leave )","signals. DailyRentSignals. booked. send ( record, tid = record. tid, publication_id = publication. id, date_enter = date_enter, date_leave = date_leave )"
+description = ( u'|DB小小的甜蜜毒药 梅蒂欣 体力：3|r\n\n' u'|G神经之毒|r：一名角色的准备阶段开始时，你可以弃置一张手牌，令该角色失去一点残机，然后获得喝醉状态。\n\n' u'|G忧郁之毒|r：每当你受到一次有来源的伤害后，你可以展示并获得牌堆顶一张牌，若其花色不为梅花，伤害来源无法使用或打出手牌直到该回合结束。\n\n' u'|DB（画师：和茶，CV：VV）|r' ),description = ( u'|DB小小的甜蜜毒药 梅蒂欣 体力：3|r\n\n' u'|G神经之毒|r：一名角色的准备阶段开始时，你可以弃置一张手牌，令该角色失去一点残机，然后获得喝醉状态。\n\n' u'|G忧郁之毒|r：每当你受到一次有来源的伤害后，你可以展示并获得排堆顶一张牌，若其花色不为梅花，伤害来源无法使用或打出手牌直到该回合结束。\n\n' u'|DB（画师：和茶，CV：VV）|r' )
+"class Solution:
+    def constructProductMatrix(self, grid: List[List[int]]) -> List[List[int]]:
+        n, m = len(grid), len(grid[0])
+        p = [[0] * m for _ in range(n)]
+        mod = 12345
+        suf = 1
+        for i in range(n - 1, -1, -1):
+            for j in range(m - 1, -1, -1):
+                p[i][j] = suf
+                suf = suf * grid[i][j] % mod
+        pre = 1
+        for i in range(n):
+            for j in range(m):
+                p[i][j] = p[i][j] * pre % mod
+                pre = pre * grid[i][j] % mod
+        return p","class Solution:
+    def constructProductMatrix(self, grid: List[List[int]]) -> List[List[int]]:
+        n, m = len(grid), len(grid[0])
+        p = [[0] * m for _ in range(n)]
+        mod = 12345
+        suf = 1
+        for i in range(n - 1, -1, -1):
+            for j in range(m - 1, -1, -1):
+                p[i][j] = suf
+                suf = suf * grid[i][j] % mod
+        pre = 1
+        for i in range(n):
+            for j in range(m):
+                p[i][j] = p[i][j] * pre % mod
+                pre = pre * grid[i][j] % mod
+        return p"
+"msg = ( ""Password must include three of the following four: "" ""At least one number, at least one special character, "" ""at least one capital letter or at least one lowercase "" ""letter."" )","msg = ( ""Password must include three of the following four: "" ""At least one number, at least one special character, "" ""at least one capital letter or at least one lowercase "" ""letter."" )"
