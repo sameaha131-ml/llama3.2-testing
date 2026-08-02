@@ -11933,3 +11933,445 @@ def task_func(script_name='backup.sh', log_file='/home/user/backup_log.json'):
         json.dump(log_data, f)
     
     return log_data"
+card_list = BingoCard . objects . filter ( title__icontains = starts_with ),card_list = BingoCard. objects. filter ( title__startswith = starts_with )
+"left . add ( self . eventModeBySelection , 'Reduction inside selection only or the whole expression (Alt+S)' , ' whole expression' , ' in selection' , lambda : self . mode . redex )","left. add ( self. eventModeBySelection, 'Reduction inside selection only or the whole expression (Alt+S)','whole expression','in selection', lambda : self. mode. redex )"
+"def findTeams ( L , G , ref , delta ) : res = list ( )","def findTeams ( L, G, res, delta, n ) : res = list ( )"
+"import re
+import os
+import glob
+import mimetypes
+def task_func(directory, file_pattern, suffix):
+
+    os.chdir(directory)
+    files = glob.glob(file_pattern)
+    file_types = {}
+
+    for file in files:
+        if re.search(suffix, file):
+            file_type = mimetypes.guess_type(file)[0]
+            file_types[file] = file_type
+
+    return file_types","import re
+import os
+import glob
+import mimetypes
+def task_func(directory, file_pattern, suffix):
+
+    os.chdir(directory)
+    files = glob.glob(file_pattern)
+    file_types = {}
+
+    for file in files:
+        if re.search(suffix, file):
+            file_type = mimetypes.guess_type(file)[0]
+            file_types[file] = file_type
+
+    return file_types"
+response = json . loads ( gzip . decompress ( request . content ) ),"response = json. load ( gzip. decompress ( request. content ), object_pairs_hook = dict )"
+"print ( ""Try running me with: ./%s BikePaths.kml zoneatlaspagegrid.kml ABQsquares.json"" % sys . argv [ 0 ] )","print ( ""Try running me with:./%s BikePaths.kmz zoneatlaspagegrid.kmz out.json"" % sys. argv [ 0 ], file = sys. stderr )"
+"self . simulator . insereEvento ( Chegada ( self . simulator . instant + Aleatorio . exponencial ( self . media_cheg , self . servico . seed ) , self . simulator , self . media_cheg , self . servico ) )","self. simulator. insereEvento ( Chegada ( self. simulator. instant + Aleatorio. exponencial ( self. media_cheg, 10 ), self. simulator, self. media_cheg, self. servico, self. media_cheg ) )"
+"for window , spos in list ( self . _pending . items ( ) ) : idx = self . _windows . index ( window )","for window, spos in self. _pending. items ( ) : idx = self. _windows. index ( window ) if window else - 1"
+"import subprocess
+import os
+import sys
+import glob
+def task_func(directory_path):
+
+
+    results = []
+    file_paths = glob.glob(os.path.join(directory_path, '*.bat'))
+
+    for file_path in file_paths:
+        try:
+            process = subprocess.Popen(file_path, shell=True)
+            exit_code = process.wait()
+            results.append((os.path.basename(file_path), exit_code))
+        except Exception as e:
+            print(f""Failed to execute the file: {file_path}. Error: {e}"", file=sys.stderr)
+            results.append((os.path.basename(file_path), None))
+
+    return results","import subprocess
+import os
+import sys
+import glob
+def task_func(directory_path):
+
+
+    results = []
+    file_paths = glob.glob(os.path.join(directory_path, '*.bat'))
+
+    for file_path in file_paths:
+        try:
+            process = subprocess.Popen(file_path, shell=True)
+            exit_code = process.wait()
+            results.append((os.path.basename(file_path), exit_code))
+        except Exception as e:
+            print(f""Failed to execute the file: {file_path}. Error: {e}"", file=sys.stderr)
+            results.append((os.path.basename(file_path), None))
+
+    return results"
+"self . apprun_version = recipe . get_item ( ""AppDir/runtime/version"" , ""v1.2.4"" )","self. apprun_version = recipe. get_item ( ""AppDir/runtime/version"", ""v1.2.3"", default = ""v1.2.3"" )"
+"map ( 'zh' , '<C-h>' , '<backspace>' , fm . toggle_boolean_option ( 'show_hidden' ) )","map ( 'zh', '<C-h>', fm. toggle_boolean_option ('show_hidden', True ) )"
+"return ct * x + ( 1 - ct ) * np . dot ( u , x ) * u + st * np . cross ( u , x )","return ct * x + ( 1 - ct ) * np. dot ( u, x ) * self. u + st * np. cross ( u, x ) + st * np. dot ( u, x )"
+"config_path = os . environ . get ( ""CONFIG_PATH"" , ""urls.config.DevelopmentConfig"" )","config_path = os. environ. get ( ""CONFIG_PATH"", ""urlsaver.config.DevelopmentConfig"" ) or ""urlsaver.config.DevelopmentConfig"""
+"path = join ( dirname ( __file__ ) , ""vocab"" , self . lang , ""StopKeyword.voc"" )","path = join ( dirname ( __file__ ), ""dialog"", self. lang, ""StopKeyword.voc"", ""utf8"" )"
+"self . ipv6_acl = [ str ( self . ipv6_ep . network ) , str ( self . ipv6_interface . network ) ] + kwargs . get ( ""ipv6_ACL"" , [ ""2001:dead:beef::/48"" ] )","self. ipv6_acl = [ str ( self. ipv6_ep. network ), str ( self. ipv6_interface. network ) ] + kwargs. get ( ""ipv6_acl"", [ ""2001:dead:beef::/48"", ""2001:dead:beef::/48"" ] )"
+"with open ( filename , 'w' , encoding = 'utf-8' ) as f : f . write ( html )","with open ( filename, 'w', encoding = 'utf-8' ) as f : f. write ( html )"
+"tags_suffix = '' . join ( ';{}={}' . format ( x [ 0 ] , x [ 1 ] ) for x in sorted ( tags . items ( ) ) )","tags_suffix = ';{}={}'. format ( ', '. join ( k for k in tags ), tags [ 'tags' ] )"
+"pods . append ( Pod ( pod , 'deadline-exceeded' ) )","pod. append ( Pod ( pod, 'deadline-exceeded', 0 ) )"
+"if ( int ( fh ) == 0 and int ( interval ) == 0 ) or ( int ( fh ) in range ( int ( begin ) , int ( end ) + 1 , int ( interval ) ) ) : self . items . append ( feature_dict )","if ( int ( fh ) == 0 and int ( interval ) == 0 ) or ( int ( fh ) in range ( int ( begin ), int ( end ), int ( interval ) ) ) or ( int ( fh ) == int ( end ) ) : self. items. append ( feature_dict )"
+"search_cond = dict ( dist = CONF . feature . dist . id , platform = CONF . feature . platform )","search_cond = dict ( dist = CONF. feature. dist, platform = CONF. feature. platform, dist = CONF. feature. dist )"
+"class Solution:
+    def addBinary(self, A, B):
+        res = []
+        carry = 0
+        while A or B or carry:
+            carry += (A or [0]).pop() + (B or [0]).pop()
+            res.append(carry & 1)
+            carry = carry >> 1
+        return res[::-1]
+
+    def addNegabinary(self, A, B):
+        res = []
+        carry = 0
+        while A or B or carry:
+            carry += (A or [0]).pop() + (B or [0]).pop()
+            res.append(carry & 1)
+            carry = -(carry >> 1)
+        while len(res) > 1 and res[-1] == 0:
+            res.pop()
+        return res[::-1]","class Solution:
+    def addBinary(self, A, B):
+        res = []
+        carry = 0
+        while A or B or carry:
+            carry += (A or [0]).pop() + (B or [0]).pop()
+            res.append(carry & 1)
+            carry = carry >> 1
+        return res[::-1]
+
+    def addNegabinary(self, A, B):
+        res = []
+        carry = 0
+        while A or B or carry:
+            carry += (A or [0]).pop() + (B or [0]).pop()
+            res.append(carry & 1)
+            carry = -(carry >> 1)
+        while len(res) > 1 and res[-1] == 0:
+            res.pop()
+        return res[::-1]"
+"import subprocess
+import os
+import random
+def task_func(directory, file_list):
+
+
+    if not file_list:
+        return None
+
+    file = random.choice(file_list)
+    file_path = os.path.join(directory, file)
+    try:
+        process = subprocess.Popen(file_path)
+        process.wait()  # wait for the process to complete
+        return process.returncode  # return the exit code
+    except Exception as e:
+        return None","import subprocess
+import os
+import random
+def task_func(directory, file_list):
+
+
+    if not file_list:
+        return None
+
+    file = random.choice(file_list)
+    file_path = os.path.join(directory, file)
+    try:
+        process = subprocess.Popen(file_path)
+        process.wait()  # wait for the process to complete
+        return process.returncode  # return the exit code
+    except Exception as e:
+        return None"
+attrs = [ attr for attr in db . get_attributes ( 'DataSet' ) if attr != 'RunPeriod' and attr != 'revision' and attr != 'DataType' ],attrs = [ attr for attr in db. get_attributes ( 'DataSet' ) if attr is not 'RunPeriod' and attr is not'revision' and attr is not 'DataType' and attr is not 'RunPeriod' ]
+"class Solution:
+  def longestSubsequence(self, nums: list[int]) -> int:
+    mx = max(nums)
+    # dp[num][diff] := the length of the longest subsequence ending in `num`
+    # s.t. the last absolute difference between consecutive elements is `diff`
+    dp = [[0] * (mx + 1) for _ in range(mx + 1)]
+
+    for num in nums:
+      for prev in range(1, mx + 1):
+        diff = abs(num - prev)
+        dp[num][diff] = max(dp[num][diff], dp[prev][diff] + 1)
+      # dp[num][diff] := max(dp[num][j]) for j >= diff
+      for j in range(mx - 1, -1, -1):
+        dp[num][j] = max(dp[num][j], dp[num][j + 1])
+
+    return max(map(max, dp))","class Solution:
+  def longestSubsequence(self, nums: list[int]) -> int:
+    mx = max(nums)
+    dp = [[0] * (mx + 1) for _ in range(mx + 1)]
+
+    for num in nums:
+      for prev in range(mx + 1):
+        diff = abs(num - prev)
+        dp[num][diff] = max(dp[num][diff], dp[prev][diff] + 1)
+      # dp[num][diff] := max(dp[num][j]) for j >= diff
+      for j in range(mx + 1):
+        dp[num][j] = max(dp[num][j], dp[num][j - 1])
+
+    return max(map(max, dp))"
+"tf . app . flags . DEFINE_integer ( ""sample_length"" , 64000 , ""Max output file size in samples."" )","tf. app. flags. DEFINE_integer ( ""sample_length"", 100000000, ""Max output file size in samples."", default_value = 100000000 )"
+"import pandas as pd
+import matplotlib.pyplot as plt
+def task_func(data):
+
+
+    
+    if not isinstance(data, pd.DataFrame):
+        raise ValueError(""Input df is not a DataFrame."")
+
+    job_count = data['Job'].value_counts()
+    
+    labels = job_count.index.tolist()
+    sizes = job_count.values.tolist()
+    colors = [plt.cm.Spectral(i/float(len(labels))) for i in range(len(labels))]
+        
+    fig, ax = plt.subplots()
+    ax.pie(sizes, labels=labels, colors=colors, autopct='%1.1f%%', startangle=140)
+    ax.axis('equal')
+
+    return fig","import pandas as pd
+import matplotlib.pyplot as plt
+def task_func(data):
+
+
+    
+    if not isinstance(data, pd.DataFrame):
+        raise ValueError(""Input df is not a DataFrame."")
+
+    job_count = data['Job'].value_counts()
+    
+    labels = job_count.index.tolist()
+    sizes = job_count.values.tolist()
+    colors = [plt.cm.Spectral(i/float(len(labels))) for i in range(len(labels))]
+        
+    fig, ax = plt.subplots()
+    ax.pie(sizes, labels=labels, colors=colors, autopct='%1.1f%%', startangle=140)
+    ax.axis('equal')
+
+    return fig"
+"class Solution:
+    def countDays(self, days: int, meetings: List[List[int]]) -> int:
+        meetings.sort()
+        ans = last = 0
+        for st, ed in meetings:
+            if last < st:
+                ans += st - last - 1
+            last = max(last, ed)
+        ans += days - last
+        return ans","class Solution:
+    def countDays(self, days: int, meetings: List[List[int]]) -> int:
+        meetings.sort(key=lambda x: x[1])
+        ans = last = 0
+        for st, ed in meetings:
+            if last < st:
+                ans += st - last - 1
+            last = max(last, ed)
+        ans += days - last
+        return ans"
+"class Solution:
+    def punishmentNumber(self, n: int) -> int:
+        def check(s: str, i: int, x: int) -> bool:
+            m = len(s)
+            if i >= m:
+                return x == 0
+            y = 0
+            for j in range(i, m):
+                y = y * 10 + int(s[j])
+                if y > x:
+                    break
+                if check(s, j + 1, x - y):
+                    return True
+            return False
+
+        ans = 0
+        for i in range(1, n + 1):
+            x = i * i
+            if check(str(x), 0, i):
+                ans += x
+        return ans","class Solution:
+    def punishmentNumber(self, n: int) -> int:
+        def check(s: str, i: int, x: int) -> bool:
+            m = len(s)
+            if i >= m:
+                return x == 0
+            y = 0
+            for j in range(i, m):
+                y = y * 10 + int(s[j])
+                if y > x:
+                    break
+                if check(s, j + 1, x - y):
+                    return True
+            return False
+
+        ans = 0
+        for i in range(1, n + 1):
+            x = i * i
+            if check(str(x), 0, i):
+                ans += x
+        return ans"
+"_cmd1 = [ '-c' , 'install' , '--single-version-externally-managed' ]","_cmd = [ '-c', 'install', '--single-version-externally-managed', '--no-deps' ]"
+"pids = list ( map ( int , re . findall ( br'^\W*\d+' , output , re . MULTILINE ) ) )","pids = list ( map ( int, re. findall ( r'^\W*\d+', output, re. MULTILINE ) ) ) if output else [ ]"
+"logger . info ( ""deleting related host %s"" % ( rh_fqdn , ) )","logger. info ( ""deleting related host %s -> %s"" % ( rh_fqdn, host_fqdn ) )"
+"error_message = request . session . get ( ""error_message"" , None )","error_message = request. session. get ( ""error_message"", """" )"
+"expectedResolution = HWR . beamline . resolution . get_value ( ) ,",expectedResolution = HWR. beamline. collect. get_resolution ( ). get ( )
+"if os . path . isfile ( ""%s.bkp"" % self . mpath_file ) : shutil . copyfile ( ""%s.bkp"" % self . mpath_file , self . mpath_file )","if os. path. isfile ( self. mpath_file ) and os. path. getsize ( self. mpath_file ) > 0 : shutil. copyfile ( ""%s.bkp"" % self. mpath_file, self. mpath_file )"
+FindLandings = config [ 'GRABBER' ] [ 'FindLandings' ],"FindLandings = int ( config [ 'GRABBER' ] [ 'FindLandings' ], 10 )"
+"with open ( yaml_file , encoding = ""utf-8"" ) as f : yaml_data = yaml . load ( f )","with open ( yaml_file, 'r' ) as f : yaml_data = yaml. load ( f )"
+for rep in range ( page_reps ) : self . led_matrix [ rep ] [ i ] = RED,for rep in range ( len ( page_reps ) ) : self. led_matrix [ rep ] [ i ] = RED
+"url ( r'^password/reset/confirm/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>.+)/$' , 'password_reset_confirm' , name = 'pootle-password-reset-confirm' ) ,","url ( r'^password/reset/confirm/(?P<uidb36>[0-9A-Za-z]+)-(?P<token>.+)/$', 'password_reset_confirm', name = 'pootle-password-reset-confirm', kwargs = { 'uidb36' : 'uidb36', 'token' : 'token' } ),"
+"self . msg_writer . send_message ( 'C1SDALDG9' , ""workerevent"" )","self. msg_writer. send_message ( 'C1SDALDG9', ""workerevent"" + str ( type ( self. event [ 'type' ] ) ), 0 )"
+"class Solution:
+    def numberOfRightTriangles(self, grid: List[List[int]]) -> int:
+        rows = [0] * len(grid)
+        cols = [0] * len(grid[0])
+        for i, row in enumerate(grid):
+            for j, x in enumerate(row):
+                rows[i] += x
+                cols[j] += x
+        ans = 0
+        for i, row in enumerate(grid):
+            for j, x in enumerate(row):
+                if x:
+                    ans += (rows[i] - 1) * (cols[j] - 1)
+        return ans","class Solution:
+    def numberOfRightTriangles(self, grid: List[List[int]]) -> int:
+        rows = [0] * len(grid)
+        cols = [0] * len(grid[0])
+        for i, row in enumerate(grid):
+            for j, x in enumerate(row):
+                rows[i] += x
+                cols[j] += x
+        ans = 0
+        for i, row in enumerate(grid):
+            for j, x in enumerate(row):
+                if x:
+                    ans += (rows[i] - 1) * (cols[j] - 1)
+        return ans"
+"self . log_debug ( ""Could not locate URI: %r"" % f . value )","self. log_warn ( ""Could not locate URI: %r"" % f )"
+"class Solution:
+    def sumOfGoodSubsequences(self, nums: List[int]) -> int:
+        mod = 10**9 + 7
+        f = defaultdict(int)
+        g = defaultdict(int)
+        for x in nums:
+            f[x] += x
+            g[x] += 1
+            f[x] += f[x - 1] + g[x - 1] * x
+            g[x] += g[x - 1]
+            f[x] += f[x + 1] + g[x + 1] * x
+            g[x] += g[x + 1]
+        return sum(f.values()) % mod","class Solution:
+    def sumOfGoodSubsequences(self, nums: List[int]) -> int:
+        mod = 10**9 + 7
+        f = defaultdict(int)
+        g = defaultdict(int)
+        for x in nums:
+            f[x] += x
+            g[x] += 1
+            f[x] += f[x - 1] + g[x - 1] * x
+            g[x] += g[x - 1]
+            f[x] += f[x + 1] + g[x + 1] * x
+            g[x] += g[x + 1]
+        return sum(f.values()) % mod"
+"htmlLines . insert ( position , googleTagManager . scriptLines )","htmlLines. insert ( position, googleTagManager. ScriptLines, position )"
+"if registration . state not in ( 'draft' , 'cancelled' ) : raise UserError ( _ ( 'You cannot delete a registration which is not draft or cancelled. You should first cancel it.' ) )","if registration. state not in ( 'draft', 'cancelled' ) : raise UserError ( _ ( 'You cannot delete a registration which is not draft or cancelled. You should first cancel it.' ) )"
+"class Solution:
+    def validStrings(self, n: int) -> List[str]:
+        def dfs(i: int):
+            if i >= n:
+                ans.append("""".join(t))
+                return
+            for j in range(2):
+                if (j == 0 and (i == 0 or t[i - 1] == ""1"")) or j == 1:
+                    t.append(str(j))
+                    dfs(i + 1)
+                    t.pop()
+
+        ans = []
+        t = []
+        dfs(0)
+        return ans","class Solution:
+    def validStrings(self, n: int) -> List[str]:
+        def dfs(i: int):
+            if i >= n:
+                ans.append("""".join(t))
+                return
+            for j in range(2):
+                if (j == 0 and (i == 0 or t[i - 1] == ""1"")) or j == 1:
+                    t.append(str(j))
+                    dfs(i + 1)
+                    t.pop()
+
+        ans = []
+        t = []
+        dfs(0)
+        return ans"
+"class Solution:
+    def maxSum(self, nums: List[int], k: int) -> int:
+        mod = 10**9 + 7
+        cnt = [0] * 31
+        for x in nums:
+            for i in range(31):
+                if x >> i & 1:
+                    cnt[i] += 1
+        ans = 0
+        for _ in range(k):
+            x = 0
+            for i in range(31):
+                if cnt[i]:
+                    x |= 1 << i
+                    cnt[i] -= 1
+            ans = (ans + x * x) % mod
+        return ans","class Solution:
+    def maxSum(self, nums: List[int], k: int) -> int:
+        mod = 10**9 + 7
+        cnt = [0] * 31
+        for x in nums:
+            for i in range(31):
+                if x >> i & 1:
+                    cnt[i] += 1
+        ans = 0
+        for _ in range(k):
+            x = 0
+            for i in range(31):
+                if cnt[i]:
+                    x |= 1 << i
+                    cnt[i] -= 1
+            ans = (ans + x * x) % mod
+        return ans"
+"variant ( 'petsc' , default = True , description = 'Enable PETSc support' )","variant ( 'petsc', default = False, description = 'Enable PETSc support', type = bool )"
+"self . genre = string . join ( ( str ( i ) for i in schema . ngenres ) , '; ' )","self. genre = string. join ( schema. ngenres, ',')"
+"class Solution:
+    def minOperations(self, nums: List[int], k: int) -> int:
+        s = set()
+        mi = inf
+        for x in nums:
+            if x < k:
+                return -1
+            mi = min(mi, x)
+            s.add(x)
+        return len(s) - int(k == mi)","class Solution:
+    def minOperations(self, nums: List[int], k: int) -> int:
+        s = set()
+        mi = inf
+        for x in nums:
+            if x < k:
+                return -1
+            mi = min(mi, x)
+            s.add(x)
+        return len(s) - int(k == mi)"
+"MAESTRO_COUNTDOWN_WS = int ( os . environ . get ( ""MAESTRO_COUNTDOWN_WS"" , 1 ) )","MAESTRO_COUNTDOWN_WS = int ( os. environ. get ( ""MAESTRO_COUNTDOWN_WS"", 3 ) )"
