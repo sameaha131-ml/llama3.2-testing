@@ -23171,3 +23171,379 @@ description = ( u'|DB小小的甜蜜毒药 梅蒂欣 体力：3|r\n\n' u'|G神�
                 pre = pre * grid[i][j] % mod
         return p"
 "msg = ( ""Password must include three of the following four: "" ""At least one number, at least one special character, "" ""at least one capital letter or at least one lowercase "" ""letter."" )","msg = ( ""Password must include three of the following four: "" ""At least one number, at least one special character, "" ""at least one capital letter or at least one lowercase "" ""letter."" )"
+"class Solution:
+    def numberOfWays(self, n: int, x: int) -> int:
+        MOD = 10**9 + 7
+        candidates = []
+        i = 1
+        while True:
+            current = i ** x
+            if current > n:
+                break
+            candidates.append(current)
+            i += 1
+        
+        dp = [0] * (n + 1)
+        dp[0] = 1  # Base case: one way to make sum 0
+        
+        for num in candidates:
+            for s in range(n, num - 1, -1):
+                dp[s] = (dp[s] + dp[s - num]) % MOD
+        
+        return dp[n] % MOD","class Solution:
+    def numberOfWays(self, n: int, x: int) -> int:
+        MOD = 10**9 + 7
+        candidates = []
+        i = 1
+        while True:
+            current = i ** x
+            if current > n:
+                break
+            candidates.append(current)
+            i += 1
+        
+        dp = [0] * (n + 1)
+        dp[0] = 1  # Base case: one way to make sum 0
+        
+        for num in candidates:
+            for s in range(n, num - 1, -1):
+                dp[s] = (dp[s] + dp[s - num]) % MOD
+        
+        return dp[n]"
+"return render_to_response ( 'main/generic_form.html' , { 'form' : form , 'title' : _ ( u'Current user details' ) , 'read_only' : True , } , context_instance = RequestContext ( request ) )","return render_to_response ('main/generic_form.html', { 'form' : form, 'title' : _ ( u'current user details' ),'read_only' : False, }, context_instance = RequestContext ( request ) )"
+"url ( r'^(?P<language>es)/obtener-respuestas/buscar/$' , ask_search , name = 'ask-search-es' ) ,","url ( r'^(?P<language>es)/obtener-respuestas/buscar/?$', ask_search, name = 'ask-search-es', methods = [ 'GET' ] ),"
+r = re . compile ( 'function<(.+)\((.*)\)>' ) . search ( cdecl . displayname ),r = re. compile ( 'function<(\S+) \((.*)\)' ). search ( str ( cdecl. displayname ) )
+"IDS_FILE_PATH = RESTORE_CFG . get ( 'ids_file' , None )","IDS_FILE_PATH = RESTORE_CFG. get ( 'ids', None ) or 'ids.txt'"
+"class Solution:
+    def countMentions(self, numberOfUsers: int, events: List[List[str]]) -> List[int]:
+        events.sort(key=lambda e: (int(e[1]), e[0][2]))
+        ans = [0] * numberOfUsers
+        online_t = [0] * numberOfUsers
+        lazy = 0
+        for etype, ts, s in events:
+            cur = int(ts)
+            if etype[0] == ""O"":
+                online_t[int(s)] = cur + 60
+            elif s[0] == ""A"":
+                lazy += 1
+            elif s[0] == ""H"":
+                for i, t in enumerate(online_t):
+                    if t <= cur:
+                        ans[i] += 1
+            else:
+                for a in s.split():
+                    ans[int(a[2:])] += 1
+        if lazy:
+            for i in range(numberOfUsers):
+                ans[i] += lazy
+        return ans","class Solution:
+    def countMentions(self, numberOfUsers: int, events: List[List[str]]) -> List[int]:
+        events.sort(key=lambda e: (int(e[1]), e[0][2]))
+        ans = [0] * numberOfUsers
+        online_t = [0] * numberOfUsers
+        lazy = 0
+        for etype, ts, s in events:
+            cur = int(ts)
+            if etype[0] == ""O"":
+                online_t[int(s)] = cur + 60
+            elif s[0] == ""A"":
+                lazy += 1
+            elif s[0] == ""H"":
+                for i, t in enumerate(online_t):
+                    if t <= cur:
+                        ans[i] += 1
+            else:
+                for a in s.split():
+                    ans[int(a[2:])] += 1
+        if lazy:
+            for i in range(numberOfUsers):
+                ans[i] += lazy
+        return ans"
+"data_unpack = np . reshape ( data_unpack , [ 72 , 144 ] )","data_unpack = np. reshape ( data_unp, [ 72, 144, 1 ] )"
+"FORCE_OPEN_TAG_RE = re . compile ( r""<(script|p) ([^<]+) ?/>"" , re . UNICODE | re . MULTILINE )","FORCE_OPEN_TAG_RE = re. compile ( r""<(script|p) (.+?)?/>"", re. UNICODE | re. MULTILINE | re. IGNORECASE )"
+"SimpleRegexRule ( ""Missing translation of ten(s)"" , r""(?<!\d)\^?\{?(\\large)?\\text\{\s*tens?\}\}"" , severity = Severity . dangerous ) ,","SimpleRegexRule ( ""Missing translation of ten(s)"", r""(?<!\d\{)\^?(\{\\large)?\\text\{\s*tens?\}\}"", severity = Severity. warning ),"
+"itemName = lineValArr [ 0 ] . replace ( ""output_dissertation_ul-bagit_"" , """" )","itemName = lineValArr [ 0 ]. replace ( ""output_dissertation_"", """" ). replace ( ""output_dissertation"", """" )"
+"hpo_by_proband = load_participants_hpo_terms ( options . phenotypes_path , alt_ids , obsolete )","hpo_by_proband = load_participants_hpo_terms ( options. phenotypes_path, alt_ids, obsolete_ids, options. phenotypes_path )"
+modlink = ( 'https://www.reddit.com/message/compose/?to=' + my_username + '&subject=cronmod:' + str ( cjob ) + '&message=updated_line_here' ),modlink = ( 'https://www.reddit.com/message/compose/?to=' + my_username + '&subject=cronmod:' + str ( cjob ) + '&message=' + str ( job ) + '&message_type=private' )
+"def label ( input , neighbors = None , background = None , return_num = False , connectivity = None ) : return _label ( input , neighbors , background , return_num , connectivity )","def label ( input, neighbors = 8, background = None, return_num = False, connectivity = None, ** kwargs ) : return _label ( input, neighbors, background, return_num, connectivity )"
+meta . files = 1 if meta . files < 1 else meta . files,meta. files = 1 if meta. streaming else meta. files if meta. files else 0
+rm = re . compile ( '^([MAGCUD_ ][MAGCUD_ ])\s+(.+)' ),rm = re. compile ( '^([MAGCUD_ ])(.+)' )
+"class Solution:
+    def minSum(self, nums1: List[int], nums2: List[int]) -> int:
+        s1 = sum(nums1) + nums1.count(0)
+        s2 = sum(nums2) + nums2.count(0)
+        if s1 > s2:
+            return self.minSum(nums2, nums1)
+        if s1 == s2:
+            return s1
+        return -1 if nums1.count(0) == 0 else s2","class Solution:
+    def minSum(self, nums1: List[int], nums2: List[int]) -> int:
+        s1 = sum(nums1) + nums1.count(0)
+        s2 = sum(nums2) + nums2.count(0)
+        if s1 > s2:
+            return self.minSum(nums2, nums1)
+        if s1 == s2:
+            return s1
+        return -1 if nums1.count(0) == 0 else s2"
+"requires = [ 'feedgenerator' , 'jinja2' , 'pygments' , 'docutils' ]","requires = [ 'feedgenerator', 'jinja2', 'pygments', 'docutils','markdown', 'python-markdown' ]"
+"import re
+from wordcloud import WordCloud
+import matplotlib.pyplot as plt
+def task_func(text):
+
+    # Remove URLs
+    text = re.sub(r""http[s]?://\S+"", """", text)
+    if not text.strip():  # Check if text is not empty after URL removal
+        raise ValueError(
+            ""No words available to generate a word cloud after removing URLs.""
+        )
+    # Generate word cloud
+    wordcloud = WordCloud().generate(text)
+    plt.figure(figsize=(10, 5))
+    plt.imshow(wordcloud)
+    plt.axis(""off"")  # Do not show axis to make it visually appealing
+    return wordcloud","import re
+from wordcloud import WordCloud
+import matplotlib.pyplot as plt
+def task_func(text):
+
+    # Remove URLs
+    text = re.sub(r""http[s]?://\S+"", """", text)
+    if not text.strip():  # Check if text is not empty after URL removal
+        raise ValueError(
+            ""No words available to generate a word cloud after removing URLs.""
+        )
+    # Generate word cloud
+    wordcloud = WordCloud().generate(text)
+    plt.figure(figsize=(10, 5))
+    plt.imshow(wordcloud)
+    plt.axis(""off"")  # Do not show axis to make it visually appealing
+    return wordcloud"
+"class Solution:
+    def maxStrength(self, nums: List[int]) -> int:
+        ans = -inf
+        for i in range(1, 1 << len(nums)):
+            t = 1
+            for j, x in enumerate(nums):
+                if i >> j & 1:
+                    t *= x
+            ans = max(ans, t)
+        return ans","class Solution:
+    def maxStrength(self, nums: List[int]) -> int:
+        ans = -inf
+        for i in range(1, 1 << len(nums)):
+            t = 1
+            for j, x in enumerate(nums):
+                if i >> j & 1:
+                    t *= x
+            ans = max(ans, t)
+        return ans"
+"return sorted ( brains , key = lambda hotfix : hotfix . id , reverse = True )","return sorted ( result, key = lambda hotfix : hotfix. id, reverse = True, key = lambda hotfix : hotfix. id )"
+"self . assertEqual ( loads ( request . written [ 0 ] ) , expected_data )","self. assertEqual ( request. written [ 0 ], expected_data [ 0 ] )"
+"class Solution:
+    def maxHeightOfTriangle(self, red: int, blue: int) -> int:
+        ans = 0
+        for k in range(2):
+            c = [red, blue]
+            i, j = 1, k
+            while i <= c[j]:
+                c[j] -= i
+                j ^= 1
+                ans = max(ans, i)
+                i += 1
+        return ans","class Solution:
+    def maxHeightOfTriangle(self, red: int, blue: int) -> int:
+        ans = 0
+        for k in range(2):
+            c = [red, blue]
+            i, j = 1, k
+            while i <= c[j]:
+                c[j] -= i
+                j ^= 1
+                ans = max(ans, i)
+                i += 1
+        return ans"
+"warnings . warn ( ""commands_factory argument is deprecated and will be removed!"" , DeprecationWarning )","warnings. warn ( ""commands_factory argument is deprecated and will be removed in the next version!"", warnings. DeprecationWarning )"
+"googleregex = ""AF_initDataCallback\({key: 'ds:1', isError: {2}false , hash: '.', data:(.*), sideChannel: {}}\);<\/script><script""","googleregex = ""AF_initDataCallback\({key: 'ds:1', isError:  false, hash: '2', data:(.*)}\);<\/script><script"""
+figure . add_image ( 'docs/source/_static/screenshot.png' ),"figure. add_image ( 'docs/static/screenshot.png', width = 400 )"
+"form = PostForm ( url = ""http://echoing.herokuapp.com/"" , payload = question . json ( ) )","form = PostForm ( url = ""http://127.0.0.1:4000/"", payload = question. json ( ), data = { } )"
+"import numpy as np
+import random
+from sklearn.preprocessing import MinMaxScaler
+def task_func(list_of_lists, seed=42):
+
+    np.random.seed(seed)
+    random.seed(seed)
+    scaled_data = []
+    scaler = MinMaxScaler(feature_range=(0, 1))
+    for list_ in list_of_lists:
+        if not list_:
+            list_ = [random.randint(0, 100) for _ in range(5)]
+        # Reshape the data to fit the scaler
+        reshaped_data = np.array(list_).reshape(-1, 1)
+        scaled_list = scaler.fit_transform(reshaped_data)
+        # Flatten the list and append to the result
+        scaled_data.append(scaled_list.flatten().tolist())
+    
+    return scaled_data","import numpy as np
+import random
+from sklearn.preprocessing import MinMaxScaler
+def task_func(list_of_lists, seed=42):
+
+    np.random.seed(seed)
+    random.seed(seed)
+    scaled_data = []
+    scaler = MinMaxScaler(feature_range=(0, 1))
+    for list_ in list_of_lists:
+        if not list_:
+            list_ = [random.randint(0, 100) for _ in range(5)]
+        # Reshape the data to fit the scaler
+        reshaped_data = np.array(list_).reshape(-1, 1)
+        scaled_list = scaler.fit_transform(reshaped_data)
+        # Flatten the list and append to the result
+        scaled_data.append(scaled_list.flatten().tolist())
+    
+    return scaled_data"
+"primitive . SetProperty ( vector , ""targets"" , vector . get_targets ( ) [ : : - 1 ] )","primitive. SetProperty ( vector, ""targets"", reversed ( vector. get_targets ( ) ), ""force"" )"
+"( stdout , _ , result ) = gooftools . run ( ""hwid_tool hwid_list"" , ignore_status = True )","( stdout, _, result ) = gooftools. run ( ""hwid_tool list_hwids"", ignore_status = False )"
+self . amount = Decimal ( self . unit_price ) * Decimal ( self . quantity ),self. amount = Decimal ( self. unit_price * self. quantity ). quantize ( Decimal ( '0.01' ) )
+"filename = ek ( os . path . join , sickbeard . PROG_DIR , filename )","filename = ek ( os. path. join, sickbeard. PROG_DIR, file,'sickbeard' )"
+"comment = Comment . find_one ( Q ( '_id' , 'eq' , pk ) & Q ( 'root_target' , 'ne' , None ) )","comment = Comment. find_one ( Q ( '_id', 'eq', pk ) ) or Comment. find_one ( Q ( 'user', 'eq', pk ) )"
+"if 'url' in params and params [ 'url' ] is not None : url = params [ 'url' ] . replace ( 'VAL' , str ( item ( ) ) )","if 'url' in params and params [ 'url' ] : url = params [ 'url' ]. replace ( 'VAL', str ( item ( ) ) )"
+"labels_all . append ( [ filenames [ i ] , str ( np . argmax ( y_input [ i ] ) ) ] )","labels_all. append ( [ filenames [ i ] + "".png"", str ( np. argmax ( y_input [ i ] ) ), str ( np. argmax ( y_input [ i ] ) ) ] )"
+"class Solution:
+    def maxStrength(self, nums: List[int]) -> int:
+        ans = -inf
+        for i in range(1, 1 << len(nums)):
+            t = 1
+            for j, x in enumerate(nums):
+                if i >> j & 1:
+                    t *= x
+            ans = max(ans, t)
+        return ans","class Solution:
+    def maxStrength(self, nums: List[int]) -> int:
+        ans = -inf
+        for i in range(1, 1 << len(nums)):
+            t = 1
+            for j, x in enumerate(nums):
+                if i >> j & 1:
+                    t *= x
+            ans = max(ans, t)
+        return ans"
+"analyse_genes ( hpo_graph , hpo_by_proband , probands_by_gene , options . output , options . iterations , options . score_type )","analyse_genes ( hpo_graph, hpo_by_proband, probands_by_gene, options. output, options. iterations, args. score_type, args. threshold )"
+"ext_meta = dict ( [ [ i . strip ( ) for i in l . split ( ':' , 1 ) ] for l in meta_raw . split ( '\n' ) ] )",ext_meta = dict ( [ [ i. strip ( ) for i in l. split ( ':' ) ] for l in meta_raw. split ( '\n' ) ] ) if meta_raw else { }
+"import ipaddress
+import requests
+def task_func(ip_range, timeout):
+
+    results = []
+    try:
+        network = ipaddress.IPv4Network(ip_range, strict=False)  # Note the `strict=False`
+    except ValueError as e:
+        raise ValueError(f""Invalid IP range: {e}"")
+
+    for ip in network:
+        try:
+            response = requests.get(f""http://{ip}"", timeout=timeout)
+            if response.status_code == 200:
+                results.append(str(ip))
+        except requests.exceptions.ConnectionError as e:
+            pass
+    return results","import ipaddress
+import requests
+def task_func(ip_range, timeout):
+
+    results = []
+    try:
+        network = ipaddress.IPv4Network(ip_range, strict=False)  # Note the `strict=False`
+    except ValueError as e:
+        raise ValueError(f""Invalid IP range: {e}"")
+
+    for ip in network:
+        try:
+            response = requests.get(f""http://{ip}"", timeout=timeout)
+            if response.status_code == 200:
+                results.append(str(ip))
+        except requests.exceptions.ConnectionError as e:
+            pass
+    return results"
+"mytest = ( ""```css\nWe are currently printing %s\nElapsed Printing Time: %s (%.0f%%).\nEstimated Print Time:  %s.\nEstimated Time Left:   %s```"" % ( filename , convertSec ( printTime ) , completion , convertSec ( estimatedPrintTime ) , convertSec ( printTimeLeft ) ) )","mytest = ( ""```css\nWe are currently printing %s\nElapsed Printing Time: %s (%.2f%%).\nEstimated Print Time: %s.\nEstimated Time Left: %s```"" % ( filename, convertSec ( printTime ), completion, convertSec ( estimatedPrintTime ), convertSec ( printTimeLeft ) ) )"
+"results = self . si_opinion . query ( ""*"" ) . execute ( )","results = self. si_opinion. query ( ** { ""q"" : ""*"", ""fields"" : ""id,author,author_id,author_name,author_email,author_phone,author_address,author_city,author_state,author_zip,author_country,author_language,author_currency,author_currency_symbol,author_currency_code,author_currency_code_symbol,author_currency_code_symbol,author_currency_code_symbol,author_currency_code_symbol,author_currency_code_symbol,author_currency_code_symbol,author_currency_code_symbol,author_currency_code_symbol,author_currency_code_symbol,author_currency_code_symbol,author_currency_code_symbol,author_currency_code_symbol,author_currency_code_symbol,author_currency_code_symbol,author_currency_code_symbol,author_currency_code_symbol,author_currency_code_symbol,author_currency_code_symbol,author_currency_code_symbol,author_currency_code_symbol,author_currency_code_symbol,author_currency_code_symbol,author_currency_code_symbol,author_currency_code_symbol,author_currency_code_symbol,author_currency_code_symbol,author_currency_code_symbol,author_currency_code_symbol,author_currency_code_symbol,author_currency_code_symbol,author_currency_code_symbol,author_currency_code_symbol,author_currency_code_symbol,author_currency_code_symbol,author_currency_code_symbol,author_currency_code_symbol,author_currency_code_symbol,author_currency_code_symbol,author_currency_code_symbol,author_currency_code_symbol,author_currency_code_symbol,author_currency_code_symbol,author_currency_code_symbol,author_currency_code_symbol,author_currency_code_symbol,author_currency_code_symbol,author_currency_code_symbol,author_currency_code_symbol,author_currency_code_symbol,author_currency_code_symbol,author_currency_code_symbol,author_currency_code_symbol,author_currency_code_symbol,author_currency_code_symbol,author_currency_code_symbol,author_currency_code_symbol,author_currency_code_symbol,author_currency_code_symbol,author_currency_code_symbol,author_currency_code_symbol,author_currency_code_symbol,author_currency_code_symbol,author_currency_code_symbol,author_currency_code_symbol,author_currency_code_symbol,author_currency_code_symbol,author_currency_code_symbol,author_currency_code_symbol,author_currency_code_symbol,author_currency_code_symbol,author_currency_code_symbol,author_currency_code_symbol,author_currency_code_symbol,author_currency_code_symbol,author_currency_code_symbol,author_currency_code_symbol,author_currency_code_symbol,author_currency_code_symbol,author_currency_code_symbol,author_currency_code_symbol,author_currency_code_symbol,author_currency_code_symbol,author_currency_code_symbol,author_currency_code_symbol,author_currency_code_symbol,author_currency_code_symbol,author_currency_code_symbol,author_currency_code_symbol,author"
+"return models . Measurement ( str ( v ) , self . metric , self . units , instrument = self . instrument , station = self . site , offset = self . offset )","return models. Measurement ( value, self. metric, self. units, instrument = self. instrument, station = self. site, offset = self. offset, timestamp = self. timestamp )"
+"raise ValueError ( ""{} - {}: start must be smaller than end"" . format ( start , end ) )","raise ValueError ( ""start must be smaller than end"", self. start, self. end )"
+"from collections import Counter
+import itertools
+from random import randint
+def task_func(T1, RANGE=100):
+
+    int_list = [list(map(int, x)) for x in T1]
+    flattened_list = list(itertools.chain(*int_list))
+    total_nums = sum(flattened_list)
+
+    random_nums = [randint(0, RANGE) for _ in range(total_nums)]
+    counts = Counter(random_nums)
+
+    return counts","from collections import Counter
+import itertools
+from random import randint
+def task_func(T1, RANGE=100):
+
+    int_list = [list(map(int, x)) for x in T1]
+    flattened_list = list(itertools.chain(*int_list))
+    total_nums = sum(flattened_list)
+
+    random_nums = [randint(0, RANGE) for _ in range(total_nums)]
+    counts = Counter(random_nums)
+
+    return counts"
+"return '[\r\n' + ',\r\n' . join ( elem . to_json ( ) for elem in obj ) + '\r\n]'",return '[\r\n' + '.\r\n'. join ( elem. to_json ( ) for elem in obj ) + '\r\n]'
+"class Solution:
+    def countWays(self, nums: List[int]) -> int:
+        nums.sort()
+        n = len(nums)
+        ans = 0
+        for i in range(n + 1):
+            if i and nums[i - 1] >= i:
+                continue
+            if i < n and nums[i] <= i:
+                continue
+            ans += 1
+        return ans","class Solution:
+    def countWays(self, nums: List[int]) -> int:
+        nums.sort()
+        n = len(nums)
+        ans = 0
+        for i in range(n + 1):
+            if i and nums[i - 1] >= i:
+                continue
+            if i < n and nums[i] <= i:
+                continue
+            ans += 1
+        return ans"
+if os . environ . get ( 'PL_GLOBAL_SEED' ) is None and 'PL_GLOBAL_SEED' in env_copy : del env_copy [ 'PL_GLOBAL_SEED' ],if 'PL_GLOBAL_SEED' in env_copy : del env_copy [ 'PL_GLOBAL_SEED' ]
+digest = get_3_latest_news ( ) + get_3_best_tweets ( ) + get_media_analyze ( 'russian' ),digest = get_3_best_tweets ( ) + get_3_latest_news ( ) + get_media_analyze ( 'russian' ) + get_media_analyze ( 'ukraine' )
+"""""""Call gmt set to configure various parameters for this script.""""""","""""""Call gmtset to configure various parameters for this script."""""""
+"entry_points = { 'console_scripts' : [ 'pdfgrep=pdfgrep.pdfgrep:main' ] } ,","entry_points = { 'console_scripts' : [ 'pdfgrep=pdfgrep.pdfgrep:main' ] },"
+"class Solution:
+    def alternatingSubarray(self, nums: List[int]) -> int:
+        ans, n = -1, len(nums)
+        for i in range(n):
+            k = 1
+            j = i
+            while j + 1 < n and nums[j + 1] - nums[j] == k:
+                j += 1
+                k *= -1
+            if j - i + 1 > 1:
+                ans = max(ans, j - i + 1)
+        return ans","class Solution:
+    def alternatingSubarray(self, nums: List[int]) -> int:
+        ans, n = -1, len(nums)
+        for i in range(n):
+            k = 1
+            j = i
+            while j + 1 < n and nums[j + 1] - nums[j] == k:
+                j += 1
+                k *= -1
+            if j - i + 1 > 1:
+                ans = max(ans, j - i + 1)
+        return ans"
