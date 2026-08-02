@@ -28562,3 +28562,697 @@ def task_func(csv_file, csv_delimiter):
 "entry = [ index , file , 'START_DATE has start date greater than end date' ]","entry = [ index, file, 'START_DATE','has start date greater than end date', 'END_DATE' ]"
 install_requirements = [ str ( ir . req ) for ir in install_reqs ],install_reqs = [ str ( ir. req ) for ir in install_reqs if ir. req ]
 "notif = Notification ( request_ids = reqIds , salon_id = salon . id , timeSent = datetime . datetime . now ( ) , timeReplied = datetime . datetime . max , status = 'PEN' )","notif = Notification ( request_ids = reqIds, salon_id = salon. id, timeSent = datetime. datetime. now ( ), timeReplied = datetime. max, status = 'PEN', user_id = user_id )"
+"return json_response ( response = error , status = 404 )","return json_response ( response = error, status = error ['status' ], message = error ['message' ] )"
+"DistutilsPlatformError , ( ""Visual Studio 2003 needs to be installed before "" ""building extensions for Python."" )","DistutilsPlatformError, ( ""The.NET Framework SDK needs to be installed before "" ""building extensions for Python."", ""The.NET Framework SDK needs to be installed before "" ""building extensions for Python."" )"
+"fouts = { p : os . path . join ( args . outdir , '%s.voxel_metric.vrt' % ( p ) ) for p in product }","fouts = { p : os. path. join ( args. outdir, '%s.voxel_metric.vrt' % ( p ) ) for p in products if p. split ( '.' ) [ 0 ] in args. outdir }"
+"import pandas as pd
+import folium
+from geopy.geocoders import Photon
+def task_func(dic):
+
+    geolocator = Photon(user_agent=""geoapiExercises"")
+
+    # Preprocess to handle both coordinates and string addresses
+    preprocessed_locations = []
+    for location, value in dic.items():
+        if isinstance(value, dict) and 'Lat' in value and 'Lon' in value:
+            preprocessed_locations.append({'Location': location, 'Lat': value['Lat'], 'Lon': value['Lon']})
+        elif isinstance(value, str):
+            geocoded_location = geolocator.geocode(value)
+            preprocessed_locations.append({'Location': location, 'Lat': geocoded_location.latitude, 'Lon': geocoded_location.longitude})
+        else:
+            raise ValueError(""Location value must be either a dict with 'Lat' and 'Lon' keys or a string."")
+
+    locations_df = pd.DataFrame(preprocessed_locations)
+
+    # Assuming the first row has valid coordinates
+    first_row = locations_df.iloc[0]
+    folium_map = folium.Map(location=[first_row['Lat'], first_row['Lon']], zoom_start=4)
+
+    # Add markers for all locations
+    for _, row in locations_df.iterrows():
+        folium.Marker([row['Lat'], row['Lon']], popup=row['Location']).add_to(folium_map)
+
+    return folium_map","import pandas as pd
+import folium
+from geopy.geocoders import Photon
+def task_func(dic):
+
+    geolocator = Photon(user_agent=""geoapiExercises"")
+
+    # Preprocess to handle both coordinates and string addresses
+    preprocessed_locations = []
+    for location, value in dic.items():
+        if isinstance(value, dict) and 'Lat' in value and 'Lon' in value:
+            preprocessed_locations.append({'Location': location, 'Lat': value['Lat'], 'Lon': value['Lon']})
+        elif isinstance(value, str):
+            geocoded_location = geolocator.geocode(value)
+            preprocessed_locations.append({'Location': location, 'Lat': geocoded_location.latitude, 'Lon': geocoded_location.longitude})
+        else:
+            raise ValueError(""Location value must be either a dict with 'Lat' and 'Lon' keys or a string."")
+
+    locations_df = pd.DataFrame(preprocessed_locations)
+
+    # Assuming the first row has valid coordinates
+    first_row = locations_df.iloc[0]
+    folium_map = folium.Map(location=[first_row['Lat'], first_row['Lon']], zoom_start=4)
+
+    # Add markers for all locations
+    for _, row in locations_df.iterrows():
+        folium.Marker([row['Lat'], row['Lon']], popup=row['Location']).add_to(folium_map)
+
+    return folium_map"
+"{ 'name' : u'Cantone di Zurigo' , 'description' : 'ZH Beschreibung IT' , } ,","{ 'name' : u'Canton Zurigo', 'description' : u'ZH Beschreibung IT', },"
+"assert res == ""Name taken, you cannot replace a question you did not author""","assert res == ""You cannot replace a question you did not author."""
+"from collections import Counter
+import itertools
+import random
+# Constants
+ALPHABET = 'abcdefghijklmnopqrstuvwxyz'
+def task_func(list_of_lists, seed=0):
+
+    random.seed(seed)
+    flattened_list = list(itertools.chain(*list_of_lists))
+
+    for list_item in list_of_lists:
+        if list_item == []:
+            flattened_list += random.sample(ALPHABET, 10)
+
+    counter = Counter(flattened_list)
+    
+    return counter","from collections import Counter
+import itertools
+import random
+# Constants
+ALPHABET = 'abcdefghijklmnopqrstuvwxyz'
+def task_func(list_of_lists, seed=0):
+
+    random.seed(seed)
+    flattened_list = list(itertools.chain(*list_of_lists))
+
+    for list_item in flattened_list:
+        if list_item == []:
+            flattened_list.append(random.sample(ALPHABET, 10))
+
+    counter = Counter(flattened_list)
+
+    return counter"
+"extensions = [ 'matplotlib.sphinxext.mathmpl' , 'math_symbol_table' , 'sphinx.ext.autodoc' , 'matplotlib.sphinxext.only_directives' , 'matplotlib.sphinxext.plot_directive' , 'inheritance_diagram' , 'gen_gallery' , 'gen_rst' ]","extensions = ['matplotlib.sphinxext.mathmpl','math_symbol_table','sphinx.ext.autodoc','matplotlib.sphinxext.plot_directive', 'inheritance_diagram', 'gen_gallery', 'gen_rst','sphinx.ext.viewcode' ]"
+"if self . __class__ . objects . filter ( skip_until_date__gt = self . skip_date , identifier__iexact = self . identifier ) . exists ( ) : return True",if self. __class__. objects. filter ( skip_until_date__lte = self. skip_date ). exists ( ) : return True
+"params = { 'device' : core . find_device_type ( dev ) , 'type' : core . find_device_type ( dev ) , 'custom' : meta . get ( 'custom' , { } ) , 'vm_custom' : { } , 'specParams' : { } , }","params = { 'device' : core. find_device_type ( dev ), 'type' : core. find_device_type ( dev ), 'custom' : { }, 'vm_custom' : { },'specParams' : { }, 'vm' : { }, }"
+"command = '{0} {1}' . format ( env_vars , command )","command = '{0} {1}'. format ( env_vars, command )"
+singular_values = singular_values [ is_independent ],"singular_values = singular_values [ is_independent, is_independent ] if is_independent else singular_values [ is_independent, is_dependent ]"
+"self . move ( Vec2d ( e . value [ 0 ] , - e . value [ 1 ] ) )","thrusters. set_direction ( Vec2d ( e. value [ 0 ], - e. value [ 1 ] ), 0 )"
+"import pandas as pd
+import os
+import glob
+def task_func(my_list, file_dir='./data_files/', file_ext='.csv'):
+
+    if not isinstance(my_list, list):
+        raise TypeError(""my_list must be a list."")
+
+    my_list.append(12)
+    num_files = sum(my_list)
+
+    files = glob.glob(os.path.join(file_dir, '*' + file_ext))[:num_files]
+    if not files:
+        raise FileNotFoundError(f""No files with extension '{file_ext}' found in directory '{file_dir}'."")
+
+    data_frames = [pd.read_csv(file) for file in files]
+    concatenated_df = pd.concat(data_frames, ignore_index=True)
+
+    return concatenated_df","import pandas as pd
+import os
+import glob
+def task_func(my_list, file_dir='./data_files/', file_ext='.csv'):
+
+    if not isinstance(my_list, list):
+        raise TypeError(""my_list must be a list."")
+
+    my_list.append(12)
+    num_files = sum(my_list)
+
+    files = glob.glob(os.path.join(file_dir, '*' + file_ext))[:num_files]
+    if not files:
+        raise FileNotFoundError(f""No files with extension '{file_ext}' found in directory '{file_dir}'."")
+
+    data_frames = [pd.read_csv(file) for file in files]
+    concatenated_df = pd.concat(data_frames, ignore_index=True)
+
+    return concatenated_df"
+"import json
+import smtplib
+# Constants
+SMTP_SERVER = ""smtp.gmail.com""
+SMTP_PORT = 587
+EMAIL_ADDRESS = ""your.email@gmail.com""
+EMAIL_PASSWORD = ""your.password""
+def task_func(input_data=None, smtp_server=SMTP_SERVER, smtp_port=SMTP_PORT, email_address=EMAIL_ADDRESS, email_password=EMAIL_PASSWORD, smtp=None):
+
+     
+    if input_data is None:
+        return []
+
+    # Parse input JSON data
+    try:
+        data = json.loads(input_data)
+        recipient_email = data.get('recipient')
+        names = data.get('names', [])
+    except (json.JSONDecodeError, ValueError):
+        return []
+
+    if not recipient_email or not names:
+        return []
+
+    message = 'Subject: Extracted Names\n\n' + '\n'.join(names)
+    
+    if smtp:
+        server = smtp(smtp_server, smtp_port)
+    else:
+        server = smtplib.SMTP(smtp_server, smtp_port)
+    server.starttls()
+    server.login(email_address, email_password)
+    server.sendmail(email_address, recipient_email, message)
+    server.quit()
+    return names","import json
+import smtplib
+# Constants
+SMTP_SERVER = ""smtp.gmail.com""
+SMTP_PORT = 587
+EMAIL_ADDRESS = ""your.email@gmail.com""
+EMAIL_PASSWORD = ""your.password""
+def task_func(input_data=None, smtp_server=SMTP_SERVER, smtp_port=SMTP_PORT, email_address=EMAIL_ADDRESS, email_password=EMAIL_PASSWORD, smtp=None):
+
+
+    if input_data is None:
+        return []
+
+    # Parse input JSON data
+    try:
+        data = json.loads(input_data)
+        recipient_email = data.get('recipient')
+        names = data.get('names', [])
+    except (json.JSONDecodeError, ValueError):
+        return []
+
+    if not recipient_email or not names:
+        return []
+
+    message = 'Subject: Extracted Names\n\n' + '\n'.join(names)
+    
+    if smtp:
+        server = smtp(smtp_server, smtp_port)
+    else:
+        server = smtplib.SMTP(smtp_server, smtp_port)
+    server.starttls()
+    server.login(email_address, email_password)
+    server.sendmail(email_address, recipient_email, message)
+    server.quit()
+    return names"
+potential_cache_file = self . cache_directory + '/potential_id' + str ( self . startnum ),potential_cache_file = self. cache_directory + '/potential_id' + str ( index ) + '.txt'
+"import pandas as pd
+from sklearn.preprocessing import StandardScaler
+# Constants
+FEATURES = ['feature1', 'feature2', 'feature3', 'feature4', 'feature5']
+TARGET = 'target'
+def task_func(df, dict_mapping, plot_histogram=False):
+
+
+    if not isinstance(df, pd.DataFrame):
+        raise ValueError(""Input df is not a DataFrame."")
+
+    # Check if all required columns are present in the DataFrame
+    required_columns = FEATURES + [TARGET]
+    missing_columns = [col for col in required_columns if col not in df.columns]
+    if missing_columns:
+        raise ValueError(f""Missing columns in DataFrame: {missing_columns}"")
+
+    # Replace values using dictionary mapping
+    df = df.replace(dict_mapping)
+    
+    # Standardize the features
+    scaler = StandardScaler()
+    df[FEATURES] = scaler.fit_transform(df[FEATURES])
+    
+    # Plot histogram of the target variable if requested
+    if plot_histogram:
+        ax = df[TARGET].plot.hist(bins=50)
+        return df, ax
+    else:
+        return df, None","import pandas as pd
+from sklearn.preprocessing import StandardScaler
+# Constants
+FEATURES = ['feature1', 'feature2', 'feature3', 'feature4', 'feature5']
+TARGET = 'target'
+def task_func(df, dict_mapping, plot_histogram=False):
+
+
+    if not isinstance(df, pd.DataFrame):
+        raise ValueError(""Input df is not a DataFrame."")
+
+    # Check if all required columns are present in the DataFrame
+    required_columns = FEATURES + [TARGET]
+    missing_columns = [col for col in required_columns if col not in df.columns]
+    if missing_columns:
+        raise ValueError(f""Missing columns in DataFrame: {missing_columns}"")
+
+    # Replace values using dictionary mapping
+    df = df.replace(dict_mapping)
+    
+    # Standardize the features
+    scaler = StandardScaler()
+    df[FEATURES] = scaler.fit_transform(df[FEATURES])
+    
+    # Plot histogram of the target variable if requested
+    if plot_histogram:
+        ax = df[TARGET].plot.hist(bins=50)
+        return df, ax
+    else:
+        return df, None"
+if 'BOT_DYNAMODB_TABLE' in os . environ : bototest ( ),if 'BOT_DYNAMODB_TABLE' in os. environ and os. environ [ 'BOT_DYNAMODB_TABLE' ] : bototest ( )
+"assert tuple ( i for i in platform . python_version_tuple ( ) ) >= ( '2' , '5' ) , ""You will need at least Python 2.5 to run UML .FRI""","assert tuple ( int ( i ) for i in platform. python_version_tuple ( ) ) >= ( 2, 6 ), ""You will need at least Python 2.5 to run UML.FRI"""
+"update_rn . create_markdown ( release_notes_path = filepath , rn_string = md_string , changed_files = { } )","update_rn. create_markdown ( release_notes_path = filepath, rn_string = md_string, commit_hash = commit_hash )"
+"return ""; "" . join ( [ err . text for err in ET . XML ( self . http_xml ) . findall ( 'error' ) ] )","return ""\n"". join ( [ err. text for err in ET. XML ( self. http_xml ). findall ( 'error' ) ] ) if self. http_xml else """""
+"class Solution:
+    def countOfPairs(self, nums: List[int]) -> int:
+        mod = 10**9 + 7
+        n, m = len(nums), max(nums)
+        f = [[0] * (m + 1) for _ in range(n)]
+        for j in range(nums[0] + 1):
+            f[0][j] = 1
+        for i in range(1, n):
+            s = list(accumulate(f[i - 1]))
+            for j in range(nums[i] + 1):
+                k = min(j, j + nums[i - 1] - nums[i])
+                if k >= 0:
+                    f[i][j] = s[k] % mod
+        return sum(f[-1][: nums[-1] + 1]) % mod","class Solution:
+    def countOfPairs(self, nums: List[int]) -> int:
+        mod = 10**9 + 7
+        n, m = len(nums), max(nums)
+        f = [[0] * (m + 1) for _ in range(n)]
+        for j in range(nums[0] + 1):
+            f[0][j] = 1
+        for i in range(1, n):
+            s = accumulate(f[i - 1])
+            for j in range(nums[i] + 1):
+                k = min(j, j + nums[i - 1] - nums[i])
+                if k >= 0:
+                    f[i][j] = s[k] % mod
+        return sum(f[-1][: nums[-1] + 1]) % mod"
+"self . set_center ( cx - ( dx * c - dy * s ) / sx , cy - ( dx * s + dy * c ) / sy )","self. SetCenter ( cx - ( dx * c - dy * s ) / sx, cy - ( dx * s + dy * c ) / sy, 0 )"
+"header = [ 'ID' , 'count' , 'size' , 'prop' , 'sample' ]","header = [ 'count', 'ID','size', 'prop','sample', 'date' ]"
+"print ( ""%s: %s != %s"" % ( xp . name , xp . installed_version , cver ) )","print ( ""%s: %s!= %s"" % ( xp. installed_version, pver, cver ), file = sys. stderr )"
+ratings_list = [ row . xpath ( 'td//text()' ) for row in table ],ratings_list = [ row. xpath ( 'td//text()' ) [ 0 ] for row in table [ 1 : ] ]
+"if split_all and not oqparam . calculation_mode . startswith ( 'ucerf' ) : csm = parallel_split_filter ( csm , srcfilter , monitor ( 'prefilter' ) )","if split_all and oqparam. calculation_mode not in ( 'ucerf_hazard', 'ucerf_risk' ) : csm = parallel_split_filter ( csm, srcfilter, monitor ( 'prefilter' ) )"
+"structure = ( ( 'EnumerationContext' , ULONG ) , ( 'EnumerationBuffer' , LSAPR_TRUSTED_ENUM_BUFFER ) , ( 'ErrorCode' , NTSTATUS ) , )","structure = ( ( 'EnumerationContext', ULONG ), ( 'EnumerationBuffer', LSAPR_TRUSTED_ENUM_BUFFER_EX ), ( 'ErrorCode', NTSTATUS ), ( 'BufferSize', ULONG ), )"
+if record . name . startswith ( ignore_name ) and not record . name . startswith ( 'slickwd' ) : return,if record. name. startswith ( ignore_name ) or record. name. endswith ( ignore_name ) : return
+t_sample = ( t_r * self . buffer_length + self . offset * 1024 ),t_sample = ( t_r * self. buffer_length + self. offset * self. cfg [ 'HEADER' ] [ 'block_size' ] - 1 )
+"class Solution:
+    def compressedString(self, word: str) -> str:
+        g = groupby(word)
+        ans = []
+        for c, v in g:
+            k = len(list(v))
+            while k:
+                x = min(9, k)
+                ans.append(str(x) + c)
+                k -= x
+        return """".join(ans)","class Solution:
+    def compressedString(self, word: str) -> str:
+        g = groupby(word)
+        ans = []
+        for c, v in g.items():
+            k = len(list(v))
+            while k:
+                x = min(9, k)
+                ans.append(str(x) + c)
+                k -= x
+        return """".join(ans)"
+"return { ( self . _name , 0 , x , y ) : ( load_url , url ) for ( x , y ) , url in self . _collecturls }","return { ( self. _name, 0, x, y ) : ( load_url, url ) for ( x, y ), url in urls. items ( ) if x!= 0 }"
+if int ( bwidth ) <= bandwidth_value : bandwidths . append ( int ( bwidth ) ),if int ( bwidth ) <= bandwidth_value : bandwidths. append ( int ( bwidth ) )
+"import re
+import matplotlib.pyplot as plt
+from sklearn.feature_extraction.text import TfidfVectorizer
+import numpy as np
+def task_func(df):
+
+    pattern = re.compile(r'(how|what)', re.IGNORECASE)
+
+    # Check if the DataFrame has the required columns
+    if not set(['Title', 'Content']).issubset(df.columns):
+        fig, ax = plt.subplots()
+        return ax
+
+    interesting_articles = df[df['Title'].apply(lambda x: bool(pattern.search(x)))]
+
+    fig, ax = plt.subplots()
+
+    # If there are no interesting articles, return an empty plot
+    if interesting_articles.empty:
+        return ax
+
+    vectorizer = TfidfVectorizer()
+    X = vectorizer.fit_transform(interesting_articles['Content'])
+    tfidf_scores = np.array(X.sum(axis=0))[0]
+
+    ax.bar(vectorizer.get_feature_names_out(), tfidf_scores)
+    ax.set_ylabel('TF-IDF Score')
+    plt.xticks(rotation='vertical')
+
+    return ax","import re
+import matplotlib.pyplot as plt
+from sklearn.feature_extraction.text import TfidfVectorizer
+import numpy as np
+def task_func(df):
+
+    pattern = re.compile(r'(how|what)', re.IGNORECASE)
+
+    # Check if the DataFrame has the required columns
+    if not set(['Title', 'Content']).issubset(df.columns):
+        fig, ax = plt.subplots()
+        return ax
+
+    interesting_articles = df[df['Title'].apply(lambda x: bool(pattern.search(x)))]
+
+    fig, ax = plt.subplots()
+
+    # If there are no interesting articles, return an empty plot
+    if interesting_articles.empty:
+        return ax
+
+    vectorizer = TfidfVectorizer()
+    X = vectorizer.fit_transform(interesting_articles['Content'])
+    tfidf_scores = np.array(X.sum(axis=0))[0]
+
+    ax.bar(vectorizer.get_feature_names_out(), tfidf_scores)
+    ax.set_ylabel('TF-IDF Score')
+    plt.xticks(rotation='vertical')
+
+    return ax"
+"expr_re = re . sub ( r""<lang>"" , '(?P<lang>[^/]+)' , '.*%s' % expr_re )","expr_re = re. sub ( r""<lang>"", '(?P<lang>[^/]+)', '.*%s.*' % expr_re, flags = re. IGNORECASE )"
+"url ( r'^axis/results/(?P<pk>\d+)/$' , views . AxisResults . as_view ( ) , name = 'axis-results' ) ,","url ( r'^axis/results/(?P<pk>\d+)/$', views. AxisResults. as_view ( ), name = 'axis-detail', kwargs = { 'pk' : 0 } ),"
+"self . assertGreaterEqual ( len ( info . get ( 'ram' , { } ) . get ( 'banks' , [ ] ) ) , 1 )","self. assertGreater ( len ( info. get ( 'ram', { } ). get ( 'banks', [ ] ) ), 0 )"
+"class Solution:
+    def validSubstringCount(self, word1: str, word2: str) -> int:
+        if len(word1) < len(word2):
+            return 0
+        cnt = Counter(word2)
+        need = len(cnt)
+        ans = l = 0
+        win = Counter()
+        for c in word1:
+            win[c] += 1
+            if win[c] == cnt[c]:
+                need -= 1
+            while need == 0:
+                if win[word1[l]] == cnt[word1[l]]:
+                    need += 1
+                win[word1[l]] -= 1
+                l += 1
+            ans += l
+        return ans","class Solution:
+    def validSubstringCount(self, word1: str, word2: str) -> int:
+        if len(word1) < len(word2):
+            return 0
+        cnt = Counter(word2)
+        need = len(cnt)
+        ans = l = 0
+        win = Counter()
+        for c in word1:
+            win[c] += 1
+            if win[c] == cnt[c]:
+                need -= 1
+            while need == 0:
+                if win[word1[l]] == cnt[word1[l]]:
+                    need += 1
+                win[word1[l]] -= 1
+                l += 1
+            ans += l
+        return ans"
+"[ sample . count_somatic_mutations ( ) , sample . patient_id ] + [ sample . count_germline_mutations ( i ) for i in all_genes ]","[ sample. count_somatic_mutations ( ), sample. patient_id ] + [ sample. check_germline_mutations ( i ) for i in all_genes ] + [ sample. count_germline_mutations ( ) ]"
+"import numpy as np
+import math
+import matplotlib.pyplot as plt
+def task_func(range_start=0, range_end=10, step=0.1):
+
+    x_values = np.arange(range_start, range_end, step)
+    data = ((x, math.exp(x)) for x in x_values)
+    _, ax = plt.subplots()
+    for x, exp_x in data:
+        ax.scatter(x, exp_x, color='b')
+    ax.set_title(""Exponential Function Plot"")
+    ax.set_xlabel(""x"")
+    ax.set_ylabel(""e^x"")
+    data = ((x, math.exp(x)) for x in x_values)
+    return data, ax","import numpy as np
+import math
+import matplotlib.pyplot as plt
+def task_func(range_start=0, range_end=10, step=0.1):
+
+    x_values = np.arange(range_start, range_end, step)
+    data = ((x, math.exp(x)) for x in x_values)
+    _, ax = plt.subplots()
+    for x, exp_x in data:
+        ax.scatter(x, exp_x, color='b')
+    ax.set_title(""Exponential Function Plot"")
+    ax.set_xlabel(""x"")
+    ax.set_ylabel(""e^x"")
+    data = ((x, math.exp(x)) for x in x_values)
+    return data, ax"
+"return ""\'{}\'"" . format ( json . dumps ( s ) . replace ( ""'"" , ""\\'"" ) [ 1 : - 1 ] )","return json. dumps ( s, ensure_ascii = False ). replace ( ""'"", ""\\'"" )"
+"disk_num = int ( disk . find ( 'div' , class_ = 'headline' ) . h3 . text . strip ( ) . split ( "" "" ) [ - 1 ] )","disk_num = int ( disk. find ( 'div', class_ = 'headline' ). h3. text. split ( "" "" ) [ - 1 ]. replace ( "" "", """" ) )"
+raise RuntimeError ( 'failed to record: return code = {}' . format ( rc ) ),raise RuntimeError ( 'failed to record: %r' % rc )
+"import csv
+from ipaddress import IPv4Network
+def task_func(ip_range, csv_path):
+
+    with open(csv_path, 'w', newline='') as csvfile:
+        fieldnames = ['IP Address']
+        writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+
+        writer.writeheader()
+
+        for ip in IPv4Network(ip_range):
+            writer.writerow({'IP Address': str(ip)})
+
+    return csv_path","import csv
+from ipaddress import IPv4Network
+def task_func(ip_range, csv_path):
+
+    with open(csv_path, 'w', newline='') as csvfile:
+        fieldnames = ['IP Address']
+        writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+
+        writer.writeheader()
+
+        for ip in IPv4Network(ip_range):
+            writer.writerow({'IP Address': str(ip)})
+
+    return csv_path"
+"parser . add_option ( ""-d"" , ""--database"" , action = ""store"" , dest = ""db"" , help = ""path to database"" , metavar = ""DIR"" )","parser. add_option ( ""-d"", ""--database"", action = ""store"", dest = ""db"", help = ""path to database"", metavar = ""DIR"" )"
+"class Solution:
+    def maxScore(self, nums: List[int]) -> int:
+        n = len(nums)
+        suf_gcd = [0] * (n + 1)
+        suf_lcm = [0] * n + [1]
+        for i in range(n - 1, -1, -1):
+            suf_gcd[i] = gcd(suf_gcd[i + 1], nums[i])
+            suf_lcm[i] = lcm(suf_lcm[i + 1], nums[i])
+        ans = suf_gcd[0] * suf_lcm[0]
+        pre_gcd, pre_lcm = 0, 1
+        for i, x in enumerate(nums):
+            ans = max(ans, gcd(pre_gcd, suf_gcd[i + 1]) * lcm(pre_lcm, suf_lcm[i + 1]))
+            pre_gcd = gcd(pre_gcd, x)
+            pre_lcm = lcm(pre_lcm, x)
+        return ans","class Solution:
+    def maxScore(self, nums: List[int]) -> int:
+        n = len(nums)
+        suf_gcd = [0] * (n + 1)
+        suf_lcm = [0] * (n + 1)
+        for i in range(n - 1, -1, -1):
+            suf_gcd[i] = gcd(suf_gcd[i + 1], nums[i])
+            suf_lcm[i] = lcm(suf_lcm[i + 1], nums[i])
+        ans = suf_gcd[0] * suf_lcm[0]
+        pre_gcd, pre_lcm = 0, 1
+        for i, x in enumerate(nums):
+            ans = max(ans, gcd(pre_gcd, suf_gcd[i + 1]) * lcm(pre_lcm, suf_lcm[i + 1]))
+            pre_gcd = gcd(pre_gcd, x)
+            pre_lcm = lcm(pre_lcm, x)
+        return ans"
+"import numpy as np
+import random
+# Constants
+COLORS = ['b', 'g', 'r', 'c', 'm', 'y', 'k']
+def task_func(ax):
+
+
+    x = np.linspace(0, 2 * np.pi, 1000)
+    y = np.sin(random.randint(1, 10)*x)
+
+    color = random.choice(COLORS)
+    ax.plot(x, y, color=color)
+    ax.set_rlabel_position(random.randint(0, 180))
+
+    return color","import numpy as np
+import random
+# Constants
+COLORS = ['b', 'g', 'r', 'c','m', 'y', 'k']
+def task_func(ax):
+
+
+    x = np.linspace(0, 2 * np.pi, 1000)
+    y = np.sin(random.randint(1, 10)*x)
+
+    color = random.choice(COLORS)
+    ax.plot(x, y, color=color)
+    ax.set_rlabel_position(random.randint(0, 180))
+
+    return color"
+"""""""
+DP, Z-algorithm, Fast mod.
+Approach
+How to represent a string?
+Each operation is just a rotation. Each result string can be represented by an integer from 0 to n - 1. Namely, it's just the new index of s[0].
+How to find the integer(s) that can represent string t?
+Create a new string s + t + t (length = 3 * n).
+Use Z-algorithm (or KMP), for each n <= index < 2 * n, calculate the maximum prefix length that each substring starts from index can match, if the length >= n, then (index - n) is a valid integer representation.
+How to get the result?
+It's a very obvious DP.
+If we use an integer to represent a string, we only need to consider the transition from zero to non-zero and from non-zero to zero. In other words, all the non-zero strings should have the same result.
+So let dp[t][i = 0/1] be the number of ways to get the zero/nonzero string
+after excatly t steps.
+Then
+dp[t][0] = dp[t - 1][1] * (n - 1).
+All the non zero strings can make it.
+dp[t][1] = dp[t - 1][0] + dp[t - 1] * (n - 2).
+For a particular non zero string, all the other non zero strings and zero string can make it.
+We have dp[0][0] = 1 and dp[0][1] = 0
+Use matrix multiplication.
+How to calculate dp[k][x = 0, 1] faster?
+Use matrix multiplication
+vector (dp[t - 1][0], dp[t - 1][1])
+multiplies matrix
+[0 1]
+[n - 1 n - 2]
+== vector (dp[t][0], dp[t - 1][1]).
+So we just need to calculate the kth power of the matrix which can be done by fast power algorith.
+Complexity
+Time complexity:
+O(n + logk)
+Space complexity:
+O(n)
+""""""
+
+
+class Solution:
+    M: int = 1000000007
+
+    def add(self, x: int, y: int) -> int:
+        x += y
+        if x >= self.M:
+            x -= self.M
+        return x
+
+    def mul(self, x: int, y: int) -> int:
+        return int(x * y % self.M)
+
+    def getZ(self, s: str) -> List[int]:
+        n = len(s)
+        z = [0] * n
+        left = right = 0
+        for i in range(1, n):
+            if i <= right and z[i - left] <= right - i:
+                z[i] = z[i - left]
+            else:
+                z_i = max(0, right - i + 1)
+                while i + z_i < n and s[i + z_i] == s[z_i]:
+                    z_i += 1
+                z[i] = z_i
+            if i + z[i] - 1 > right:
+                left = i
+                right = i + z[i] - 1
+        return z
+
+    def matrixMultiply(self, a: List[List[int]], b: List[List[int]]) -> List[List[int]]:
+        m = len(a)
+        n = len(a[0])
+        p = len(b[0])
+        r = [[0] * p for _ in range(m)]
+        for i in range(m):
+            for j in range(p):
+                for k in range(n):
+                    r[i][j] = self.add(r[i][j], self.mul(a[i][k], b[k][j]))
+        return r
+
+    def matrixPower(self, a: List[List[int]], y: int) -> List[List[int]]:
+        n = len(a)
+        r = [[0] * n for _ in range(n)]
+        for i in range(n):
+            r[i][i] = 1
+        x = [a[i][:] for i in range(n)]
+        while y > 0:
+            if y & 1:
+                r = self.matrixMultiply(r, x)
+            x = self.matrixMultiply(x, x)
+            y >>= 1
+        return r
+
+    def numberOfWays(self, s: str, t: str, k: int) -> int:
+        n = len(s)
+        dp = self.matrixPower([[0, 1], [n - 1, n - 2]], k)[0]
+        s += t + t
+        z = self.getZ(s)
+        m = n + n
+        result = 0
+        for i in range(n, m):
+            if z[i] >= n:
+                result = self.add(result, dp[0] if i - n == 0 else dp[1])
+        return result","""""""
+DP, Z-algorithm, Fast mod.
+Approach
+How to represent a string?
+Each operation is just a rotation. Each result string can be represented by an integer from 0 to n - 1. Namely, it's just the new index of s[0].
+How to find the integer(s) that can represent string t?
+Create a new string s + t + t (length = 3 * n).
+Use Z-algorithm (or KMP), for each n <= index < 2 * n, calculate the maximum prefix length that each substring starts from index can match, if the length >= n, then (index - n) is a valid integer representation.
+How to get the result?
+It's a very obvious DP.
+If we use an integer to represent a string, we only need to consider the transition from zero to non-zero and from non-zero to zero. In other words, all the non-zero strings should have the same result.
+So let dp[t][i = 0/1] be the number of ways to get the zero/nonzero string
+after excatly t steps.
+Then
+dp[t][0] = dp[t - 1][1] * (n - 1).
+All the non zero strings can make it.
+dp[t][1] = dp[t - 1][0] + dp[t - 1] * (n - 2).
+For a particular non zero string, all the other non zero strings and zero string can make it.
+We have dp[0][0] = 1 and dp[0][1] = 0
+Use matrix multiplication.
+How to calculate dp[k][x = 0, 1] faster?
+Use matrix multiplication
+vector (dp[t - 1][0], dp[t - 1][1])
+multiplies matrix
+[0 1]
+[n - 1 n - 2]
+== vector (dp[t][0], dp[t - 1][1]).
+So we just need to calculate the kth power of the matrix which can be done by fast power algorith.
+Complexity
+Time complexity:
+O(n + logk)
+Space complexity:
+O(n)
+""""""
+
+
+class Solution:
+    M: int = 1000000007
+
+    def add(self, x: int, y: int) -> int:
+        x += y
+        if x >= self.M:
+            x -= self.M
+        return x
+
+    def mul(self, x: int"
+"app . run ( opts [ '--host' ] , int ( opts [ '--port' ] ) , debug = opts [ '--debug' ] )","app. run ( opts [ '--host' ], opts [ '--port' ], debug = opts [ '--debug' ], use_reloader = opts [ '--debug' ] )"
+"return pyi_os_path . os_path_join ( SYS_PREFIX , fullname + ext )","return pyi_os_path. os_path_join ( self. _prefix, fullname + self. _suffix )"
