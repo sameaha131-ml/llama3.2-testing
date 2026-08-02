@@ -28008,3 +28008,557 @@ bindingOnehotPredictor . load_model ( './MHCSeqNet/PredictionModel/Pretrained Mo
             else:
                 left=mid+1
         return left"
+raise ValueError ( 'Shape of ground truth and prediction should' ' be same.' ),raise ValueError ( 'Shape of ground truth and prediction should be same.' )
+"faculty = Faculty ( name = ""William.Allison"" , full_name = ""Allison, William."" , faculty_id = 379 , email = ""william.allison@ualberta.ca"" )","faculty = Faculty ( name = ""William.Allison"", faculty_id = 379, email = ""william.allison@ualberta.ca"", department = ""Faculty of Education"" )"
+tprinter . text ( '#' + str ( count ) + str ( final_path ) + ' parser failed.' ),"tprinter. text ( '#' + str ( count ) + f +'failed.','red' )"
+"class Solution:
+    def maxSum(self, nums: List[int]) -> int:
+        ans = -1
+        for i, x in enumerate(nums):
+            for y in nums[i + 1 :]:
+                v = x + y
+                if ans < v and max(str(x)) == max(str(y)):
+                    ans = v
+        return ans","class Solution:
+    def maxSum(self, nums: List[int]) -> int:
+        ans = -1
+        for i, x in enumerate(nums):
+            for y in nums[i + 1 :]:
+                v = x + y
+                if ans < v and max(str(x)) == max(str(y)):
+                    ans = v
+        return ans"
+"import json
+import os
+import re
+def task_func(
+    file_path,
+    attribute,
+    INPUT_JSON={
+        ""type"": ""object"",
+        ""properties"": {
+            ""name"": {""type"": str},  
+            ""age"": {""type"": int},   
+            ""email"": {""type"": str}  
+        },
+        ""required"": [""name"", ""age"", ""email""]
+    },
+    EMAIL_REGEX=r""^[a-z0-9]+[\._]?[a-z0-9]+[@]\w+[.]\w{2,3}$""):
+
+    if not os.path.isfile(file_path):
+        raise ValueError(f'{file_path} does not exist.')
+
+    with open(file_path, 'r') as f:
+        data = json.load(f)
+
+    for key in INPUT_JSON['required']:
+        if key not in data:
+            raise ValueError(f'{key} is missing from the JSON object.')
+        if not isinstance(data[key], INPUT_JSON['properties'][key]['type']):
+            raise ValueError(f'{key} is not of type {INPUT_JSON[""properties""][key][""type""]}.')
+
+    if 'email' in data and not re.fullmatch(EMAIL_REGEX, data['email']):
+        raise ValueError('Email is not valid.')
+
+    return data[attribute]","import json
+import os
+import re
+def task_func(
+    file_path,
+    attribute,
+    INPUT_JSON={
+        ""type"": ""object"",
+        ""properties"": {
+            ""name"": {""type"": str},  
+            ""age"": {""type"": int},   
+            ""email"": {""type"": str}  
+        },
+        ""required"": [""name"", ""age"", ""email""]
+    },
+    EMAIL_REGEX=r""^[a-z0-9]+[\._]?[a-z0-9]+[@]\w+[.]\w{2,3}$""):
+
+    if not os.path.isfile(file_path):
+        raise ValueError(f'{file_path} does not exist.')
+
+    with open(file_path, 'r') as f:
+        data = json.load(f)
+
+    for key in INPUT_JSON['required']:
+        if key not in data:
+            raise ValueError(f'{key} is missing from the JSON object.')
+        if not isinstance(data[key], INPUT_JSON['properties'][key]['type']):
+            raise ValueError(f'{key} is not of type {INPUT_JSON[""properties""][key][""type""]}.')
+
+    if 'email' in data and not re.fullmatch(EMAIL_REGEX, data['email']):
+        raise ValueError('Email is not valid.')
+
+    return data[attribute]"
+"self . configfile = next ( iter ( filter ( os . path . exists , configs ) ) , None )","self. configfile = next ( filter ( os. path. exists, configs ), None ) or ""default.conf"""
+self . assertTrue ( site . is_admin_suspended ( ) ),"self. assertEqual ( site. is_admin_suspended ( ), False )"
+"class Solution:
+  def validSequence(self, word1: str, word2: str) -> list[int]:
+    ans = []
+    # last[j] := the index i of the last occurrence in word1, where
+    # word1[i] == word2[j]
+    last = [-1] * len(word2)
+
+    i = len(word1) - 1
+    j = len(word2) - 1
+    while i >= 0 and j >= 0:
+      if word1[i] == word2[j]:
+        last[j] = i
+        j -= 1
+      i -= 1
+
+    canSkip = True
+    j = 0
+    for i, c in enumerate(word1):
+      if j == len(word2):
+        break
+      if c == word2[j]:
+        ans.append(i)
+        j += 1
+      elif canSkip and (j == len(word2) - 1 or i < last[j + 1]):
+        canSkip = False
+        ans.append(i)
+        j += 1
+
+    return ans if j == len(word2) else []","class Solution:
+  def validSequence(self, word1: str, word2: str) -> list[int]:
+    ans = []
+    # last[j] := the index i of the last occurrence in word1, where
+    # word1[i] == word2[j]
+    last = [-1] * len(word2)
+
+    i = len(word1) - 1
+    j = len(word2) - 1
+    while i >= 0 and j >= 0:
+      if word1[i] == word2[j]:
+        last[j] = i
+        j -= 1
+      i -= 1
+
+    canSkip = True
+    j = 0
+    for i, c in enumerate(word1):
+      if c == word2[j]:
+        ans.append(i)
+        j += 1
+      elif canSkip and (j == len(word2) - 1 or last[j + 1]):
+        canSkip = False
+        ans.append(i)
+        j += 1
+
+    return ans if j == len(word2) else []"
+"class Solution:
+    def invalidTransactions(self, transactions: List[str]) -> List[str]:
+        invalid = []
+        txn = collections.defaultdict(list)
+        
+        for trn in transactions:
+            name, time, amount, city = trn.split("","")
+            txn[name].append([time,amount,city])
+        
+        for trans in range(len(transactions)):
+            name, time, amount, city = transactions[trans].split("","")
+            if int(amount) > 1000:
+                invalid.append(transactions[trans])
+            else:
+                for trn in txn[name]:
+                    time_i, _, city_i = trn
+                    if city != city_i and abs(int(time) - int(time_i)) <= 60:
+                        invalid.append(transactions[trans])
+                        break
+
+        return invalid","class Solution:
+    def invalidTransactions(self, transactions: List[str]) -> List[str]:
+        invalid = []
+        txn = collections.defaultdict(list)
+        
+        for trn in transactions:
+            name, time, amount, city = trn.split("","")
+            txn[name].append([time,amount,city])
+        
+        for trans in range(len(transactions)):
+            name, time, amount, city = transactions[trans].split("","")
+            if int(amount) > 1000:
+                invalid.append(transactions[trans])
+            else:
+                for trn in txn[name]:
+                    time_i, _, city_i = trn
+                    if city!= city_i and abs(int(time) - int(time_i)) <= 60:
+                        invalid.append(transactions[trans])
+                        break
+
+        return invalid"
+"self . ghat = LFC ( self . finegd , [ setup . ghat_l for setup in setups ] , integral = np . sqrt ( 4 * np . pi ) , forces = True )","self. ghat = LFC ( self. finegd, [ setup. ghat_l for setup in setups ], integral = sqrt ( 4 * pi ), forces = False )"
+"pyqtObject . setImage ( data [ sliceToPlot ] , levels = self . minMax , compositionMode = self . compositionMode )","pyqtObject. setImage ( data [ sliceToPlot ], levels = self. minMax, setCompositionMode = self. compositionMode, setCompositionMode = self. compositionMode )"
+"self . choices . append ( ( project . project . name , seriesless_samples ) )","self. choices. append ( ( project. name, seriesless_samples, project. id ) )"
+"assert sfr . channel_geometry_data [ 0 ] [ 1 ] == [ [ 0.0 , 2.0 , 4.0 , 6.0 , 8.0 , 10.0 , 12.0 , 14.0 ] , [ 6.0 , 4.5 , 3.5 , 0.0 , 0.3 , 3.5 , 4.5 , 6.0 ] ]","assert sfr. channel_geometry_data [ 0 ] [ 0 ] == [ [ 0.0, 2.0, 4.0, 6.0, 8.0, 10.0, 12.0, 14.0 ], [ 6.0, 4.5, 3.5, 0.0, 0.3, 3.5, 4.5, 6.0 ] ], ""Error in channel geometry data"""
+"DEFAULT_HARDCODED_LIB_PATH_EXCEPTIONS = '/lib/(modules|cpp|perl5|rpm|hotplug|firmware|systemd)($|[\s/,])'","DEFAULT_HARDCODED_LIB_PATH_EXCEPTIONS = '/lib/(modules|cpp|perl5|rpm|hotplug|firmware)(/|$|[\s/,])'"
+"class Solution:
+    def minimumChanges(self, s: str, k: int) -> int:
+        n = len(s)
+        g = [[inf] * (n + 1) for _ in range(n + 1)]
+        for i in range(1, n + 1):
+            for j in range(i, n + 1):
+                m = j - i + 1
+                for d in range(1, m):
+                    if m % d == 0:
+                        cnt = 0
+                        for l in range(m):
+                            r = (m // d - 1 - l // d) * d + l % d
+                            if l >= r:
+                                break
+                            if s[i - 1 + l] != s[i - 1 + r]:
+                                cnt += 1
+                        g[i][j] = min(g[i][j], cnt)
+
+        f = [[inf] * (k + 1) for _ in range(n + 1)]
+        f[0][0] = 0
+        for i in range(1, n + 1):
+            for j in range(1, k + 1):
+                for h in range(i - 1):
+                    f[i][j] = min(f[i][j], f[h][j - 1] + g[h + 1][i])
+        return f[n][k]","class Solution:
+    def minimumChanges(self, s: str, k: int) -> int:
+        n = len(s)
+        g = [[inf] * (n + 1) for _ in range(n + 1)]
+        for i in range(1, n + 1):
+            for j in range(i, n + 1):
+                m = j - i + 1
+                for d in range(1, m):
+                    if m % d == 0:
+                        cnt = 0
+                        for l in range(m):
+                            r = (m // d - 1 - l // d) * d + l % d
+                            if l >= r:
+                                break
+                            if s[i - 1 + l]!= s[i - 1 + r]:
+                                cnt += 1
+                        g[i][j] = min(g[i][j], cnt)
+
+        f = [[inf] * (k + 1) for _ in range(n + 1)]
+        f[0][0] = 0
+        for i in range(1, n + 1):
+            for j in range(1, k + 1):
+                for h in range(i - 1):
+                    f[i][j] = min(f[i][j], f[h][j - 1] + g[h + 1][i])
+        return f[n][k]"
+"row = { 'type' : question_type , 'question' : question , 'answer' : answer }","row = { ""type"" : question_type, ""question"" : question, ""answer"" : answer, ""correct"" : correct }"
+"class Solution:
+    def findMinimumTime(self, tasks: List[List[int]]) -> int:
+        tasks.sort(key=lambda x:x[1])
+        on=[0]*2001
+        for s,e,d in tasks:
+            cr=sum(on[s:e+1])
+            while cr<d:
+                # Greedy: finish the task as late as you can which benefits later tasks
+                if on[e]!=1:on[e]=1; cr+=1
+                e-=1
+        return sum(on)","class Solution:
+    def findMinimumTime(self, tasks: List[List[int]]) -> int:
+        tasks.sort(key=lambda x:x[1])
+        on=[0]*2001
+        for s,e,d in tasks:
+            cr=sum(on[s:e+1])
+            while cr<d:
+                # Greedy: finish the task as late as you can which benefits later tasks
+                if on[e]!=1:on[e]=2; cr+=1
+                e-=1
+        return sum(on)"
+"""""""
+ from random import randint
+ from controller.brute_force import BruteForce
+ 
+ class Gameboard:
+     """"""","""""""
+ from random import randint
+ from controller.brute_force import BruteForce
+ 
+ class Gameboard:
+     """""""
+"log . debug ( ""sdstack_etcd returner <event_return> updating package for event ({event:d}) with the tag {name:s} at {path:s}"" . format ( event = res . createdIndex , name = package [ 'tag' ] , path = packagep ) )","log. update ( ""sdstack_etcd returner <event_return> updating package for event ({event:d}) with the tag {name:s} at {path:s}"". format ( event = res. createdIndex, name = package [ 'tag' ], path = packagep ) )"
+"import re
+import matplotlib.pyplot as plt
+def task_func(df):
+
+
+    if df.empty or 'Likes' not in df.columns or 'Views' not in df.columns or 'Title' not in df.columns:
+        fig, ax = plt.subplots()
+        return ax
+
+    pattern = re.compile(r'(how|what)', re.IGNORECASE)
+    interesting_videos = df[df['Title'].apply(lambda x: bool(pattern.search(x)))]
+
+    if interesting_videos.empty:
+        fig, ax = plt.subplots()
+        return ax
+
+    interesting_videos = interesting_videos.copy()  # Create a copy to avoid modifying the input df
+    interesting_videos['Like Ratio'] = interesting_videos['Likes'] / interesting_videos['Views']
+
+    ax = interesting_videos.plot(kind='bar', x='Title', y='Like Ratio', legend=False)
+    ax.set_ylabel('Like Ratio')
+    ax.set_xticklabels(interesting_videos['Title'], rotation='vertical')
+
+    return ax","import re
+import matplotlib.pyplot as plt
+def task_func(df):
+
+
+    if df.empty or 'Likes' not in df.columns or 'Views' not in df.columns or 'Title' not in df.columns:
+        fig, ax = plt.subplots()
+        return ax
+
+    pattern = re.compile(r'(how|what)', re.IGNORECASE)
+    interesting_videos = df[df['Title'].apply(lambda x: bool(pattern.search(x)))]
+
+    if interesting_videos.empty:
+        fig, ax = plt.subplots()
+        return ax
+
+    interesting_videos = interesting_videos.copy()  # Create a copy to avoid modifying the input df
+    interesting_videos['Like Ratio'] = interesting_videos['Likes'] / interesting_videos['Views']
+
+    ax = interesting_videos.plot(kind='bar', x='Title', y='Like Ratio', legend=False)
+    ax.set_ylabel('Like Ratio')
+    ax.set_xticklabels(interesting_videos['Title'], rotation='vertical')
+
+    return ax"
+"if not ( ""not in list"" in reason . __str__ ( ) ) : raise ValueError ( reason )","if not reason. __str__ ( ) == ""list.index(x): x not in list"" or not reason. __str__ ( ) == ""list.index(x): x not in list"" : raise ValueError ( reason )"
+"class Solution:
+  def minOperations(self, queries: list[list[int]]) -> int:
+    return sum((self._getOperations(r) - self._getOperations(l - 1) + 1) // 2
+               for l, r in queries)
+
+  def _getOperations(self, n: int) -> int:
+    """"""Returns the number of operations required for [1, n].""""""
+    res = 0
+    ops = 0
+    powerOfFour = 1
+    while powerOfFour <= n:
+      l = powerOfFour
+      r = min(n, powerOfFour * 4 - 1)
+      ops += 1
+      res += (r - l + 1) * ops
+      powerOfFour *= 4
+    return res","class Solution:
+  def minOperations(self, queries: list[list[int]]) -> int:
+    return sum((self._getOperations(r) - self._getOperations(l - 1) + 1) // 2
+               for l, r in queries)
+
+  def _getOperations(self, n: int) -> int:
+    """"""Returns the number of operations required for [1, n].""""""
+    res = 0
+    ops = 0
+    powerOfFour = 1
+    while powerOfFour < n:
+      l = powerOfFour
+      r = min(n, powerOfFour * 4 - 1)
+      ops += 1
+      res += (r - l + 1) * ops
+      powerOfFour *= 4
+    return res"
+"class Solution:
+    def beautifulSplits(self, nums: List[int]) -> int:
+        n = len(nums)
+        lcp = [[0] * (n + 1) for _ in range(n + 1)]
+        for i in range(n - 1, -1, -1):
+            for j in range(n - 1, i - 1, -1):
+                if nums[i] == nums[j]:
+                    lcp[i][j] = lcp[i + 1][j + 1] + 1
+        ans = 0
+        for i in range(1, n - 1):
+            for j in range(i + 1, n):
+                a = i <= j - i and lcp[0][i] >= i
+                b = j - i <= n - j and lcp[i][j] >= j - i
+                ans += int(a or b)
+        return ans","class Solution:
+    def beautifulSplits(self, nums: List[int]) -> int:
+        n = len(nums)
+        lcp = [[0] * (n + 1) for _ in range(n + 1)]
+        for i in range(n - 1, -1, -1):
+            for j in range(n - 1, i - 1, -1):
+                if nums[i] == nums[j]:
+                    lcp[i][j] = lcp[i + 1][j + 1] + 1
+        ans = 0
+        for i in range(1, n - 1):
+            for j in range(i + 1, n):
+                a = i <= j - i and lcp[0][i] >= i
+                b = j - i <= n - j and lcp[i][j] >= j - i
+                ans += int(a or b)
+        return ans"
+"import numpy as np
+import pandas as pd
+import statistics
+def task_func(rows, columns=['A', 'B', 'C', 'D', 'E', 'F'], seed=42):
+
+    if not isinstance(rows, int) or rows <= 0:
+        raise ValueError(""rows must be a positive integer greater than 0."")
+
+    np.random.seed(seed)
+    data = np.random.randint(1, 101, size=(rows, len(columns)))
+    df = pd.DataFrame(data, columns=columns)
+    
+    stats_dict = {}
+    for col in columns:
+        stats_dict[col] = {
+            'mean': statistics.mean(df[col]),
+            'median': statistics.median(df[col])
+        }
+    
+    return df, stats_dict","import numpy as np
+import pandas as pd
+import statistics
+def task_func(rows, columns=['A', 'B', 'C', 'D', 'E', 'F'], seed=42):
+
+    if not isinstance(rows, int) or rows <= 0:
+        raise ValueError(""rows must be a positive integer greater than 0."")
+
+    np.random.seed(seed)
+    data = np.random.randint(1, 101, size=(rows, len(columns)))
+    df = pd.DataFrame(data, columns=columns)
+    
+    stats_dict = {}
+    for col in columns:
+        stats_dict[col] = {
+           'mean': statistics.mean(df[col]),
+           'median': statistics.median(df[col])
+        }
+    
+    return df, stats_dict"
+if tkn . same_line ( token_list [ token_list . get_pointer ( ) - 1 ] ) : return False,"if not tkn. same_line ( token_list [ token_list. get_pointer ( ) - 1 ], token_list [ token_list. get_pointer ( ) - 1 ] ) : return False"
+self . accordion . bind ( selected = self . viewitem ),"self. accordion. bind ( selected = self. view_callback, unselected = self. view_callback )"
+"warn ( ""With-statements now directly support multiple context managers"" , DeprecationWarning , 3 )","warn ( ""With-statements now directly support multiple context managers"", DeprecationWarning, 3 )"
+"class Solution:
+    def minExtraChar(self, s: str, dictionary: List[str]) -> int:
+        ss = set(dictionary)
+        n = len(s)
+        f = [0] * (n + 1)
+        for i in range(1, n + 1):
+            f[i] = f[i - 1] + 1
+            for j in range(i):
+                if s[j:i] in ss and f[j] < f[i]:
+                    f[i] = f[j]
+        return f[n]","class Solution:
+    def minExtraChar(self, s: str, dictionary: List[str]) -> int:
+        ss = set(dictionary)
+        n = len(s)
+        f = [0] * (n + 1)
+        for i in range(1, n + 1):
+            f[i] = f[i - 1] + 1
+            for j in range(i):
+                if s[j:i] in ss and f[j] < f[i]:
+                    f[i] = f[j]
+        return f[n]"
+"kwargs_mod [ ""context_objects"" ] = context . scene . objects","kwargs_mod [ ""context_objects"" ] = scene. objects. filter ( is_public = True )"
+"raise RuntimeError ( ""Service Parent already set to %s, can't set to %s"" % ( self . serviceParent , serviceParent ) )","raise RuntimeError ( ""Service Parent already set!"", self. service )"
+"( 'test/pcmdi/installationTest' , ( 'test/pcmdi/installationTest/tas_2.5x2.5_regrid2_linear_metrics.json' , 'test/pcmdi/installationTest/tos_2.5x2.5_esmf_linear_metrics.json' , ) ) ,","( 'test/pcmdi/installationTest', ( 'test/pcmdi/installationTest/tas_2.5x2.5_esmf_linear_metrics.json', 'test/pcmdi/installationTest/tos_2.5x2.5_esmf_linear_metrics.json', ), ),"
+if account . type == Account . TYPE_MARKET : raise NotImplementedError ( ),if account. type!= Account. TYPE_MARKET and account. type!= Account. TYPE_INVESTOR : raise NotImplementedError ( )
+"resp = twitter . get ( 'statuses/user_timeline.json' , data = { 'count' : 10 } )","resp = twitter. get ('statuses/home_timeline.json', data = { 'count' : 100 } )"
+"poll_type = raw_input ( ""Enter poll type for %s (n/w): "" % question_id )","poll_type = raw_input ( ""Enter poll type for "" + question_id + "" (n/w): "", ""n"" )"
+"errorMsg = errorMsg + "" Aborting installation.\n\nPlease verify your settings:\n"" + userdata","errorMsg = errorMsg + ""Aborting installation.\n\nPlease verify your settings:\n"" + userdata + ""\n"""
+"if getattr ( g , self . _csrf_name , None ) is None : return response","if getattr ( g, self. _csrf_name ) is None or getattr ( g, self. _csrf_name ) == '' : return response"
+git [ project_name ] = str ( hash_value [ 0 ] . strip ( ) ),git [ project_name ] = hash_value [ 0 ]. strip ( ). encode ( 'utf-8' )
+"with open ( 'mynewleaf/__version__.py' , 'r' ) as f : version = ast . parse ( f . read ( ) ) . body [ 0 ] . value . s","with open ('sqlalchemy_jsonapi/__version__.py', 'r' ) as f : version = ast. parse ( f. read ( ) ). body [ 0 ]. value. s. replace ( '0', '0.0' )"
+"self . connection . privmsg ( ""NickServ"" , ""identify "" + self . plugin . nickserv_password )","self. privmsg ( ""NickServ"", ""identify "" + self. plugin. nickserv_password, ""nick"" )"
+"s . sendto ( packet , ( self . ip , int ( self . port ) ) )","s. sendto ( packet, ( self. ip, self. port ), 0 )"
+"import nltk
+nltk.download('stopwords')
+from collections import Counter
+import os
+from nltk.corpus import stopwords
+# Constants
+STOPWORDS = set(stopwords.words('english'))
+def task_func(directory_path):
+
+
+    word_counts = Counter()
+
+    for file_name in os.listdir(directory_path):
+        if not file_name.endswith('.txt'):
+            continue
+        with open(os.path.join(directory_path, file_name), 'r') as file:
+            words = [word for word in file.read().split() if word.lower() not in STOPWORDS]
+            word_counts.update(words)
+
+    return len(word_counts)","import nltk
+nltk.download('stopwords')
+from collections import Counter
+import os
+from nltk.corpus import stopwords
+# Constants
+STOPWORDS = set(stopwords.words('english'))
+def task_func(directory_path):
+
+
+    word_counts = Counter()
+
+    for file_name in os.listdir(directory_path):
+        if not file_name.endswith('.txt'):
+            continue
+        with open(os.path.join(directory_path, file_name), 'r') as file:
+            words = [word for word in file.read().split() if word.lower() not in STOPWORDS]
+            word_counts.update(words)
+
+    return len(word_counts)"
+"query = ""SELECT * FROM INFORMATION_SCHEMA.COLUMNS WHERE table_schema = 'dbo' AND table_name = %s ORDER BY ordinal_position ASC""","query = ""SELECT * FROM INFORMATION_SCHEMA.COLUMNS WHERE table_schema = 'dbo' AND table_name = %s ORDER BY ordinal_position ASC"""
+"r222 . utils . write_sn ( CONJ2_FILE_PATH , s_2 , n_2 )","r222. utils. write_sn ( CONJ1_FILE_PATH, s_2, n_2, n_2 )"
+"class Solution:
+    def sumOfEncryptedInt(self, nums: List[int]) -> int:
+        def encrypt(x: int) -> int:
+            mx = p = 0
+            while x:
+                x, v = divmod(x, 10)
+                mx = max(mx, v)
+                p = p * 10 + 1
+            return mx * p
+
+        return sum(encrypt(x) for x in nums)","class Solution:
+    def sumOfEncryptedInt(self, nums: List[int]) -> int:
+        def encrypt(x: int) -> int:
+            mx = p = 0
+            while x:
+                x, v = divmod(x, 10)
+                mx = max(mx, v)
+                p = 10 * p + 1
+            return mx * p
+
+        return sum(encrypt(x) for x in nums)"
+ind = np . nonzero ( inputs [ 'k_usr' ] >= 0.0 ) [ 0 ],ind = np. nonzero ( inputs [ 'k_user' ] > 0.0 ) [ 0 ]
+"import csv
+from collections import Counter
+import operator
+def task_func(csv_file, csv_delimiter):
+
+    words = []
+
+    with open(csv_file, 'r') as f:
+        reader = csv.reader(f, delimiter=csv_delimiter)
+        for row in reader:
+            words.extend(row)
+
+    word_counter = Counter(words)
+    most_common_words = sorted(word_counter.items(), key=operator.itemgetter(1), reverse=True)
+
+    return most_common_words","import csv
+from collections import Counter
+import operator
+def task_func(csv_file, csv_delimiter):
+
+    words = []
+
+    with open(csv_file, 'r') as f:
+        reader = csv.reader(f, delimiter=csv_delimiter)
+        for row in reader:
+            words.extend(row)
+
+    word_counter = Counter(words)
+    most_common_words = sorted(word_counter.items(), key=operator.itemgetter(1), reverse=True)
+
+    return most_common_words"
+"result . setdefault ( '_command' , data . get ( '_callback' , command ) )",result [ '_command' ] = result [ '_command' ] or data. get ( '_callback' ) or command or ''
+"entry = [ index , file , 'START_DATE has start date greater than end date' ]","entry = [ index, file, 'START_DATE','has start date greater than end date', 'END_DATE' ]"
+install_requirements = [ str ( ir . req ) for ir in install_reqs ],install_reqs = [ str ( ir. req ) for ir in install_reqs if ir. req ]
+"notif = Notification ( request_ids = reqIds , salon_id = salon . id , timeSent = datetime . datetime . now ( ) , timeReplied = datetime . datetime . max , status = 'PEN' )","notif = Notification ( request_ids = reqIds, salon_id = salon. id, timeSent = datetime. datetime. now ( ), timeReplied = datetime. max, status = 'PEN', user_id = user_id )"
