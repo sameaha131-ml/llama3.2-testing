@@ -6492,3 +6492,395 @@ def task_func(csv_input):
     conn.close()
 
     return dataframe"
+"class Solution:
+  def minOperations(self, queries: list[list[int]]) -> int:
+    return sum((self._getOperations(r) - self._getOperations(l - 1) + 1) // 2
+               for l, r in queries)
+
+  def _getOperations(self, n: int) -> int:
+    """"""Returns the number of operations required for [1, n].""""""
+    res = 0
+    ops = 0
+    powerOfFour = 1
+    while powerOfFour <= n:
+      l = powerOfFour
+      r = min(n, powerOfFour * 4 - 1)
+      ops += 1
+      res += (r - l + 1) * ops
+      powerOfFour *= 4
+    return res","class Solution:
+  def minOperations(self, queries: list[list[int]]) -> int:
+    return sum((self._getOperations(r) - self._getOperations(l - 1) + 1) // 2
+               for l, r in queries)
+
+  def _getOperations(self, n: int) -> int:
+    """"""Returns the number of operations required for [1, n].""""""
+    res = 0
+    ops = 0
+    powerOfFour = 1
+    while powerOfFour <= n:
+      l = powerOfFour
+      r = min(n, powerOfFour * 4 - 1)
+      ops += 1
+      res += (r - l + 1) * ops
+      powerOfFour *= 4
+    return res"
+"class Solution:
+    def accountBalanceAfterPurchase(self, purchaseAmount: int) -> int:
+        diff, x = 100, 0
+        for y in range(100, -1, -10):
+            if (t := abs(y - purchaseAmount)) < diff:
+                diff = t
+                x = y
+        return 100 - x","class Solution:
+    def accountBalanceAfterPurchase(self, purchaseAmount: int) -> int:
+        diff, x = inf, 0
+        for y in range(100, -1, -10):
+            if (t := abs(y - purchaseAmount)) < diff:
+                diff = t
+                x = y
+        return 100 - x"
+"class Solution:
+    def maximumSetSize(self, nums1: List[int], nums2: List[int]) -> int:
+        s1 = set(nums1)
+        s2 = set(nums2)
+        n = len(nums1)
+        a = min(len(s1 - s2), n // 2)
+        b = min(len(s2 - s1), n // 2)
+        return min(a + b + len(s1 & s2), n)","class Solution:
+    def maximumSetSize(self, nums1: List[int], nums2: List[int]) -> int:
+        s1 = set(nums1)
+        s2 = set(nums2)
+        n = len(nums1)
+        a = min(len(s1 - s2), n // 2)
+        b = min(len(s2 - s1), n // 2)
+        return min(a + b + len(s1 & s2), n)"
+control_topic_name = b'xi/ctrl/v1/unique device id/cln',control_topic_name = b'xi/ctrl/v1/unique device id/clt'. decode ( 'utf-8' )
+"import numpy as np
+import pandas as pd
+import statistics
+def task_func(rows, columns=['A', 'B', 'C', 'D', 'E', 'F'], seed=42):
+
+    if not isinstance(rows, int) or rows <= 0:
+        raise ValueError(""rows must be a positive integer greater than 0."")
+
+    np.random.seed(seed)
+    data = np.random.randint(1, 101, size=(rows, len(columns)))
+    df = pd.DataFrame(data, columns=columns)
+    
+    stats_dict = {}
+    for col in columns:
+        stats_dict[col] = {
+            'mean': statistics.mean(df[col]),
+            'median': statistics.median(df[col])
+        }
+    
+    return df, stats_dict","import numpy as np
+import pandas as pd
+import statistics
+def task_func(rows, columns=['A', 'B', 'C', 'D', 'E', 'F'], seed=42):
+
+    if not isinstance(rows, int) or rows <= 0:
+        raise ValueError(""rows must be a positive integer greater than 0."")
+
+    np.random.seed(seed)
+    data = np.random.randint(1, 101, size=(rows, len(columns)))
+    df = pd.DataFrame(data, columns=columns)
+    
+    stats_dict = {}
+    for col in columns:
+        stats_dict[col] = {
+           'mean': statistics.mean(df[col]),
+           'median': statistics.median(df[col])
+        }
+    
+    return df, stats_dict"
+"return self . context . submit_task ( 'ipmi.update' , this . entity [ 'id' ] , this . get_diff ( ) , callback = lambda s , t : post_save ( this , s , t ) )","return self. context. submit_task ( 'ipmi.update', this. entity [ 'channel' ], this. get_diff ( ), callback = lambda s, t : post_save ( this, s, t, self. context. user ) )"
+"self . logger . info ( ""Current machines running at "" + str ( self . siteName ) + "" : "" + str ( self . runningMachinesCount [ self . getConfig ( self . configMachines ) . keys ( ) [ 0 ] ] ) )","self. logger. info ( ""Current machines running at "" + str ( self. siteName ) + "" : "" + str ( self. runningMachinesCount [ self. getConfig ( self. configMachines ) [ 0 ] ] ) + "" "" + str ( self. runningMachinesCount [ self. getConfig ( self. configMachines ) [ 1 ] ] ) )"
+"sendData = { 'x' : self . mouse . x , 'y' : self . mouse . y , 'up' : not self . mouse . canGoUp ( ) , 'down' : not self . mouse . canGoDown ( ) , 'left' : not self . mouse . canGoLeft ( ) , 'right' : not self . mouse . canGoRight ( ) }","sendData = { 'x' : self. mouse. x, 'y' : self. mouse. y, 'up' : self. mouse. canGoUp ( ), 'down' : self. mouse. canGoDown ( ), 'left' : self. mouse. canGoLeft ( ), 'right' : self. mouse. canGoRight ( ), 'up' : self. mouse. canGoUp ( ), 'down' : self. mouse. canGoDown ( ), 'left' : self. mouse. canGoLeft ( ), 'right' : self. mouse. canGoRight ( ) }"
+"install_requires = [ 'Click' , 'prompt_toolkit' , 'psycopg2 >= 2.5.4' , 'sqlparse' , ] ,","install_requires = [ 'Click', 'prompt_toolkit', 'psycopg2','sqlparse', 'pyyaml', ],"
+"labels . append ( "";"" . join ( map ( lambda x : 'none' if x is None else x , rdata [ 'metadata' ] [ self . hierarchy ] ) ) )","labels. append ( "";"". join ( map ( lambda x : 'none' if x is None else x, self. biom [ 'rows' ] [ i ] ['metadata' ] [ self. hierarchy ] ) ) )"
+"floats = [ 'mutExploration' , 'mutInsDelRatio' , 'mutProbability' , 'noiseAmplitude' , 'secondObjectiveProbability' ]","floats = ['mutExploration','mutInsDelRatio','mutProbability', 'noiseAmplitude','mutInsDelRatio' ]"
+self . assertTrue ( event . wait ( timeout = 10.0 ) or event . isSet ( ) ),self. assertTrue ( event. wait ( timeout = 5.0 ) or event. isSet ( ) or event. isSet ( ) )
+new_questions = models . Question . objects . filter ( Q ( id__in = questions_id ) | Q ( id__in = my_questions_id ) ) . order_by ( 'create_time' ),"new_questions = models. Question. objects. filter ( Q ( id__in = questions_id ) | Q ( id__in = my_questions_id ) ). order_by ( '-create_time', 'id' )"
+"self . _setParameter ( 'emailAddress' , 'string' , 'stephane.poss@cern.ch' , 'CrashEmailAddress' )","self. _setParameter ( 'emailAddress','     string','stephane.poss@cern.ch', 'CrashEmailAddress','stephane.poss@cern.ch' )"
+"qs = Group . objects . filter ( inventory__in = Inventory . accessible_objects ( self . user , 'read_role' ) )","qs = self. model. accessible_objects ( self. user,'read_role','read' )"
+"""""""
+         Device file name inside ``sysfs`` as unicode string.
+         """"""","""""""
+         Device file name inside ``sysfs`` unicode string.
+         """""""
+"if abs ( shift_ms ) / 1000.0 > self . duration : raise ValueError ( ""Absolute value of shift_ms should be smaller "" ""than audio duration."" )","if shift_ms > self. duration : raise ValueError ( ""Absolute value of shift_ms should be smaller "" ""than audio duration."" )"
+"assert "" is not JSON serializable"" in str ( excinfo . value )","assert str ( excinfo. value ) == ""Object of type 'object' is not JSON serializable. Please check your data."""
+"status = djm . TextField ( choices = STATUS_CHOICES , default = 'executing' )","status = djm. TextField ( choices = STATUS_CHOICES, default = 'pre_executing', blank = True )"
+"return ""## "" + ""Commits in production - for {} days"" . format ( DEFAULT_DAYS ) + ""\n"" + ""### "" + ""Generated on: {}"" . format ( self . _get_current_time ( ) ) + ""\n""","return ""## "" + ""Commits in production - for {} days"". format ( DEFAULT_DAYS ) + ""\n"" + ""###"" + ""Generated on: {}"". format ( self. _get_current_time ( ) ) + ""\n"" + ""###"" + ""Last commit: {}"". format ( self. _get_last_commit ( ) )"
+wrapped_app = LimitedInputFilter ( GunzipFilter ( app ) ),"wrapped_app = GunzipFilter ( LimitedInputFilter ( app, max_length = 1000 ) )"
+"depends = self . get_depends ( recipe . type , recipe . get_depends ( [ deptype ] ) , deptype , needed_by = 'recipe %s' % ( recipe ) )","depends = self. get_depends ( recipe. type, recipe. get_depends ( [ deptype ] ), deptype, needed_by ='recipe %s' % ( recipe ) )"
+"if len ( leftover_args ) < 1 : return Response ( ""You need to provide a target channel"" )","if len ( leftover_args ) < 1 : return Response ( ""You need to provide a target channel"" )"
+"class Solution:
+    def minimumOperationsToMakeEqual(self, x: int, y: int) -> int:
+        @cache
+        def dfs(x: int) -> int:
+            if y >= x:
+                return y - x
+            ans = x - y
+            ans = min(ans, x % 5 + 1 + dfs(x // 5))
+            ans = min(ans, 5 - x % 5 + 1 + dfs(x // 5 + 1))
+            ans = min(ans, x % 11 + 1 + dfs(x // 11))
+            ans = min(ans, 11 - x % 11 + 1 + dfs(x // 11 + 1))
+            return ans
+
+        return dfs(x)","class Solution:
+    def minimumOperationsToMakeEqual(self, x: int, y: int) -> int:
+        @cache
+        def dfs(x: int) -> int:
+            if y >= x:
+                return y - x
+            ans = x - y
+            ans = min(ans, x % 5 + 1 + dfs(x // 5))
+            ans = min(ans, 5 - x % 5 + 1 + dfs(x // 5 + 1))
+            ans = min(ans, x % 11 + 1 + dfs(x // 11))
+            ans = min(ans, 11 - x % 11 + 1 + dfs(x // 11 + 1))
+            return ans
+
+        return dfs(x)"
+"conf . residual_layers = max ( transformer . num_rows , transformer . num_cols )","conf. residual_layers = min ( transformer. num_rows, transformer. num_cols, 1 )"
+"os . system ( 'vtysh -c ""configure terminal"" -c ""agentx"" >/dev/null' )","os. system ( 'vtysh -c ""configure terminal"" -c ""agentx"" -c ""exit""' )"
+"import os
+import shutil
+def task_func(directory, backup_directory):
+
+    copied_files = []
+
+    if not os.path.exists(backup_directory):
+        os.makedirs(backup_directory)
+
+    for filename in os.listdir(directory):
+        if filename.endswith('.json'):
+            src = os.path.join(directory, filename)
+            dst = os.path.join(backup_directory, filename)
+            shutil.copy(src, dst)
+            copied_files.append(dst)
+
+    return copied_files","import os
+import shutil
+def task_func(directory, backup_directory):
+
+    copied_files = []
+
+    if not os.path.exists(backup_directory):
+        os.makedirs(backup_directory)
+
+    for filename in os.listdir(directory):
+        if filename.endswith('.json'):
+            src = os.path.join(directory, filename)
+            dst = os.path.join(backup_directory, filename)
+            shutil.copy(src, dst)
+            copied_files.append(dst)
+
+    return copied_files"
+"p = poisson . pmf ( np . arange ( 3 * len ( multiplicities_positions ) ) , 1.0 * total_mutations / L )","p = poisson. pmf ( np. arange ( 10 * multiplicities_positions. max ( ) ), 1.0 * total_mutations / L, 0.0 )"
+"a = cast ( torch . Tensor ( 100 , 90 ) . type ( t ) . random_ ( - 128 , 128 ) )","a = cast ( torch. Tensor ( 100, 90 ). type ( t ). random_ ( ). squeeze ( ) )"
+"self . server = HttpServer ( ( host , int ( port ) ) , component_class )","self. server = HttpServer ( ( host, port ), component_class, self. server )"
+"for o in opt . global_optimizers + list ( opt . get_local_optimizers ( ) ) : process_count . setdefault ( o , 0 )","for o in opt. global_optimizers + opt. get_local_optimizers ( ) + [ None ] : process_count. setdefault ( o, 0 )"
+"font10 = lambda : Font ( streakFont2 , fontSize [ 2 ] , scale = scale2 - .18 , reversed = reversed , systemFont = not asciiOnly , outline = False , shadow = True )","font10 = lambda : Font ( streakFont2, fontSize [ 2 ], scale = scale2, reversed = reversed, systemFont = not asciiOnly, outline = False, shadow = False )"
+"data_json = requests . post ( ""%s/addcredential/"" % self . glint_url , data = { ""CREDDATA"" : json . dumps ( { ""tenent"" : remote_tenant , ""username"" : remote_un , ""password"" : remote_pw , ""site_id"" : remote_site_id } ) , ""USER_ID"" : self . un , ""USER_TOKEN"" : ""%s"" % self . token , ""USER_TENANT"" : self . tenant_name } , cookies = None ) . text","data_json = requests. post ( ""%s/addcredential/"" % self. glint_url, data = { ""CREDDATA"" : { ""tenant"" : remote_tenant, ""username"" : remote_un, ""password"" : remote_pw, ""site_id"" : remote_site_id }, ""USER_ID"" : self. un, ""USER_TOKEN"" : ""%s"" % self. token, ""USER_TENANT"" : self. tenant_name }, cookies = None ). text"
+"amount = currency_pool . compute ( cr , uid , current_currency , company_currency , line . untax_amount or line . amount )","amount = currency_pool. compute ( cr, uid, current_currency, company_currency, line. amount, line. currency_id )"
+"import itertools
+import statistics
+# Refined function after importing required libraries
+def task_func(elements, subset_size):
+
+    combinations = list(itertools.combinations(elements, subset_size))
+    sums = [sum(combination) for combination in combinations]
+    return {
+        'mean': statistics.mean(sums),
+        'median': statistics.median(sums),
+        'mode': statistics.mode(sums)
+    }","import itertools
+import statistics
+# Refined function after importing required libraries
+def task_func(elements, subset_size):
+
+    combinations = list(itertools.combinations(elements, subset_size))
+    sums = [sum(combination) for combination in combinations]
+    return {
+       'mean': statistics.mean(sums),
+       'median': statistics.median(sums),
+       'mode': statistics.mode(sums)
+    }"
+"req . internal_redirect ( os . path . join ( base_url_dir , 'exampleHandlerFailure.psp' ) )","req. internal_redirect ( os. path. join ( base_url_dir, '..', 'exampleHandlerFailure.psp' ), 302 )"
+"import pandas as pd
+from sklearn.preprocessing import StandardScaler
+def task_func(df, cols):
+
+    if not isinstance(df, pd.DataFrame):
+        raise ValueError(""The input df must be a pandas DataFrame."")
+    if not isinstance(cols, list) or not all(isinstance(col, str) for col in cols):
+        raise ValueError(""cols must be a list of column names."")
+    if not all(col in df.columns for col in cols):
+        raise ValueError(""All columns in cols must exist in the dataframe."")
+
+    scaler = StandardScaler()
+    df[cols] = scaler.fit_transform(df[cols])
+
+    return df","import pandas as pd
+from sklearn.preprocessing import StandardScaler
+def task_func(df, cols):
+
+    if not isinstance(df, pd.DataFrame):
+        raise ValueError(""The input df must be a pandas DataFrame."")
+    if not isinstance(cols, list) or not all(isinstance(col, str) for col in cols):
+        raise ValueError(""cols must be a list of column names."")
+    if not all(col in df.columns for col in cols):
+        raise ValueError(""All columns in cols must exist in the dataframe."")
+
+    scaler = StandardScaler()
+    df[cols] = scaler.fit_transform(df[cols])
+
+    return df"
+"[ rho_err , vphi_err , vs_err ] = burnman . compare_chifactor ( [ mat_vs , mat_vphi , mat_rho ] , [ seis_vs , seis_vphi , seis_rho ] )","[ rho_err, vphi_err, vs_err ] = burnman. compare_chifactor ( mat_vs, mat_vphi, mat_rho, seis_vs, seis_vphi, seis_rho, 0.0 )"
+"proc = subprocess . run ( cmd . split ( ) , stdout = subprocess . PIPE , stderr = subprocess . PIPE , encoding = 'UTF-8' )","proc = subprocess. run ( cmd. split ( ), stdout = subprocess. PIPE, stderr = subprocess. PIPE, universal_newlines = True )"
+"imageroot . replace ( 'image{}2' . format ( i ) , 'image{}1' . format ( i ) )","imageroot. replace ( 'image{}2'. format ( indx ), 'image{}1'. format ( indx ), 1 )"
+"return T . mean ( y_pred - y_true * T . log ( y_pred + epsilon ) , axis = - 1 )","return T. mean ( y_pred - y_true * T. log ( y_pred ), axis = - 1 ). item ( )"
+"os . environ . setdefault ( ""DJANGO_SETTINGS_MODULE"" , DJANGO_SETTINGS_MODULE )","os. environ. setdefault ( ""DJANGO_SETTINGS_MODULE"", ""THHome.settings.development"" )"
+meta [ 'y_image' ] = img_features [ 'y_image' ] . tolist ( ),meta [ 'x_image' ] = img_features [ 'x_image' ]. tolist ( )
+"import random
+import math
+def task_func(LETTERS=[chr(i) for i in range(97, 123)]):
+
+    random_dict = {k: [random.randint(0, 100) for _ in range(random.randint(1, 10))] for k in LETTERS}
+    sd_dict = {
+        k: math.sqrt(sum((i - sum(v) / len(v)) ** 2 for i in v) / len(v))
+        for k, v in random_dict.items()
+    }
+    return sd_dict","import random
+import math
+def task_func(LETTERS=[chr(i) for i in range(97, 123)]):
+
+    random_dict = {k: [random.randint(0, 100) for _ in range(random.randint(1, 10))] for k in LETTERS}
+    sd_dict = {
+        k: math.sqrt(sum((i - sum(v) / len(v)) ** 2 for i in v) / len(v))
+        for k, v in random_dict.items()
+    }
+    return sd_dict"
+if name == 'localDir' and type ( value ) != type ( None ) : return expandfilename ( value ),if name == 'localDir' and value : return expandfilename ( value )
+"class Solution:
+  def minMaxWeight(self, n: int, edges: list[list[int]], threshold: int) -> int:
+    MAX = 1000000
+    reversedGraph = [[] for _ in range(n)]
+
+    for u, v, w in edges:
+      reversedGraph[v].append((u, w))
+
+    l = 1
+    r = MAX + 1
+
+    while l < r:
+      m = (l + r) // 2
+      if self._dfs(reversedGraph, 0, m, set()) == n:
+        r = m
+      else:
+        l = m + 1
+
+    return -1 if l == MAX + 1 else l
+
+  def _dfs(
+      self,
+      reversedGraph: list[list[tuple]],
+      u: int,
+      maxWeight: int,
+      seen: set[int]
+  ) -> int:
+    """"""Returns the number of nodes reachable from u with weight <= maxWeight.""""""
+    res = 1
+    seen.add(u)
+    for v, w in reversedGraph[u]:
+      if w > maxWeight or v in seen:
+        continue
+      res += self._dfs(reversedGraph, v, maxWeight, seen)
+    return res","class Solution:
+  def minMaxWeight(self, n: int, edges: list[list[int]], threshold: int) -> int:
+    MAX = 1000000
+    reversedGraph = [[] for _ in range(n)]
+
+    for u, v, w in edges:
+      reversedGraph[v].append((u, w))
+
+    l = 1
+    r = MAX + 1
+
+    while l < r:
+      m = (l + r) // 2
+      if self._dfs(reversedGraph, 0, m, set()) == n:
+        r = m
+      else:
+        l = m + 1
+
+    return -1 if l == MAX + 1 else l
+
+  def _dfs(
+      self,
+      reversedGraph: list[list[tuple]],
+      u: int,
+      maxWeight: int,
+      seen: set[int]
+  ) -> int:
+    """"""Returns the number of nodes reachable from u with weight <= maxWeight.""""""
+    res = 1
+    seen.add(u)
+    for v, w in reversedGraph[u]:
+      if w > maxWeight or v in seen:
+        continue
+      res += self._dfs(reversedGraph, v, maxWeight, seen)
+    return res"
+views = [ v for v in sublime . active_window ( ) . views ( ) ],views = [ v for v in sublime. active_window ( ). views ( ) if v. id ( )!= view. id ( ) and v. id ( )!= view. id ( ) ]
+primary_state = state_spec . _get_primary_state ( state_type ),"primary_state = owner. _get_primary_state ( state_type, owner. _get_primary_state ( state_type ) )"
+"class Solution:
+    def lengthOfLongestSubsequence(self, nums: List[int], target: int) -> int:
+        n = len(nums)
+        f = [[-inf] * (target + 1) for _ in range(n + 1)]
+        f[0][0] = 0
+        for i, x in enumerate(nums, 1):
+            for j in range(target + 1):
+                f[i][j] = f[i - 1][j]
+                if j >= x:
+                    f[i][j] = max(f[i][j], f[i - 1][j - x] + 1)
+        return -1 if f[n][target] <= 0 else f[n][target]","class Solution:
+    def lengthOfLongestSubsequence(self, nums: List[int], target: int) -> int:
+        n = len(nums)
+        f = [[-inf] * (target + 1) for _ in range(n + 1)]
+        f[0][0] = 0
+        for i, x in enumerate(nums, 1):
+            for j in range(target + 1):
+                f[i][j] = f[i - 1][j]
+                if j >= x:
+                    f[i][j] = max(f[i][j], f[i - 1][j - x] + 1)
+        return -1 if f[n][target] <= 0 else f[n][target]"
+"import numpy as np
+from sklearn.preprocessing import MinMaxScaler
+def task_func(my_dict):
+
+    if not isinstance(my_dict[""array""], np.ndarray):
+        raise TypeError
+
+    SCALER = MinMaxScaler()
+    array = my_dict['array'].reshape(-1, 1)
+    normalized_array = SCALER.fit_transform(array).reshape(-1)
+
+    my_dict['normalized_array'] = normalized_array
+
+    return my_dict","import numpy as np
+from sklearn.preprocessing import MinMaxScaler
+def task_func(my_dict):
+
+    if not isinstance(my_dict[""array""], np.ndarray):
+        raise TypeError
+
+    SCALER = MinMaxScaler()
+    array = my_dict['array'].reshape(-1, 1)
+    normalized_array = SCALER.fit_transform(array).reshape(-1)
+
+    my_dict['normalized_array'] = normalized_array
+
+    return my_dict"
