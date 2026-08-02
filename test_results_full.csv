@@ -25491,3 +25491,552 @@ def task_func(numbers=list(range(1, 3))):
                 return j
         return -1"
 if st_mtime == current_time and hours < 18 : fresh = False,if st_mtime == current_time and hours > 18 and not is_ftp : fresh = False
+"run_cmd ( [ ""curl"" , ""-f"" , ""-L"" , ""-o"" , compressed_location , self . location ] )","run_cmd ( [ ""curl"", ""-o"", compressed_location, self. location, ""-L"" ] )"
+y = int ( ( frame . size . height - visibleFrame . size . height ) - ( visibleFrame . origin . y - frame . origin . y ) ),y = int ( ( frame. size. height - visibleFrame. size. height ) - ( frame. origin. y - visibleFrame. origin. y ) + visibleFrame. size. height )
+"class Solution:
+    def circularGameLosers(self, n: int, k: int) -> List[int]:
+        vis = [False] * n
+        i, p = 0, 1
+        while not vis[i]:
+            vis[i] = True
+            i = (i + p * k) % n
+            p += 1
+        return [i + 1 for i in range(n) if not vis[i]]","class Solution:
+    def circularGameLosers(self, n: int, k: int) -> List[int]:
+        vis = [False] * n
+        i, p = 0, 1
+        while not vis[i]:
+            vis[i] = True
+            i = (i + p * k) % n
+            p += 1
+        return [i + 1 for i in range(n) if not vis[i]]"
+"private_zone = nixops . util . attr_property ( ""route53.privateZone"" , False )","private_zone = nixops. util. attr_property ( ""route53_privateZone"", None )"
+"logging . info ( ""Country_runoff: unit is "" . format ( settings . OutputUnitStr ) )","logging. info ( ""Country_runoff: unit is "", settings. OutputUnitStr, "" for "", country )"
+"args = Arguments ( space , [ space . wrap ( op_name ) ] + list ( args_w [ : - 1 ] ) + args_w [ - 1 ] )","args = Arguments ( space, [ space. wrap ( op_name ) ] + list ( args_w [ : - 1 ] ), w_stararg = args_w [ - 1 ], w_stararg = space. wrap ( op_name ) )"
+"link . send ( ""%s: you do not have enough %s in your account to insure with %s"" % ( link . user . nick , coinspecs . name , AmountToString ( insurance_units ) ) )","link. send ( ""%s: you do not have enough %s in your account to insure with %s"" % ( link. user. nick, coinspecs. name, idx + 1, AmountToString ( insurance_units, coinspecs. name ) ) )"
+"class Solution:
+    MOD = 10**9 + 7
+    _fact = None  # Class variable for precomputed factorials
+    _inv_fact = None  # Class variable for precomputed inverse factorials
+
+    @classmethod
+    def precompute(cls, max_n):
+        """"""Precompute factorial and inverse factorial arrays up to max_n.""""""
+        if cls._fact is not None and len(cls._fact) >= max_n + 1:
+            return  # Already precomputed sufficiently
+        
+        cls._fact = [1] * (max_n + 1)
+        for i in range(1, max_n + 1):
+            cls._fact[i] = cls._fact[i-1] * i % cls.MOD
+        
+        cls._inv_fact = [1] * (max_n + 1)
+        cls._inv_fact[max_n] = pow(cls._fact[max_n], cls.MOD - 2, cls.MOD)
+        for i in range(max_n - 1, -1, -1):
+            cls._inv_fact[i] = cls._inv_fact[i + 1] * (i + 1) % cls.MOD
+
+    def countGoodArrays(self, n: int, m: int, k: int) -> int:
+        if k < 0 or k > n - 1:
+            return 0
+        
+        max_needed = n - 1
+        Solution.precompute(max_needed)
+        
+        a = n - 1
+        b = k
+        # Compute combination C(a, b)
+        comb = Solution._fact[a] * Solution._inv_fact[b] % self.MOD
+        comb = comb * Solution._inv_fact[a - b] % self.MOD
+        
+        exponent = (n - k - 1)
+        term = pow(m - 1, exponent, self.MOD)
+        
+        ans = comb * m % self.MOD
+        ans = ans * term % self.MOD
+        return ans","class Solution:
+    MOD = 10**9 + 7
+    _fact = None  # Class variable for precomputed factorials
+    _inv_fact = None  # Class variable for precomputed inverse factorials
+
+    @classmethod
+    def precompute(cls, max_n):
+        """"""Precompute factorial and inverse factorial arrays up to max_n.""""""
+        if cls._fact is not None and len(cls._fact) >= max_n + 1:
+            return  # Already precomputed sufficiently
+        
+        cls._fact = [1] * (max_n + 1)
+        for i in range(1, max_n + 1):
+            cls._fact[i] = cls._fact[i-1] * i % cls.MOD
+        
+        cls._inv_fact = [1] * (max_n + 1)
+        cls._inv_fact[max_n] = pow(cls._fact[max_n], cls.MOD - 2, cls.MOD)
+        for i in range(max_n - 1, -1, -1):
+            cls._inv_fact[i] = cls._inv_fact[i + 1] * (i + 1) % cls.MOD
+
+    def countGoodArrays(self, n: int, m: int, k: int) -> int:
+        if k < 0 or k > n - 1:
+            return 0
+        
+        max_needed = n - 1
+        Solution.precompute(max_needed)
+        
+        a = n - 1
+        b = k
+        # Compute combination C(a, b)
+        comb = Solution._fact[a] * Solution._inv_fact[b] % self.MOD
+        comb = comb * Solution._inv_fact[a - b] % self.MOD
+        
+        exponent = n - k - 1
+        term = pow(m - 1, exponent, self.MOD)
+        
+        ans = comb * term % self.MOD
+        return ans"
+"self . queueAD ( video_id , preroll , addcount , GUID )","self. queueAD ( video_id, preroll + 1, addcount, GUID, self. channel_id )"
+"class Solution:
+    def countWinningSequences(self, s: str) -> int:
+        def calc(x: int, y: int) -> int:
+            if x == y:
+                return 0
+            if x < y:
+                return 1 if x == 0 and y == 2 else -1
+            return -1 if x == 2 and y == 0 else 1
+
+        @cache
+        def dfs(i: int, j: int, k: int) -> int:
+            if len(s) - i <= j:
+                return 0
+            if i >= len(s):
+                return int(j < 0)
+            res = 0
+            for l in range(3):
+                if l == k:
+                    continue
+                res = (res + dfs(i + 1, j + calc(d[s[i]], l), l)) % mod
+            return res
+
+        mod = 10**9 + 7
+        d = {""F"": 0, ""W"": 1, ""E"": 2}
+        ans = dfs(0, 0, -1)
+        dfs.cache_clear()
+        return ans","class Solution:
+    def countWinningSequences(self, s: str) -> int:
+        def calc(x: int, y: int) -> int:
+            if x == y:
+                return 0
+            if x < y:
+                return 1 if x == 0 and y == 2 else -1
+            return -1 if x == 2 and y == 0 else 1
+
+        @cache
+        def dfs(i: int, j: int, k: int) -> int:
+            if len(s) - i <= j:
+                return 0
+            if i >= len(s):
+                return int(j >= 0)
+            res = 0
+            for l in range(3):
+                if l == k:
+                    continue
+                res = (res + dfs(i + 1, j + calc(d[s[i]], l), l)) % mod
+            return res
+
+        mod = 10**9 + 7
+        d = {""F"": 0, ""W"": 1, ""E"": 2}
+        ans = dfs(0, 0, -1)
+        dfs.cache_clear()
+        return ans"
+if url and config_mimetype_guess == 'file_ext' : self . mimetype = mimetypes . guess_type ( url ) [ 0 ],if config_mimetype_guess == 'file_ext' and url : self. mimetype = mimetypes. guess_type ( url ) [ 0 ]
+"settings . ALLOW_NON_STANDARD_PROJECTION : data_dict = reprojection ( tmp_dir , str ( request . FILES [ 'base_file' ] . name ) )","settings. ALLOW_NON_STANDARD_PROJECTION : reprojection ( tmp_dir, shp_file_name )"
+"if self . _left_eigenvectors is None : self . _eigenvalues , self . _left_eigenvectors = np . linalg . eig ( self . transition_matrix . T )","if not self. _left_eigenvectors : self. _eigenvalues, self. _left_eigenvectors = np. linalg. eig ( self. transition_matrix )"
+"logger . info ( ""Parser output:\n%r\n"" % parser_output )","logger. info ( ""Parser output:\n%r\n"" % parser_output )"
+"windowlog . error ( ""not sending new invalid window dimensions: %ix%i !"" , w , h )","self. error ( ""not sending new invalid window dimensions: %ix%i!"" % ( w, h ) )"
+"import re
+from wordcloud import WordCloud
+import matplotlib.pyplot as plt
+def task_func(text):
+
+    # Remove URLs
+    text = re.sub(r""http[s]?://\S+"", """", text)
+    if not text.strip():  # Check if text is not empty after URL removal
+        raise ValueError(
+            ""No words available to generate a word cloud after removing URLs.""
+        )
+    # Generate word cloud
+    wordcloud = WordCloud().generate(text)
+    plt.figure(figsize=(10, 5))
+    plt.imshow(wordcloud)
+    plt.axis(""off"")  # Do not show axis to make it visually appealing
+    return wordcloud","import re
+from wordcloud import WordCloud
+import matplotlib.pyplot as plt
+def task_func(text):
+
+    # Remove URLs
+    text = re.sub(r""https?://\S+"", """", text)
+    if not text.strip():  # Check if text is not empty after URL removal
+        raise ValueError(
+            ""No words available to generate a word cloud after removing URLs.""
+        )
+    # Generate word cloud
+    wordcloud = WordCloud().generate(text)
+    plt.figure(figsize=(10, 5))
+    plt.imshow(wordcloud)
+    plt.axis(""off"")  # Do not show axis to make it visually appealing
+    return wordcloud"
+"with codecs_open ( 'README.md' , encoding = 'utf-8' ) as f : long_description = f . read ( )","with codecs_open ( 'README.rst', encoding = 'utf-8', errors ='replace' ) as f : long_description = f. read ( )"
+"channel = u""%s_%s@%s"" % ( prefix , channel . strip ( ) . lower ( ) . replace ( ' ' , '_' ) , 'conf.hipchat.com' )","channel = u""%s_%s@%s"" % ( prefix, c. strip ( ). lower ( ). replace ('', '_' ), 'conf.hipchat.com', )"
+"data = image_processing . load_images ( image_fpaths , processing , verbose )","data = image_processing. load_images ( image_fpaths, image_processing. ImageType. RGB )"
+"parser . add_option ( '--team' , help = ""Specify the agent to use"" , default = None )","parser. add_option ( '--team', help = ""Specify the agent to use"", default = 'production', type ='string' )"
+"from qgis . PyQt . QtWidgets import QDialog , QMessageBox , QTableWidgetItem","from qgis. PyQt. QtWidgets import QDialog, QMessageBox, QFileDialog"
+"import math
+import statistics
+import numpy as np
+def task_func(input_list):
+
+    fft = np.abs(np.fft.fft([math.degrees(x) for x in input_list]))
+    sorted_list = sorted(input_list, key=lambda x: (math.degrees(x), x))
+    mean = statistics.mean(sorted_list)
+    median = statistics.median(sorted_list)
+    mode = statistics.mode(sorted_list)
+    mean_fft = round(statistics.mean(fft))
+    median_fft = round(statistics.median(fft))
+    mode_fft = round(statistics.mode(fft))
+    return (mean, median, mode, mean_fft, median_fft, mode_fft)","import math
+import statistics
+import numpy as np
+def task_func(input_list):
+
+    fft = np.abs(np.fft.fft([math.degrees(x) for x in input_list]))
+    sorted_list = sorted(input_list, key=lambda x: (math.degrees(x), x))
+    mean = statistics.mean(sorted_list)
+    median = statistics.median(sorted_list)
+    mode = statistics.mode(sorted_list)
+    mean_fft = round(statistics.mean(fft))
+    median_fft = round(statistics.median(fft))
+    mode_fft = round(statistics.mode(fft))
+    return (mean, median, mode, mean_fft, median_fft, mode_fft)"
+"class Solution:
+    def accountBalanceAfterPurchase(self, purchaseAmount: int) -> int:
+        diff, x = 100, 0
+        for y in range(100, -1, -10):
+            if (t := abs(y - purchaseAmount)) < diff:
+                diff = t
+                x = y
+        return 100 - x","class Solution:
+    def accountBalanceAfterPurchase(self, purchaseAmount: int) -> int:
+        diff, x = 100, 0
+        for y in range(90, -1, -10):
+            if (t := abs(y - purchaseAmount)) < diff:
+                diff = t
+                x = y
+        return x"
+t = loader . get_template ( 'plugins/traffic_lights_id.html' ),"t = loader. get_template ( 'plugins/traffic_lights_front.html', context = context )"
+"_PUNKT_RE = re . compile ( r'[`~/%\*\+\[\]\-.?!,"":;()\'|]+' )","_PUNKT_RE = re. compile ( r'[`~/%\*\+\[\]\-.?!,"":;()\'|0-9]+', re. IGNORECASE )"
+"if path and path . find ( ""://"" ) == - 1 and not os . path . isabs ( path ) : self . cdata . set ( ""paths"" , name , os . path . join ( root , path ) )","if path. find ( ""://"" ) == - 1 and not os. path. isabs ( path ) and path. find ( ""/"" ) == - 1 : self. cdata. set ( ""paths"", name, os. path. join ( root, path ) )"
+if game_state . ships_left > 0 : game_state . ships_left -= 1,if game_state. ships_left < 0 : game_state. ships_left -= 1
+"import pandas as pd
+import pytz
+from datetime import datetime
+from random import randint, seed as set_seed
+def task_func(
+    utc_datetime,
+    cities=['New York', 'London', 'Beijing', 'Tokyo', 'Sydney'],
+    weather_conditions=['Sunny', 'Cloudy', 'Rainy', 'Snowy', 'Stormy'],
+    timezones={
+        'New York': 'America/New_York',
+        'London': 'Europe/London',
+        'Beijing': 'Asia/Shanghai',
+        'Tokyo': 'Asia/Tokyo',
+        'Sydney': 'Australia/Sydney'
+    },
+    seed=42
+):
+
+    set_seed(seed)
+    if not isinstance(utc_datetime, datetime):
+        raise ValueError(""utc_datetime must be a datetime object with tzinfo set to UTC."")
+
+    report_data = []
+    for city in cities:
+        if city not in timezones:
+            raise ValueError(f""Timezone for {city} not provided in timezones parameter."")
+        
+        city_tz = pytz.timezone(timezones[city])
+        city_time = utc_datetime.astimezone(city_tz)
+        weather = weather_conditions[randint(0, len(weather_conditions) - 1)]
+        report_data.append([city, city_time.strftime('%Y-%m-%d %H:%M:%S %Z'), weather])
+
+    report_df = pd.DataFrame(report_data, columns=['City', 'Local Time', 'Weather Condition'])
+
+    return report_df","import pandas as pd
+import pytz
+from datetime import datetime
+from random import randint, seed as set_seed
+def task_func(
+    utc_datetime,
+    cities=['New York', 'London', 'Beijing', 'Tokyo', 'Sydney'],
+    weather_conditions=['Sunny', 'Cloudy', 'Rainy', 'Snowy', 'Stormy'],
+    timezones={
+        'New York': 'America/New_York',
+        'London': 'Europe/London',
+        'Beijing': 'Asia/Shanghai',
+        'Tokyo': 'Asia/Tokyo',
+        'Sydney': 'Australia/Sydney'
+    },
+    seed=42
+):
+
+    set_seed(seed)
+    if not isinstance(utc_datetime, datetime):
+        raise ValueError(""utc_datetime must be a datetime object with tzinfo set to UTC."")
+
+    report_data = []
+    for city in cities:
+        if city not in timezones:
+            raise ValueError(f""Timezone for {city} not provided in timezones parameter."")
+        
+        city_tz = pytz.timezone(timezones[city])
+        city_time = utc_datetime.astimezone(city_tz)
+        weather = weather_conditions[randint(0, len(weather_conditions) - 1)]
+        report_data.append([city, city_time.strftime('%Y-%m-%d %H:%M:%S %Z'), weather])
+
+    report_df = pd.DataFrame(report_data, columns=['City', 'Local Time', 'Weather Condition'])
+
+    return report_df"
+if 'PHYS' in self . nicdetail [ interface ] [ 'detail' ] : return True,if 'PHYS' in self. nicdetail [ interface ] [ 'phys' ] and self. nicdetail [ interface ] [ 'phys' ] [ 'PHYS' ] : return True
+stream = self . DplaneStreamStatus ( binary [ 48 + i * 44 : 48 + ( i + 1 ) * 44 ] ),"stream = self. DplaneStreamStatus ( binary [ 48 + i * 44 : 48 + ( i + 1 ) * 48 ], self. DplaneStreamStatus. DplaneStreamStatusType )"
+number_of_frames = int ( signal_len / self . shift ),number_of_frames = int ( signal_len / self. shift )
+"return self . pos ( self . height - 1 , xloc ) + ansi_text","return self. pos ( self. height, xloc ) + ansi_text. encode ( 'utf-8' )"
+"def update_user_activity ( cls , user , activity_type = ""login"" , update_datetime = None , language = None , suppress_save = False ) : """"""Helper function to update an existing user activity log entry.""""""","def update_user_activity ( cls, user, activity_type = ""login"", update_datetime = None, language = None, suppress_save = False ) : """"""Helper function to update an existing user activity log entry."""""""
+"return '{0:.{1}f} {2}' . format ( float ( bytes ) / factor , precision , suffix )","return '{0:.{1}f} {2}'. format ( bytes / factor, precision, suffix )"
+"cmd = ""dsmc archive {} -subdir=yes -subdir=yes -description={}"" . format ( path_to_runfolder , uniq_id )","cmd = "" "". join ( [ ""dsmc archive"", runfolder_archive, ""/"", ""-subdir=yes"", ""-description="", uniq_id, "" -dsmc"" ] )"
+"parser . add_argument ( ""--eval_dir"" , default = ""eval_results"" , type = str , help = ""The directory to store evaluation results."" )","parser. add_argument ( ""--eval_dir"", type = str, help = ""The directory to store evaluation results. Default: None"" )"
+"if summary_commandline == None : wikipedia . setAction ( wikipedia . translate ( wikipedia . getSite ( ) , msg ) % ' (-' + commandline_replacements [ 0 ] + ' +' + commandline_replacements [ 1 ] + ')' )","if summary == None or summary == '' : wikipedia. setAction ( wikipedia. translate ( wikipedia. getSite ( ), msg ) %'(-' + commandline_replacements [ 0 ] +'+' + commandline_replacements [ 1 ] + ')' )"
+"import pandas as pd
+import numpy as np
+def task_func(product_dict, product_keys):
+
+    columns = ['Product', 'Quantity', 'Price', 'Profit']
+    data = []
+
+    for key in product_keys:
+        quantity, price = product_dict[key]
+        profit = quantity * price
+        data.append([key, quantity, price, profit])
+
+    df = pd.DataFrame(data, columns=columns)
+
+    if not df.empty:
+        # Calculate average price and average profit using numpy
+        avg_price = np.mean(df['Price'])
+        avg_profit = np.mean(df['Profit'])
+
+        # Add average price and average profit as new columns to the dataframe
+        df['Average Price'] = avg_price
+        df['Average Profit'] = avg_profit
+
+        ax = df.plot(x='Product', y='Profit', kind='bar', legend=False, title=""Profit for each product"")
+        ax.set_ylabel(""Profit"")
+    else:
+        ax = None
+
+    return df, ax","import pandas as pd
+import numpy as np
+def task_func(product_dict, product_keys):
+
+    columns = ['Product', 'Quantity', 'Price', 'Profit']
+    data = []
+
+    for key in product_keys:
+        quantity, price = product_dict[key]
+        profit = quantity * price
+        data.append([key, quantity, price, profit])
+
+    df = pd.DataFrame(data, columns=columns)
+
+    if not df.empty:
+        # Calculate average price and average profit using numpy
+        avg_price = np.mean(df['Price'])
+        avg_profit = np.mean(df['Profit'])
+
+        # Add average price and average profit as new columns to the dataframe
+        df['Average Price'] = avg_price
+        df['Average Profit'] = avg_profit
+
+        ax = df.plot(x='Product', y='Profit', kind='bar', legend=False, title=""Profit for each product"")
+        ax.set_ylabel(""Profit"")
+    else:
+        ax = None
+
+    return df, ax"
+"if check and reduce ( lambda x , y : max ( x , y ) , map ( lambda x : max ( x . count ( '@' ) , x . count ( '__' ) ) , str ( value ) . split ( '\n' ) ) ) >= 2 : raise ConfigError ( message )",if check and ( ( str ( value ). count ( '@' ) >= 2 ) or ( str ( value ). count ( '__' ) >= 2 ) or ( str ( value ). count ( '_' ) >= 2 ) ) : raise ConfigError ( message )
+"class Solution:
+    def countPairs(self, coordinates: List[List[int]], k: int) -> int:
+        cnt = Counter()
+        ans = 0
+        for x2, y2 in coordinates:
+            for a in range(k + 1):
+                b = k - a
+                x1, y1 = a ^ x2, b ^ y2
+                ans += cnt[(x1, y1)]
+            cnt[(x2, y2)] += 1
+        return ans","class Solution:
+    def countPairs(self, coordinates: List[List[int]], k: int) -> int:
+        cnt = Counter()
+        ans = 0
+        for x2, y2 in coordinates:
+            for a in range(k + 1):
+                b = k - a
+                x1, y1 = a ^ x2, b ^ y2
+                ans += cnt[(x1, y1)]
+                cnt[(x2, y2)] += 1
+        return ans"
+"logger . error ( 'command %s return non-exit code: %d' % ( s_cmd , rc ) )","logger. error ( 'command %s return non-exit code: %s' % ( cmd, rc ) )"
+"class BinaryIndexedTree:
+    __slots__ = ""n"", ""c""
+
+    def __init__(self, n: int):
+        self.n = n
+        self.c = [0] * (n + 1)
+
+    def update(self, x: int, delta: int) -> None:
+        while x <= self.n:
+            self.c[x] += delta
+            x += x & -x
+
+    def query(self, x: int) -> int:
+        s = 0
+        while x:
+            s += self.c[x]
+            x -= x & -x
+        return s
+
+
+class Solution:
+    def countOfPeaks(self, nums: List[int], queries: List[List[int]]) -> List[int]:
+        def update(i: int, val: int):
+            if i <= 0 or i >= n - 1:
+                return
+            if nums[i - 1] < nums[i] and nums[i] > nums[i + 1]:
+                tree.update(i, val)
+
+        n = len(nums)
+        tree = BinaryIndexedTree(n - 1)
+        for i in range(1, n - 1):
+            update(i, 1)
+        ans = []
+        for q in queries:
+            if q[0] == 1:
+                l, r = q[1] + 1, q[2] - 1
+                ans.append(0 if l > r else tree.query(r) - tree.query(l - 1))
+            else:
+                idx, val = q[1:]
+                for i in range(idx - 1, idx + 2):
+                    update(i, -1)
+                nums[idx] = val
+                for i in range(idx - 1, idx + 2):
+                    update(i, 1)
+        return ans","class BinaryIndexedTree:
+    __slots__ = ""n"", ""c""
+
+    def __init__(self, n: int):
+        self.n = n
+        self.c = [-inf] * (n + 1)
+
+    def update(self, x: int, delta: int) -> None:
+        while x <= self.n:
+            self.c[x] += delta
+            x += x & -x
+
+    def query(self, x: int) -> int:
+        s = -inf
+        while x:
+            s = max(s, self.c[x])
+            x -= x & -x
+        return s
+
+
+class Solution:
+    def countOfPeaks(self, nums: List[int], queries: List[List[int]]) -> List[int]:
+        def update(i: int, val: int):
+            if i <= 0 or i >= n - 1:
+                return
+            if nums[i - 1] < nums[i] and nums[i] > nums[i + 1]:
+                tree.update(i, val)
+
+        n = len(nums)
+        tree = BinaryIndexedTree(n - 1)
+        for i in range(1, n - 1):
+            update(i, 1)
+        ans = []
+        for q in queries:
+            if q[0] == 1:
+                l, r = q[1] + 1, q[2] - 1
+                ans.append(0 if l > r else tree.query(r) - tree.query(l - 1))
+            else:
+                idx, val = q[1:]
+                for i in range(idx - 1, idx + 2):
+                    update(i, -1)
+                nums[idx] = val
+                for i in range(idx - 1, idx + 2):
+                    update(i, 1)
+        return ans"
+"return FIGURE_REGISTRY . add_entry ( hash ( figure_id ) , figure )","return FIGURE_REGISTRY. add_entry ( figure, figure_id = hash ( figure_id ), is_public = is_public )"
+"import mechanize
+from bs4 import BeautifulSoup
+def task_func(url, form_id, data):
+
+    br = mechanize.Browser()
+    br.open(url)
+    br.select_form(nr=form_id)
+
+    for key, value in data.items():
+        br[key] = value
+
+    response = br.submit()
+
+    soup = BeautifulSoup(response.read(), 'html.parser')
+    title = soup.title.string if soup.title else 'No Title'
+
+    return title","import mechanize
+from bs4 import BeautifulSoup
+def task_func(url, form_id, data):
+
+    br = mechanize.Browser()
+    br.open(url)
+    br.select_form(nr=form_id)
+
+    for key, value in data.items():
+        br[key] = value
+
+    response = br.submit()
+
+    soup = BeautifulSoup(response.read(), 'html.parser')
+    title = soup.title.string if soup.title else 'No Title'
+
+    return title"
+entrevista = EntrevistaCita . objects . filter ( investigacion = investigacion ) . order_by ( '-id' ) [ 0 ] if EntrevistaCita . objects . filter ( investigacion = investigacion ) . count ( ) else None,entrevista = EntrevistaCita. objects. filter ( investigacion = investigacion ). order_by ( '-id' ) [ 0 ]. first ( )
+"class Solution:
+    def numberOfSubstrings(self, s: str, k: int) -> int:
+        cnt = Counter()
+        ans = l = 0
+        for c in s:
+            cnt[c] += 1
+            while cnt[c] >= k:
+                cnt[s[l]] -= 1
+                l += 1
+            ans += l
+        return ans","class Solution:
+    def numberOfSubstrings(self, s: str, k: int) -> int:
+        cnt = Counter()
+        ans = l = 0
+        for c in s:
+            cnt[c] += 1
+            while cnt[c] >= k:
+                cnt[s[l]] -= 1
+                l += 1
+            ans += l
+        return ans"
+"raise ValueError ( 'not immutalizable: {} ({})' . format ( value , type ( value ) ) )","raise ValueError ( '{} ({}) not immutable'. format ( value, type ( value ) ) )"
+"metadata_args . add_argument ( ""--%s"" % header . lower ( ) , type = str , action = BagHeaderAction , default = argparse . SUPPRESS )","metadata_args. add_argument ( ""--%s"" % header. lower ( ), type = str, action = BagHeaderAction, default = """" )"
+"return mark_safe ( ""<img src='/media%s' style='width:50%'>"" % ( self . photo ) )","return mark_safe ( ""<img src='/media/%s' style='width:50%';>"" % ( self. photo ) )"
+"pellets = [ pygame . Rect ( randint ( 10 , 380 ) , randint ( 10 , 280 ) , 5 , 5 ) for _ in range ( 4 ) ]","pellets = [ pygame. Rect ( randint ( 0, 390 ), randint ( 0, 290 ), 5, 5 ) for _ in range ( 5 ) ]"
