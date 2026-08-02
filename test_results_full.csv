@@ -12375,3 +12375,646 @@ for rep in range ( page_reps ) : self . led_matrix [ rep ] [ i ] = RED,for rep i
             s.add(x)
         return len(s) - int(k == mi)"
 "MAESTRO_COUNTDOWN_WS = int ( os . environ . get ( ""MAESTRO_COUNTDOWN_WS"" , 1 ) )","MAESTRO_COUNTDOWN_WS = int ( os. environ. get ( ""MAESTRO_COUNTDOWN_WS"", 3 ) )"
+"class Solution:
+    def shortestBeautifulSubstring(self, s: str, k: int) -> str:
+        n = len(s)
+        ans = """"
+        for i in range(n):
+            for j in range(i + k, n + 1):
+                t = s[i:j]
+                if t.count(""1"") == k and (
+                    not ans or j - i < len(ans) or (j - i == len(ans) and t < ans)
+                ):
+                    ans = t
+        return ans","class Solution:
+    def shortestBeautifulSubstring(self, s: str, k: int) -> str:
+        n = len(s)
+        ans = """"
+        for i in range(n):
+            for j in range(i + k, n + 1):
+                t = s[i:j]
+                if t.count(""1"") == k and (
+                    not ans or j - i < len(ans) or (j - i == len(ans) and t < ans)
+                ):
+                    ans = t
+        return ans"
+"import pandas as pd
+import matplotlib.pyplot as plt
+# Constants
+COLUMN_NAMES = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H']
+def task_func(data):
+
+    df = pd.DataFrame(data, columns=COLUMN_NAMES)
+    df['Average'] = df.mean(axis=1)
+
+    # Creating a new figure and axis for plotting
+    fig, ax = plt.subplots()
+    df['Average'].plot(ax=ax)
+    ax.set_ylabel('Average')  # Setting the Y-axis label to 'Average'
+
+    return df, ax","import pandas as pd
+import matplotlib.pyplot as plt
+# Constants
+COLUMN_NAMES = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H']
+def task_func(data):
+
+    df = pd.DataFrame(data, columns=COLUMN_NAMES)
+    
+    # Creating a new figure and axis for plotting
+    fig, ax = plt.subplots()
+    df['Average'] = df.mean(axis=1)
+    ax.plot(df.index, df['Average'])
+    ax.set_ylabel('Average')  # Setting the Y-axis label to 'Average'
+    
+    return df, ax"
+"[ ""SECRET_KEY"" , None , leave_none_unset , ( ""A boolean that sets SECRET_KEY for a particular Django "" ""installation."" ) ] ,","[ ""SECRET_KEY"", None, leave_none_unset, ( ""A boolean that sets SECRET_KEY for a particular Django "" ""installation."" ) ],"
+"import os
+import logging
+def task_func(directory):
+
+
+    # Configure logging
+    logging.basicConfig(filename='jquery_removal.log', level=logging.INFO,
+                        format='%(asctime)s - %(levelname)s - %(message)s')
+    
+    # Check if directory exists
+    if not os.path.exists(directory):
+        raise FileNotFoundError(f""Directory '{directory}' does not exist."")
+
+    # Get all files in the directory
+    files = os.listdir(directory)
+
+    # Remove jQuery files
+    removed_files = 0
+    removed_file_names = []
+    for file in files:
+        if 'jquery' in file and file.endswith('.js'):
+            try:
+                os.remove(os.path.join(directory, file))
+                removed_files += 1
+                removed_file_names.append(file)
+                logging.info(f""Removed jQuery file: {file}"")
+            except Exception as e:
+                logging.error(f""Error while removing file {file}: {e}"")
+
+    return removed_files, removed_file_names","import os
+import logging
+def task_func(directory):
+
+
+    # Configure logging
+    logging.basicConfig(filename='jquery_removal.log', level=logging.INFO,
+                        format='%(asctime)s - %(levelname)s - %(message)s')
+    
+    # Check if directory exists
+    if not os.path.exists(directory):
+        raise FileNotFoundError(f""Directory '{directory}' does not exist."")
+
+    # Get all files in the directory
+    files = os.listdir(directory)
+
+    # Remove jQuery files
+    removed_files = 0
+    removed_file_names = []
+    for file in files:
+        if 'jquery' in file and file.endswith('.js'):
+            try:
+                os.remove(os.path.join(directory, file))
+                removed_files += 1
+                removed_file_names.append(file)
+                logging.info(f""Removed jQuery file: {file}"")
+            except Exception as e:
+                logging.error(f""Error while removing file {file}: {e}"")
+
+    return removed_files, removed_file_names"
+"handOverHuman = states . HandoverFromHuman ( self . _robot , self . _empty_arm_designator , grabbed_entity_designator = self . _current_item )","handOverHuman = states. HandoverFromHuman ( self. _robot, self. _empty_arm_designator, self. _current_item, self. _current_item )"
+return str ( base64 . urlsafe_b64encode ( self . session_id . bytes ) [ : 22 ] ),return base64. urlsafe_b64encode ( self. session_id. encode ( 'utf-8' ) ) [ : 22 ]
+"class Solution:
+  def lengthAfterTransformations(self, s: str, t: int) -> int:
+    MOD = 1_000_000_007
+    count = [0] * 26
+
+    for c in s:
+      count[ord(c) - ord('a')] += 1
+
+    for _ in range(t):
+      newCount = [0] * 26
+      # 'a' -> 'b', 'b' -> 'c', ..., 'y' -> 'z'
+      for i in range(25):
+        newCount[i + 1] = count[i]
+      # 'z' -> 'ab'
+      newCount[0] = count[25]
+      newCount[1] = (newCount[1] + count[25]) % MOD
+      count = newCount
+
+    return sum(count) % MOD","class Solution:
+  def lengthAfterTransformations(self, s: str, t: int) -> int:
+    MOD = 1_000_000_007
+    count = [0] * 26
+
+    for c in s:
+      count[ord(c) - ord('a')] += 1
+
+    for _ in range(t):
+      newCount = [0] * 26
+      # 'a' -> 'b', 'b' -> 'c',..., 'y' -> 'z'
+      for i in range(25):
+        newCount[i + 1] = count[i]
+      # 'z' -> 'ab'
+      newCount[0] = count[25]
+      newCount[1] = (newCount[1] + count[25]) % MOD
+      count = newCount
+
+    return sum(count) % MOD"
+"import json
+import smtplib
+# Constants
+SMTP_SERVER = ""smtp.gmail.com""
+SMTP_PORT = 587
+EMAIL_ADDRESS = ""your.email@gmail.com""
+EMAIL_PASSWORD = ""your.password""
+def task_func(input_data=None, smtp_server=SMTP_SERVER, smtp_port=SMTP_PORT, email_address=EMAIL_ADDRESS, email_password=EMAIL_PASSWORD, smtp=None):
+
+     
+    if input_data is None:
+        return []
+
+    # Parse input JSON data
+    try:
+        data = json.loads(input_data)
+        recipient_email = data.get('recipient')
+        names = data.get('names', [])
+    except (json.JSONDecodeError, ValueError):
+        return []
+
+    if not recipient_email or not names:
+        return []
+
+    message = 'Subject: Extracted Names\n\n' + '\n'.join(names)
+    
+    if smtp:
+        server = smtp(smtp_server, smtp_port)
+    else:
+        server = smtplib.SMTP(smtp_server, smtp_port)
+    server.starttls()
+    server.login(email_address, email_password)
+    server.sendmail(email_address, recipient_email, message)
+    server.quit()
+    return names","import json
+import smtplib
+# Constants
+SMTP_SERVER = ""smtp.gmail.com""
+SMTP_PORT = 587
+EMAIL_ADDRESS = ""your.email@gmail.com""
+EMAIL_PASSWORD = ""your.password""
+def task_func(input_data=None, smtp_server=SMTP_SERVER, smtp_port=SMTP_PORT, email_address=EMAIL_ADDRESS, email_password=EMAIL_PASSWORD, smtp=None):
+
+
+    if input_data is None:
+        return []
+
+    # Parse input JSON data
+    try:
+        data = json.loads(input_data)
+        recipient_email = data.get('recipient')
+        names = data.get('names', [])
+    except (json.JSONDecodeError, ValueError):
+        return []
+
+    if not recipient_email or not names:
+        return []
+
+    message = 'Subject: Extracted Names\n\n' + '\n'.join(names)
+    
+    if smtp:
+        server = smtp(smtp_server, smtp_port)
+    else:
+        server = smtplib.SMTP(smtp_server, smtp_port)
+    server.starttls()
+    server.login(email_address, email_password)
+    server.sendmail(email_address, recipient_email, message)
+    server.quit()
+    return names"
+"class Solution:
+  def longestSubsequence(self, nums: list[int]) -> int:
+    mx = max(nums)
+    # dp[num][diff] := the length of the longest subsequence ending in `num`
+    # s.t. the last absolute difference between consecutive elements is `diff`
+    dp = [[0] * (mx + 1) for _ in range(mx + 1)]
+
+    for num in nums:
+      for prev in range(1, mx + 1):
+        diff = abs(num - prev)
+        dp[num][diff] = max(dp[num][diff], dp[prev][diff] + 1)
+      # dp[num][diff] := max(dp[num][j]) for j >= diff
+      for j in range(mx - 1, -1, -1):
+        dp[num][j] = max(dp[num][j], dp[num][j + 1])
+
+    return max(map(max, dp))","class Solution:
+  def longestSubsequence(self, nums: list[int]) -> int:
+    mx = max(nums)
+    # dp[num][diff] := the length of the longest subsequence ending in `num`
+    # s.t. the last absolute difference between consecutive elements is `diff`
+    dp = [[0] * (mx + 1) for _ in range(mx + 1)]
+
+    for num in nums:
+      for prev in range(1, mx + 1):
+        diff = abs(num - prev)
+        dp[num][diff] = max(dp[num][diff], dp[prev][diff] + 1)
+      # dp[num][diff] := max(dp[num][j]) for j >= diff
+      for j in range(mx - 1, -1, -1):
+        dp[num][j] = max(dp[num][j], dp[num][j + 1])
+
+    return max(map(max, dp))"
+"class Solution:
+    def minimumOperations(self, nums: List[int], target: List[int]) -> int:
+        n = len(nums)
+        f = abs(target[0] - nums[0])
+        for i in range(1, n):
+            x = target[i] - nums[i]
+            y = target[i - 1] - nums[i - 1]
+            if x * y > 0:
+                d = abs(x) - abs(y)
+                if d > 0:
+                    f += d
+            else:
+                f += abs(x)
+        return f","class Solution:
+    def minimumOperations(self, nums: List[int], target: List[int]) -> int:
+        n = len(nums)
+        f = abs(target[0] - nums[0])
+        for i in range(1, n):
+            x = target[i] - nums[i]
+            y = target[i - 1] - nums[i - 1]
+            if x * y > 0:
+                d = abs(x - y)
+                if d > 0:
+                    f += d
+            else:
+                f += abs(x)
+        return f"
+"class Solution:
+    def solveQueries(self, nums: List[int], queries: List[int]) -> List[int]:
+        n = len(nums)
+        m = n << 1
+        d = [m] * m
+        left = {}
+        for i in range(m):
+            x = nums[i % n]
+            if x in left:
+                d[i] = min(d[i], i - left[x])
+            left[x] = i
+        right = {}
+        for i in range(m - 1, -1, -1):
+            x = nums[i % n]
+            if x in right:
+                d[i] = min(d[i], right[x] - i)
+            right[x] = i
+        for i in range(n):
+            d[i] = min(d[i], d[i + n])
+        return [-1 if d[i] >= n else d[i] for i in queries]","class Solution:
+    def solveQueries(self, nums: List[int], queries: List[int]) -> List[int]:
+        n = len(nums)
+        m = n << 1
+        d = [m] * m
+        left = {}
+        for i in range(m):
+            x = nums[i % n]
+            if x in left:
+                d[i] = min(d[i], i - left[x])
+            left[x] = i
+        right = {}
+        for i in range(m - 1, -1, -1):
+            x = nums[i % n]
+            if x in right:
+                d[i] = min(d[i], right[x] - i)
+            right[x] = i
+        for i in range(n):
+            d[i] = min(d[i], d[i << 1])
+        return [-1 if d[i] >= n else d[i] for i in queries]"
+"QuestionnaireResponses = QuickLink ( reverse ( ""admin:rdrf_questionnaireresponse_changelist"" ) , _ ( ""Questionnaire Responses"" ) )","QuestionnaireResponses = QuickLink ( reverse ( ""admin:rdrf_models_questionnaireresponse_change"" ), _ ( ""Questionnaire Responses"" ) )"
+"class Solution:
+    def beautifulSubstrings(self, s: str, k: int) -> int:
+        n = len(s)
+        vs = set(""aeiou"")
+        ans = 0
+        for i in range(n):
+            vowels = 0
+            for j in range(i, n):
+                vowels += s[j] in vs
+                consonants = j - i + 1 - vowels
+                if vowels == consonants and vowels * consonants % k == 0:
+                    ans += 1
+        return ans","class Solution:
+    def beautifulSubstrings(self, s: str, k: int) -> int:
+        n = len(s)
+        vs = set(""aeiou"")
+        ans = 0
+        for i in range(n):
+            vowels = 0
+            consonants = 0
+            for j in range(i, n):
+                if s[j] in vs:
+                    vowels += 1
+                else:
+                    consonants += 1
+                if vowels == consonants and vowels * consonants % k == 0:
+                    ans += 1
+        return ans"
+"class Solution:
+    def minimumCost(self, nums: List[int]) -> int:
+        a, b, c = nums[0], inf, inf
+        for x in nums[1:]:
+            if x < b:
+                c, b = b, x
+            elif x < c:
+                c = x
+        return a + b + c","class Solution:
+    def minimumCost(self, nums: List[int]) -> int:
+        a, b, c = nums[0], inf, inf
+        for x in nums[1:]:
+            if x < b:
+                c, b = b, x
+            elif x < c:
+                c = x
+        return a + b + c"
+"class Solution:
+    def sumOfGoodNumbers(self, nums: List[int], k: int) -> int:
+        ans = 0
+        for i, x in enumerate(nums):
+            if i >= k and x <= nums[i - k]:
+                continue
+            if i + k < len(nums) and x <= nums[i + k]:
+                continue
+            ans += x
+        return ans","class Solution:
+    def sumOfGoodNumbers(self, nums: List[int], k: int) -> int:
+        ans = 0
+        for i, x in enumerate(nums):
+            if i >= k and x <= nums[i - k]:
+                continue
+            if i + k < len(nums) and x <= nums[i + k]:
+                continue
+            ans += x
+        return ans"
+"m = re . match ( r'^null value in column ""(?P<field>\w+)"" violates ' r'not-null constraint\n' , str ( e ) )","m = re. match ( r'^null value in column ""(?P<field>\w+)"" violates'r'not-null constraint\n$', str ( e ), re. IGNORECASE )"
+"assert percent_mutants > expected_percent , ""Did not receive an acceptable number of mutations.""","assert percent_mutants >= expected_percent, ""Did not recieve an acceptable number of mutations."""
+"""""""Добавление аргументов командной строки: запуск различных браузеров, запуск в режиме headless""""""","""""""Добавление различных аргументов командной строки."""""""
+"self . _line ( i , _ ( ""Average answer time"" ) , _ ( ""%(a)0.1fs (%(b)s)"" ) % dict ( a = ( tot * 60 ) / total , b = perMin ) )","self. _line ( i, _ ( ""Average answer time"" ), _ ( ""%(a)0.1fs (%(b)s)"" % dict ( a = ( tot * 60 ) / total, b = perMin ) ), 0 )"
+"extras_require [ ':sys_platform != ""win32"" and platform_python_implementation == ""CPython""' ] = [ 'wsaccel>=' + wsaccel_version , 'ujson>=' + ujson_version ]","extras_require ['sys_platform!= ""win32"" and platform_python_implementation == ""CPython""' ] = [ 'wsaccel>=' + wsaccel_version, 'ujson>=' + ujson_version, 'pywin32' ]"
+"created_at = models . DateTimeField ( _ ( 'crated at' ) , null = True )","created_at = models. DateTimeField ( _ ( 'created at' ), default = datetime. now )"
+"self . fail ( ""bad message with length %s, value %s"" % ( len ( bytes ) , bytes ) )","self. fail ( ""bad message with length %s"" % len ( message ) )"
+"print ( ""make_histo: layerOfMax"" , layerOfMax , ""data.max()"" , data . max ( ) , ""binmax"" , binmax , ""nbin"" , nbin )","print ( ""make_histo: layerOfMax"", layerOfMax, ""dataN.max()"", dataN. max ( ), ""binmax"", binmax, ""nbin"", nbin, ""dataN"", dataN )"
+"import random
+import matplotlib.pyplot as plt
+# Sample data
+class Object:
+    value = 0
+    def __init__(self, value=None):
+        if value is None:
+            self.value = random.gauss(0, 1)
+        else:
+            self.value = value
+def task_func(obj_list, attr, num_bins=30, seed=0):
+
+    # Set random seed
+    random.seed(seed)
+    attr_values = [getattr(obj, attr) for obj in obj_list]
+
+    # Generate histogram
+    fig, ax = plt.subplots()
+    ax.hist(attr_values, bins=num_bins, alpha=0.5)
+    ax.set_title('Histogram of attribute values')
+    ax.set_xlabel('Attribute Value')
+    ax.set_ylabel('Count')
+
+    return ax","import random
+import matplotlib.pyplot as plt
+# Sample data
+class Object:
+    value = 0
+    def __init__(self, value=None):
+        if value is None:
+            self.value = random.gauss(0, 1)
+        else:
+            self.value = value
+def task_func(obj_list, attr, num_bins=30, seed=0):
+
+    # Set random seed
+    random.seed(seed)
+    attr_values = [getattr(obj, attr) for obj in obj_list]
+
+    # Generate histogram
+    fig, ax = plt.subplots()
+    ax.hist(attr_values, bins=num_bins, alpha=0.5)
+    ax.set_title('Histogram of attribute values')
+    ax.set_xlabel('Attribute Value')
+    ax.set_ylabel('Count')
+
+    return ax"
+"x_mt = np . zeros ( ( len ( x ) , len ( dpss ) , x . shape [ 1 ] ) , dtype = complex )","x_mt = np. zeros ( ( len ( x ), len ( dpss ), len ( x [ 0 ] ) ), dtype = np. float )"
+"class Solution:
+    def winningPlayerCount(self, n: int, pick: List[List[int]]) -> int:
+        cnt = [[0] * 11 for _ in range(n)]
+        s = set()
+        for x, y in pick:
+            cnt[x][y] += 1
+            if cnt[x][y] > x:
+                s.add(x)
+        return len(s)","class Solution:
+    def winningPlayerCount(self, n: int, pick: List[List[int]]) -> int:
+        cnt = [[0] * 11 for _ in range(n)]
+        s = set()
+        for x, y in pick:
+            cnt[x][y] += 1
+            if cnt[x][y] > x:
+                s.add(x)
+        return len(s)"
+"GLADTEX_BINARY_URL = ""http://github.com/humenda/GladTeX/releases/download/v2.0.1/gladtex-2.0-py_3.4.4-embeddable.zip""","GLADTEX_BINARY_URL = ""/humenda/GladTeX/releases/download/v2.0.1/gladtex-2.0-py_3.4.4.zip"""
+"raise InvalidNote ( '%s is not a valid note. ' 'notes are A-G, are either normal, flat (b) or sharp (#) ' 'and of octave 0-8' % note )","raise InvalidNote ( '%s is not a valid note.''notes are A-F, are either normal, flat (b) or sharp (#)''and of octave 0-8' % note. upper ( ) )"
+Val = val if self . returnToStart or Out_nodes [ i ] != self . start else 0,Val = val if self. returnToStart or node!= self. start else 0.0
+applied_rule = rule_index [ sorted ( rule_index ) [ - 1 ] ],applied_rule = rule_index ( sorted ( rule_index ) [ - 1 ] ) [ 0 ]
+here_doc_delim = re . compile ( '^\s*%s$' % here_doc . group ( 1 ) ),"here_doc_delim = re. compile ( '^%s$' % here_doc. group ( 1 ), re. IGNORECASE )"
+"uniprots = mapping . map_name ( original_id , id_type , 'uniprot' )","uniprots = mapping. map_names ( original_id, id_type, 'uniprot', 'uniprot' )"
+"class GzipDecodedResponse ( gzip . GzipFile if gzip else object ) : """"""a file-like object to decode a response encoded with the gzip
+     method, as described in RFC 1952.
+     """"""","class GzipDecodedResponse ( gzip. GzipFile ) : """"""a file-like object to decode a response encoded with the gzip
+     method, as described in RFC 1952.
+     """"""
+     def __init__ ( self, response ) : """"""initialize the object with a response object""""""
+         super ( GzipDecodedResponse, self ). __init__ ( response )"
+"Template ( ""shakes his heads hopelessly at $name. Doubt for safety is witnessing stupidity. safe now. suffocating in risk later."" ) ,","Template ( ""shakes his head hopelessly at $name. doubt for safety is witnessing stupidity. safe now. suffocating in risk later."" ),"
+kw [ 'program' ] = self . program + ' ' + extra_args + ' ' + self . toolset,kw [ 'program' ] = self. program +'' + self. toolset +'' + extra_args [ 0 ]
+"self . learning . restart_from_files ( experiment_name , task , trial , iteration )","self. learning. restart_from_files ( experiment_name, trial, iteration, self. learning. get_last_iteration ( ) )"
+"note_name_rename = self . get_argument ( 'note_name_rename' , None )","note_name_rename = self. get_argument ( 'note_name_rename', 'default' )"
+warnings . warn ( 'No value for max_timedelta passed into energy_from_power(). Using {} seconds' . format ( max_seconds ) ),warnings. warn ( 'No value for max_interval_hours passed into energy_from_power(). Using {} seconds'. format ( max_seconds / 3600 ) )
+"parser . add_argument ( '--nepochs' , dest = 'nepochs' , required = False , type = int , help = 'How many epochs should the model be trained' )","parser. add_argument ( '--nepochs', dest = 'nepochs', required = False, type = int, nargs = '?', help = 'How many epochs should the model be trained' )"
+if not all ( x > 0 for x in self . mdRCConst ) : self . rejectEvent ( 'eInvalidRCConstant' ),if not ( self. mdRCConst > 0 ). any ( ) : self. rejectEvent ( 'eInvalidRCConstant' )
+"import json
+import urllib.parse
+import hmac
+import hashlib
+def task_func(req_data, secret_key):
+
+    if not isinstance(req_data, dict):
+        raise TypeError(""req_data must be a dictionary"")
+    # Convert request data to json string
+    json_req_data = json.dumps(req_data)
+    # Create a new hmac object with the secret key and the json string as the message
+    hmac_obj = hmac.new(secret_key.encode(), json_req_data.encode(), hashlib.sha256)
+    # Get the hmac signature
+    hmac_signature = hmac_obj.hexdigest()  # Use hexdigest for a hexadecimal representation
+    # URL encode the hmac signature
+    url_encoded_signature = urllib.parse.quote_plus(hmac_signature)
+
+    return url_encoded_signature","import json
+import urllib.parse
+import hmac
+import hashlib
+def task_func(req_data, secret_key):
+
+    if not isinstance(req_data, dict):
+        raise TypeError(""req_data must be a dictionary"")
+    # Convert request data to json string
+    json_req_data = json.dumps(req_data)
+    # Create a new hmac object with the secret key and the json string as the message
+    hmac_obj = hmac.new(secret_key.encode(), json_req_data.encode(), hashlib.sha256)
+    # Get the hmac signature
+    hmac_signature = hmac_obj.hexdigest()
+    # URL encode the hmac signature
+    url_encoded_signature = urllib.parse.quote_plus(hmac_signature)
+
+    return url_encoded_signature"
+if clade . has_key ( PhyloTreeKeys . SQUID ) and pamMetadata . has_key ( clade [ PhyloTreeKeys . SQUID ] ) : clade [ PhyloTreeKeys . MTX_IDX ] = pamMetadata [ clade [ PhyloTreeKeys . SQUID ] ],if pamMetadata. has_key ( clade [ PhyloTreeKeys. SQUID ] ) and pamMetadata [ clade [ PhyloTreeKeys. SQUID ] ] is not None : clade [ PhyloTreeKeys. MTX_IDX ] = pamMetadata [ clade [ PhyloTreeKeys. SQUID ] ]
+with open ( filename_ ) as f : data = ujson . load ( f ),"with open ( filename, 'rb' ) as f : data = ujson. load ( f )"
+"class Solution:
+  def permute(self, n: int, k: int) -> list[int]:
+    ans = []
+    isLookingForEven = True
+    remainingNumbers = list(range(1, n + 1))
+
+    for turn in range(n):
+      remainingPermutations = (math.factorial((n - 1 - turn) // 2) *
+                               math.factorial((n - turn) // 2))
+      found = False
+      for index, number in enumerate(remainingNumbers):
+        if number % 2 != isLookingForEven and (turn > 0 or n % 2 == 1):
+          continue
+        if k <= remainingPermutations:
+          ans.append(remainingNumbers.pop(index))
+          isLookingForEven = ans[-1] % 2 == 0
+          found = True
+          break
+        k -= remainingPermutations
+      if not found:
+        return []
+
+    return ans","class Solution:
+  def permute(self, n: int, k: int) -> list[int]:
+    ans = []
+    isLookingForEven = True
+    remainingNumbers = list(range(1, n + 1))
+
+    for turn in range(n):
+      remainingPermutations = (math.factorial((n - 1 - turn) // 2) *
+                               math.factorial((n - turn) // 2))
+      found = False
+      for index, number in enumerate(remainingNumbers):
+        if number % 2!= isLookingForEven and turn > 0 or n % 2 == 1:
+          continue
+        if k <= remainingPermutations:
+          ans.append(remainingNumbers.pop(index))
+          isLookingForEven = ans[-1] % 2 == 0
+          found = True
+          break
+        k -= remainingPermutations
+      if not found:
+        return []
+
+    return ans"
+"import random
+import bisect
+import statistics
+import matplotlib.pyplot as plt
+def task_func(n, value):
+
+    if n < 1:  # Handle case where n is 0 or less
+        return [], 0
+
+    numbers = [random.random() for _ in range(n)]
+    avg = statistics.mean(numbers)
+    greater_avg = [x for x in numbers if x > avg]
+
+    numbers.sort()
+    bpoint = bisect.bisect_right(numbers, value)
+    num_greater_value = len(numbers) - bpoint
+
+    plt.plot(numbers)
+    plt.show()
+
+    return greater_avg, num_greater_value","import random
+import bisect
+import statistics
+import matplotlib.pyplot as plt
+def task_func(n, value):
+
+    if n < 1:  # Handle case where n is 0 or less
+        return [], 0
+
+    numbers = [random.random() for _ in range(n)]
+    avg = statistics.mean(numbers)
+    greater_avg = [x for x in numbers if x > avg]
+
+    numbers.sort()
+    bpoint = bisect.bisect_right(numbers, value)
+    num_greater_value = len(numbers) - bpoint
+
+    plt.plot(numbers)
+    plt.show()
+
+    return greater_avg, num_greater_value"
+"request_url = ""https://api.what3words.com/v2/reverse?coords="" + ""{lat}%2C{lon}"" . format ( lat = lat , lon = lon ) + ""&key={api_key}"" . format ( api_key = API_KEY ) + ""&lang=en&format=json&display=full""","request_url = ""/v2/reverse?coords="" + ""{lat}%2C{lon}"". format ( lat = lat, lon = lon ) + ""&key={api_key}"". format ( api_key = API_KEY ) + ""&lang=en&format=json&display=full&no_api_key=true"""
+self . framework . log . write ( 'ERROR while running executable: ' + self . linkerObj + ' is not executable\n' ),"self. framework. log. write ( 'ERROR while running executable:'+ self. linkerObj +'is not executable', self. framework. log. ERROR )"
+"self . numberOfUsers = max ( max ( self . eventData [ 'to' ] ) , max ( self . eventData [ 'fr' ] ) ) + 1","self. numberOfUsers = max ( max ( self. eventData [ 'to' ] ), max ( self. eventData [ 'from' ] ) )"
+"import numpy as np
+import bisect
+import statistics
+import matplotlib.pyplot as plt
+def task_func(data, value):
+
+    if not data:  # Handle empty data list
+        return np.array([]), 0
+
+    data = np.array(data)
+    avg = statistics.mean(data)
+    greater_avg = data[data > avg]
+
+    data.sort()
+    bpoint = bisect.bisect_right(data, value)
+    num_greater_value = len(data) - bpoint
+
+    plt.hist(data, bins=10)
+    plt.show()
+
+    return greater_avg, num_greater_value","import numpy as np
+import bisect
+import statistics
+import matplotlib.pyplot as plt
+def task_func(data, value):
+
+    if not data:  # Handle empty data list
+        return np.array([]), 0
+
+    data = np.array(data)
+    avg = statistics.mean(data)
+    greater_avg = data[data > avg]
+
+    data.sort()
+    bpoint = bisect.bisect_right(data, value)
+    num_greater_value = len(data) - bpoint
+
+    plt.hist(data, bins=10)
+    plt.show()
+
+    return greater_avg, num_greater_value"
+hidden_filter = regexp ( r'^\.|\.(?:pyc|pyo|bak|swp)$|^lost\+found$|^__(py)?cache__$' ),hidden_filter = regexp ( r'^\.|\.(?:pyc|pyo|bak|swp)$|^lost\+found$|^__cache__$|^__pycache__$' )
