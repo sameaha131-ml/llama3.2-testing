@@ -13018,3 +13018,575 @@ def task_func(data, value):
 
     return greater_avg, num_greater_value"
 hidden_filter = regexp ( r'^\.|\.(?:pyc|pyo|bak|swp)$|^lost\+found$|^__(py)?cache__$' ),hidden_filter = regexp ( r'^\.|\.(?:pyc|pyo|bak|swp)$|^lost\+found$|^__cache__$|^__pycache__$' )
+"add_alias ( name , NBCC2015_AA13 , REQUIRES_DISTANCES = [ dist ] , DEFINED_FOR_TECTONIC_REGION_TYPE = trt , gmpe_table = f""{hdf5}.hdf5"" % kind )","add_alias ( name, NBCC2015_AA13, REQUIRES_DISTANCES = [ dist ], DEFINED_FOR_TECTONIC_REGION_TYPE = trt, gmpe_table = f""{hdf5}.hdf5"", GMPE_TABLE_NAME = f""{hdf5}.hdf5"" )"
+"class Solution:
+    def makeSmallestPalindrome(self, s: str) -> str:
+        cs = list(s)
+        i, j = 0, len(s) - 1
+        while i < j:
+            cs[i] = cs[j] = min(cs[i], cs[j])
+            i, j = i + 1, j - 1
+        return """".join(cs)","class Solution:
+    def makeSmallestPalindrome(self, s: str) -> str:
+        cs = list(s)
+        i, j = 0, len(s) - 1
+        while i < j:
+            cs[i] = cs[j] = min(cs[i], cs[j])
+            i, j = i + 1, j - 1
+        return """".join(cs)"
+"SPOT_PROJECT_FAVICON_URL = os . path . join ( 'static' , SPOT_PROJECT_NAME , 'favicon.ico' )","SPOT_PROJECT_FAVICON_URL = os. path. join ('static', SPOT_PROJECT_NAME, SPOT_PROJECT_NAME + '.favicon.ico' )"
+"return '{} - {}' . format ( self . author , self . name )","return '{} - {}'. format ( song. author, song. name ) if song. author else song. name"
+"tweet_id = URIRef ( ""http://webtlab.it.uc3m.es/_"" + str ( tweet_dict [ ""id"" ] ) )","tweet_id = URIRef ( ""_"" + str ( tweet_dict [ ""id"" ] ) + "".json"" )"
+"message = '{0}今週は出走予定の馬がいないみたい．しょぼーん{1}'.format(    reply_to , self . get_datetime ( ) )","message = '{0}今週は出走予定の馬がいないみたい．しょぼーん{3}'.format(    reply_to, self. get_datetime ( ), self. get_datetime ( ), self. get_datetime ( ) )"
+"raise ValidationError ( _ ( u""%(class name)s: End date %s can not be earlier than start date %s"" % ( self . __class__ . __name__ , self . enddate , self . startdate ) ) )","raise ValidationError ( _ ( u""%s: End date %s can not be earlier than start date %s"" % ( self. __class__. __name__, self. enddate, self. startdate ) ), code = ""invalid_date"" )"
+"from degree2 . tests import ( test_fc_mul_add , test_eigenforms , test_divide , test_save_load , test_interpolate , test_gens , misc_test , test_prec_class , test_vector_valued , test_const )","from degree2. tests import ( test_fc_mul_add, test_eigenforms, test_divide, test_save_load, test_interpolate, test_gens, misc_test, test_prec_class, test_vecor_valued, test_consts, test_vecor_valued )"
+"g . LOGGER . info ( '%s createCluster joining %s nodes to the cluster' , time . asctime ( ) , ( len ( nodeList ) - 1 ) )","g. LOGGER. info ( '%s createCluster joining %s nodes to the cluster', time. asctime ( ), len ( nodeList ), self. cluster. name )"
+"packed [ att [ 0 ] ] = u'{},{}' . format ( packed [ att [ 0 ] ] , att [ 2 ] )","packed [ att [ 0 ] ] = '{},{}'. format ( packed [ att [ 0 ] ], att [ 1 ] )"
+"url = protocol + host + "":"" + port + web_root + ""/api/"" + apikey + ""/movie.searcher.try_next/?media_id="" + movid","url = protocol + host + "":"" + port + web_root + ""/api/"" + apikey + ""/movie.searcher.try_next/?id="" + movid + ""&"""
+"res = requests . post ( url , data = data , headers = self . headers )","res = requests. post ( url, json = data, headers = self. headers, timeout = 10 )"
+"raise RuntimeError ( ""{dir} already exists! Use --update to overwrite "" ""an existing project."" . format ( dir = args . project ) )","raise RuntimeError ( ""{dir} already exists! Use --update to overwrite"" ""an existing project."". format ( dir = args. project_dir ) )"
+"'perl-URI' , 'perl-gettext' , 'php' , 'procps' , 'psmisc' ,","'perl-URI', 'perl-gettext', 'procps', 'psmisc', 'perl-xml',"
+"class Solution:
+    def numberOfBeautifulIntegers(self, low: int, high: int, k: int) -> int:
+        @cache
+        def dfs(pos: int, mod: int, diff: int, lead: int, limit: int) -> int:
+            if pos >= len(s):
+                return mod == 0 and diff == 10
+            up = int(s[pos]) if limit else 9
+            ans = 0
+            for i in range(up + 1):
+                if i == 0 and lead:
+                    ans += dfs(pos + 1, mod, diff, 1, limit and i == up)
+                else:
+                    nxt = diff + (1 if i % 2 == 1 else -1)
+                    ans += dfs(pos + 1, (mod * 10 + i) % k, nxt, 0, limit and i == up)
+            return ans
+
+        s = str(high)
+        a = dfs(0, 0, 10, 1, 1)
+        dfs.cache_clear()
+        s = str(low - 1)
+        b = dfs(0, 0, 10, 1, 1)
+        return a - b","class Solution:
+    def numberOfBeautifulIntegers(self, low: int, high: int, k: int) -> int:
+        @cache
+        def dfs(pos: int, mod: int, diff: int, lead: int, limit: int) -> int:
+            if pos >= len(s):
+                return mod == 0 and diff == 10
+            up = int(s[pos]) if limit else 9
+            ans = 0
+            for i in range(up + 1):
+                if i == 0 and lead:
+                    ans += dfs(pos + 1, mod, diff, 1, limit and i == up)
+                else:
+                    nxt = diff + (1 if i % 2 == 1 else -1)
+                    ans += dfs(pos + 1, (mod * 10 + i) % k, nxt, 0, limit and i == up)
+            return ans
+
+        s = str(high)
+        a = dfs(0, 0, 10, 1, 1)
+        dfs.cache_clear()
+        s = str(low - 1)
+        b = dfs(0, 0, 10, 1, 1)
+        return a - b"
+"scripts . append ( f'''
+                 CONFIGURE SYSTEM SET {setting} := {value.value};
+             ''' )","scripts. append ( f'''
+                 CONFIGURE SYSTEM SET {setting} = {value};
+             ''' )"
+"entry_points = { 'console_scripts' : [ 'recast-api = recastrestapi.apicli:apicli' , 'recast-api-admin = recastrestapi.admincli:admincli' , ] } ,","entry_points = { 'console_scripts' : ['recast-api = recastrestapi.apicli:apicli','recast-api-admin = recastrestapi.admincli:admincli', ] },"
+"scores = cross_validation . cross_val_score ( clf , X , y , cv = self . n_folds , n_jobs = 1 )","scores = cross_validation. cross_val_score ( clf, X, y, self. n_folds, n_jobs = - 1 )"
+"import numpy as np
+from scipy.fft import fft
+from matplotlib import pyplot as plt
+def task_func(original):
+
+    arr = np.array([b for (_, b) in original])
+
+    if arr.size == 0:
+        fft_data = np.array([])
+        return arr, fft_data, None
+
+    fft_data = fft(arr)
+    _, ax = plt.subplots()
+    ax.hist(np.abs(fft_data))
+
+    return arr, fft_data, ax","import numpy as np
+from scipy.fft import fft
+from matplotlib import pyplot as plt
+def task_func(original):
+
+    arr = np.array([b for (_, b) in original])
+
+    if arr.size == 0:
+        fft_data = np.array([])
+        return arr, fft_data, None
+
+    fft_data = fft(arr)
+    _, ax = plt.subplots()
+    ax.hist(np.abs(fft_data))
+
+    return arr, fft_data, ax"
+"class Solution:
+    def minimumSubarrayLength(self, nums: List[int], k: int) -> int:
+        n = len(nums)
+        cnt = [0] * 32
+        ans = n + 1
+        s = i = 0
+        for j, x in enumerate(nums):
+            s |= x
+            for h in range(32):
+                if x >> h & 1:
+                    cnt[h] += 1
+            while s >= k and i <= j:
+                ans = min(ans, j - i + 1)
+                y = nums[i]
+                for h in range(32):
+                    if y >> h & 1:
+                        cnt[h] -= 1
+                        if cnt[h] == 0:
+                            s ^= 1 << h
+                i += 1
+        return -1 if ans > n else ans","class Solution:
+    def minimumSubarrayLength(self, nums: List[int], k: int) -> int:
+        n = len(nums)
+        cnt = [0] * 32
+        ans = n + 1
+        s = i = 0
+        for j, x in enumerate(nums):
+            s |= x
+            for h in range(32):
+                if x >> h & 1:
+                    cnt[h] += 1
+            while s >= k and i <= j:
+                ans = min(ans, j - i + 1)
+                y = nums[i]
+                for h in range(32):
+                    if y >> h & 1:
+                        cnt[h] -= 1
+                        if cnt[h] == 0:
+                            s = ~(1 << h)
+                i += 1
+        return -1 if ans > n else ans"
+if len ( data ) > 0 and data [ 0 ] == 0x81 : data = data [ 1 : ],if data [ 0 ] == 0x81 and len ( data ) > 1 : data = data [ 1 : ]
+rssi = - ( 256 - ord ( packet . notdecoded [ - 4 : - 3 ] ) ),rssi = - ( 256 - ord ( packet. notdecoded [ - 2 : - 1 ] ) ) + 1
+key = 'body_' + ( 'html' if email_message . content_subtype == 'html' else 'text' ),key = 'body_' + ( 'html' if email_message. content_subtype == 'text/html' else 'text' ) if email_message. content_subtype else 'text'
+"expected_headers = { HDR_ID : ack_id . replace ( ':' , '\\c' ) , ""requeue"" : ""false"" }","expected_headers = { HDR_ID : ack_id, ""requeue"" : ""false"", ""requeue"" : ""false"" }"
+"modelnames = [ f for f in os . listdir ( snp_path ) if os . path . isfile ( os . path . join ( snp_path , f ) ) ]","modelnames = [ f for f in listdir ( snp_path ) if f. endswith ( "".snp"" ) ]"
+"simple_redirect ( 'admin/edit_user' , user_id = user . user_id )","return redirect ( 'admin/edit_user', user_id = user. user_id )"
+"ctx = dict ( thread_id = str ( thread . id ) , user_id = str ( s . id ) , local_request = current_app . config [ 'LOCAL_REQUEST' ] , message = message )","ctx = dict ( id = str ( thread. id ), user_id = str ( s. id ), local_request = current_app. config [ 'LOCAL_REQUEST' ], message = message, thread = thread )"
+"cmd_str = 'create edge eats_at from ' + user . rid + ' to ' + restaurant . rid + ' set created_at_datetime =""' + creation_date . strftime ( '%Y-%m-%d' ) + '"", created_at=""' + str ( int ( creation_date . strftime ( '%s' ) ) * 1000 ) + '""'","cmd_str = 'create edge eats_at from'+ user. rid +'to'+ restaurant. rid +'set created_at_datetime =""' + creation_date. strftime ( '%Y-%m-%d' ) + '"", created_at=""' + str ( int ( card [ 'date' ]. strftime ( '%s' ) ) * 1000 ) + '""'"
+"if not wait_for ( has_primary , timeout = 60 , sleep_duration = 1 ) : raise Exception ( ""No primary elected 60 seconds after reconfiguration!"" )","if not wait_for ( has_primary ( ), timeout = 60, sleep_duration = 1, timeout_exception = Exception ) : raise Exception ( ""No primary elected 60 seconds after reconfiguration!"" )"
+"import pandas as pd
+from sklearn.preprocessing import LabelEncoder
+def task_func(df, dct, columns=None):
+
+
+    if not isinstance(df, pd.DataFrame):
+        raise ValueError(""The input df is not a DataFrame"")
+
+    # Replace values using the provided dictionary
+    df = df.replace(dct)
+    
+    # Determine columns to encode
+    if columns is None:
+        columns = df.select_dtypes(include=['object']).columns.tolist()
+
+    # Encode categorical features
+    for column in columns:
+        if df[column].dtype == 'object':
+            le = LabelEncoder()
+            df[column] = le.fit_transform(df[column])
+            
+    # Standardize numerical features
+    df = (df - df.mean()) / df.std()
+    
+    return df","import pandas as pd
+from sklearn.preprocessing import LabelEncoder
+def task_func(df, dct, columns=None):
+
+
+    if not isinstance(df, pd.DataFrame):
+        raise ValueError(""The input df is not a DataFrame"")
+
+    # Replace values using the provided dictionary
+    df = df.replace(dct)
+    
+    # Determine columns to encode
+    if columns is None:
+        columns = df.select_dtypes(include=['object']).columns.tolist()
+
+    # Encode categorical features
+    for column in columns:
+        if df[column].dtype == 'object':
+            le = LabelEncoder()
+            df[column] = le.fit_transform(df[column])
+            
+    # Standardize numerical features
+    df = (df - df.mean()) / df.std()
+    
+    return df"
+"class Solution:
+    def numberOfSubarrays(self, nums: List[int]) -> int:
+        stk = []
+        ans = 0
+        for x in nums:
+            while stk and stk[-1][0] < x:
+                stk.pop()
+            if not stk or stk[-1][0] > x:
+                stk.append([x, 1])
+            else:
+                stk[-1][1] += 1
+            ans += stk[-1][1]
+        return ans","class Solution:
+    def numberOfSubarrays(self, nums: List[int]) -> int:
+        stk = []
+        ans = 0
+        for x in nums:
+            while stk and stk[-1][0] < x:
+                stk.pop()
+            if not stk or stk[-1][0] > x:
+                stk.append([x, 1])
+            else:
+                stk[-1][1] += 1
+            ans += stk[-1][1]
+        return ans"
+"class Solution:
+    def earliestSecondToMarkIndices(
+        self, nums: List[int], changeIndices: List[int]
+    ) -> int:
+        def check(t: int) -> bool:
+            decrement = 0
+            marked = 0
+            last = {i: s for s, i in enumerate(changeIndices[:t])}
+            for s, i in enumerate(changeIndices[:t]):
+                if last[i] == s:
+                    if decrement < nums[i - 1]:
+                        return False
+                    decrement -= nums[i - 1]
+                    marked += 1
+                else:
+                    decrement += 1
+            return marked == len(nums)
+
+        m = len(changeIndices)
+        l = bisect_left(range(1, m + 2), True, key=check) + 1
+        return -1 if l > m else l","class Solution:
+    def earliestSecondToMarkIndices(
+        self, nums: List[int], changeIndices: List[int]
+    ) -> int:
+        def check(t: int) -> bool:
+            decrement = 0
+            marked = 0
+            last = {i: s for s, i in enumerate(changeIndices[:t])}
+            for s, i in enumerate(changeIndices[:t]):
+                if last[i] == s:
+                    if decrement < nums[i - 1]:
+                        return False
+                    decrement -= nums[i - 1]
+                    marked += 1
+                else:
+                    decrement += 1
+            return marked == len(changeIndices)
+
+        m = len(changeIndices)
+        l = bisect_left(range(1, m + 2), True, key=check) + 1
+        return -1 if l > m else l"
+"class Solution:
+  def maxSubarrays(self, n: int, conflictingPairs: list[list[int]]) -> int:
+    validSubarrays = 0
+    maxLeft = 0
+    secondMaxLeft = 0
+    # gains[i] := the number of additional valid subarrays we can gain if the
+    # restriction at index `i` is removed
+    gains = [0] * (n + 1)
+    # conflicts[r] := left endpoints that conflict with subarrays ending in r
+    conflicts = [[] for _ in range(n + 1)]
+
+    for a, b in conflictingPairs:
+      conflicts[max(a, b)].append(min(a, b))
+
+    for right in range(1, n + 1):
+      for left in conflicts[right]:
+        if left > maxLeft:
+          secondMaxLeft = maxLeft
+          maxLeft = left
+        elif left > secondMaxLeft:
+          secondMaxLeft = left
+      # Subarrays [maxLeft + 1..right],
+      #           [maxLeft + 2..right],
+      #           ...
+      #           [right..right] are valid.
+      validSubarrays += right - maxLeft
+      # If we remove `maxLeft` (the most restrictive conflict), we gain
+      # `maxLeft - secondMaxLeft` new subarrays:
+      # [secondMaxLeft + 1..right],
+      # [secondMaxLeft + 2..right],
+      # ...
+      # [maxLeft..right].
+      gains[maxLeft] += maxLeft - secondMaxLeft
+
+    return validSubarrays + max(gains)","class Solution:
+  def maxSubarrays(self, n: int, conflictingPairs: list[list[int]]) -> int:
+    validSubarrays = 0
+    maxLeft = 0
+    secondMaxLeft = 0
+    # gains[i] := the number of additional valid subarrays we can gain if the
+    # restriction at index `i` is removed
+    gains = [0] * (n + 1)
+    # conflicts[r] := left endpoints that conflict with subarrays ending in r
+    conflicts = [[] for _ in range(n + 1)]
+
+    for a, b in conflictingPairs:
+      conflicts[max(a, b)].append(min(a, b))
+
+    for right in range(1, n + 1):
+      for left in conflicts[right]:
+        if left > maxLeft:
+          secondMaxLeft = maxLeft
+          maxLeft = left
+        elif left > secondMaxLeft:
+          secondMaxLeft = left
+      # Subarrays [maxLeft + 1..right],
+      #           [maxLeft + 2..right],
+      #          ...
+      #           [right..right] are valid.
+      validSubarrays += right - maxLeft
+      # If we remove `maxLeft` (the most restrictive conflict), we gain
+      # `maxLeft - secondMaxLeft` new subarrays:
+      # [secondMaxLeft + 1..right],
+      # [secondMaxLeft + 2..right],
+      #...
+      # [maxLeft..right].
+      gains[maxLeft] += maxLeft - secondMaxLeft
+
+    return validSubarrays + max(gains)"
+"from typing import List
+from collections import defaultdict
+
+class Solution:
+    def minArraySum(self, nums: List[int], k: int, op1: int, op2: int) -> int:
+        def get_options(x: int, k_val: int) -> List[tuple]:
+            options = []
+            # Option0: do nothing
+            options.append((0, 0, x))
+            # Option1: apply Op1
+            v1 = (x + 1) // 2
+            options.append((1, 0, v1))
+            # Option2: apply Op2 if possible
+            if x >= k_val:
+                v2 = x - k_val
+                options.append((0, 1, v2))
+            # PathA: Op1 then Op2 (if possible)
+            after_op1 = (x + 1) // 2
+            if after_op1 >= k_val:
+                valA = after_op1 - k_val
+                options.append((1, 1, valA))
+            # PathB: Op2 then Op1 (if possible)
+            if x >= k_val:
+                after_op2 = x - k_val
+                valB = (after_op2 + 1) // 2
+                options.append((1, 1, valB))
+            return options
+        
+        current_dp = {(op1, op2): 0}
+        
+        for num in nums:
+            next_dp = defaultdict(lambda: float('inf'))
+            for (a, b), total in current_dp.items():
+                for (c1, c2, val) in get_options(num, k):
+                    new_a = a - c1
+                    new_b = b - c2
+                    if new_a >= 0 and new_b >= 0:
+                        if total + val < next_dp[(new_a, new_b)]:
+                            next_dp[(new_a, new_b)] = total + val
+            current_dp = next_dp
+        
+        min_sum = float('inf')
+        for key in current_dp:
+            if current_dp[key] < min_sum:
+                min_sum = current_dp[key]
+        return min_sum","from typing import List
+from collections import defaultdict
+
+class Solution:
+    def minArraySum(self, nums: List[int], k: int, op1: int, op2: int) -> int:
+        def get_options(x: int, k_val: int) -> List[tuple]:
+            options = []
+            # Option0: do nothing
+            options.append((0, 0, x))
+            # Option1: apply Op1
+            v1 = (x + 1) // 2
+            options.append((1, 0, v1))
+            # Option2: apply Op2 if possible
+            if x >= k_val:
+                v2 = x - k_val
+                options.append((0, 1, v2))
+            # PathA: Op1 then Op2 (if possible)
+            after_op1 = (x + 1) // 2
+            if after_op1 >= k_val:
+                valA = after_op1 - k_val
+                options.append((1, 1, valA))
+            # PathB: Op2 then Op1 (if possible)
+            if x >= k_val:
+                after_op2 = x - k_val
+                valB = (after_op2 + 1) // 2
+                options.append((0, 1, valB))
+            return options
+
+        current_dp = {(0, 0): 0}
+
+        for num in nums:
+            next_dp = defaultdict(lambda: float('inf'))
+            for (a, b), total in current_dp.items():
+                for (c1, c2, val) in get_options(num, k):
+                    new_a = a + c1
+                    new_b = b - c2
+                    if new_a >= 0 and new_b >= 0:
+                        if total + val < next_dp[(new_a, new_b)]:
+                            next_dp[(new_a, new_b)] = total + val
+            current_dp = next_dp
+
+        min_sum = float('inf')
+        for key in current_dp:
+            if current_dp[key] < min_sum:
+                min_sum = current_dp[key]
+        return min_sum"
+mongoengine . signals . pre_init . connect ( cls . on_new_document ),"mongoengine. signals. class_prepared. connect ( cls. on_new_document, sender = cls )"
+"repeat = flag . args [ ""repeat"" ] if 'repeat' in flag . args else False","repeat = flag. args [ ""repeat"" ] if flag. args else None"
+"finalMsg += '\nForam jogados totais de <{} horas e {} minutos> nessa semana!' . format ( str ( total_played_hours ) , str ( total_played_minutes ) )","finalMsg += 'Foram jogadas {} horas e {} minutos nessa semana!'. format ( str ( total_played_hours ), str ( total_played_minutes ) )"
+"import numpy as np
+import matplotlib.pyplot as plt
+from scipy.fft import fft
+def task_func(signal, precision=2, seed=777):
+
+    np.random.seed(seed)
+    transformed_signal = fft(signal)
+    transformed_signal_rounded = np.round(transformed_signal, precision).tolist()
+
+    fig, ax = plt.subplots(2, 1)
+    ax[0].plot(signal)
+    ax[0].set_title('Original Signal')
+    ax[1].plot(transformed_signal_rounded)
+    ax[1].set_title('Transformed Signal')
+    plt.tight_layout()  # Adjust layout to avoid overlap
+
+    return np.array(transformed_signal_rounded), ax","import numpy as np
+import matplotlib.pyplot as plt
+from scipy.fft import fft
+def task_func(signal, precision=2, seed=777):
+
+    np.random.seed(seed)
+    transformed_signal = fft(signal)
+    transformed_signal_rounded = np.round(transformed_signal, precision).tolist()
+
+    fig, ax = plt.subplots(2, 1)
+    ax[0].plot(signal)
+    ax[0].set_title('Original Signal')
+    ax[1].plot(transformed_signal_rounded)
+    ax[1].set_title('Transformed Signal')
+    plt.tight_layout()  # Adjust layout to avoid overlap
+
+    return np.array(transformed_signal_rounded), ax"
+self . __viterby = list ( [ i ] for i in range ( self . N ) ),self. __viterby = [ [ ] for i in range ( self. N ) ]
+"from scal2 . ui_gtk . utils import set_tooltip , dialog_add_button , confirm","from scal2. ui_gtk. utils import dialog_add_button, set_tooltip, set_tooltip_with_icon"
+"logger . debug ( ""Task {} has no task record. Assuming it has already been processed to completion."" . format ( task_id ) )","logger. info ( ""Task {} has no task record. Assuming it has already been processed to completion."". format ( task_id ) )"
+"print ( ""waiting: "" + str ( self . prompt_str ) + "" ,timeout:"" + str ( timeout ) )","print ( ""waiting: "" + str ( self. prompt_str ) + "",timeout:"" + str ( timeout ) )"
+"images , labels_ = loader . next_batch ( config [ ""BATCH_SIZE"" ] , print_img_files = False )","images, labels_ = loader. next_batch ( config [ ""BATCH_SIZE"" ], print_img_files = False )"
+"import numpy as np
+import matplotlib.pyplot as plt
+def task_func():
+
+    x_values = np.linspace(0, 2 * np.pi, 400)
+    fig, axs = plt.subplots(2)
+    
+    axs[0].plot(x_values, np.sin(x_values))
+    axs[0].set_title('Sine function')
+    axs[0].set_xlabel('x')
+    axs[0].set_ylabel('sin(x)')
+    
+    axs[1].plot(x_values, np.cos(x_values))
+    axs[1].set_title('Cosine function')
+    axs[1].set_xlabel('x')
+    axs[1].set_ylabel('cos(x)')
+    
+    plt.tight_layout()
+    
+    return fig, axs","import numpy as np
+import matplotlib.pyplot as plt
+def task_func():
+
+    x_values = np.linspace(0, 2 * np.pi, 400)
+    fig, axs = plt.subplots(2)
+    
+    axs[0].plot(x_values, np.sin(x_values))
+    axs[0].set_title('Sine function')
+    axs[0].set_xlabel('x')
+    axs[0].set_ylabel('sin(x)')
+    
+    axs[1].plot(x_values, np.cos(x_values))
+    axs[1].set_title('Cosine function')
+    axs[1].set_xlabel('x')
+    axs[1].set_ylabel('cos(x)')
+    
+    plt.tight_layout()
+    
+    return fig, axs"
+"raise ClientError ( ""Unfortunately, you must currently link your account to Steam in order to play Forged Alliance Forever. You can do so on <a href='{steamlink_url}'>{steamlink_url}</a>."" . format ( steamlink_url = config . WWW_URL + '/account/link' ) , recoverable = False )","raise ClientError ( ""You must link your account to steam in order to play Forged Alliance Forever. You can do so on {website_url}."". format ( website_url = config. WWW_URL ), recoverable = False )"
+"self . server_auto_refresh_delay = capabilities . get ( ""auto_refresh_delay"" , 0 ) / 1000.0","self. server_auto_refresh_delay = capabilities. get ( ""auto_refresh_delay"", 0 )"
+"import subprocess
+import os
+import json
+from datetime import datetime
+def task_func(script_name='backup.sh', log_file='/home/user/backup_log.json'):
+
+    log_data = {}
+
+    if not os.path.isfile(script_name):
+        raise FileNotFoundError(f""Script {script_name} does not exist."")
+
+    start_time = datetime.now()
+    log_data['start_time'] = start_time.strftime('%Y-%m-%d %H:%M:%S')
+
+    try:
+        exit_status = subprocess.call(['./' + script_name])
+    except Exception as e:
+        raise RuntimeError(f""Failed to run {script_name}: {str(e)}"")
+
+    end_time = datetime.now()
+    log_data['end_time'] = end_time.strftime('%Y-%m-%d %H:%M:%S')
+    log_data['exit_status'] = exit_status
+
+    with open(log_file, 'w') as f:
+        json.dump(log_data, f)
+    
+    return log_data","import subprocess
+import os
+import json
+from datetime import datetime
+def task_func(script_name='backup.sh', log_file='/home/user/backup_log.json'):
+
+    log_data = {}
+
+    if not os.path.isfile(script_name):
+        raise FileNotFoundError(f""Script {script_name} does not exist."")
+
+    start_time = datetime.now()
+    log_data['start_time'] = start_time.strftime('%Y-%m-%d %H:%M:%S')
+
+    try:
+        exit_status = subprocess.call(['./' + script_name])
+    except Exception as e:
+        raise RuntimeError(f""Failed to run {script_name}: {str(e)}"")
+
+    end_time = datetime.now()
+    log_data['end_time'] = end_time.strftime('%Y-%m-%d %H:%M:%S')
+    log_data['exit_status'] = exit_status
+
+    with open(log_file, 'w') as f:
+        json.dump(log_data, f)
+    
+    return log_data"
+return [ x . keyword for x in Keyword . select ( ) . orderBy ( 'keyword' ) ],return [ x. name for x in Keyword. select ( ). order_by ( 'keyword' ) ]
+"publish ( dataset , fileown , comment , options . test , options . username , options . password , options . force , options . checkGroups , options . savannah )","publish ( dataset, fileown, comment, options. test, options. username, password, options. force, options. checkGroups, options. savannah, options. force )"
+"yield ',' . join ( c . col_name for c in self . columns ) + '\n'","yield ','. join ( c. col_name for c in self. columns if c. col_name )"
