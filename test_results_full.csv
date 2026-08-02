@@ -16693,3 +16693,668 @@ max_char_length = max ( [ max ( len ( char_lst ) for char_lst in word_lst ) for 
 "app . run ( debug = False , host = ""0.0.0.0"" , port = 5010 )","app. run ( debug = True, host = ""0.0.0.0"", port = 5010, use_reloader = False )"
 scale = 2 / sqrt ( in_channels * kernel_size [ 0 ] * kernel_size [ 1 ] ),scale = 2 / sqrt ( in_channels * kernel_size [ 0 ] * kernel_size [ 1 ] )
 "uri = 'data:application/octet-stream;base64,' + base64 . b64encode ( data ) . decode ( 'ascii' )","uri = 'data:text/plain;base64,' + base64. b64encode ( data ). decode ( 'utf-8' )"
+"class Solution:
+  def maxSum(self, nums: list[int], k: int, m: int) -> int:
+    INF = 20_000_000
+    n = len(nums)
+    prefix = list(itertools.accumulate(nums, initial=0))
+
+    @functools.lru_cache(None)
+    def dp(i: int, ongoing: int, k: int) -> int:
+      if k < 0:
+        return -INF
+      if i == n:
+        return 0 if k == 0 else -INF
+      if ongoing == 1:
+        # 1. End the current subarray (transition to state 0, same index i)
+        # 2. Extend the current subarray by picking nums[i] and move to i + 1
+        return max(dp(i, 0, k),
+                   dp(i + 1, 1, k) + nums[i])
+      # ongoing == 0
+      # 1. Skip nums[i]
+      # 2. Pick nums[i:i+m] (only if k > 0 and there're enough elements)
+      res = dp(i + 1, 0, k)
+      if i + m <= n:  # If we have enough elements for a new segment
+        res = max(res,
+                  dp(i + m, 1, k - 1) + (prefix[i + m] - prefix[i]))
+      return res
+
+    return dp(0, 0, k)","class Solution:
+  def maxSum(self, nums: list[int], k: int, m: int) -> int:
+    INF = 20_000_000
+    n = len(nums)
+    prefix = list(itertools.accumulate(nums, initial=0))
+
+    @functools.lru_cache(None)
+    def dp(i: int, ongoing: int, k: int) -> int:
+      if k < 0:
+        return -INF
+      if i == n:
+        return 0 if k == 0 else -INF
+      if ongoing == 1:
+        # 1. End the current subarray (transition to state 0, same index i)
+        # 2. Extend the current subarray by picking nums[i] and move to i + 1
+        return max(dp(i, 0, k),
+                   dp(i + 1, 1, k) + nums[i])
+      # ongoing == 0
+      # 1. Skip nums[i]
+      # 2. Pick nums[i:i+m] (only if k > 0 and there're enough elements)
+      res = dp(i + 1, 0, k)
+      if i + m <= n:  # If we have enough elements for a new segment
+        res = max(res,
+                  dp(i + m, 1, k - 1) + (prefix[i + m] - prefix[i]))
+      return res
+
+    return dp(0, 0, k)"
+signing_key = SigningKey . generate ( curve = SECP256k1 ),"signing_key = sk = SigningKey. generate ( curve = SECP256k1, key_size = 256 )"
+"class Solution:
+    def stoneGameVI(self, a: List[int], b: List[int]) -> int:
+        # hurt other enemy rather than self collecting to max
+        combines = [(a[i] + b[i], a[i], b[i]) for i in range(len(a))]
+        combines.sort(reverse=True) # why we can sort? -> because we can pick any stone we want
+        bobPoints = sum(b)
+        alicePoints = 0
+        for i in range(0, len(a), 2):
+            alicePoints += combines[i][1]
+            bobPoints -= combines[i][2]
+        if alicePoints > bobPoints:
+            return 1
+        elif alicePoints < bobPoints:
+            return -1
+        return 0","class Solution:
+    def stoneGameVI(self, a: List[int], b: List[int]) -> int:
+        combines = [(a[i] + b[i], a[i], b[i]) for i in range(len(a))]
+        combines.sort(reverse=True)
+        bobPoints = sum(b)
+        alicePoints = 0
+        for i in range(len(a) - 1, -1, -2):
+            alicePoints += combines[i][1]
+            bobPoints -= combines[i][2]
+        if alicePoints > bobPoints:
+            return 1
+        elif alicePoints < bobPoints:
+            return -1
+        return 0"
+if highest_intent_confidence < minimum_intent_confidence_threshold or percent_difference < minimum_percent_difference : return False,if highest_intent_confidence < minimum_intent_confidence_threshold and percent_difference < minimum_percent_difference and intent_confidence < minimum_intent_confidence_threshold : return False
+"courses . append ( BlackBoardCourse ( selected_item , course ) )","courses. append ( BlackBoardCourse ( selected_item, course ) )"
+"super ( ) . __init__ ( 'Expected of ""%s"" to be ""%s"" but was ""%s.""' % ( value , expected , type ( value ) ) )","super ( ). __init__ ( 'Expected of ""%s"" to be ""%s"" but it was not.' % ( value, expected ), False )"
+"import pandas as pd
+import json
+import numpy as np
+# Constants
+COLUMNS = ['email', 'list']
+def task_func(json_file):
+
+    with open(json_file, 'r') as file:
+        email_data = json.load(file)
+    if not email_data :
+        return pd.DataFrame([], columns = COLUMNS + [""sum"", ""mean""]), None
+
+    df = pd.DataFrame(email_data, columns=COLUMNS)
+    df['sum'] = df['list'].apply(np.sum)
+    df['mean'] = df['list'].apply(np.mean)
+
+    ax = df[['sum', 'mean']].plot(kind='bar')
+
+    return df, ax","import pandas as pd
+import json
+import numpy as np
+# Constants
+COLUMNS = ['email', 'list']
+def task_func(json_file):
+
+    with open(json_file, 'r') as file:
+        email_data = json.load(file)
+    if not email_data :
+        return pd.DataFrame([], columns = COLUMNS + [""sum"", ""mean""]), None
+
+    df = pd.DataFrame(email_data, columns=COLUMNS)
+    df['sum'] = df['list'].apply(np.sum)
+    df['mean'] = df['list'].apply(np.mean)
+
+    ax = df[['sum','mean']].plot(kind='bar')
+
+    return df, ax"
+"import socket
+import requests
+def task_func(host):
+
+    if not host:
+        raise ValueError(""Host must be a non-empty string."")
+
+    try:
+        # Fetch IP address
+        ip_address = socket.gethostbyname(host)
+
+        # Fetch geolocation
+        response = requests.get(f""https://ipinfo.io/{ip_address}"")
+        response.raise_for_status()
+        geolocation = response.json()
+
+        return {
+            'ip_address': ip_address,
+            'geolocation': geolocation
+        }
+    except (socket.gaierror, requests.HTTPError) as e:
+        raise ConnectionError(f""Failed to retrieve information for {host}: {e}"")","import socket
+import requests
+def task_func(host):
+
+    if not host:
+        raise ValueError(""Host must be a non-empty string."")
+
+    try:
+        # Fetch IP address
+        ip_address = socket.gethostbyname(host)
+
+        # Fetch geolocation
+        response = requests.get(f""https://ipinfo.io/{ip_address}"")
+        response.raise_for_status()
+        geolocation = response.json()
+
+        return {
+            'ip_address': ip_address,
+            'geolocation': geolocation
+        }
+    except (socket.gaierror, requests.HTTPError) as e:
+        raise ConnectionError(f""Failed to retrieve information for {host}: {e}"")"
+"class Solution:
+    def longestValidSubstring(self, word: str, forbidden: List[str]) -> int:
+        s = set(forbidden)
+        ans = i = 0
+        for j in range(len(word)):
+            for k in range(j, max(j - 10, i - 1), -1):
+                if word[k : j + 1] in s:
+                    i = k + 1
+                    break
+            ans = max(ans, j - i + 1)
+        return ans","class Solution:
+    def longestValidSubstring(self, word: str, forbidden: List[str]) -> int:
+        s = set(forbidden)
+        ans = i = 0
+        for j in range(len(word)):
+            for k in range(j, max(j - 10, i - 1), -1):
+                if word[k : j + 1] in s:
+                    i = k + 1
+                    break
+            ans = max(ans, j - i + 1)
+        return ans"
+"with db . db_query ( 20163 , close = False ) as session : user = session . query ( UserModel ) . filter_by ( idx_user = data [ 'idx_user' ] ) . first ( )","with db. db_query ( 20152, close = False ) as session : user = session. query ( UserModel ). filter_by ( idx_user = data [ 'idx_user' ] ). first ( ) or None"
+"logging . info ( ""CPU core is %s"" , CORE_TYPE_NAME . get ( self . core_type , ""unknown"" ) )","logging. info ( ""CPU core is %s"", CORE_TYPE_NAME [ self. core_type ] if self. core_type else ""Unknown"" )"
+"card_xml_file . write ( ""<set>\n<name>"" + set_obj [ ""code"" ] + ""</name>\n"" ""<longname>"" + set_obj [ ""name"" ] + ""</longname>\n"" ""<settype>"" + set_obj [ ""set_type"" ] . capitalize ( ) + ""</settype>\n"" ""<releasedate>"" + set_obj [ ""released_at"" ] + ""</releasedate>\n"" ""</set>\n"" )","card_xml_file. write ( ""<set>\n<name>"" + set_obj [ ""code"" ] + ""</name>\n"" ""<longname>"" + set_obj [ ""name"" ] + ""</longname>\n"" ""<settype>"" + set_obj [ ""set_type"" ] + ""</settype>\n"" ""<releasedate>"" + set_obj [ ""released_at"" ] + ""</releasedate>\n"" ""</set>\n"" )"
+"self . assertRegexp ( 'updateplugin HELLO2U' , ""ERROR: \'HELLO\' is an invalid plugin"" )","self. assertRegex ( 'updateplugin HELLO2U', ""ERROR: \'HELLO2U\' is an invalid plugin"" )"
+n_epochs_drop = np . sum ( bad_sensor_counts >= n_consensus ),n_epochs_drop = np. sum ( bad_sensor_counts >= n_consensus )
+assert calc_x . records . BF . AGDPN [ 2015 ] == 1.0522542782635027,"assert calc_x. records. BF. AGDPN [ 2015 ] == 1.0532460627495555, ""Error in AGDPN"""
+"filenames = [ ""phase2_prepareECSW.py"" , ""phase1_snapshots.py"" , ""debug_scene.py"" ]","filenames = [ ""phase2_prepareECSW.py"", ""phase1_snapshots.py"", ""phase2_prepareECSW.py"" ]"
+"class Solution:
+    def maxScore(
+        self, n: int, k: int, stayScore: List[List[int]], travelScore: List[List[int]]
+    ) -> int:
+        f = [[-inf] * n for _ in range(k + 1)]
+        f[0] = [0] * n
+        for i in range(1, k + 1):
+            for j in range(n):
+                for h in range(n):
+                    f[i][j] = max(
+                        f[i][j],
+                        f[i - 1][h]
+                        + (stayScore[i - 1][j] if j == h else travelScore[h][j]),
+                    )
+        return max(f[k])","class Solution:
+    def maxScore(
+        self, n: int, k: int, stayScore: List[List[int]], travelScore: List[List[int]]
+    ) -> int:
+        f = [[-inf] * n for _ in range(k + 1)]
+        f[0] = [0] * n
+        for i in range(1, k + 1):
+            for j in range(n):
+                for h in range(n):
+                    f[i][j] = max(
+                        f[i][j],
+                        f[i - 1][h]
+                        + (stayScore[i - 1][j] if j == h else travelScore[h][j]),
+                    )
+        return max(f[k])"
+"class Solution:
+    def count(self, num1: str, num2: str, min_sum: int, max_sum: int) -> int:
+        @cache
+        def dfs(pos: int, s: int, limit: bool) -> int:
+            if pos >= len(num):
+                return int(min_sum <= s <= max_sum)
+            up = int(num[pos]) if limit else 9
+            return (
+                sum(dfs(pos + 1, s + i, limit and i == up) for i in range(up + 1)) % mod
+            )
+
+        mod = 10**9 + 7
+        num = num2
+        a = dfs(0, 0, True)
+        dfs.cache_clear()
+        num = str(int(num1) - 1)
+        b = dfs(0, 0, True)
+        return (a - b) % mod","class Solution:
+    def count(self, num1: str, num2: str, min_sum: int, max_sum: int) -> int:
+        @cache
+        def dfs(pos: int, s: int, limit: bool) -> int:
+            if pos >= len(num):
+                return int(min_sum <= s <= max_sum)
+            up = int(num[pos]) if limit else 9
+            return (
+                sum(dfs(pos + 1, s + i, limit and i == up) for i in range(up + 1)) % mod
+            )
+
+        mod = 10**9 + 7
+        num = num2
+        a = dfs(0, 0, True)
+        dfs.cache_clear()
+        num = str(int(num1) - 1)
+        b = dfs(0, 0, True)
+        return (a - b) % mod"
+"DEFAULT_THREAD_POOLS = [ ""index"" , ""search"" , ""bulk"" , ""get"" ]","DEFAULT_THREAD_POOLS = [ ""index"", ""search"", ""bulk"", ""get"", ""merge"", ""update"" ]"
+"bundle [ 'obj' ] = self . Meta . model . objects . get ( ** { self . Meta . pk_field : getattr ( obj , self . Meta . pk_field ) } )",bundle [ 'obj' ] = self. Meta. model. objects. get ( ** { self. Meta. pk_field : obj. pk } ) or None
+"entry_points = { 'trac.plugins' : [ 'markdown.processor = markdown.processor' ] } ,","entry_points = { 'trac.plugins' : ['markdown.macro = markdown' ] },"
+event = self . env [ 'calendar.event' ] . with_context ( { } ) . create ( vals ),"event = self. env [ 'calendar.event' ]. create ( vals, context = context )"
+"write_spreadsheet ( pull_infos , spreadsheet_path )","write_spreadsheet ( pull_infos, spreadsheet_name, sheet_name = ""Sheet1"" )"
+"class Solution:
+    def numberOfSubsequences(self, nums: List[int]) -> int:
+        n = len(nums)
+        cnt = defaultdict(int)
+        for r in range(4, n - 2):
+            c = nums[r]
+            for s in range(r + 2, n):
+                d = nums[s]
+                g = gcd(c, d)
+                cnt[(d // g, c // g)] += 1
+        ans = 0
+        for q in range(2, n - 4):
+            b = nums[q]
+            for p in range(q - 1):
+                a = nums[p]
+                g = gcd(a, b)
+                ans += cnt[(a // g, b // g)]
+            c = nums[q + 2]
+            for s in range(q + 4, n):
+                d = nums[s]
+                g = gcd(c, d)
+                cnt[(d // g, c // g)] -= 1
+        return ans","class Solution:
+    def numberOfSubsequences(self, nums: List[int]) -> int:
+        n = len(nums)
+        cnt = defaultdict(int)
+        for r in range(4, n - 2):
+            c = nums[r]
+            for s in range(r + 2, n):
+                d = nums[s]
+                g = gcd(c, d)
+                cnt[(d // g, c // g)] += 1
+        ans = 0
+        for q in range(2, n - 4):
+            b = nums[q]
+            for p in range(q):
+                a = nums[p]
+                g = gcd(a, b)
+                ans += cnt[(a // g, b // g)]
+            c = nums[q + 2]
+            for s in range(q + 4, n):
+                d = nums[s]
+                g = gcd(c, d)
+                cnt[(d // g, c // g)] -= 1
+        return ans"
+"class BinaryIndexedTree:
+    __slots__ = ""n"", ""c""
+
+    def __init__(self, n: int):
+        self.n = n
+        self.c = [0] * (n + 1)
+
+    def update(self, x: int, delta: int) -> None:
+        while x <= self.n:
+            self.c[x] += delta
+            x += x & -x
+
+    def query(self, x: int) -> int:
+        s = 0
+        while x:
+            s += self.c[x]
+            x -= x & -x
+        return s
+
+
+class Solution:
+    def countOfPeaks(self, nums: List[int], queries: List[List[int]]) -> List[int]:
+        def update(i: int, val: int):
+            if i <= 0 or i >= n - 1:
+                return
+            if nums[i - 1] < nums[i] and nums[i] > nums[i + 1]:
+                tree.update(i, val)
+
+        n = len(nums)
+        tree = BinaryIndexedTree(n - 1)
+        for i in range(1, n - 1):
+            update(i, 1)
+        ans = []
+        for q in queries:
+            if q[0] == 1:
+                l, r = q[1] + 1, q[2] - 1
+                ans.append(0 if l > r else tree.query(r) - tree.query(l - 1))
+            else:
+                idx, val = q[1:]
+                for i in range(idx - 1, idx + 2):
+                    update(i, -1)
+                nums[idx] = val
+                for i in range(idx - 1, idx + 2):
+                    update(i, 1)
+        return ans","class BinaryIndexedTree:
+    __slots__ = ""n"", ""c""
+
+    def __init__(self, n: int):
+        self.n = n
+        self.c = [-inf] * (n + 1)
+
+    def update(self, x: int, delta: int) -> None:
+        while x <= self.n:
+            self.c[x] += delta
+            x += x & -x
+
+    def query(self, x: int) -> int:
+        s = -inf
+        while x:
+            s = max(s, self.c[x])
+            x -= x & -x
+        return s
+
+
+class Solution:
+    def countOfPeaks(self, nums: List[int], queries: List[List[int]]) -> List[int]:
+        def update(i: int, val: int):
+            if i <= 0 or i >= n - 1:
+                return
+            if nums[i - 1] < nums[i] and nums[i] > nums[i + 1]:
+                tree.update(i, val)
+
+        n = len(nums)
+        tree = BinaryIndexedTree(n - 1)
+        for i in range(1, n - 1):
+            update(i, 1)
+        ans = []
+        for q in queries:
+            if q[0] == 1:
+                l, r = q[1] + 1, q[2] - 1
+                ans.append(tree.query(r) - tree.query(l - 1))
+            else:
+                idx, val = q[1:]
+                for i in range(idx - 1, idx + 2):
+                    update(i, -1)
+                nums[idx] = val
+                for i in range(idx - 1, idx + 2):
+                    update(i, 1)
+        return ans"
+"template_context_processors = s [ ""TEMPLATES"" ] [ 0 ] [ 'OPTIONS' ] [ 'context_processors' ]","template_context_processors = s. get ( ""TEMPLATE_CONTEXT_PROCESSORS"", [ ] )"
+"drives = drives . merge ( games [ [ 'seas' , 'wk' ] ] , left_index = True , right_index = True )","drives = drives. merge ( games [ ['season', 'week' ] ], left_index = True, right_index = True )"
+"quote = hxs . select ( '//dt[@class=""quote""]/a/text()' ) [ - 1 ] . extract ( )","quote = hxs. select ( '//dt[@class=""quote""]/a/text()' ) [ 0 ]. extract ( )"
+"import os
+import shutil
+import glob
+import hashlib
+def task_func(ROOT_DIR, DEST_DIR, SPECIFIC_HASH):
+
+    files_moved = 0
+
+    os.makedirs(DEST_DIR, exist_ok=True)
+    for filename in glob.glob(os.path.join(ROOT_DIR, '*')):
+        if not os.path.exists(filename) or os.path.isdir(filename):
+            continue
+        with open(filename, 'rb') as f:
+            file_hash = hashlib.md5(f.read()).hexdigest()
+        if file_hash == SPECIFIC_HASH:
+            shutil.move(filename, DEST_DIR)
+            files_moved += 1
+    return files_moved","import os
+import shutil
+import glob
+import hashlib
+def task_func(ROOT_DIR, DEST_DIR, SPECIFIC_HASH):
+
+    files_moved = 0
+
+    os.makedirs(DEST_DIR)
+    for filename in glob.glob(os.path.join(ROOT_DIR, '*')):
+        if not os.path.exists(filename) or os.path.isdir(filename):
+            continue
+        with open(filename, 'rb') as f:
+            file_hash = hashlib.md5(f.read()).hexdigest()
+        if file_hash == SPECIFIC_HASH:
+            shutil.move(filename, DEST_DIR)
+            files_moved += 1
+    return files_moved"
+"""""""
+     Regression test for stories #105687354--the State field doesn't save--and
+     #141898925--makes user inactive ** fixed 4/12/2017
+     """"""","""""""
+     Regression test for stories #105687354--the State field doesn't save--
+     #141898925--makes user inactive
+     """""""
+sign = 1 if targetDirection . cross ( self . direction ) < 0 else - 1,sign = 1 if targetDirection. cross ( self. direction ) > 0 else - 1 if targetDirection. cross ( self. direction ) < 0 else 0
+tokens = ( sql [ 0 ] % sql [ 1 ] ) . split ( ' ' ),tokens = sql [ 0 ]. format ( sql [ 1 ] ). split ('' ) [ : 2 ]
+"context = { 'profile' : object , 'books' : object . get_users_books ( ) }","context = { 'profile' : object, 'books' : object. get_users_books ( ), 'user' : self. request. user, 'book' : object. get_user_books ( ) }"
+"class Solution:
+    def minimumSubarrayLength(self, nums: List[int], k: int) -> int:
+        n = len(nums)
+        cnt = [0] * 32
+        ans = n + 1
+        s = i = 0
+        for j, x in enumerate(nums):
+            s |= x
+            for h in range(32):
+                if x >> h & 1:
+                    cnt[h] += 1
+            while s >= k and i <= j:
+                ans = min(ans, j - i + 1)
+                y = nums[i]
+                for h in range(32):
+                    if y >> h & 1:
+                        cnt[h] -= 1
+                        if cnt[h] == 0:
+                            s ^= 1 << h
+                i += 1
+        return -1 if ans > n else ans","class Solution:
+    def minimumSubarrayLength(self, nums: List[int], k: int) -> int:
+        n = len(nums)
+        cnt = [0] * 32
+        ans = n + 1
+        s = i = 0
+        for j, x in enumerate(nums):
+            s |= x
+            for h in range(32):
+                if x >> h & 1:
+                    cnt[h] += 1
+            while s >= k and i <= j:
+                ans = min(ans, j - i + 1)
+                y = nums[i]
+                for h in range(32):
+                    if y >> h & 1:
+                        cnt[h] -= 1
+                        if cnt[h] == 0:
+                            s ^= 1 << h
+                i += 1
+        return -1 if ans > n else ans"
+if not row_vals [ 'code_temp' ] or row_vals [ 'code_temp' ] == 'FIN' : break,"if row_vals [ 'code_temp' ] == """" or row_vals [ 'code_temp' ] == 'FIN' or len ( row_vals [ 'code_temp' ] ) < 2 : break"
+"apps . append ( ECSBuilder . DockerContainer ( build , container [ 1 ] , container [ 2 ] ) )","apps. append ( ECSBuilder. DockerContainer ( build, containers [ 1 ], container [ 2 ], container [ 3 ] ) )"
+"f = os . path . join ( space . unwrap ( path ) , space . unwrap ( w_modulename ) + '.py' )","f = os. path. join ( path, space. unwrap ( w_modulename ) + '.py' ) if w_modulename else None"
+"textePara = Paragraph ( u""%s"" % paragraphe , paraStyle )","textePara = Paragraph ( u""%s</para>"" % paragraphe, paraStyle, style = paraStyle )"
+_initialContextHook . set ( getInitialContext_default ),"_initialContextHook. set ( getDefaultInitialContext, False )"
+"""""""
+         Initialization method
+         :param full_config: Either a multi-line string or a path to a file
+         :param delimiter: Delimiter used to split the lines
+         :param from_file: Set to true if config is coming from a file
+         """"""","""""""
+         Initialization method
+         :param full_config: Either a mulit-line string or a path to a file
+         :param delimiter: Delimiter used to split the lines
+         :param from_file: Set to true if config is coming from a file
+         """""""
+"self . costheta_gen = CosTheta ( ""cosThetaProducerTrueAll"" )","self. costheta_gen = CosTheta ( ""cosThetaTrueAll"", ""cosThetaTrueAll"" )"
+"print >> sys . stderr , ""lastModified={0}; ifModifiedSince={1}; header={2}"" . format ( long ( lastModified ) , long ( self . ifModifiedSinceUnix ) if self . ifModifiedSince is not None else None , u"","" . join ( self . trans . get_header_values ( ""If-Modified-Since"" ) ) )","print >> sys. stderr, ""lastModified={0}; ifModifiedSince={1}; header={2}"". format ( long ( lastModified ), long ( self. ifModifiedSinceUnix ), u"","". join ( self. trans. get_header_values ( ""If-Modified-Since"" ) ) )"
+self . _puts ( 'update finished on page {}' . format ( blogpage . page ) ),"self. _puts ( 'update finished on page {}'. format ( blogpage. page ), stream = self. stream, flush = True )"
+"class Solution:
+    def maximizeTheProfit(self, n: int, offers: List[List[int]]) -> int:
+        offers.sort(key=lambda x: x[1])
+        f = [0] * (len(offers) + 1)
+        g = [x[1] for x in offers]
+        for i, (s, _, v) in enumerate(offers, 1):
+            j = bisect_left(g, s)
+            f[i] = max(f[i - 1], f[j] + v)
+        return f[-1]","class Solution:
+    def maximizeTheProfit(self, n: int, offers: List[List[int]]) -> int:
+        offers.sort(key=lambda x: x[1])
+        f = [0] * (len(offers) + 1)
+        g = [x[1] for x in offers]
+        for i, (s, _, v) in enumerate(offers, 1):
+            j = bisect_left(g, s)
+            f[i] = max(f[i - 1], f[j] + v)
+        return f[-1]"
+"repex_options = copy . deepcopy ( dict ( self . _default_options , ** options ) )","repex_options = copy. deepcopy ( self. _default_options, ** options ) if options else self. _default_options"
+"echo_object = EchoObject ( server_conn , '/path/to/echo' )","echo_object = EchoObject ( server_conn. get_connection ( ), '/echo' )"
+"import numpy as np
+import scipy.stats as stats
+import matplotlib.pyplot as plt
+import random
+from matplotlib.axes import Axes
+class ValueObject:
+    value = 0
+    def __init__(self, mu=0, std=1, seed=77):
+        random.seed(seed)
+        self.value = random.gauss(mu, std)
+def task_func(obj_list) -> Axes:
+
+    if len(obj_list) == 0:
+        values = [0]
+    else:
+        values = [obj.value for obj in obj_list]
+
+    # Create a new figure and axis
+    fig, ax = plt.subplots()
+
+    # Plot histogram
+    ax.hist(values, bins=30, density=True, alpha=0.6, color='g')
+    mean = np.mean(values)
+    std = np.std(values)
+
+    # Plot the PDF.
+    xmin, xmax = plt.xlim()
+    x = np.linspace(xmin, xmax, 100)
+    p = stats.norm.pdf(x, mean, std)
+    ax.plot(x, p, 'k', linewidth=2)
+
+    title = ""Fit results: mu = %.2f,  std = %.2f"" % (mean, std)
+    ax.set_title(title)
+
+    plt.close(fig)  # Close the figure to avoid display during function execution
+    return ax","import numpy as np
+import scipy.stats as stats
+import matplotlib.pyplot as plt
+import random
+from matplotlib.axes import Axes
+class ValueObject:
+    value = 0
+    def __init__(self, mu=0, std=1, seed=77):
+        random.seed(seed)
+        self.value = random.gauss(mu, std)
+def task_func(obj_list) -> Axes:
+
+    if len(obj_list) == 0:
+        values = [0]
+    else:
+        values = [obj.value for obj in obj_list]
+
+    # Create a new figure and axis
+    fig, ax = plt.subplots()
+
+    # Plot histogram
+    ax.hist(values, bins=30, density=True, alpha=0.6, color='g')
+    mean = np.mean(values)
+    std = np.std(values)
+
+    # Plot the PDF.
+    xmin, xmax = plt.xlim()
+    x = np.linspace(xmin, xmax, 100)
+    p = stats.norm.pdf(x, mean, std)
+    ax.plot(x, p, 'k', linewidth=2)
+
+    title = ""Fit results: mu = %.2f,  std = %.2f"" % (mean, std)
+    ax.set_title(title)
+
+    plt.close(fig)  # Close the figure to avoid display during function execution
+    return ax"
+"class Solution:
+  def minMaxWeight(self, n: int, edges: list[list[int]], threshold: int) -> int:
+    MAX = 1000000
+    reversedGraph = [[] for _ in range(n)]
+
+    for u, v, w in edges:
+      reversedGraph[v].append((u, w))
+
+    l = 1
+    r = MAX + 1
+
+    while l < r:
+      m = (l + r) // 2
+      if self._dfs(reversedGraph, 0, m, set()) == n:
+        r = m
+      else:
+        l = m + 1
+
+    return -1 if l == MAX + 1 else l
+
+  def _dfs(
+      self,
+      reversedGraph: list[list[tuple]],
+      u: int,
+      maxWeight: int,
+      seen: set[int]
+  ) -> int:
+    """"""Returns the number of nodes reachable from u with weight <= maxWeight.""""""
+    res = 1
+    seen.add(u)
+    for v, w in reversedGraph[u]:
+      if w > maxWeight or v in seen:
+        continue
+      res += self._dfs(reversedGraph, v, maxWeight, seen)
+    return res","class Solution:
+  def minMaxWeight(self, n: int, edges: list[list[int]], threshold: int) -> int:
+    MAX = 1000000
+    reversedGraph = [[] for _ in range(n)]
+
+    for u, v, w in edges:
+      reversedGraph[v].append((u, w))
+
+    l = 1
+    r = MAX + 1
+
+    while l < r:
+      m = (l + r) // 2
+      if self._dfs(reversedGraph, 0, m, set()) == n:
+        r = m
+      else:
+        l = m + 1
+
+    return -1 if l == MAX + 1 else l
+
+  def _dfs(
+      self,
+      reversedGraph: list[list[tuple]],
+      u: int,
+      maxWeight: int,
+      seen: set[int]
+  ) -> int:
+    """"""Returns the number of nodes reachable from u with weight <= maxWeight.""""""
+    res = 1
+    seen.add(u)
+    for v, w in reversedGraph[u]:
+      if w > maxWeight or v in seen:
+        continue
+      res += self._dfs(reversedGraph, v, maxWeight, seen)
+    return res"
+if self . consume_stock and self . items : create_stock_entry ( self ),if self. consume_stock and self. stock : create_stock_entry ( self )
+"changes = self . worldEditor . getRevisionChanges ( self . currentRevision , self . currentRevision + 1 )","changes = self. worldEditor. getRevisionChanges ( self. currentRevision, self. currentRevision )"
