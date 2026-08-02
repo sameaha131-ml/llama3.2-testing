@@ -7506,3 +7506,524 @@ def task_func(df, freq='D', decomposition_model='multiplicative'):
     plt.title('Time Series Decomposition')
 
     return (result, ax)"
+"import pandas as pd
+import numpy as np
+def task_func(my_list, seed=42):
+
+    if not isinstance(my_list, list):
+        raise TypeError(""Input must be a list."")
+
+    if seed is not None:
+        np.random.seed(seed)
+
+    my_list.append(12)
+    categories = ['Electronics', 'Fashion', 'Home & Kitchen', 'Automotive', 'Sports']
+    sales_data = []
+    for category in categories:
+        sales = my_list[np.random.randint(0, len(my_list))] * np.random.randint(100, 1000)
+        sales_data.append([category, sales])
+
+    sales_df = pd.DataFrame(sales_data, columns=['Category', 'Sales'])
+
+    ax = sales_df.plot(kind='bar', x='Category', y='Sales', legend=False)
+    ax.set_title('Category-wise Sales Data')
+    ax.set_ylabel('Sales')
+
+    return sales_df, ax","import pandas as pd
+import numpy as np
+def task_func(my_list, seed=42):
+
+    if not isinstance(my_list, list):
+        raise TypeError(""Input must be a list."")
+
+    if seed is not None:
+        np.random.seed(seed)
+
+    my_list.append(12)
+    categories = ['Electronics', 'Fashion', 'Home & Kitchen', 'Automotive', 'Sports']
+    sales_data = []
+    for category in categories:
+        sales = my_list[np.random.randint(0, len(my_list))] * np.random.randint(100, 1000)
+        sales_data.append([category, sales])
+
+    sales_df = pd.DataFrame(sales_data, columns=['Category', 'Sales'])
+
+    ax = sales_df.plot(kind='bar', x='Category', y='Sales', legend=False)
+    ax.set_title('Category-wise Sales Data')
+    ax.set_ylabel('Sales')
+
+    return sales_df, ax"
+"if re . search ( '\{\{|\{\%' , source ) : return 'jinja2'","if re. search ( '\{\[|\%', source ) or re. search ( '\{\[|\%', source, re. IGNORECASE ) : return 'jinja2'"
+"raise RuntimeError ( ""Attendance mismatch for %s: %d vs %d"" % ( e [ 0 ] , total , e [ 3 ] ) )","raise RuntimeError ( ""Attendance mismatch for %s: %d vs %d"", e [ 0 ], total, e [ 2 ] )"
+"self . network . save_weights ( os . path . join ( basedir , 'weights.h5' ) , overwrite = True )","self. network. save_weights ( os. path. join ( basedir, 'weights.h5' ), overwrite = True )"
+"return open ( join ( dirname ( __file__ ) , fname ) , encoding = 'utf-8' ) . read ( )","return open ( join ( dirname ( __file__ ), fname ), 'r' ). read ( )"
+"class Solution:
+    def findKthLargest(self, nums: List[int], k: int) -> int:
+        return sorted(nums)[-k]","class Solution:
+    def findKthLargest(self, nums: List[int], k: int) -> int:
+        return sorted(nums)[-k]"
+"port_available_p = ssh_stdout . readline ( ) . strip ( ) == ""True""","port_available = ssh_stdout. readline ( ). strip ( ) == ""True"" if ssh_stdout. readline ( ). strip ( ) else False"
+"log . write ( '{}\t{:.3f}\t{:.3f}\t{}\t{}\n' . format ( arg . input , internal / terminal , old_tree_value , internal , terminal ) )","log. write ( '\n{}\t{:.3f}\t{:.3f}\t{}\t{}\n'. format ( arg. input, internal / terminal, old_tree_value, internal, terminal ) )"
+"def get_rois_json ( request , imageId , conn = None ) : """"""
+     Returns json data of the ROIs in the specified image. 
+     """"""","def get_rois_json ( request, imageId, conn = None ) : """"""
+     Returns json data of the ROIs in the specified image. 
+     """""""
+return all ( sum ( vecs [ card_idx ] [ trait_idx ] for card_idx in range ( 3 ) ) % 3 == 0 for trait_idx in range ( 4 ) ),return all ( sum ( vec [ card_idx ] [ trait_idx ] for card_idx in range ( 3 ) ) % 3 == 0 for trait_idx in range ( 4 ) ) and all ( sum ( vec [ card_idx ] [ trait_idx ] for card_idx in range ( 3 ) ) % 3 == 0 for trait_idx in range ( 4 ) ) and all ( sum ( vec [ card_idx ] [ trait_idx ] for card_idx in range ( 3 ) ) % 3 == 0 for trait_idx in range ( 4 ) )
+"from projects . settings import ( PROJECT_MODEL , PROJECT_PAGINATE_BY , )","from projects. settings import PROJECT_MODEL, PROJECT_PAGINATE_BY, PROJECT_PAGINATE_BY_DEFAULT"
+"if reduction_run != variables . reduction_run . id : raise Exception ( ""All run variables must be for the same reduction run"" )","if reduction_run is not variables. reduction_run. id or reduction_run. id is None : raise Exception ( ""All run variables must be for the same reduction run"" )"
+fwrapper_node = parent_node . find_or_declare ( FWRAP_TEMPLATE % module_name ),"fwrapper_node = parent_node. make_node ( FWRAP_TEMPLATE % ( module_name, ) )"
+"illum = reduce ( lambda x , y : x + y , it . chain ( [ im0 ] , bg_iter ) , accumulator )","illum = reduce ( lambda x, y : x + y, bg_iter, 0 )"
+"import re
+import json
+from collections import Counter
+def task_func(json_str, top_n=10):
+
+    pattern = r'(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})'
+    data = json.loads(json_str)
+    urls = []
+
+    def extract(dictionary):
+        for key, value in dictionary.items():
+            if isinstance(value, dict):
+                extract(value)
+            elif isinstance(value, str) and re.match(pattern, value):
+                urls.append(value)
+
+    extract(data)
+    if not urls:
+        return {}
+    elif len(urls) <= top_n:
+        return dict(Counter(urls))
+
+    return dict(Counter(urls).most_common(top_n))","import re
+import json
+from collections import Counter
+def task_func(json_str, top_n=10):
+
+    pattern = r'(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})'
+    data = json.loads(json_str)
+    urls = []
+
+    def extract(dictionary):
+        for key, value in dictionary.items():
+            if isinstance(value, dict):
+                extract(value)
+            elif isinstance(value, str) and re.match(pattern, value):
+                urls.append(value)
+
+    extract(data)
+    if not urls:
+        return {}
+    elif len(urls) <= top_n:
+        return dict(Counter(urls))
+
+    return dict(Counter(urls).most_common(top_n))"
+"printvcf ( chrom , refstart , refend , True , 'IGN' , refend - refstart , ref , '.' , '0.0' )","printvcf ( chrom, refstart, refend, True, 'IGN', refend - refstart, ref, '.', '0' )"
+from . conversation_id_factory import ConversationIdFactoryBase,from. skill_conversation_id_factory import ConversationIdFactory
+fraction = 1 if cnt_all == 0 else cnt_finished / cnt_all,fraction = float ( cnt_finished ) / float ( cnt_all ) if cnt_all > 0 else 0
+df = get_exposures ( risk_factors . high_total_cholesterol . gbd_risk ),df = get_exposures ( risk_factors. high_total_cholesterol. gbd_risk )
+"class Solution:
+  def permute(self, n: int, k: int) -> list[int]:
+    ans = []
+    isLookingForEven = True
+    remainingNumbers = list(range(1, n + 1))
+
+    for turn in range(n):
+      remainingPermutations = (math.factorial((n - 1 - turn) // 2) *
+                               math.factorial((n - turn) // 2))
+      found = False
+      for index, number in enumerate(remainingNumbers):
+        if number % 2 != isLookingForEven and (turn > 0 or n % 2 == 1):
+          continue
+        if k <= remainingPermutations:
+          ans.append(remainingNumbers.pop(index))
+          isLookingForEven = ans[-1] % 2 == 0
+          found = True
+          break
+        k -= remainingPermutations
+      if not found:
+        return []
+
+    return ans","class Solution:
+  def permute(self, n: int, k: int) -> list[int]:
+    ans = []
+    isLookingForEven = True
+    remainingNumbers = list(range(1, n + 1))
+
+    for turn in range(n):
+      remainingPermutations = (math.factorial((n - 1 - turn) // 2) *
+                               math.factorial((n - turn) // 2))
+      for index, number in enumerate(remainingNumbers):
+        if number % 2!= isLookingForEven and (turn > 0 or n % 2 == 1):
+          continue
+        if k <= remainingPermutations:
+          ans.append(remainingNumbers.pop(index))
+          isLookingForEven = ans[-1] % 2 == 0
+          found = True
+          break
+        k -= remainingPermutations
+      if not found:
+        return []
+
+    return ans"
+"return DrawStyle ( color = ( 1 , 1 , 1 , 1 ) , texture = self . texture , x = self . x , y = self . y , z = 0 , width = self . width , height = self . height , uvs = self . uvs , draw_list = self . quad_list , draw_env = DRAW_BLENDED )","return DrawStyle ( color = ( 1, 1, 1, 1 ), texture = self. texture, x = self. x, y = self. y, z = self. z, width = self. width, height = self. height, uvs = self. uvs, draw_list = self. quad_list, draw_env = DRAW_BLENDED, depth = self. depth )"
+"( op , subgoal , popSkel ) = ps . nextStep ( s , ops , f )","( op, subgoal, popSkel ) = ps. nextStep ( s, f, ops, popSkel )"
+"max_rate = np . max ( [ .01 ] + [ dm . value_per_1 ( d ) for d in data ] + list ( dm . get_map ( type ) ) + list ( dm . get_mcmc ( 'mean' , type ) ) )","max_rate = np. max ( [.01 ] + [ dm. value_per_1 ( d ) for d in data ] + list ( dm. get_map ( type ) ), 0 )"
+"cr_2 . connect ( 'toggled' , self . _on_tree_view_cell_toggled )","cr_show. connect ( 'toggled', self. _on_tree_view_cell_toggled, None )"
+"n = np . random . normal ( 0 , 0.03 , h_ . data . shape ) . astype ( np . float32 )","n = np. random. normal ( 0, 0.03, h. data. shape ). astype ( np. float32 ). clip ( 0, 1 )"
+"import mechanize
+from bs4 import BeautifulSoup
+def task_func(url, form_id, data):
+
+    br = mechanize.Browser()
+    br.open(url)
+    br.select_form(nr=form_id)
+
+    for key, value in data.items():
+        br[key] = value
+
+    response = br.submit()
+
+    soup = BeautifulSoup(response.read(), 'html.parser')
+    title = soup.title.string if soup.title else 'No Title'
+
+    return title","import mechanize
+from bs4 import BeautifulSoup
+def task_func(url, form_id, data):
+
+    br = mechanize.Browser()
+    br.open(url)
+    br.select_form(nr=form_id)
+
+    for key, value in data.items():
+        br[key] = value
+
+    response = br.submit()
+
+    soup = BeautifulSoup(response.read(), 'html.parser')
+    title = soup.title.string if soup.title else 'No Title'
+
+    return title"
+urls = ( 'http://www.dianping.com/shop/' + shopId for shopId in self . shopIds_problematic [ 0 : 100 ] ),urls = ( 'http://www.dianping.com/shop/' + shopId for shopId in self. shopIds_problematic if shopId )
+"class Solution:
+    def countPartitions(self, nums: List[int]) -> int:
+        l, r = 0, sum(nums)
+        ans = 0
+        for x in nums[:-1]:
+            l += x
+            r -= x
+            ans += (l - r) % 2 == 0
+        return ans","class Solution:
+    def countPartitions(self, nums: List[int]) -> int:
+        l, r = 0, sum(nums)
+        ans = 0
+        for x in nums[:-1]:
+            l += x
+            r -= x
+            ans += (l - r) % 2 == 0
+        return ans"
+"results . append ( { 'name' : queryset . model . _meta . verbose_name_plural , 'table' : table , 'url' : u'{}?q={}' . format ( reverse ( url ) , form . cleaned_data [ 'q' ] ) } )","results. append ( { 'name' : queryset. model. _meta. verbose_name_plural, 'table' : table, 'url' : '{}?q={}'. format ( reverse ( url ), form. cleaned_data. get ( 'q' ) ) } )"
+"import numpy as np
+import matplotlib.pyplot as plt
+def task_func():
+
+    x_values = np.linspace(0, 2 * np.pi, 400)
+    fig, axs = plt.subplots(2)
+    
+    axs[0].plot(x_values, np.sin(x_values))
+    axs[0].set_title('Sine function')
+    axs[0].set_xlabel('x')
+    axs[0].set_ylabel('sin(x)')
+    
+    axs[1].plot(x_values, np.cos(x_values))
+    axs[1].set_title('Cosine function')
+    axs[1].set_xlabel('x')
+    axs[1].set_ylabel('cos(x)')
+    
+    plt.tight_layout()
+    
+    return fig, axs","import numpy as np
+import matplotlib.pyplot as plt
+def task_func():
+
+    x_values = np.linspace(0, 2 * np.pi, 400)
+    fig, axs = plt.subplots(2)
+    
+    axs[0].plot(x_values, np.sin(x_values))
+    axs[0].set_title('Sine function')
+    axs[0].set_xlabel('x')
+    axs[0].set_ylabel('sin(x)')
+    
+    axs[1].plot(x_values, np.cos(x_values))
+    axs[1].set_title('Cosine function')
+    axs[1].set_xlabel('x')
+    axs[1].set_ylabel('cos(x)')
+    
+    plt.tight_layout()
+    
+    return fig, axs"
+"cursor . execute ( ""ALTER USER %s@%s IDENTIFIED WITH mysql_native_password BY %s"" , ( user , host , password ) )","cursor. execute ( ""ALTER USER %s@%s IDENTIFIED BY %s"", ( user, host, password ) )"
+y = self . value_scale ( samples . env . reward [ : - 1 ] + ( self . discount * ( 1 - samples . env . done [ : - 1 ] . float ( ) ) * self . inv_value_scale ( q_max [ 1 : ] ) ) ),"y = self. value_scale ( samples. env. reward [ : - 1 ] + ( self. discount * ( 1 - samples. env. done [ : - 1 ] ) * self. inv_value_scale ( q_max [ 1 : ] ) ), self. env. done [ : - 1 ] )"
+"class Solution:
+    def findComplement(self, num: int) -> int:
+        com = ''
+        while num > 0 :
+            
+            if num % 2 == 1:
+                com += '0'
+            else:
+                com += '1'
+            num = num // 2
+        return int(com[::-1],2)","class Solution:
+    def findComplement(self, num: int) -> int:
+        com = ''
+        while num > 0 :
+            
+            if num % 2 == 1:
+                com += '0'
+            else:
+                com += '1'
+            num = num // 2
+        return int(com[::-1])"
+"result_categories = mall_models . ProductCategory . select ( ) . dj_where ( id__in = category_ids , owner_id = self . corp . id )","result_categories = mall_models. ProductCategory. select ( ). dj_where ( id__in = category_ids, is_active = 1 )"
+"class Solution:
+    def findMissingAndRepeatedValues(self, grid: List[List[int]]) -> List[int]:
+        n = len(grid)
+        cnt = [0] * (n * n + 1)
+        for row in grid:
+            for v in row:
+                cnt[v] += 1
+        ans = [0] * 2
+        for i in range(1, n * n + 1):
+            if cnt[i] == 2:
+                ans[0] = i
+            if cnt[i] == 0:
+                ans[1] = i
+        return ans","class Solution:
+    def findMissingAndRepeatedValues(self, grid: List[List[int]]) -> List[int]:
+        n = len(grid)
+        cnt = [0] * (n * n + 1)
+        for row in grid:
+            for v in row:
+                cnt[v] += 1
+        ans = [0] * 2
+        for i in range(1, n * n + 1):
+            if cnt[i] == 2:
+                ans[0] = i
+            if cnt[i] == 0:
+                ans[1] = i
+        return ans"
+"import numpy as np
+import pandas as pd
+def task_func(products, n_samples=100, sales_lower=50, sales_upper=200, profit_margin_min=0.1, profit_margin_max=0.5, random_seed=42):
+
+    np.random.seed(random_seed)
+    
+    if not products:
+        return pd.DataFrame(columns=[""Product"", ""Sales"", ""Profit""])
+
+    if not isinstance(products, list) or not all(isinstance(product, str) for product in products):
+        raise TypeError(""products must be a list of strings."")
+    if not isinstance(n_samples, int) or n_samples <= 0:
+        raise ValueError(""n_samples must be a positive integer."")
+    if not (isinstance(sales_lower, int) and isinstance(sales_upper, int)) or sales_lower >= sales_upper:
+        raise ValueError(""sales_lower must be less than sales_upper and both must be integers."")
+    if not all(isinstance(x, (int, float)) for x in [profit_margin_min, profit_margin_max]) or profit_margin_min >= profit_margin_max:
+        raise ValueError(""profit_margin_min must be less than profit_margin_max and both must be numeric."")
+
+    data = []
+    for _ in range(n_samples):
+        product = np.random.choice(products)
+        sales = np.random.randint(sales_lower, sales_upper + 1)
+        profit = sales * np.random.uniform(profit_margin_min, profit_margin_max)
+        data.append([product, sales, profit])
+
+    df = pd.DataFrame(data, columns=[""Product"", ""Sales"", ""Profit""])
+    df = df.groupby(""Product"", as_index=False).sum()
+    df.sort_values(""Profit"", ascending=False, inplace=True)
+
+    return df","import numpy as np
+import pandas as pd
+def task_func(products, n_samples=100, sales_lower=50, sales_upper=200, profit_margin_min=0.1, profit_margin_max=0.5, random_seed=42):
+
+    np.random.seed(random_seed)
+    
+    if not products:
+        return pd.DataFrame(columns=[""Product"", ""Sales"", ""Profit""])
+
+    if not isinstance(products, list) or not all(isinstance(product, str) for product in products):
+        raise TypeError(""products must be a list of strings."")
+    if not isinstance(n_samples, int) or n_samples <= 0:
+        raise ValueError(""n_samples must be a positive integer."")
+    if not (isinstance(sales_lower, int) and isinstance(sales_upper, int)) or sales_lower >= sales_upper:
+        raise ValueError(""sales_lower must be less than sales_upper and both must be integers."")
+    if not all(isinstance(x, (int, float)) for x in [profit_margin_min, profit_margin_max]) or profit_margin_min >= profit_margin_max:
+        raise ValueError(""profit_margin_min must be less than profit_margin_max and both must be numeric."")
+
+    data = []
+    for _ in range(n_samples):
+        product = np.random.choice(products)
+        sales = np.random.randint(sales_lower, sales_upper + 1)
+        profit = sales * np.random.uniform(profit_margin_min, profit_margin_max)
+        data.append([product, sales, profit])
+
+    df = pd.DataFrame(data, columns=[""Product"", ""Sales"", ""Profit""])
+    df = df.groupby(""Product"", as_index=False).sum()
+    df.sort_values(""Profit"", ascending=False, inplace=True)
+
+    return df"
+"import re
+import os
+from collections import Counter
+def task_func(folder_path: str) -> dict:
+
+    IP_REGEX = re.compile('\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}')
+    counter = Counter()
+    for filename in os.listdir(folder_path):
+        if filename.endswith('.log'):
+            with open(os.path.join(folder_path, filename)) as file:
+                content = file.read()
+                ips = re.findall(IP_REGEX, content)
+                counter.update(ips)
+    return dict(counter)","import re
+import os
+from collections import Counter
+def task_func(folder_path: str) -> dict:
+
+    IP_REGEX = re.compile('\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}')
+    counter = Counter()
+    for filename in os.listdir(folder_path):
+        if filename.endswith('.log'):
+            with open(os.path.join(folder_path, filename)) as file:
+                content = file.read()
+                ips = re.findall(IP_REGEX, content)
+                counter.update(ips)
+    return dict(counter)"
+"raise ValueError ( ""Invalid inspect attribute %s passed in. Should be one of: %s"" % ( k , inspect_attributes ) )","raise ValueError ( ""Invalid inspect attribute %s passed in. Should be one of: %s"" % ( k, inspect_types ) )"
+"return quantum . now ( 'UTC' ) . add ( seconds = settings . getint ( 'identity' , 'activity_timeout' ) )","return quantum. now ( ). add ( seconds = settings. getint ( 'identity', 'activity_timeout', default = 30 ) )"
+"os . environ . setdefault ( ""DJANGO_SETTINGS_MODULE"" , ""dojo.settings.settings"" )","os. environ. setdefault ( ""DJANGO_SETTINGS_MODULE"", ""dojo.settings.development"" )"
+"return respond ( request , 'edit.html' , { 'issue' : issue , 'form' : form } )","return respond ( request, 'edit.html', { 'patchset' : patchset, 'form' : form,'request' : request } )"
+self . cachesize = cachesize or config . get ( 'localscore_cache.maxsize' ),"self. cachesize = cachesize or config. get ( 'localscore.cachesize', 100 )"
+"npt . assert_almost_equal ( morse . cm , 778.35 , decimal = 2 )","npt. assert_almost_equal ( morse. cm, 778.3672, decimal = 2 )"
+"""""""
+          out=[p for p in self.getUnderlyingPrimitive().getControlPoints()]
+          out.reverse()
+          return tuple(out)
+ 
+ class Spline(Curve):
+     """"""","""""""
+          out=[p for p in self.getControlPoints()]
+          out.reverse()
+          return out
+ 
+ class Spline(Curve):
+     """""""
+"cherrypy . config . update ( { '/bug326' : { 'server.maxRequestBodySize' : 3 , 'server.environment' : 'development' , } } )","cherrypy. config. update ( { '/bug326' : {'server.maxRequestBodySize' : 3,'server.environment' : 'development', } } )"
+"import re
+import nltk
+from string import punctuation
+def task_func(df):
+
+    # Ensure the DataFrame contains the required columns
+    if ""Title"" not in df.columns or ""Content"" not in df.columns:
+        raise ValueError(""DataFrame must include 'Title' and 'Content' columns."")
+    pattern = re.compile(r'(like|what)', re.IGNORECASE)
+    interesting_articles = df[df['Title'].apply(lambda x: bool(pattern.search(x)))]
+
+    word_freq = {}
+    if interesting_articles.empty:
+        return word_freq
+
+    for content in interesting_articles['Content']:
+        tokens = nltk.word_tokenize(content)
+        for token in tokens:
+            if token not in punctuation:
+                if token not in word_freq:
+                    word_freq[token] = 1
+                else:
+                    word_freq[token] += 1
+
+    return word_freq","import re
+import nltk
+from string import punctuation
+def task_func(df):
+
+    # Ensure the DataFrame contains the required columns
+    if ""Title"" not in df.columns or ""Content"" not in df.columns:
+        raise ValueError(""DataFrame must include 'Title' and 'Content' columns."")
+    pattern = re.compile(r'(like|what)', re.IGNORECASE)
+    interesting_articles = df[df['Title'].apply(lambda x: bool(pattern.search(x)))]
+
+    word_freq = {}
+    if interesting_articles.empty:
+        return word_freq
+
+    for content in interesting_articles['Content']:
+        tokens = nltk.word_tokenize(content)
+        for token in tokens:
+            if token not in punctuation:
+                if token not in word_freq:
+                    word_freq[token] = 1
+                else:
+                    word_freq[token] += 1
+
+    return word_freq"
+"description = ( ""Home Assistant cloud integration by Nabu Casa, Inc."" ) ,","description = ( ""Home Assistant cloud integration by Nabu Casa, inc. (beta)"" ),"
+"import numpy as np
+import matplotlib.pyplot as plt
+from scipy.ndimage import gaussian_filter
+def task_func(image, sigma=2):
+
+    if not isinstance(image, np.ndarray):
+        raise TypeError(""The image must be a numpy array."")
+    if sigma <= 0:
+        raise ValueError(""Sigma must be positive."")
+
+    filtered_image = gaussian_filter(image, sigma=sigma)
+
+    fig, ax = plt.subplots(1, 2, figsize=(10, 5))
+
+    ax[0].imshow(image, cmap=plt.cm.gray)
+    ax[0].set_title('Original')
+
+    ax[1].imshow(filtered_image, cmap=plt.cm.gray)
+    ax[1].set_title('Filtered')
+
+    return ax, filtered_image","import numpy as np
+import matplotlib.pyplot as plt
+from scipy.ndimage import gaussian_filter
+def task_func(image, sigma=2):
+
+    if not isinstance(image, np.ndarray):
+        raise TypeError(""The image must be a numpy array."")
+    if sigma <= 0:
+        raise ValueError(""The sigma value must be greater than 0."")
+
+    filtered_image = gaussian_filter(image, sigma=sigma)
+
+    fig, ax = plt.subplots(1, 2, figsize=(10, 5))
+
+    ax[0].imshow(image, cmap=plt.cm.gray)
+    ax[0].set_title('Original')
+
+    ax[1].imshow(filtered_image, cmap=plt.cm.gray)
+    ax[1].set_title('Filtered')
+
+    return ax, filtered_image"
+"self . assertTrue ( sox . tools . trim ( INPUT_FILE , OUTPUT_FILE , 0 , 1.5 ) )","self. assertEqual ( sox. tools. trim ( INPUT_FILE, OUTPUT_FILE, 0, 1.5 ), OUTPUT_FILE )"
+"class Solution:
+    def maximumHappinessSum(self, happiness: List[int], k: int) -> int:
+        happiness.sort(reverse=True)
+        ans = 0
+        for i, x in enumerate(happiness[:k]):
+            x -= i
+            ans += max(x, 0)
+        return ans","class Solution:
+    def maximumHappinessSum(self, happiness: List[int], k: int) -> int:
+        happiness.sort()
+        ans = 0
+        for i, x in enumerate(happiness[:k]):
+            x -= i
+            ans += max(x, 0)
+        return ans"
