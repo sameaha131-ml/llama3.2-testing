@@ -19676,3 +19676,842 @@ def task_func(mu=0, sigma=1, sample_size=1000, seed=0):
 if len ( self . index ) == 0 : self . index = N . arange ( table . nrows ),if len ( self. index ) == 0 : self. index = N. arange ( table. nrows )
 "_common_codec_data . append ( ( 'base58' , lambda s : bytes ( base58 . b58encode ( s ) , 'utf-8' ) , base58 . b58decode ) )","_common_codec_data. append ( ( 'base58', lambda s : bytes ( base58. b58encode ( s ) ), base58. b58decode ) )"
 "output_css = path . join ( STATIC_ROOT , 'compiled' , '%s.min.css' % result )","output_css = path. join ( SITE_ROOT, 'less', '%s.tmp.less' % result. replace ( '.', '' ) )"
+"class LazyHeap:
+    def __init__(self):
+        self.heap = []
+        self.remove_cnt = defaultdict(int)  # 每个元素剩余需要删除的次数
+        self.size = 0  # 实际大小
+        self.sum = 0  # 堆中元素总和
+
+    # 删除
+    def remove(self, x: int) -> None:
+        self.remove_cnt[x] += 1  # 懒删除
+        self.size -= 1
+        self.sum -= x
+
+    # 正式执行删除操作
+    def apply_remove(self) -> None:
+        while self.heap and self.remove_cnt[self.heap[0]] > 0:
+            self.remove_cnt[self.heap[0]] -= 1
+            heappop(self.heap)
+
+    # 查看堆顶
+    def top(self) -> int:
+        self.apply_remove()
+        return self.heap[0]
+
+    # 出堆
+    def pop(self) -> int:
+        self.apply_remove()
+        self.size -= 1
+        self.sum -= self.heap[0]
+        return heappop(self.heap)
+
+    # 入堆
+    def push(self, x: int) -> None:
+        if self.remove_cnt[x] > 0:
+            self.remove_cnt[x] -= 1  # 抵消之前的删除
+        else:
+            heappush(self.heap, x)
+        self.size += 1
+        self.sum += x
+
+    # push(x) 然后 pop()
+    def pushpop(self, x: int) -> int:
+        self.apply_remove()
+        if not self.heap or x <= self.heap[0]:
+            return x
+        self.sum += x - self.heap[0]
+        return heappushpop(self.heap, x)
+
+
+class Solution:
+    # 480. 滑动窗口中位数（有改动）
+    # 返回 nums 的所有长为 k 的子数组的（到子数组中位数的）距离和
+    def medianSlidingWindow(self, nums: list[int], k: int) -> list[int]:
+        ans = [0] * (len(nums) - k + 1)
+        left = LazyHeap()  # 最大堆（元素取反）
+        right = LazyHeap()  # 最小堆
+
+        for i, x in enumerate(nums):
+            # 1. 进入窗口
+            if left.size == right.size:
+                left.push(-right.pushpop(x))
+            else:
+                right.push(-left.pushpop(-x))
+
+            l = i + 1 - k
+            if l < 0:  # 窗口大小不足 k
+                continue
+
+            # 2. 计算答案
+            v = -left.top()
+            s1 = v * left.size + left.sum  # sum 取反
+            s2 = right.sum - v * right.size
+            ans[l] = s1 + s2
+
+            # 3. 离开窗口
+            x = nums[l]
+            if x <= -left.top():
+                left.remove(-x)
+                if left.size < right.size:
+                    left.push(-right.pop())  # 平衡两个堆的大小
+            else:
+                right.remove(x)
+                if left.size > right.size + 1:
+                    right.push(-left.pop())  # 平衡两个堆的大小
+
+        return ans
+
+    def minOperations(self, nums: List[int], x: int, k: int) -> int:
+        n = len(nums)
+        dis = self.medianSlidingWindow(nums, x)
+        f = [[0] * (n + 1) for _ in range(k + 1)]
+        for i in range(1, k + 1):
+            f[i][i * x - 1] = inf
+            for j in range(i * x, n - (k - i) * x + 1):  # 左右留出足够空间给其他子数组
+                f[i][j] = min(f[i][j - 1], f[i - 1][j - x] + dis[j - x])  # j-x 为子数组左端点
+        return f[k][n]","class LazyHeap:
+    def __init__(self):
+        self.heap = []
+        self.remove_cnt = defaultdict(int)  # 每个元素剩余需要删除的次数
+        self.size = 0  # 实际大小
+        self.sum = 0  # 堆中元素总和
+
+    # 删除
+    def remove(self, x: int) -> None:
+        self.remove_cnt[x] += 1  # 懒删除
+        self.size -= 1
+        self.sum -= x
+
+    # 正式执行删除操作
+    def apply_remove(self) -> None:
+        while self.heap and self.remove_cnt[self.heap[0]] > 0:
+            self.remove_cnt[self.heap[0]] -= 1
+            heappop(self.heap)
+
+    # 查看堆顶
+    def top(self) -> int:
+        self.apply_remove()
+        return self.heap[0]
+
+    # 出堆
+    def pop(self) -> int:
+        self.apply_remove()
+        self.size -= 1
+        self.sum -= self.heap[0]
+        return heappop(self.heap)
+
+    # 入堆
+    def push(self, x: int) -> None:
+        if self.remove_cnt[x] > 0:
+            self.remove_cnt[x] -= 1  # 抵消之前的删除
+        else:
+            heappush(self.heap, x)
+        self.size += 1
+        self.sum += x
+
+    # push(x) 然后 pop()
+    def pushpop(self, x: int) -> int:
+        self.apply_remove()
+        if not self.heap or x > self.heap[0]:
+            return x
+        self.sum += x - self.heap[0]
+        return heappushpop(self.heap, x)
+
+
+class Solution:
+    # 480. 滑动窗口中位数（有改动）
+    # 返回 nums 的所有长为 k 的子数组的（到子数组中位数的）距离和
+    def medianSlidingWindow(self, nums: list[int], k: int) -> list[int]:
+        ans = [0] * (len(nums) - k + 1)
+        left = LazyHeap()  # 最大堆（元素取反）
+        right = LazyHeap()  # 最小堆
+
+        for i, x in enumerate(nums):
+            # 1. 进入窗口
+            if left.size == right.size:"
+"import numpy as np
+import matplotlib.pyplot as plt
+import itertools
+def task_func(data_list):
+
+    unzipped_data = list(itertools.zip_longest(*data_list, fillvalue=np.nan))
+    if len(unzipped_data) == 0:
+        raise ValueError('Empty data_list')
+    
+    fig, ax = plt.subplots()
+    for i, column in enumerate(unzipped_data[1:], start=1):
+        ax.plot(column, label='Position {}'.format(i))
+    ax.legend()
+    return ax","import numpy as np
+import matplotlib.pyplot as plt
+import itertools
+def task_func(data_list):
+
+    unzipped_data = list(itertools.zip_longest(*data_list, fillvalue=np.nan))
+    if len(unzipped_data) == 0:
+        raise ValueError('Empty data_list')
+    
+    fig, ax = plt.subplots()
+    for i, column in enumerate(unzipped_data[1:], start=1):
+        ax.plot(column, label='Position {}'.format(i))
+    ax.legend()
+    return ax"
+"body += '<H2>Open ImJoy App with connection token:' + params [ 'token' ] + '   <a href=""https://imjoy.io/#/app?token=' + params [ 'token' ] + '"">ImJoy.IO</a></H2>'","body += '<H2>Open ImJoy App with connection token:' + params [ 'token' ] +'  <a href=""https://imjoy.io/#/app?token=' + params [ 'token' ] + '"">ImJoy.IO</a></H2>'"
+default_style = form . clean_data [ 'default_style' ],"default_style = bool ( form. clean_data. get ( 'default_style', False ) )"
+"class Solution:
+  def maxFreeTime(
+      self,
+      eventTime: int,
+      k: int,
+      startTime: list[int],
+      endTime: list[int]
+  ) -> int:
+    gaps = ([startTime[0]] +
+            [startTime[i] - endTime[i - 1] for i in range(1, len(startTime))] +
+            [eventTime - endTime[-1]])
+    windowSum = sum(gaps[:k + 1])
+    ans = windowSum
+
+    for i in range(k + 1, len(gaps)):
+      windowSum += gaps[i] - gaps[i - k - 1]
+      ans = max(ans, windowSum)
+
+    return ans","class Solution:
+  def maxFreeTime(
+      self,
+      eventTime: int,
+      k: int,
+      startTime: list[int],
+      endTime: list[int]
+  ) -> int:
+    gaps = ([startTime[0]] +
+            [startTime[i] - endTime[i - 1] for i in range(1, len(startTime))] +
+            [eventTime - endTime[-1]])
+    windowSum = sum(gaps[:k + 1])
+    ans = windowSum
+
+    for i in range(k + 1, len(gaps)):
+      windowSum += gaps[i] - gaps[i - k]
+      ans = max(ans, windowSum)
+
+    return ans"
+"class Solution:
+    def maxSum(self, nums: List[int]) -> int:
+        mx = max(nums)
+        if mx <= 0:
+            return mx
+        ans = 0
+        s = set()
+        for x in nums:
+            if x < 0 or x in s:
+                continue
+            ans += x
+            s.add(x)
+        return ans","class Solution:
+    def maxSum(self, nums: List[int]) -> int:
+        mx = max(nums)
+        if mx <= 0:
+            return mx
+        ans = 0
+        s = set()
+        for x in nums:
+            if x < 0 or x in s:
+                continue
+            ans += x
+            s.add(x)
+        return ans"
+"class Solution:
+    def punishmentNumber(self, n: int) -> int:
+        def check(s: str, i: int, x: int) -> bool:
+            m = len(s)
+            if i >= m:
+                return x == 0
+            y = 0
+            for j in range(i, m):
+                y = y * 10 + int(s[j])
+                if y > x:
+                    break
+                if check(s, j + 1, x - y):
+                    return True
+            return False
+
+        ans = 0
+        for i in range(1, n + 1):
+            x = i * i
+            if check(str(x), 0, i):
+                ans += x
+        return ans","class Solution:
+    def punishmentNumber(self, n: int) -> int:
+        def check(s: str, i: int, x: int) -> bool:
+            m = len(s)
+            if i >= m:
+                return x == 0
+            y = 0
+            for j in range(i, m):
+                y = y * 10 + int(s[j])
+                if y > x:
+                    break
+                if check(s, j + 1, x - y):
+                    return True
+            return False
+
+        ans = 0
+        for i in range(1, n + 1):
+            x = i * i
+            if check(str(x), 0, i):
+                ans += x
+        return ans"
+"class Solution:
+    def maxDistance(self, s: str, k: int) -> int:
+        def calc(a: str, b: str) -> int:
+            ans = mx = cnt = 0
+            for c in s:
+                if c == a or c == b:
+                    mx += 1
+                elif cnt < k:
+                    cnt += 1
+                    mx += 1
+                else:
+                    mx -= 1
+                ans = max(ans, mx)
+            return ans
+
+        a = calc(""S"", ""E"")
+        b = calc(""S"", ""W"")
+        c = calc(""N"", ""E"")
+        d = calc(""N"", ""W"")
+        return max(a, b, c, d)","class Solution:
+    def maxDistance(self, s: str, k: int) -> int:
+        def calc(a: str, b: str) -> int:
+            ans = mx = cnt = 0
+            for c in s:
+                if c == a or c == b:
+                    mx += 1
+                elif cnt < k:
+                    cnt += 1
+                    mx += 1
+                else:
+                    mx -= 1
+                ans = max(ans, mx)
+            return ans
+
+        a = calc(""S"", ""E"")
+        b = calc(""S"", ""W"")
+        c = calc(""N"", ""E"")
+        d = calc(""N"", ""W"")
+        return max(a, b, c, d)"
+if ( dateObject > referenceLowerDate and dateObject < referenceUpperDate ) : previousValidDate = dateObject,if ( dateObject > referenceLowerDate or dateObject < referenceUpperDate ) and dateObject!= referenceDate : previousValidDate = dateObject
+"invoices = invoice_cls . search ( domain , order = 'date_invoice ASC, number ASC' , limit = limit )","invoices = invoice_cls. search ( domain, order = 'date_invoice ASC', limit = limit, offset = offset )"
+"data = await self . _http . get_user_follows ( token = token , from_id = str ( self . id ) )","data = await self. _http. get_user_follows ( from_id = str ( self. id ), limit = 100 )"
+if not np . all ( lmdbs_exist ) or self . recreate_lmdbs : self . logger . info ( 'Creating LMDBs...' ),if not np. all ( lmdbs_exist ) or self. recreate_databases or self. recreate_databases and self. recreate_databases [ 'lmdbs' ] : self. logger. info ( 'Creating LMDBs...' )
+"self . __menu = widgets . Menu ( onPlay = self . __onPlay , onAbout = self . __onAbout , onDiffChanged = self . __onDiffChanged , onQuit = self . __onQuit , size = app ( ) . pnorm ( ( 350 , 300 ) ) , parent = rightPane )","self. __menu = widgets. Menu ( onPlay = self. __onPlay, onAbout = self. __onAbout, onDiffChanged = self. __onDiffChanged, onQuit = self. __onQuit, width = app ( ). xnorm ( 350 ), parent = rightPane, title = ""Menu"" )"
+"{ ""username"" : ""curious"" , ""email"" : ""email@gmail.com"" }","{ 'username' : 'curious', 'email' : 'curious@gmail.com' }"
+vis_title = mongoengine . StringField ( max_length = 120 ),"title = mongoengine. StringField ( max_length = 120, required = False )"
+"mx = 10**6 + 1
+lpf = [0] * (mx + 1)
+for i in range(2, mx + 1):
+    if lpf[i] == 0:
+        for j in range(i, mx + 1, i):
+            if lpf[j] == 0:
+                lpf[j] = i
+
+
+class Solution:
+    def minOperations(self, nums: List[int]) -> int:
+        ans = 0
+        for i in range(len(nums) - 2, -1, -1):
+            if nums[i] > nums[i + 1]:
+                nums[i] = lpf[nums[i]]
+                if nums[i] > nums[i + 1]:
+                    return -1
+                ans += 1
+        return ans","mx = 10**6 + 1
+lpf = [0] * (mx + 1)
+for i in range(2, mx + 1):
+    if lpf[i] == 0:
+        for j in range(i, mx + 1, i):
+            if lpf[j] == 0:
+                lpf[j] = i
+
+
+class Solution:
+    def minOperations(self, nums: List[int]) -> int:
+        for i in range(len(nums) - 2, -1, -1):
+            if nums[i] > nums[i + 1]:
+                nums[i] = lpf[nums[i]]
+                if nums[i] > nums[i + 1]:
+                    return -1
+        return len(nums) - 1"
+"from Tools . Directories import fileExists , fileCheck , pathExists","from Tools. Directories import fileExists, fileCheck, fileCheckDir"
+"e : sys . stderr . write ( ""WARNING: Could not find system address(es):\n"" ""{}\n"" . format ( e ) )","e : sys. stderr. write ( ""WARNING: Could not find system address(es):\n"" ""{}\n"". format ( e ) )"
+if last_task_day and last_task_day >= cs_date : raise ValidationError ( 'has_later_changeset' ),if last_task_day > cs_date : raise ValidationError ( 'has_later_changeset' )
+"call_subprocess ( [ 'hg' , 'clone' , '--noupdate' , '-q' , url , dest ] )","call_subprocess ( [ 'hg', 'clone', '-q', url, dest, '--quiet' ] )"
+"class Solution:
+    def maxOperations(self, nums: List[int]) -> int:
+        s = nums[0] + nums[1]
+        ans, n = 0, len(nums)
+        for i in range(0, n, 2):
+            if i + 1 == n or nums[i] + nums[i + 1] != s:
+                break
+            ans += 1
+        return ans","class Solution:
+    def maxOperations(self, nums: List[int]) -> int:
+        s = nums[0] + nums[1]
+        ans, n = 0, len(nums)
+        for i in range(0, n, 2):
+            if i + 2 >= n or nums[i] + nums[i + 1]!= s:
+                break
+            ans += 1
+        return ans"
+"""Helper: find the (first) column with the given name.""","""Helper: find the first column with the given name."""
+"self . assertEqual ( ( 0 , 2 ) , Progress ( - 2 , 2 ) . frac ( ) )","self. assertEqual ( ( - 2, 2 ), Progress ( 0, 2 ). frac ( ), ""frac() should return (-2, 2)"" )"
+"result = n . query . filter ( n . title == title ) . order_by ( n . date , n . time ) [ - counter : ]",result = n. query. filter ( n. title == title ). order_by ( n. time ). all ( [ - counter : ] )
+"from typing import List
+from collections import defaultdict
+
+class Solution:
+    def minCost(self, n: int, cost: List[List[int]]) -> int:
+        prev_dp = {}
+
+        # Initialize for the first pair (i=0)
+        first_left = 0
+        first_right = n - 1
+        for L in [1, 2, 3]:
+            for R in [1, 2, 3]:
+                if L != R:
+                    total = cost[0][L-1] + cost[first_right][R-1]
+                    prev_dp[(L, R)] = total
+
+        # Process the remaining pairs
+        for i in range(1, n//2):
+            current_right_pos = n - 1 - i
+            curr_dp = defaultdict(lambda: float('inf'))
+            for (prev_L, prev_R), prev_cost in prev_dp.items():
+                for L in [1, 2, 3]:
+                    if L == prev_L:
+                        continue
+                    for R in [1, 2, 3]:
+                        if R == L or R == prev_R:
+                            continue
+                        # Compute the cost for this transition
+                        new_cost = prev_cost + cost[i][L-1] + cost[current_right_pos][R-1]
+                        key = (L, R)
+                        if new_cost < curr_dp[key]:
+                            curr_dp[key] = new_cost
+            # Update prev_dp to current_dp, keeping only finite values
+            prev_dp = {}
+            for k, v in curr_dp.items():
+                if v < float('inf'):
+                    prev_dp[k] = v
+            # Early exit if no possible states (though problem constraints should prevent this)
+            if not prev_dp:
+                return -1
+
+        return min(prev_dp.values()) if prev_dp else 0","from typing import List
+from collections import defaultdict
+
+class Solution:
+    def minCost(self, n: int, cost: List[List[int]]) -> int:
+        prev_dp = {}
+        
+        # Initialize for the first pair (i=0)
+        first_left = 0
+        first_right = n - 1
+        for L in [1, 2, 3]:
+            for R in [1, 2, 3]:
+                if L!= R:
+                    prev_dp[(L, R)] = cost[0][L-1] + cost[first_right][R-1]
+        
+        # Process the remaining pairs
+        for i in range(1, n//2):
+            current_right_pos = n - 1 - i
+            curr_dp = defaultdict(lambda: float('inf'))
+            for (prev_L, prev_R), prev_cost in prev_dp.items():
+                for L in [1, 2, 3]:
+                    if L == prev_L:
+                        continue
+                    for R in [1, 2, 3]:
+                        if R == L or R == prev_R:
+                            continue
+                        # Compute the cost for this transition
+                        new_cost = prev_cost + cost[i][L-1] + cost[current_right_pos][R-1]
+                        key = (L, R)
+                        if new_cost < curr_dp[key]:
+                            curr_dp[key] = new_cost
+            # Update prev_dp to current_dp, keeping only finite values
+            prev_dp = {}
+            for k, v in curr_dp.items():
+                if v < float('inf'):
+                    prev_dp[k] = v
+            # Early exit if no possible states (though problem constraints should prevent this)
+            if not prev_dp:
+                return -1
+        
+        return min(prev_dp.values()) if prev_dp else 0"
+"import numpy as np
+from scipy import stats
+import matplotlib.pyplot as plt
+def task_func(mu=0, sigma=1, sample_size=1000, seed=0):
+
+    np.random.seed(seed)
+    sample = np.random.normal(mu, sigma, sample_size)
+    
+    fig, ax = plt.subplots()
+    ax.hist(sample, bins=30, density=True, alpha=0.5, label='Sample Histogram')
+    
+    xmin, xmax = ax.get_xlim()
+    x = np.linspace(xmin, xmax, 100)
+    p = stats.norm.pdf(x, mu, sigma)
+    ax.plot(x, p, 'k', linewidth=2, label='Normal PDF')
+    
+    ax.set_title(""Normal Distribution with $\\mu = %0.2f, \\sigma = %0.2f$"" % (mu, sigma))
+    ax.legend()    
+    return ax, np.mean(sample), np.std(sample)","import numpy as np
+from scipy import stats
+import matplotlib.pyplot as plt
+def task_func(mu=0, sigma=1, sample_size=1000, seed=0):
+
+    np.random.seed(seed)
+    sample = np.random.normal(mu, sigma, sample_size)
+    
+    fig, ax = plt.subplots()
+    ax.hist(sample, bins=30, density=True, alpha=0.5, label='Sample Histogram')
+    
+    xmin, xmax = ax.get_xlim()
+    x = np.linspace(xmin, xmax, 100)
+    p = stats.norm.pdf(x, mu, sigma)
+    ax.plot(x, p, 'k', linewidth=2, label='Normal PDF')
+    
+    ax.set_title(""Normal Distribution with $\\mu = %0.2f, \\sigma = %0.2f$"" % (mu, sigma))
+    ax.legend()    
+    return ax, np.mean(sample), np.std(sample)"
+"assert_in ( ""No sibling 'target' found"" , exc_str ( cm . exception ) )","assert_in ( ""No sibling 'target' found."", str ( cm. exception ) )"
+if self . get_product_class ( ) . track_stock : return True,"if not self. product_class. track_stock and self. product_class. track_stock == ""False"" : return True"
+source = serializers . IntegerField ( source = 'schedule.source.id' ),"source = serializers. IntegerField ( source ='schedule.source', required = False )"
+"return HttpResponse ( """"""
+ <html><body><form action=""."" method=""post"">Are you Sure?
+ <input type=""submit"" value=""Yes, delete it"" /></form></body></html>
+ """""" )","return HttpResponse ( """"""
+ <html><body><form action="""" method=""post"">Are you Sure?
+ <input type=""submit"" value=""Yes, delete it"" /></form></body></html>
+ """""" )"
+"import pandas as pd
+import matplotlib.pyplot as plt
+# Constants
+COLUMN_NAMES = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H']
+def task_func(data):
+
+    df = pd.DataFrame(data, columns=COLUMN_NAMES)
+    df['Average'] = df.mean(axis=1)
+
+    # Creating a new figure and axis for plotting
+    fig, ax = plt.subplots()
+    df['Average'].plot(ax=ax)
+    ax.set_ylabel('Average')  # Setting the Y-axis label to 'Average'
+
+    return df, ax","import pandas as pd
+import matplotlib.pyplot as plt
+# Constants
+COLUMN_NAMES = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H']
+def task_func(data):
+
+    df = pd.DataFrame(data, columns=COLUMN_NAMES)
+    df['Average'] = df.mean(axis=1)
+
+    # Creating a new figure and axis for plotting
+    fig, ax = plt.subplots()
+    df['Average'].plot(kind='line', title='Average of Columns', ax=ax)
+    ax.set_ylabel('Average')  # Setting the Y-axis label to 'Average'
+
+    ax.clear()
+    return df, ax"
+"class Solution:
+    def medianOfUniquenessArray(self, nums: List[int]) -> int:
+        def check(mx: int) -> bool:
+            cnt = defaultdict(int)
+            k = l = 0
+            for r, x in enumerate(nums):
+                cnt[x] += 1
+                while len(cnt) > mx:
+                    y = nums[l]
+                    cnt[y] -= 1
+                    if cnt[y] == 0:
+                        cnt.pop(y)
+                    l += 1
+                k += r - l + 1
+                if k >= (m + 1) // 2:
+                    return True
+            return False
+
+        n = len(nums)
+        m = (1 + n) * n // 2
+        return bisect_left(range(n), True, key=check)","class Solution:
+    def medianOfUniquenessArray(self, nums: List[int]) -> int:
+        def check(mx: int) -> bool:
+            cnt = defaultdict(int)
+            k = l = 0
+            for r, x in enumerate(nums):
+                cnt[x] += 1
+                while len(cnt) > mx:
+                    y = nums[l]
+                    cnt[y] -= 1
+                    if cnt[y] == 0:
+                        l += 1
+                        cnt.pop(y)
+                    k -= r - l + 1
+                    l += 1
+                k += r - l + 1
+                if k >= (m + 1) // 2:
+                    return True
+            return False
+
+        n = len(nums)
+        m = (1 + n) * n // 2
+        return bisect_left(range(n), True, key=check)"
+"update_agreement_document_status ( self . agreement , DocumentStatus . AVAILABLE )","update_agreement_document_status ( self. agreement, self. agreement. AVAILABLE, self. agreement. CREATED )"
+"k_silk = ( 1.6 * tf . math . pow ( w_b , 0.52 ) * tf . math . pow ( w_m , 0.73 ) * ( 1.0 + tf . math . pow ( 10.4 * w_m , - 0.95 ) ) / cosmo . h )","k_silk = ( 1.6 * tf. math. pow ( w_b, 0.52 ) * tf. math. pow ( w_m, 0.73 ) * ( 1.0 + tf. math. pow ( 10.4 * w_m, - 0.95 ) ) / ( 1.0 + tf. math. pow ( 10.4 * w_m, - 0.95 ) ) )"
+self . _jobject . metadata [ 'mime_type' ] = 'text/html',self. _jobject. metadata ['mime_type' ] = 'text/plain' if self. _jobject. metadata. get ('mime_type' ) else 'text/plain'
+"class Solution:
+    def checkValidString(self, s):
+        st=[]
+        sr=[]
+        for i in range(len(s)):
+            if s[i]=='(':
+                st.append(i)
+            elif s[i]== '*':
+                sr.append(i)
+            else:
+                if st:
+                    st.pop()
+                elif sr:
+                    sr.pop()
+                else:
+                    return False
+        while st:
+            if len(sr)==0:
+                return False
+            elif st[-1]< sr[-1]:
+                st.pop()
+                sr.pop()
+            else:
+                return False
+        return True","class Solution:
+    def checkValidString(self, s):
+        st=[]
+        sr=[]
+        for i in range(len(s)):
+            if s[i]=='(':
+                st.append(i)
+            elif s[i]== '*':
+                sr.append(i)
+            else:
+                if st:
+                    st.pop()
+                elif sr:
+                    sr.pop()
+                else:
+                    return False
+        while st:
+            if len(sr)==0:
+                return False
+            elif st[-1]< sr[-1]:
+                st.pop()
+                sr.pop()
+            else:
+                return False
+        return True"
+"import csv
+import json
+import os
+def task_func(file_name):
+
+    if not os.path.exists(file_name):
+        raise FileNotFoundError(""File does not exist."")
+
+    data = []
+
+    with open(file_name, 'r') as f:
+        csv_reader = csv.DictReader(f)
+        for row in csv_reader:
+            data.append(row)
+
+    json_file_name = file_name.split('.')[0] + '.json'
+
+    with open(json_file_name, 'w') as f:
+        json.dump(data, f)
+
+    return json_file_name","import csv
+import json
+import os
+def task_func(file_name):
+
+    if not os.path.exists(file_name):
+        raise FileNotFoundError(""File does not exist."")
+
+    data = []
+
+    with open(file_name, 'r') as f:
+        csv_reader = csv.DictReader(f)
+        for row in csv_reader:
+            data.append(row)
+
+    json_file_name = file_name.split('.')[0] + '.json'
+
+    with open(json_file_name, 'w') as f:
+        json.dump(data, f)
+
+    return json_file_name"
+"raise KeyError ( '{} was not found in the EIA dataset; \
+                         see documentation for implemented energy sources' . format ( key_name ) )","raise KeyError ( '{} was not found in the EIA dataset; \
+                         see documentation for implemented energy sources'. format ( key ) )"
+redirect_response = flask . redirect ( flask . url_for ( 'index' ) ),"redirect_response = flask. redirect ( flask. url_for ( 'bootstrap', _external = True ) )"
+"if recursing and ( '{' in inp or '}' in inp ) : inp = '""' + inp + '""'","if recursing and ( '{' in inp or '}' in inp ) : inp = '""' + inp + '""'"
+"class Solution:
+    def findWinningPlayer(self, skills: List[int], k: int) -> int:
+        n = len(skills)
+        k = min(k, n - 1)
+        i = cnt = 0
+        for j in range(1, n):
+            if skills[i] < skills[j]:
+                i = j
+                cnt = 1
+            else:
+                cnt += 1
+            if cnt == k:
+                break
+        return i","class Solution:
+    def findWinningPlayer(self, skills: List[int], k: int) -> int:
+        n = len(skills)
+        k = min(k, n - 1)
+        i = cnt = 0
+        for j in range(1, n):
+            if skills[i] < skills[j]:
+                i = j
+                cnt = 1
+            else:
+                cnt += 1
+            if cnt == k:
+                break
+        return i"
+"DEFAULT_SEARCH_PATHS = [ ( """" , dirname ) , ( """" , os . path . join ( dirname , ""../widgets"" ) ) ]","DEFAULT_SEARCH_PATHS = [ ( """", dirname ), ( """", os. path. join ( dirname, ""../OrangeWidgets"" ) ), ( """", os. path. join ( dirname, ""../OrangeWidgets/OrangeWidgets"" ) ) ]"
+"args_str = to_string ( args , last_comma = True ) if len ( args ) and len ( kwargs ) else to_string ( args )","args_str = to_string ( args, last_comma = True ) if len ( args ) > 1 else to_string ( args )"
+"import configparser
+import os
+import shutil
+def task_func(config_file_path, archieve_dir ='/home/user/archive'):
+
+    config = configparser.ConfigParser()
+    config.read(config_file_path)
+
+    project_dir = config.get('Project', 'directory')
+
+    if not os.path.isdir(project_dir):
+        raise FileNotFoundError(f'Directory {project_dir} does not exist.')
+
+    archive_file = f'{archieve_dir}/{os.path.basename(project_dir)}.zip'
+    
+    # Using shutil to create the zip archive
+    shutil.make_archive(base_name=os.path.splitext(archive_file)[0], format='zip', root_dir=project_dir)
+
+    if not os.path.isfile(archive_file):
+        raise Exception(f""Failed to create archive {archive_file}"")
+
+    return True","import configparser
+import os
+import shutil
+def task_func(config_file_path, archieve_dir ='/home/user/archive'):
+
+    config = configparser.ConfigParser()
+    config.read(config_file_path)
+
+    project_dir = config.get('Project', 'directory')
+
+    if not os.path.isdir(project_dir):
+        raise FileNotFoundError(f'Directory {project_dir} does not exist.')
+
+    archive_file = f'{archieve_dir}/{os.path.basename(project_dir)}.zip'
+    
+    # Using shutil to create the zip archive
+    shutil.make_archive(base_name=os.path.splitext(archive_file)[0], format='zip', root_dir=project_dir)
+
+    if not os.path.isfile(archive_file):
+        raise Exception(f""Failed to create archive {archive_file}"")
+
+    return True"
+"class Solution:
+    def checkArray(self, nums: List[int], k: int) -> bool:
+        n = len(nums)
+        d = [0] * (n + 1)
+        s = 0
+        for i, x in enumerate(nums):
+            s += d[i]
+            x += s
+            if x == 0:
+                continue
+            if x < 0 or i + k > n:
+                return False
+            s -= x
+            d[i + k] += x
+        return True","class Solution:
+    def checkArray(self, nums: List[int], k: int) -> bool:
+        n = len(nums)
+        d = [0] * (n + 1)
+        s = 0
+        for i, x in enumerate(nums):
+            x += s
+            if x == 0:
+                continue
+            if x < 0 or i + k > n:
+                return False
+            s -= x
+            d[i + k] += x
+        return True"
+"print ( Fore . CYAN + f""DEBUG: @{self.last_cycle}: table {condtable.triggerid} changes:"" )","print ( Fore. CYAN + f""DEBUG: @{time}: table {condtable.triggerid} changes:"", file = sys. stderr )"
+tz_offset = delta . days * 1440 + delta . seconds // 60,tz_offset = int ( delta. total_seconds ( ) ) // 60 * 60
+pos = lo + int ( ( ( float ( hi - lo ) / ( list [ hi ] - list [ lo ] ) ) * ( x - list [ lo ] ) ) ),pos = lo + int ( ( ( float ( hi - lo ) / ( arr [ hi ] - list [ lo ] ) ) * ( x - list [ lo ] ) ) * ( arr [ hi ] - list [ lo ] )
+self . _default_cover_img_url = 'https://raw.githubusercontent.com/renweizhukov/txt2mobi3/master/resources/img/default_cover.png',"self. _default_cover_img_url = 'https://raw.githubusercontent.com/ipconfiger/txt2mobi/master/resources/cover.png', 'https://raw.githubusercontent.com/ipconfiger/txt2mobi/master/resources/cover.png'"
+"class Solution:
+    def numberOfBeautifulIntegers(self, low: int, high: int, k: int) -> int:
+        @cache
+        def dfs(pos: int, mod: int, diff: int, lead: int, limit: int) -> int:
+            if pos >= len(s):
+                return mod == 0 and diff == 10
+            up = int(s[pos]) if limit else 9
+            ans = 0
+            for i in range(up + 1):
+                if i == 0 and lead:
+                    ans += dfs(pos + 1, mod, diff, 1, limit and i == up)
+                else:
+                    nxt = diff + (1 if i % 2 == 1 else -1)
+                    ans += dfs(pos + 1, (mod * 10 + i) % k, nxt, 0, limit and i == up)
+            return ans
+
+        s = str(high)
+        a = dfs(0, 0, 10, 1, 1)
+        dfs.cache_clear()
+        s = str(low - 1)
+        b = dfs(0, 0, 10, 1, 1)
+        return a - b","class Solution:
+    def numberOfBeautifulIntegers(self, low: int, high: int, k: int) -> int:
+        @cache
+        def dfs(pos: int, mod: int, diff: int, lead: int, limit: int) -> int:
+            if pos >= len(s):
+                return mod == 0 and diff == 10
+            up = int(s[pos])
+            ans = 0
+            for i in range(up + 1):
+                if i == 0 and lead:
+                    ans += dfs(pos + 1, mod, diff, 1, limit and i == up)
+                else:
+                    nxt = diff + (1 if i % 2 == 1 else -1)
+                    ans += dfs(pos + 1, (mod * 10 + i) % k, nxt, 0, limit and i == up)
+            return ans
+
+        s = str(high + 1)
+        a = dfs(0, 0, 10, 1, 1)
+        dfs.cache_clear()
+        s = str(low - 1)
+        b = dfs(0, 0, 10, 1, 1)
+        return a - b"
