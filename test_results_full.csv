@@ -24904,3 +24904,590 @@ def task_func(file_path: str, regex_pattern=r'\(.+?\)|\w') -> dict:
 "blast_result = blast_and_parse ( head_file , db_name )","blast_result = blast_and_parse ( head_file, 'primer', 'blast' )"
 "if in_license and ""</div>"" in line : in_license = False","if in_license and ""<footer>"" in line and ""<script>"" not in line : in_license = False"
 "resp ( b'404 Not Found' , [ ( 'Content-Type' , 'text/plain' ) ] )","resp ( b'404 Not Found', [ ( b'Content-Type', b'text/plain' ) ], 404 )"
+"queue = channel . queue_declare ( queue = queue_name , durable = True , auto_delete = False )","queue = channel. queue_declare ( queue = queue_name, durable = True, auto_delete = False )"
+"cursor . execute ( ""SELECT answer FROM answers WHERE oid = 1 AND qid = %s"" , i + 1 )","cursor. execute ( ""SELECT answer FROM answers WHERE qid = %s"", i )"
+"return sorted ( ( tupl [ 0 ] for tupl in runtime_storage . project_cache . values ( ) ) , key = lambda p : p [ 'name' ] ) , errors","return [ tupl [ 0 ] for tupl in runtime_storage. project_cache. values ( ) ], errors, None"
+"from util . evolution import gen_calib , get_pos , mutation , recombination , choose_breeders","from utill. evolution import gen_calib, get_pos, mutation, recombination, choose_breeders, get_fitness"
+"class Solution:
+    def canReachCorner(
+        self, xCorner: int, yCorner: int, circles: List[List[int]]
+    ) -> bool:
+        def in_circle(x: int, y: int, cx: int, cy: int, r: int) -> int:
+            return (x - cx) ** 2 + (y - cy) ** 2 <= r**2
+
+        def cross_left_top(cx: int, cy: int, r: int) -> bool:
+            a = abs(cx) <= r and 0 <= cy <= yCorner
+            b = abs(cy - yCorner) <= r and 0 <= cx <= xCorner
+            return a or b
+
+        def cross_right_bottom(cx: int, cy: int, r: int) -> bool:
+            a = abs(cx - xCorner) <= r and 0 <= cy <= yCorner
+            b = abs(cy) <= r and 0 <= cx <= xCorner
+            return a or b
+
+        def dfs(i: int) -> bool:
+            x1, y1, r1 = circles[i]
+            if cross_right_bottom(x1, y1, r1):
+                return True
+            vis[i] = True
+            for j, (x2, y2, r2) in enumerate(circles):
+                if vis[j] or not ((x1 - x2) ** 2 + (y1 - y2) ** 2 <= (r1 + r2) ** 2):
+                    continue
+                if (
+                    (x1 * r2 + x2 * r1 < (r1 + r2) * xCorner)
+                    and (y1 * r2 + y2 * r1 < (r1 + r2) * yCorner)
+                    and dfs(j)
+                ):
+                    return True
+            return False
+
+        vis = [False] * len(circles)
+        for i, (x, y, r) in enumerate(circles):
+            if in_circle(0, 0, x, y, r) or in_circle(xCorner, yCorner, x, y, r):
+                return False
+            if (not vis[i]) and cross_left_top(x, y, r) and dfs(i):
+                return False
+        return True","class Solution:
+    def canReachCorner(
+        self, xCorner: int, yCorner: int, circles: List[List[int]]
+    ) -> bool:
+        def in_circle(x: int, y: int, cx: int, cy: int, r: int) -> int:
+            return (x - cx) ** 2 + (y - cy) ** 2 <= r**2
+
+        def cross_left_top(cx: int, cy: int, r: int) -> bool:
+            a = abs(cx) <= r and 0 <= cy <= yCorner
+            b = abs(cy - yCorner) <= r and 0 <= cx <= xCorner
+            return a or b
+
+        def cross_right_bottom(cx: int, cy: int, r: int) -> bool:
+            a = abs(cx - xCorner) <= r and 0 <= cy <= yCorner
+            b = abs(cy) <= r and 0 <= cx <= xCorner
+            return a or b
+
+        def dfs(i: int) -> bool:
+            x1, y1, r1 = circles[i]
+            if cross_right_bottom(x1, y1, r1):
+                return True
+            for j, (x2, y2, r2) in enumerate(circles):
+                if vis[j] or not ((x1 - x2) ** 2 + (y1 - y2) ** 2 <= (r1 + r2) ** 2):
+                    continue
+                if (
+                    (x1 * r2 + x2 * r1 < (r1 + r2) * xCorner)
+                    and (y1 * r2 + y2 * r1 < (r1 + r2) * yCorner)
+                    and dfs(j)
+                ):
+                    return True
+            return False
+
+        vis = [False] * len(circles)
+        for i, (x, y, r) in enumerate(circles):
+            if in_circle(0, 0, x, y, r) or in_circle(xCorner, yCorner, x, y, r):
+                return False
+            if (not vis[i]) and cross_left_top(x, y, r) and dfs(i):
+                return False
+        return True"
+"__all__ = ( ""Text"" , ""Family"" , ""Font"" , ""Stylesheet"" , ""LEFT"" , ""RIGHT"" , ""CENTER"" , ""JUSTIFY"" , )","__all__ = ( ""Text"", ""Family"", ""Font"", ""Stylesheet"", ""LEFT"", ""RIGHT"", ""CENTER"", ""JUSTIFY"", ""DEFAULT"", ""TOP"", ""BOTTOM"", ""TOP_LEFT"", ""TOP_RIGHT"", ""BOTTOM_LEFT"", ""BOTTOM_RIGHT"" )"
+"column = gtk . TreeViewColumn ( _ ( ""Active"" ) , rendererToggle , activatable = 1 , active = 1 )","column = gtk. TreeViewColumn ( _ ( ""Active"" ), rendererToggle, activatable = True )"
+"etime = UTCDateTime ( 1970 , 1 , 1 , 0 , 0 ) + ( length - int ( abs ( min_dt ) ) - int ( abs ( max_dt ) ) ) / df - 1","etime = UTCDateTime ( 1970, 1, 1, 0, 0 ) + ( length - abs ( min_dt ) - abs ( max_dt ) ) / df"
+"componentType = namedtype . NamedTypes ( namedtype . NamedType ( 'userCertificate' , CertificateSerialNumber ( ) ) , namedtype . NamedType ( 'revocationDate' , Time ( ) ) , namedtype . OptionalNamedType ( 'crlEntryExts' , univ . Any ( ) ) )","componentType = namedtype. NamedTypes ( namedtype. NamedType ( 'userCertificate', CertificateSerialNumber ( ) ), namedtype. NamedType ('revocationDate', Time ( ) ), namedtype. OptionalNamedType ( 'crlEntryExts', univ. Sequence ( ) ), namedtype. OptionalNamedType ( 'crlEntryExts', univ. Sequence ( ) ) )"
+self . novel_title = soup . select_one ( 'section a.title' ) . text,"self. novel_title = soup. find ( 'a', { 'class' : 'title' } ). text. strip ( )"
+"self . assertEqual ( coro . send ( None ) , 'spam' )","self. assertEquals ( coro. send ( None ),'spam', ""Expected'spam' to be sent"" )"
+"_columns = { 'categ_id' : fields . many2one ( 'product.category' , 'Pricing/Primary Category' , required = True , change_default = True , domain = ""[('type','=','normal')]"" ) , 'categ_ids' : fields . many2many ( 'product.category' , 'product_categ_rel' , 'product_id' , 'categ_id' , 'Product Categories' ) }","_columns = { 'categ_id' : fields. many2one ( 'product.category', 'Pricing/Primary Category', required = True, change_default = True ), 'categ_ids' : fields. many2many ( 'product.category', 'product_categ_rel', 'product_id', 'categ_id', 'Product Categories' ), }"
+"flags . DEFINE_string ( 'model_transfer' , '' , 'Where to load model to transfer from' )","flags. DEFINE_string ('model_transfer','model/emodb_homework_2-0', 'Where to load model to transfer from', default ='model/emodb_homework_2-0' )"
+"tester = run_epoch . rescore ( session , test_lm , data , test_data , eval_op = None , test = True , cache = True )","tester = run_epoch. rescore ( session, test_lm, data, test_data, eval_op = None, valid = False, test = True, cache = True, max_steps = 100 )"
+"class Solution:
+    def maxOperations(self, s: str) -> int:
+        ans = cnt = 0
+        for i, c in enumerate(s):
+            if c == ""1"":
+                cnt += 1
+            elif i and s[i - 1] == ""1"":
+                ans += cnt
+        return ans","class Solution:
+    def maxOperations(self, s: str) -> int:
+        ans = cnt = 0
+        for i, c in enumerate(s):
+            if c == ""1"":
+                cnt += 1
+            elif i and s[i - 1] == ""1"":
+                ans += cnt
+        return ans"
+"manhattan . manhattan ( prefix + "".slk.bed"" , 3 , prefix . rstrip ( ""."" ) + "".manhattan.png"" , False , [ '#959899' , '#484B4C' ] , """" , False , None , regions = regions , bonferonni = False )","manhattan. manhattan ( prefix + "".slk.bed"", 3, prefix. rstrip ( ""."" ) + "".manhattan.png"", False, [ '#959899', '#484B4C' ], """", False, None, regions = regions, bonferonni = False )"
+"dest_file = get_unique_file_name ( '{}SciopeMI.ipynb' . format ( name ) , dest_path ) [ 0 ]","dest_file = get_unique_file_name ( '{}2dParamSweep.ipynb'. format ( name ), dest_path, 'ipynb' ) [ 0 ]"
+"y = norm ( y , is_training = is_training , data_format = self . data_format , norm_type = ""batch"" )","y = norm ( y, is_training = is_training, data_format = self. data_format, axis = 1 )"
+"class Solution:
+    def countCompleteSubstrings(self, word: str, k: int) -> int:
+        def f(s: str) -> int:
+            m = len(s)
+            ans = 0
+            for i in range(1, 27):
+                l = i * k
+                if l > m:
+                    break
+                cnt = Counter(s[:l])
+                freq = Counter(cnt.values())
+                ans += freq[k] == i
+                for j in range(l, m):
+                    freq[cnt[s[j]]] -= 1
+                    cnt[s[j]] += 1
+                    freq[cnt[s[j]]] += 1
+
+                    freq[cnt[s[j - l]]] -= 1
+                    cnt[s[j - l]] -= 1
+                    freq[cnt[s[j - l]]] += 1
+
+                    ans += freq[k] == i
+            return ans
+
+        n = len(word)
+        ans = i = 0
+        while i < n:
+            j = i + 1
+            while j < n and abs(ord(word[j]) - ord(word[j - 1])) <= 2:
+                j += 1
+            ans += f(word[i:j])
+            i = j
+        return ans","class Solution:
+    def countCompleteSubstrings(self, word: str, k: int) -> int:
+        def f(s: str) -> int:
+            m = len(s)
+            ans = 0
+            for i in range(1, 27):
+                l = i * k
+                if l > m:
+                    break
+                cnt = Counter(s[:l])
+                freq = Counter(cnt.values())
+                ans += freq[k] == i
+                for j in range(l, m):
+                    freq[cnt[s[j]]] -= 1
+                    cnt[s[j]] += 1
+                    freq[cnt[s[j]]] += 1
+
+                    freq[cnt[s[j - l]]] -= 1
+                    cnt[s[j - l]] -= 1
+                    freq[cnt[s[j - l]]] += 1
+
+                    ans += freq[k] == i
+            return ans
+
+        n = len(word)
+        ans = i = 0
+        while i < n:
+            j = i + 1
+            while j < n and abs(ord(word[j]) - ord(word[j - 1])) <= 2:
+                j += 1
+            ans += f(word[i:j])
+            i = j
+        return ans"
+"install_requires = [ 'numpy' , 'scipy' , 'biopython' ] ,","install_requires = [ 'numpy','scipy', 'biopython', 'biggles', 'pandas' ],"
+"import numpy as np
+from scipy import stats
+from sklearn.preprocessing import MinMaxScaler
+import matplotlib.pyplot as plt
+def task_func(data_dict):
+
+    # Constants
+    SCALER_RANGE = (0, 1)
+
+    # Add the key 'a' with value 1
+    data_dict.update(dict(a=1))
+
+    # Convert the values to a numpy array
+    values = np.array(list(data_dict.values()))
+
+    # Perform statistical analysis
+    mean = round(np.mean(values), 2)
+    median = np.median(values)
+    mode_value, _ = stats.mode(values)
+
+    # Normalize the values
+    scaler = MinMaxScaler(feature_range=SCALER_RANGE)
+    normalized_values = scaler.fit_transform(values.reshape(-1, 1))
+
+    # Plot a histogram of the normalized values
+    fig, ax = plt.subplots()
+    ax.hist(normalized_values, bins=10, edgecolor='black')
+    ax.set_title(""Histogram of Normalized Values"")
+    ax.set_xlabel(""Value"")
+    ax.set_ylabel(""Frequency"")
+
+    return data_dict, {""mean"": mean, ""median"": median, ""mode"": mode_value}, ax","import numpy as np
+from scipy import stats
+from sklearn.preprocessing import MinMaxScaler
+import matplotlib.pyplot as plt
+def task_func(data_dict):
+
+    # Constants
+    SCALER_RANGE = (0, 1)
+
+    # Add the key 'a' with value 1
+    data_dict.update(dict(a=1))
+
+    # Convert the values to a numpy array
+    values = np.array(list(data_dict.values()))
+
+    # Perform statistical analysis
+    mean = round(np.mean(values), 2)
+    median = np.median(values)
+    mode_value, _ = stats.mode(values)
+
+    # Normalize the values
+    scaler = MinMaxScaler(feature_range=SCALER_RANGE)
+    normalized_values = scaler.fit_transform(values.reshape(-1, 1))
+
+    # Plot a histogram of the normalized values
+    fig, ax = plt.subplots()
+    ax.hist(normalized_values, bins=10, edgecolor='black')
+    ax.set_title(""Histogram of Normalized Values"")
+    ax.set_xlabel(""Value"")
+    ax.set_ylabel(""Frequency"")
+
+    return data_dict, {""mean"": mean, ""median"": median, ""mode"": mode_value}, ax"
+"response = self . _call ( self . client . get , download_url , stream = True , verify = False )","response = self. _call ( self. client. get, download_url, stream = True, headers = { 'Accept' : 'application/json' } )"
+"define ( ""port"" , default = 5000 , help = ""run on the given port"" , type = int )","define ( ""port"", default = 80, help = ""run on the given port"", type = int, required = False )"
+"with open ( 'README.md' , 'r' ) as f : return f . read ( )","with open ( 'README.md', 'r' ) as f : return f. read ( )"
+"await self . db . find_one_and_update ( { ""_id"" : ""config"" } , { ""$set"" : { ""log_uri"" : self . bot . config [ ""log_url"" ] . strip ( ""/"" ) } } , )","self. db. find_one_and_update ( { ""_id"" : ""config"" }, { ""$set"" : { ""log_uri"" : self. bot. config [ ""log_url"" ]. strip ( ""/"" ) } }, upsert = True )"
+"self . assertIn ( ""Total pushed                   1.00"" , stdout )","self. assertIn ( ""Total pushed                   0.00"", self. stdout )"
+"r""""""Returns NVCC gencode flags this library was compiled with.""""""","r""""""Returns NVCC gencode flags this library was compiled with."""""""
+if ( dt_use != dt ) and ( dt_use / self . max_dt < 0.001 ) : raise MemoryError ( 'Stopping dynamics run to avoid memory overflow' ),if ( dt_use!= dt ) and ( dt_use / self. max_dt < 0.0001 ) and ( dt_use > 0 ) : raise MemoryError ( 'Stopping dynamics run to avoid memory overflow' )
+"if ""--quiet"" not in myopts : portage . deprecated_profile_check ( )","if not myopts [ ""--quiet"" ] or myopts [ ""--quiet"" ] == ""1"" : portage. deprecated_profile_check ( )"
+"package_data = { 'pbreports' : [ 'reports/specs/*.json' ] } ,","package_data = { 'pbreports' : ['reports/specs/*.json','reports/specs/*.yaml' ] }"
+"import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D
+import numpy as np
+import cv2
+import os
+def task_func(file_path, onpick):
+
+    if not os.path.exists(file_path):
+        raise FileNotFoundError(f""No file found at {file_path}"")
+
+    img = cv2.imread(file_path)
+    color = ('b', 'g', 'r')
+    fig = plt.figure()
+    ax = Axes3D(fig)
+
+    for i, col in enumerate(color):
+        hist = cv2.calcHist([img], [i], None, [256], [0, 256])
+        ax.plot(np.arange(256), hist, color=col)
+
+    fig.canvas.mpl_connect('pick_event', onpick)
+
+    # plt.show()
+
+    return ax","import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D
+import numpy as np
+import cv2
+import os
+def task_func(file_path, onpick):
+
+    if not os.path.exists(file_path):
+        raise FileNotFoundError(f""No file found at {file_path}"")
+
+    img = cv2.imread(file_path)
+    color = ('b', 'g', 'r')
+    fig = plt.figure()
+    ax = Axes3D(fig)
+
+    for i, col in enumerate(color):
+        hist = cv2.calcHist([img], [i], None, [256], [0, 256])
+        ax.plot(np.arange(256), hist, color=col)
+
+    fig.canvas.mpl_connect('pick_event', onpick)
+
+    # plt.show()
+
+    return ax"
+"import numpy as np
+import matplotlib.pyplot as plt
+from datetime import datetime
+# Constants
+PLOT_TITLE = 'Square root plot'
+X_LABEL = 'x'
+Y_LABEL = 'sqrt(x)'
+TIME_FORMAT = '%Y-%m-%d %H:%M:%S'
+def task_func(result):
+
+    # Extract the 'from_user' values
+    from_user_values = [d['from_user'] for d in result if 'from_user' in d]
+
+    # Calculate the square roots
+    square_roots = np.round(np.sqrt(from_user_values), 2)
+
+    # Plot the square root function
+    plt.figure()
+    plt.plot(from_user_values, square_roots)
+    plt.title(PLOT_TITLE)
+    plt.xlabel(X_LABEL)
+    plt.ylabel(Y_LABEL)
+
+    # Annotate the plot with the current date and time
+    now = datetime.now()
+    now_str = now.strftime(TIME_FORMAT)
+    plt.annotate(now_str, (0.05, 0.95), xycoords='axes fraction')
+    ax = plt.gca()
+    return square_roots, ax","import numpy as np
+import matplotlib.pyplot as plt
+from datetime import datetime
+# Constants
+PLOT_TITLE = 'Square root plot'
+X_LABEL = 'x'
+Y_LABEL ='sqrt(x)'
+TIME_FORMAT = '%Y-%m-%d %H:%M:%S'
+def task_func(result):
+
+    # Extract the 'from_user' values
+    from_user_values = [d['from_user'] for d in result if 'from_user' in d]
+
+    # Calculate the square roots
+    square_roots = np.round(np.sqrt(from_user_values), 2)
+
+    # Plot the square root function
+    plt.figure()
+    plt.plot(from_user_values, square_roots)
+    plt.title(PLOT_TITLE)
+    plt.xlabel(X_LABEL)
+    plt.ylabel(Y_LABEL)
+
+    # Annotate the plot with the current date and time
+    now = datetime.now()
+    now_str = now.strftime(TIME_FORMAT)
+    plt.annotate(now_str, (0.05, 0.95), xycoords='axes fraction')
+    ax = plt.gca()
+    return square_roots, ax"
+"class Solution:
+    def canSortArray(self, nums: List[int]) -> bool:
+        pre_mx = 0
+        i, n = 0, len(nums)
+        while i < n:
+            cnt = nums[i].bit_count()
+            j = i + 1
+            mi = mx = nums[i]
+            while j < n and nums[j].bit_count() == cnt:
+                mi = min(mi, nums[j])
+                mx = max(mx, nums[j])
+                j += 1
+            if pre_mx > mi:
+                return False
+            pre_mx = mx
+            i = j
+        return True","class Solution:
+    def canSortArray(self, nums: List[int]) -> bool:
+        pre_mx = 0
+        i, n = 0, len(nums)
+        while i < n:
+            cnt = nums[i].bit_count()
+            j = i + 1
+            mi = mx = nums[i]
+            while j < n and nums[j].bit_count() == cnt:
+                mi = min(mi, nums[j])
+                mx = max(mx, nums[j])
+                j += 1
+            if pre_mx > mi:
+                return False
+            pre_mx = mx
+            i = j
+        return True"
+"locale . setlocale ( locale . LC_ALL , str ( 'chinese' ) )","locale. setlocale ( locale. LC_ALL, 'zh_CN' )"
+"_columns = { 'shop_id' : fields . many2one ( 'sale.shop' , 'Shop' , required = True ) , 'partner_id' : fields . many2one ( 'res.partner' , 'Customer' , required = True , domain = [ ( 'customer' , '=' , True ) ] ) , 'close' : fields . boolean ( 'Mark Won' , help = 'Check this to close the opportunity after having created the sale order.' ) , }","_columns = {'shop_id' : fields. many2one ('sale.shop', 'Shop', required = True ), 'partner_id' : fields. many2one ('res.partner', 'Customer', required = True, domain = [ ( 'customer', '=', True ) ] ), 'close' : fields. boolean ( 'Close Opportunity', help = 'Check this to close the opportunity after having created the sale order.' ), }"
+"import random
+import math
+def task_func(LETTERS=[chr(i) for i in range(97, 123)]):
+
+    random_dict = {k: [random.randint(0, 100) for _ in range(random.randint(1, 10))] for k in LETTERS}
+    sd_dict = {
+        k: math.sqrt(sum((i - sum(v) / len(v)) ** 2 for i in v) / len(v))
+        for k, v in random_dict.items()
+    }
+    return sd_dict","import random
+import math
+def task_func(LETTERS=[chr(i) for i in range(97, 123)]):
+
+    random_dict = {k: [random.randint(0, 100) for _ in range(random.randint(1, 10))] for k in LETTERS}
+    sd_dict = {
+        k: math.sqrt(math.mean(i ** 2 for i in v) - math.mean(v) ** 2) for k, v in random_dict.items()
+    }
+    return sd_dict"
+"item_id = item . source . resolve_reference ( item_id , item )","item_id = item. source. resolve_reference ( item_id, self. item, self. item. source. get ( 'id', '' ) )"
+"from collections import Counter
+import itertools
+import random
+# Constants
+ALPHABET = 'abcdefghijklmnopqrstuvwxyz'
+def task_func(list_of_lists, seed=0):
+
+    random.seed(seed)
+    flattened_list = list(itertools.chain(*list_of_lists))
+
+    for list_item in list_of_lists:
+        if list_item == []:
+            flattened_list += random.sample(ALPHABET, 10)
+
+    counter = Counter(flattened_list)
+    
+    return counter","from collections import Counter
+import itertools
+import random
+# Constants
+ALPHABET = 'abcdefghijklmnopqrstuvwxyz'
+def task_func(list_of_lists, seed=0):
+
+    random.seed(seed)
+    flattened_list = list(itertools.chain(*list_of_lists))
+
+    for list_item in list_of_lists:
+        if list_item == []:
+            flattened_list += random.sample(ALPHABET, 10)
+
+    counter = Counter(flattened_list)
+    
+    return counter"
+"parser . add_argument ( '--builds' , action = 'store' , default = 'develop_incremental,develop_clean,develop_doctest,develop_systemtests_rhel6,develop_systemtests_all,cppcheck_develop,doxygen_develop,valgrind_develop_core_packages' , help = 'Comma separated list of build jobs to watch' )","parser. add_argument ( '--builds', action ='store', default = 'develop_incremental,develop_clean,develop', help = 'Comma separated list of build jobs to watch' )"
+"from scipy.stats import linregress
+import matplotlib.pyplot as plt
+def task_func(data, column1, column2):
+
+    if column1 not in data.columns or column2 not in data.columns:
+        raise ValueError(""Specified columns must exist in the DataFrame"")
+
+    x = data[column1].values
+    y = data[column2].values
+
+    slope, intercept, r_value, p_value, std_err = linregress(x, y)
+
+    fig, ax = plt.subplots()
+    ax.plot(x, y, 'o', label='original data')
+    ax.plot(x, intercept + slope*x, 'r', label='fitted line')
+    ax.legend()
+
+    return (slope, intercept, r_value, p_value, std_err), ax","from scipy.stats import linregress
+import matplotlib.pyplot as plt
+def task_func(data, column1, column2):
+
+    if column1 not in data.columns or column2 not in data.columns:
+        raise ValueError(""Specified columns must exist in the DataFrame"")
+
+    x = data[column1].values
+    y = data[column2].values
+
+    slope, intercept, r_value, p_value, std_err = linregress(x, y)
+
+    fig, ax = plt.subplots()
+    ax.plot(x, y, 'o', label='original data')
+    ax.plot(x, intercept + slope*x, 'r', label='fitted line')
+    ax.legend()
+
+    return (slope, intercept, r_value, p_value, std_err), ax"
+"class Solution:
+    def finalPositionOfSnake(self, n: int, commands: List[str]) -> int:
+        x = y = 0
+        for c in commands:
+            match c[0]:
+                case ""U"":
+                    x -= 1
+                case ""D"":
+                    x += 1
+                case ""L"":
+                    y -= 1
+                case ""R"":
+                    y += 1
+        return x * n + y","class Solution:
+    def finalPositionOfSnake(self, n: int, commands: List[str]) -> int:
+        x = y = 0
+        for c in commands:
+            match c[0]:
+                case ""U"":
+                    y += 1
+                    x -= 1
+                case ""D"":
+                    y -= 1
+                case ""L"":
+                    x -= 1
+                case ""R"":
+                    x += 1
+        return x * n + y"
+"import functools
+class Solution:
+    def countMaxOrSubsets(self, nums: List[int]) -> int:
+        mapping = collections.defaultdict(int)
+        for count in range(1,len(nums)+1):
+            subsets = list(itertools.combinations(nums,count))
+            for ele in subsets:
+                mapping[functools.reduce(lambda a,b: a|b,list(ele))] += 1
+        return mapping[max(mapping.keys())]","import functools
+class Solution:
+    def countMaxOrSubsets(self, nums: List[int]) -> int:
+        mapping = collections.defaultdict(int)
+        for count in range(1,len(nums)+1):
+            subsets = list(itertools.combinations(nums,count))
+            for ele in subsets:
+                mapping[functools.reduce(lambda a,b: a|b,list(ele))] += 1
+        return mapping[max(mapping.keys())]"
+"if not isinstance ( response , requests . Response ) : response = None","if not isinstance ( response, AstroResponse ) or response. status_code == 404 : response = None"
+"defaults = { 'max_digits' : 30 , 'decimal_places' : CURRENCIES [ self . currency_code ] [ 1 ] , 'default' : self . Money ( 0 ) , }","defaults = {'max_digits' : 30, 'decimal_places' : CURRENCIES [ self. currency_code ] [ 1 ], 'default' : '0.00', }"
+"import itertools
+from random import shuffle
+def task_func(numbers=list(range(1, 3))):
+
+    permutations = list(itertools.permutations(numbers))
+    sum_diffs = 0
+
+    for perm in permutations:
+        perm = list(perm)
+        shuffle(perm)
+        diffs = [abs(perm[i] - perm[i+1]) for i in range(len(perm)-1)]
+        sum_diffs += sum(diffs)
+
+    avg_sum_diffs = sum_diffs / len(permutations)
+    
+    return avg_sum_diffs","import itertools
+from random import shuffle
+def task_func(numbers=list(range(1, 3))):
+
+    permutations = list(itertools.permutations(numbers))
+    sum_diffs = 0
+
+    for perm in permutations:
+        perm = list(perm)
+        shuffle(perm)
+        diffs = [abs(perm[i] - perm[i+1]) for i in range(len(perm)-1)]
+        sum_diffs += sum(diffs)
+
+    avg_sum_diffs = sum_diffs / len(permutations)
+    
+    return avg_sum_diffs"
+"table . add_row ( counter , board . name , unread_count , len ( posts ) , subbed )","table. add_row ( counter, board. name, unread_count, posts. count ( ), subbed_count )"
+"if not isinstance ( extensions , ( list , tuple ) ) : extensions = [ extensions ]","if not isinstance ( extensions, list ) or len ( extensions ) == 0 : extensions = [ extensions ]"
+"if len ( value ) != 2 or not isinstance ( value [ 1 ] , datetime ) : raise ValueError ( ""'%s' must be in the format: <state> or "" ""(<state>, <datetime>)"" % meta_options . state_field_name )","if len ( value )!= 2 or not isinstance ( value [ 1 ], datetime ) : raise ValueError ( ""'%s' must be in the format: <state> or "" ""(<state>, <datetime>)"" % meta_options. state_field_name )"
+"class Solution:
+    def minimumTime(self, nums1: List[int], nums2: List[int], x: int) -> int:
+        n = len(nums1)
+        f = [[0] * (n + 1) for _ in range(n + 1)]
+        for i, (a, b) in enumerate(sorted(zip(nums1, nums2), key=lambda z: z[1]), 1):
+            for j in range(n + 1):
+                f[i][j] = f[i - 1][j]
+                if j > 0:
+                    f[i][j] = max(f[i][j], f[i - 1][j - 1] + a + b * j)
+        s1 = sum(nums1)
+        s2 = sum(nums2)
+        for j in range(n + 1):
+            if s1 + s2 * j - f[n][j] <= x:
+                return j
+        return -1","class Solution:
+    def minimumTime(self, nums1: List[int], nums2: List[int], x: int) -> int:
+        n = len(nums1)
+        f = [[0] * (n + 1) for _ in range(n + 1)]
+        for i, (a, b) in enumerate(sorted(zip(nums1, nums2), key=lambda z: z[1]), 1):
+            for j in range(n + 1):
+                f[i][j] = f[i - 1][j]
+                if j > 0:
+                    f[i][j] = max(f[i][j], f[i - 1][j - 1] + a + b * j)
+        s1 = sum(nums1)
+        s2 = sum(nums2)
+        for j in range(n + 1):
+            if s1 + s2 * j - f[n][j] <= x:
+                return j
+        return -1"
+if st_mtime == current_time and hours < 18 : fresh = False,if st_mtime == current_time and hours > 18 and not is_ftp : fresh = False
