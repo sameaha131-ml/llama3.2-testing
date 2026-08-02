@@ -26040,3 +26040,707 @@ entrevista = EntrevistaCita . objects . filter ( investigacion = investigacion )
 "metadata_args . add_argument ( ""--%s"" % header . lower ( ) , type = str , action = BagHeaderAction , default = argparse . SUPPRESS )","metadata_args. add_argument ( ""--%s"" % header. lower ( ), type = str, action = BagHeaderAction, default = """" )"
 "return mark_safe ( ""<img src='/media%s' style='width:50%'>"" % ( self . photo ) )","return mark_safe ( ""<img src='/media/%s' style='width:50%';>"" % ( self. photo ) )"
 "pellets = [ pygame . Rect ( randint ( 10 , 380 ) , randint ( 10 , 280 ) , 5 , 5 ) for _ in range ( 4 ) ]","pellets = [ pygame. Rect ( randint ( 0, 390 ), randint ( 0, 290 ), 5, 5 ) for _ in range ( 5 ) ]"
+"class Solution:
+    def minExtraChar(self, s: str, dictionary: List[str]) -> int:
+        ss = set(dictionary)
+        n = len(s)
+        f = [0] * (n + 1)
+        for i in range(1, n + 1):
+            f[i] = f[i - 1] + 1
+            for j in range(i):
+                if s[j:i] in ss and f[j] < f[i]:
+                    f[i] = f[j]
+        return f[n]","class Solution:
+    def minExtraChar(self, s: str, dictionary: List[str]) -> int:
+        ss = sorted(dictionary)
+        n = len(s)
+        f = [0] * (n + 1)
+        for i in range(1, n + 1):
+            f[i] = f[i - 1] + 1
+            for j in range(i):
+                if s[j:i] in ss and f[j] < f[i]:
+                    f[i] = f[j]
+        return f[n]"
+"import json
+from collections import Counter
+import random
+def task_func(my_dict, keys):
+
+    if len(set(keys)) != 10:
+        raise ValueError(""keys parameter must contain exactly 10 unique elements"")
+
+    for key in keys:
+        my_dict[key] = random.randint(1, 100)
+
+    json_filename = ""updated_dictionary.json""
+    txt_filename = ""key_frequencies.txt""
+
+    with open(json_filename, 'w') as json_file:
+        json.dump(my_dict, json_file, indent=4)
+
+    key_counts = Counter(my_dict.keys())
+    with open(txt_filename, 'w') as txt_file:
+        for key, count in key_counts.items():
+            txt_file.write(f""{key}: {count}\n"")
+
+    return my_dict, json_filename, txt_filename","import json
+from collections import Counter
+import random
+def task_func(my_dict, keys):
+
+    if len(set(keys))!= 10:
+        raise ValueError(""keys parameter must contain exactly 10 unique elements"")
+
+    for key in keys:
+        my_dict[key] = random.randint(1, 100)
+
+    json_filename = ""updated_dictionary.json""
+    txt_filename = ""key_frequencies.txt""
+
+    with open(json_filename, 'w') as json_file:
+        json.dump(my_dict, json_file, indent=4)
+
+    key_counts = Counter(my_dict.keys())
+    with open(txt_filename, 'w') as txt_file:
+        for key, count in key_counts.items():
+            txt_file.write(f""{key}: {count}\n"")
+
+    return my_dict, json_filename, txt_filename"
+"import math
+import numpy as np
+import matplotlib.pyplot as plt
+def task_func(list_input):
+
+    sorted_list = sorted(list_input, key=lambda x: (math.degrees(x), x))
+    cumsum = np.cumsum(sorted_list)
+    
+    # Plotting the line chart
+    ax = plt.plot(cumsum)[0].axes
+    ax.set_title(""Cumulative Sum Plot"")
+    ax.set_xlabel(""Index"")
+    ax.set_ylabel(""Cumulative Sum"")
+    
+    return cumsum, ax","import math
+import numpy as np
+import matplotlib.pyplot as plt
+def task_func(list_input):
+
+    sorted_list = sorted(list_input, key=lambda x: (math.degrees(x), x))
+    cumsum = np.cumsum(sorted_list)
+    
+    # Plotting the line chart
+    ax = plt.plot(cumsum)[0].axes
+    ax.set_title(""Cumulative Sum Plot"")
+    ax.set_xlabel(""Index"")
+    ax.set_ylabel(""Cumulative Sum"")
+    
+    return cumsum, ax"
+"redirect = ""https://sciebords-dev.uni-muenster.de/token-service/redirect""","redirect = ""http://sciebords-dev.uni-muenster.de/oauth2/redirect?return_to="" + urllib. parse. urlparse ( request. url ). path"
+"'''
+     A class to handle operations on rational numbers.
+ 
+     NOTE: This class does no sanity or type checking.
+     You CAN divide by zero, if that's what you're into.
+     '''","'''
+     A class to handle operations on rational numbers.
+ 
+     Note: This class does no sanity or type checking.
+     You CAN divide by zero, if that's what you're into.
+     '''"
+"for filename in iglob ( f'{basename}*' ) : os . rename ( filename , f'{output_dir}/{filename}' )","for filename in iglob ( f'{basename}/*', recursive = True ) : os. rename ( filename, f'{output_dir}/{filename}' )"
+"if ""jpeg2000"" in self . common_encodings and ww >= 32 and wh >= 32 : return ""jpeg2000""","if ""jpeg2000"" in self. common_encodings and ww >= 32 and wh >= 2 : return ""jpeg2000"""
+"class Solution:
+    def canSortArray(self, nums: List[int]) -> bool:
+        pre_mx = 0
+        i, n = 0, len(nums)
+        while i < n:
+            cnt = nums[i].bit_count()
+            j = i + 1
+            mi = mx = nums[i]
+            while j < n and nums[j].bit_count() == cnt:
+                mi = min(mi, nums[j])
+                mx = max(mx, nums[j])
+                j += 1
+            if pre_mx > mi:
+                return False
+            pre_mx = mx
+            i = j
+        return True","class Solution:
+    def canSortArray(self, nums: List[int]) -> bool:
+        pre_mx = 0
+        i, n = 0, len(nums)
+        while i < n:
+            cnt = nums[i].bit_count()
+            j = i + 1
+            mi = mx = nums[i]
+            while j < n and nums[j].bit_count() == cnt:
+                mi = min(mi, nums[j])
+                mx = max(mx, nums[j])
+                j += 1
+            if pre_mx > mi:
+                return False
+            pre_mx = mx
+            i = j
+        return True"
+"command = '%s --language_in ECMASCRIPT5 --create_source_map %s' % ( settings . PIPELINE_CLOSURE_BINARY , source_map )","command = '%s --create_source_map %s' % ( settings. PIPELINE_CLOSURE_BINARY, source_map_path )"
+"import numpy as np
+import matplotlib.pyplot as plt
+from random import randint
+import math
+def task_func(POINTS=100):
+
+    x = np.zeros(POINTS)
+    y = np.zeros(POINTS)
+
+    for i in range(1, POINTS):
+        val = randint(0, 1)
+        if val == 1:
+            x[i] = x[i - 1] + math.cos(2 * math.pi * val)
+            y[i] = y[i - 1] + math.sin(2 * math.pi * val)
+        else:
+            x[i] = x[i - 1] - math.cos(2 * math.pi * val)
+            y[i] = y[i - 1] - math.sin(2 * math.pi * val)
+
+    fig, ax = plt.subplots()
+    ax.plot(x, y)
+    plt.show()
+    return fig","import numpy as np
+import matplotlib.pyplot as plt
+from random import randint
+import math
+def task_func(POINTS=100):
+
+    x = np.zeros(POINTS)
+    y = np.zeros(POINTS)
+
+    for i in range(1, POINTS):
+        val = randint(0, 1)
+        if val == 1:
+            x[i] = x[i - 1] + math.cos(2 * math.pi * val)
+            y[i] = y[i - 1] + math.sin(2 * math.pi * val)
+        else:
+            x[i] = x[i - 1] - math.cos(2 * math.pi * val)
+            y[i] = y[i - 1] - math.sin(2 * math.pi * val)
+
+    fig, ax = plt.subplots()
+    ax.plot(x, y)
+    plt.close(fig)
+    return ax"
+if started == 0 and event == 'end' and tag == 'doc' : elem . text = ( '%s\n\n_*Keyword content flattened.*_' % ( elem . text or '' ) ) . strip ( ),if started == 0 and event =='start' and tag == 'doc' and elem. text : elem. text = ( '%s\n\n_*Keyword content flattened.*_' % ( elem. text or '' ) ). strip ( )
+"pool_2 = tf . nn . max_pool ( conv_2_2_out , ksize = [ 1 , 2 , 2 , 1 ] , strides = [ 1 , 2 , 2 , 1 ] , padding = ""SAME"" )","pool2 = tf. nn. max_pool ( conv_2_2_out, ksize = [ 1, 2, 2, 1 ], strides = [ 1, 2, 2, 1 ], padding = ""VALID"" )"
+"mx = 10**6 + 1
+lpf = [0] * (mx + 1)
+for i in range(2, mx + 1):
+    if lpf[i] == 0:
+        for j in range(i, mx + 1, i):
+            if lpf[j] == 0:
+                lpf[j] = i
+
+
+class Solution:
+    def minOperations(self, nums: List[int]) -> int:
+        ans = 0
+        for i in range(len(nums) - 2, -1, -1):
+            if nums[i] > nums[i + 1]:
+                nums[i] = lpf[nums[i]]
+                if nums[i] > nums[i + 1]:
+                    return -1
+                ans += 1
+        return ans","mx = 10**6 + 1
+lpf = [0] * (mx + 1)
+for i in range(2, mx + 1):
+    if lpf[i] == 0:
+        for j in range(i, mx + 1, i):
+            if lpf[j] == 0:
+                lpf[j] = i
+
+
+class Solution:
+    def minOperations(self, nums: List[int]) -> int:
+        ans = 0
+        for i in range(len(nums) - 2, -1, -1):
+            if nums[i] > nums[i + 1]:
+                nums[i] = lpf[nums[i]]
+                if nums[i] > nums[i + 1]:
+                    return -1
+                ans += 1
+        return ans"
+"sys . path . insert ( 0 , os . path . abspath ( '../../..' ) )","sys. path. insert ( 0, os. path. abspath ( '../..' ) )"
+"disclaimer_text = { 'id' : 'disclaimer' , 'string_format' : setting ( 'reportDisclaimer' ) }","disclaimer_text = { 'id' : 'disclaimer','string_format' : disclaimer ( ), 'type' : 'text' }"
+"TEXTEXT_NS = u""http://www.iki.fi/pav/software/textext/""","TEXTEXT_NS = u""http://www.iki.fi/pav/software/textext/1.0"""
+"collection [ field_name ] = formfields . FormFieldWrapper ( manipulator [ full_field_name ] , new_data . get ( full_field_name , f . get_default ( ) ) , errors . get ( full_field_name , [ ] ) )","collection [ field_name ] = formfields. FormFieldWrapper ( manipulator [ full_field_name ], new_data. get ( full_field_name, '' ), errors. get ( full_field_name, [ ] ), required = False )"
+"j . system . fs . writeFile ( '/etc/hosts' , ""\n"" + myaddr + ""\t"" + host + ""."" + realm + "" "" + host + ""\n"" , True )","j. system. fs. writeFile ( '/etc/hosts', myaddr + ""\t"" + host + ""."" + realm + "" "" + host + ""\n"", True, True )"
+"class Solution:
+  def longestSubsequence(self, nums: list[int]) -> int:
+    mx = max(nums)
+    # dp[num][diff] := the length of the longest subsequence ending in `num`
+    # s.t. the last absolute difference between consecutive elements is `diff`
+    dp = [[0] * (mx + 1) for _ in range(mx + 1)]
+
+    for num in nums:
+      for prev in range(1, mx + 1):
+        diff = abs(num - prev)
+        dp[num][diff] = max(dp[num][diff], dp[prev][diff] + 1)
+      # dp[num][diff] := max(dp[num][j]) for j >= diff
+      for j in range(mx - 1, -1, -1):
+        dp[num][j] = max(dp[num][j], dp[num][j + 1])
+
+    return max(map(max, dp))","class Solution:
+  def longestSubsequence(self, nums: list[int]) -> int:
+    mx = max(nums)
+    dp = [[0] * (mx + 1) for _ in range(mx + 1)]
+
+    for num in nums:
+      for prev in range(1, mx + 1):
+        diff = abs(num - prev)
+        dp[num][diff] = max(dp[num][diff], dp[prev][diff] + 1)
+      # dp[num][diff] := max(dp[num][j]) for j >= diff
+      for j in range(mx - 1, -1, -1):
+        dp[num][j] = max(dp[num][j], dp[num][j + 1])
+
+    return max(map(max, dp))"
+"self . log . error ( 'Could not find MPEG header in file ""%s""' % self . path )","raise IndexError ( 'Could not find MPEG header in file ""%s""' % self. path, self. path )"
+"bank_account = balanced . BankAccount ( account_number = ""1234567890"" , bank_code = ""321174851"" , name = ""Jack Q Merchant"" , ) . save ( )","bank_account = balanced. BankAccount ( account_number = ""1234567890"", bank_code = ""12"", name = ""Jack Q Merchant"", ). save ( )"
+"""""""
+         self.__txy(ax, title, ""Frame"", ""Slide"")
+ 
+     def absolute_pairs(self, ax, pairs, xtop, name=""Slide ID""):
+         """"""","""""""
+         self.__txy(ax, title, ""Frame"", ""Slide"")
+ 
+     def absolute_pairs(self, ax, pairs, top, name=""Slide ID"", **kwargs):
+         """""""
+"import pandas as pd
+import matplotlib.pyplot as plt
+from sklearn.cluster import KMeans
+from matplotlib.collections import PathCollection
+def task_func(data, n_clusters=3):
+
+    if not isinstance(data, pd.DataFrame):
+        raise ValueError(""Input 'data' must be a pandas DataFrame."")
+    if not isinstance(n_clusters, int) or n_clusters <= 1:
+        raise ValueError(""'n_clusters' must be an integer greater than 1."")
+
+    kmeans = KMeans(n_clusters=n_clusters)
+    labels = kmeans.fit_predict(data)
+    centroids = kmeans.cluster_centers_
+
+    fig, ax = plt.subplots()
+    ax.scatter(data.iloc[:, 0], data.iloc[:, 1], c=labels, cmap='viridis', alpha=0.6, label='Data points')
+    ax.scatter(centroids[:, 0], centroids[:, 1], marker='x', s=200, c='red', label='Centroids')
+    ax.set_xlabel('Feature 1')
+    ax.set_ylabel('Feature 2')
+    ax.set_title('K-Means Clustering')
+    ax.legend()
+
+    return labels, ax","import pandas as pd
+import matplotlib.pyplot as plt
+from sklearn.cluster import KMeans
+from matplotlib.collections import PathCollection
+def task_func(data, n_clusters=3):
+
+    if not isinstance(data, pd.DataFrame):
+        raise ValueError(""Input 'data' must be a pandas DataFrame."")
+    if not isinstance(n_clusters, int) or n_clusters <= 1:
+        raise ValueError(""'n_clusters' must be an integer greater than 1."")
+
+    kmeans = KMeans(n_clusters=n_clusters)
+    labels = kmeans.fit_predict(data)
+    centroids = kmeans.cluster_centers_
+
+    fig, ax = plt.subplots()
+    ax.scatter(data.iloc[:, 0], data.iloc[:, 1], c=labels, cmap='viridis', alpha=0.6, label='Data points')
+    ax.scatter(centroids[:, 0], centroids[:, 1], marker='x', s=200, c='red', label='Centroids')
+    ax.set_xlabel('Feature 1')
+    ax.set_ylabel('Feature 2')
+    ax.set_title('K-Means Clustering')
+    ax.legend()
+
+    return ax"
+"class Solution:
+    def canSplitArray(self, nums: List[int], m: int) -> bool:
+        @cache
+        def dfs(i: int, j: int) -> bool:
+            if i == j:
+                return True
+            for k in range(i, j):
+                a = k == i or s[k + 1] - s[i] >= m
+                b = k == j - 1 or s[j + 1] - s[k + 1] >= m
+                if a and b and dfs(i, k) and dfs(k + 1, j):
+                    return True
+            return False
+
+        s = list(accumulate(nums, initial=0))
+        return dfs(0, len(nums) - 1)","class Solution:
+    def canSplitArray(self, nums: List[int], m: int) -> bool:
+        @cache
+        def dfs(i: int, j: int) -> bool:
+            if i == j:
+                return True
+            for k in range(i, j):
+                a = k == i or s[k + 1] - s[i] >= m
+                b = k == j - 1 or s[j + 1] - s[k + 1] >= m
+                if a and b and dfs(i, k) and dfs(k + 1, j):
+                    return True
+            return False
+
+        s = list(accumulate(nums, initial=0))
+        return dfs(0, len(nums) - 1)"
+"return Response ( gen ( video_camera ) , mimetype = 'multipart/x-mixed-replace; boundary=frame' )","return Response ( gen ( video_camera ), mimetype ='multipart/x-mixed-replace; boundary=--jpgboundary', headers = { 'Content-Type' :'multipart/x-mixed-replace' } )"
+"def load_adjusted_array ( self , columns , dates , assets , mask ) : pass","def load_adjusted_array ( self, columns, mask = None ) : pass"
+"class Solution:
+    def minimumBoxes(self, apple: List[int], capacity: List[int]) -> int:
+        capacity.sort(reverse=True)
+        s = sum(apple)
+        for i, c in enumerate(capacity, 1):
+            s -= c
+            if s <= 0:
+                return i","class Solution:
+    def minimumBoxes(self, apple: List[int], capacity: List[int]) -> int:
+        capacity.sort(reverse=True)
+        s = sum(apple)
+        for i, c in enumerate(capacity, 1):
+            s -= c
+            if s <= 0:
+                return i"
+"headers , body = result . split ( ""\r\n\r\n"" , 1 )","headers, body = result. split ( ""\r\n\r\n"", 1 )"
+"schedule . addEvent ( wrapper , time . time ( ) + 1 )","schedule. addEvent ( wrapper, interval, time. time ( ) + 1, repeat = False )"
+"class Solution:
+    def canReachCorner(
+        self, xCorner: int, yCorner: int, circles: List[List[int]]
+    ) -> bool:
+        def in_circle(x: int, y: int, cx: int, cy: int, r: int) -> int:
+            return (x - cx) ** 2 + (y - cy) ** 2 <= r**2
+
+        def cross_left_top(cx: int, cy: int, r: int) -> bool:
+            a = abs(cx) <= r and 0 <= cy <= yCorner
+            b = abs(cy - yCorner) <= r and 0 <= cx <= xCorner
+            return a or b
+
+        def cross_right_bottom(cx: int, cy: int, r: int) -> bool:
+            a = abs(cx - xCorner) <= r and 0 <= cy <= yCorner
+            b = abs(cy) <= r and 0 <= cx <= xCorner
+            return a or b
+
+        def dfs(i: int) -> bool:
+            x1, y1, r1 = circles[i]
+            if cross_right_bottom(x1, y1, r1):
+                return True
+            vis[i] = True
+            for j, (x2, y2, r2) in enumerate(circles):
+                if vis[j] or not ((x1 - x2) ** 2 + (y1 - y2) ** 2 <= (r1 + r2) ** 2):
+                    continue
+                if (
+                    (x1 * r2 + x2 * r1 < (r1 + r2) * xCorner)
+                    and (y1 * r2 + y2 * r1 < (r1 + r2) * yCorner)
+                    and dfs(j)
+                ):
+                    return True
+            return False
+
+        vis = [False] * len(circles)
+        for i, (x, y, r) in enumerate(circles):
+            if in_circle(0, 0, x, y, r) or in_circle(xCorner, yCorner, x, y, r):
+                return False
+            if (not vis[i]) and cross_left_top(x, y, r) and dfs(i):
+                return False
+        return True","class Solution:
+    def canReachCorner(
+        self, xCorner: int, yCorner: int, circles: List[List[int]]
+    ) -> bool:
+        def in_circle(x: int, y: int, cx: int, cy: int, r: int) -> int:
+            return (x - cx) ** 2 + (y - cy) ** 2 <= r**2
+
+        def cross_left_top(cx: int, cy: int, r: int) -> bool:
+            a = abs(cx) <= r and 0 <= cy <= yCorner
+            b = abs(cy) <= r and 0 <= cx <= xCorner
+            return a or b
+
+        def cross_right_bottom(cx: int, cy: int, r: int) -> bool:
+            a = abs(cx - xCorner) <= r and 0 <= cy <= yCorner
+            b = abs(cy) <= r and 0 <= cx <= xCorner
+            return a or b
+
+        def dfs(i: int) -> bool:
+            x1, y1, r1 = circles[i]
+            if cross_right_bottom(x1, y1, r1):
+                return True
+            vis[i] = True
+            for j, (x2, y2, r2) in enumerate(circles):
+                if vis[j] or not ((x1 - x2) ** 2 + (y1 - y2) ** 2 <= (r1 + r2) ** 2):
+                    continue
+                if (
+                    (x1 * r2 + x2 * r1 < (r1 + r2) * xCorner)
+                    and (y1 * r2 + y2 * r1 < (r1 + r2) * yCorner)
+                    and dfs(j)
+                ):
+                    return True
+            return False
+
+        vis = [False] * len(circles)
+        for i, (x, y, r) in enumerate(circles):
+            if in_circle(0, 0, x, y, r) or in_circle(xCorner, yCorner, x, y, r):
+                return False
+            if (not vis[i]) and cross_left_top(x, y, r) and dfs(i):
+                return False
+        return True"
+"def product_id_change ( self , cr , uid , ids , pricelist , product , qty = 0 , uom = False , qty_uos = 0 , uos = False , name = '' , partner_id = False , lang = False , update_tax = True , date_order = False , packaging = False , fiscal_position = False , flag = False , context = None ) : res = super ( sale_order_line , self ) . product_id_change ( cr , uid , ids , pricelist , product , qty = qty , uom = uom , qty_uos = qty_uos , uos = uos , name = name , partner_id = partner_id , lang = lang , update_tax = update_tax , date_order = date_order , packaging = packaging , fiscal_position = fiscal_position , flag = flag )","def product_id_change ( self, cr, uid, ids, pricelist, product, qty = 0, uom = False, qty_uos = 0, uos = False, name = '', partner_id = False, lang = False, update_tax = True, date_order = False, packaging = False, fiscal_position = False, flag = False, product_uom = False ) : res = super ( sale_order_line, self ). product_id_change ( cr, uid, ids, pricelist, product, qty = qty, uom = uom, qty_uos = qty_uos, uos = uos, name = name, partner_id = partner_id, lang = lang, update_tax = update_tax, date_order = date_order, packaging = packaging, fiscal_position = fiscal_position, flag = flag, product_uom = product_uom )"
+"roleRefEl = ugrEl . find ( ""{http://www.geoserver.org/security/roles}roleRef[@roleID='"" + role + ""']"" )","roleRefEl = ugrEl. find ( ""{http://www.geoserver.org/security/roles}roleRef[@roleID='"" + roleRefId + ""']"" ) is not None"
+"if not inspect . getargspec ( script_func ) [ 0 ] : raise TypeError ( ""upgrade/downgrade functions must accept engine"" "" parameter (since version 0.5.4)"" )","if not inspect. getargspec ( script_func ). args or len ( inspect. getargspec ( script_func ). args ) < 2 : raise TypeError ( ""upgrade/downgrade functions must accept engine"" "" parameter (since version 0.5.4)"" )"
+"import pandas as pd
+import numpy as np
+from random import choice, seed as set_seed
+def task_func(num_of_students, seed=42, name_list=None, gender_list=None, age_range=(15, 20), score_range=(50, 100)):
+
+    if num_of_students <= 0:
+        raise ValueError(""num_of_students must be positive."")
+
+    set_seed(seed)
+    np.random.seed(seed)
+
+    name_list = name_list or ['John', 'Mike', 'Sara', 'Emma', 'Nick']
+    gender_list = gender_list or ['Male', 'Female']
+
+    data = []
+    for _ in range(num_of_students):
+        name = choice(name_list)
+        age = np.random.randint(age_range[0], age_range[1] + 1)
+        gender = choice(gender_list)
+        score = np.random.randint(score_range[0], score_range[1] + 1)
+        data.append([name, age, gender, score])
+
+    columns = ['Name', 'Age', 'Gender', 'Score']
+    df = pd.DataFrame(data, columns=columns)
+    return df","import pandas as pd
+import numpy as np
+from random import choice, seed as set_seed
+def task_func(num_of_students, seed=42, name_list=None, gender_list=None, age_range=(15, 20), score_range=(50, 100)):
+
+    if num_of_students <= 0:
+        raise ValueError(""num_of_students must be positive."")
+
+    set_seed(seed)
+    np.random.seed(seed)
+
+    name_list = name_list or ['John', 'Mike', 'Sara', 'Emma', 'Nick']
+    gender_list = gender_list or ['Male', 'Female']
+
+    data = []
+    for _ in range(num_of_students):
+        name = choice(name_list)
+        age = np.random.randint(age_range[0], age_range[1] + 1)
+        gender = choice(gender_list)
+        score = np.random.randint(score_range[0], score_range[1] + 1)
+        data.append([name, age, gender, score])
+
+    columns = ['Name', 'Age', 'Gender', 'Score']
+    df = pd.DataFrame(data, columns=columns)
+    return df"
+"class Solution:
+    def totalNQueens(self, n: int) -> int:
+        def addans(board,ans):
+            temp=[]
+            for row in board:
+                for j in range(len(row)):
+                    if row[j]==""Q"":
+                        temp.append(j+1)
+            ans.append(temp)
+        def solve(col,board,low,upper,lower,ans,n):
+            if col==n:
+                addans(board,ans)
+                return 
+            for row in range(n):
+                if low[row]==0 and upper[n-1+col-row]==0 and lower[row+col]==0:
+                    board[row][col]=""Q""
+                    low[row]=1
+                    upper[n-1+col-row]=1
+                    lower[row+col]=1
+                    solve(col+1,board,low,upper,lower,ans,n)
+                    low[row]=0
+                    upper[n-1+col-row]=0
+                    lower[row+col]=0
+        ans=[]        
+        board=[[0]*n for i in range(n)]
+        low=[0]*n
+        upper=[0]*(2*n-1)
+        lower=[0]*(2*n-1)
+        solve(0,board,low,upper,lower,ans,n)
+        return len(ans)","class Solution:
+    def totalNQueens(self, n: int) -> int:
+        def addans(board,ans):
+            temp=[]
+            for row in board:
+                for j in range(len(row)):
+                    if row[j]==""Q"":
+                        temp.append(j+1)
+            ans.append(temp)
+        def solve(col,board,low,upper,lower,ans,n):
+            if col==n:
+                addans(board,ans)
+                return 
+            for row in range(n):
+                if low[row]==0 and upper[n-1+col-row]==0 and lower[row+col]==0:
+                    board[row][col]=""Q""
+                    low[row]=1
+                    upper[n-1+col-row]=1
+                    lower[row+col]=1
+                    solve(col+1,board,low,upper,lower,ans,n)
+                    low[row]=0
+                    upper[n-1+col-row]=0
+                    lower[row+col]=0
+        ans=[]        
+        board=[[0]*n for i in range(n)]
+        low=[0]*n
+        upper=[0]*(2*n-1)
+        lower=[0]*(2*n-1)
+        solve(0,board,low,upper,lower,ans,n)
+        return len(ans)"
+"print ( ""Welcome to ComplexCipher v1.2.3 by Om Gupta!"" )","print ( ""Welcome to ComplexCipher v1.2.3 by Om Gupta!"" )"
+"class Solution:
+    def numberOfPoints(self, nums: List[List[int]]) -> int:
+        m = 102
+        d = [0] * m
+        for start, end in nums:
+            d[start] += 1
+            d[end + 1] -= 1
+        return sum(s > 0 for s in accumulate(d))","class Solution:
+    def numberOfPoints(self, nums: List[List[int]]) -> int:
+        m = 102
+        d = [0] * m
+        for start, end in nums:
+            d[start] += 1
+            d[end + 1] -= 1
+        return sum(s > 0 for s in accumulate(d))"
+"{ ""Input"" : Tn . create ( 2 , Tn . create ( 1 ) , Tn . create ( 3 ) ) , ""Output"" : True , ""Reason"" : ""The tree has a depth of two and is ordered"" } ,","{ ""Input"" : Tn. create ( 2, Tn. create ( 1 ), Tn. create ( 3 ) ), ""Output"" : True, ""Reason"" : ""The tree has a depth of two and is ordered"" },"
+return ( 0.5 / self . sigma ** 2 * ( xhatmmu ** 2 - xstmmu ** 2 ) - 0.5 * data [ t + 1 ] ** 2 * np . exp ( - xst ) * ( 1. + xstmmu ) ),return ( 0.5 / self. sigma ** 2 * ( xhatmmu ** 2 - xstmmu ** 2 ) - 0.5 * self. data [ t + 1 ] ** 2 * np. exp ( - xst ) * ( 1. + xstmmu ) ) * self. sigma ** 2
+"s = [ ""HOST %s %s"" % ( self . hostname , self . type . name . upper ( ) ) ]","s = [ ""HOST %s %s"" % ( self. hostname, self. type. name ) ]"
+"class Solution:
+    def minimizeConcatenatedLength(self, words: List[str]) -> int:
+        @cache
+        def dfs(i: int, a: str, b: str) -> int:
+            if i >= len(words):
+                return 0
+            s = words[i]
+            x = dfs(i + 1, a, s[-1]) - int(s[0] == b)
+            y = dfs(i + 1, s[0], b) - int(s[-1] == a)
+            return len(s) + min(x, y)
+
+        return len(words[0]) + dfs(1, words[0][0], words[0][-1])","class Solution:
+    def minimizeConcatenatedLength(self, words: List[str]) -> int:
+        @cache
+        def dfs(i: int, a: str, b: str) -> int:
+            if i >= len(words):
+                return 0
+            s = words[i]
+            x = dfs(i + 1, a, s[-1]) - int(s[0] == b)
+            y = dfs(i + 1, s[0], a) - int(s[-1] == a)
+            return len(s) + min(x, y)
+
+        return len(words[0]) + dfs(1, words[0][0], words[0][-1])"
+"class Solution:
+    def maxLength(self, nums: List[int]) -> int:
+        n = len(nums)
+        ans = 0
+        max_p = lcm(*nums) * max(nums)
+        for i in range(n):
+            p, g, l = 1, 0, 1
+            for j in range(i, n):
+                p *= nums[j]
+                g = gcd(g, nums[j])
+                l = lcm(l, nums[j])
+                if p == g * l:
+                    ans = max(ans, j - i + 1)
+                if p > max_p:
+                    break
+        return ans","class Solution:
+    def maxLength(self, nums: List[int]) -> int:
+        n = len(nums)
+        ans = 0
+        max_p = lcm(*nums) * max(nums)
+        for i in range(n):
+            p, g, l = 1, 0, 1
+            for j in range(i, n):
+                p *= nums[j]
+                g = gcd(g, nums[j])
+                l = lcm(l, nums[j])
+                if p >= g * l:
+                    ans = max(ans, j - i + 1)
+                if p > max_p:
+                    break
+        return ans"
+table = table + str ( cntr ) + '|[post](https://reddit.com' + i [ 0 ] + ')|' + i [ 1 ] + '|' + str ( i [ 3 ] ) + '%' + '\n',table = table + str ( cntr ) + '|[post](https://reddit.com' + i [ 0 ] + ')|' + i [ 1 ] + '|' + str ( i [ 4 ] ) + '%' + '|' + str ( i [ 5 ] ) + '\n'
+locations = [ locaction for location in locations if locaction ],locations = [ loc for location in locations if location ]
+"group1 . add_argument ( '--gencode_id_format' , action = 'store_true' , help = gencode_id_format_str )","group1. add_argument ( '--gencode_id_format', action ='store_true', help = gencode_id_format_str )"
+"import pandas as pd
+import matplotlib.pyplot as plt
+import numpy as np
+def task_func(num_groups=5, data_size=5, labels=None):
+
+
+    # If labels are not provided, generate default labels
+    if labels is None:
+        labels = [f'Group{i + 1}' for i in range(num_groups)]
+
+    # Generate random data
+    data = pd.DataFrame(np.random.rand(data_size, num_groups), columns=labels)
+
+    # Plot data
+    fig, ax = plt.subplots()
+    data.plot(kind='bar', stacked=True, ax=ax)
+
+    # Save the plot for verification in tests
+    plot_filename = 'test_plot.png'
+    fig.savefig(plot_filename)
+
+    return fig, data, plot_filename","import pandas as pd
+import matplotlib.pyplot as plt
+import numpy as np
+def task_func(num_groups=5, data_size=5, labels=None):
+
+
+    # If labels are not provided, generate default labels
+    if labels is None:
+        labels = [f'Group{i + 1}' for i in range(num_groups)]
+
+    # Generate random data
+    data = pd.DataFrame(np.random.rand(data_size, num_groups), columns=labels)
+
+    # Plot data
+    fig, ax = plt.subplots()
+    data.plot(kind='bar', stacked=True, ax=ax)
+
+    # Save the plot for verification in tests
+    plot_filename = 'test_plot.png'
+    fig.savefig(plot_filename)
+
+    return fig, data, plot_filename"
+"extras_require [ ':python_version==""2.6""' ] = reqs ( 'py26.txt' )","extras_require [ ':python-version==""2.6""' ] = reqs ( 'py26.txt', 'python26' )"
+"class Solution:
+    def minOperations(self, nums1: List[int], nums2: List[int]) -> int:
+        def f(x: int, y: int) -> int:
+            cnt = 0
+            for a, b in zip(nums1[:-1], nums2[:-1]):
+                if a <= x and b <= y:
+                    continue
+                if not (a <= y and b <= x):
+                    return -1
+                cnt += 1
+            return cnt
+
+        a, b = f(nums1[-1], nums2[-1]), f(nums2[-1], nums1[-1])
+        return -1 if a + b == -2 else min(a, b + 1)","class Solution:
+    def minOperations(self, nums1: List[int], nums2: List[int]) -> int:
+        def f(x: int, y: int) -> int:
+            cnt = 0
+            for a, b in zip(nums1[:-1], nums2[:-1]):
+                if a <= x and b <= y:
+                    continue
+                if not (a <= y and b <= x):
+                    return -1
+                cnt += 1
+            return cnt
+
+        a, b = f(nums1[-1], nums2[-1]), f(nums2[-1], nums1[-1])
+        return -1 if a + b == -2 else min(a, b + 1)"
+"return formats . date_format ( bundle . obj . created , ""SHORT_DATETIME_FORMAT"" )","return formats. date_format ( bundle. obj. date_created, ""SHORT_DATE_FORMAT"" )"
+"return '.' in filename and filename . rsplit ( '.' , 1 ) [ 1 ] in app . conf [ 'ALLOWED_EXTENSIONS' ]","return '.' in filename and filename. rsplit ( '.', 1 ) [ 1 ] in ALLOWED_EXTENSIONS and filename. rsplit ( '.', 1 ) [ 0 ] in ALLOWED_EXTENSIONS"
