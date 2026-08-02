@@ -1,4 +1,3 @@
-
 # Llama-3.2-3B QLoRA Fine-Tuning for Python Code Repair
 
 ## Overview
@@ -56,20 +55,19 @@ Additional metadata columns (where available): `public_tests`, `oracle_tests`, `
 
 ## Results
 
-### Validation Set (n=2,510)
+| Metric | Validation (2,510) | Test (2,510) |
+|---|---|---|
+| Exact Match | 0.1876 | 0.1813 |
+| SacreBLEU | 91.0 | 89.8 |
+| ROUGE-1 (F1) | 0.8827 | 0.8810 |
+| ROUGE-2 (F1) | 0.8189 | 0.8132 |
+| ROUGE-L (F1) | 0.8780 | 0.8747 |
+| Edit Ratio | 0.8955 | 0.8932 |
 
-| Metric | Score |
-|---|---|
-| Exact Match | 0.1876 |
-| SacreBLEU | 91.0 |
-| ROUGE-1 (F1) | 0.8827 |
-| ROUGE-2 (F1) | 0.8189 |
-| ROUGE-L (F1) | 0.8780 |
-| Edit Ratio (mean) | 0.8955 |
-
-### Test Set (n=2,510)
-
-*Pending — generation in progress*
+**Key observations:**
+- Minimal val-test gap (~0.6% EM difference) indicates no overfitting
+- High ROUGE/BLEU with moderate EM is characteristic of code repair — the model often produces semantically correct fixes with minor syntactic differences from the ground truth
+- These metrics serve as a baseline for the CaliDebug project's multi-model comparison
 
 ---
 
@@ -145,4 +143,3 @@ def repair(buggy_code):
 This model is part of **CaliDebug** — a confidence-guided adaptive repair framework for reliable LLM-based code debugging. CaliDebug uses behavioral signals (test score improvement, patch consistency, location overlap, patch size, repair agreement) with a calibrated confidence model to decide whether to accept, refine, or reject generated patches.
 
 ---
-
