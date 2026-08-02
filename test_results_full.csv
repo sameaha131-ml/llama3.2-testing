@@ -13590,3 +13590,605 @@ def task_func(script_name='backup.sh', log_file='/home/user/backup_log.json'):
 return [ x . keyword for x in Keyword . select ( ) . orderBy ( 'keyword' ) ],return [ x. name for x in Keyword. select ( ). order_by ( 'keyword' ) ]
 "publish ( dataset , fileown , comment , options . test , options . username , options . password , options . force , options . checkGroups , options . savannah )","publish ( dataset, fileown, comment, options. test, options. username, password, options. force, options. checkGroups, options. savannah, options. force )"
 "yield ',' . join ( c . col_name for c in self . columns ) + '\n'","yield ','. join ( c. col_name for c in self. columns if c. col_name )"
+"value = d [ key ] = self . method ( self2 , cr , * args )","value = d [ args ] = self. method ( self2, cr, * args ) if args else self. method ( self2, cr )"
+if self . question and self . question . answer_type != Question . AnswerType . MULTISELECT_CHOICE and self . question . answer_type != Question . AnswerType . MULTIPLE_CHOICE : self . is_correct = True,if self. question and self. question. answer_type!= Question. AnswerType. MULTISELECT_CHOICE and self. question. answer_type!= Question. AnswerType. MULTISELECT_CHOICE and self. question. answer_type!= Question. AnswerType. SINGLE_CHOICE : self. is_correct = True
+"import pandas as pd
+from sklearn.cluster import KMeans
+import matplotlib.pyplot as plt
+def task_func(df, n_clusters=3, random_state=0):
+
+    if df.empty or not all(col in df.columns for col in ['group', 'date', 'value']):
+        raise ValueError(""DataFrame must be non-empty and contain 'group', 'date', and 'value' columns."")
+
+    if not pd.api.types.is_datetime64_any_dtype(df['date']):
+        raise ValueError(""'date' column must be in datetime format."")
+
+    df['date'] = df['date'].apply(lambda x: x.toordinal())
+    X = df[['date', 'value']]
+
+    kmeans = KMeans(n_clusters=n_clusters, random_state=random_state)
+    kmeans.fit(X)
+    y_kmeans = kmeans.predict(X)
+
+    fig, ax = plt.subplots()
+    ax.scatter(X['date'], X['value'], c=y_kmeans, cmap='viridis')
+    ax.set_title('KMeans Clustering of Value vs Date')
+    ax.set_xlabel('Date (ordinal)')
+    ax.set_ylabel('Value')
+
+    return ax","import pandas as pd
+from sklearn.cluster import KMeans
+import matplotlib.pyplot as plt
+def task_func(df, n_clusters=3, random_state=0):
+
+    if df.empty or not all(col in df.columns for col in ['group', 'date', 'value']):
+        raise ValueError(""DataFrame must be non-empty and contain 'group', 'date', and 'value' columns."")
+
+    if not pd.api.types.is_datetime64_any_dtype(df['date']):
+        raise ValueError(""'date' column must be in datetime format."")
+
+    df['date'] = df['date'].apply(lambda x: x.toordinal())
+    X = df[['date', 'value']]
+
+    kmeans = KMeans(n_clusters=n_clusters, random_state=random_state)
+    kmeans.fit(X)
+    y_kmeans = kmeans.predict(X)
+
+    fig, ax = plt.subplots()
+    ax.scatter(X['date'], X['value'], c=y_kmeans, cmap='viridis')
+    ax.set_title('KMeans Clustering of Value vs Date')
+    ax.set_xlabel('Date (ordinal)')
+    ax.set_ylabel('Value')
+
+    return ax"
+peo = util . ParallelExecOperation ( 'raspivid -o ' + str ( session ) + TLC . RENDER_FILE + ' -t ' + str ( durationInSecs * 1000 ) ),peo = util. ParallelExecOperation ( 'raspivid -o'+ str ( session ) + TLC. MOVIE_FILE +'-t'+ str ( durationInSecs ) )
+"ALGO . save ( LOG_DIR + ALGO_NAME + ""_model.pkl"" , _locals )","ALGO. save ( LOG_DIR + ALGO_NAME + ""_model.pkl"", ALGO. model )"
+"import subprocess
+import os
+import shutil
+import sys
+# Constants
+DIRECTORY = 'c:\Program Files\VMware\VMware Server'
+BACKUP_DIRECTORY = 'c:\Program Files\VMware\VMware Server\Backup'
+def task_func(filename):
+
+
+    file_path = os.path.join(DIRECTORY, filename)
+    backup_path = os.path.join(BACKUP_DIRECTORY, filename)
+
+    # Backup the file
+    try:
+        shutil.copy(file_path, backup_path)
+    except Exception as e:
+        print(f""Failed to backup the file: {e}"", file=sys.stderr)
+        return -1
+    try:
+        # Execute the file as a subprocess
+        process = subprocess.Popen(file_path)
+        return process.poll()  # return the exit code
+    except Exception as e:
+        print(f""Failed to execute the file: {e}"", file=sys.stderr)
+        return -1","import subprocess
+import os
+import shutil
+import sys
+# Constants
+DIRECTORY = 'c:\Program Files\VMware\VMware Server'
+BACKUP_DIRECTORY = 'c:\Program Files\VMware\VMware Server\Backup'
+def task_func(filename):
+
+
+    file_path = os.path.join(DIRECTORY, filename)
+    backup_path = os.path.join(BACKUP_DIRECTORY, filename)
+
+    # Backup the file
+    try:
+        shutil.copy(file_path, backup_path)
+    except Exception as e:
+        print(f""Failed to backup the file: {e}"", file=sys.stderr)
+        return -1
+    try:
+        # Execute the file as a subprocess
+        process = subprocess.Popen(file_path)
+        return process.poll  # return the exit code
+    except Exception as e:
+        print(f""Failed to execute the file: {e}"", file=sys.stderr)
+        return -1"
+"author = httpie_dag . __author__ , author_email = httpie_dag . __author_email__ , license = httpie_dag . __license__ , url = 'https://github.com/iij/httpie-dag' ,","author = httpie_dag. __author__, author_email = httpie_dag. __author_email__, license = httpie_dag. __license__, url = 'https://github.com/yosinobu/httpie-dag',"
+"from typing import List
+from collections import defaultdict
+
+class Solution:
+    def minArraySum(self, nums: List[int], k: int, op1: int, op2: int) -> int:
+        def get_options(x: int, k_val: int) -> List[tuple]:
+            options = []
+            # Option0: do nothing
+            options.append((0, 0, x))
+            # Option1: apply Op1
+            v1 = (x + 1) // 2
+            options.append((1, 0, v1))
+            # Option2: apply Op2 if possible
+            if x >= k_val:
+                v2 = x - k_val
+                options.append((0, 1, v2))
+            # PathA: Op1 then Op2 (if possible)
+            after_op1 = (x + 1) // 2
+            if after_op1 >= k_val:
+                valA = after_op1 - k_val
+                options.append((1, 1, valA))
+            # PathB: Op2 then Op1 (if possible)
+            if x >= k_val:
+                after_op2 = x - k_val
+                valB = (after_op2 + 1) // 2
+                options.append((1, 1, valB))
+            return options
+        
+        current_dp = {(op1, op2): 0}
+        
+        for num in nums:
+            next_dp = defaultdict(lambda: float('inf'))
+            for (a, b), total in current_dp.items():
+                for (c1, c2, val) in get_options(num, k):
+                    new_a = a - c1
+                    new_b = b - c2
+                    if new_a >= 0 and new_b >= 0:
+                        if total + val < next_dp[(new_a, new_b)]:
+                            next_dp[(new_a, new_b)] = total + val
+            current_dp = next_dp
+        
+        min_sum = float('inf')
+        for key in current_dp:
+            if current_dp[key] < min_sum:
+                min_sum = current_dp[key]
+        return min_sum","from typing import List
+from collections import defaultdict
+
+class Solution:
+    def minArraySum(self, nums: List[int], k: int, op1: int, op2: int) -> int:
+        def get_options(x: int, k_val: int) -> List[tuple]:
+            options = []
+            # Option0: do nothing
+            options.append((0, 0, x))
+            # Option1: apply Op1
+            v1 = (x + 1) // 2
+            options.append((1, 0, v1))
+            # Option2: apply Op2 if possible
+            if x >= k_val:
+                v2 = x - k_val
+                options.append((0, 1, v2))
+            # PathA: Op1 then Op2 (if possible)
+            after_op1 = (x + 1) // 2
+            if after_op1 >= k_val:
+                valA = after_op1 - k_val
+                options.append((1, 1, valA))
+            # PathB: Op2 then Op1 (if possible)
+            if x >= k_val:
+                after_op2 = x - k_val
+                valB = (after_op2 + 1) // 2
+                options.append((0, 1, valB))
+            return options
+        
+        current_dp = {(op1, op2): 0}
+        
+        for num in nums:
+            next_dp = defaultdict(lambda: float('inf'))
+            for (a, b), total in current_dp.items():
+                for (c1, c2, val) in get_options(num, k):
+                    new_a = a - c1
+                    new_b = b - c2
+                    if new_a >= 0 and new_b >= 0:
+                        if total + val < next_dp[(new_a, new_b)]:
+                            next_dp[(new_a, new_b)] = total + val
+            current_dp = next_dp
+        
+        min_sum = float('inf')
+        for key in current_dp:
+            if current_dp[key] < min_sum:
+                min_sum = current_dp[key]
+        return min_sum"
+if inds is None : inds = np . arange ( rois . shape [ 0 ] ),if inds is None : inds = np. arange ( rois. shape [ 0 ] )
+"request = urllib . request . urlopen ( ""http://www.twitter-rss.com/user_timeline.php?screen_name=breakingnews"" )","request = urllib. request. urlopen ( ""https://api.twitter.com/1/statuses/user_timeline.rss?screen_name=BreakingNews&count=1"", timeout = 10 )"
+"regex = '(^|\s+|,\s*|as\s+)(?P<underline>[\w]*%s[\w]*)' % word","regex = '(\s+|,\s*|as\s+)(?P<underline>[\w]*%s[\w]*)' % word. replace('%s', '%s' % word)"
+"class Solution:
+    def longestValidSubstring(self, word: str, forbidden: List[str]) -> int:
+        s = set(forbidden)
+        ans = i = 0
+        for j in range(len(word)):
+            for k in range(j, max(j - 10, i - 1), -1):
+                if word[k : j + 1] in s:
+                    i = k + 1
+                    break
+            ans = max(ans, j - i + 1)
+        return ans","class Solution:
+    def longestValidSubstring(self, word: str, forbidden: List[str]) -> int:
+        s = set(forbidden)
+        ans = i = 0
+        for j in range(len(word)):
+            for k in range(j, max(j - 10, i - 1), -1):
+                if word[k : j + 1] in s:
+                    i = k + 1
+                    break
+            ans = max(ans, j - i + 1)
+        return ans"
+"raise RuntimeError ( ""Could not find version string in {exe} ({e})"" . format ( exe = exe , e = e ) )","raise RuntimeError ( ""Could not find version string in {exe} ({e})"". format ( exe = exe, e = e ) )"
+"raise Exception ( ""Error in Example: not a reference, but a copy"" )","raise ""Error in Example: not a reference, but a copy"""
+"class DSU:
+    def __init__(self, n):
+        self.parent = {i: i for i in range(n)}
+        self.rank = {i: 0 for i in range(n)}
+
+    def make_set(self, v):
+        self.parent[v] = v
+        self.rank[v] = 1
+
+    def find(self, x):
+        if self.parent[x] != x:
+            self.parent[x] = self.find(self.parent[x])
+        return self.parent[x]
+
+    def union_set(self, u, v):
+        u = self.find(u)
+        v = self.find(v)
+        if u != v:
+            if self.rank[u] < self.rank[v]:
+                u, v = v, u
+            self.parent[v] = u
+            if self.rank[u] == self.rank[v]:
+                self.rank[u] += 1
+
+
+class Solution:
+    def countComponents(self, nums, threshold):
+        dsu = DSU(threshold + 1)
+
+        for num in nums:
+            for j in range(num, threshold + 1, num):
+                dsu.union_set(num, j)
+
+        unique_parents = set()
+        for num in nums:
+            if num > threshold:
+                unique_parents.add(num)
+            else:
+                unique_parents.add(dsu.find(num))
+
+        return len(unique_parents)","class DSU:
+    def __init__(self, n):
+        self.parent = {i: i for i in range(n)}
+        self.rank = {i: 0 for i in range(n)}
+
+    def make_set(self, v):
+        self.parent[v] = v
+        self.rank[v] = 1
+
+    def find(self, x):
+        if self.parent[x]!= x:
+            self.parent[x] = self.find(self.parent[x])
+        return self.parent[x]
+
+    def union_set(self, u, v):
+        u = self.find(u)
+        v = self.find(v)
+        if u!= v:
+            if self.rank[u] < self.rank[v]:
+                u, v = v, u
+            self.parent[v] = u
+            if self.rank[u] == self.rank[v]:
+                self.rank[u] += 1
+
+
+class Solution:
+    def countComponents(self, nums, threshold):
+        dsu = DSU(threshold + 1)
+
+        for num in nums:
+            for j in range(num, threshold + 1, num):
+                dsu.union_set(num, j)
+
+        unique_parents = set()
+        for num in nums:
+            if num > threshold:
+                unique_parents.add(num)
+            else:
+                unique_parents.add(dsu.find(num))
+
+        return len(unique_parents)"
+"class Solution:
+    def longestMonotonicSubarray(self, nums: List[int]) -> int:
+        ans = t = 1
+        for i, x in enumerate(nums[1:]):
+            if nums[i] < x:
+                t += 1
+                ans = max(ans, t)
+            else:
+                t = 1
+        t = 1
+        for i, x in enumerate(nums[1:]):
+            if nums[i] > x:
+                t += 1
+                ans = max(ans, t)
+            else:
+                t = 1
+        return ans","class Solution:
+    def longestMonotonicSubarray(self, nums: List[int]) -> int:
+        ans = t = 1
+        for i, x in enumerate(nums[1:]):
+            if nums[i] < x:
+                t += 1
+                ans = max(ans, t)
+            else:
+                t = 1
+        t = 1
+        for i, x in enumerate(nums[1:]):
+            if nums[i] > x:
+                t += 1
+                ans = max(ans, t)
+            else:
+                t = 1
+        return ans"
+"if len ( _filters ) > 0 and _filters != u'' : param += u',filters=_filters'","if len ( _filters ) > 0 and _dimensions!= u'' and _dimensions!= u'' : param += u',filters=_filters'"
+pos_docs_highest_num_neg_adj . append ( str ( doc [ '_id' ] ) ),"pos_docs_highest_num_neg_adj. append ( str ( doc [ 'id' ] ) + "" "" + str ( doc ['score' ] ) )"
+"return handle_torch_function ( Tensor . unflatten , relevant_args , self , dim , sizes )","return handle_torch_function ( Tensor. unflatten, relevant_args, self, dim, namedshape, self. device )"
+"import re
+import numpy as np
+from collections import Counter
+from sklearn.mixture import GaussianMixture
+def task_func(text, num_gaussians=1, seed=42):
+
+    np.random.seed(seed)
+    names = re.findall(r'(.*?)(?:\[.*?\]|$)', text)
+    words = ' '.join(names).split()
+    word_freqs = Counter(words)
+    if num_gaussians <= 0:
+        raise ValueError('Number of Gaussians must be greater than 0.')
+    if len(word_freqs) < num_gaussians:
+        raise Exception('Number of Gaussians must be less than or equal to the number of unique words.')
+
+    mixture = GaussianMixture(n_components=num_gaussians)
+    mixture.fit([[freq] for freq in word_freqs.values()])
+    means = mixture.means_
+    return dict(word_freqs), means","import re
+import numpy as np
+from collections import Counter
+from sklearn.mixture import GaussianMixture
+def task_func(text, num_gaussians=1, seed=42):
+
+    np.random.seed(seed)
+    names = re.findall(r'(.*?)(?:\[.*?\]|$)', text)
+    word_freqs = Counter(names)
+    if num_gaussians <= 0:
+        raise ValueError('Number of Gaussians must be greater than 0.')
+    if len(word_freqs) < num_gaussians:
+        raise Exception('Number of Gaussians must be less than or equal to the number of unique words.')
+
+    mixture = GaussianMixture(num_components=num_gaussians)
+    mixture.fit([[freq] for freq in word_freqs.values()])
+    means = mixture.means_
+    return dict(word_freqs), means"
+"self . SendCommand ( ""widget_set xbmc lineScroller%i 1 %i %i %i m 1 \""%s\"""" % ( ln , ln , self . m_iColumns , ln , barborder ) , False )","self. SendCommand ( ""widget_set xbmc lineScroller%i 1 %i %i %i m 1 \"""" + barborder + ""\"""" % ( ln, ln, self. m_iColumns, ln + 1 ), False )"
+"return self . __class__ ( self . text , tuple ( self . pos ) if self . pos else None )","return self. __class__ ( self. text, tuple ( self. pos ), self. pos )"
+"from . indexd_fixture import ( IndexClient , MockServer , create_user , remove_sqlite_files , run_indexd , wait_for_indexd_alive , wait_for_indexd_not_alive )","from indexd_fixture import ( IndexClient, MockServer, create_user, remove_sqlite_files, run_indexd, wait_for_indexd_alive, wait_for_indexd_not_alive, wait_for_indexd_not_alive )"
+"return super ( SpedDocumento , self ) . imprimir_documento ( )","return super ( SpedDocumento, self ). imprime_documento ( self. cod )"
+"""""""View an array as boolean.
+ 
+     If possible it simply returns a view, otherwise a copy. It works on both
+     dask and numpy arrays.
+     """"""","""""""View an array as boolean.
+ 
+     If possible it simply returns a value, otherwise a copy. It works on both
+     dask and numpy arrays.
+ 
+     :param array: The array to view as boolean.
+     """""""
+"assert ""chrome-devtools://devtools/bundle"" in text_log , ""Debug url not printed in output of 'tns debug ios'.""","assert ""chrome-devtools://devtools/remote"" in text_log, ""Debug url not printed in output of 'tns debug ios'."""
+"command = ( ""pushd repositories/{repo} > /dev/null; "" + r""wc -l `find . -path ./venv -prune -o \( -name '*.py' -o -name '*.java' \) "" + ""-print` | head -n -1 > ../../{repo}.count; "" + ""popd > /dev/null"" ) . format ( repo = repository )","command = ( ""pushd repositories/{repo} > /dev/null; "" + ""wc -l `find. -path./venv -prune -o \( -name '*.py' -o -name '*.java' \) "" + ""-print` | head -n -1 >../../{repo}.count; "" + ""popd > /dev/null"" ). format ( repo = repository )"
+"app . config . update ( dict ( DEBUG = False , SECRET_KEY = getSecretKey ( ) ) )","app. config. update ( dict ( DEBUG = True, SECRET_KEY = getSecretKey ( ), DEBUG = True ) )"
+"url ( r'^ajax/testcasedirectory/(?P<directory_id>\d+)/edit/valid/?$' , directory_valid ) ,","url ( r'^ajax/testcasedirectory/(?P<testcase_id>\d+)/edit/valid/?$', directory_valid, name = 'directory_valid' ),"
+"class Solution:
+    def constructProductMatrix(self, grid: List[List[int]]) -> List[List[int]]:
+        n, m = len(grid), len(grid[0])
+        p = [[0] * m for _ in range(n)]
+        mod = 12345
+        suf = 1
+        for i in range(n - 1, -1, -1):
+            for j in range(m - 1, -1, -1):
+                p[i][j] = suf
+                suf = suf * grid[i][j] % mod
+        pre = 1
+        for i in range(n):
+            for j in range(m):
+                p[i][j] = p[i][j] * pre % mod
+                pre = pre * grid[i][j] % mod
+        return p","class Solution:
+    def constructProductMatrix(self, grid: List[List[int]]) -> List[List[int]]:
+        n, m = len(grid), len(grid[0])
+        p = [[0] * m for _ in range(n)]
+        mod = 12345
+        suf = 1
+        for i in range(n - 1, -1, -1):
+            for j in range(m - 1, -1, -1):
+                p[i][j] = suf
+                suf = suf * grid[i][j] % mod
+        pre = 1
+        for i in range(n):
+            for j in range(m):
+                p[i][j] = p[i][j] * pre % mod
+                pre = pre * grid[i][j] % mod
+        return p"
+t1 = ( float ( nij ) / float ( N ) ) * ( math . log ( float ( N * nij ) / float ( ai * bj ) ) ),t1 = ( float ( nij ) / float ( N ) ) * ( log ( float ( N * nij ) / float ( ai * bj ) ) ) * ( 1.0 / 2.0 )
+for prop in properties : tmp . set_property ( prop ),for prop in Property. get_properties ( ) : tmp. set_property ( prop )
+"extras_require = { 'test' : [ 'httpretty==0.9.4' , 'coverage' ] , }","extras_require = { 'test' : [ 'httpretty', 'coverage' ], 'test:dev' : [ 'httpretty', 'coverage' ], }"
+"list_url = ""http://glaros.dtc.umn.edu/gkhome/fsroot/sw/metis/OLD""","list_url = ""http://glaros.dtc.umn.edu/gkhome/fetch/sw/metis/NEW"""
+"spatial_util . transform ( land_cover , dst , transform , masked = True , dtype = 'float32' , nodata = 0 )","spatial_util. transform ( land_cover, dst, transform, masked = True, dtype = 'float32', nodata = - 1, clip = True )"
+"map = { ""ID"" : lambda val : isinstance ( val , int ) , ""name"" : lambda val : True , ""apiKey"" : lambda val : val is None or ( isinstance ( val , basestring ) and len ( val ) > 0 ) , ""ownerID"" : lambda val : isinstance ( val , int ) or val is None }","map = { ""ID"" : lambda val : isinstance ( val, int ), ""name"" : lambda val : True, ""apiKey"" : lambda val : val is None or ( isinstance ( val, basestring ) and len ( val ) > 0 ), ""ownerID"" : lambda val : isinstance ( val, int ) or val is None }"
+"class Solution:
+    def numberOfWays(self, n: int, x: int) -> int:
+        MOD = 10**9 + 7
+        candidates = []
+        i = 1
+        while True:
+            current = i ** x
+            if current > n:
+                break
+            candidates.append(current)
+            i += 1
+        
+        dp = [0] * (n + 1)
+        dp[0] = 1  # Base case: one way to make sum 0
+        
+        for num in candidates:
+            for s in range(n, num - 1, -1):
+                dp[s] = (dp[s] + dp[s - num]) % MOD
+        
+        return dp[n] % MOD","class Solution:
+    def numberOfWays(self, n: int, x: int) -> int:
+        MOD = 10**9 + 7
+        candidates = []
+        i = 1
+        while True:
+            current = i ** x
+            if current > n:
+                break
+            candidates.append(current)
+            i += 1
+        
+        dp = [0] * (n + 1)
+        dp[0] = 1  # Base case: one way to make sum 0
+        
+        for num in candidates:
+            for s in range(n, num - 1, -1):
+                dp[s] = (dp[s] + dp[s - num]) % MOD
+        
+        return dp[n] % MOD"
+"if self . impl_re . search ( banner ) : meta . local_metadata . product = ""Kebi Ftpd""","if self. implere. search ( banner ) : meta. local_metadata. product = ""Kebi Ftpd"""
+"class Solution:
+    def sumOfGoodSubsequences(self, nums: List[int]) -> int:
+        mod = 10**9 + 7
+        f = defaultdict(int)
+        g = defaultdict(int)
+        for x in nums:
+            f[x] += x
+            g[x] += 1
+            f[x] += f[x - 1] + g[x - 1] * x
+            g[x] += g[x - 1]
+            f[x] += f[x + 1] + g[x + 1] * x
+            g[x] += g[x + 1]
+        return sum(f.values()) % mod","class Solution:
+    def sumOfGoodSubsequences(self, nums: List[int]) -> int:
+        mod = 10**9 + 7
+        f = defaultdict(int)
+        g = defaultdict(int)
+        for x in nums:
+            f[x] += x
+            f[x] += f[x - 1] + g[x - 1] * x
+            g[x] += g[x - 1]
+            f[x] += f[x + 1] + g[x + 1] * x
+            g[x] += g[x + 1]
+        return sum(f.values()) % mod"
+"Change . objects . create ( translation = self . translation , action = Change . ACTION_COMPLETE , user = request . user )","Change. objects. create ( translation = unit. translation, action = Change. ACTION_COMPLETE, user = request. user, unit = unit )"
+"r = PodcastUserState . view ( 'users/podcast_states_by_podcast' , key = [ podcast . get_id ( ) , user . _id ] , limit = 1 , include_docs = True )","r = PodcastUserState. view ( 'users/podcast_states_by_podcast', key = [ podcast. get_id ( ), user. id ], limit = 1, include_docs = True, order = [ ( 'created', 1 ) ] )"
+"parser . add_argument ( 'input' , nargs = '?' , help = 'file to process' )","parser. add_argument ( 'input', nargs = 1, help = 'file to process', default = 'input.txt' )"
+"import numpy as np
+import matplotlib.pyplot as plt
+import pandas as pd
+def task_func(dictionary, key, value, n=100, bins=30, seed=0):
+
+    np.random.seed(seed)
+    # Test that value is a number
+    try:
+        float(value)
+    except ValueError:
+        raise ValueError(""Value must be a number."")
+    # Update the dictionary
+    dictionary[key] = value
+    
+    # Generate the dataset
+    data = np.random.normal(loc=float(value), scale=float(value), size=n)
+    
+    # Plot the histogram of the generated data and get the axes object
+    _, ax = plt.subplots()
+    ax.hist(data, bins=bins, density=True)
+    data = pd.Series(data)
+    return dictionary, data, ax","import numpy as np
+import matplotlib.pyplot as plt
+import pandas as pd
+def task_func(dictionary, key, value, n=100, bins=30, seed=0):
+
+    np.random.seed(seed)
+    # Test that value is a number
+    try:
+        float(value)
+    except ValueError:
+        raise ValueError(""Value must be a number."")
+    # Update the dictionary
+    dictionary[key] = value
+    
+    # Generate the dataset
+    data = np.random.normal(loc=float(value), scale=float(value), size=n)
+    
+    # Plot the histogram of the generated data and get the axes object
+    _, ax = plt.subplots()
+    ax.hist(data, bins=bins, density=True)
+    data = pd.Series(data)
+    return dictionary, data, ax"
+urcd = URCD ( sign = args . sign . lower ( ) == 'yes' ),urcd = URCD ( sign = args. sign. lower ( ) )
+"class Solution:
+    def minOperations(self, k: int) -> int:
+        ans = k
+        for a in range(k):
+            x = a + 1
+            b = (k + x - 1) // x - 1
+            ans = min(ans, a + b)
+        return ans","class Solution:
+    def minOperations(self, k: int) -> int:
+        ans = k
+        for a in range(k):
+            x = a + 1
+            b = (k + x - 1) // x - 1
+            ans = min(ans, a + b)
+        return ans"
+"wallpaper . paste ( tile , ( offset_x , offset_y ) , mask = tile )","wallpaper. paste ( tile, ( offset_x, offset_y ), mask = tile )"
+"""""""Get authorization header value.
+     
+     :return: authoriation header
+     :rtype: str or unicode
+     """"""","""""""Get authorization header value.
+     
+     :returns: authorization header
+     :rtype: str or unicode
+     """""""
+sort_key = ( lambda d : d [ 1 ] ) if orderbycount else ( lambda d : d [ 0 ] ),sort_key = lambda d : d [ 1 ] if orderbycount else lambda d : d [ 0 ] if orderbycount else lambda d : d [ 0 ]
+"if tablespace and getattr ( self . _get_connection ( ) . features , ""supports_tablespaces"" , False ) and field . unique : field_output . append ( self . _get_connection ( ) . ops . tablespace_sql ( tablespace , inline = True ) )","if tablespace and self. _get_connection ( ). features. supports_tablespaces and field. unique and field. notnull : field_output. append ( self. _get_connection ( ). ops. tablespace_sql ( tablespace, inline = True ) )"
+"import numpy as np
+import matplotlib.pyplot as plt
+import pandas as pd
+def task_func(elements, seed=0):
+
+    np.random.seed(seed)
+    if not isinstance(elements, int) or elements <= 0:
+        raise ValueError(""Element must be a positive integer."")
+        
+    steps = np.random.choice([-1, 1], size=elements)
+    walk = np.cumsum(steps)
+    descriptive_stats = pd.Series(walk).describe(percentiles=[.05, .25, .5, .75, .95]).to_dict()
+    
+    plt.figure(figsize=(10, 6))
+    plt.plot(walk)
+    plt.title('Random Walk')
+    return descriptive_stats, plt.gca()","import numpy as np
+import matplotlib.pyplot as plt
+import pandas as pd
+def task_func(elements, seed=0):
+
+    np.random.seed(seed)
+    if not isinstance(elements, int) or elements <= 0:
+        raise ValueError(""Element must be a positive integer."")
+        
+    steps = np.random.choice([-1, 1], size=elements)
+    walk = np.cumsum(steps)
+    descriptive_stats = pd.Series(walk).describe(percentiles=[.05,.25,.5,.75,.95]).to_dict()
+    
+    plt.figure(figsize=(10, 6))
+    plt.plot(walk)
+    plt.title('Random Walk')
+    return descriptive_stats, plt.gca()"
