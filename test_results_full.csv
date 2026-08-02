@@ -3152,3 +3152,522 @@ def task_func(csv_file_path):
     top_selling_product = max(sales_data.items(), key=operator.itemgetter(1))[0]
 
     return top_selling_product"
+"req , cat = await http . get ( 'http://aws.random.cat/meow' , as_json = True )","req, cat = await http. get ( 'http://random.cat/', as_json = True )"
+"self . record ( ""INFO"" , None , ""shutdown"" , ""Shutdown took longer than %ds"" % warning_timer )","self. record ( ""WARN"", None, ""shutdown"", ""Shutdown took longer than %ds"" % ( warning_timer, ) )"
+"history = open ( 'CHANGES' ) . read ( ) . replace ( '.. :changelog:' , '' )","history = open ( 'HISTORY.rst' ). read ( ). replace ( '.. :changelog:', '' ). replace ( '.. :changelog:', '' ). replace ( '.. :changelog:', '' )"
+"import pandas as pd
+from sklearn.decomposition import PCA
+import matplotlib.pyplot as plt
+def task_func(df):
+
+    if not isinstance(df, pd.DataFrame):
+        raise ValueError(""Input must be a DataFrame"")
+    if df.empty:
+        raise ValueError(""DataFrame is empty"")
+
+    pca = PCA(n_components=2)
+    principal_components = pca.fit_transform(df)
+
+    pca_df = pd.DataFrame(data=principal_components, columns=['Principal Component 1', 'Principal Component 2'])
+
+    fig, ax = plt.subplots()
+    ax.scatter(pca_df['Principal Component 1'], pca_df['Principal Component 2'])
+    ax.set_xlabel('Principal Component 1')
+    ax.set_ylabel('Principal Component 2')
+    ax.set_title('2 Component PCA')
+
+    return pca_df, ax","import pandas as pd
+from sklearn.decomposition import PCA
+import matplotlib.pyplot as plt
+def task_func(df):
+
+    if not isinstance(df, pd.DataFrame):
+        raise ValueError(""Input must be a DataFrame"")
+    if df.empty:
+        raise ValueError(""DataFrame is empty"")
+
+    pca = PCA(n_components=2)
+    principal_components = pca.fit_transform(df)
+
+    pca_df = pd.DataFrame(data=principal_components, columns=['Principal Component 1', 'Principal Component 2'])
+
+    fig, ax = plt.subplots()
+    ax.scatter(pca_df['Principal Component 1'], pca_df['Principal Component 2'])
+    ax.set_xlabel('Principal Component 1')
+    ax.set_ylabel('Principal Component 2')
+    ax.set_title('2 Component PCA')
+
+    return pca_df, ax"
+"assert isinstance ( self . license , str ) or isinstance ( self . license , License ) , ""Assumption Failed: License is not a string or license object""","assert isinstance ( self. license, str ) or isinstance ( self. license, License ), ""Assumption Failed: License is not a string or empty"""
+"""""""
+     Calculate the noise variance from the noise specified in the noise dict.
+     """"""","""""""
+     Calculate the noise variance from the noise specified in the noise dict.
+     """""""
+"fields = ( ""name"" , ""classification"" , ""depth"" , ""children_count"" , ""email"" , ""description"" , ""url"" , ""website_dump"" , ""contact"" , ""address"" )","fields = ( ""name"", ""classification"", ""depth"", ""children_count"", ""email"", ""parent"", ""description"", ""url"", ""website_dump"", ""contact"", ""address"", ""phone"" )"
+"decks = [ i [ ""txid"" ] for i in node . listtransactions ( ""PATEST"" ) ]","decks = [ i [ ""txid"" ] for i in node. listtransactions ( ""PATEST"" ) ]"
+"return self . get_feed ( feed . find_next_link ( ) , auth_token = auth_token , converter = converter , desired_class = desired_class , ** kwargs )","return self. get_feed ( feed. get_next_link ( ), auth_token = auth_token, converter = converter, desired_class = desired_class, ** kwargs ) if feed. get_next_link ( ) else None"
+"bs . read_manager_deployment_dump_if_needed ( provider_context . get ( 'cloudify' , { } ) . get ( 'manager_deployment' ) )","bs. read_manager_deployment_dump_if_needed ( provider_context. get ( 'cloudify' ). get ('manager_deployment' ), provider_context. get ( 'cloudify' ). get ('manager_deployment' ) )"
+"password_again = PasswordField ( 'Password (again)' , validators = [ InputRequired ( 'Please verify the password.' ) , EqualTo ( 'password' , 'Passwords do not match.' ) ] )","password_again = PasswordField ( 'Password (again)', validators = [ InputRequired ( 'Please verify the password.' ), EqualTo ( password, 'Passwords don\'t match.' ), EmailRequired ( 'Please enter a valid email address.' ) ] )"
+"imported = importer . import_insights ( [ insights ] , server_domain = server_domain , automatic = False )","imported = importer. import_insights ( insights, server_domain = server_domain, automatic = False, ignore_errors = False )"
+"return pTemplate ( pTemplate ( base_template_string ) . substitute ( { ""template"" : template . get ( ""template"" , """" ) , ""styling"" : cls . render_styling ( template . get ( ""styling"" , { } ) ) } ) ) . substitute ( template . get ( ""params"" , { } ) )","return pTemplate ( pTemplate ( base_template_string ). substitute ( { ""template"" : template. get ( ""template"", """" ), ""styling"" : template. get ( ""styling"", { } ) } ) ). substitute ( template. get ( ""params"", { } ) ). render ( )"
+if self . cost_price is None : self . cost_price = self . product . cost_price,if not self. cost_price and self. product : self. cost_price = self. product. cost_price
+"self . outfmt = ""'6 qseqid sseqid pident length mismatch gapopen qstart qend sstart send evalue bitscore qlen slen'""","self. outfmt = ""-outfmt '6 qseqid sseqid pident length mismatch gapopen qstart qend sstart send evalue bitscore qlen slen'"""
+"class Solution:
+    def findMissingAndRepeatedValues(self, grid: List[List[int]]) -> List[int]:
+        n = len(grid)
+        cnt = [0] * (n * n + 1)
+        for row in grid:
+            for v in row:
+                cnt[v] += 1
+        ans = [0] * 2
+        for i in range(1, n * n + 1):
+            if cnt[i] == 2:
+                ans[0] = i
+            if cnt[i] == 0:
+                ans[1] = i
+        return ans","class Solution:
+    def findMissingAndRepeatedValues(self, grid: List[List[int]]) -> List[int]:
+        n = len(grid)
+        cnt = [0] * (n * n + 1)
+        for row in grid:
+            for v in row:
+                cnt[v] += 1
+        ans = [0] * 2
+        for i in range(1, n * n + 1):
+            if cnt[i] == 2:
+                ans[0] = i
+            if cnt[i] == 0:
+                ans[1] = i
+        return ans"
+"return [ Star ( int ( star_id ) , galaxy = self ) for star_id in sorted ( self . data . stars , key = int ) ]","return [ Star ( int ( star_id ), galaxy = self ) for star_id in sorted ( self. data. stars, key = lambda x : x. id ) ]"
+"import numpy as np
+import itertools
+import random
+import statistics
+def task_func(T1, RANGE=100):
+
+    if len(T1) <= 0:
+        raise statistics.StatisticsError
+    int_list = [list(map(int, x)) for x in T1]
+    flattened_list = list(itertools.chain(*int_list))
+    total_nums = sum(flattened_list)
+    random_nums = [random.randint(0, RANGE) for _ in range(total_nums)]
+    mean = np.mean(random_nums)
+    median = np.median(random_nums)
+    mode = statistics.mode(random_nums)
+    return mean, median, mode","import numpy as np
+import itertools
+import random
+import statistics
+def task_func(T1, RANGE=100):
+
+    if len(T1) <= 0:
+        raise statistics.StatisticsError
+    int_list = [list(map(int, x)) for x in T1]
+    flattened_list = list(itertools.chain(*int_list))
+    total_nums = sum(flattened_list)
+    random_nums = [random.randint(0, RANGE) for _ in range(total_nums)]
+    mean = np.mean(random_nums)
+    median = np.median(random_nums)
+    mode = statistics.mode(random_nums)
+    return mean, median, mode"
+"Job . objects . filter ( pk = self . last_job_id ) . update ( status = status , ignore_cache = Falverbose_namese , finished = finished )","Job. objects. filter ( pk = self. last_job_id ). update ( status = status, ignore_cache = False, finished = finished, force_update = True )"
+"self . conn . put_mapping ( self . index_name , 'modelresult' , current_mapping )","self. conn. put_mapping ('modelresult', current_mapping, index = self. index_name, overwrite = True )"
+"return { 'region' : u'RegionOne' , 'address' : address , 'id' : id_ }","return {'region' : 'RegionOne', 'address' : address, 'id' : id_, 'name' : name }"
+"logging . info ( 'main_acs() : len acs to merge : {0} leftover len : {1}' . format ( len ( acs_merge ) , len ( acs_untouched ) ) )","logging. info ('main_acs() : len acs to merge : {0} leftover len : {1}', format ( len ( acs_merge ), len ( acs_untouched ) ) )"
+"def __init__ ( self , host , port , username , password , index , hostname = None , source = None , sourcetype = 'text' , verify = True ) : logging . Handler . __init__ ( self )","def __init__ ( self, host, port, username, password, index, hostname = None, source = None, sourcetype = 'python', verify = False ) : logging. Handler. __init__ ( self )"
+"mx = 10**6 + 1
+lpf = [0] * (mx + 1)
+for i in range(2, mx + 1):
+    if lpf[i] == 0:
+        for j in range(i, mx + 1, i):
+            if lpf[j] == 0:
+                lpf[j] = i
+
+
+class Solution:
+    def minOperations(self, nums: List[int]) -> int:
+        ans = 0
+        for i in range(len(nums) - 2, -1, -1):
+            if nums[i] > nums[i + 1]:
+                nums[i] = lpf[nums[i]]
+                if nums[i] > nums[i + 1]:
+                    return -1
+                ans += 1
+        return ans","mx = 10**6 + 1
+lpf = [0] * (mx + 1)
+for i in range(2, mx + 1):
+    if lpf[i] == 0:
+        for j in range(i, mx + 1, i):
+            if lpf[j] == 0:
+                lpf[j] = i
+
+
+class Solution:
+    def minOperations(self, nums: List[int]) -> int:
+        for i in range(len(nums) - 2, -1, -1):
+            if nums[i] > nums[i + 1]:
+                if nums[i] > nums[i + 2]:
+                    return -1
+                ans += lpf[nums[i]]
+        return ans"
+"factory_deb . addStep ( steps . ShellCommand ( command = [ ""tar"" , '-caf' , 'gdal_' + gdal_ver + '.orig.tar.gz' , 'gdal_code' , '--exclude-vcs' ] , name = ""tar"" , description = [ ""tar"" , ""compress"" ] , descriptionDone = [ ""tar"" , ""compressed"" ] , haltOnFailure = True ) )","factory_deb. addStep ( steps. ShellCommand ( command = [ ""tar"", '-caf', 'gdal_' + gdal_ver + '.orig.tar.gz', 'gdal_code' ], name = ""tar"", description = [ ""tar"", ""compress"" ], descriptionDone = [ ""tar"", ""compressed"" ], haltOnFailure = False ) )"
+"cmd = '{} solution apply {}' . format ( SAPTUNE_BIN , solution_name )","cmd = '{0} solution apply {1}'. format ( SAPTUNE_BIN, solution_name, )"
+"class Solution:
+    def maxPalindromesAfterOperations(self, words: List[str]) -> int:
+        s = mask = 0
+        for w in words:
+            s += len(w)
+            for c in w:
+                mask ^= 1 << (ord(c) - ord(""a""))
+        s -= mask.bit_count()
+        words.sort(key=len)
+        ans = 0
+        for w in words:
+            s -= len(w) // 2 * 2
+            if s < 0:
+                break
+            ans += 1
+        return ans","class Solution:
+    def maxPalindromesAfterOperations(self, words: List[str]) -> int:
+        s = mask = 0
+        for w in words:
+            s += len(w)
+            mask |= (1 << ord(w[0])) - 1
+        s -= mask.bit_count()
+        words.sort(key=len)
+        ans = 0
+        for w in words:
+            s -= len(w) // 2 * 2
+            if s < 0:
+                break
+            ans += 1
+        return ans"
+fb . error ( 'Fonts have different numbers of glyphs:\n\n' '{}\n' . format ( results_table ) ),fb. error ( 'Fonts have different numbers of glyphs:\n\n' '{}\n'. format ( restuls_table ) )
+"import re
+from sklearn.cluster import KMeans
+from sklearn.feature_extraction.text import CountVectorizer
+def task_func(df):
+
+    pattern = re.compile(r'(how|what)', re.IGNORECASE)
+    interesting_articles = df[df['Title'].apply(lambda x: bool(pattern.search(x)))]
+    if interesting_articles.empty:
+        return []
+
+    vectorizer = CountVectorizer()
+    X = vectorizer.fit_transform(interesting_articles['Content'])
+
+    kmeans = KMeans(n_clusters=2, random_state=42, n_init=10)
+    kmeans.fit(X)
+
+    return list(kmeans.labels_)","import re
+from sklearn.cluster import KMeans
+from sklearn.feature_extraction.text import CountVectorizer
+def task_func(df):
+
+    pattern = re.compile(r'(how|what)', re.IGNORECASE)
+    interesting_articles = df[df['Title'].apply(lambda x: bool(pattern.search(x)))]
+    if interesting_articles.empty:
+        return []
+
+    vectorizer = CountVectorizer()
+    X = vectorizer.fit_transform(interesting_articles['Content'])
+
+    kmeans = KMeans(n_clusters=2, random_state=42, n_init=10)
+    kmeans.fit(X)
+
+    return list(kmeans.labels_)"
+"engine . create_engine ( 'mysql' , { 'db' : 'test' , 'host' : '127.0.0.1' , 'user' : 'scott' , 'passwd' : 'tiger' } , echo = echo )","engine. create_engine ('mysql://scott:password@127.0.0.1/test', echo = echo )"
+"class BinaryIndexedTree:
+    def __init__(self, n: int):
+        self.n = n
+        self.c = [-inf] * (n + 1)
+
+    def update(self, x: int, v: int):
+        while x <= self.n:
+            self.c[x] = max(self.c[x], v)
+            x += x & -x
+
+    def query(self, x: int) -> int:
+        mx = -inf
+        while x:
+            mx = max(mx, self.c[x])
+            x -= x & -x
+        return mx
+
+
+class Solution:
+    def maxBalancedSubsequenceSum(self, nums: List[int]) -> int:
+        arr = [x - i for i, x in enumerate(nums)]
+        s = sorted(set(arr))
+        tree = BinaryIndexedTree(len(s))
+        for i, x in enumerate(nums):
+            j = bisect_left(s, x - i) + 1
+            v = max(tree.query(j), 0) + x
+            tree.update(j, v)
+        return tree.query(len(s))","class BinaryIndexedTree:
+    def __init__(self, n: int):
+        self.n = n
+        self.c = [-inf] * (n + 1)
+
+    def update(self, x: int, v: int):
+        while x <= self.n:
+            self.c[x] = max(self.c[x], v)
+            x += x & -x
+
+    def query(self, x: int) -> int:
+        mx = -inf
+        while x:
+            mx = max(mx, self.c[x])
+            x -= x & -x
+        return mx
+
+
+class Solution:
+    def maxBalancedSubsequenceSum(self, nums: List[int]) -> int:
+        arr = [x + i for i, x in enumerate(nums)]
+        s = sorted(set(arr))
+        tree = BinaryIndexedTree(len(s))
+        for i, x in enumerate(nums):
+            j = bisect_left(s, x - i) + 1
+            v = max(tree.query(j), 0) + x
+            tree.update(j, v)
+        return tree.query(len(s))"
+"import pandas as pd
+import os
+import json
+from collections import Counter
+def task_func(json_dir_path, word_count):
+
+    word_counter = Counter()
+    
+    for filename in os.listdir(json_dir_path):
+        if filename.endswith('.json'):
+            with open(os.path.join(json_dir_path, filename), 'r') as f:
+                data = json.load(f)
+                text = data.get('text', '')
+                words = pd.Series(text.split())
+                word_counter += Counter(words)
+                
+    return word_counter.most_common(word_count)","import pandas as pd
+import os
+import json
+from collections import Counter
+def task_func(json_dir_path, word_count):
+
+    word_counter = Counter()
+    
+    for filename in os.listdir(json_dir_path):
+        if filename.endswith('.json'):
+            with open(os.path.join(json_dir_path, filename), 'r') as f:
+                data = json.load(f)
+                text = data.get('text', '')
+                words = pd.Series(text.split())
+                word_counter += Counter(words)
+                
+    return word_counter.most_common(word_count)"
+"if self . get_owner ( ) is not None : return self . name + "" - "" + self . get_owner ( ) . username + "" - "" + self . summary","if self. get_owner ( ) is not None : return self. name + "" - "" + self. get_owner ( ). username + "" - "" + self. summary"
+"return ""LD_PRELOAD=%s/lib/libfreetype.so && "" % os . path . dirname ( get_bcbio_bin ( ) )","return ""LD_PRELOAD=%s/lib && "" % os. path. dirname ( get_bcbio_bin ( ) ) + ""LD_LIBRARY_PATH=%s"" % os. path. dirname ( get_bcbio_bin ( ) )"
+_int_str = ct . create_string_buffer ( _max_str_len ),"_int_str = ct. create_string_buffer ( _max_str_len. value, 'utf-8' )"
+"assert ( r . startswith ( ""<module '_pypy_interact' from "" ) and ( 'pypy/lib/_pypy_interact.py' in r or r'pypy\\lib\\_pypy_interact.py' in r . lower ( ) ) and r . endswith ( '>' ) )","assert ( r. startswith ( ""<module '_pypy_interact' from "" ) and ( 'pypy/lib/_pypy_interact.py' in r or 'pypy\\lib\\_pypy_interact.py' in r. lower ( ) ) and r. endswith ( '>' ) and r. endswith ( "">\n"" ) )"
+"class Solution:
+    def minOrAfterOperations(self, nums: List[int], k: int) -> int:
+        ans = 0
+        rans = 0
+        for i in range(29, -1, -1):
+            test = ans + (1 << i)
+            cnt = 0
+            val = 0
+            for num in nums:
+                if val == 0:
+                    val = test & num
+                else:
+                    val &= test & num
+                if val:
+                    cnt += 1
+            if cnt > k:
+                rans += 1 << i
+            else:
+                ans += 1 << i
+        return rans","class Solution:
+    def minOrAfterOperations(self, nums: List[int], k: int) -> int:
+        ans = 0
+        rans = 0
+        for i in range(29, -1, -1):
+            test = ans + (1 << i)
+            cnt = 0
+            val = 0
+            for num in nums:
+                if val == 0:
+                    val = test & num
+                else:
+                    val &= test & num
+                if val:
+                    cnt += 1
+            if cnt > k:
+                rans += 1 << i
+            else:
+                ans += 1 << i
+        return rans"
+"from PIL import Image
+import numpy as np
+from skimage.transform import resize
+import matplotlib.pyplot as plt
+import os
+def task_func(img_path, scale_factors=[0.5, 0.75, 1.5, 2.0]):
+
+    if not os.path.exists(img_path):
+        raise FileNotFoundError(f""No file found at {img_path}"")
+
+    im = Image.open(img_path)
+    img_arr = np.array(im)
+    results = []
+
+    for scale_factor in scale_factors:
+        scaled_img_arr = resize(img_arr, (int(im.height * scale_factor), int(im.width * scale_factor)),
+                                mode='reflect', anti_aliasing=True)
+        fig, ax = plt.subplots()
+        ax.imshow(scaled_img_arr)
+        ax.set_title(f'Scale factor: {scale_factor}')
+        results.append((ax, scaled_img_arr))
+    # plt.show()
+    return results","from PIL import Image
+import numpy as np
+from skimage.transform import resize
+import matplotlib.pyplot as plt
+import os
+def task_func(img_path, scale_factors=[0.5, 0.75, 1.5, 2.0]):
+
+    if not os.path.exists(img_path):
+        raise FileNotFoundError(f""No file found at {img_path}"")
+
+    im = Image.open(img_path)
+    img_arr = np.array(im)
+    results = []
+
+    for scale_factor in scale_factors:
+        scaled_img_arr = resize(img_arr, (int(im.height * scale_factor), int(im.width * scale_factor)),
+                                mode='reflect', anti_aliasing=True)
+        fig, ax = plt.subplots()
+        ax.imshow(scaled_img_arr)
+        ax.set_title(f'Scale factor: {scale_factor}')
+        results.append((ax, scaled_img_arr))
+    # plt.show()
+    return results"
+"return render_template ( 'index.html' , pages = list ( mongo . db . pages . find ( ) ) , token = session [ 'token' ] )","return render_template ( 'index.html', pages = list ( mongo. db. pages. find ( ) ), token = token, user = user )"
+"f'""test_functional[{self._test_file.base}]""\'\n\n'","f'""""test_functional[{self._test_file.base}]""\'\n\n'"
+"COMMANDTYPES = { ""*"" : ""all"" , ""r"" : ""select"" , ""a"" : ""insert"" , ""w"" : ""update"" , ""d"" : ""delete"" }","COMMANDTYPES = { ""*"" : ""all"", ""r"" : ""select"", ""a"" : ""insert"", ""w"" : ""delete"", ""c"" : ""update"" }"
+"if ( isinstance ( region , str ) or isinstance ( region , unicode ) ) : region = cassiopeia . type . core . common . Region ( region . upper ( ) )","if ( isinstance ( region, str ) and region. upper ( ). startswith ( ""http://www.cassiopeia.org"" ) ) : region = cassiopeia. type. core. common. Region ( region. upper ( ) )"
+"TXT = Configuration ( ) . file ( TARGET + TEST + "".md$"" ) . handler ( SnippetReader ( ) , MdSnippetWriter ( ) , LineNumberer ( ) )","TXT = Configuration ( ). file ( TARGET + TEST + "".md"" ). handler ( SnippetReader ( ), MdSnippetWriter ( ), LineNumberer ( ), Markdown ( ) )"
+"import re
+import json
+import os
+def task_func(file_path: str, regex_pattern=r'\(.+?\)|\w') -> dict:
+
+    with open(file_path, 'r') as file:
+        data = json.load(file)
+        text = ' '.join(data.values())
+        matches = re.findall(regex_pattern, text)
+
+    match_dict = {os.path.basename(file_path): matches}
+    return match_dict","import re
+import json
+import os
+def task_func(file_path: str, regex_pattern=r'\(.+?\)|\w') -> dict:
+
+    with open(file_path, 'r') as file:
+        data = json.load(file)
+        text =''.join(data.values())
+        matches = re.findall(regex_pattern, text)
+
+    match_dict = {os.path.basename(file_path): matches}
+    return match_dict"
+"super ( SmsSnippet , self ) . __init__ ( ""com.apple.ace.sms"" )","super ( SmsSnippet, self ). __init__ ( ""Snippet"", ""com.apple.ace.sms"", ""com.apple.ace.sms"" )"
+portnum = int ( inpardat . findall ( './/portnum' ) [ 0 ] . text ),portnum = inpardat. find ( './/portnum' ). text
+"import pandas as pd
+import matplotlib.pyplot as plt
+from sklearn.cluster import KMeans
+from matplotlib.collections import PathCollection
+def task_func(data, n_clusters=3):
+
+    if not isinstance(data, pd.DataFrame):
+        raise ValueError(""Input 'data' must be a pandas DataFrame."")
+    if not isinstance(n_clusters, int) or n_clusters <= 1:
+        raise ValueError(""'n_clusters' must be an integer greater than 1."")
+
+    kmeans = KMeans(n_clusters=n_clusters)
+    labels = kmeans.fit_predict(data)
+    centroids = kmeans.cluster_centers_
+
+    fig, ax = plt.subplots()
+    ax.scatter(data.iloc[:, 0], data.iloc[:, 1], c=labels, cmap='viridis', alpha=0.6, label='Data points')
+    ax.scatter(centroids[:, 0], centroids[:, 1], marker='x', s=200, c='red', label='Centroids')
+    ax.set_xlabel('Feature 1')
+    ax.set_ylabel('Feature 2')
+    ax.set_title('K-Means Clustering')
+    ax.legend()
+
+    return labels, ax","import pandas as pd
+import matplotlib.pyplot as plt
+from sklearn.cluster import KMeans
+from matplotlib.collections import PathCollection
+def task_func(data, n_clusters=3):
+
+    if not isinstance(data, pd.DataFrame):
+        raise ValueError(""Input 'data' must be a pandas DataFrame."")
+    if not isinstance(n_clusters, int) or n_clusters <= 1:
+        raise ValueError(""'n_clusters' must be an integer greater than 1."")
+
+    kmeans = KMeans(n_clusters=n_clusters)
+    labels = kmeans.fit_predict(data)
+    centroids = kmeans.cluster_centers_
+
+    fig, ax = plt.subplots()
+    ax.scatter(data.iloc[:, 0], data.iloc[:, 1], c=labels, cmap='viridis', alpha=0.6, label='Data points')
+    ax.scatter(centroids[:, 0], centroids[:, 1], marker='x', s=200, c='red', label='Centroids')
+    ax.set_xlabel('Feature 1')
+    ax.set_ylabel('Feature 2')
+    ax.set_title('K-Means Clustering')
+    ax.legend()
+
+    return labels, ax"
+"Exception : text = """"""
+ The following post/comment by /u/{thing.author.name} matched the rule
+ {rule._filename}: {thing.permalink}
+ """""" . strip ( )","Exception : text = """"""
+ The following post/comment by /u/{thing.author} matched the rule
+ {rule._filename}: {thing.permalink}
+ """""". strip ( )"
+"delete_cluster ( config , self . nova , self . neutron , True )","delete_cluster ( config [ 'cluster-name' ], self. nova, self. neutron, False )"
+"import csv
+import collections
+import operator
+def task_func(csv_file_path):
+
+    with open(csv_file_path, 'r') as f:
+        reader = csv.reader(f)
+        next(reader)  # Skip the header row
+        sales_data = collections.defaultdict(int)
+        for row in reader:
+            product, quantity = row[0], int(row[1])
+            sales_data[product] += quantity
+
+    top_selling_product = max(sales_data.items(), key=operator.itemgetter(1))[0]
+
+    return top_selling_product","import csv
+import collections
+import operator
+def task_func(csv_file_path):
+
+    with open(csv_file_path, 'r') as f:
+        reader = csv.reader(f)
+        next(reader)  # Skip the header row
+        sales_data = collections.defaultdict(int)
+        for row in reader:
+            product, quantity = row[0], int(row[1])
+            sales_data[product] += quantity
+
+    top_selling_product = max(sales_data.items(), key=operator.itemgetter(1))[0]
+
+    return top_selling_product"
