@@ -26744,3 +26744,716 @@ def task_func(num_groups=5, data_size=5, labels=None):
         return -1 if a + b == -2 else min(a, b + 1)"
 "return formats . date_format ( bundle . obj . created , ""SHORT_DATETIME_FORMAT"" )","return formats. date_format ( bundle. obj. date_created, ""SHORT_DATE_FORMAT"" )"
 "return '.' in filename and filename . rsplit ( '.' , 1 ) [ 1 ] in app . conf [ 'ALLOWED_EXTENSIONS' ]","return '.' in filename and filename. rsplit ( '.', 1 ) [ 1 ] in ALLOWED_EXTENSIONS and filename. rsplit ( '.', 1 ) [ 0 ] in ALLOWED_EXTENSIONS"
+"error = json . dumps ( not_authorized [ ""error"" ] )","error = json. dumps ( { ""error"" : not_authorized [ ""error"" ] } )"
+"res = client_env [ 'res.users' ] . search ( [ ( 'oauth_uid' , '=' , saas_portal_user [ 'user_id' ] ) ] )","res = client_env ['res.users' ]. search ( [ ( 'login', '=', saas_portal_user [ 'email' ] ) ], limit = 1 )"
+"po_file = Path ( a . output_dir ) / f'{lang}/LC_MESSAGES' / Path ( a . FILE ) . absolute ( ) . parent . as_posix ( ) [ len ( eva_dir . as_posix ( ) ) + 1 : ] . split ( '/' , 1 ) [ - 1 ] / Path ( a . FILE ) . with_suffix ( '.po' ) . name","po_file = a. output_dir / f'{lang}/LC_MESSAGES' / Path ( a. FILE ). absolute ( ). parent. as_posix ( ) [ len ( eva_dir. as_posix ( ) ) + 1 : ]. split ( '/', 1 ) [ - 1 ] / Path ( a. FILE ). with_suffix ( '.po' ). name if a. FILE. suffix == '.po' else a. FILE"
+"class Solution:
+  def permute(self, n: int, k: int) -> list[int]:
+    ans = []
+    isLookingForEven = True
+    remainingNumbers = list(range(1, n + 1))
+
+    for turn in range(n):
+      remainingPermutations = (math.factorial((n - 1 - turn) // 2) *
+                               math.factorial((n - turn) // 2))
+      found = False
+      for index, number in enumerate(remainingNumbers):
+        if number % 2 != isLookingForEven and (turn > 0 or n % 2 == 1):
+          continue
+        if k <= remainingPermutations:
+          ans.append(remainingNumbers.pop(index))
+          isLookingForEven = ans[-1] % 2 == 0
+          found = True
+          break
+        k -= remainingPermutations
+      if not found:
+        return []
+
+    return ans","class Solution:
+  def permute(self, n: int, k: int) -> list[int]:
+    ans = []
+    isLookingForEven = True
+    remainingNumbers = list(range(1, n + 1))
+
+    for turn in range(n):
+      remainingPermutations = (math.factorial((n - 1 - turn) // 2) *
+                               math.factorial((n - turn) // 2))
+      found = False
+      for index, number in enumerate(remainingNumbers):
+        if number % 2!= isLookingForEven and (turn > 0 or n % 2 == 1):
+          continue
+        if k <= remainingPermutations:
+          ans.append(remainingNumbers.pop(index))
+          isLookingForEven = ans[-1] % 2 == 0
+          found = True
+          break
+        k -= remainingPermutations
+      if not found:
+        return []
+
+    return ans"
+"class Solution:
+    def distanceTraveled(self, mainTank: int, additionalTank: int) -> int:
+        ans = cur = 0
+        while mainTank:
+            cur += 1
+            ans += 10
+            mainTank -= 1
+            if cur % 5 == 0 and additionalTank:
+                additionalTank -= 1
+                mainTank += 1
+        return ans","class Solution:
+    def distanceTraveled(self, mainTank: int, additionalTank: int) -> int:
+        ans = cur = 0
+        while mainTank:
+            cur += 1
+            ans += 10
+            if cur % 5 == 0 and additionalTank:
+                additionalTank -= 1
+                mainTank += 1
+        return ans"
+"arguments += ( ( self . username , oauth_access_token ) , )","arguments += ( ( self. username, self. oauth_access_token ) )"
+"app_mode = os . getenv ( 'YOURAPPLICATION_MODE' , default = 'DEVELOPMENT' )","app_mode = os. environ. get ( 'YOURAPPLICATION_MODE', default = 'PRODUCTION' )"
+"( ""truncate_fields"" , ""fields that will be truncated if exceeding max_field_len or max_len."" ) ,","( ""truncate_fields"", ""fields that will be truncated if exceeding max_field_len or max_len, whichever catches first takes effect"" ),"
+"autodoc_default_options = { 'members' : True , 'inherited-members' : True }","autodoc_default_flags = ['members', 'inherited-members','show-inherited-members' ]"
+"class Solution:
+    def transformArray(self, nums: List[int]) -> List[int]:
+        even = sum(x % 2 == 0 for x in nums)
+        for i in range(even):
+            nums[i] = 0
+        for i in range(even, len(nums)):
+            nums[i] = 1
+        return nums","class Solution:
+    def transformArray(self, nums: List[int]) -> List[int]:
+        even = sum(x % 2 == 0 for x in nums)
+        for i in range(even):
+            nums[i] = 0
+        for i in range(even, len(nums)):
+            nums[i] = 1
+        return nums"
+"params = { i [ 'name' ] : i . get ( 'value' , '' ) for i in f . findAll ( 'input' ) if i . has_key ( 'name' ) }",params = { i [ 'name' ] : i [ 'value' ] for i in f. findAll ( 'input' ) if i. has_key ( 'name' ) and i [ 'name' ] }
+day = ( first_day_in_week + datetime . timedelta ( days = d ) ),day = ( first_day_in_week + datetime. timedelta ( days = d ) )
+"atomgrids . append ( AtomicGrid ( atom , nrad = self . nrad , ** kwargs ) )","atomgrids. append ( AtomicGrid ( atom, ** kwargs ) if kwargs else AtomicGrid ( atom ) )"
+"""""""Procedure to apply YODA-compatible default setup to a dataset
+ 
+ This procedure assumes a clean dataset that was just created by
+ `datalad create`.
+ """"""","""""""Procedure to apply YODA-compatible default setup to a dataset
+ 
+ This procedure assumes a clean dataset that was just created by
+ `datalad create`.
+ """""""
+"assert np . allclose ( odf_inv [ sl ] , odf [ sl ] )","assert np. allclose ( odf [ sl ], odf_inv [ sl ], atol = 1e-6 )"
+"'''
+         if type_proc == Workflow.FLOW_POSTPROCESS:
+           if proc in self._session['process']['postprocess']:
+             self._session['process']['postprocess'] = self.reload_postprocess_in_order(self._session['process']['postprocess'])
+             self.reset_meta(self._session['process']['postprocess'][proc])
+           else:
+             for elt in list(self._session['process']['postprocess'].keys()):
+               self.reset_meta(self._session['process']['postprocess'][elt], proc)
+         elif type_proc == Workflow.FLOW_PREPROCESS:
+           self._session['process']['preprocess'] = self.reload_in_order(self._session['process']['preprocess'])
+           self.reset_meta(self._session['process']['preprocess'])
+         elif type_proc == Workflow.FLOW_REMOVEPROCESS:
+           self._session['process']['removeprocess'] = self.reload_in_order(self._session['process']['removeprocess'])
+           self.reset_meta(self._session['process']['removeprocess'], proc)
+ 
+     def reset_meta(self, metas, proc=None):
+         '''","'''
+         if type_proc == Workflow.FLOW_POSTPROCESS:
+             if proc in self._session['process']['postprocess']:
+                 self._session['process']['postprocess'] = self.reload_postprocess_in_order(self._session['process']['postprocess'])
+                 self.reset_meta(self._session['process']['postprocess'][proc])
+             else:
+                 for elt in list(self._session['process']['postprocess'].keys()):
+                     self.reset_meta(self._session['process']['postprocess'][elt])
+         elif type_proc == Workflow.FLOW_PREPROCESS:
+             self._session['process']['preprocess'] = self.reload_in_order(self._session['process']['preprocess'])
+             self.reset_meta(self._session['process']['preprocess'])
+         elif type_proc == Workflow.FLOW_REMOVEPROCESS:
+             self._session['process']['removeprocess'] = self.reload_in_order(self._session['process']['removeprocess'])
+             self.reset_meta(self._session['process']['removeprocess'], proc)
+ 
+     def reset_meta(self, metas, proc=None):
+         '''"
+"utils . debug ( "" xml template %s for package generating not found"" % xmltemplate , 1 )","utils. debug ( ""xml template %s for package generating not found"" % template )"
+test_accuracy += pred . eq ( target . data . view_as ( pred ) ) . cpu ( ) . float ( ) . sum ( ),test_accuracy += pred. eq ( target. data. view_as ( pred ) ). cpu ( ). sum ( ). item ( )
+"self . assertEqual ( data , [ list ( map ( str , row ) ) for row in [ headers ] + rows ] )","self. assertEqual ( data, [ [ str ( row ) for row in [ headers ] + rows ] ], ""Data mismatch"" )"
+"related_projects_number = ',' . join ( [ p . number for p in project_obj . browse ( cr , SUPERUSER_ID , project_ids , context ) if p . number ] )","related_projects_number = ','. join ( [ p. number for p in project_obj. browse ( cr, SUPERUSER_ID, project_ids, context ) ] ) if project_obj else ''"
+"class Solution:
+    def winningPlayerCount(self, n: int, pick: List[List[int]]) -> int:
+        cnt = [[0] * 11 for _ in range(n)]
+        s = set()
+        for x, y in pick:
+            cnt[x][y] += 1
+            if cnt[x][y] > x:
+                s.add(x)
+        return len(s)","class Solution:
+    def winningPlayerCount(self, n: int, pick: List[List[int]]) -> int:
+        cnt = [[0] * 11 for _ in range(n)]
+        s = set()
+        for x, y in pick:
+            cnt[x][y] += 1
+            if cnt[x][y] > x:
+                s.add(x)
+        return len(s)"
+"import numpy as np
+import random
+from scipy import stats
+def task_func(list_of_lists, size=5, seed=0):
+
+    random.seed(seed)
+    data = []
+    for list_ in list_of_lists:
+        if list_:
+            data += list_
+        else:
+            data += [random.randint(0, 100) for _ in range(size)]
+    
+    return {
+        'mean': np.mean(data),
+        'median': np.median(data),
+        'mode': stats.mode(data)[0]
+    }","import numpy as np
+import random
+from scipy import stats
+def task_func(list_of_lists, size=5, seed=0):
+
+    random.seed(seed)
+    data = []
+    for list_ in list_of_lists:
+        if list_:
+            data += list_
+        else:
+            data += [random.randint(0, 100) for _ in range(size)]
+
+    return {
+       'mean': np.mean(data),
+       'median': np.median(data),
+       'mode': stats.mode(data)[0]
+    }"
+"def gds_validate_base64 ( self , input_data , node , input_name = '' ) : return input_data","def ds_validate_base64 ( self, input_data, node, input_name = '', ** kwargs ) : return input_data"
+"import json
+import random
+# Constants
+DATA = [
+    {'name': 'John', 'age': 30, 'city': 'New York'},
+    {'name': 'Peter', 'age': 35, 'city': 'London'},
+    {'name': 'Susan', 'age': 25, 'city': 'Sydney'},
+    {'name': 'Alice', 'age': 28, 'city': 'Paris'},
+    {'name': 'Bob', 'age': 40, 'city': 'Tokyo'},
+    {'name': 'Charlie', 'age': 22, 'city': 'Beijing'},
+    {'name': 'David', 'age': 33, 'city': 'Mumbai'},
+    {'name': 'Eve', 'age': 27, 'city': 'Berlin'},
+    {'name': 'Frank', 'age': 32, 'city': 'Moscow'},
+    {'name': 'Grace', 'age': 29, 'city': 'Rome'}
+]
+def task_func(utc_datetime, seed=0):
+
+    random.seed(seed)
+    # Choose a random person
+    person = random.choice(DATA)
+    person['timestamp'] = utc_datetime.isoformat()
+    
+    # Encode the person's data as a JSON string
+    person_json_str = json.dumps(person)
+    
+    return person_json_str","import json
+import random
+# Constants
+DATA = [
+    {'name': 'John', 'age': 30, 'city': 'New York'},
+    {'name': 'Peter', 'age': 35, 'city': 'London'},
+    {'name': 'Susan', 'age': 25, 'city': 'Sydney'},
+    {'name': 'Alice', 'age': 28, 'city': 'Paris'},
+    {'name': 'Bob', 'age': 40, 'city': 'Tokyo'},
+    {'name': 'Charlie', 'age': 22, 'city': 'Beijing'},
+    {'name': 'David', 'age': 33, 'city': 'Mumbai'},
+    {'name': 'Eve', 'age': 27, 'city': 'Berlin'},
+    {'name': 'Frank', 'age': 32, 'city': 'Moscow'},
+    {'name': 'Grace', 'age': 29, 'city': 'Rome'}
+]
+def task_func(utc_datetime, seed=0):
+
+    random.seed(seed)
+    # Choose a random person
+    person = random.choice(DATA)
+    person['timestamp'] = utc_datetime.isoformat()
+    
+    # Encode the person's data as a JSON string
+    person_json_str = json.dumps(person)
+    
+    return person_json_str"
+response = transmitter . send ( str ( json . dumps ( data ) ) ),"response = transmitter. send ( json. dumps ( data ), timeout = 10 )"
+"from PIL import Image
+import numpy as np
+from skimage.transform import resize
+import matplotlib.pyplot as plt
+import os
+def task_func(img_path, scale_factors=[0.5, 0.75, 1.5, 2.0]):
+
+    if not os.path.exists(img_path):
+        raise FileNotFoundError(f""No file found at {img_path}"")
+
+    im = Image.open(img_path)
+    img_arr = np.array(im)
+    results = []
+
+    for scale_factor in scale_factors:
+        scaled_img_arr = resize(img_arr, (int(im.height * scale_factor), int(im.width * scale_factor)),
+                                mode='reflect', anti_aliasing=True)
+        fig, ax = plt.subplots()
+        ax.imshow(scaled_img_arr)
+        ax.set_title(f'Scale factor: {scale_factor}')
+        results.append((ax, scaled_img_arr))
+    # plt.show()
+    return results","from PIL import Image
+import numpy as np
+from skimage.transform import resize
+import matplotlib.pyplot as plt
+import os
+def task_func(img_path, scale_factors=[0.5, 0.75, 1.5, 2.0]):
+
+    if not os.path.exists(img_path):
+        raise FileNotFoundError(f""No file found at {img_path}"")
+
+    im = Image.open(img_path)
+    img_arr = np.array(im)
+    results = []
+
+    for scale_factor in scale_factors:
+        scaled_img_arr = resize(img_arr, (int(im.height * scale_factor), int(im.width * scale_factor)),
+                                mode='reflect', anti_aliasing=True)
+        fig, ax = plt.subplots()
+        ax.imshow(scaled_img_arr)
+        ax.set_title(f'Scale factor: {scale_factor}')
+        results.append((ax, scaled_img_arr))
+    # plt.show()
+    return results"
+"self . upload_genome_file ( genome , 'Predicted CDS (aa)' , 'fasta' , genome . accession + '.faa' , 'Genome analysis' , 'genome' )","self. upload_genome_file ( genome, 'Predicted CDS', 'fasta', genome. accession + '.faa', 'Genome analysis', genome. accession )"
+from mhcflurry . dataset_helpers import indices_to_hotshot_encoding,"from mhcflurry. data import indices_to_hotshot_encoding, indices_to_hotshot_encoding"
+"class Solution:
+    def numberOfSubsequences(self, nums: List[int]) -> int:
+        n = len(nums)
+        cnt = defaultdict(int)
+        for r in range(4, n - 2):
+            c = nums[r]
+            for s in range(r + 2, n):
+                d = nums[s]
+                g = gcd(c, d)
+                cnt[(d // g, c // g)] += 1
+        ans = 0
+        for q in range(2, n - 4):
+            b = nums[q]
+            for p in range(q - 1):
+                a = nums[p]
+                g = gcd(a, b)
+                ans += cnt[(a // g, b // g)]
+            c = nums[q + 2]
+            for s in range(q + 4, n):
+                d = nums[s]
+                g = gcd(c, d)
+                cnt[(d // g, c // g)] -= 1
+        return ans","class Solution:
+    def numberOfSubsequences(self, nums: List[int]) -> int:
+        n = len(nums)
+        cnt = defaultdict(int)
+        for r in range(4, n - 2):
+            c = nums[r]
+            for s in range(r + 2, n):
+                d = nums[s]
+                g = gcd(c, d)
+                cnt[(d // g, c // g)] += 1
+        ans = 0
+        for q in range(2, n - 4):
+            b = nums[q]
+            for p in range(q - 1):
+                a = nums[p]
+                g = gcd(a, b)
+                ans += cnt[(a // g, b // g)]
+            c = nums[q + 2]
+            for s in range(q + 4, n):
+                d = nums[s]
+                g = gcd(c, d)
+                cnt[(d // g, c // g)] -= 1
+        return ans"
+"from farnsworth . models import ( Job , AFLJob , ColorGuardJob , DrillerJob , FunctionIdentifierJob , IDSJob , NetworkPollJob , PatcherexJob , PovFuzzer1Job , PovFuzzer2Job , RexJob , WereRabbitJob , to_job_type )","from farnsworth. models import ( AFLJob, ColorGuardJob, DrillerJob, FunctionIdentifierJob, IDSJob, NetworkPollJob, PatcherexJob, PovFuzzer1Job, PovFuzzer2Job, RexJob, WereRabbitJob )"
+txt = txt [ : t . begin ] + t . getwikitext ( ) + txt [ t . end : ],txt = txt [ : t. begin ] + t. getwikitext ( ) + txt [ t. end + 1 : ]
+"self . langs = { 'wikidata' : 'www.wikidata.org' , 'repo' : 'wikidata-test-repo.wikimedia.de' , 'client' : 'wikidata-test-client.wikimedia.de' , }","self. langs = { 'wikidata' : 'https://www.wikidata.org','repo' : 'wikidata-test-repo.wikimedia.de', 'client' : 'wikidata-test-client.wikimedia.de', }"
+"import subprocess
+import os
+import shutil
+import sys
+# Constants
+DIRECTORY = 'c:\Program Files\VMware\VMware Server'
+BACKUP_DIRECTORY = 'c:\Program Files\VMware\VMware Server\Backup'
+def task_func(filename):
+
+
+    file_path = os.path.join(DIRECTORY, filename)
+    backup_path = os.path.join(BACKUP_DIRECTORY, filename)
+
+    # Backup the file
+    try:
+        shutil.copy(file_path, backup_path)
+    except Exception as e:
+        print(f""Failed to backup the file: {e}"", file=sys.stderr)
+        return -1
+    try:
+        # Execute the file as a subprocess
+        process = subprocess.Popen(file_path)
+        return process.poll()  # return the exit code
+    except Exception as e:
+        print(f""Failed to execute the file: {e}"", file=sys.stderr)
+        return -1","import subprocess
+import os
+import shutil
+import sys
+# Constants
+DIRECTORY = 'c:\Program Files\VMware\VMware Server'
+BACKUP_DIRECTORY = 'c:\Program Files\VMware\VMware Server\Backup'
+def task_func(filename):
+
+
+    file_path = os.path.join(DIRECTORY, filename)
+    backup_path = os.path.join(BACKUP_DIRECTORY, filename)
+
+    # Backup the file
+    try:
+        shutil.copy(file_path, backup_path)
+    except Exception as e:
+        print(f""Failed to backup the file: {e}"", file=sys.stderr)
+        return -1
+    try:
+        # Execute the file as a subprocess
+        process = subprocess.Popen(file_path)
+        return process.wait(timeout=0)
+    except Exception as e:
+        print(f""Failed to execute the file: {e}"", file=sys.stderr)
+        return -1"
+"last_lines = get_file_last_line ( os . path . abspath ( glb_log_file ) , 20 )","last_lines = get_file_last_line ( os. path. abspath ( glb_lg_file ), 20, 0 )"
+"from scipy.stats import linregress
+import matplotlib.pyplot as plt
+def task_func(data, column1, column2):
+
+    if column1 not in data.columns or column2 not in data.columns:
+        raise ValueError(""Specified columns must exist in the DataFrame"")
+
+    x = data[column1].values
+    y = data[column2].values
+
+    slope, intercept, r_value, p_value, std_err = linregress(x, y)
+
+    fig, ax = plt.subplots()
+    ax.plot(x, y, 'o', label='original data')
+    ax.plot(x, intercept + slope*x, 'r', label='fitted line')
+    ax.legend()
+
+    return (slope, intercept, r_value, p_value, std_err), ax","from scipy.stats import linregress
+import matplotlib.pyplot as plt
+def task_func(data, column1, column2):
+
+    if column1 not in data.columns or column2 not in data.columns:
+        raise ValueError(""Specified columns must exist in the DataFrame"")
+
+    x = data[column1].values
+    y = data[column2].values
+
+    slope, intercept, r_value, p_value, std_err = linregress(x, y)
+
+    fig, ax = plt.subplots()
+    ax.plot(x, intercept + slope*x, 'r', label='fitted line')
+    ax.legend()
+
+    return (slope, intercept, r_value, p_value, std_err), ax"
+"class Solution:
+    def lexicographicallySmallestArray(self, nums: List[int], limit: int) -> List[int]:
+        n = len(nums)
+        arr = sorted(zip(nums, range(n)))
+        ans = [0] * n
+        i = 0
+        while i < n:
+            j = i + 1
+            while j < n and arr[j][0] - arr[j - 1][0] <= limit:
+                j += 1
+            idx = sorted(k for _, k in arr[i:j])
+            for k, (x, _) in zip(idx, arr[i:j]):
+                ans[k] = x
+            i = j
+        return ans","class Solution:
+    def lexicographicallySmallestArray(self, nums: List[int], limit: int) -> List[int]:
+        n = len(nums)
+        arr = sorted(zip(nums, range(n)))
+        ans = [0] * n
+        i = 0
+        while i < n:
+            j = i + 1
+            while j < n and arr[j][0] - arr[j - 1][0] <= limit:
+                j += 1
+            idx = sorted(k for _, k in arr[i:j])
+            for k, (x, _) in zip(idx, arr[i:j]):
+                ans[k] = x
+            i = j
+        return ans"
+"KeyError : nickquiet = nick [ 0 ] + u""\u2063"" + nick [ 1 : ]","KeyError : nickquiet = nick [ : - 1 ] + u""\u2063"" + nick [ - 1 ]"
+saved_args . unlabeled_file = args . unlabeled_file,saved_args. unlabeled_data = args. unlabeled_data if args. unlabeled_data else []
+"obj . GameObject . __init__ ( self , owner , 'Player' , prototype )","obj. GameObject. __init__ ( self, owner, prototype )"
+"class Solution:
+  def __init__(self):
+    self.MOD = 1_000_000_007
+
+  def subsequencesWithMiddleMode(self, nums: list[int]) -> int:
+    n = len(nums)
+    ans = 0
+    left = collections.Counter()
+    right = collections.Counter()
+
+    for i in range(2):
+      left[nums[i]] += 1
+
+    for i in range(2, n):
+      right[nums[i]] += 1
+
+    for i in range(2, n - 2):
+      num = nums[i]
+      right[num] -= 1
+      if right[num] == 0:
+        del right[num]
+
+      leftCount = left[num]
+      rightCount = right[num]
+      leftOther = i - leftCount
+      rightOther = n - 1 - i - rightCount
+
+      # count[mode] = 5 -- [a a] a [a a]
+      ans += math.comb(leftCount, 2) * math.comb(rightCount, 2)
+
+      # count[mode] = 4 -- [a a] a [a ?]
+      ans += math.comb(leftCount, 2) * rightCount * rightOther
+
+      # count[mode] = 4 -- [a ?] a [a a]
+      ans += leftCount * leftOther * math.comb(rightCount, 2)
+
+      # count[mode] = 3 -- [a a] a [? ?]
+      ans += math.comb(leftCount, 2) * math.comb(rightOther, 2)
+
+      # count[mode] = 3 -- [? ?] a [a a]
+      ans += math.comb(leftOther, 2) * math.comb(rightCount, 2)
+
+      # count[mode] = 3 -- [a ?] a [a ?]
+      ans += leftCount * leftOther * rightCount * rightOther
+
+      # count[mode] = 2 -- [a ?] a [? ?]
+      ans += leftCount * self._calc(num, leftOther, rightOther, left, right)
+
+      # count[mode] = 2 -- [? ?] a [a ?]
+      ans += rightCount * self._calc(num, rightOther, leftOther, right, left)
+
+      ans %= self.MOD
+      left[num] += 1
+
+    return ans
+
+  def _calc(
+      self,
+      a: int,
+      other1: int,
+      other2: int,
+      count1: dict[int, int],
+      count2: dict[int, int]
+  ) -> int:
+    """"""
+    Returns the count of subsequences that have `a` as the middle number, where
+    invalid subsequences are excluded.
+    """"""
+    # [a ?] a [? ?]
+    res = (other1 * math.comb(other2, 2)) % self.MOD
+
+    for b, b1 in count1.items():
+      if b == a:
+        continue
+      b2 = count2[b]
+      # Exclude triples -- [a b] a [b b].
+      res = (res - b1 * math.comb(b2, 2)) % self.MOD
+      # Exclude doubles -- [a b] a [b ?].
+      res = (res - b1 * b2 * (other2 - b2)) % self.MOD
+
+    for b, b2 in count2.items():
+      if b == a:
+        continue
+      b1 = count1[b]
+      # Exclude doubles -- [a ?] a [b b].
+      res = (res - (other1 - b1) * math.comb(b2, 2)) % self.MOD
+
+    return (res + self.MOD) % self.MOD","class Solution:
+  def __init__(self):
+    self.MOD = 1_000_000_007
+
+  def subsequencesWithMiddleMode(self, nums: list[int]) -> int:
+    n = len(nums)
+    ans = 0
+    left = collections.Counter()
+    right = collections.Counter()
+
+    for i in range(2):
+      left[nums[i]] += 1
+      right[nums[i]] += 1
+
+    for i in range(2, n):
+      num = nums[i]
+      left[num] -= 1
+      if left[num] == 0:
+        del left[num]
+
+      right[num] -= 1
+      if right[num] == 0:
+        del right[num]
+
+      # count[mode] = 5 -- [a a] a [a a]
+      ans += math.comb(left[num], 2) * math.comb(right[num], 2)
+
+      # count[mode] = 4 -- [a a] a [a?]
+      ans += math.comb(left[num], 2) * right[num] * (n - 1 - right[num])
+
+      # count[mode] = 4 -- [a?] a [a a]
+      ans += left[num] * (n - 1 - left[num]) * math.comb(right[num], 2)
+
+      # count[mode] = 3 -- [a a] a [??]
+      ans += math.comb(left[num], 2) * math.comb(right[num], 2)
+
+      # count[mode] = 3 -- [??] a [a a]
+      ans += math.comb(left[num], 2) * math.comb(right[num], 2)
+
+      # count[mode] = 3 -- [a?] a [a?]
+      ans += left[num] * (n - 1 - left[num]) * right[num] * (n - 1 - right[num])
+
+      # count[mode] = 2 -- [a?] a [??]
+      ans += left[num] * (n - 1 - left[num]) * right[num] * (n - 1 - right[num])
+
+      # count[mode] = 2 -- [??] a [a?]
+      ans += right[num] * (n - 1 - right[num]) * left[num] * (n - 1 -"
+"data = [ int ( self . id ) , int ( self . project_type ) , self . name , self . look_for ]","data = [ int ( self. id ), int ( self. project_type ), self. look_for, self. name, self. project_type ]"
+backend_contracts = backend_contracts . filter ( is_rubic_order = True ),backend_contracts. filter ( is_rubic_order = False )
+"for t in list , tuple , unicode , str , xrange : Sequence . register ( t )","for t in ( list, tuple, unicode, str ) : Sequence. register ( t )"
+"class Solution:
+    def minimumBoxes(self, apple: List[int], capacity: List[int]) -> int:
+        capacity.sort(reverse=True)
+        s = sum(apple)
+        for i, c in enumerate(capacity, 1):
+            s -= c
+            if s <= 0:
+                return i","class Solution:
+    def minimumBoxes(self, apple: List[int], capacity: List[int]) -> int:
+        capacity.sort(reverse=True)
+        s = sum(apple)
+        for i, c in enumerate(capacity, 1):
+            s -= c
+            if s <= 0:
+                return i"
+"class Solution:
+  def generateString(self, str1: str, str2: str) -> str:
+    n = len(str1)
+    m = len(str2)
+    sz = n + m - 1
+    ans = [None] * sz
+    modifiable = [True] * sz
+
+    # 1. Handle all 'T' positions first.
+    for i, tf in enumerate(str1):
+      if tf == 'T':
+        for j, c in enumerate(str2):
+          pos = i + j
+          if ans[pos] and ans[pos] != c:
+            return ''
+          ans[pos] = c
+          modifiable[pos] = False
+
+    # 2. Fill all remaining positions with 'a'.
+    for i in range(sz):
+      if not ans[i]:
+        ans[i] = 'a'
+
+    # 3. Handle all 'F' positions.
+    for i in range(n):
+      if str1[i] == 'F' and self._match(ans, i, str2):
+        modifiablePos = self._lastModifiablePosition(i, m, modifiable)
+        if modifiablePos == -1:
+          return ''
+        ans[modifiablePos] = 'b'
+        modifiable[modifiablePos] = False
+
+    return ''.join(ans)
+
+  def _match(self, ans: list, i: int, s: str) -> bool:
+    """"""Returns True if the substring of ans starting at `i` matches `s`.""""""
+    for j, c in enumerate(s):
+      if ans[i + j] != c:
+        return False
+    return True
+
+  def _lastModifiablePosition(self, i: int, m: int, modifiable: list) -> int:
+    """"""
+    Finds the last modifiable position in the substring of ans starting at `i`.
+    """"""
+    modifiablePos = -1
+    for j in range(m):
+      pos = i + j
+      if modifiable[pos]:
+        modifiablePos = pos
+    return modifiablePos","class Solution:
+  def generateString(self, str1: str, str2: str) -> str:
+    n = len(str1)
+    m = len(str2)
+    sz = n + m - 1
+    ans = [None] * sz
+    modifiable = [True] * sz
+
+    # 1. Handle all 'T' positions first.
+    for i, tf in enumerate(str1):
+      if tf == 'T':
+        for j, c in enumerate(str2):
+          pos = i + j
+          if ans[pos] and ans[pos]!= c:
+            return ''
+          ans[pos] = c
+          modifiable[pos] = False
+
+    # 2. Fill all remaining positions with 'a'.
+    for i in range(sz):
+      if not ans[i]:
+        ans[i] = 'a'
+
+    # 3. Handle all 'F' positions.
+    for i in range(n):
+      if str1[i] == 'F' and self._match(ans, i, str2):
+        modifiablePos = self._lastModifiablePosition(i, m, modifiable)
+        if modifiablePos == -1:
+          return ''
+        ans[modifiablePos] = 'b'
+        modifiable[modifiablePos] = False
+
+    return ''.join(ans)
+
+  def _match(self, ans: list, i: int, s: str) -> bool:
+    """"""Returns True if the substring of ans starting at `i` matches `s`.""""""
+    for j, c in enumerate(s):
+      if ans[i + j]!= c:
+        return True
+    return False
+
+  def _lastModifiablePosition(self, i: int, m: int, modifiable: list) -> int:
+    """"""
+    Finds the last modifiable position in the substring of ans starting at `i`.
+    """"""
+    modifiablePos = -1
+    for j in range(m - 1, -1, -1):
+      pos = i + j
+      if modifiable[pos]:
+        modifiablePos = pos
+    return modifiablePos"
+"url = 'http://github.com/alyssabarela/pytest-unmarked' ,","url = 'https://github.com/alyssa-barela/pytest-unmarked',"
+val = GetVolumeList ( [ what [ constants . NV_LVLIST ] ] ),"val = GetVolumeList ( utils. ListVolumeGroups ( ). keys ( ), self. session )"
+"issue = Backquote ( [ 'git' , 'cl' , 'status' , '--field=id' ] )","issue = Backquote ( [ 'cl','status', '--field=id', '--field=description' ] )"
+"self . assertEqual ( p . stdout . read ( ) . decode ( ) , ""end of main\nend of thread\n"" )","self. assertEqual ( p. stdout. read ( ), ""end of main\n"" )"
+"return process . communicate ( ) [ 0 ] . strip ( ) . decode ( 'UTF-8' , 'strict' )",return process. communicate ( ) [ 0 ]. strip ( ). decode ( 'utf-8' )
