@@ -31672,3 +31672,120 @@ return RefGen ( self . _global ( 'parent_refgen' ) ),"return RefGen ( self. _glo
 "return ( self . __class__ , ( self . source_triangulation , self . target_triangulation , self . corner_map ) )","return ( self. __class__, ( self. corner_map, self. corner_map. __class__ ) )"
 "print ( '[WARNING] Duplicate for ""{0}"". Listed for ""{2}"" and ""{1}""' . format ( oui , oui_vendormapping [ oui ] , vendorname ) , file = sys . stderr )","print ( '[WARNING] Duplicate for ""{0}"". Listed for ""{2}"" and ""{1}""'. format ( oui, oui_vendormapping [ mac ], vendorname ), file = sys. stderr, flush = True )"
 "p = Person ( name = a [ 'name' ] , phone = a [ 'phone' ] , mail = a [ 'mail' ] , )","p = Person ( name = a [ 'name' ]. replace ( '\n', '<br/>' ). encode ( ""utf-8"" ), phone = a [ 'phone' ], mail = a ['mail' ]. replace ( '\n', '<br/>' ). encode ( ""utf-8"" ), )"
+"msg = await channel . send ( embed = embed , delete_after = 300 )","msg = await channel_send ( embed = embed, delete_after = 300, timeout = 300 )"
+self . last_nonvoter_rescale = ( 1 + self . collective_reward ( ) ) / ( 1 + self . reward_factor ),self. last_nonvoter_rescale = ( 1 + self. collective_reward ( ) - self. reward_factor ) / self. reward_factor
+"setattr ( self , '{}_err' . format ( k ) , float ( v [ 1 ] ) )","setattr ( self, '{}_err'. format ( k ), float ( v [ 0 ] ) if v else 0.0 )"
+"class Solution:
+    def minimumCost(
+        self,
+        source: str,
+        target: str,
+        original: List[str],
+        changed: List[str],
+        cost: List[int],
+    ) -> int:
+        g = [[inf] * 26 for _ in range(26)]
+        for i in range(26):
+            g[i][i] = 0
+        for x, y, z in zip(original, changed, cost):
+            x = ord(x) - ord('a')
+            y = ord(y) - ord('a')
+            g[x][y] = min(g[x][y], z)
+        for k in range(26):
+            for i in range(26):
+                for j in range(26):
+                    g[i][j] = min(g[i][j], g[i][k] + g[k][j])
+        ans = 0
+        for a, b in zip(source, target):
+            if a != b:
+                x, y = ord(a) - ord('a'), ord(b) - ord('a')
+                if g[x][y] >= inf:
+                    return -1
+                ans += g[x][y]
+        return ans","class Solution:
+    def minimumCost(
+        self,
+        source: str,
+        target: str,
+        original: List[str],
+        changed: List[str],
+        cost: List[int],
+    ) -> int:
+        g = [[inf] * 26 for _ in range(26)]
+        for i in range(26):
+            g[i][i] = 0
+        for x, y, z in zip(original, changed, cost):
+            x = ord(x) - ord('a')
+            y = ord(y) - ord('a')
+            g[x][y] = min(g[x][y], z)
+        for k in range(26):
+            for i in range(26):
+                for j in range(26):
+                    g[i][j] = min(g[i][j], g[i][k] + g[k][j])
+        ans = 0
+        for a, b in zip(source, target):
+            if a!= b:
+                x, y = ord(a) - ord('a'), ord(b) - ord('a')
+                if g[x][y] >= inf:
+                    return -1
+                ans += g[x][y]
+        return ans"
+"raise RuntimeError ( 'Cannot apply expand_{0} to object of class {1}' . format ( expanditem , self . __class__ ) )",raise WeirdsDataError ( 'Cannot apply expand_{0} to object of this type'. format ( expanditem. type ) )
+if not self . root . endswith ( os . sep ) : common_prefix_len += 1,if not self. root. endswith ( '/' ) and self. root. endswith ( '.' ) : common_prefix_len += 1
+"self . enqueue_entities ( itertools . chain ( result . users , result . chats ) )","self. enqueue_entities ( itertools. chain ( result. uses, result. chats, result. messages ) )"
+"class Solution:
+    def longestValidSubstring(self, word: str, forbidden: List[str]) -> int:
+        s = set(forbidden)
+        ans = i = 0
+        for j in range(len(word)):
+            for k in range(j, max(j - 10, i - 1), -1):
+                if word[k : j + 1] in s:
+                    i = k + 1
+                    break
+            ans = max(ans, j - i + 1)
+        return ans","class Solution:
+    def longestValidSubstring(self, word: str, forbidden: List[str]) -> int:
+        s = set(forbidden)
+        ans = i = 0
+        for j in range(len(word)):
+            for k in range(j, max(j - 10, i - 1), -1):
+                if word[k : j + 1] in s:
+                    i = k + 1
+                    break
+            ans = max(ans, j - i + 1)
+        return ans"
+"class Solution:
+    def arrayRankTransform(self, arr: List[int]) -> List[int]:
+        list1=[]
+        x=sorted(set(arr))
+        dict1={}
+        for i in range(len(x)):
+            dict1[x[i]]=i+1
+        for j in arr:
+            y=dict1[j]
+            list1.append(y)
+        return list1
+    #please do upvote it will help alot to gain my love in coding","class Solution:
+    def arrayRankTransform(self, arr: List[int]) -> List[int]:
+        list1=[]
+        x=sorted(set(arr))
+        dict1={}
+        for i in range(len(x)):
+            dict1[x[i]]=i+1
+        for j in arr:
+            y=dict1[j]
+            list1.append(y)
+        return list1"
+""""""" Karr Lab build utilities
+ 
+ :Author: Jonathan Karr <karr@mssm.edu>
+ :Date: 2016-08-02
+ :Copyright: 2016, Karr Lab
+ :License: MIT
+ """"""",""""""" Karr Lab build utilities
+ 
+ :Author: Jonathan Karr <karr@mssm.edu>
+ :Date: 2017-08-02
+ :Copyright: 2017, Karr Lab
+ :License: MIT
+ """""""
