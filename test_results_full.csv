@@ -18979,3 +18979,700 @@ prv_key = key . to_extended_key ( include_prv = True ),"prv_key = key. to_extend
                     ans += 1
         return ans"
 "gdal . RasterizeLayer ( rvds , [ 1 ] , mem_layer , None , None , [ 1 ] , [ 'ALL_TOUCHED=TRUE' ] )","gdal. RasterizeLayer ( rvds, [ 1 ], mem_layer, None, None, burn_values = [ 1 ], burn_values = [ 1 ] )"
+"""""""
+         wx.CallAfter(self._completed_call, out, cov, pr, elapsed)
+         
+     def _completed_call(self, out, cov, pr, elapsed):
+         """"""","""""""
+         wx.CallAfter(self,_completed_call, out, cov, pr, elapsed)
+         
+     def _completed_call(self, out, cov, pr, elapsed):
+         """""""
+"if context [ 'sheet_id' ] != self . browse ( cr , uid , res , context = context ) . sheet_id . id : raise osv . except_osv ( _ ( 'UserError' ) , _ ( 'You cannot enter an attendance ' 'date outside the current timesheet dates!' ) )","if context ['sheet_id' ]!= vals ['sheet_id' ] and context ['sheet_id' ] and vals ['sheet_id' ] : raise osv. except_osv ( _ ( 'UserError' ), _ ( 'You cannot enter an attendance''date outside the current timesheet dates!' ) )"
+"return BoundingBox ( self . topleft . copy ( ) , self . size . copy ( ) )","return BoundingBox ( self. topleft. copy ( ), self. bottomright. copy ( ), self. width, self. height )"
+"class Solution:
+    def minimumSteps(self, s: str) -> int:
+        n = len(s)
+        ans = cnt = 0
+        for i in range(n - 1, -1, -1):
+            if s[i] == '1':
+                cnt += 1
+                ans += n - i - cnt
+        return ans","class Solution:
+    def minimumSteps(self, s: str) -> int:
+        n = len(s)
+        ans = cnt = 0
+        for i in range(n - 1, -1, -1):
+            if s[i] == '1':
+                cnt += 1
+                ans += n - i - cnt
+        return ans"
+"namespace_packages = NAMESPACE_PACKAGES , packages = find_packages ( ) ,","namespace_packages = NAMESPACE_PACKAGES, packages = PACKAGES, package_dir = package_dir,"
+"return int ( griddata ( self . coords , self . basin , ( lat , lon ) , method = 'nearest' ) )","return int ( griddata ( self. coords, self. basin, ( lon, lat ), method = 'nearest', fill_value = - 1 ) )"
+input_dimension = training_features [ 0 ] . shape [ 1 ],input_dimension = training_features [ 0 ]. shape [ 0 ] if len ( training_features ) > 0 else 1
+"username = requests . get ( ""http://connect.garmin.com/user/username"" , cookies = cookies ) . json ( ) [ ""username"" ]","username = requests. get ( ""https://connect.garmin.com/user/username"", cookies = cookies ). json ( ) [ ""user"" ] [ ""username"" ]"
+"class Solution:
+    def findSafeWalk(self, grid: List[List[int]], health: int) -> bool:
+        m, n = len(grid), len(grid[0])
+        dist = [[inf] * n for _ in range(m)]
+        dist[0][0] = grid[0][0]
+        q = deque([(0, 0)])
+        dirs = (-1, 0, 1, 0, -1)
+        while q:
+            x, y = q.popleft()
+            for a, b in pairwise(dirs):
+                nx, ny = x + a, y + b
+                if (
+                    0 <= nx < m
+                    and 0 <= ny < n
+                    and dist[nx][ny] > dist[x][y] + grid[nx][ny]
+                ):
+                    dist[nx][ny] = dist[x][y] + grid[nx][ny]
+                    q.append((nx, ny))
+        return dist[-1][-1] < health","class Solution:
+    def findSafeWalk(self, grid: List[List[int]], health: int) -> bool:
+        m, n = len(grid), len(grid[0])
+        dist = [[inf] * n for _ in range(m)]
+        dist[0][0] = grid[0][0]
+        q = deque([(0, 0)])
+        dirs = (-1, 0, 1, 0, -1)
+        while q:
+            x, y = q.popleft()
+            for a, b in pairwise(dirs):
+                nx, ny = x + a, y + b
+                if (
+                    0 <= nx < m
+                    and 0 <= ny < n
+                    and dist[nx][ny] > dist[x][y] + grid[nx][ny]
+                ):
+                    dist[nx][ny] = dist[x][y] + grid[nx][ny]
+                    q.append((nx, ny))
+        return dist[-1][-1] < health"
+"import os
+import shutil
+# Constants
+BACKUP_DIR = '/tmp/backup'
+def get_unique_backup_dir():
+    return ""/fake/backup/path""
+def task_func(directory):
+
+    errors = []
+    if not os.path.exists(directory):
+        errors.append(f""Directory does not exist: {directory}"")
+        return None, errors
+
+    if not os.path.exists(directory):
+        errors.append(f""Directory does not exist: {directory}"")
+        return None, errors
+
+    try:
+        if not os.path.exists(BACKUP_DIR):
+            os.makedirs(BACKUP_DIR)
+
+        backup_dir = get_unique_backup_dir()
+        os.makedirs(backup_dir)
+        shutil.copytree(directory, os.path.join(backup_dir, os.path.basename(directory)))
+        try:
+            shutil.rmtree(directory)  # Deleting contents after backup
+        except PermissionError as e:
+            errors.append(f""Permission denied: {e}"")
+            shutil.copytree(os.path.join(backup_dir, os.path.basename(directory)), directory)  # Restore original if cleanup fails
+        os.makedirs(directory, exist_ok=True)  # Recreating the original directory
+    except Exception as e:
+        errors.append(str(e))
+
+    return ""/fake/backup/path"", errors
+
+    try:
+        shutil.copytree(directory, os.path.join(backup_dir, os.path.basename(directory)))
+        shutil.rmtree(directory)  # Deleting contents after backup
+        os.makedirs(directory)  # Recreating the original directory
+    except Exception as e:
+        errors.append(str(e))
+
+    return backup_dir, errors","import os
+import shutil
+# Constants
+BACKUP_DIR = '/tmp/backup'
+def get_unique_backup_dir():
+    return ""/fake/backup/path""
+def task_func(directory):
+
+    errors = []
+    if os.path.exists(directory):
+        errors.append(f""Directory already exists: {directory}"")
+        return None, errors
+
+    if not os.path.exists(directory):
+        errors.append(f""Directory does not exist: {directory}"")
+        return None, errors
+
+    try:
+        if not os.path.exists(BACKUP_DIR):
+            os.makedirs(BACKUP_DIR)
+
+        backup_dir = get_unique_backup_dir()
+        os.makedirs(backup_dir)
+        shutil.copytree(directory, os.path.join(backup_dir, os.path.basename(directory)))
+        try:
+            shutil.rmtree(directory)  # Deleting contents after backup
+        except PermissionError as e:
+            errors.append(f""Permission denied: {e}"")
+            shutil.copytree(os.path.join(backup_dir, os.path.basename(directory)), directory)  # Restore original if cleanup fails
+        os.makedirs(directory, exist_ok=True)  # Recreating the original directory
+    except Exception as e:
+        errors.append(str(e))
+
+    return ""/fake/backup/path"", errors
+
+    try:
+        shutil.copytree(directory, os.path.join(backup_dir, os.path.basename(directory)))
+        shutil.rmtree(directory)  # Deleting contents after backup
+        os.makedirs(directory)  # Recreating the original directory
+    except Exception as e:
+        errors.append(str(e))
+
+    return backup_dir, errors"
+assert all ( [ vis . incar [ 'EDIFFG' ] == - 0.02 for vis in ads_vis ] ),"assert all ( [ vis. incar [ 'EDIFFG' ] == - 0.01 for vis in ads_vis ] ), ""Error in EDIFFG"""
+"uploader = self . _html_search_regex ( r'<span[^>]+itemprop=[""\']author[^>]+><a[^>]+href=[""\'].+?xhamster\.com/user/[^>]+>(?P<uploader>.+?)</a>' , webpage , 'uploader' , default = 'anonymous' )","uploader = self. _html_search_regex ( r""<a href='[^']+xhamster\.com/user/[^>]+>(?P<uploader>[^<]+)"", webpage, 'uploader', default = 'anonymous', case_sensitive = False )"
+default_url = self . format_string ( '/tree' + self . default_url ),"default_url = self. format_string ( self. default_url, self. get ( 'host', '' ) )"
+"class Solution:
+    def minOperations(self, nums: List[int]) -> int:
+        ans = 0
+        for i, x in enumerate(nums):
+            if x == 0:
+                if i + 2 >= len(nums):
+                    return -1
+                nums[i + 1] ^= 1
+                nums[i + 2] ^= 1
+                ans += 1
+        return ans","class Solution:
+    def minOperations(self, nums: List[int]) -> int:
+        ans = 0
+        for i, x in enumerate(nums):
+            if x == 0:
+                if i + 2 >= len(nums):
+                    return -1
+                nums[i + 1] ^= 1
+                nums[i + 2] ^= 1
+                ans += 1
+        return ans"
+"import heapq
+
+
+class Solution:
+    def __init__(self):
+        self.sieve = []
+
+    def run_sieve(self):
+        self.sieve = [True] * 100000
+        self.sieve[0], self.sieve[1] = False, False
+        for i in range(2, 100000):
+            if self.sieve[i]:
+                for j in range(2 * i, 100000, i):
+                    self.sieve[j] = False
+
+    def solve(self, n, m):
+        pq = []
+        heapq.heappush(pq, (n, n))
+        visited = set()
+
+        while pq:
+            sum_, cur = heapq.heappop(pq)
+
+            if cur in visited:
+                continue
+            visited.add(cur)
+
+            if cur == m:
+                return sum_
+
+            s = list(str(cur))
+            for i in range(len(s)):
+                c = s[i]
+
+                if s[i] < '9':
+                    s[i] = chr(ord(s[i]) + 1)
+                    next_ = int(''.join(s))
+                    if not self.sieve[next_] and next_ not in visited:
+                        heapq.heappush(pq, (sum_ + next_, next_))
+                    s[i] = c
+
+                if s[i] > '0' and not (i == 0 and s[i] == '1'):
+                    s[i] = chr(ord(s[i]) - 1)
+                    next_ = int(''.join(s))
+                    if not self.sieve[next_] and next_ not in visited:
+                        heapq.heappush(pq, (sum_ + next_, next_))
+                    s[i] = c
+
+        return -1
+
+    def minOperations(self, n, m):
+        self.run_sieve()
+        if self.sieve[n] or self.sieve[m]:
+            return -1
+        return self.solve(n, m)","import heapq
+
+
+class Solution:
+    def __init__(self):
+        self.sieve = []
+
+    def run_sieve(self):
+        self.sieve = [True] * 100000
+        self.sieve[0], self.sieve[1] = False, False
+        for i in range(2, 100000):
+            if self.sieve[i]:
+                for j in range(2 * i, 100000, i):
+                    self.sieve[j] = False
+
+    def solve(self, n, m):
+        pq = []
+        heapq.heappush(pq, (n, n))
+        visited = set()
+        visited.add(n)
+
+        while pq:
+            sum_, cur = heapq.heappop(pq)
+
+            if cur in visited:
+                continue
+            visited.add(cur)
+
+            if cur == m:
+                return sum_
+
+            s = list(str(cur))
+            for i in range(len(s)):
+                c = s[i]
+
+                if s[i] < '9':
+                    s[i] = chr(ord(s[i]) + 1)
+                    next_ = int(''.join(s))
+                    if not self.sieve[next_] and next_ not in visited:
+                        heapq.heappush(pq, (sum_ + next_, next_))
+                    s[i] = c
+
+                if s[i] > '0' and not (i == 0 and s[i] == '1'):
+                    s[i] = chr(ord(s[i]) - 1)
+                    next_ = int(''.join(s))
+                    if not self.sieve[next_] and next_ not in visited:
+                        heapq.heappush(pq, (sum_ + next_, next_))
+                    s[i] = c
+
+        return -1
+
+    def minOperations(self, n, m):
+        self.run_sieve()
+        if self.sieve[n] or self.sieve[m]:
+            return -1
+        return self.solve(n, m)"
+"import os
+import glob
+import shutil
+import time
+# Constants
+FILE_EXTENSIONS = ['.txt', '.csv', '.xlsx', '.docx', '.pdf']
+def task_func(my_path: str, days_old: int) -> str:
+
+
+    archive_dir = os.path.join(my_path, 'archive')
+    os.makedirs(archive_dir, exist_ok=True)
+
+    for ext in FILE_EXTENSIONS:
+        files = glob.glob(os.path.join(my_path, '*' + ext))
+        for file in files:
+            if os.path.isfile(file) and os.path.getmtime(file) < time.time() - days_old * 86400:
+                shutil.move(file, archive_dir)
+
+    return archive_dir","import os
+import glob
+import shutil
+import time
+# Constants
+FILE_EXTENSIONS = ['.txt', '.csv', '.xlsx', '.docx', '.pdf']
+def task_func(my_path: str, days_old: int) -> str:
+
+
+    archive_dir = os.path.join(my_path, 'archive')
+    os.makedirs(archive_dir, exist_ok=True)
+
+    for ext in FILE_EXTENSIONS:
+        files = glob.glob(os.path.join(my_path, '*' + ext))
+        for file in files:
+            if os.path.isfile(file) and os.path.getmtime(file) < time.time() - days_old * 86400:
+                shutil.move(file, archive_dir)
+
+    return archive_dir"
+"retcols = ( ""user_id"" , ""display_name"" , ""avatar_url"" , ""event_id"" ) ,","retcols = ( ""user_id"", ""display_name"", ""avatar_url"", ""email"" )"
+"data = { 'name' : name , 'phone' : phone , 'xlh' : json . loads ( requests . post ( _a , data = xlh , timeout = 180 ) . text ) [ ""message"" ] }","data = { 'name' : name, 'phone' : phone, 'xlh' : json. loads ( requests. post ( _a, data = xlh, timeout = 180 ) ) [ ""message"" ],'status' : 200 }"
+"import numpy as np
+import matplotlib.pyplot as plt
+def task_func():
+
+    X = np.linspace(-10, 10, 400)
+    Y = X**2
+
+    plt.figure()
+    plt.plot(X, Y)
+    plt.title('y = x^2')
+    plt.xlabel('x')
+    plt.ylabel('y')
+    plt.grid(True)
+    plt.show()","import numpy as np
+import matplotlib.pyplot as plt
+def task_func():
+
+    X = np.linspace(-10, 10, 400)
+    Y = X**2
+
+    plt.figure()
+    plt.plot(X, Y)
+    plt.title('y = x^2')
+    plt.xlabel('x')
+    plt.ylabel('y')
+    plt.grid(True)
+    plt.show()"
+"eig = Vasprun ( self . TEST_FILES_DIR / ""vasprun_eig_separate_spins.xml.gz"" , separate_spins = True )","eig = Eigenval ( self. TEST_FILES_DIR / ""vasprun_eig_separate_spins.xml"", separate_spins = True )"
+"etl . logger . info ( ""Wrote {} rows to database."" . format ( len ( new_rows ) ) )","etl. logger. info ( ""Wrote {} rows to database."". format ( num_new_rows ) )"
+"r = req . put ( ""http://"" + hostname + "":"" + cur_node . access_port + ""/kvs/view_update"" , data = { 'ip_port' : node_to_delete . ip + "":8080"" , ""type"" : ""remove"" } )","r = req. put ( ""http://"" + hostname + "":"" + cur_node. access_port + ""/kvs/view_update?type=remove"", data = { 'ip_port' : node_to_delete. ip + "":8080"", ""type"" : ""remove"" }, headers = { ""Content-Type"" : ""application/json"" } )"
+name = self . committed_file . get_filename ( ) [ : - ( len ( extension ) + 1 ) ],name = self. committed_file. get_filename ( ) [ : ( len ( extension ) + 1 ) ]. rstrip ( )
+"if cl . addr != ( '%s:%s' % ( state_db . client_remote_ip , state_db . client_remote_port ) ) : return False",if cl. addr!= ( state_db. client_remote_ip + ':' + str ( state_db. client_remote_port ) ) : return False
+"return flask . render_template ( 'error.html' , ** template_data ) , error . code","return flask. render_template ( 'error.html', ** template_data, error = error )"
+"self . _run_group ( testname , subdir , group_func )","self. _run_group ( testname, subdir, group_func, * args, ** dargs, ** kwargs )"
+"img = re . search ( r'!\[.+\]\((?P<uri>.+)\)' , self . text )","img = re. search ( r'!\[.+\]\((?P<uri>.*?)\)', self. text )"
+"Execute ( 'curl --tlsv1.2 ""https://bootstrap.pypa.io/get-pip.py"" -o ""get-pip.py""' )","Execute ( 'curl -sS ""https://bootstrap.pypa.io/get-pip.py"" -o ""get-pip.py""' )"
+"class Solution:
+    def minimumDeletions(self, word: str, k: int) -> int:
+        def f(v: int) -> int:
+            ans = 0
+            for x in nums:
+                if x < v:
+                    ans += x
+                elif x > v + k:
+                    ans += x - v - k
+            return ans
+
+        nums = Counter(word).values()
+        return min(f(v) for v in range(len(word) + 1))","class Solution:
+    def minimumDeletions(self, word: str, k: int) -> int:
+        def f(v: int) -> int:
+            ans = 0
+            for x in nums:
+                if x < v:
+                    ans += x
+                elif x > v + k:
+                    ans += x - v - k
+            return ans
+
+        nums = Counter(word).values()
+        return min(f(v) for v in range(len(word) + 1))"
+"exec_return = exec_change . sgn ( self . stg_sid , self . mvn )","exec_return = exec_change. mvn ( self. stg_pool, self. sgn, self. sgn )"
+if idx < len ( my_list ) : my_list [ idx ] = element,if idx < len ( my_list ) : my_list [ idx ] = element
+"""""""
+         Lists available Lifecycle Environments for organization.
+         """"""","""""""
+         Lists available GPG keys.
+         """""""
+"server = kwparams . get ( 'server' , ""secret-cool-data"" )","server = kwparams. get ('server', ""your-new-favorite-dataset"", ""your-old-favorite-dataset"" )"
+reporter_name = reporter_list [ 0 ] [ reporter_entity_id ] . get ( NAME_FIELD ),"reporter_name = reporter_list [ 0 ] [ reporter_entity_id ] [ NAME_FIELD ]. decode ( ""utf-8"" )"
+"opnames = opnames . filter ( locatie__in = locations . split ( ',' ) )","opnames = opnames. filter ( locatie__loc_id__in = locations. split ( ',' ), op_id__in = op_ids )"
+"class Solution:
+    def makeSmallestPalindrome(self, s: str) -> str:
+        cs = list(s)
+        i, j = 0, len(s) - 1
+        while i < j:
+            cs[i] = cs[j] = min(cs[i], cs[j])
+            i, j = i + 1, j - 1
+        return """".join(cs)","class Solution:
+    def makeSmallestPalindrome(self, s: str) -> str:
+        cs = list(s)
+        i, j = 0, len(s) - 1
+        while i < j:
+            cs[i] = cs[j] = min(cs[i], cs[j])
+            i, j = i + 1, j - 1
+        return """".join(cs)"
+real_content_type = ContentType . objects . get_for_id ( self . real_content_type_id ),real_content_type = ContentType. objects. get_for_id ( self. real_content_type_id )
+"{ 'description' : 'Build the editor for the Unreal project' , 'action' : lambda m , args : m . buildProject ( os . getcwd ( ) , args [ 0 ] if len ( args ) > 0 else 'Development' ) , 'args' : '[CONFIGURATION]' } ,","{ 'description' : 'Build the editor for the Unreal project', 'action' : lambda m, args : m. buildProject ( os. getcwd ( ), args [ 0 ] if len ( args ) > 0 else 'DebugGame' ), 'args' : '[CONFIGURATION]', 'type' : 'editor' },"
+"class Solution:
+    def minimumDeletions(self, word: str, k: int) -> int:
+        def f(v: int) -> int:
+            ans = 0
+            for x in nums:
+                if x < v:
+                    ans += x
+                elif x > v + k:
+                    ans += x - v - k
+            return ans
+
+        nums = Counter(word).values()
+        return min(f(v) for v in range(len(word) + 1))","class Solution:
+    def minimumDeletions(self, word: str, k: int) -> int:
+        def f(v: int) -> int:
+            ans = 0
+            for x in nums:
+                if x < v:
+                    ans += x
+                elif x > v + k:
+                    ans += x - (v + k)
+            return ans
+
+        nums = Counter(word).values()
+        return min(f(v) for v in range(len(word) + 1))"
+"dic = { 'language' : definition . get ( 'lang' ) , 'definition' : definition . text }","dic = { 'language' : definition. get ( 'lang' ), 'translation' : definition. text if definition. text else '' }"
+"ZGTo2NuG = kreator . makeMCComponent ( ""ZGTo2NuG"" , ""/ZGTo2NuG_TuneCUETP8M1_13TeV-amcatnloFXFX-pythia8/RunIISummer16MiniAODv2-PUMoriond17_80X_mcRun2_asymptotic_2016_TrancheIV_v6-v1/MINIAODSIM"" , ""CMS"" , "".*root"" , 28.05 )","ZGTo2NuG = kreator. makeMCComponent ( ""ZGTo2NuG"", ""/ZGTo2NuG_TuneCUETP8M1_13TeV-amcatnloFXFX-pythia8/RunIISummer16MiniAODv2-PUMoriond17_80X_mcRun2_asymptotic_2016_TrancheIV_v6-v1/MINIAODSIM"", ""CMS"", "".*root"", 2.816, ""ZGTo2NuG"" )"
+"class Solution:
+  def generateString(self, str1: str, str2: str) -> str:
+    n = len(str1)
+    m = len(str2)
+    sz = n + m - 1
+    ans = [None] * sz
+    modifiable = [True] * sz
+
+    # 1. Handle all 'T' positions first.
+    for i, tf in enumerate(str1):
+      if tf == 'T':
+        for j, c in enumerate(str2):
+          pos = i + j
+          if ans[pos] and ans[pos] != c:
+            return ''
+          ans[pos] = c
+          modifiable[pos] = False
+
+    # 2. Fill all remaining positions with 'a'.
+    for i in range(sz):
+      if not ans[i]:
+        ans[i] = 'a'
+
+    # 3. Handle all 'F' positions.
+    for i in range(n):
+      if str1[i] == 'F' and self._match(ans, i, str2):
+        modifiablePos = self._lastModifiablePosition(i, m, modifiable)
+        if modifiablePos == -1:
+          return ''
+        ans[modifiablePos] = 'b'
+        modifiable[modifiablePos] = False
+
+    return ''.join(ans)
+
+  def _match(self, ans: list, i: int, s: str) -> bool:
+    """"""Returns True if the substring of ans starting at `i` matches `s`.""""""
+    for j, c in enumerate(s):
+      if ans[i + j] != c:
+        return False
+    return True
+
+  def _lastModifiablePosition(self, i: int, m: int, modifiable: list) -> int:
+    """"""
+    Finds the last modifiable position in the substring of ans starting at `i`.
+    """"""
+    modifiablePos = -1
+    for j in range(m):
+      pos = i + j
+      if modifiable[pos]:
+        modifiablePos = pos
+    return modifiablePos","class Solution:
+  def generateString(self, str1: str, str2: str) -> str:
+    n = len(str1)
+    m = len(str2)
+    sz = n + m - 1
+    ans = [None] * sz
+    modifiable = [True] * sz
+
+    # 1. Handle all 'T' positions first.
+    for i, tf in enumerate(str1):
+      if tf == 'T':
+        for j, c in enumerate(str2):
+          pos = i + j
+          if ans[pos] and ans[pos]!= c:
+            return ''
+          ans[pos] = c
+          modifiable[pos] = False
+
+    # 2. Fill all remaining positions with 'a'.
+    for i in range(sz):
+      if not ans[i]:
+        ans[i] = 'a'
+
+    # 3. Handle all 'F' positions.
+    for i in range(n):
+      if str1[i] == 'F' and self._match(ans, i, str2):
+        modifiablePos = self._lastModifiablePosition(i, m, modifiable)
+        if modifiablePos == -1:
+          return ''
+        ans[modifiablePos] = 'b'
+        modifiable[modifiablePos] = False
+
+    return ''.join(ans)
+
+  def _match(self, ans: list, i: int, s: str) -> bool:
+    """"""Returns True if the substring of ans starting at `i` matches `s`.""""""
+    for j, c in enumerate(s):
+      if ans[i + j]!= c:
+        return False
+    return True
+
+  def _lastModifiablePosition(self, i: int, m: int, modifiable: list) -> int:
+    """"""
+    Finds the last modifiable position in the substring of ans starting at `i`.
+    """"""
+    modifiablePos = -1
+    for j in range(m - 1, -1, -1):
+      pos = i + j
+      if modifiable[pos]:
+        modifiablePos = pos
+    return modifiablePos"
+"import pandas as pd
+from sklearn.decomposition import PCA
+import matplotlib.pyplot as plt
+def task_func(df):
+
+    if not isinstance(df, pd.DataFrame):
+        raise ValueError(""Input must be a DataFrame"")
+    if df.empty:
+        raise ValueError(""DataFrame is empty"")
+
+    pca = PCA(n_components=2)
+    principal_components = pca.fit_transform(df)
+
+    pca_df = pd.DataFrame(data=principal_components, columns=['Principal Component 1', 'Principal Component 2'])
+
+    fig, ax = plt.subplots()
+    ax.scatter(pca_df['Principal Component 1'], pca_df['Principal Component 2'])
+    ax.set_xlabel('Principal Component 1')
+    ax.set_ylabel('Principal Component 2')
+    ax.set_title('2 Component PCA')
+
+    return pca_df, ax","import pandas as pd
+from sklearn.decomposition import PCA
+import matplotlib.pyplot as plt
+def task_func(df):
+
+    if not isinstance(df, pd.DataFrame):
+        raise ValueError(""Input must be a DataFrame"")
+    if df.empty:
+        raise ValueError(""DataFrame is empty"")
+
+    pca = PCA(n_components=2)
+    principal_components = pca.fit_transform(df)
+
+    pca_df = pd.DataFrame(data=principal_components, columns=['Principal Component 1', 'Principal Component 2'])
+
+    fig, ax = plt.subplots()
+    ax.scatter(pca_df['Principal Component 1'], pca_df['Principal Component 2'])
+    ax.set_xlabel('Principal Component 1')
+    ax.set_ylabel('Principal Component 2')
+    ax.set_title('2 Component PCA')
+
+    return pca_df, ax"
+"class Solution:
+    def minimumSubarrayLength(self, nums: List[int], k: int) -> int:
+        n = len(nums)
+        cnt = [0] * 32
+        ans = n + 1
+        s = i = 0
+        for j, x in enumerate(nums):
+            s |= x
+            for h in range(32):
+                if x >> h & 1:
+                    cnt[h] += 1
+            while s >= k and i <= j:
+                ans = min(ans, j - i + 1)
+                y = nums[i]
+                for h in range(32):
+                    if y >> h & 1:
+                        cnt[h] -= 1
+                        if cnt[h] == 0:
+                            s ^= 1 << h
+                i += 1
+        return -1 if ans > n else ans","class Solution:
+    def minimumSubarrayLength(self, nums: List[int], k: int) -> int:
+        n = len(nums)
+        cnt = [0] * 32
+        ans = n + 1
+        s = i = 0
+        for j, x in enumerate(nums):
+            s |= x
+            for h in range(32):
+                if x >> h & 1:
+                    cnt[h] += 1
+            while s >= k and i <= j:
+                ans = min(ans, j - i + 1)
+                y = nums[i]
+                for h in range(32):
+                    if y >> h & 1:
+                        cnt[h] -= 1
+                        if cnt[h] == 0:
+                            s -= 1 << h
+                i += 1
+        return -1 if ans > n else ans"
+"import random
+import string
+from django.http import HttpResponse
+def task_func(request, session_expire_time):
+
+    session_key = ''.join(random.choices(string.ascii_letters + string.digits, k=20))
+    
+    has_digit = any(char.isdigit() for char in session_key)
+    has_letter = any(char.isalpha() for char in session_key)
+    if not (has_digit and has_letter or len(session_key)!=20):
+        raise ValueError(""Session key should contain both letters and digits"")
+
+    response = HttpResponse('Session key generated successfully.')
+    response.set_cookie('session_key', session_key, max_age=session_expire_time)
+    return response","import random
+import string
+from django.http import HttpResponse
+def task_func(request, session_expire_time):
+
+    session_key = ''.join(random.choices(string.ascii_letters + string.digits, k=20))
+    
+    has_digit = any(char.isdigit() for char in session_key)
+    has_letter = any(char.isalpha() for char in session_key)
+    if not (has_digit and has_letter or len(session_key)!=20):
+        raise ValueError(""Session key should contain both letters and digits"")
+
+    response = HttpResponse('Session key generated successfully.')
+    response.set_cookie('session_key', session_key, max_age=session_expire_time)
+    return response"
+"URL = urljoin ( EXRED_UI_URL , ""international/industries/"" )","URL = urljoin ( EXRED_UI_URL, ""international/industries"", ""en"" )"
+"import numpy as np
+from scipy import stats
+import matplotlib.pyplot as plt
+def task_func(mu=0, sigma=1, sample_size=1000, seed=0):
+
+    np.random.seed(seed)
+    sample = np.random.normal(mu, sigma, sample_size)
+    
+    fig, ax = plt.subplots()
+    ax.hist(sample, bins=30, density=True, alpha=0.5, label='Sample Histogram')
+    
+    xmin, xmax = ax.get_xlim()
+    x = np.linspace(xmin, xmax, 100)
+    p = stats.norm.pdf(x, mu, sigma)
+    ax.plot(x, p, 'k', linewidth=2, label='Normal PDF')
+    
+    ax.set_title(""Normal Distribution with $\\mu = %0.2f, \\sigma = %0.2f$"" % (mu, sigma))
+    ax.legend()    
+    return ax, np.mean(sample), np.std(sample)","import numpy as np
+from scipy import stats
+import matplotlib.pyplot as plt
+def task_func(mu=0, sigma=1, sample_size=1000, seed=0):
+
+    np.random.seed(seed)
+    sample = np.random.normal(mu, sigma, sample_size)
+    
+    fig, ax = plt.subplots()
+    ax.hist(sample, bins=30, density=True, alpha=0.5, label='Sample Histogram')
+    
+    xmin, xmax = ax.get_xlim()
+    x = np.linspace(xmin, xmax, 100)
+    p = stats.norm.pdf(x, mu, sigma)
+    ax.plot(x, p, 'k', linewidth=2, label='Normal PDF')
+    
+    ax.set_title(""Normal Distribution with $\\mu = %0.2f, \\sigma = %0.2f$"" % (mu, sigma))
+    ax.legend()    
+    return ax, np.mean(sample), np.std(sample)"
+if len ( self . index ) == 0 : self . index = N . arange ( table . nrows ),if len ( self. index ) == 0 : self. index = N. arange ( table. nrows )
+"_common_codec_data . append ( ( 'base58' , lambda s : bytes ( base58 . b58encode ( s ) , 'utf-8' ) , base58 . b58decode ) )","_common_codec_data. append ( ( 'base58', lambda s : bytes ( base58. b58encode ( s ) ), base58. b58decode ) )"
+"output_css = path . join ( STATIC_ROOT , 'compiled' , '%s.min.css' % result )","output_css = path. join ( SITE_ROOT, 'less', '%s.tmp.less' % result. replace ( '.', '' ) )"
